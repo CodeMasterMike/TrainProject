@@ -32,6 +32,7 @@ namespace TrackController
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackControllerWindow));
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "2",
             "N",
@@ -55,7 +56,7 @@ namespace TrackController
             "23",
             "44.7",
             "12"}, -1);
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            //this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.Engineer = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -94,9 +95,9 @@ namespace TrackController
             // 
             // directorySearcher1
             // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            //this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            //this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            //this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // Engineer
             // 
@@ -148,7 +149,7 @@ namespace TrackController
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Train_Project.Properties.Resources.Track_Layout;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(6, 38);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(684, 829);
@@ -371,7 +372,7 @@ namespace TrackController
         }
 
         #endregion
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        //private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.Windows.Forms.TabControl Engineer;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox4;
