@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Track_Layout_UI;
+using MBOForm;
+
 
 namespace Train_Project
 {
@@ -24,7 +26,18 @@ namespace Train_Project
             trackModelWindow.Show();
         }
 
+        private void openMBO_Click(object sender, EventArgs e)
+        {
+            MBO mboWindow = new MBO();
+            mboWindow.Show();
+        }
+
         private void openTrackController_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Homepage_Load(object sender, EventArgs e)
         {
 
         }

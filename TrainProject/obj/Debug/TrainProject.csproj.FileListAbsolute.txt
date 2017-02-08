@@ -8,3 +8,15 @@ C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\bin\Debug\TrainProject.
 C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\TrainProject.exe
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\bin\Debug\TrainProject.exe
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\bin\Debug\WindowsFormsApplication2.exe
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\bin\Debug\WindowsFormsApplication2.pdb
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\Train_Project.Homepage.resources
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
+C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache

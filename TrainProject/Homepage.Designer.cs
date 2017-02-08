@@ -97,6 +97,7 @@
             this.openMBO.TabIndex = 5;
             this.openMBO.Text = "MBO";
             this.openMBO.UseVisualStyleBackColor = true;
+            this.openMBO.Click += new System.EventHandler(this.openMBO_Click);
             // 
             // Homepage
             // 
@@ -112,6 +113,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Homepage";
             this.Text = "Main Window";
+            this.Load += new System.EventHandler(this.Homepage_Load);
             this.ResumeLayout(false);
 
         }
