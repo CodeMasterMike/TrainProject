@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Track_Layout_UI;
 using TrackController;
+using CTC;
 
 namespace Train_Project
 {
@@ -29,6 +30,13 @@ namespace Train_Project
         {
             TrackControllerWindow trackControllerWindow = new TrackControllerWindow();
             trackControllerWindow.Show();
+        }
+
+        private void openCTC_Click(object sender, EventArgs e)
+        {
+            CentralTrainControl ctcWindow = new CentralTrainControl();
+            ctcWindow.Show();
+
         }
     }
 }
