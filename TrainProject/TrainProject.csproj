@@ -54,11 +54,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Track Model.cs">
+    <Compile Include="TrackModel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Track Model.designer.cs">
-      <DependentUpon>Track Model.cs</DependentUpon>
+    <Compile Include="TrackModel.designer.cs">
+      <DependentUpon>TrackModel.cs</DependentUpon>
     </Compile>
     <Compile Include="TrackController.cs">
       <SubType>Form</SubType>
@@ -78,8 +78,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Track Model.resx">
-      <DependentUpon>Track Model.cs</DependentUpon>
+    <EmbeddedResource Include="TrackModel.resx">
+      <DependentUpon>TrackModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrackController.resx">
       <DependentUpon>TrackController.cs</DependentUpon>
