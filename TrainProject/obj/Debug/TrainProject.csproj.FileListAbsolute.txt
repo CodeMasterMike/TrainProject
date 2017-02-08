@@ -8,3 +8,14 @@ C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\bin\Debug\TrainProject.
 C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Mike\Documents\GitHub\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
+C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe
+C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\Train_Project.Homepage.resources
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.exe
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrackController.TrackControllerWindow.resources
