@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Track_Layout_UI;
 using TrackController;
 using TrainProject.Clock;
+using CTC;
 
 namespace TrainProject
 {
@@ -37,6 +38,12 @@ namespace TrainProject
         private void timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void openCTC_Click(object sender, EventArgs e)
+        {
+            CentralTrainControl ctcWindow = new CentralTrainControl();
+            ctcWindow.Show();
         }
 
         private void clockDisplayedText_Click(object sender, EventArgs e)

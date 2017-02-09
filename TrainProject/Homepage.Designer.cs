@@ -45,18 +45,21 @@
             // 
             // openCTC
             // 
-            this.openCTC.Location = new System.Drawing.Point(115, 46);
+            this.openCTC.Location = new System.Drawing.Point(86, 37);
+            this.openCTC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openCTC.Name = "openCTC";
-            this.openCTC.Size = new System.Drawing.Size(91, 23);
+            this.openCTC.Size = new System.Drawing.Size(94, 19);
             this.openCTC.TabIndex = 0;
             this.openCTC.Text = "CTC";
             this.openCTC.UseVisualStyleBackColor = true;
+            this.openCTC.Click += new System.EventHandler(this.openCTC_Click);
             // 
             // openTrackController
             // 
-            this.openTrackController.Location = new System.Drawing.Point(115, 76);
+            this.openTrackController.Location = new System.Drawing.Point(86, 62);
+            this.openTrackController.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openTrackController.Name = "openTrackController";
-            this.openTrackController.Size = new System.Drawing.Size(91, 23);
+            this.openTrackController.Size = new System.Drawing.Size(94, 19);
             this.openTrackController.TabIndex = 1;
             this.openTrackController.Text = "Track Controller";
             this.openTrackController.UseVisualStyleBackColor = true;
@@ -64,9 +67,10 @@
             // 
             // openTrackModel
             // 
-            this.openTrackModel.Location = new System.Drawing.Point(115, 105);
+            this.openTrackModel.Location = new System.Drawing.Point(86, 85);
+            this.openTrackModel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openTrackModel.Name = "openTrackModel";
-            this.openTrackModel.Size = new System.Drawing.Size(91, 23);
+            this.openTrackModel.Size = new System.Drawing.Size(94, 19);
             this.openTrackModel.TabIndex = 2;
             this.openTrackModel.Text = "Track Model";
             this.openTrackModel.UseVisualStyleBackColor = true;
@@ -74,27 +78,30 @@
             // 
             // openTrainModel
             // 
-            this.openTrainModel.Location = new System.Drawing.Point(115, 135);
+            this.openTrainModel.Location = new System.Drawing.Point(86, 110);
+            this.openTrainModel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openTrainModel.Name = "openTrainModel";
-            this.openTrainModel.Size = new System.Drawing.Size(91, 23);
+            this.openTrainModel.Size = new System.Drawing.Size(94, 19);
             this.openTrainModel.TabIndex = 3;
             this.openTrainModel.Text = "Train Model";
             this.openTrainModel.UseVisualStyleBackColor = true;
             // 
             // openTrainController
             // 
-            this.openTrainController.Location = new System.Drawing.Point(115, 165);
+            this.openTrainController.Location = new System.Drawing.Point(86, 134);
+            this.openTrainController.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openTrainController.Name = "openTrainController";
-            this.openTrainController.Size = new System.Drawing.Size(91, 23);
+            this.openTrainController.Size = new System.Drawing.Size(94, 19);
             this.openTrainController.TabIndex = 4;
             this.openTrainController.Text = "Train Controller";
             this.openTrainController.UseVisualStyleBackColor = true;
             // 
             // openMBO
             // 
-            this.openMBO.Location = new System.Drawing.Point(115, 195);
+            this.openMBO.Location = new System.Drawing.Point(86, 158);
+            this.openMBO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openMBO.Name = "openMBO";
-            this.openMBO.Size = new System.Drawing.Size(91, 23);
+            this.openMBO.Size = new System.Drawing.Size(94, 19);
             this.openMBO.TabIndex = 5;
             this.openMBO.Text = "MBO";
             this.openMBO.UseVisualStyleBackColor = true;
@@ -102,7 +109,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(345, 81);
+            this.label1.Location = new System.Drawing.Point(259, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 6;
@@ -111,7 +119,8 @@
             // clockDisplayedText
             // 
             this.clockDisplayedText.AutoSize = true;
-            this.clockDisplayedText.Location = new System.Drawing.Point(345, 107);
+            this.clockDisplayedText.Location = new System.Drawing.Point(259, 87);
+            this.clockDisplayedText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.clockDisplayedText.Name = "clockDisplayedText";
             this.clockDisplayedText.Size = new System.Drawing.Size(68, 13);
             this.clockDisplayedText.TabIndex = 7;
@@ -121,7 +130,8 @@
             // radioSpeed1x
             // 
             this.radioSpeed1x.AutoSize = true;
-            this.radioSpeed1x.Location = new System.Drawing.Point(445, 81);
+            this.radioSpeed1x.Location = new System.Drawing.Point(334, 66);
+            this.radioSpeed1x.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioSpeed1x.Name = "radioSpeed1x";
             this.radioSpeed1x.Size = new System.Drawing.Size(70, 17);
             this.radioSpeed1x.TabIndex = 8;
@@ -132,7 +142,8 @@
             // radioSpeed10x
             // 
             this.radioSpeed10x.AutoSize = true;
-            this.radioSpeed10x.Location = new System.Drawing.Point(445, 103);
+            this.radioSpeed10x.Location = new System.Drawing.Point(334, 84);
+            this.radioSpeed10x.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioSpeed10x.Name = "radioSpeed10x";
             this.radioSpeed10x.Size = new System.Drawing.Size(76, 17);
             this.radioSpeed10x.TabIndex = 9;
@@ -142,9 +153,10 @@
             // 
             // setTimeButton
             // 
-            this.setTimeButton.Location = new System.Drawing.Point(348, 135);
+            this.setTimeButton.Location = new System.Drawing.Point(261, 110);
+            this.setTimeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.setTimeButton.Name = "setTimeButton";
-            this.setTimeButton.Size = new System.Drawing.Size(167, 23);
+            this.setTimeButton.Size = new System.Drawing.Size(125, 19);
             this.setTimeButton.TabIndex = 10;
             this.setTimeButton.Text = "Set Time Manually";
             this.setTimeButton.UseVisualStyleBackColor = true;

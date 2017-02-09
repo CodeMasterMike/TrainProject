@@ -30,3 +30,14 @@ C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainP
 C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
 C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
 C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.exe
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\Train_Project.Homepage.resources
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrackController.TrackControllerWindow.resources
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.exe
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
