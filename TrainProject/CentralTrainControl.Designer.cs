@@ -28,972 +28,952 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CentralTrainControl));
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.tabControlCtcMurphy = new System.Windows.Forms.TabControl();
-            this.tabPage2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            this.groupBox7.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox15.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.tabControlCtcMurphy.SuspendLayout();
+            this.murphyTab = new System.Windows.Forms.TabPage();
+            this.restoreWaysideButton = new System.Windows.Forms.Button();
+            this.restoreMboButton = new System.Windows.Forms.Button();
+            this.interuptMboButton = new System.Windows.Forms.Button();
+            this.interuptsWaysideButton = new System.Windows.Forms.Button();
+            this.dispatcherTab = new System.Windows.Forms.TabPage();
+            this.systemOverviewBox = new System.Windows.Forms.GroupBox();
+            this.fbRadio = new System.Windows.Forms.RadioButton();
+            this.mboRadio = new System.Windows.Forms.RadioButton();
+            this.dispatchControlBox = new System.Windows.Forms.GroupBox();
+            this.tenTimesLabel = new System.Windows.Forms.RadioButton();
+            this.wallClockRadio = new System.Windows.Forms.RadioButton();
+            this.selectScheduleComboBox = new System.Windows.Forms.ComboBox();
+            this.dispatchTrainButton = new System.Windows.Forms.Button();
+            this.systemSpeedLabel = new System.Windows.Forms.Label();
+            this.selectScheduleLabel = new System.Windows.Forms.Label();
+            this.dispatchInfoBox = new System.Windows.Forms.GroupBox();
+            this.numTrainsInServLabel = new System.Windows.Forms.Label();
+            this.rushHourLabel = new System.Windows.Forms.Label();
+            this.throughputLabel = new System.Windows.Forms.Label();
+            this.throughputValue = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.modeValue = new System.Windows.Forms.Label();
+            this.rushHourValue = new System.Windows.Forms.Label();
+            this.numTrainsInServValue = new System.Windows.Forms.Label();
+            this.timeValue = new System.Windows.Forms.Label();
+            this.modeLabel = new System.Windows.Forms.Label();
+            this.manualButton = new System.Windows.Forms.Button();
+            this.autoButton = new System.Windows.Forms.Button();
+            this.maintenanceBox = new System.Windows.Forms.GroupBox();
+            this.fixTrainButton = new System.Windows.Forms.Button();
+            this.fixTrackButton = new System.Windows.Forms.Button();
+            this.notificationBox = new System.Windows.Forms.GroupBox();
+            this.notificationLabel = new System.Windows.Forms.Label();
+            this.lineControlBox = new System.Windows.Forms.GroupBox();
+            this.lineSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.trackAndBlockInfoBox = new System.Windows.Forms.GroupBox();
+            this.lineLabel = new System.Windows.Forms.Label();
+            this.trackSectionLabel = new System.Windows.Forms.Label();
+            this.blockNumberLabel = new System.Windows.Forms.Label();
+            this.lineValue = new System.Windows.Forms.Label();
+            this.blockStatusLabel = new System.Windows.Forms.Label();
+            this.trackSectionValue = new System.Windows.Forms.Label();
+            this.occupancyLabel = new System.Windows.Forms.Label();
+            this.blockNumberValue = new System.Windows.Forms.Label();
+            this.occupancyValue = new System.Windows.Forms.Label();
+            this.blockStatusValue = new System.Windows.Forms.Label();
+            this.blockControlBox = new System.Windows.Forms.GroupBox();
+            this.openBlockButton = new System.Windows.Forms.Button();
+            this.closeBlockButton = new System.Windows.Forms.Button();
+            this.trainControlBox = new System.Windows.Forms.GroupBox();
+            this.authTrackBar = new System.Windows.Forms.TrackBar();
+            this.speedTrackBar = new System.Windows.Forms.TrackBar();
+            this.suggestAuthValue = new System.Windows.Forms.Label();
+            this.suggestSpeedValue = new System.Windows.Forms.Label();
+            this.suggestAuthLabel = new System.Windows.Forms.Label();
+            this.suggestSpeedLabel = new System.Windows.Forms.Label();
+            this.trainInfoBox = new System.Windows.Forms.GroupBox();
+            this.currentAuthLabel = new System.Windows.Forms.Label();
+            this.currentSpeedLabel = new System.Windows.Forms.Label();
+            this.directionLabel = new System.Windows.Forms.Label();
+            this.currentAuthValue = new System.Windows.Forms.Label();
+            this.currentSpeedValue = new System.Windows.Forms.Label();
+            this.directionValue = new System.Windows.Forms.Label();
+            this.trainNumberValue = new System.Windows.Forms.Label();
+            this.trainNumberLabel = new System.Windows.Forms.Label();
+            this.ctcTabControl = new System.Windows.Forms.TabControl();
+            this.murphyTab.SuspendLayout();
+            this.dispatcherTab.SuspendLayout();
+            this.systemOverviewBox.SuspendLayout();
+            this.dispatchControlBox.SuspendLayout();
+            this.dispatchInfoBox.SuspendLayout();
+            this.maintenanceBox.SuspendLayout();
+            this.notificationBox.SuspendLayout();
+            this.lineControlBox.SuspendLayout();
+            this.trackAndBlockInfoBox.SuspendLayout();
+            this.blockControlBox.SuspendLayout();
+            this.trainControlBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.authTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).BeginInit();
+            this.trainInfoBox.SuspendLayout();
+            this.ctcTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.button9);
-            this.tabPage2.Controls.Add(this.button11);
-            this.tabPage2.Controls.Add(this.button10);
-            this.tabPage2.Controls.Add(this.button8);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1221, 874);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Murphy";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(460, 171);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(142, 95);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Interupt Communication with Wayside Controller";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(608, 171);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(142, 95);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "Interupt Communication with MBO ";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(608, 272);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(142, 95);
-            this.button11.TabIndex = 0;
-            this.button11.Text = "Restore Communication with MBO ";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(460, 272);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(142, 95);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "Restore Communication with Wayside Controller";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage1.Controls.Add(this.groupBox13);
-            this.tabPage1.Controls.Add(this.groupBox16);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.groupBox7);
-            this.tabPage1.Controls.Add(this.groupBox11);
-            this.tabPage1.Controls.Add(this.groupBox12);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1221, 874);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Dispatcher";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.label49);
-            this.groupBox12.Controls.Add(this.label50);
-            this.groupBox12.Controls.Add(this.label51);
-            this.groupBox12.Controls.Add(this.label52);
-            this.groupBox12.Controls.Add(this.label53);
-            this.groupBox12.Controls.Add(this.label54);
-            this.groupBox12.Controls.Add(this.label55);
-            this.groupBox12.Controls.Add(this.label56);
-            this.groupBox12.Location = new System.Drawing.Point(6, 6);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(387, 111);
-            this.groupBox12.TabIndex = 5;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Selected Train Infomation";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(55, 23);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(116, 20);
-            this.label56.TabIndex = 0;
-            this.label56.Text = "Train Number:";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(171, 23);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(36, 20);
-            this.label55.TabIndex = 0;
-            this.label55.Text = "101";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(171, 43);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(20, 20);
-            this.label54.TabIndex = 0;
-            this.label54.Text = "A";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(171, 63);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(64, 20);
-            this.label53.TabIndex = 0;
-            this.label53.Text = "69 mph";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(171, 83);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(97, 20);
-            this.label52.TabIndex = 0;
-            this.label52.Text = "9 mi remain";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(89, 43);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(82, 20);
-            this.label51.TabIndex = 0;
-            this.label51.Text = "Direction:";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(49, 63);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(122, 20);
-            this.label50.TabIndex = 0;
-            this.label50.Text = "Current Speed:";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(30, 83);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(141, 20);
-            this.label49.TabIndex = 0;
-            this.label49.Text = "Current Authority:";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.trackBar3);
-            this.groupBox11.Controls.Add(this.trackBar4);
-            this.groupBox11.Controls.Add(this.label45);
-            this.groupBox11.Controls.Add(this.label46);
-            this.groupBox11.Controls.Add(this.label47);
-            this.groupBox11.Controls.Add(this.label48);
-            this.groupBox11.Location = new System.Drawing.Point(6, 123);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(387, 151);
-            this.groupBox11.TabIndex = 6;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Train Control";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(28, 23);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(135, 20);
-            this.label48.TabIndex = 0;
-            this.label48.Text = "Suggest Speed";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(211, 23);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(158, 20);
-            this.label47.TabIndex = 0;
-            this.label47.Text = "Suggest Authority";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(94, 70);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(63, 58);
-            this.label46.TabIndex = 0;
-            this.label46.Text = "48 \r\nmph";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(256, 70);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(48, 58);
-            this.label45.TabIndex = 0;
-            this.label45.Text = "40 \r\nmi";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // trackBar4
-            // 
-            this.trackBar4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.trackBar4.Location = new System.Drawing.Point(40, 46);
-            this.trackBar4.Maximum = 70;
-            this.trackBar4.Name = "trackBar4";
-            this.trackBar4.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar4.Size = new System.Drawing.Size(56, 82);
-            this.trackBar4.TabIndex = 1;
-            this.trackBar4.TickFrequency = 10;
-            this.trackBar4.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.trackBar4.Value = 40;
-            // 
-            // trackBar3
-            // 
-            this.trackBar3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.trackBar3.Location = new System.Drawing.Point(203, 46);
-            this.trackBar3.Maximum = 5000;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar3.Size = new System.Drawing.Size(56, 82);
-            this.trackBar3.TabIndex = 1;
-            this.trackBar3.TickFrequency = 1000;
-            this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.trackBar3.Value = 4000;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.button3);
-            this.groupBox7.Controls.Add(this.button4);
-            this.groupBox7.Location = new System.Drawing.Point(6, 447);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(386, 82);
-            this.groupBox7.TabIndex = 11;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Block Control";
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Black;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(198, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 42);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Close Block";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(7, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(181, 42);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Open Block";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label31);
-            this.groupBox4.Controls.Add(this.label36);
-            this.groupBox4.Controls.Add(this.label37);
-            this.groupBox4.Controls.Add(this.label38);
-            this.groupBox4.Controls.Add(this.label39);
-            this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.label41);
-            this.groupBox4.Controls.Add(this.label42);
-            this.groupBox4.Controls.Add(this.label43);
-            this.groupBox4.Controls.Add(this.label44);
-            this.groupBox4.Location = new System.Drawing.Point(8, 280);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(386, 161);
-            this.groupBox4.TabIndex = 13;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Selected Track and Block Information";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(166, 100);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(61, 20);
-            this.label44.TabIndex = 0;
-            this.label44.Text = "Closed";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(166, 120);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(18, 20);
-            this.label43.TabIndex = 0;
-            this.label43.Text = "1";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(170, 77);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(27, 20);
-            this.label42.TabIndex = 0;
-            this.label42.Text = "18";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(68, 120);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(98, 20);
-            this.label41.TabIndex = 0;
-            this.label41.Text = "Occupancy:";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(170, 57);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(20, 20);
-            this.label40.TabIndex = 0;
-            this.label40.Text = "S";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(57, 100);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(109, 20);
-            this.label39.TabIndex = 0;
-            this.label39.Text = "Block Status:";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(166, 35);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(55, 20);
-            this.label38.TabIndex = 0;
-            this.label38.Text = "Green";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(44, 77);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(120, 20);
-            this.label37.TabIndex = 0;
-            this.label37.Text = "Block Number:";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(47, 57);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(117, 20);
-            this.label36.TabIndex = 0;
-            this.label36.Text = "Track Section:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(73, 35);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(91, 20);
-            this.label31.TabIndex = 0;
-            this.label31.Text = "Line Color:";
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.comboBox3);
-            this.groupBox16.Location = new System.Drawing.Point(6, 535);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(386, 75);
-            this.groupBox16.TabIndex = 15;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Line Control";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Red Line",
-            "Green Line"});
-            this.comboBox3.Location = new System.Drawing.Point(32, 31);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(317, 28);
-            this.comboBox3.TabIndex = 1;
-            this.comboBox3.Text = "Select a Line";
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.radioButton2);
-            this.groupBox13.Controls.Add(this.radioButton1);
-            this.groupBox13.Controls.Add(this.groupBox14);
-            this.groupBox13.Controls.Add(this.groupBox15);
-            this.groupBox13.Controls.Add(this.button13);
-            this.groupBox13.Controls.Add(this.pictureBox2);
-            this.groupBox13.Controls.Add(this.button14);
-            this.groupBox13.Controls.Add(this.groupBox19);
-            this.groupBox13.Controls.Add(this.groupBox20);
-            this.groupBox13.Location = new System.Drawing.Point(396, 6);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(823, 613);
-            this.groupBox13.TabIndex = 16;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "System Overview";
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.Controls.Add(this.label57);
-            this.groupBox20.Location = new System.Drawing.Point(466, 472);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(347, 135);
-            this.groupBox20.TabIndex = 17;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Notification Center";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.ForeColor = System.Drawing.Color.Gray;
-            this.label57.Location = new System.Drawing.Point(50, 47);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(241, 58);
-            this.label57.TabIndex = 0;
-            this.label57.Text = "Everything is running \r\nsmoothly....for now";
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.Controls.Add(this.button17);
-            this.groupBox19.Controls.Add(this.button18);
-            this.groupBox19.Location = new System.Drawing.Point(466, 394);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(347, 70);
-            this.groupBox19.TabIndex = 19;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Maintenence";
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.ForeColor = System.Drawing.Color.Black;
-            this.button18.Location = new System.Drawing.Point(180, 26);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(163, 42);
-            this.button18.TabIndex = 2;
-            this.button18.Text = "Fix Track";
-            this.button18.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.Color.Black;
-            this.button17.Location = new System.Drawing.Point(6, 26);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(161, 42);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "Fix Train";
-            this.button17.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Black;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(580, 19);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(102, 42);
-            this.button14.TabIndex = 22;
-            this.button14.Text = "Automatic";
-            this.button14.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-           /* this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 20);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(457, 587);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
-            */
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.Black;
-            this.button13.Location = new System.Drawing.Point(469, 20);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(102, 42);
-            this.button13.TabIndex = 21;
-            this.button13.Text = "Manual";
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.label59);
-            this.groupBox15.Controls.Add(this.label60);
-            this.groupBox15.Controls.Add(this.label61);
-            this.groupBox15.Controls.Add(this.label62);
-            this.groupBox15.Controls.Add(this.label63);
-            this.groupBox15.Controls.Add(this.label64);
-            this.groupBox15.Controls.Add(this.label65);
-            this.groupBox15.Controls.Add(this.label66);
-            this.groupBox15.Controls.Add(this.label67);
-            this.groupBox15.Controls.Add(this.label68);
-            this.groupBox15.Location = new System.Drawing.Point(469, 68);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(347, 140);
-            this.groupBox15.TabIndex = 20;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Dispatch Information";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.Location = new System.Drawing.Point(103, 23);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(55, 20);
-            this.label68.TabIndex = 0;
-            this.label68.Text = "Mode:";
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.Location = new System.Drawing.Point(164, 43);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(73, 20);
-            this.label67.TabIndex = 0;
-            this.label67.Text = "17:46:35";
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(164, 83);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(27, 20);
-            this.label66.TabIndex = 0;
-            this.label66.Text = "16";
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(164, 63);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(37, 20);
-            this.label65.TabIndex = 0;
-            this.label65.Text = "Yes";
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(164, 23);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(84, 20);
-            this.label64.TabIndex = 0;
-            this.label64.Text = "Automatic";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(107, 43);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(51, 20);
-            this.label63.TabIndex = 0;
-            this.label63.Text = "Time:";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(158, 103);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(188, 20);
-            this.label62.TabIndex = 0;
-            this.label62.Text = "1523 Passengers per hr";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(60, 103);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(98, 20);
-            this.label61.TabIndex = 0;
-            this.label61.Text = "Throughput:";
-            this.label61.Click += new System.EventHandler(this.label61_Click);
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(63, 63);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(95, 20);
-            this.label60.TabIndex = 0;
-            this.label60.Text = "Rush Hour:";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(4, 83);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(154, 20);
-            this.label59.TabIndex = 0;
-            this.label59.Text = "# Trains in Service:";
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.radioButton6);
-            this.groupBox14.Controls.Add(this.radioButton5);
-            this.groupBox14.Controls.Add(this.comboBox1);
-            this.groupBox14.Controls.Add(this.button12);
-            this.groupBox14.Controls.Add(this.label69);
-            this.groupBox14.Controls.Add(this.label58);
-            this.groupBox14.Location = new System.Drawing.Point(469, 214);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(345, 180);
-            this.groupBox14.TabIndex = 23;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Dispatch Control";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(103, 23);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(145, 20);
-            this.label58.TabIndex = 0;
-            this.label58.Text = "Select Schedule";
-            this.label58.Click += new System.EventHandler(this.label58_Click);
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label69.Location = new System.Drawing.Point(8, 140);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(135, 20);
-            this.label69.TabIndex = 0;
-            this.label69.Text = "System Speed:";
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.Black;
-            this.button12.Location = new System.Drawing.Point(7, 85);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(337, 42);
-            this.button12.TabIndex = 2;
-            this.button12.Text = "Dispatch Train";
-            this.button12.UseVisualStyleBackColor = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            // murphyTab
+            // 
+            this.murphyTab.Controls.Add(this.restoreWaysideButton);
+            this.murphyTab.Controls.Add(this.restoreMboButton);
+            this.murphyTab.Controls.Add(this.interuptMboButton);
+            this.murphyTab.Controls.Add(this.interuptsWaysideButton);
+            this.murphyTab.Location = new System.Drawing.Point(4, 29);
+            this.murphyTab.Name = "murphyTab";
+            this.murphyTab.Padding = new System.Windows.Forms.Padding(3);
+            this.murphyTab.Size = new System.Drawing.Size(1221, 874);
+            this.murphyTab.TabIndex = 1;
+            this.murphyTab.Text = "Murphy";
+            this.murphyTab.UseVisualStyleBackColor = true;
+            // 
+            // restoreWaysideButton
+            // 
+            this.restoreWaysideButton.Location = new System.Drawing.Point(460, 272);
+            this.restoreWaysideButton.Name = "restoreWaysideButton";
+            this.restoreWaysideButton.Size = new System.Drawing.Size(142, 95);
+            this.restoreWaysideButton.TabIndex = 0;
+            this.restoreWaysideButton.Text = "Restore Communication with Wayside Controller";
+            this.restoreWaysideButton.UseVisualStyleBackColor = true;
+            // 
+            // restoreMboButton
+            // 
+            this.restoreMboButton.Location = new System.Drawing.Point(608, 272);
+            this.restoreMboButton.Name = "restoreMboButton";
+            this.restoreMboButton.Size = new System.Drawing.Size(142, 95);
+            this.restoreMboButton.TabIndex = 0;
+            this.restoreMboButton.Text = "Restore Communication with MBO ";
+            this.restoreMboButton.UseVisualStyleBackColor = true;
+            // 
+            // interuptMboButton
+            // 
+            this.interuptMboButton.Location = new System.Drawing.Point(608, 171);
+            this.interuptMboButton.Name = "interuptMboButton";
+            this.interuptMboButton.Size = new System.Drawing.Size(142, 95);
+            this.interuptMboButton.TabIndex = 0;
+            this.interuptMboButton.Text = "Interupt Communication with MBO ";
+            this.interuptMboButton.UseVisualStyleBackColor = true;
+            // 
+            // interuptsWaysideButton
+            // 
+            this.interuptsWaysideButton.Location = new System.Drawing.Point(460, 171);
+            this.interuptsWaysideButton.Name = "interuptsWaysideButton";
+            this.interuptsWaysideButton.Size = new System.Drawing.Size(142, 95);
+            this.interuptsWaysideButton.TabIndex = 0;
+            this.interuptsWaysideButton.Text = "Interupt Communication with Wayside Controller";
+            this.interuptsWaysideButton.UseVisualStyleBackColor = true;
+            // 
+            // dispatcherTab
+            // 
+            this.dispatcherTab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dispatcherTab.Controls.Add(this.systemOverviewBox);
+            this.dispatcherTab.Controls.Add(this.lineControlBox);
+            this.dispatcherTab.Controls.Add(this.trackAndBlockInfoBox);
+            this.dispatcherTab.Controls.Add(this.blockControlBox);
+            this.dispatcherTab.Controls.Add(this.trainControlBox);
+            this.dispatcherTab.Controls.Add(this.trainInfoBox);
+            this.dispatcherTab.Location = new System.Drawing.Point(4, 29);
+            this.dispatcherTab.Name = "dispatcherTab";
+            this.dispatcherTab.Padding = new System.Windows.Forms.Padding(3);
+            this.dispatcherTab.Size = new System.Drawing.Size(1221, 874);
+            this.dispatcherTab.TabIndex = 2;
+            this.dispatcherTab.Text = "Dispatcher";
+            // 
+            // systemOverviewBox
+            // 
+            this.systemOverviewBox.Controls.Add(this.fbRadio);
+            this.systemOverviewBox.Controls.Add(this.mboRadio);
+            this.systemOverviewBox.Controls.Add(this.dispatchControlBox);
+            this.systemOverviewBox.Controls.Add(this.dispatchInfoBox);
+            this.systemOverviewBox.Controls.Add(this.manualButton);
+            this.systemOverviewBox.Controls.Add(this.autoButton);
+            this.systemOverviewBox.Controls.Add(this.maintenanceBox);
+            this.systemOverviewBox.Controls.Add(this.notificationBox);
+            this.systemOverviewBox.Location = new System.Drawing.Point(396, 6);
+            this.systemOverviewBox.Name = "systemOverviewBox";
+            this.systemOverviewBox.Size = new System.Drawing.Size(823, 613);
+            this.systemOverviewBox.TabIndex = 16;
+            this.systemOverviewBox.TabStop = false;
+            this.systemOverviewBox.Text = "System Overview";
+            // 
+            // fbRadio
+            // 
+            this.fbRadio.AutoSize = true;
+            this.fbRadio.Enabled = false;
+            this.fbRadio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.fbRadio.Location = new System.Drawing.Point(689, 41);
+            this.fbRadio.Name = "fbRadio";
+            this.fbRadio.Size = new System.Drawing.Size(117, 24);
+            this.fbRadio.TabIndex = 24;
+            this.fbRadio.Text = "Fixed Block";
+            this.fbRadio.UseVisualStyleBackColor = true;
+            // 
+            // mboRadio
+            // 
+            this.mboRadio.AutoSize = true;
+            this.mboRadio.Checked = true;
+            this.mboRadio.Enabled = false;
+            this.mboRadio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.mboRadio.Location = new System.Drawing.Point(689, 19);
+            this.mboRadio.Name = "mboRadio";
+            this.mboRadio.Size = new System.Drawing.Size(130, 24);
+            this.mboRadio.TabIndex = 25;
+            this.mboRadio.TabStop = true;
+            this.mboRadio.Text = "Moving Block";
+            this.mboRadio.UseVisualStyleBackColor = true;
+            // 
+            // dispatchControlBox
+            // 
+            this.dispatchControlBox.Controls.Add(this.tenTimesLabel);
+            this.dispatchControlBox.Controls.Add(this.wallClockRadio);
+            this.dispatchControlBox.Controls.Add(this.selectScheduleComboBox);
+            this.dispatchControlBox.Controls.Add(this.dispatchTrainButton);
+            this.dispatchControlBox.Controls.Add(this.systemSpeedLabel);
+            this.dispatchControlBox.Controls.Add(this.selectScheduleLabel);
+            this.dispatchControlBox.Location = new System.Drawing.Point(469, 214);
+            this.dispatchControlBox.Name = "dispatchControlBox";
+            this.dispatchControlBox.Size = new System.Drawing.Size(345, 180);
+            this.dispatchControlBox.TabIndex = 23;
+            this.dispatchControlBox.TabStop = false;
+            this.dispatchControlBox.Text = "Dispatch Control";
+            // 
+            // tenTimesLabel
+            // 
+            this.tenTimesLabel.AutoSize = true;
+            this.tenTimesLabel.Location = new System.Drawing.Point(265, 138);
+            this.tenTimesLabel.Name = "tenTimesLabel";
+            this.tenTimesLabel.Size = new System.Drawing.Size(56, 24);
+            this.tenTimesLabel.TabIndex = 4;
+            this.tenTimesLabel.Text = "10x";
+            this.tenTimesLabel.UseVisualStyleBackColor = true;
+            // 
+            // wallClockRadio
+            // 
+            this.wallClockRadio.AutoSize = true;
+            this.wallClockRadio.Checked = true;
+            this.wallClockRadio.Location = new System.Drawing.Point(149, 138);
+            this.wallClockRadio.Name = "wallClockRadio";
+            this.wallClockRadio.Size = new System.Drawing.Size(110, 24);
+            this.wallClockRadio.TabIndex = 4;
+            this.wallClockRadio.TabStop = true;
+            this.wallClockRadio.Text = "Wall Clock";
+            this.wallClockRadio.UseVisualStyleBackColor = true;
+            // 
+            // selectScheduleComboBox
+            // 
+            this.selectScheduleComboBox.FormattingEnabled = true;
+            this.selectScheduleComboBox.Items.AddRange(new object[] {
             "Block A1",
             "Block A2",
             "Block A3",
             "Block B1",
             "Block B2"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 51);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(319, 28);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.Text = "Selection";
+            this.selectScheduleComboBox.Location = new System.Drawing.Point(12, 51);
+            this.selectScheduleComboBox.Name = "selectScheduleComboBox";
+            this.selectScheduleComboBox.Size = new System.Drawing.Size(319, 28);
+            this.selectScheduleComboBox.TabIndex = 3;
+            this.selectScheduleComboBox.Text = "Selection";
             // 
-            // radioButton5
+            // dispatchTrainButton
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Checked = true;
-            this.radioButton5.Location = new System.Drawing.Point(149, 138);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(110, 24);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Wall Clock";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.dispatchTrainButton.BackColor = System.Drawing.SystemColors.Highlight;
+            this.dispatchTrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dispatchTrainButton.ForeColor = System.Drawing.Color.Black;
+            this.dispatchTrainButton.Location = new System.Drawing.Point(7, 85);
+            this.dispatchTrainButton.Name = "dispatchTrainButton";
+            this.dispatchTrainButton.Size = new System.Drawing.Size(337, 42);
+            this.dispatchTrainButton.TabIndex = 2;
+            this.dispatchTrainButton.Text = "Dispatch Train";
+            this.dispatchTrainButton.UseVisualStyleBackColor = false;
             // 
-            // radioButton6
+            // systemSpeedLabel
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(265, 138);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(56, 24);
-            this.radioButton6.TabIndex = 4;
-            this.radioButton6.Text = "10x";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.systemSpeedLabel.AutoSize = true;
+            this.systemSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.systemSpeedLabel.Location = new System.Drawing.Point(8, 140);
+            this.systemSpeedLabel.Name = "systemSpeedLabel";
+            this.systemSpeedLabel.Size = new System.Drawing.Size(135, 20);
+            this.systemSpeedLabel.TabIndex = 0;
+            this.systemSpeedLabel.Text = "System Speed:";
             // 
-            // radioButton1
+            // selectScheduleLabel
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Enabled = false;
-            this.radioButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.radioButton1.Location = new System.Drawing.Point(689, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(130, 24);
-            this.radioButton1.TabIndex = 25;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Moving Block";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.selectScheduleLabel.AutoSize = true;
+            this.selectScheduleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectScheduleLabel.Location = new System.Drawing.Point(103, 23);
+            this.selectScheduleLabel.Name = "selectScheduleLabel";
+            this.selectScheduleLabel.Size = new System.Drawing.Size(145, 20);
+            this.selectScheduleLabel.TabIndex = 0;
+            this.selectScheduleLabel.Text = "Select Schedule";
             // 
-            // radioButton2
+            // dispatchInfoBox
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Enabled = false;
-            this.radioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.radioButton2.Location = new System.Drawing.Point(689, 41);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(117, 24);
-            this.radioButton2.TabIndex = 24;
-            this.radioButton2.Text = "Fixed Block";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.dispatchInfoBox.Controls.Add(this.numTrainsInServLabel);
+            this.dispatchInfoBox.Controls.Add(this.rushHourLabel);
+            this.dispatchInfoBox.Controls.Add(this.throughputLabel);
+            this.dispatchInfoBox.Controls.Add(this.throughputValue);
+            this.dispatchInfoBox.Controls.Add(this.timeLabel);
+            this.dispatchInfoBox.Controls.Add(this.modeValue);
+            this.dispatchInfoBox.Controls.Add(this.rushHourValue);
+            this.dispatchInfoBox.Controls.Add(this.numTrainsInServValue);
+            this.dispatchInfoBox.Controls.Add(this.timeValue);
+            this.dispatchInfoBox.Controls.Add(this.modeLabel);
+            this.dispatchInfoBox.Location = new System.Drawing.Point(469, 68);
+            this.dispatchInfoBox.Name = "dispatchInfoBox";
+            this.dispatchInfoBox.Size = new System.Drawing.Size(347, 140);
+            this.dispatchInfoBox.TabIndex = 20;
+            this.dispatchInfoBox.TabStop = false;
+            this.dispatchInfoBox.Text = "Dispatch Information";
             // 
-            // tabControlCtcMurphy
+            // numTrainsInServLabel
             // 
-            this.tabControlCtcMurphy.Controls.Add(this.tabPage1);
-            this.tabControlCtcMurphy.Controls.Add(this.tabPage2);
-            this.tabControlCtcMurphy.Location = new System.Drawing.Point(2, 12);
-            this.tabControlCtcMurphy.Name = "tabControlCtcMurphy";
-            this.tabControlCtcMurphy.SelectedIndex = 0;
-            this.tabControlCtcMurphy.Size = new System.Drawing.Size(1229, 907);
-            this.tabControlCtcMurphy.TabIndex = 0;
+            this.numTrainsInServLabel.AutoSize = true;
+            this.numTrainsInServLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numTrainsInServLabel.Location = new System.Drawing.Point(4, 83);
+            this.numTrainsInServLabel.Name = "numTrainsInServLabel";
+            this.numTrainsInServLabel.Size = new System.Drawing.Size(154, 20);
+            this.numTrainsInServLabel.TabIndex = 0;
+            this.numTrainsInServLabel.Text = "# Trains in Service:";
             // 
-            // Form1
+            // rushHourLabel
+            // 
+            this.rushHourLabel.AutoSize = true;
+            this.rushHourLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rushHourLabel.Location = new System.Drawing.Point(63, 63);
+            this.rushHourLabel.Name = "rushHourLabel";
+            this.rushHourLabel.Size = new System.Drawing.Size(95, 20);
+            this.rushHourLabel.TabIndex = 0;
+            this.rushHourLabel.Text = "Rush Hour:";
+            // 
+            // throughputLabel
+            // 
+            this.throughputLabel.AutoSize = true;
+            this.throughputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.throughputLabel.Location = new System.Drawing.Point(60, 103);
+            this.throughputLabel.Name = "throughputLabel";
+            this.throughputLabel.Size = new System.Drawing.Size(98, 20);
+            this.throughputLabel.TabIndex = 0;
+            this.throughputLabel.Text = "Throughput:";
+            // 
+            // throughputValue
+            // 
+            this.throughputValue.AutoSize = true;
+            this.throughputValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.throughputValue.Location = new System.Drawing.Point(158, 103);
+            this.throughputValue.Name = "throughputValue";
+            this.throughputValue.Size = new System.Drawing.Size(188, 20);
+            this.throughputValue.TabIndex = 0;
+            this.throughputValue.Text = "1523 Passengers per hr";
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(107, 43);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(51, 20);
+            this.timeLabel.TabIndex = 0;
+            this.timeLabel.Text = "Time:";
+            // 
+            // modeValue
+            // 
+            this.modeValue.AutoSize = true;
+            this.modeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modeValue.Location = new System.Drawing.Point(164, 23);
+            this.modeValue.Name = "modeValue";
+            this.modeValue.Size = new System.Drawing.Size(84, 20);
+            this.modeValue.TabIndex = 0;
+            this.modeValue.Text = "Automatic";
+            // 
+            // rushHourValue
+            // 
+            this.rushHourValue.AutoSize = true;
+            this.rushHourValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rushHourValue.Location = new System.Drawing.Point(164, 63);
+            this.rushHourValue.Name = "rushHourValue";
+            this.rushHourValue.Size = new System.Drawing.Size(37, 20);
+            this.rushHourValue.TabIndex = 0;
+            this.rushHourValue.Text = "Yes";
+            // 
+            // numTrainsInServValue
+            // 
+            this.numTrainsInServValue.AutoSize = true;
+            this.numTrainsInServValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numTrainsInServValue.Location = new System.Drawing.Point(164, 83);
+            this.numTrainsInServValue.Name = "numTrainsInServValue";
+            this.numTrainsInServValue.Size = new System.Drawing.Size(27, 20);
+            this.numTrainsInServValue.TabIndex = 0;
+            this.numTrainsInServValue.Text = "16";
+            // 
+            // timeValue
+            // 
+            this.timeValue.AutoSize = true;
+            this.timeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeValue.Location = new System.Drawing.Point(164, 43);
+            this.timeValue.Name = "timeValue";
+            this.timeValue.Size = new System.Drawing.Size(73, 20);
+            this.timeValue.TabIndex = 0;
+            this.timeValue.Text = "17:46:35";
+            // 
+            // modeLabel
+            // 
+            this.modeLabel.AutoSize = true;
+            this.modeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modeLabel.Location = new System.Drawing.Point(103, 23);
+            this.modeLabel.Name = "modeLabel";
+            this.modeLabel.Size = new System.Drawing.Size(55, 20);
+            this.modeLabel.TabIndex = 0;
+            this.modeLabel.Text = "Mode:";
+            // 
+            // manualButton
+            // 
+            this.manualButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.manualButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manualButton.ForeColor = System.Drawing.Color.Black;
+            this.manualButton.Location = new System.Drawing.Point(469, 20);
+            this.manualButton.Name = "manualButton";
+            this.manualButton.Size = new System.Drawing.Size(102, 42);
+            this.manualButton.TabIndex = 21;
+            this.manualButton.Text = "Manual";
+            this.manualButton.UseVisualStyleBackColor = false;
+            // 
+            // autoButton
+            // 
+            this.autoButton.BackColor = System.Drawing.Color.Black;
+            this.autoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoButton.ForeColor = System.Drawing.Color.White;
+            this.autoButton.Location = new System.Drawing.Point(580, 19);
+            this.autoButton.Name = "autoButton";
+            this.autoButton.Size = new System.Drawing.Size(102, 42);
+            this.autoButton.TabIndex = 22;
+            this.autoButton.Text = "Automatic";
+            this.autoButton.UseVisualStyleBackColor = false;
+            // 
+            // maintenanceBox
+            // 
+            this.maintenanceBox.Controls.Add(this.fixTrainButton);
+            this.maintenanceBox.Controls.Add(this.fixTrackButton);
+            this.maintenanceBox.Location = new System.Drawing.Point(466, 394);
+            this.maintenanceBox.Name = "maintenanceBox";
+            this.maintenanceBox.Size = new System.Drawing.Size(347, 70);
+            this.maintenanceBox.TabIndex = 19;
+            this.maintenanceBox.TabStop = false;
+            this.maintenanceBox.Text = "Maintenence";
+            // 
+            // fixTrainButton
+            // 
+            this.fixTrainButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.fixTrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fixTrainButton.ForeColor = System.Drawing.Color.Black;
+            this.fixTrainButton.Location = new System.Drawing.Point(6, 26);
+            this.fixTrainButton.Name = "fixTrainButton";
+            this.fixTrainButton.Size = new System.Drawing.Size(161, 42);
+            this.fixTrainButton.TabIndex = 2;
+            this.fixTrainButton.Text = "Fix Train";
+            this.fixTrainButton.UseVisualStyleBackColor = false;
+            // 
+            // fixTrackButton
+            // 
+            this.fixTrackButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.fixTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fixTrackButton.ForeColor = System.Drawing.Color.Black;
+            this.fixTrackButton.Location = new System.Drawing.Point(180, 26);
+            this.fixTrackButton.Name = "fixTrackButton";
+            this.fixTrackButton.Size = new System.Drawing.Size(163, 42);
+            this.fixTrackButton.TabIndex = 2;
+            this.fixTrackButton.Text = "Fix Track";
+            this.fixTrackButton.UseVisualStyleBackColor = false;
+            // 
+            // notificationBox
+            // 
+            this.notificationBox.Controls.Add(this.notificationLabel);
+            this.notificationBox.Location = new System.Drawing.Point(466, 472);
+            this.notificationBox.Name = "notificationBox";
+            this.notificationBox.Size = new System.Drawing.Size(347, 135);
+            this.notificationBox.TabIndex = 17;
+            this.notificationBox.TabStop = false;
+            this.notificationBox.Text = "Notification Center";
+            // 
+            // notificationLabel
+            // 
+            this.notificationLabel.AutoSize = true;
+            this.notificationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationLabel.ForeColor = System.Drawing.Color.Gray;
+            this.notificationLabel.Location = new System.Drawing.Point(50, 47);
+            this.notificationLabel.Name = "notificationLabel";
+            this.notificationLabel.Size = new System.Drawing.Size(241, 58);
+            this.notificationLabel.TabIndex = 0;
+            this.notificationLabel.Text = "Everything is running \r\nsmoothly....for now";
+            // 
+            // lineControlBox
+            // 
+            this.lineControlBox.Controls.Add(this.lineSelectComboBox);
+            this.lineControlBox.Location = new System.Drawing.Point(6, 535);
+            this.lineControlBox.Name = "lineControlBox";
+            this.lineControlBox.Size = new System.Drawing.Size(386, 75);
+            this.lineControlBox.TabIndex = 15;
+            this.lineControlBox.TabStop = false;
+            this.lineControlBox.Text = "Line Control";
+            // 
+            // lineSelectComboBox
+            // 
+            this.lineSelectComboBox.FormattingEnabled = true;
+            this.lineSelectComboBox.Items.AddRange(new object[] {
+            "Red Line",
+            "Green Line"});
+            this.lineSelectComboBox.Location = new System.Drawing.Point(32, 31);
+            this.lineSelectComboBox.Name = "lineSelectComboBox";
+            this.lineSelectComboBox.Size = new System.Drawing.Size(317, 28);
+            this.lineSelectComboBox.TabIndex = 1;
+            this.lineSelectComboBox.Text = "Select a Line";
+            // 
+            // trackAndBlockInfoBox
+            // 
+            this.trackAndBlockInfoBox.Controls.Add(this.lineLabel);
+            this.trackAndBlockInfoBox.Controls.Add(this.trackSectionLabel);
+            this.trackAndBlockInfoBox.Controls.Add(this.blockNumberLabel);
+            this.trackAndBlockInfoBox.Controls.Add(this.lineValue);
+            this.trackAndBlockInfoBox.Controls.Add(this.blockStatusLabel);
+            this.trackAndBlockInfoBox.Controls.Add(this.trackSectionValue);
+            this.trackAndBlockInfoBox.Controls.Add(this.occupancyLabel);
+            this.trackAndBlockInfoBox.Controls.Add(this.blockNumberValue);
+            this.trackAndBlockInfoBox.Controls.Add(this.occupancyValue);
+            this.trackAndBlockInfoBox.Controls.Add(this.blockStatusValue);
+            this.trackAndBlockInfoBox.Location = new System.Drawing.Point(8, 280);
+            this.trackAndBlockInfoBox.Name = "trackAndBlockInfoBox";
+            this.trackAndBlockInfoBox.Size = new System.Drawing.Size(386, 161);
+            this.trackAndBlockInfoBox.TabIndex = 13;
+            this.trackAndBlockInfoBox.TabStop = false;
+            this.trackAndBlockInfoBox.Text = "Selected Track and Block Information";
+            // 
+            // lineLabel
+            // 
+            this.lineLabel.AutoSize = true;
+            this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lineLabel.Location = new System.Drawing.Point(73, 35);
+            this.lineLabel.Name = "lineLabel";
+            this.lineLabel.Size = new System.Drawing.Size(91, 20);
+            this.lineLabel.TabIndex = 0;
+            this.lineLabel.Text = "Line Color:";
+            // 
+            // trackSectionLabel
+            // 
+            this.trackSectionLabel.AutoSize = true;
+            this.trackSectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackSectionLabel.Location = new System.Drawing.Point(47, 57);
+            this.trackSectionLabel.Name = "trackSectionLabel";
+            this.trackSectionLabel.Size = new System.Drawing.Size(117, 20);
+            this.trackSectionLabel.TabIndex = 0;
+            this.trackSectionLabel.Text = "Track Section:";
+            // 
+            // blockNumberLabel
+            // 
+            this.blockNumberLabel.AutoSize = true;
+            this.blockNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockNumberLabel.Location = new System.Drawing.Point(44, 77);
+            this.blockNumberLabel.Name = "blockNumberLabel";
+            this.blockNumberLabel.Size = new System.Drawing.Size(120, 20);
+            this.blockNumberLabel.TabIndex = 0;
+            this.blockNumberLabel.Text = "Block Number:";
+            // 
+            // lineValue
+            // 
+            this.lineValue.AutoSize = true;
+            this.lineValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lineValue.Location = new System.Drawing.Point(166, 35);
+            this.lineValue.Name = "lineValue";
+            this.lineValue.Size = new System.Drawing.Size(55, 20);
+            this.lineValue.TabIndex = 0;
+            this.lineValue.Text = "Green";
+            // 
+            // blockStatusLabel
+            // 
+            this.blockStatusLabel.AutoSize = true;
+            this.blockStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockStatusLabel.Location = new System.Drawing.Point(57, 100);
+            this.blockStatusLabel.Name = "blockStatusLabel";
+            this.blockStatusLabel.Size = new System.Drawing.Size(109, 20);
+            this.blockStatusLabel.TabIndex = 0;
+            this.blockStatusLabel.Text = "Block Status:";
+            // 
+            // trackSectionValue
+            // 
+            this.trackSectionValue.AutoSize = true;
+            this.trackSectionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackSectionValue.Location = new System.Drawing.Point(170, 57);
+            this.trackSectionValue.Name = "trackSectionValue";
+            this.trackSectionValue.Size = new System.Drawing.Size(20, 20);
+            this.trackSectionValue.TabIndex = 0;
+            this.trackSectionValue.Text = "S";
+            // 
+            // occupancyLabel
+            // 
+            this.occupancyLabel.AutoSize = true;
+            this.occupancyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.occupancyLabel.Location = new System.Drawing.Point(68, 120);
+            this.occupancyLabel.Name = "occupancyLabel";
+            this.occupancyLabel.Size = new System.Drawing.Size(98, 20);
+            this.occupancyLabel.TabIndex = 0;
+            this.occupancyLabel.Text = "Occupancy:";
+            // 
+            // blockNumberValue
+            // 
+            this.blockNumberValue.AutoSize = true;
+            this.blockNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockNumberValue.Location = new System.Drawing.Point(170, 77);
+            this.blockNumberValue.Name = "blockNumberValue";
+            this.blockNumberValue.Size = new System.Drawing.Size(27, 20);
+            this.blockNumberValue.TabIndex = 0;
+            this.blockNumberValue.Text = "18";
+            // 
+            // occupancyValue
+            // 
+            this.occupancyValue.AutoSize = true;
+            this.occupancyValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.occupancyValue.Location = new System.Drawing.Point(166, 120);
+            this.occupancyValue.Name = "occupancyValue";
+            this.occupancyValue.Size = new System.Drawing.Size(18, 20);
+            this.occupancyValue.TabIndex = 0;
+            this.occupancyValue.Text = "1";
+            // 
+            // blockStatusValue
+            // 
+            this.blockStatusValue.AutoSize = true;
+            this.blockStatusValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockStatusValue.Location = new System.Drawing.Point(166, 100);
+            this.blockStatusValue.Name = "blockStatusValue";
+            this.blockStatusValue.Size = new System.Drawing.Size(61, 20);
+            this.blockStatusValue.TabIndex = 0;
+            this.blockStatusValue.Text = "Closed";
+            // 
+            // blockControlBox
+            // 
+            this.blockControlBox.Controls.Add(this.openBlockButton);
+            this.blockControlBox.Controls.Add(this.closeBlockButton);
+            this.blockControlBox.Location = new System.Drawing.Point(6, 447);
+            this.blockControlBox.Name = "blockControlBox";
+            this.blockControlBox.Size = new System.Drawing.Size(386, 82);
+            this.blockControlBox.TabIndex = 11;
+            this.blockControlBox.TabStop = false;
+            this.blockControlBox.Text = "Block Control";
+            // 
+            // openBlockButton
+            // 
+            this.openBlockButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.openBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openBlockButton.ForeColor = System.Drawing.Color.Black;
+            this.openBlockButton.Location = new System.Drawing.Point(7, 29);
+            this.openBlockButton.Name = "openBlockButton";
+            this.openBlockButton.Size = new System.Drawing.Size(181, 42);
+            this.openBlockButton.TabIndex = 2;
+            this.openBlockButton.Text = "Open Block";
+            this.openBlockButton.UseVisualStyleBackColor = false;
+            // 
+            // closeBlockButton
+            // 
+            this.closeBlockButton.BackColor = System.Drawing.Color.Black;
+            this.closeBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBlockButton.ForeColor = System.Drawing.Color.White;
+            this.closeBlockButton.Location = new System.Drawing.Point(198, 29);
+            this.closeBlockButton.Name = "closeBlockButton";
+            this.closeBlockButton.Size = new System.Drawing.Size(182, 42);
+            this.closeBlockButton.TabIndex = 2;
+            this.closeBlockButton.Text = "Close Block";
+            this.closeBlockButton.UseVisualStyleBackColor = false;
+            // 
+            // trainControlBox
+            // 
+            this.trainControlBox.Controls.Add(this.authTrackBar);
+            this.trainControlBox.Controls.Add(this.speedTrackBar);
+            this.trainControlBox.Controls.Add(this.suggestAuthValue);
+            this.trainControlBox.Controls.Add(this.suggestSpeedValue);
+            this.trainControlBox.Controls.Add(this.suggestAuthLabel);
+            this.trainControlBox.Controls.Add(this.suggestSpeedLabel);
+            this.trainControlBox.Location = new System.Drawing.Point(6, 123);
+            this.trainControlBox.Name = "trainControlBox";
+            this.trainControlBox.Size = new System.Drawing.Size(387, 151);
+            this.trainControlBox.TabIndex = 6;
+            this.trainControlBox.TabStop = false;
+            this.trainControlBox.Text = "Train Control";
+            // 
+            // authTrackBar
+            // 
+            this.authTrackBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.authTrackBar.Location = new System.Drawing.Point(203, 46);
+            this.authTrackBar.Maximum = 5000;
+            this.authTrackBar.Name = "authTrackBar";
+            this.authTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.authTrackBar.Size = new System.Drawing.Size(56, 82);
+            this.authTrackBar.TabIndex = 1;
+            this.authTrackBar.TickFrequency = 1000;
+            this.authTrackBar.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.authTrackBar.Value = 4000;
+            // 
+            // speedTrackBar
+            // 
+            this.speedTrackBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.speedTrackBar.Location = new System.Drawing.Point(40, 46);
+            this.speedTrackBar.Maximum = 70;
+            this.speedTrackBar.Name = "speedTrackBar";
+            this.speedTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.speedTrackBar.Size = new System.Drawing.Size(56, 82);
+            this.speedTrackBar.TabIndex = 1;
+            this.speedTrackBar.TickFrequency = 10;
+            this.speedTrackBar.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.speedTrackBar.Value = 40;
+            // 
+            // suggestAuthValue
+            // 
+            this.suggestAuthValue.AutoSize = true;
+            this.suggestAuthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggestAuthValue.Location = new System.Drawing.Point(256, 70);
+            this.suggestAuthValue.Name = "suggestAuthValue";
+            this.suggestAuthValue.Size = new System.Drawing.Size(48, 58);
+            this.suggestAuthValue.TabIndex = 0;
+            this.suggestAuthValue.Text = "40 \r\nmi";
+            this.suggestAuthValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // suggestSpeedValue
+            // 
+            this.suggestSpeedValue.AutoSize = true;
+            this.suggestSpeedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggestSpeedValue.Location = new System.Drawing.Point(94, 70);
+            this.suggestSpeedValue.Name = "suggestSpeedValue";
+            this.suggestSpeedValue.Size = new System.Drawing.Size(63, 58);
+            this.suggestSpeedValue.TabIndex = 0;
+            this.suggestSpeedValue.Text = "48 \r\nmph";
+            // 
+            // suggestAuthLabel
+            // 
+            this.suggestAuthLabel.AutoSize = true;
+            this.suggestAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggestAuthLabel.Location = new System.Drawing.Point(211, 23);
+            this.suggestAuthLabel.Name = "suggestAuthLabel";
+            this.suggestAuthLabel.Size = new System.Drawing.Size(158, 20);
+            this.suggestAuthLabel.TabIndex = 0;
+            this.suggestAuthLabel.Text = "Suggest Authority";
+            // 
+            // suggestSpeedLabel
+            // 
+            this.suggestSpeedLabel.AutoSize = true;
+            this.suggestSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggestSpeedLabel.Location = new System.Drawing.Point(28, 23);
+            this.suggestSpeedLabel.Name = "suggestSpeedLabel";
+            this.suggestSpeedLabel.Size = new System.Drawing.Size(135, 20);
+            this.suggestSpeedLabel.TabIndex = 0;
+            this.suggestSpeedLabel.Text = "Suggest Speed";
+            // 
+            // trainInfoBox
+            // 
+            this.trainInfoBox.Controls.Add(this.currentAuthLabel);
+            this.trainInfoBox.Controls.Add(this.currentSpeedLabel);
+            this.trainInfoBox.Controls.Add(this.directionLabel);
+            this.trainInfoBox.Controls.Add(this.currentAuthValue);
+            this.trainInfoBox.Controls.Add(this.currentSpeedValue);
+            this.trainInfoBox.Controls.Add(this.directionValue);
+            this.trainInfoBox.Controls.Add(this.trainNumberValue);
+            this.trainInfoBox.Controls.Add(this.trainNumberLabel);
+            this.trainInfoBox.Location = new System.Drawing.Point(6, 6);
+            this.trainInfoBox.Name = "trainInfoBox";
+            this.trainInfoBox.Size = new System.Drawing.Size(387, 111);
+            this.trainInfoBox.TabIndex = 5;
+            this.trainInfoBox.TabStop = false;
+            this.trainInfoBox.Text = "Selected Train Infomation";
+            // 
+            // currentAuthLabel
+            // 
+            this.currentAuthLabel.AutoSize = true;
+            this.currentAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentAuthLabel.Location = new System.Drawing.Point(30, 83);
+            this.currentAuthLabel.Name = "currentAuthLabel";
+            this.currentAuthLabel.Size = new System.Drawing.Size(141, 20);
+            this.currentAuthLabel.TabIndex = 0;
+            this.currentAuthLabel.Text = "Current Authority:";
+            // 
+            // currentSpeedLabel
+            // 
+            this.currentSpeedLabel.AutoSize = true;
+            this.currentSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentSpeedLabel.Location = new System.Drawing.Point(49, 63);
+            this.currentSpeedLabel.Name = "currentSpeedLabel";
+            this.currentSpeedLabel.Size = new System.Drawing.Size(122, 20);
+            this.currentSpeedLabel.TabIndex = 0;
+            this.currentSpeedLabel.Text = "Current Speed:";
+            // 
+            // directionLabel
+            // 
+            this.directionLabel.AutoSize = true;
+            this.directionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directionLabel.Location = new System.Drawing.Point(89, 43);
+            this.directionLabel.Name = "directionLabel";
+            this.directionLabel.Size = new System.Drawing.Size(82, 20);
+            this.directionLabel.TabIndex = 0;
+            this.directionLabel.Text = "Direction:";
+            // 
+            // currentAuthValue
+            // 
+            this.currentAuthValue.AutoSize = true;
+            this.currentAuthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentAuthValue.Location = new System.Drawing.Point(171, 83);
+            this.currentAuthValue.Name = "currentAuthValue";
+            this.currentAuthValue.Size = new System.Drawing.Size(97, 20);
+            this.currentAuthValue.TabIndex = 0;
+            this.currentAuthValue.Text = "9 mi remain";
+            // 
+            // currentSpeedValue
+            // 
+            this.currentSpeedValue.AutoSize = true;
+            this.currentSpeedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentSpeedValue.Location = new System.Drawing.Point(171, 63);
+            this.currentSpeedValue.Name = "currentSpeedValue";
+            this.currentSpeedValue.Size = new System.Drawing.Size(64, 20);
+            this.currentSpeedValue.TabIndex = 0;
+            this.currentSpeedValue.Text = "69 mph";
+            // 
+            // directionValue
+            // 
+            this.directionValue.AutoSize = true;
+            this.directionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directionValue.Location = new System.Drawing.Point(171, 43);
+            this.directionValue.Name = "directionValue";
+            this.directionValue.Size = new System.Drawing.Size(20, 20);
+            this.directionValue.TabIndex = 0;
+            this.directionValue.Text = "A";
+            // 
+            // trainNumberValue
+            // 
+            this.trainNumberValue.AutoSize = true;
+            this.trainNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainNumberValue.Location = new System.Drawing.Point(171, 23);
+            this.trainNumberValue.Name = "trainNumberValue";
+            this.trainNumberValue.Size = new System.Drawing.Size(36, 20);
+            this.trainNumberValue.TabIndex = 0;
+            this.trainNumberValue.Text = "101";
+            // 
+            // trainNumberLabel
+            // 
+            this.trainNumberLabel.AutoSize = true;
+            this.trainNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainNumberLabel.Location = new System.Drawing.Point(55, 23);
+            this.trainNumberLabel.Name = "trainNumberLabel";
+            this.trainNumberLabel.Size = new System.Drawing.Size(116, 20);
+            this.trainNumberLabel.TabIndex = 0;
+            this.trainNumberLabel.Text = "Train Number:";
+            // 
+            // ctcTabControl
+            // 
+            this.ctcTabControl.Controls.Add(this.dispatcherTab);
+            this.ctcTabControl.Controls.Add(this.murphyTab);
+            this.ctcTabControl.Location = new System.Drawing.Point(2, 12);
+            this.ctcTabControl.Name = "ctcTabControl";
+            this.ctcTabControl.SelectedIndex = 0;
+            this.ctcTabControl.Size = new System.Drawing.Size(1229, 907);
+            this.ctcTabControl.TabIndex = 0;
+            // 
+            // CentralTrainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1237, 662);
-            this.Controls.Add(this.tabControlCtcMurphy);
+            this.Controls.Add(this.ctcTabControl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "CentralTrainControl";
             this.Text = "CTC Controller";
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.tabControlCtcMurphy.ResumeLayout(false);
+            this.murphyTab.ResumeLayout(false);
+            this.dispatcherTab.ResumeLayout(false);
+            this.systemOverviewBox.ResumeLayout(false);
+            this.systemOverviewBox.PerformLayout();
+            this.dispatchControlBox.ResumeLayout(false);
+            this.dispatchControlBox.PerformLayout();
+            this.dispatchInfoBox.ResumeLayout(false);
+            this.dispatchInfoBox.PerformLayout();
+            this.maintenanceBox.ResumeLayout(false);
+            this.notificationBox.ResumeLayout(false);
+            this.notificationBox.PerformLayout();
+            this.lineControlBox.ResumeLayout(false);
+            this.trackAndBlockInfoBox.ResumeLayout(false);
+            this.trackAndBlockInfoBox.PerformLayout();
+            this.blockControlBox.ResumeLayout(false);
+            this.trainControlBox.ResumeLayout(false);
+            this.trainControlBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.authTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).EndInit();
+            this.trainInfoBox.ResumeLayout(false);
+            this.trainInfoBox.PerformLayout();
+            this.ctcTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.TabControl tabControlCtcMurphy;
+        private System.Windows.Forms.TabPage murphyTab;
+        private System.Windows.Forms.Button restoreWaysideButton;
+        private System.Windows.Forms.Button restoreMboButton;
+        private System.Windows.Forms.Button interuptMboButton;
+        private System.Windows.Forms.Button interuptsWaysideButton;
+        private System.Windows.Forms.TabPage dispatcherTab;
+        private System.Windows.Forms.GroupBox systemOverviewBox;
+        private System.Windows.Forms.RadioButton fbRadio;
+        private System.Windows.Forms.RadioButton mboRadio;
+        private System.Windows.Forms.GroupBox dispatchControlBox;
+        private System.Windows.Forms.RadioButton tenTimesLabel;
+        private System.Windows.Forms.RadioButton wallClockRadio;
+        private System.Windows.Forms.ComboBox selectScheduleComboBox;
+        private System.Windows.Forms.Button dispatchTrainButton;
+        private System.Windows.Forms.Label systemSpeedLabel;
+        private System.Windows.Forms.Label selectScheduleLabel;
+        private System.Windows.Forms.GroupBox dispatchInfoBox;
+        private System.Windows.Forms.Label numTrainsInServLabel;
+        private System.Windows.Forms.Label rushHourLabel;
+        private System.Windows.Forms.Label throughputLabel;
+        private System.Windows.Forms.Label throughputValue;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label modeValue;
+        private System.Windows.Forms.Label rushHourValue;
+        private System.Windows.Forms.Label numTrainsInServValue;
+        private System.Windows.Forms.Label timeValue;
+        private System.Windows.Forms.Label modeLabel;
+        private System.Windows.Forms.Button manualButton;
+        private System.Windows.Forms.Button autoButton;
+        private System.Windows.Forms.GroupBox maintenanceBox;
+        private System.Windows.Forms.Button fixTrainButton;
+        private System.Windows.Forms.Button fixTrackButton;
+        private System.Windows.Forms.GroupBox notificationBox;
+        private System.Windows.Forms.Label notificationLabel;
+        private System.Windows.Forms.GroupBox lineControlBox;
+        private System.Windows.Forms.ComboBox lineSelectComboBox;
+        private System.Windows.Forms.GroupBox trackAndBlockInfoBox;
+        private System.Windows.Forms.Label lineLabel;
+        private System.Windows.Forms.Label trackSectionLabel;
+        private System.Windows.Forms.Label blockNumberLabel;
+        private System.Windows.Forms.Label lineValue;
+        private System.Windows.Forms.Label blockStatusLabel;
+        private System.Windows.Forms.Label trackSectionValue;
+        private System.Windows.Forms.Label occupancyLabel;
+        private System.Windows.Forms.Label blockNumberValue;
+        private System.Windows.Forms.Label occupancyValue;
+        private System.Windows.Forms.Label blockStatusValue;
+        private System.Windows.Forms.GroupBox blockControlBox;
+        private System.Windows.Forms.Button openBlockButton;
+        private System.Windows.Forms.Button closeBlockButton;
+        private System.Windows.Forms.GroupBox trainControlBox;
+        private System.Windows.Forms.TrackBar authTrackBar;
+        private System.Windows.Forms.TrackBar speedTrackBar;
+        private System.Windows.Forms.Label suggestAuthValue;
+        private System.Windows.Forms.Label suggestSpeedValue;
+        private System.Windows.Forms.Label suggestAuthLabel;
+        private System.Windows.Forms.Label suggestSpeedLabel;
+        private System.Windows.Forms.GroupBox trainInfoBox;
+        private System.Windows.Forms.Label currentAuthLabel;
+        private System.Windows.Forms.Label currentSpeedLabel;
+        private System.Windows.Forms.Label directionLabel;
+        private System.Windows.Forms.Label currentAuthValue;
+        private System.Windows.Forms.Label currentSpeedValue;
+        private System.Windows.Forms.Label directionValue;
+        private System.Windows.Forms.Label trainNumberValue;
+        private System.Windows.Forms.Label trainNumberLabel;
+        private System.Windows.Forms.TabControl ctcTabControl;
     }
 }
 

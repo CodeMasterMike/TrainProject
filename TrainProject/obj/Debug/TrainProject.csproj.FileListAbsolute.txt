@@ -30,3 +30,4 @@ C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrackContr
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\CTC.CentralTrainControl.resources
