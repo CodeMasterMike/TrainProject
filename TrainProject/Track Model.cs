@@ -126,10 +126,5 @@ namespace Track_Layout_UI
         {
 
         }
-
-        private void User_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
