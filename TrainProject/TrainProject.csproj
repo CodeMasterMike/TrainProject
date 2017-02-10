@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentralTrainControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CentralTrainControl.Designer.cs">
+      <DependentUpon>CentralTrainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
       <SubType>Form</SubType>
