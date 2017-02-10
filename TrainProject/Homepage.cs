@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Track_Layout_UI;
 using TrackController;
 using CTC;
+using MBOForm;
+
 
 namespace Train_Project
 {
@@ -26,6 +28,12 @@ namespace Train_Project
             trackModelWindow.Show();
         }
 
+        private void openMBO_Click(object sender, EventArgs e)
+        {
+            MBO mboWindow = new MBO();
+            mboWindow.Show();
+        }
+
         private void openTrackController_Click(object sender, EventArgs e)
         {
             TrackControllerWindow trackControllerWindow = new TrackControllerWindow();
@@ -36,6 +44,11 @@ namespace Train_Project
         {
             CentralTrainControl ctcWindow = new CentralTrainControl();
             ctcWindow.Show();
+
+        }
+
+        private void Homepage_Load(object sender, EventArgs e)
+        {
 
         }
     }
