@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentralTrainControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CentralTrainControl.Designer.cs">
+      <DependentUpon>CentralTrainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Homepage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,12 @@
     </Compile>
     <Compile Include="Track Model.designer.cs">
       <DependentUpon>Track Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrackController.Designer.cs">
+      <DependentUpon>TrackController.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
@@ -74,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="Track Model.resx">
       <DependentUpon>Track Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrackController.resx">
+      <DependentUpon>TrackController.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

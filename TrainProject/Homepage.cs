@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Track_Layout_UI;
-using MBOForm;
 
 
 namespace Train_Project
@@ -34,6 +33,14 @@ namespace Train_Project
 
         private void openTrackController_Click(object sender, EventArgs e)
         {
+            TrackControllerWindow trackControllerWindow = new TrackControllerWindow();
+            trackControllerWindow.Show();
+        }
+
+        private void openCTC_Click(object sender, EventArgs e)
+        {
+            CentralTrainControl ctcWindow = new CentralTrainControl();
+            ctcWindow.Show();
 
         }
 
