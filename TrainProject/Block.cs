@@ -30,6 +30,9 @@ namespace TrainProject
         private Boolean hasCrossing { get; set; }
         private Boolean hasSwitch { get; set; } //maybe make this int to say which crossing?
 
+        public Block()
+        {
 
+        }
     }
 }
