@@ -68,6 +68,7 @@
     <Compile Include="CentralTrainControl.Designer.cs">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Switch.cs" />
     <Compile Include="TrackControllerModule.cs" />
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
