@@ -61,12 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="CentralTrainControl.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CentralTrainControl.Designer.cs">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Switch.cs" />
+    <Compile Include="TrackControllerModule.cs" />
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
       <SubType>Form</SubType>
@@ -96,6 +99,7 @@
     <Compile Include="TrackController.Designer.cs">
       <DependentUpon>TrackController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrackControllerTest.cs" />
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
     </EmbeddedResource>

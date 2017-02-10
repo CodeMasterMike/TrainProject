@@ -11,6 +11,7 @@ using Track_Layout_UI;
 using TrackController;
 using TrainProject.Clock;
 using CTC;
+using TrainProject;
 
 namespace TrainProject
 {
@@ -33,6 +34,8 @@ namespace TrainProject
         {
             TrackControllerWindow trackControllerWindow = new TrackControllerWindow();
             trackControllerWindow.Show();
+            TrackControllerTest test = new TrackControllerTest();
+            test.run();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
