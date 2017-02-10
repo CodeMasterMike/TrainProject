@@ -70,6 +70,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackDBDataSet.cs">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TrackDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
