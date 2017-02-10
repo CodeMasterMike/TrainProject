@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Track_Layout_UI;
 using TrackController;
+using TrainProject.Clock;
 using CTC;
 using TrainProject;
 
-namespace Train_Project
+namespace TrainProject
 {
     public partial class Homepage : Form
     {
+
         public Homepage()
         {
             InitializeComponent();
+            CustomClock clk = new CustomClock(this);
         }
 
         private void openTrackModel_Click(object sender, EventArgs e)
@@ -35,11 +38,30 @@ namespace Train_Project
             test.run();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
         private void openCTC_Click(object sender, EventArgs e)
         {
             CentralTrainControl ctcWindow = new CentralTrainControl();
             ctcWindow.Show();
+        }
 
+        private void clockDisplayedText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void updateTime(String displayTime)
+        {
+            Console.WriteLine("updating time");
+            if (this.clockDisplayedText.InvokeRequired)
+            {
+                clockDisplayedText.Invoke(new MethodInvoker(delegate { this.clockDisplayedText.Text = displayTime; }));
+            }
+            //this.clockDisplayedText.Text = displayTime;
         }
     }
 }
