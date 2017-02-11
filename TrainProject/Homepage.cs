@@ -11,6 +11,7 @@ using Track_Layout_UI;
 using TrackController;
 using TrainProject.Clock;
 using CTC;
+using TrainControllerProject;
 
 namespace TrainProject
 {
@@ -60,5 +61,12 @@ namespace TrainProject
             }
             //this.clockDisplayedText.Text = displayTime;
         }
+
+        private void openTrainController_Click(object sender, EventArgs e)
+        {
+            TrainController trainControllerWindow = new TrainController();
+            trainControllerWindow.Show();
+        }
+
     }
 }
