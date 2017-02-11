@@ -117,5 +117,14 @@ namespace TrainControllerProject
 
         }
 
+        private void emergencyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void serviceButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
