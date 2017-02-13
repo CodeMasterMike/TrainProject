@@ -13,10 +13,13 @@ using TrainProject.Clock;
 using CTC;
 using TrainControllerProject;
 
+
+
 namespace TrainProject
 {
     public partial class Homepage : Form
     {
+        private TrainController trainControllerWindow;
 
         public Homepage()
         {
@@ -60,11 +63,15 @@ namespace TrainProject
                 clockDisplayedText.Invoke(new MethodInvoker(delegate { this.clockDisplayedText.Text = displayTime; }));
             }
             //this.clockDisplayedText.Text = displayTime;
+            if (trainControllerWindow != null)
+            {
+                trainControllerWindow.updateTime(displayTime);
+            }
         }
 
         private void openTrainController_Click(object sender, EventArgs e)
         {
-            TrainController trainControllerWindow = new TrainController();
+            trainControllerWindow = new TrainController();
             trainControllerWindow.Show();
         }
 

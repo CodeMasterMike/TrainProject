@@ -45,7 +45,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Block_textBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -87,6 +87,8 @@
             this.Show_Power = new System.Windows.Forms.Label();
             this.Show_Speed = new System.Windows.Forms.Label();
             this.Brakes_GroupBox = new System.Windows.Forms.GroupBox();
+            this.Service_Button = new System.Windows.Forms.CheckBox();
+            this.Emergency_Button = new System.Windows.Forms.CheckBox();
             this.RightDoor_GroupBox = new System.Windows.Forms.GroupBox();
             this.Right_Closed = new System.Windows.Forms.RadioButton();
             this.Right_Open = new System.Windows.Forms.RadioButton();
@@ -101,8 +103,8 @@
             this.AC_ON = new System.Windows.Forms.RadioButton();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.serviceButton = new System.Windows.Forms.Button();
-            this.emergencyButton = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -162,6 +164,7 @@
             // Driver_Tab
             // 
             this.Driver_Tab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Driver_Tab.Controls.Add(this.timeLabel);
             this.Driver_Tab.Controls.Add(this.groupBox17);
             this.Driver_Tab.Controls.Add(this.label11);
             this.Driver_Tab.Controls.Add(this.groupBox14);
@@ -199,6 +202,7 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.label21);
             this.groupBox17.Controls.Add(this.label9);
             this.groupBox17.Controls.Add(this.label20);
             this.groupBox17.Controls.Add(this.label2);
@@ -262,13 +266,13 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(255, 26);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(206, 26);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(311, 46);
+            this.label11.Size = new System.Drawing.Size(115, 37);
             this.label11.TabIndex = 42;
-            this.label11.Text = "Time : 10:03 AM";
+            this.label11.Text = "Time : ";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // groupBox14
@@ -291,7 +295,7 @@
             this.groupBox16.Controls.Add(this.textBox5);
             this.groupBox16.Controls.Add(this.textBox4);
             this.groupBox16.Controls.Add(this.textBox3);
-            this.groupBox16.Controls.Add(this.textBox2);
+            this.groupBox16.Controls.Add(this.Block_textBox);
             this.groupBox16.Controls.Add(this.label18);
             this.groupBox16.Controls.Add(this.label17);
             this.groupBox16.Controls.Add(this.label16);
@@ -339,13 +343,13 @@
             this.textBox3.Size = new System.Drawing.Size(132, 41);
             this.textBox3.TabIndex = 6;
             // 
-            // textBox2
+            // Block_textBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(215, 36);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 41);
-            this.textBox2.TabIndex = 5;
+            this.Block_textBox.Location = new System.Drawing.Point(215, 36);
+            this.Block_textBox.Margin = new System.Windows.Forms.Padding(4);
+            this.Block_textBox.Name = "Block_textBox";
+            this.Block_textBox.Size = new System.Drawing.Size(132, 41);
+            this.Block_textBox.TabIndex = 5;
             // 
             // label18
             // 
@@ -447,11 +451,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 26);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(4, 26);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(237, 46);
+            this.label8.Size = new System.Drawing.Size(194, 37);
             this.label8.TabIndex = 40;
             this.label8.Text = "Train ID : 56";
             // 
@@ -821,8 +825,8 @@
             // 
             // Brakes_GroupBox
             // 
-            this.Brakes_GroupBox.Controls.Add(this.serviceButton);
-            this.Brakes_GroupBox.Controls.Add(this.emergencyButton);
+            this.Brakes_GroupBox.Controls.Add(this.Service_Button);
+            this.Brakes_GroupBox.Controls.Add(this.Emergency_Button);
             this.Brakes_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Brakes_GroupBox.Location = new System.Drawing.Point(15, 704);
             this.Brakes_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -832,6 +836,26 @@
             this.Brakes_GroupBox.TabIndex = 21;
             this.Brakes_GroupBox.TabStop = false;
             this.Brakes_GroupBox.Text = "Brakes";
+            // 
+            // Service_Button
+            // 
+            this.Service_Button.Location = new System.Drawing.Point(272, 55);
+            this.Service_Button.Name = "Service_Button";
+            this.Service_Button.Size = new System.Drawing.Size(230, 150);
+            this.Service_Button.TabIndex = 1;
+            this.Service_Button.Text = "Service";
+            this.Service_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Service_Button.UseVisualStyleBackColor = true;
+            // 
+            // Emergency_Button
+            // 
+            this.Emergency_Button.Location = new System.Drawing.Point(31, 55);
+            this.Emergency_Button.Name = "Emergency_Button";
+            this.Emergency_Button.Size = new System.Drawing.Size(230, 150);
+            this.Emergency_Button.TabIndex = 0;
+            this.Emergency_Button.Text = "EMERGENCY";
+            this.Emergency_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Emergency_Button.UseVisualStyleBackColor = true;
             // 
             // RightDoor_GroupBox
             // 
@@ -891,7 +915,7 @@
             // Left_Closed
             // 
             this.Left_Closed.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Left_Closed.Location = new System.Drawing.Point(272, 26);
+            this.Left_Closed.Location = new System.Drawing.Point(272, 39);
             this.Left_Closed.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Left_Closed.Name = "Left_Closed";
             this.Left_Closed.Size = new System.Drawing.Size(155, 62);
@@ -905,7 +929,7 @@
             // Left_Open
             // 
             this.Left_Open.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Left_Open.Location = new System.Drawing.Point(107, 26);
+            this.Left_Open.Location = new System.Drawing.Point(107, 39);
             this.Left_Open.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Left_Open.Name = "Left_Open";
             this.Left_Open.Size = new System.Drawing.Size(155, 62);
@@ -1010,27 +1034,24 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // serviceButton
+            // label21
             // 
-            this.serviceButton.Location = new System.Drawing.Point(281, 41);
-            this.serviceButton.Margin = new System.Windows.Forms.Padding(4);
-            this.serviceButton.Name = "serviceButton";
-            this.serviceButton.Size = new System.Drawing.Size(241, 156);
-            this.serviceButton.TabIndex = 20;
-            this.serviceButton.Text = "Service";
-            this.serviceButton.UseVisualStyleBackColor = true;
-            this.serviceButton.Click += new System.EventHandler(this.serviceButton_Click);
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(4, 50);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(148, 46);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "label21";
             // 
-            // emergencyButton
+            // timeLabel
             // 
-            this.emergencyButton.Location = new System.Drawing.Point(24, 41);
-            this.emergencyButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.emergencyButton.Name = "emergencyButton";
-            this.emergencyButton.Size = new System.Drawing.Size(237, 156);
-            this.emergencyButton.TabIndex = 11;
-            this.emergencyButton.Text = "EMERGENCY";
-            this.emergencyButton.UseVisualStyleBackColor = true;
-            this.emergencyButton.Click += new System.EventHandler(this.emergencyButton_Click);
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(308, 26);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(0, 37);
+            this.timeLabel.TabIndex = 44;
             // 
             // TrainController
             // 
@@ -1131,7 +1152,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Block_textBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.RadioButton radioButton12;
@@ -1146,8 +1167,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button serviceButton;
-        private System.Windows.Forms.Button emergencyButton;
+        private System.Windows.Forms.CheckBox Service_Button;
+        private System.Windows.Forms.CheckBox Emergency_Button;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label label21;
     }
 }
 

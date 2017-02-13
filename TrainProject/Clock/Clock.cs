@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using TrainProject;
+using TrainControllerProject;
 
 namespace TrainProject.Clock
 {

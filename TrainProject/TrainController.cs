@@ -16,6 +16,13 @@ namespace TrainControllerProject
         {
             InitializeComponent();
         }
+        public void updateTime(String time)
+        {
+            if (this.timeLabel.InvokeRequired)
+            {
+                timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
+            }
+        }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
