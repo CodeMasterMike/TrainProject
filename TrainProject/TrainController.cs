@@ -12,10 +12,19 @@ namespace TrainControllerProject
 {
     public partial class TrainController : Form
     {
+        //initialize variables
+        private int setSpeed = 0;
+        private int setTemp = 0;
+
+        //initialize labels
+
+
+        //methods
         public TrainController()
         {
             InitializeComponent();
         }
+        //every time interval update all of the displays and internal variables
         public void updateTime(String time)
         {
             if (this.timeLabel.InvokeRequired)
@@ -23,7 +32,26 @@ namespace TrainControllerProject
                 timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
             }
         }
+        //set control functionality for set speed trackbar
+        private void setSpeedTrackBar_Scroll(object sender, EventArgs e)
+        {
+            setSpeedLabel.Text = Convert.ToString(setSpeedTrackBar.Value);
+            setSpeed = setSpeedTrackBar.Value;
+        }
+        //set control functionality for set temp trackbar
+        private void setTempTrackBar_Scroll(object sender, EventArgs e)
+        {
+            setTempLabel.Text = Convert.ToString(setTempTrackBar.Value);
+            setTemp = setTempTrackBar.Value;
+        }
 
+
+
+
+
+
+
+        //*******************************************************************************//
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 

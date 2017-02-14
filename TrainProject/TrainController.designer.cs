@@ -33,6 +33,7 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.Driver_Tab = new System.Windows.Forms.TabPage();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -60,10 +61,10 @@
             this.Heater_GroupBox = new System.Windows.Forms.GroupBox();
             this.Heater_Off = new System.Windows.Forms.RadioButton();
             this.Heater_On = new System.Windows.Forms.RadioButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.setTempLabel = new System.Windows.Forms.Label();
+            this.setSpeedLabel = new System.Windows.Forms.Label();
+            this.setSpeedTrackBar = new System.Windows.Forms.TrackBar();
+            this.setTempTrackBar = new System.Windows.Forms.TrackBar();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -103,8 +104,8 @@
             this.AC_ON = new System.Windows.Forms.RadioButton();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label21 = new System.Windows.Forms.Label();
-            this.timeLabel = new System.Windows.Forms.Label();
+            this.mphLabel = new System.Windows.Forms.Label();
+            this.fLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -112,8 +113,8 @@
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.Heater_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox10.SuspendLayout();
@@ -164,6 +165,8 @@
             // Driver_Tab
             // 
             this.Driver_Tab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Driver_Tab.Controls.Add(this.fLabel);
+            this.Driver_Tab.Controls.Add(this.mphLabel);
             this.Driver_Tab.Controls.Add(this.timeLabel);
             this.Driver_Tab.Controls.Add(this.groupBox17);
             this.Driver_Tab.Controls.Add(this.label11);
@@ -171,10 +174,10 @@
             this.Driver_Tab.Controls.Add(this.label8);
             this.Driver_Tab.Controls.Add(this.groupBox13);
             this.Driver_Tab.Controls.Add(this.Heater_GroupBox);
-            this.Driver_Tab.Controls.Add(this.label14);
-            this.Driver_Tab.Controls.Add(this.label12);
-            this.Driver_Tab.Controls.Add(this.trackBar2);
-            this.Driver_Tab.Controls.Add(this.trackBar1);
+            this.Driver_Tab.Controls.Add(this.setTempLabel);
+            this.Driver_Tab.Controls.Add(this.setSpeedLabel);
+            this.Driver_Tab.Controls.Add(this.setSpeedTrackBar);
+            this.Driver_Tab.Controls.Add(this.setTempTrackBar);
             this.Driver_Tab.Controls.Add(this.textBox1);
             this.Driver_Tab.Controls.Add(this.button7);
             this.Driver_Tab.Controls.Add(this.groupBox11);
@@ -200,9 +203,18 @@
             this.Driver_Tab.Text = "Driver";
             this.Driver_Tab.Click += new System.EventHandler(this.Driver_Tab_Click);
             // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(308, 26);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(0, 37);
+            this.timeLabel.TabIndex = 44;
+            // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.label21);
             this.groupBox17.Controls.Add(this.label9);
             this.groupBox17.Controls.Add(this.label20);
             this.groupBox17.Controls.Add(this.label2);
@@ -511,45 +523,49 @@
             this.Heater_On.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Heater_On.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // setTempLabel
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1691, 664);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 46);
-            this.label14.TabIndex = 37;
-            this.label14.Text = "69F";
+            this.setTempLabel.AutoSize = true;
+            this.setTempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setTempLabel.Location = new System.Drawing.Point(1691, 664);
+            this.setTempLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.setTempLabel.Name = "setTempLabel";
+            this.setTempLabel.Size = new System.Drawing.Size(42, 46);
+            this.setTempLabel.TabIndex = 37;
+            this.setTempLabel.Text = "0";
             // 
-            // label12
+            // setSpeedLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1444, 664);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(163, 46);
-            this.label12.TabIndex = 36;
-            this.label12.Text = "50 mi/hr";
+            this.setSpeedLabel.AutoSize = true;
+            this.setSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setSpeedLabel.Location = new System.Drawing.Point(1429, 664);
+            this.setSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.setSpeedLabel.Name = "setSpeedLabel";
+            this.setSpeedLabel.Size = new System.Drawing.Size(42, 46);
+            this.setSpeedLabel.TabIndex = 36;
+            this.setSpeedLabel.Text = "0";
             // 
-            // trackBar2
+            // setSpeedTrackBar
             // 
-            this.trackBar2.Location = new System.Drawing.Point(1372, 626);
-            this.trackBar2.Margin = new System.Windows.Forms.Padding(4);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar2.Size = new System.Drawing.Size(90, 130);
-            this.trackBar2.TabIndex = 35;
+            this.setSpeedTrackBar.Location = new System.Drawing.Point(1372, 626);
+            this.setSpeedTrackBar.Margin = new System.Windows.Forms.Padding(4);
+            this.setSpeedTrackBar.Maximum = 100;
+            this.setSpeedTrackBar.Name = "setSpeedTrackBar";
+            this.setSpeedTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.setSpeedTrackBar.Size = new System.Drawing.Size(90, 130);
+            this.setSpeedTrackBar.TabIndex = 35;
+            this.setSpeedTrackBar.Scroll += new System.EventHandler(this.setSpeedTrackBar_Scroll);
             // 
-            // trackBar1
+            // setTempTrackBar
             // 
-            this.trackBar1.Location = new System.Drawing.Point(1605, 626);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(4);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(90, 130);
-            this.trackBar1.TabIndex = 34;
+            this.setTempTrackBar.Location = new System.Drawing.Point(1605, 626);
+            this.setTempTrackBar.Margin = new System.Windows.Forms.Padding(4);
+            this.setTempTrackBar.Maximum = 100;
+            this.setTempTrackBar.Name = "setTempTrackBar";
+            this.setTempTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.setTempTrackBar.Size = new System.Drawing.Size(90, 130);
+            this.setTempTrackBar.TabIndex = 34;
+            this.setTempTrackBar.Scroll += new System.EventHandler(this.setTempTrackBar_Scroll);
             // 
             // textBox1
             // 
@@ -1034,24 +1050,27 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // label21
+            // mphLabel
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 50);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(148, 46);
-            this.label21.TabIndex = 22;
-            this.label21.Text = "label21";
+            this.mphLabel.AutoSize = true;
+            this.mphLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mphLabel.Location = new System.Drawing.Point(1504, 664);
+            this.mphLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.mphLabel.Name = "mphLabel";
+            this.mphLabel.Size = new System.Drawing.Size(109, 46);
+            this.mphLabel.TabIndex = 45;
+            this.mphLabel.Text = "MPH";
             // 
-            // timeLabel
+            // fLabel
             // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(308, 26);
-            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(0, 37);
-            this.timeLabel.TabIndex = 44;
+            this.fLabel.AutoSize = true;
+            this.fLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fLabel.Location = new System.Drawing.Point(1798, 664);
+            this.fLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fLabel.Name = "fLabel";
+            this.fLabel.Size = new System.Drawing.Size(44, 46);
+            this.fLabel.TabIndex = 46;
+            this.fLabel.Text = "F";
             // 
             // TrainController
             // 
@@ -1074,8 +1093,8 @@
             this.groupBox16.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.Heater_GroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -1100,10 +1119,10 @@
         private System.Windows.Forms.GroupBox Heater_GroupBox;
         private System.Windows.Forms.RadioButton Heater_Off;
         private System.Windows.Forms.RadioButton Heater_On;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label setTempLabel;
+        private System.Windows.Forms.Label setSpeedLabel;
+        private System.Windows.Forms.TrackBar setSpeedTrackBar;
+        private System.Windows.Forms.TrackBar setTempTrackBar;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox11;
@@ -1170,7 +1189,8 @@
         private System.Windows.Forms.CheckBox Service_Button;
         private System.Windows.Forms.CheckBox Emergency_Button;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label mphLabel;
+        private System.Windows.Forms.Label fLabel;
     }
 }
 
