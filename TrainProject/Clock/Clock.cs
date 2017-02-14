@@ -18,14 +18,14 @@ namespace TrainProject.Clock
         private string hours { get; set; }
         private string minutes { get; set; }
         private string seconds { get; set; }
-        private Homepage shit;
+        private Homepage homepage;
 
         public CustomClock(Homepage s)
         {
             Console.WriteLine("Starting");
             interval = 1;
             numIntervals = 0;
-            shit = s;
+            homepage = s;
             t = new Timer(interval);
             t.Elapsed += HandleIntervalElapsed;
             t.Start();
@@ -33,10 +33,14 @@ namespace TrainProject.Clock
 
         private void HandleIntervalElapsed(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine("Interval passed");
+            //Console.WriteLine("Interval passed");
             numIntervals += 1;
+            if(numIntervals > 24 * 3600)
+            {
+                numIntervals = 0;
+            }
 
-            hours = (numIntervals / 3600).ToString();
+            hours = (((numIntervals / 3600) % 12) + 1).ToString();
             if (hours.Length < 2)
                 hours = "0" + hours;            
             minutes = (numIntervals / 60 % 60).ToString();
@@ -47,7 +51,11 @@ namespace TrainProject.Clock
                 seconds = "0" + seconds;
 
             displayString = hours + ":" + minutes + ":" + seconds;
-            if(numIntervals > 12* 3600)
+            if (numIntervals > 23 * 3600)
+            {
+                displayString += " AM";
+            }
+            else if (numIntervals > 11 * 3600)
             {
                 displayString += " PM";
             }
@@ -58,7 +66,7 @@ namespace TrainProject.Clock
 
 
             //trigger module events here
-            shit.updateTime(displayString);
+            homepage.updateTime(displayString);
         }
 
         public void changeInterval(int ms)
