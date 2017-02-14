@@ -31,6 +31,16 @@ namespace TrainControllerProject
             {
                 timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
             }
+            string [] x = time.Split(':');
+            int seconds = Convert.ToInt32(x[1]);
+            //use this if statement to update displays and internal variables every 2 seconds
+            if (seconds % 2 == 0)
+            { 
+                if (this.trainIDLabel.InvokeRequired)
+                {
+                    trainIDLabel.Invoke(new MethodInvoker(delegate { trainIDLabel.Text = Convert.ToString(seconds); }));
+                }
+            }
         }
         //set control functionality for set speed trackbar
         private void setSpeedTrackBar_Scroll(object sender, EventArgs e)

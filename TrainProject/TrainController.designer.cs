@@ -33,6 +33,8 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.Driver_Tab = new System.Windows.Forms.TabPage();
+            this.fLabel = new System.Windows.Forms.Label();
+            this.mphLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +58,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.trainIDLabel = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.Heater_GroupBox = new System.Windows.Forms.GroupBox();
             this.Heater_Off = new System.Windows.Forms.RadioButton();
@@ -104,8 +106,6 @@
             this.AC_ON = new System.Windows.Forms.RadioButton();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.mphLabel = new System.Windows.Forms.Label();
-            this.fLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -171,7 +171,7 @@
             this.Driver_Tab.Controls.Add(this.groupBox17);
             this.Driver_Tab.Controls.Add(this.label11);
             this.Driver_Tab.Controls.Add(this.groupBox14);
-            this.Driver_Tab.Controls.Add(this.label8);
+            this.Driver_Tab.Controls.Add(this.trainIDLabel);
             this.Driver_Tab.Controls.Add(this.groupBox13);
             this.Driver_Tab.Controls.Add(this.Heater_GroupBox);
             this.Driver_Tab.Controls.Add(this.setTempLabel);
@@ -202,6 +202,28 @@
             this.Driver_Tab.TabIndex = 0;
             this.Driver_Tab.Text = "Driver";
             this.Driver_Tab.Click += new System.EventHandler(this.Driver_Tab_Click);
+            // 
+            // fLabel
+            // 
+            this.fLabel.AutoSize = true;
+            this.fLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fLabel.Location = new System.Drawing.Point(1798, 664);
+            this.fLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fLabel.Name = "fLabel";
+            this.fLabel.Size = new System.Drawing.Size(44, 46);
+            this.fLabel.TabIndex = 46;
+            this.fLabel.Text = "F";
+            // 
+            // mphLabel
+            // 
+            this.mphLabel.AutoSize = true;
+            this.mphLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mphLabel.Location = new System.Drawing.Point(1504, 664);
+            this.mphLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.mphLabel.Name = "mphLabel";
+            this.mphLabel.Size = new System.Drawing.Size(109, 46);
+            this.mphLabel.TabIndex = 45;
+            this.mphLabel.Text = "MPH";
             // 
             // timeLabel
             // 
@@ -460,16 +482,16 @@
             this.button1.Text = "Fail Service Brakes";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // trainIDLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(4, 26);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(194, 37);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "Train ID : 56";
+            this.trainIDLabel.AutoSize = true;
+            this.trainIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainIDLabel.Location = new System.Drawing.Point(4, 26);
+            this.trainIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.trainIDLabel.Name = "trainIDLabel";
+            this.trainIDLabel.Size = new System.Drawing.Size(194, 37);
+            this.trainIDLabel.TabIndex = 40;
+            this.trainIDLabel.Text = "Train ID : 56";
             // 
             // groupBox13
             // 
@@ -1050,28 +1072,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // mphLabel
-            // 
-            this.mphLabel.AutoSize = true;
-            this.mphLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mphLabel.Location = new System.Drawing.Point(1504, 664);
-            this.mphLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.mphLabel.Name = "mphLabel";
-            this.mphLabel.Size = new System.Drawing.Size(109, 46);
-            this.mphLabel.TabIndex = 45;
-            this.mphLabel.Text = "MPH";
-            // 
-            // fLabel
-            // 
-            this.fLabel.AutoSize = true;
-            this.fLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fLabel.Location = new System.Drawing.Point(1798, 664);
-            this.fLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.fLabel.Name = "fLabel";
-            this.fLabel.Size = new System.Drawing.Size(44, 46);
-            this.fLabel.TabIndex = 46;
-            this.fLabel.Text = "F";
-            // 
             // TrainController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1166,7 +1166,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label trainIDLabel;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
