@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +69,9 @@
     <Compile Include="CentralTrainControl.Designer.cs">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperObjects\Crossing.cs" />
+    <Compile Include="HelperObjects\Line.cs" />
+    <Compile Include="HelperObjects\Section.cs" />
     <Compile Include="HelperObjects\Train.cs" />
     <Compile Include="HelperObjects\Switch.cs" />
     <Compile Include="ListViewExtender.cs" />
@@ -104,6 +108,12 @@
     <EmbeddedResource Include="CentralTrainControl.resx">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="TrainModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainModel.Designer.cs">
+      <DependentUpon>TrainModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrainController.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrackController.resx">
       <DependentUpon>TrackController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainModel.resx">
+      <DependentUpon>TrainModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrainController.resx">
       <DependentUpon>TrainController.cs</DependentUpon>
@@ -158,12 +171,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Clock\TrackDB.mdf">
+    <Content Include="TrackDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Clock\TrackDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="TrackDB_log.ldf">
       <DependentUpon>TrackDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Track_Layout.jpg" />
   </ItemGroup>

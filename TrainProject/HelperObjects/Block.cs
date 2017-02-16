@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace TrainProject
 {
-    class Block
+    public class Block
     {
         //these properties keep track of block info
-        private int blockId { get; set; }
-        private int blockNum { get; set; }
-        private String section { get; set; }
-        private String line { get; set; }
-        private int length { get; set; }
-        private int speedLimit { get; set; }
-        private double grade { get; set; }
-        private double elevation { get; set; }
-        private double cumElevation { get; set; }
+        public int blockId { get; set; }
+        public int blockNum { get; set; }
+        public String section { get; set; }
+        public String line { get; set; }
+        public int length { get; set; }
+        public int speedLimit { get; set; }
+        public double grade { get; set; }
+        public double elevation { get; set; }
+        public double cumElevation { get; set; }
+        public int sectionId { get; set; }
+        public int direction { get; set; }
+        public bool isUnderground { get; set; }
 
         //need to discuss how to do this further
         private int prevBlock { get; set; }
@@ -33,6 +36,19 @@ namespace TrainProject
         public Block()
         {
             
+        }
+
+        public Block(int bId, int bn, int sId, decimal l, decimal g, decimal e, decimal ce, int sl, bool ug)
+        {
+            blockId = bId;
+            blockNum = bn;
+            sectionId = sId;
+            length = (int)l;
+            grade = (double)g; //needs to be decimal
+            elevation = (double)e;
+            cumElevation = (double)ce;
+            speedLimit = sl;
+            isUnderground = ug;
         }
     }
 }
