@@ -37,10 +37,12 @@
             this.testModeOff = new System.Windows.Forms.RadioButton();
             this.testModeOn = new System.Windows.Forms.RadioButton();
             this.testModeLabel = new System.Windows.Forms.Label();
-            this.fLabel = new System.Windows.Forms.Label();
-            this.mphLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.distanceToLabel = new System.Windows.Forms.Label();
+            this.tunnelStatusLabel = new System.Windows.Forms.Label();
+            this.stationLabel = new System.Windows.Forms.Label();
+            this.blockSpeedLimitLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,6 +89,9 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.trainTempLabel = new System.Windows.Forms.Label();
+            this.trainPowerLabel = new System.Windows.Forms.Label();
+            this.trainSpeedLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Show_Power = new System.Windows.Forms.Label();
             this.Show_Speed = new System.Windows.Forms.Label();
@@ -106,6 +111,8 @@
             this.AC_OFF = new System.Windows.Forms.RadioButton();
             this.AC_ON = new System.Windows.Forms.RadioButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ctcSpeedLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -179,8 +186,6 @@
             this.Driver_Tab.Controls.Add(this.testModeOff);
             this.Driver_Tab.Controls.Add(this.testModeOn);
             this.Driver_Tab.Controls.Add(this.testModeLabel);
-            this.Driver_Tab.Controls.Add(this.fLabel);
-            this.Driver_Tab.Controls.Add(this.mphLabel);
             this.Driver_Tab.Controls.Add(this.timeLabel);
             this.Driver_Tab.Controls.Add(this.groupBox17);
             this.Driver_Tab.Controls.Add(this.label11);
@@ -257,28 +262,6 @@
             this.testModeLabel.TabIndex = 47;
             this.testModeLabel.Text = "Test Mode : ";
             // 
-            // fLabel
-            // 
-            this.fLabel.AutoSize = true;
-            this.fLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fLabel.Location = new System.Drawing.Point(1798, 664);
-            this.fLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.fLabel.Name = "fLabel";
-            this.fLabel.Size = new System.Drawing.Size(44, 46);
-            this.fLabel.TabIndex = 46;
-            this.fLabel.Text = "F";
-            // 
-            // mphLabel
-            // 
-            this.mphLabel.AutoSize = true;
-            this.mphLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mphLabel.Location = new System.Drawing.Point(1504, 664);
-            this.mphLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.mphLabel.Name = "mphLabel";
-            this.mphLabel.Size = new System.Drawing.Size(109, 46);
-            this.mphLabel.TabIndex = 45;
-            this.mphLabel.Text = "MPH";
-            // 
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
@@ -291,6 +274,10 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.distanceToLabel);
+            this.groupBox17.Controls.Add(this.tunnelStatusLabel);
+            this.groupBox17.Controls.Add(this.stationLabel);
+            this.groupBox17.Controls.Add(this.blockSpeedLimitLabel);
             this.groupBox17.Controls.Add(this.label9);
             this.groupBox17.Controls.Add(this.label20);
             this.groupBox17.Controls.Add(this.label2);
@@ -306,6 +293,51 @@
             this.groupBox17.Text = "Track Information";
             this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
             // 
+            // distanceToLabel
+            // 
+            this.distanceToLabel.AutoSize = true;
+            this.distanceToLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.distanceToLabel.Location = new System.Drawing.Point(314, 116);
+            this.distanceToLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.distanceToLabel.Name = "distanceToLabel";
+            this.distanceToLabel.Size = new System.Drawing.Size(27, 37);
+            this.distanceToLabel.TabIndex = 25;
+            this.distanceToLabel.Text = "-";
+            this.distanceToLabel.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // tunnelStatusLabel
+            // 
+            this.tunnelStatusLabel.AutoSize = true;
+            this.tunnelStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tunnelStatusLabel.Location = new System.Drawing.Point(314, 153);
+            this.tunnelStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tunnelStatusLabel.Name = "tunnelStatusLabel";
+            this.tunnelStatusLabel.Size = new System.Drawing.Size(127, 37);
+            this.tunnelStatusLabel.TabIndex = 24;
+            this.tunnelStatusLabel.Text = "Outside";
+            // 
+            // stationLabel
+            // 
+            this.stationLabel.AutoSize = true;
+            this.stationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stationLabel.Location = new System.Drawing.Point(314, 80);
+            this.stationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.stationLabel.Name = "stationLabel";
+            this.stationLabel.Size = new System.Drawing.Size(27, 37);
+            this.stationLabel.TabIndex = 23;
+            this.stationLabel.Text = "-";
+            // 
+            // blockSpeedLimitLabel
+            // 
+            this.blockSpeedLimitLabel.AutoSize = true;
+            this.blockSpeedLimitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockSpeedLimitLabel.Location = new System.Drawing.Point(314, 43);
+            this.blockSpeedLimitLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.blockSpeedLimitLabel.Name = "blockSpeedLimitLabel";
+            this.blockSpeedLimitLabel.Size = new System.Drawing.Size(123, 37);
+            this.blockSpeedLimitLabel.TabIndex = 22;
+            this.blockSpeedLimitLabel.Text = "35MPH";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -313,9 +345,9 @@
             this.label9.Location = new System.Drawing.Point(8, 158);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(326, 37);
+            this.label9.Size = new System.Drawing.Size(233, 37);
             this.label9.TabIndex = 21;
-            this.label9.Text = "Tunnel Status : Inside";
+            this.label9.Text = "Tunnel Status :";
             // 
             // label20
             // 
@@ -324,9 +356,9 @@
             this.label20.Location = new System.Drawing.Point(8, 121);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(276, 37);
+            this.label20.Size = new System.Drawing.Size(206, 37);
             this.label20.TabIndex = 20;
-            this.label20.Text = "Distance To : 5 mi";
+            this.label20.Text = "Distance To :";
             // 
             // label2
             // 
@@ -335,9 +367,9 @@
             this.label2.Location = new System.Drawing.Point(8, 46);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(416, 37);
+            this.label2.Size = new System.Drawing.Size(290, 37);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Block Speed Limit : 55 mi/hr";
+            this.label2.Text = "Block Speed Limit :";
             // 
             // label10
             // 
@@ -346,9 +378,9 @@
             this.label10.Location = new System.Drawing.Point(8, 85);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(304, 37);
+            this.label10.Size = new System.Drawing.Size(135, 37);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Station : Steel Plaza";
+            this.label10.Text = "Station :";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
@@ -607,9 +639,9 @@
             this.setTempLabel.Location = new System.Drawing.Point(1691, 664);
             this.setTempLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.setTempLabel.Name = "setTempLabel";
-            this.setTempLabel.Size = new System.Drawing.Size(42, 46);
+            this.setTempLabel.Size = new System.Drawing.Size(88, 46);
             this.setTempLabel.TabIndex = 37;
-            this.setTempLabel.Text = "0";
+            this.setTempLabel.Text = "70F";
             // 
             // setSpeedLabel
             // 
@@ -618,9 +650,9 @@
             this.setSpeedLabel.Location = new System.Drawing.Point(1429, 664);
             this.setSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.setSpeedLabel.Name = "setSpeedLabel";
-            this.setSpeedLabel.Size = new System.Drawing.Size(42, 46);
+            this.setSpeedLabel.Size = new System.Drawing.Size(131, 46);
             this.setSpeedLabel.TabIndex = 36;
-            this.setSpeedLabel.Text = "0";
+            this.setSpeedLabel.Text = "0MPH";
             // 
             // setSpeedTrackBar
             // 
@@ -642,6 +674,7 @@
             this.setTempTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.setTempTrackBar.Size = new System.Drawing.Size(90, 130);
             this.setTempTrackBar.TabIndex = 34;
+            this.setTempTrackBar.Value = 70;
             this.setTempTrackBar.Scroll += new System.EventHandler(this.setTempTrackBar_Scroll);
             // 
             // textBox1
@@ -749,6 +782,8 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.label12);
+            this.groupBox10.Controls.Add(this.ctcSpeedLabel);
             this.groupBox10.Controls.Add(this.label5);
             this.groupBox10.Controls.Add(this.label4);
             this.groupBox10.Controls.Add(this.label3);
@@ -778,9 +813,9 @@
             this.label4.Location = new System.Drawing.Point(0, 94);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(323, 37);
+            this.label4.Size = new System.Drawing.Size(237, 37);
             this.label4.TabIndex = 1;
-            this.label4.Text = "CTC Authority : 13 mi";
+            this.label4.Text = "CTC Authority :";
             // 
             // label3
             // 
@@ -789,9 +824,9 @@
             this.label3.Location = new System.Drawing.Point(0, 49);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(327, 37);
+            this.label3.Size = new System.Drawing.Size(201, 37);
             this.label3.TabIndex = 0;
-            this.label3.Text = "CTC Speed : 50 mi/hr";
+            this.label3.Text = "CTC Speed :";
             // 
             // groupBox9
             // 
@@ -830,6 +865,9 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.trainTempLabel);
+            this.groupBox6.Controls.Add(this.trainPowerLabel);
+            this.groupBox6.Controls.Add(this.trainSpeedLabel);
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Controls.Add(this.Show_Power);
             this.groupBox6.Controls.Add(this.Show_Speed);
@@ -843,6 +881,39 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Train Information";
             // 
+            // trainTempLabel
+            // 
+            this.trainTempLabel.AutoSize = true;
+            this.trainTempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainTempLabel.Location = new System.Drawing.Point(316, 124);
+            this.trainTempLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.trainTempLabel.Name = "trainTempLabel";
+            this.trainTempLabel.Size = new System.Drawing.Size(55, 37);
+            this.trainTempLabel.TabIndex = 17;
+            this.trainTempLabel.Text = "0F";
+            // 
+            // trainPowerLabel
+            // 
+            this.trainPowerLabel.AutoSize = true;
+            this.trainPowerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainPowerLabel.Location = new System.Drawing.Point(316, 87);
+            this.trainPowerLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.trainPowerLabel.Name = "trainPowerLabel";
+            this.trainPowerLabel.Size = new System.Drawing.Size(82, 37);
+            this.trainPowerLabel.TabIndex = 16;
+            this.trainPowerLabel.Text = "0kW";
+            // 
+            // trainSpeedLabel
+            // 
+            this.trainSpeedLabel.AutoSize = true;
+            this.trainSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainSpeedLabel.Location = new System.Drawing.Point(316, 50);
+            this.trainSpeedLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.trainSpeedLabel.Name = "trainSpeedLabel";
+            this.trainSpeedLabel.Size = new System.Drawing.Size(105, 37);
+            this.trainSpeedLabel.TabIndex = 15;
+            this.trainSpeedLabel.Text = "0MPH";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -850,32 +921,32 @@
             this.label1.Location = new System.Drawing.Point(9, 124);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(376, 37);
+            this.label1.Size = new System.Drawing.Size(311, 37);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Cabin Temperature : 65F";
+            this.label1.Text = "Cabin Temperature :";
             this.label1.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // Show_Power
             // 
             this.Show_Power.AutoSize = true;
             this.Show_Power.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Show_Power.Location = new System.Drawing.Point(9, 88);
+            this.Show_Power.Location = new System.Drawing.Point(11, 87);
             this.Show_Power.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Show_Power.Name = "Show_Power";
-            this.Show_Power.Size = new System.Drawing.Size(226, 37);
+            this.Show_Power.Size = new System.Drawing.Size(125, 37);
             this.Show_Power.TabIndex = 13;
-            this.Show_Power.Text = "Power : 24 kW";
+            this.Show_Power.Text = "Power :";
             // 
             // Show_Speed
             // 
             this.Show_Speed.AutoSize = true;
             this.Show_Speed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Show_Speed.Location = new System.Drawing.Point(9, 46);
+            this.Show_Speed.Location = new System.Drawing.Point(10, 50);
             this.Show_Speed.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Show_Speed.Name = "Show_Speed";
-            this.Show_Speed.Size = new System.Drawing.Size(252, 37);
+            this.Show_Speed.Size = new System.Drawing.Size(126, 37);
             this.Show_Speed.TabIndex = 12;
-            this.Show_Speed.Text = "Speed : 50 mi/hr";
+            this.Show_Speed.Text = "Speed :";
             this.Show_Speed.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // Brakes_GroupBox
@@ -1081,6 +1152,28 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // ctcSpeedLabel
+            // 
+            this.ctcSpeedLabel.AutoSize = true;
+            this.ctcSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctcSpeedLabel.Location = new System.Drawing.Point(316, 49);
+            this.ctcSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ctcSpeedLabel.Name = "ctcSpeedLabel";
+            this.ctcSpeedLabel.Size = new System.Drawing.Size(123, 37);
+            this.ctcSpeedLabel.TabIndex = 3;
+            this.ctcSpeedLabel.Text = "35MPH";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(316, 94);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 37);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "10mi";
+            // 
             // TrainController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1131,8 +1224,6 @@
         private System.Windows.Forms.RadioButton testModeOff;
         private System.Windows.Forms.RadioButton testModeOn;
         private System.Windows.Forms.Label testModeLabel;
-        private System.Windows.Forms.Label fLabel;
-        private System.Windows.Forms.Label mphLabel;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.Label label9;
@@ -1199,6 +1290,15 @@
         private System.Windows.Forms.GroupBox AC_GroupBox;
         private System.Windows.Forms.RadioButton AC_OFF;
         private System.Windows.Forms.RadioButton AC_ON;
+        private System.Windows.Forms.Label trainTempLabel;
+        private System.Windows.Forms.Label trainPowerLabel;
+        private System.Windows.Forms.Label trainSpeedLabel;
+        private System.Windows.Forms.Label distanceToLabel;
+        private System.Windows.Forms.Label tunnelStatusLabel;
+        private System.Windows.Forms.Label stationLabel;
+        private System.Windows.Forms.Label blockSpeedLimitLabel;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label ctcSpeedLabel;
     }
 }
 

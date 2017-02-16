@@ -13,9 +13,23 @@ namespace TrainControllerProject
     public partial class TrainController : Form
     {
         //initialize variables
-        private int setSpeed = 0;
+        private decimal setSpeed = 0;
         private int setTemp = 0;
         int testMode = 0; //test mode off = 0 test mode on = 1
+        int mode = 0; //manual = 0 automatic  = 1
+        decimal Kp = 0;
+        decimal Ki = 0;
+        decimal error = 0;
+        decimal ek = 0;
+        decimal mass = 0;
+        decimal u = 0;
+        decimal uk = 0;
+        decimal currSpeed = 0;
+        decimal power = 0;
+        decimal acceleration = 0;
+        decimal currSpeedkmh = 0;
+        decimal setSpeedkmh = 0;
+      
         
         //initialize labels and controls
 
@@ -30,36 +44,29 @@ namespace TrainControllerProject
             tempTestTextBox.Enabled = false;
             ctcSpeedTestTextBox.Enabled = false;
             ctcAuthorityTestTextBox.Enabled = false;
+            timeLabel.Text = "-";
 
         }
         //every time interval update all of the displays and internal variables
         public void updateTime(String time)
         {
-            if (this.timeLabel.InvokeRequired)
-            {
-                timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
-            }
-            string [] x = time.Split(':');
-            int seconds = Convert.ToInt32(x[1]);
-            //use this if statement to update displays and internal variables every 2 seconds
-            if (seconds % 2 == 0)
-            { 
-                if (this.trainIDLabel.InvokeRequired)
-                {
-                    trainIDLabel.Invoke(new MethodInvoker(delegate { trainIDLabel.Text = Convert.ToString(seconds); }));
-                }
-            }
+            /* if (this.timeLabel.InvokeRequired)
+             {
+                 timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
+             }*/
+            timeLabel.Text = time;
+            
         }
         //set control functionality for set speed trackbar
         private void setSpeedTrackBar_Scroll(object sender, EventArgs e)
         {
-            setSpeedLabel.Text = Convert.ToString(setSpeedTrackBar.Value);
+            setSpeedLabel.Text = Convert.ToString(setSpeedTrackBar.Value) + "MPH";
             setSpeed = setSpeedTrackBar.Value;
         }
         //set control functionality for set temp trackbar
         private void setTempTrackBar_Scroll(object sender, EventArgs e)
         {
-            setTempLabel.Text = Convert.ToString(setTempTrackBar.Value);
+            setTempLabel.Text = Convert.ToString(setTempTrackBar.Value) + "F";
             setTemp = setTempTrackBar.Value;
         }
         //activate test mode
@@ -95,8 +102,24 @@ namespace TrainControllerProject
 
         private decimal calculate_power(decimal currSpeed, decimal setSpeed)
         {
-
+            error = currSpeed - setSpeed;
+            u = uk + (1/2)*(error + ek);
+            ek = error;
+            power = Kp * error + Ki * u;
+            if (power > 120000)
+            {
+                u = uk;
+                power = 120000;
+            }
+            else uk = u;
+            acceleration = power / (currSpeed * mass);
+            currSpeed = currSpeed + acceleration;
             return 0;
+        }
+
+        private void updateTimeLabel(String time)
+        {
+            timeLabel.Text = time;
         }
 
 
@@ -215,6 +238,11 @@ namespace TrainControllerProject
         }
 
         private void testModeOff_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
         {
 
         }
