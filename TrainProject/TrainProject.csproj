@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentralTrainControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CentralTrainControl.Designer.cs">
+      <DependentUpon>CentralTrainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
       <SubType>Form</SubType>
@@ -90,6 +97,12 @@
     <Compile Include="TrackController.Designer.cs">
       <DependentUpon>TrackController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrainModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainModel.Designer.cs">
+      <DependentUpon>TrainModel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrackController.resx">
       <DependentUpon>TrackController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainModel.resx">
+      <DependentUpon>TrainModel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,12 +149,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Clock\TrackDB.mdf">
+    <Content Include="TrackDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Clock\TrackDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="TrackDB_log.ldf">
       <DependentUpon>TrackDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

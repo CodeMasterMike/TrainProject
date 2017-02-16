@@ -86,7 +86,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Murphy = new System.Windows.Forms.TabPage();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -98,6 +98,16 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.Testing = new System.Windows.Forms.TabPage();
+            this.dvgBlocks = new System.Windows.Forms.DataGridView();
+            this.InsertToSql = new System.Windows.Forms.Button();
+            this.SelectFile = new System.Windows.Forms.Button();
+            this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -105,9 +115,16 @@
             this.tabControl1.SuspendLayout();
             this.User.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.Murphy.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.Testing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -729,7 +746,8 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.User);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.Murphy);
+            this.tabControl1.Controls.Add(this.Testing);
             this.tabControl1.Location = new System.Drawing.Point(4, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -813,18 +831,18 @@
             this.button6.Text = "Power - OK";
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // tabPage2
+            // Murphy
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage2.Controls.Add(this.listBox2);
-            this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1203, 626);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Murphy";
+            this.Murphy.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Murphy.Controls.Add(this.listBox2);
+            this.Murphy.Controls.Add(this.groupBox6);
+            this.Murphy.Controls.Add(this.groupBox5);
+            this.Murphy.Location = new System.Drawing.Point(4, 22);
+            this.Murphy.Name = "Murphy";
+            this.Murphy.Padding = new System.Windows.Forms.Padding(3);
+            this.Murphy.Size = new System.Drawing.Size(1203, 626);
+            this.Murphy.TabIndex = 1;
+            this.Murphy.Text = "Murphy";
             // 
             // listBox2
             // 
@@ -971,6 +989,96 @@
             this.button9.Text = "Power Failure";
             this.button9.UseVisualStyleBackColor = false;
             // 
+            // Testing
+            // 
+            this.Testing.Controls.Add(this.dataGridView6);
+            this.Testing.Controls.Add(this.dataGridView5);
+            this.Testing.Controls.Add(this.dataGridView4);
+            this.Testing.Controls.Add(this.dataGridView3);
+            this.Testing.Controls.Add(this.dataGridView2);
+            this.Testing.Controls.Add(this.dvgBlocks);
+            this.Testing.Controls.Add(this.InsertToSql);
+            this.Testing.Controls.Add(this.SelectFile);
+            this.Testing.Location = new System.Drawing.Point(4, 22);
+            this.Testing.Name = "Testing";
+            this.Testing.Size = new System.Drawing.Size(1203, 626);
+            this.Testing.TabIndex = 2;
+            this.Testing.Text = "Testing";
+            this.Testing.UseVisualStyleBackColor = true;
+            // 
+            // dvgBlocks
+            // 
+            this.dvgBlocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgBlocks.Location = new System.Drawing.Point(15, 42);
+            this.dvgBlocks.Name = "dvgBlocks";
+            this.dvgBlocks.Size = new System.Drawing.Size(240, 150);
+            this.dvgBlocks.TabIndex = 2;
+            // 
+            // InsertToSql
+            // 
+            this.InsertToSql.Location = new System.Drawing.Point(106, 13);
+            this.InsertToSql.Name = "InsertToSql";
+            this.InsertToSql.Size = new System.Drawing.Size(75, 23);
+            this.InsertToSql.TabIndex = 1;
+            this.InsertToSql.Text = "Insert to Sql";
+            this.InsertToSql.UseVisualStyleBackColor = true;
+            this.InsertToSql.Click += new System.EventHandler(this.InsertToSql_Click);
+            // 
+            // SelectFile
+            // 
+            this.SelectFile.Location = new System.Drawing.Point(15, 13);
+            this.SelectFile.Name = "SelectFile";
+            this.SelectFile.Size = new System.Drawing.Size(75, 23);
+            this.SelectFile.TabIndex = 0;
+            this.SelectFile.Text = "Select File";
+            this.SelectFile.UseVisualStyleBackColor = true;
+            this.SelectFile.Click += new System.EventHandler(this.selectFile);
+            // 
+            // openExcelFileDialog
+            // 
+            this.openExcelFileDialog.FileName = "openExcelFileDialog";
+            this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(261, 42);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 3;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(507, 42);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView3.TabIndex = 4;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(15, 210);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView4.TabIndex = 5;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(261, 210);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView5.TabIndex = 6;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(507, 210);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView6.TabIndex = 7;
+            // 
             // TrackModelUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -992,11 +1100,18 @@
             this.User.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.Murphy.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.Testing.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1049,7 +1164,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage User;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage Murphy;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox13;
@@ -1072,6 +1187,16 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TabPage Testing;
+        private System.Windows.Forms.DataGridView dvgBlocks;
+        private System.Windows.Forms.Button InsertToSql;
+        private System.Windows.Forms.Button SelectFile;
+        private System.Windows.Forms.OpenFileDialog openExcelFileDialog;
+        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
