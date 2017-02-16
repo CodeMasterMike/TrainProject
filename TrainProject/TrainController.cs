@@ -15,14 +15,22 @@ namespace TrainControllerProject
         //initialize variables
         private int setSpeed = 0;
         private int setTemp = 0;
-
-        //initialize labels
-
+        int testMode = 0; //test mode off = 0 test mode on = 1
+        
+        //initialize labels and controls
 
         //methods
         public TrainController()
         {
             InitializeComponent();
+
+            testMode = 0;
+            blockTestTextBox.Enabled = false;
+            speedTestTextBox.Enabled = false;
+            tempTestTextBox.Enabled = false;
+            ctcSpeedTestTextBox.Enabled = false;
+            ctcAuthorityTestTextBox.Enabled = false;
+
         }
         //every time interval update all of the displays and internal variables
         public void updateTime(String time)
@@ -54,8 +62,42 @@ namespace TrainControllerProject
             setTempLabel.Text = Convert.ToString(setTempTrackBar.Value);
             setTemp = setTempTrackBar.Value;
         }
+        //activate test mode
+        private void testModeOn_Click(object sender, EventArgs e)
+        {
+            testMode = 1;
+            blockTestTextBox.Enabled = true;
+            speedTestTextBox.Enabled = true;
+            tempTestTextBox.Enabled = true;
+            ctcSpeedTestTextBox.Enabled = true;
+            ctcAuthorityTestTextBox.Enabled = true;
+        }
+        //de-activate test mode
+        private void testModeOff_Click(object sender, EventArgs e)
+        {
+            testMode = 0;
+            blockTestTextBox.Enabled = false;
+            speedTestTextBox.Enabled = false;
+            tempTestTextBox.Enabled = false;
+            ctcSpeedTestTextBox.Enabled = false;
+            ctcAuthorityTestTextBox.Enabled = false;
+        }
 
+        private void automaticRadioButton_Click(object sender, EventArgs e)
+        {
+            setSpeedTrackBar.Enabled = false;
+        }
 
+        private void manualRadioButton_Click(object sender, EventArgs e)
+        {
+            setSpeedTrackBar.Enabled = true;
+        }
+
+        private decimal calculate_power(decimal currSpeed, decimal setSpeed)
+        {
+
+            return 0;
+        }
 
 
 
@@ -168,6 +210,11 @@ namespace TrainControllerProject
         }
 
         private void serviceButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void testModeOff_CheckedChanged(object sender, EventArgs e)
         {
 
         }
