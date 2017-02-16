@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using CTC;
 using TrainProject;
 
 namespace TrainProject.Clock
@@ -22,7 +23,7 @@ namespace TrainProject.Clock
 
         public CustomClock(Homepage s)
         {
-            Console.WriteLine("Starting");
+            //Console.WriteLine("Starting");
             interval = 1;
             numIntervals = 0;
             homepage = s;
@@ -30,6 +31,7 @@ namespace TrainProject.Clock
             t.Elapsed += HandleIntervalElapsed;
             t.Start();
         }
+
 
         private void HandleIntervalElapsed(object sender, ElapsedEventArgs e)
         {
@@ -66,7 +68,9 @@ namespace TrainProject.Clock
 
 
             //trigger module events here
+           
             homepage.updateTime(displayString);
+            
         }
 
         public void changeInterval(int ms)

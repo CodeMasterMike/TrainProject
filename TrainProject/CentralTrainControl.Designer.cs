@@ -62,6 +62,10 @@
             this.notificationBox = new System.Windows.Forms.GroupBox();
             this.notificationLabel = new System.Windows.Forms.Label();
             this.systemOverviewBox = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numPassengersUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trainInfoList = new System.Windows.Forms.ListView();
             this.lineControlBox = new System.Windows.Forms.GroupBox();
             this.lineSelectComboBox = new System.Windows.Forms.ComboBox();
             this.trackAndBlockInfoBox = new System.Windows.Forms.GroupBox();
@@ -79,10 +83,8 @@
             this.openBlockButton = new System.Windows.Forms.Button();
             this.closeBlockButton = new System.Windows.Forms.Button();
             this.trainControlBox = new System.Windows.Forms.GroupBox();
-            this.authTrackBar = new System.Windows.Forms.TrackBar();
-            this.speedTrackBar = new System.Windows.Forms.TrackBar();
-            this.suggestAuthValue = new System.Windows.Forms.Label();
-            this.suggestSpeedValue = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.suggestAuthLabel = new System.Windows.Forms.Label();
             this.suggestSpeedLabel = new System.Windows.Forms.Label();
             this.trainInfoBox = new System.Windows.Forms.GroupBox();
@@ -95,7 +97,7 @@
             this.trainNumberValue = new System.Windows.Forms.Label();
             this.trainNumberLabel = new System.Windows.Forms.Label();
             this.ctcTabControl = new System.Windows.Forms.TabControl();
-            this.trainInfoList = new System.Windows.Forms.ListView();
+            this.trackDBDataSet1 = new TrainProject.TrackDBDataSet();
             this.murphyTab.SuspendLayout();
             this.dispatcherTab.SuspendLayout();
             this.dispatchControlBox.SuspendLayout();
@@ -103,14 +105,17 @@
             this.maintenanceBox.SuspendLayout();
             this.notificationBox.SuspendLayout();
             this.systemOverviewBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPassengersUpDown)).BeginInit();
             this.lineControlBox.SuspendLayout();
             this.trackAndBlockInfoBox.SuspendLayout();
             this.blockControlBox.SuspendLayout();
             this.trainControlBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.authTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.trainInfoBox.SuspendLayout();
             this.ctcTabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackDBDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // murphyTab
@@ -255,12 +260,6 @@
             // selectScheduleComboBox
             // 
             this.selectScheduleComboBox.FormattingEnabled = true;
-            this.selectScheduleComboBox.Items.AddRange(new object[] {
-            "Block A1",
-            "Block A2",
-            "Block A3",
-            "Block B1",
-            "Block B2"});
             this.selectScheduleComboBox.Location = new System.Drawing.Point(12, 51);
             this.selectScheduleComboBox.Name = "selectScheduleComboBox";
             this.selectScheduleComboBox.Size = new System.Drawing.Size(319, 28);
@@ -300,7 +299,6 @@
             this.selectScheduleLabel.Size = new System.Drawing.Size(115, 20);
             this.selectScheduleLabel.TabIndex = 0;
             this.selectScheduleLabel.Text = "Select Block";
-            this.selectScheduleLabel.Click += new System.EventHandler(this.selectScheduleLabel_Click);
             // 
             // dispatchInfoBox
             // 
@@ -357,9 +355,9 @@
             this.throughputValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.throughputValue.Location = new System.Drawing.Point(158, 103);
             this.throughputValue.Name = "throughputValue";
-            this.throughputValue.Size = new System.Drawing.Size(188, 20);
+            this.throughputValue.Size = new System.Drawing.Size(15, 20);
             this.throughputValue.TabIndex = 0;
-            this.throughputValue.Text = "1523 Passengers per hr";
+            this.throughputValue.Text = "-";
             // 
             // timeLabel
             // 
@@ -377,9 +375,9 @@
             this.modeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modeValue.Location = new System.Drawing.Point(164, 23);
             this.modeValue.Name = "modeValue";
-            this.modeValue.Size = new System.Drawing.Size(84, 20);
+            this.modeValue.Size = new System.Drawing.Size(15, 20);
             this.modeValue.TabIndex = 0;
-            this.modeValue.Text = "Automatic";
+            this.modeValue.Text = "-";
             // 
             // rushHourValue
             // 
@@ -387,9 +385,9 @@
             this.rushHourValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rushHourValue.Location = new System.Drawing.Point(164, 63);
             this.rushHourValue.Name = "rushHourValue";
-            this.rushHourValue.Size = new System.Drawing.Size(37, 20);
+            this.rushHourValue.Size = new System.Drawing.Size(15, 20);
             this.rushHourValue.TabIndex = 0;
-            this.rushHourValue.Text = "Yes";
+            this.rushHourValue.Text = "-";
             // 
             // numTrainsInServValue
             // 
@@ -397,9 +395,9 @@
             this.numTrainsInServValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numTrainsInServValue.Location = new System.Drawing.Point(164, 83);
             this.numTrainsInServValue.Name = "numTrainsInServValue";
-            this.numTrainsInServValue.Size = new System.Drawing.Size(27, 20);
+            this.numTrainsInServValue.Size = new System.Drawing.Size(15, 20);
             this.numTrainsInServValue.TabIndex = 0;
-            this.numTrainsInServValue.Text = "16";
+            this.numTrainsInServValue.Text = "-";
             // 
             // timeValue
             // 
@@ -407,9 +405,9 @@
             this.timeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeValue.Location = new System.Drawing.Point(164, 43);
             this.timeValue.Name = "timeValue";
-            this.timeValue.Size = new System.Drawing.Size(73, 20);
+            this.timeValue.Size = new System.Drawing.Size(15, 20);
             this.timeValue.TabIndex = 0;
-            this.timeValue.Text = "17:46:35";
+            this.timeValue.Text = "-";
             // 
             // modeLabel
             // 
@@ -507,6 +505,7 @@
             // 
             // systemOverviewBox
             // 
+            this.systemOverviewBox.Controls.Add(this.groupBox1);
             this.systemOverviewBox.Controls.Add(this.trainInfoList);
             this.systemOverviewBox.Location = new System.Drawing.Point(396, 6);
             this.systemOverviewBox.Name = "systemOverviewBox";
@@ -514,6 +513,53 @@
             this.systemOverviewBox.TabIndex = 16;
             this.systemOverviewBox.TabStop = false;
             this.systemOverviewBox.Text = "System Overview";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numPassengersUpDown);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(10, 519);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(440, 79);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Test Stimnuli";
+            // 
+            // numPassengersUpDown
+            // 
+            this.numPassengersUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numPassengersUpDown.Location = new System.Drawing.Point(11, 46);
+            this.numPassengersUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.numPassengersUpDown.Name = "numPassengersUpDown";
+            this.numPassengersUpDown.Size = new System.Drawing.Size(120, 27);
+            this.numPassengersUpDown.TabIndex = 1;
+            this.numPassengersUpDown.ValueChanged += new System.EventHandler(this.numPassengersUpDown_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Num Passengers";
+            // 
+            // trainInfoList
+            // 
+            this.trainInfoList.Location = new System.Drawing.Point(10, 27);
+            this.trainInfoList.Name = "trainInfoList";
+            this.trainInfoList.Size = new System.Drawing.Size(440, 485);
+            this.trainInfoList.TabIndex = 0;
+            this.trainInfoList.UseCompatibleStateImageBehavior = false;
+            this.trainInfoList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.trainInfoList_ItemSelectionChanged);
             // 
             // lineControlBox
             // 
@@ -593,9 +639,9 @@
             this.lineValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineValue.Location = new System.Drawing.Point(166, 35);
             this.lineValue.Name = "lineValue";
-            this.lineValue.Size = new System.Drawing.Size(55, 20);
+            this.lineValue.Size = new System.Drawing.Size(15, 20);
             this.lineValue.TabIndex = 0;
-            this.lineValue.Text = "Green";
+            this.lineValue.Text = "-";
             // 
             // blockStatusLabel
             // 
@@ -613,9 +659,9 @@
             this.trackSectionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackSectionValue.Location = new System.Drawing.Point(170, 57);
             this.trackSectionValue.Name = "trackSectionValue";
-            this.trackSectionValue.Size = new System.Drawing.Size(20, 20);
+            this.trackSectionValue.Size = new System.Drawing.Size(15, 20);
             this.trackSectionValue.TabIndex = 0;
-            this.trackSectionValue.Text = "S";
+            this.trackSectionValue.Text = "-";
             // 
             // occupancyLabel
             // 
@@ -633,9 +679,9 @@
             this.blockNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blockNumberValue.Location = new System.Drawing.Point(170, 77);
             this.blockNumberValue.Name = "blockNumberValue";
-            this.blockNumberValue.Size = new System.Drawing.Size(27, 20);
+            this.blockNumberValue.Size = new System.Drawing.Size(15, 20);
             this.blockNumberValue.TabIndex = 0;
-            this.blockNumberValue.Text = "18";
+            this.blockNumberValue.Text = "-";
             // 
             // occupancyValue
             // 
@@ -643,9 +689,9 @@
             this.occupancyValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.occupancyValue.Location = new System.Drawing.Point(166, 120);
             this.occupancyValue.Name = "occupancyValue";
-            this.occupancyValue.Size = new System.Drawing.Size(18, 20);
+            this.occupancyValue.Size = new System.Drawing.Size(15, 20);
             this.occupancyValue.TabIndex = 0;
-            this.occupancyValue.Text = "1";
+            this.occupancyValue.Text = "-";
             // 
             // blockStatusValue
             // 
@@ -653,9 +699,9 @@
             this.blockStatusValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blockStatusValue.Location = new System.Drawing.Point(166, 100);
             this.blockStatusValue.Name = "blockStatusValue";
-            this.blockStatusValue.Size = new System.Drawing.Size(61, 20);
+            this.blockStatusValue.Size = new System.Drawing.Size(15, 20);
             this.blockStatusValue.TabIndex = 0;
-            this.blockStatusValue.Text = "Closed";
+            this.blockStatusValue.Text = "-";
             // 
             // blockControlBox
             // 
@@ -696,10 +742,8 @@
             // 
             // trainControlBox
             // 
-            this.trainControlBox.Controls.Add(this.authTrackBar);
-            this.trainControlBox.Controls.Add(this.speedTrackBar);
-            this.trainControlBox.Controls.Add(this.suggestAuthValue);
-            this.trainControlBox.Controls.Add(this.suggestSpeedValue);
+            this.trainControlBox.Controls.Add(this.numericUpDown2);
+            this.trainControlBox.Controls.Add(this.numericUpDown1);
             this.trainControlBox.Controls.Add(this.suggestAuthLabel);
             this.trainControlBox.Controls.Add(this.suggestSpeedLabel);
             this.trainControlBox.Location = new System.Drawing.Point(6, 123);
@@ -709,54 +753,21 @@
             this.trainControlBox.TabStop = false;
             this.trainControlBox.Text = "Train Control";
             // 
-            // authTrackBar
+            // numericUpDown2
             // 
-            this.authTrackBar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.authTrackBar.Location = new System.Drawing.Point(203, 46);
-            this.authTrackBar.Maximum = 5000;
-            this.authTrackBar.Name = "authTrackBar";
-            this.authTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.authTrackBar.Size = new System.Drawing.Size(56, 82);
-            this.authTrackBar.TabIndex = 1;
-            this.authTrackBar.TickFrequency = 1000;
-            this.authTrackBar.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.authTrackBar.Value = 4000;
-            this.authTrackBar.Scroll += new System.EventHandler(this.authTrackBar_Scroll);
+            this.numericUpDown2.Location = new System.Drawing.Point(215, 56);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 27);
+            this.numericUpDown2.TabIndex = 1;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
-            // speedTrackBar
+            // numericUpDown1
             // 
-            this.speedTrackBar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.speedTrackBar.Location = new System.Drawing.Point(40, 46);
-            this.speedTrackBar.Maximum = 70;
-            this.speedTrackBar.Name = "speedTrackBar";
-            this.speedTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.speedTrackBar.Size = new System.Drawing.Size(56, 82);
-            this.speedTrackBar.TabIndex = 1;
-            this.speedTrackBar.TickFrequency = 10;
-            this.speedTrackBar.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.speedTrackBar.Value = 40;
-            this.speedTrackBar.Scroll += new System.EventHandler(this.speedTrackBar_Scroll);
-            // 
-            // suggestAuthValue
-            // 
-            this.suggestAuthValue.AutoSize = true;
-            this.suggestAuthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suggestAuthValue.Location = new System.Drawing.Point(256, 70);
-            this.suggestAuthValue.Name = "suggestAuthValue";
-            this.suggestAuthValue.Size = new System.Drawing.Size(48, 58);
-            this.suggestAuthValue.TabIndex = 0;
-            this.suggestAuthValue.Text = "40 \r\nmi";
-            this.suggestAuthValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // suggestSpeedValue
-            // 
-            this.suggestSpeedValue.AutoSize = true;
-            this.suggestSpeedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suggestSpeedValue.Location = new System.Drawing.Point(94, 70);
-            this.suggestSpeedValue.Name = "suggestSpeedValue";
-            this.suggestSpeedValue.Size = new System.Drawing.Size(63, 58);
-            this.suggestSpeedValue.TabIndex = 0;
-            this.suggestSpeedValue.Text = "48 \r\nmph";
+            this.numericUpDown1.Location = new System.Drawing.Point(34, 56);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 27);
+            this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // suggestAuthLabel
             // 
@@ -799,21 +810,21 @@
             // 
             this.currentAuthLabel.AutoSize = true;
             this.currentAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentAuthLabel.Location = new System.Drawing.Point(30, 83);
+            this.currentAuthLabel.Location = new System.Drawing.Point(7, 83);
             this.currentAuthLabel.Name = "currentAuthLabel";
-            this.currentAuthLabel.Size = new System.Drawing.Size(141, 20);
+            this.currentAuthLabel.Size = new System.Drawing.Size(164, 20);
             this.currentAuthLabel.TabIndex = 0;
-            this.currentAuthLabel.Text = "Current Authority:";
+            this.currentAuthLabel.Text = "Suggested Authority:";
             // 
             // currentSpeedLabel
             // 
             this.currentSpeedLabel.AutoSize = true;
             this.currentSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentSpeedLabel.Location = new System.Drawing.Point(49, 63);
+            this.currentSpeedLabel.Location = new System.Drawing.Point(26, 63);
             this.currentSpeedLabel.Name = "currentSpeedLabel";
-            this.currentSpeedLabel.Size = new System.Drawing.Size(122, 20);
+            this.currentSpeedLabel.Size = new System.Drawing.Size(145, 20);
             this.currentSpeedLabel.TabIndex = 0;
-            this.currentSpeedLabel.Text = "Current Speed:";
+            this.currentSpeedLabel.Text = "Suggested Speed:";
             // 
             // directionLabel
             // 
@@ -831,9 +842,9 @@
             this.currentAuthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentAuthValue.Location = new System.Drawing.Point(171, 83);
             this.currentAuthValue.Name = "currentAuthValue";
-            this.currentAuthValue.Size = new System.Drawing.Size(97, 20);
+            this.currentAuthValue.Size = new System.Drawing.Size(15, 20);
             this.currentAuthValue.TabIndex = 0;
-            this.currentAuthValue.Text = "9 mi remain";
+            this.currentAuthValue.Text = "-";
             // 
             // currentSpeedValue
             // 
@@ -841,9 +852,9 @@
             this.currentSpeedValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentSpeedValue.Location = new System.Drawing.Point(171, 63);
             this.currentSpeedValue.Name = "currentSpeedValue";
-            this.currentSpeedValue.Size = new System.Drawing.Size(64, 20);
+            this.currentSpeedValue.Size = new System.Drawing.Size(15, 20);
             this.currentSpeedValue.TabIndex = 0;
-            this.currentSpeedValue.Text = "69 mph";
+            this.currentSpeedValue.Text = "-";
             // 
             // directionValue
             // 
@@ -851,9 +862,9 @@
             this.directionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.directionValue.Location = new System.Drawing.Point(171, 43);
             this.directionValue.Name = "directionValue";
-            this.directionValue.Size = new System.Drawing.Size(20, 20);
+            this.directionValue.Size = new System.Drawing.Size(15, 20);
             this.directionValue.TabIndex = 0;
-            this.directionValue.Text = "A";
+            this.directionValue.Text = "-";
             // 
             // trainNumberValue
             // 
@@ -861,9 +872,9 @@
             this.trainNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trainNumberValue.Location = new System.Drawing.Point(171, 23);
             this.trainNumberValue.Name = "trainNumberValue";
-            this.trainNumberValue.Size = new System.Drawing.Size(36, 20);
+            this.trainNumberValue.Size = new System.Drawing.Size(15, 20);
             this.trainNumberValue.TabIndex = 0;
-            this.trainNumberValue.Text = "101";
+            this.trainNumberValue.Text = "-";
             // 
             // trainNumberLabel
             // 
@@ -885,14 +896,10 @@
             this.ctcTabControl.Size = new System.Drawing.Size(1229, 907);
             this.ctcTabControl.TabIndex = 0;
             // 
-            // trainInfoList
+            // trackDBDataSet1
             // 
-            this.trainInfoList.Location = new System.Drawing.Point(7, 27);
-            this.trainInfoList.Name = "trainInfoList";
-            this.trainInfoList.Size = new System.Drawing.Size(452, 571);
-            this.trainInfoList.TabIndex = 0;
-            this.trainInfoList.UseCompatibleStateImageBehavior = false;
-            this.trainInfoList.SelectedIndexChanged += new System.EventHandler(this.trainInfoList_SelectedIndexChanged);
+            this.trackDBDataSet1.DataSetName = "TrackDBDataSet";
+            this.trackDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // CentralTrainControl
             // 
@@ -915,17 +922,21 @@
             this.notificationBox.ResumeLayout(false);
             this.notificationBox.PerformLayout();
             this.systemOverviewBox.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPassengersUpDown)).EndInit();
             this.lineControlBox.ResumeLayout(false);
             this.trackAndBlockInfoBox.ResumeLayout(false);
             this.trackAndBlockInfoBox.PerformLayout();
             this.blockControlBox.ResumeLayout(false);
             this.trainControlBox.ResumeLayout(false);
             this.trainControlBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.authTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.trainInfoBox.ResumeLayout(false);
             this.trainInfoBox.PerformLayout();
             this.ctcTabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackDBDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -983,10 +994,6 @@
         private System.Windows.Forms.Button openBlockButton;
         private System.Windows.Forms.Button closeBlockButton;
         private System.Windows.Forms.GroupBox trainControlBox;
-        private System.Windows.Forms.TrackBar authTrackBar;
-        private System.Windows.Forms.TrackBar speedTrackBar;
-        private System.Windows.Forms.Label suggestAuthValue;
-        private System.Windows.Forms.Label suggestSpeedValue;
         private System.Windows.Forms.Label suggestAuthLabel;
         private System.Windows.Forms.Label suggestSpeedLabel;
         private System.Windows.Forms.GroupBox trainInfoBox;
@@ -999,7 +1006,13 @@
         private System.Windows.Forms.Label trainNumberValue;
         private System.Windows.Forms.Label trainNumberLabel;
         private System.Windows.Forms.TabControl ctcTabControl;
+        private TrainProject.TrackDBDataSet trackDBDataSet1;
         private System.Windows.Forms.ListView trainInfoList;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown numPassengersUpDown;
+        private System.Windows.Forms.Label label1;
     }
 }
 

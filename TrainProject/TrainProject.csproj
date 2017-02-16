@@ -61,23 +61,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Compile Include="HelperObjects\Block.cs" />
->>>>>>> master
     <Compile Include="CentralTrainControl.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CentralTrainControl.Designer.cs">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
-    <Compile Include="HelperObjects\Crossing.cs" />
     <Compile Include="HelperObjects\Train.cs" />
     <Compile Include="HelperObjects\Switch.cs" />
     <Compile Include="ListViewExtender.cs" />
->>>>>>> master
     <Compile Include="TrackControllerModule.cs" />
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
@@ -108,18 +101,15 @@
     <Compile Include="TrackController.Designer.cs">
       <DependentUpon>TrackController.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <EmbeddedResource Include="CentralTrainControl.resx">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </EmbeddedResource>
-=======
     <Compile Include="TrainController.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TrainController.designer.cs">
       <DependentUpon>TrainController.cs</DependentUpon>
     </Compile>
->>>>>>> master
     <Compile Include="TrackControllerTest.cs" />
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
