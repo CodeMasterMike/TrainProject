@@ -15,6 +15,65 @@ namespace CTC
         public CentralTrainControl()
         {
             InitializeComponent();
+
+            Console.Out.WriteLine("hit ctc()");
+            trainInfoList.View = View.Details;
+            trainInfoList.Columns.Add("Train ID", 80);
+            trainInfoList.Columns.Add("Block Location", 120);
+            trainInfoList.Columns.Add("Sug. Speed", 100);
+            trainInfoList.Columns.Add("Sug. Auth", 100);
+            trainInfoList.Items.Add("1", 1);
+            trainInfoList.Items[0].SubItems.Add("yard");
+            trainInfoList.Items[0].SubItems.Add("0mph");
+            trainInfoList.Items[0].SubItems.Add("-");
+            trainInfoList.Items.Add("2", 2);
+            trainInfoList.Items[1].SubItems.Add("yard");
+            trainInfoList.Items[1].SubItems.Add("0mph");
+            trainInfoList.Items[1].SubItems.Add("-");
+            trainInfoList.Items.Add("3", 3);
+            trainInfoList.Items[2].SubItems.Add("yard");
+            trainInfoList.Items[2].SubItems.Add("0mph");
+            trainInfoList.Items[2].SubItems.Add("-");
+            trainInfoList.Items.Add("4", 4);
+            trainInfoList.Items[3].SubItems.Add("yard");
+            trainInfoList.Items[3].SubItems.Add("0mph");
+            trainInfoList.Items[3].SubItems.Add("-");
+            trainInfoList.Items.Add("5", 5);
+            trainInfoList.Items[4].SubItems.Add("yard");
+            trainInfoList.Items[4].SubItems.Add("0mph");
+            trainInfoList.Items[4].SubItems.Add("-");
+            trainInfoList.Items.Add("6", 6);
+            trainInfoList.Items[5].SubItems.Add("yard");
+            trainInfoList.Items[5].SubItems.Add("0mph");
+            trainInfoList.Items[5].SubItems.Add("-");
+            trainInfoList.Items.Add("7", 7);
+            trainInfoList.Items[6].SubItems.Add("yard");
+            trainInfoList.Items[6].SubItems.Add("0mph");
+            trainInfoList.Items[6].SubItems.Add("-");
+            trainInfoList.Items.Add("8", 8);
+            trainInfoList.Items[7].SubItems.Add("yard");
+            trainInfoList.Items[7].SubItems.Add("0mph");
+            trainInfoList.Items[7].SubItems.Add("-");
+            trainInfoList.Items.Add("9", 9);
+            trainInfoList.Items[8].SubItems.Add("yard");
+            trainInfoList.Items[8].SubItems.Add("0mph");
+            trainInfoList.Items[8].SubItems.Add("-");
+            trainInfoList.Items.Add("10", 10);
+            trainInfoList.Items[9].SubItems.Add("yard");
+            trainInfoList.Items[9].SubItems.Add("0mph");
+            trainInfoList.Items[9].SubItems.Add("-");
+            trainInfoList.Items.Add("11", 11);
+            trainInfoList.Items[10].SubItems.Add("yard");
+            trainInfoList.Items[10].SubItems.Add("0mph");
+            trainInfoList.Items[10].SubItems.Add("-");
+            trainInfoList.Items.Add("yard", 12);
+            trainInfoList.Items[11].SubItems.Add("12");
+            trainInfoList.Items[11].SubItems.Add("0mph");
+            trainInfoList.Items[11].SubItems.Add("-");
+
+
+
+
         }
 
         private void speedTrackBar_Scroll(object sender, EventArgs e)
@@ -93,6 +152,21 @@ namespace CTC
         private void fixTrackButton_Click(object sender, EventArgs e)
         {
             //sendTrackMaintenance()
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectScheduleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trainInfoList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
