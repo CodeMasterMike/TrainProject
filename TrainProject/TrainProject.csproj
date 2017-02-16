@@ -69,6 +69,8 @@
     <Compile Include="CentralTrainControl.Designer.cs">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperObjects\Line.cs" />
+    <Compile Include="HelperObjects\Section.cs" />
     <Compile Include="HelperObjects\Crossing.cs" />
     <Compile Include="HelperObjects\Train.cs" />
     <Compile Include="HelperObjects\Switch.cs" />
@@ -137,7 +139,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrainModel.resx">
       <DependentUpon>TrainModel.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrainController.resx">
       <DependentUpon>TrainController.cs</DependentUpon>
     </EmbeddedResource>
