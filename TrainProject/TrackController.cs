@@ -80,7 +80,7 @@ namespace TrackController
             Console.WriteLine(crossingId);
             bool newState = ctrl.toggleCrossing(crossingId);
             e.Item.SubItems[1].Text = newState.ToString();
-            MessageBox.Show(this, @"Crossing at block " + crossingId + "activated " + newState);
+            MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
         }
 
         private void initializeSwitchTable()
