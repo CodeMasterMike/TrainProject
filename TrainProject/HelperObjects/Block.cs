@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace TrainProject
 {
-    class Block
+    public class Block
     {
         //these properties keep track of block info
         private int blockId { get; set; }
-        private int blockNum { get; set; }
+        public int blockNum { get; set; }
+        public int direction { get; set; }
         private String section { get; set; }
         private String line { get; set; }
         private int length { get; set; }
@@ -30,9 +31,10 @@ namespace TrainProject
         private Boolean hasCrossing { get; set; }
         private Boolean hasSwitch { get; set; } //maybe make this int to say which crossing?
 
-        public Block()
+        public Block(int bN, int d)
         {
-
+            blockNum = bN;
+            direction = d;
         }
     }
 }

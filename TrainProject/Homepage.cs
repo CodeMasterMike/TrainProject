@@ -56,7 +56,7 @@ namespace TrainProject
 
         public void updateTime(String displayTime)
         {
-            Console.WriteLine("updating time");
+            //Console.WriteLine("updating time");
             if (this.clockDisplayedText.InvokeRequired)
             {
                 clockDisplayedText.Invoke(new MethodInvoker(delegate { this.clockDisplayedText.Text = displayTime; }));

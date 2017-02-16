@@ -22,9 +22,9 @@ namespace TrainProject.Clock
 
         public CustomClock(Homepage s)
         {
-            Console.WriteLine("Starting");
-            interval = 1;
-            numIntervals = 0;
+            Console.WriteLine("Starting System Clock");
+            interval = 1000; //starting in real time, 1000ms
+            numIntervals = 7*3600; //8 AM because 0000 is 1AM :)
             homepage = s;
             t = new Timer(interval);
             t.Elapsed += HandleIntervalElapsed;
