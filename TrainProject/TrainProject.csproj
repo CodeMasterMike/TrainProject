@@ -137,6 +137,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrainModel.resx">
       <DependentUpon>TrainModel.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="TrainController.resx">
       <DependentUpon>TrainController.cs</DependentUpon>
     </EmbeddedResource>
