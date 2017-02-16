@@ -34,10 +34,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.Driver_Tab = new System.Windows.Forms.TabPage();
+            this.simulateButton = new System.Windows.Forms.Button();
             this.testModeOff = new System.Windows.Forms.RadioButton();
             this.testModeOn = new System.Windows.Forms.RadioButton();
-            this.testModeLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
+            this.testModeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.distanceToLabel = new System.Windows.Forms.Label();
             this.tunnelStatusLabel = new System.Windows.Forms.Label();
@@ -82,6 +83,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ctcSpeedLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -96,7 +99,7 @@
             this.Show_Power = new System.Windows.Forms.Label();
             this.Show_Speed = new System.Windows.Forms.Label();
             this.Brakes_GroupBox = new System.Windows.Forms.GroupBox();
-            this.Service_Button = new System.Windows.Forms.CheckBox();
+            this.serviceButton = new System.Windows.Forms.CheckBox();
             this.Emergency_Button = new System.Windows.Forms.CheckBox();
             this.RightDoor_GroupBox = new System.Windows.Forms.GroupBox();
             this.Right_Closed = new System.Windows.Forms.RadioButton();
@@ -111,8 +114,12 @@
             this.AC_OFF = new System.Windows.Forms.RadioButton();
             this.AC_ON = new System.Windows.Forms.RadioButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.ctcSpeedLabel = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.KpTextBox = new System.Windows.Forms.TextBox();
+            this.KiTextBox = new System.Windows.Forms.TextBox();
+            this.setParametersButton = new System.Windows.Forms.Button();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -132,6 +139,7 @@
             this.LeftDoor_GroupBox.SuspendLayout();
             this.Lights_GroupBox.SuspendLayout();
             this.AC_GroupBox.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Passenger_Tab
@@ -150,7 +158,7 @@
             // textBox7
             // 
             this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(887, 426);
+            this.textBox7.Location = new System.Drawing.Point(699, 294);
             this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
@@ -161,7 +169,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(448, 426);
+            this.button3.Location = new System.Drawing.Point(260, 294);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(403, 61);
@@ -173,6 +181,7 @@
             // 
             this.Users_Tab.Controls.Add(this.Driver_Tab);
             this.Users_Tab.Controls.Add(this.Passenger_Tab);
+            this.Users_Tab.Controls.Add(this.tabPage1);
             this.Users_Tab.Location = new System.Drawing.Point(3, 0);
             this.Users_Tab.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Users_Tab.Name = "Users_Tab";
@@ -183,10 +192,11 @@
             // Driver_Tab
             // 
             this.Driver_Tab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Driver_Tab.Controls.Add(this.simulateButton);
             this.Driver_Tab.Controls.Add(this.testModeOff);
             this.Driver_Tab.Controls.Add(this.testModeOn);
-            this.Driver_Tab.Controls.Add(this.testModeLabel);
             this.Driver_Tab.Controls.Add(this.timeLabel);
+            this.Driver_Tab.Controls.Add(this.testModeLabel);
             this.Driver_Tab.Controls.Add(this.groupBox17);
             this.Driver_Tab.Controls.Add(this.label11);
             this.Driver_Tab.Controls.Add(this.groupBox14);
@@ -222,12 +232,24 @@
             this.Driver_Tab.Text = "Driver";
             this.Driver_Tab.Click += new System.EventHandler(this.Driver_Tab_Click);
             // 
+            // simulateButton
+            // 
+            this.simulateButton.Enabled = false;
+            this.simulateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simulateButton.Location = new System.Drawing.Point(1627, 863);
+            this.simulateButton.Name = "simulateButton";
+            this.simulateButton.Size = new System.Drawing.Size(181, 62);
+            this.simulateButton.TabIndex = 50;
+            this.simulateButton.Text = "Simulate";
+            this.simulateButton.UseVisualStyleBackColor = true;
+            this.simulateButton.Click += new System.EventHandler(this.simulateButton_Click);
+            // 
             // testModeOff
             // 
             this.testModeOff.AutoSize = true;
             this.testModeOff.Checked = true;
             this.testModeOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testModeOff.Location = new System.Drawing.Point(1781, 849);
+            this.testModeOff.Location = new System.Drawing.Point(1776, 815);
             this.testModeOff.Margin = new System.Windows.Forms.Padding(4);
             this.testModeOff.Name = "testModeOff";
             this.testModeOff.Size = new System.Drawing.Size(93, 33);
@@ -242,7 +264,7 @@
             // 
             this.testModeOn.AutoSize = true;
             this.testModeOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testModeOn.Location = new System.Drawing.Point(1781, 817);
+            this.testModeOn.Location = new System.Drawing.Point(1776, 781);
             this.testModeOn.Margin = new System.Windows.Forms.Padding(4);
             this.testModeOn.Name = "testModeOn";
             this.testModeOn.Size = new System.Drawing.Size(81, 33);
@@ -250,17 +272,6 @@
             this.testModeOn.Text = "ON";
             this.testModeOn.UseVisualStyleBackColor = true;
             this.testModeOn.Click += new System.EventHandler(this.testModeOn_Click);
-            // 
-            // testModeLabel
-            // 
-            this.testModeLabel.AutoSize = true;
-            this.testModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testModeLabel.Location = new System.Drawing.Point(1612, 837);
-            this.testModeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.testModeLabel.Name = "testModeLabel";
-            this.testModeLabel.Size = new System.Drawing.Size(179, 36);
-            this.testModeLabel.TabIndex = 47;
-            this.testModeLabel.Text = "Test Mode : ";
             // 
             // timeLabel
             // 
@@ -271,6 +282,17 @@
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(0, 37);
             this.timeLabel.TabIndex = 44;
+            // 
+            // testModeLabel
+            // 
+            this.testModeLabel.AutoSize = true;
+            this.testModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testModeLabel.Location = new System.Drawing.Point(1607, 794);
+            this.testModeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.testModeLabel.Name = "testModeLabel";
+            this.testModeLabel.Size = new System.Drawing.Size(179, 36);
+            this.testModeLabel.TabIndex = 47;
+            this.testModeLabel.Text = "Test Mode : ";
             // 
             // groupBox17
             // 
@@ -631,6 +653,7 @@
             this.Heater_On.Text = "ON";
             this.Heater_On.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Heater_On.UseVisualStyleBackColor = true;
+            this.Heater_On.CheckedChanged += new System.EventHandler(this.Heater_On_CheckedChanged);
             // 
             // setTempLabel
             // 
@@ -797,6 +820,28 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "SetPoints";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(316, 94);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 37);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "10mi";
+            // 
+            // ctcSpeedLabel
+            // 
+            this.ctcSpeedLabel.AutoSize = true;
+            this.ctcSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctcSpeedLabel.Location = new System.Drawing.Point(316, 49);
+            this.ctcSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ctcSpeedLabel.Name = "ctcSpeedLabel";
+            this.ctcSpeedLabel.Size = new System.Drawing.Size(123, 37);
+            this.ctcSpeedLabel.TabIndex = 3;
+            this.ctcSpeedLabel.Text = "35MPH";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -951,7 +996,7 @@
             // 
             // Brakes_GroupBox
             // 
-            this.Brakes_GroupBox.Controls.Add(this.Service_Button);
+            this.Brakes_GroupBox.Controls.Add(this.serviceButton);
             this.Brakes_GroupBox.Controls.Add(this.Emergency_Button);
             this.Brakes_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Brakes_GroupBox.Location = new System.Drawing.Point(15, 704);
@@ -963,16 +1008,16 @@
             this.Brakes_GroupBox.TabStop = false;
             this.Brakes_GroupBox.Text = "Brakes";
             // 
-            // Service_Button
+            // serviceButton
             // 
-            this.Service_Button.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Service_Button.Location = new System.Drawing.Point(272, 55);
-            this.Service_Button.Name = "Service_Button";
-            this.Service_Button.Size = new System.Drawing.Size(230, 150);
-            this.Service_Button.TabIndex = 1;
-            this.Service_Button.Text = "Service";
-            this.Service_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Service_Button.UseVisualStyleBackColor = true;
+            this.serviceButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.serviceButton.Location = new System.Drawing.Point(272, 55);
+            this.serviceButton.Name = "serviceButton";
+            this.serviceButton.Size = new System.Drawing.Size(230, 150);
+            this.serviceButton.TabIndex = 1;
+            this.serviceButton.Text = "Service";
+            this.serviceButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.serviceButton.UseVisualStyleBackColor = true;
             // 
             // Emergency_Button
             // 
@@ -1152,27 +1197,65 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // ctcSpeedLabel
+            // tabPage1
             // 
-            this.ctcSpeedLabel.AutoSize = true;
-            this.ctcSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctcSpeedLabel.Location = new System.Drawing.Point(316, 49);
-            this.ctcSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ctcSpeedLabel.Name = "ctcSpeedLabel";
-            this.ctcSpeedLabel.Size = new System.Drawing.Size(123, 37);
-            this.ctcSpeedLabel.TabIndex = 3;
-            this.ctcSpeedLabel.Text = "35MPH";
+            this.tabPage1.Controls.Add(this.setParametersButton);
+            this.tabPage1.Controls.Add(this.KiTextBox);
+            this.tabPage1.Controls.Add(this.KpTextBox);
+            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1924, 972);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Engineer";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // label8
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(316, 94);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 37);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "10mi";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(552, 189);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(153, 63);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Kp = ";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(555, 286);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(150, 63);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Ki  = ";
+            // 
+            // KpTextBox
+            // 
+            this.KpTextBox.Location = new System.Drawing.Point(705, 185);
+            this.KpTextBox.Name = "KpTextBox";
+            this.KpTextBox.Size = new System.Drawing.Size(220, 68);
+            this.KpTextBox.TabIndex = 2;
+            // 
+            // KiTextBox
+            // 
+            this.KiTextBox.Location = new System.Drawing.Point(705, 281);
+            this.KiTextBox.Name = "KiTextBox";
+            this.KiTextBox.Size = new System.Drawing.Size(220, 68);
+            this.KiTextBox.TabIndex = 3;
+            // 
+            // setParametersButton
+            // 
+            this.setParametersButton.Location = new System.Drawing.Point(519, 379);
+            this.setParametersButton.Name = "setParametersButton";
+            this.setParametersButton.Size = new System.Drawing.Size(445, 133);
+            this.setParametersButton.TabIndex = 4;
+            this.setParametersButton.Text = "Set Parameters";
+            this.setParametersButton.UseVisualStyleBackColor = true;
+            this.setParametersButton.Click += new System.EventHandler(this.setParametersButton_Click);
             // 
             // TrainController
             // 
@@ -1209,6 +1292,8 @@
             this.LeftDoor_GroupBox.ResumeLayout(false);
             this.Lights_GroupBox.ResumeLayout(false);
             this.AC_GroupBox.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1221,9 +1306,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage Driver_Tab;
-        private System.Windows.Forms.RadioButton testModeOff;
-        private System.Windows.Forms.RadioButton testModeOn;
-        private System.Windows.Forms.Label testModeLabel;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.Label label9;
@@ -1276,7 +1358,7 @@
         private System.Windows.Forms.Label Show_Power;
         private System.Windows.Forms.Label Show_Speed;
         private System.Windows.Forms.GroupBox Brakes_GroupBox;
-        private System.Windows.Forms.CheckBox Service_Button;
+        private System.Windows.Forms.CheckBox serviceButton;
         private System.Windows.Forms.CheckBox Emergency_Button;
         private System.Windows.Forms.GroupBox RightDoor_GroupBox;
         private System.Windows.Forms.RadioButton Right_Closed;
@@ -1299,6 +1381,16 @@
         private System.Windows.Forms.Label blockSpeedLimitLabel;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label ctcSpeedLabel;
+        private System.Windows.Forms.Button simulateButton;
+        private System.Windows.Forms.RadioButton testModeOff;
+        private System.Windows.Forms.RadioButton testModeOn;
+        private System.Windows.Forms.Label testModeLabel;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox KiTextBox;
+        private System.Windows.Forms.TextBox KpTextBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button setParametersButton;
     }
 }
 
