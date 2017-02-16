@@ -113,13 +113,19 @@
             this.AC_GroupBox = new System.Windows.Forms.GroupBox();
             this.AC_OFF = new System.Windows.Forms.RadioButton();
             this.AC_ON = new System.Windows.Forms.RadioButton();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.KpTextBox = new System.Windows.Forms.TextBox();
-            this.KiTextBox = new System.Windows.Forms.TextBox();
             this.setParametersButton = new System.Windows.Forms.Button();
+            this.KiTextBox = new System.Windows.Forms.TextBox();
+            this.KpTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.rightDoorStatusLabel = new System.Windows.Forms.Label();
+            this.leftDoorStatusLabel = new System.Windows.Forms.Label();
+            this.lightStatusLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -127,6 +133,7 @@
             this.groupBox14.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.Heater_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).BeginInit();
@@ -603,6 +610,12 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.lightStatusLabel);
+            this.groupBox13.Controls.Add(this.leftDoorStatusLabel);
+            this.groupBox13.Controls.Add(this.rightDoorStatusLabel);
+            this.groupBox13.Controls.Add(this.label22);
+            this.groupBox13.Controls.Add(this.label21);
+            this.groupBox13.Controls.Add(this.label19);
             this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(580, 38);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
@@ -1111,6 +1124,7 @@
             this.Left_Open.Text = "OPEN";
             this.Left_Open.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Left_Open.UseVisualStyleBackColor = true;
+            this.Left_Open.CheckedChanged += new System.EventHandler(this.Left_Open_CheckedChanged);
             // 
             // Lights_GroupBox
             // 
@@ -1192,11 +1206,6 @@
             this.AC_ON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.AC_ON.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.setParametersButton);
@@ -1213,15 +1222,29 @@
             this.tabPage1.Text = "Engineer";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // setParametersButton
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(552, 189);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(153, 63);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Kp = ";
+            this.setParametersButton.Location = new System.Drawing.Point(519, 379);
+            this.setParametersButton.Name = "setParametersButton";
+            this.setParametersButton.Size = new System.Drawing.Size(445, 133);
+            this.setParametersButton.TabIndex = 4;
+            this.setParametersButton.Text = "Set Parameters";
+            this.setParametersButton.UseVisualStyleBackColor = true;
+            this.setParametersButton.Click += new System.EventHandler(this.setParametersButton_Click);
+            // 
+            // KiTextBox
+            // 
+            this.KiTextBox.Location = new System.Drawing.Point(705, 281);
+            this.KiTextBox.Name = "KiTextBox";
+            this.KiTextBox.Size = new System.Drawing.Size(220, 68);
+            this.KiTextBox.TabIndex = 3;
+            // 
+            // KpTextBox
+            // 
+            this.KpTextBox.Location = new System.Drawing.Point(705, 185);
+            this.KpTextBox.Name = "KpTextBox";
+            this.KpTextBox.Size = new System.Drawing.Size(220, 68);
+            this.KpTextBox.TabIndex = 2;
             // 
             // label14
             // 
@@ -1233,29 +1256,80 @@
             this.label14.TabIndex = 1;
             this.label14.Text = "Ki  = ";
             // 
-            // KpTextBox
+            // label8
             // 
-            this.KpTextBox.Location = new System.Drawing.Point(705, 185);
-            this.KpTextBox.Name = "KpTextBox";
-            this.KpTextBox.Size = new System.Drawing.Size(220, 68);
-            this.KpTextBox.TabIndex = 2;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(552, 189);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(153, 63);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Kp = ";
             // 
-            // KiTextBox
+            // openFileDialog1
             // 
-            this.KiTextBox.Location = new System.Drawing.Point(705, 281);
-            this.KiTextBox.Name = "KiTextBox";
-            this.KiTextBox.Size = new System.Drawing.Size(220, 68);
-            this.KiTextBox.TabIndex = 3;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // setParametersButton
+            // label19
             // 
-            this.setParametersButton.Location = new System.Drawing.Point(519, 379);
-            this.setParametersButton.Name = "setParametersButton";
-            this.setParametersButton.Size = new System.Drawing.Size(445, 133);
-            this.setParametersButton.TabIndex = 4;
-            this.setParametersButton.Text = "Set Parameters";
-            this.setParametersButton.UseVisualStyleBackColor = true;
-            this.setParametersButton.Click += new System.EventHandler(this.setParametersButton_Click);
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(7, 66);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 31);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Lights : ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(7, 155);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(159, 31);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Right Door :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(7, 112);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(148, 31);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Left Door : ";
+            // 
+            // rightDoorStatusLabel
+            // 
+            this.rightDoorStatusLabel.AutoSize = true;
+            this.rightDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightDoorStatusLabel.Location = new System.Drawing.Point(190, 155);
+            this.rightDoorStatusLabel.Name = "rightDoorStatusLabel";
+            this.rightDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
+            this.rightDoorStatusLabel.TabIndex = 3;
+            this.rightDoorStatusLabel.Text = "Closed";
+            // 
+            // leftDoorStatusLabel
+            // 
+            this.leftDoorStatusLabel.AutoSize = true;
+            this.leftDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftDoorStatusLabel.Location = new System.Drawing.Point(190, 112);
+            this.leftDoorStatusLabel.Name = "leftDoorStatusLabel";
+            this.leftDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
+            this.leftDoorStatusLabel.TabIndex = 4;
+            this.leftDoorStatusLabel.Text = "Closed";
+            // 
+            // lightStatusLabel
+            // 
+            this.lightStatusLabel.AutoSize = true;
+            this.lightStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lightStatusLabel.Location = new System.Drawing.Point(190, 66);
+            this.lightStatusLabel.Name = "lightStatusLabel";
+            this.lightStatusLabel.Size = new System.Drawing.Size(50, 31);
+            this.lightStatusLabel.TabIndex = 5;
+            this.lightStatusLabel.Text = "On";
             // 
             // TrainController
             // 
@@ -1278,6 +1352,8 @@
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox15.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.Heater_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).EndInit();
@@ -1391,6 +1467,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button setParametersButton;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lightStatusLabel;
+        private System.Windows.Forms.Label leftDoorStatusLabel;
+        private System.Windows.Forms.Label rightDoorStatusLabel;
     }
 }
 
