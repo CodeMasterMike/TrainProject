@@ -68,7 +68,8 @@ namespace TrainProject
             //this.clockDisplayedText.Text = displayTime;
             if (trainControllerWindow != null)
             {
-                trainControllerWindow.updateTime(displayTime);
+                //trainControllerWindow.updateTime(displayTime);
+                Invoke(new MethodInvoker(delegate { trainControllerWindow.updateTime(displayTime); }));
             }
         }
 
