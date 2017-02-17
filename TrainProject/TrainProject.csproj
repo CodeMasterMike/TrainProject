@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,12 +62,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelperObjects\Block.cs" />
     <Compile Include="CentralTrainControl.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CentralTrainControl.Designer.cs">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperObjects\Line.cs" />
+    <Compile Include="HelperObjects\Section.cs" />
+    <Compile Include="HelperObjects\Crossing.cs" />
+    <Compile Include="HelperObjects\Train.cs" />
+    <Compile Include="HelperObjects\Switch.cs" />
+    <Compile Include="ListViewExtender.cs" />
+    <Compile Include="TrackControllerModule.cs" />
+    <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,11 +85,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Track Model.cs">
+    <Compile Include="TrackDBDataSet.cs">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TrackDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TrackModel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Track Model.designer.cs">
-      <DependentUpon>Track Model.cs</DependentUpon>
+    <Compile Include="TrackModel.designer.cs">
+      <DependentUpon>TrackModel.cs</DependentUpon>
     </Compile>
     <Compile Include="TrackController.cs">
       <SubType>Form</SubType>
@@ -72,6 +105,19 @@
     <Compile Include="TrackController.Designer.cs">
       <DependentUpon>TrackController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrainModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainModel.Designer.cs">
+      <DependentUpon>TrainModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrainController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainController.designer.cs">
+      <DependentUpon>TrainController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackControllerTest.cs" />
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,12 +129,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Track Model.resx">
-      <DependentUpon>Track Model.cs</DependentUpon>
+    <EmbeddedResource Include="TrackModel.resx">
+      <DependentUpon>TrackModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrackController.resx">
       <DependentUpon>TrackController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainModel.resx">
+      <DependentUpon>TrainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainController.resx">
+      <DependentUpon>TrainController.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,15 +152,45 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TrackDBDataSet.xsc">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TrackDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TrackDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TrackDBDataSet.xss">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\WindowsFormsApplication2\MBOForm.csproj">
-      <Project>{76052213-e7e2-4005-9738-6ea29c329e46}</Project>
-      <Name>MBOForm</Name>
-    </ProjectReference>
+    <Content Include="TrackDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TrackDB_log.ldf">
+      <DependentUpon>TrackDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Track_Layout.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TrainController\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
