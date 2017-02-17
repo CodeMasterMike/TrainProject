@@ -11,6 +11,7 @@ using Track_Layout_UI;
 using TrackController;
 using TrainProject.Clock;
 using CTC;
+using MBOForm; 
 using TrainControllerProject;
 
 
@@ -53,6 +54,12 @@ namespace TrainProject
             ctcWindow.Show();
         }
 
+        private void openMBO_Click(object sender, EventArgs e)
+        {
+            MBO mboWindow = new MBO();
+            mboWindow.Show();
+        }
+
         private void clockDisplayedText_Click(object sender, EventArgs e)
         {
 
@@ -79,5 +86,11 @@ namespace TrainProject
             trainControllerWindow.Show();
         }
 
+        private void Homepage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

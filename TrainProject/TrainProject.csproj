@@ -118,6 +118,9 @@
       <DependentUpon>TrainController.cs</DependentUpon>
     </Compile>
     <Compile Include="TrackControllerTest.cs" />
+    <EmbeddedResource Include="CentralTrainControl.resx">
+      <DependentUpon>CentralTrainControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TrainController\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\WindowsFormsApplication2\MBOForm.csproj">
+      <Project>{76052213-e7e2-4005-9738-6ea29c329e46}</Project>
+      <Name>MBOForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
