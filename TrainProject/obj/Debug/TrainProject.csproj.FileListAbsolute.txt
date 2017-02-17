@@ -46,8 +46,6 @@ C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\bin\Debug\TrackD
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
-C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\Clock\TrackDB.mdf
-C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\Clock\TrackDB_log.ldf
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.exe
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
@@ -61,3 +59,6 @@ C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\Clock\TrackDB.mdf
 C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\Clock\TrackDB_log.ldf
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainModel.TrainModel.resources

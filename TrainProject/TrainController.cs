@@ -88,6 +88,7 @@ namespace TrainControllerProject
                     setSpeedkmh = driverSetSpeed;
                 }
                 else setSpeedkmh = ctcSetSpeed;
+                if (setSpeedkmh > 80) setSpeedkmh = 80;
                 setTemp = setTempTrackBar.Value;
                 setSpeed = setSpeedkmh * 1000 / 3600;
                 currSpeed = currSpeedkmh * 1000 / 3600;
@@ -370,6 +371,11 @@ namespace TrainControllerProject
         }
 
         private void Left_Open_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blockSpeedLimitLabel_Click(object sender, EventArgs e)
         {
 
         }
