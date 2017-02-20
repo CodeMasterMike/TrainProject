@@ -61,6 +61,7 @@ namespace TrainControllerProject
                  timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
              }*/
             timeLabel.Text = time;
+            updateDoors();
             if (testMode == 0)
             {
                 //ctcSetSpeed = currSpeedkmh;
@@ -90,8 +91,12 @@ namespace TrainControllerProject
                 setTemp = setTempTrackBar.Value;
                 setSpeed = setSpeedkmh * 1000 / 3600;
                 currSpeed = currSpeedkmh * 1000 / 3600;
-                if ((currSpeedkmh < (setSpeedkmh - setSpeedkmh * (1 / 100))) && simulate) calculate_power();
-                if ((currSpeedkmh > setSpeedkmh + setSpeedkmh * (1 / 100)) && simulate) sBreak();
+                if ((currSpeedkmh < (setSpeedkmh - 1 / 2)) && simulate)
+                {
+                    calculate_power();
+                }
+                else power = 0;
+                if ((currSpeedkmh > setSpeedkmh + 1/2) && simulate) sBreak();
                 if ((temp < setTemp) && simulate) raiseTemp();
                 if ((temp > setTemp) && simulate) lowerTemp();
                 if ((temp == setTemp) && simulate)
@@ -103,7 +108,7 @@ namespace TrainControllerProject
                 trainSpeedLabel.Text = (currSpeed * 3600 / 1000 * Convert.ToDecimal(0.44704)).ToString("#.###") + "MPH";
                 trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
                 ctcSpeedLabel.Text = ((ctcSetSpeed) * Convert.ToDecimal(0.44704)).ToString("#.###") + "MPH";
-                trainTempLabel.Text = (temp.ToString());
+                trainTempLabel.Text = (temp.ToString()) + "F";
                 //speedTestTextBox.Text = Convert.ToString(currSpeed * 3600 / 1000);
 
 
@@ -220,6 +225,16 @@ namespace TrainControllerProject
             Heater_Off.Checked = true;
             AC_ON.Checked = true;
             temp = temp - 1;
+        }
+
+        private void updateDoors()
+        {
+            if (Left_Open.Checked) leftDoorStatusLabel.Text = "Open";
+            else leftDoorStatusLabel.Text = "Closed";
+            if (Right_Open.Checked) rightDoorStatusLabel.Text = "Open";
+            else rightDoorStatusLabel.Text = "Closed";
+            if (Lights_On.Checked) lightStatusLabel.Text = "On";
+            else lightStatusLabel.Text = "Off";
         }
 
         //*******************************************************************************//
@@ -350,6 +365,11 @@ namespace TrainControllerProject
         }
 
         private void Heater_On_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Left_Open_CheckedChanged(object sender, EventArgs e)
         {
 
         }
