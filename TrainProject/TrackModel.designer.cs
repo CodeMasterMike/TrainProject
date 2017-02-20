@@ -763,7 +763,6 @@
             this.blockCumElevationTextBox.Size = new System.Drawing.Size(765, 142);
             this.blockCumElevationTextBox.TabIndex = 41;
             this.blockCumElevationTextBox.TabStop = false;
-            this.blockCumElevationTextBox.Text = "69";
             // 
             // label4
             // 
