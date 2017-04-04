@@ -135,6 +135,12 @@
       <DependentUpon>TrainController.cs</DependentUpon>
     </Compile>
     <Compile Include="TrackControllerTest.cs" />
+    <Compile Include="TrainSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainSimulation.Designer.cs">
+      <DependentUpon>TrainSimulation.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrainController.resx">
       <DependentUpon>TrainController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainSimulation.resx">
+      <DependentUpon>TrainSimulation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

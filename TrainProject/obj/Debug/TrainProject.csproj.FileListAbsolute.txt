@@ -47,7 +47,6 @@ C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB_lo
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\CTC.Office.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
-C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainModel.TrainModel.resources
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
@@ -63,3 +62,5 @@ C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\obj\Debug\TrainControl
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainModelProject.TrainModel.resources
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.TrainSimulation.resources

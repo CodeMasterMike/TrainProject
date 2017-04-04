@@ -27,7 +27,7 @@ namespace TrainProject
         public Homepage()
         {
             InitializeComponent();
-            CustomClock clk = new CustomClock(this);
+            //CustomClock clk = new CustomClock(this);
         }
 
         private void openTrackModel_Click(object sender, EventArgs e)
