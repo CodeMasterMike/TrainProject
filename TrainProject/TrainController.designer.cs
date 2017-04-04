@@ -30,8 +30,8 @@
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Passenger_Tab = new System.Windows.Forms.TabPage();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.trackFileTextBox = new System.Windows.Forms.TextBox();
+            this.uploadTrackButton = new System.Windows.Forms.Button();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.Driver_Tab = new System.Windows.Forms.TabPage();
             this.simulateButton = new System.Windows.Forms.Button();
@@ -152,8 +152,8 @@
             // Passenger_Tab
             // 
             this.Passenger_Tab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Passenger_Tab.Controls.Add(this.textBox7);
-            this.Passenger_Tab.Controls.Add(this.button3);
+            this.Passenger_Tab.Controls.Add(this.trackFileTextBox);
+            this.Passenger_Tab.Controls.Add(this.uploadTrackButton);
             this.Passenger_Tab.Location = new System.Drawing.Point(8, 39);
             this.Passenger_Tab.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Passenger_Tab.Name = "Passenger_Tab";
@@ -162,27 +162,27 @@
             this.Passenger_Tab.TabIndex = 1;
             this.Passenger_Tab.Text = "Load Track Model";
             // 
-            // textBox7
+            // trackFileTextBox
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(699, 294);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(569, 60);
-            this.textBox7.TabIndex = 1;
-            this.textBox7.Text = "TrackLayout.xls";
+            this.trackFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackFileTextBox.Location = new System.Drawing.Point(699, 294);
+            this.trackFileTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.trackFileTextBox.Multiline = true;
+            this.trackFileTextBox.Name = "trackFileTextBox";
+            this.trackFileTextBox.Size = new System.Drawing.Size(569, 60);
+            this.trackFileTextBox.TabIndex = 1;
             // 
-            // button3
+            // uploadTrackButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(260, 294);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(403, 61);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Upload Track Model";
-            this.button3.UseVisualStyleBackColor = true;
+            this.uploadTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadTrackButton.Location = new System.Drawing.Point(260, 294);
+            this.uploadTrackButton.Margin = new System.Windows.Forms.Padding(4);
+            this.uploadTrackButton.Name = "uploadTrackButton";
+            this.uploadTrackButton.Size = new System.Drawing.Size(403, 61);
+            this.uploadTrackButton.TabIndex = 0;
+            this.uploadTrackButton.Text = "Upload Track Model";
+            this.uploadTrackButton.UseVisualStyleBackColor = true;
+            this.uploadTrackButton.Click += new System.EventHandler(this.uploadTrackButton_Click);
             // 
             // Users_Tab
             // 
@@ -1282,6 +1282,7 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Engineer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // setParametersButton
             // 
@@ -1380,8 +1381,8 @@
         private System.Windows.Forms.TabPage Passenger_Tab;
         private System.Windows.Forms.TabControl Users_Tab;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox trackFileTextBox;
+        private System.Windows.Forms.Button uploadTrackButton;
         private System.Windows.Forms.TabPage Driver_Tab;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.GroupBox groupBox17;

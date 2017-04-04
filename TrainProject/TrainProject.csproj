@@ -72,9 +72,11 @@
     <Compile Include="HelperObjects\Line.cs" />
     <Compile Include="HelperObjects\Section.cs" />
     <Compile Include="HelperObjects\Crossing.cs" />
+    <Compile Include="HelperObjects\SmallBlock.cs" />
     <Compile Include="HelperObjects\Train.cs" />
     <Compile Include="HelperObjects\Switch.cs" />
     <Compile Include="ListViewExtender.cs" />
+    <Compile Include="HelperObjects\PowerController.cs" />
     <Compile Include="TrackControllerModule.cs" />
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
