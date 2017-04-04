@@ -149,7 +149,6 @@
             this.label1.Size = new System.Drawing.Size(289, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selected Configuration";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ExcelFileName
             // 
@@ -159,7 +158,6 @@
             this.ExcelFileName.ReadOnly = true;
             this.ExcelFileName.Size = new System.Drawing.Size(243, 26);
             this.ExcelFileName.TabIndex = 2;
-            this.ExcelFileName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -180,7 +178,6 @@
             this.label3.Size = new System.Drawing.Size(384, 73);
             this.label3.TabIndex = 4;
             this.label3.Text = "Track Model";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button2
             // 
@@ -242,7 +239,6 @@
             this.lineTextBox.ReadOnly = true;
             this.lineTextBox.Size = new System.Drawing.Size(47, 13);
             this.lineTextBox.TabIndex = 14;
-            this.lineTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // sectionTextBox
             // 
@@ -254,7 +250,6 @@
             this.sectionTextBox.ReadOnly = true;
             this.sectionTextBox.Size = new System.Drawing.Size(47, 13);
             this.sectionTextBox.TabIndex = 16;
-            this.sectionTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label7
             // 
@@ -276,7 +271,6 @@
             this.blockNumberTextBox.ReadOnly = true;
             this.blockNumberTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockNumberTextBox.TabIndex = 18;
-            this.blockNumberTextBox.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label8
             // 
@@ -298,7 +292,6 @@
             this.blockLengthTextBox.ReadOnly = true;
             this.blockLengthTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockLengthTextBox.TabIndex = 20;
-            this.blockLengthTextBox.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label9
             // 
@@ -320,7 +313,6 @@
             this.blockGradeTextBox.ReadOnly = true;
             this.blockGradeTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockGradeTextBox.TabIndex = 22;
-            this.blockGradeTextBox.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label10
             // 
@@ -342,7 +334,6 @@
             this.blockSpeedLimitTextBox.ReadOnly = true;
             this.blockSpeedLimitTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockSpeedLimitTextBox.TabIndex = 24;
-            this.blockSpeedLimitTextBox.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label11
             // 
@@ -353,7 +344,6 @@
             this.label11.Size = new System.Drawing.Size(125, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Speed Limit (Km/Hr):";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // blockElevationTextBox
             // 
@@ -365,7 +355,6 @@
             this.blockElevationTextBox.ReadOnly = true;
             this.blockElevationTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockElevationTextBox.TabIndex = 26;
-            this.blockElevationTextBox.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label12
             // 
@@ -387,7 +376,6 @@
             this.blockTemperatureTextBox.ReadOnly = true;
             this.blockTemperatureTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockTemperatureTextBox.TabIndex = 28;
-            this.blockTemperatureTextBox.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label13
             // 
@@ -574,7 +562,6 @@
             this.label16.Size = new System.Drawing.Size(107, 13);
             this.label16.TabIndex = 51;
             this.label16.Text = "Switch Activated:";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // blockHeaterStatusTextBox
             // 
@@ -586,7 +573,6 @@
             this.blockHeaterStatusTextBox.ReadOnly = true;
             this.blockHeaterStatusTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockHeaterStatusTextBox.TabIndex = 50;
-            this.blockHeaterStatusTextBox.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // label15
             // 
