@@ -11,12 +11,18 @@ using Track_Layout_UI;
 using TrackController;
 using TrainProject.Clock;
 using CTC;
+using TrainControllerProject;
+using TrainModelProject;
+
+
 using TrainProject;
 
 namespace TrainProject
 {
     public partial class Homepage : Form
     {
+        private TrainController trainControllerWindow;
+        private TrainModel trainModelWindow;
 
         public Homepage()
         {
@@ -56,12 +62,33 @@ namespace TrainProject
 
         public void updateTime(String displayTime)
         {
-            Console.WriteLine("updating time");
+            //Console.WriteLine("updating time");
             if (this.clockDisplayedText.InvokeRequired)
             {
                 clockDisplayedText.Invoke(new MethodInvoker(delegate { this.clockDisplayedText.Text = displayTime; }));
             }
             //this.clockDisplayedText.Text = displayTime;
+            if (trainControllerWindow != null)
+            {
+                //trainControllerWindow.updateTime(displayTime);
+                Invoke(new MethodInvoker(delegate { trainControllerWindow.updateTime(displayTime); }));
+            }
+            if (trainModelWindow != null)
+            {
+                Invoke(new MethodInvoker(delegate { trainModelWindow.updateTime(displayTime); }));
+            }
+        }
+
+        private void openTrainController_Click(object sender, EventArgs e)
+        {
+            //trainControllerWindow = new TrainController();
+            //trainControllerWindow.Show();
+        }
+
+        private void openTrainModel_Click(object sender, EventArgs e)
+        {
+            trainModelWindow = new TrainModel();
+            trainModelWindow.Show();
         }
     }
 }
