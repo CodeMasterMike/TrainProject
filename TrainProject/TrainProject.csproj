@@ -64,12 +64,6 @@
   <ItemGroup>
     <Compile Include="DatabaseInterface.cs" />
     <Compile Include="HelperObjects\Block.cs" />
-    <Compile Include="CentralTrainControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CentralTrainControl.Designer.cs">
-      <DependentUpon>CentralTrainControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperObjects\Station.cs" />
     <Compile Include="HelperObjects\ExcelFileLayout.cs" />
     <Compile Include="HelperObjects\Line.cs" />
