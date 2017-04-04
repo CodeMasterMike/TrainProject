@@ -13,13 +13,24 @@ namespace TrainModelProject
 {
     public partial class TrainModel : Form
     {
-        private double mass = 1000;
+        private double train_mass = 37103.86; //kg
+        private double person_mass = 73; //kg
+        private double mass = 0;
+        private double max_acceleration = 0.5; //m per s^2
+        private double serviceBrake = 1.2;
+        private double emergencyBrake = 2.73; //m per s^2
+        private double acceleration = 0;
+        private double force = 0;
         private double friction = 0.3;
         private double currSpeedms = 0;
         private double power = 0;
+        private double currTemp = 69;
         private bool service = false;
+        private bool emergency = false;
         private TrainController TC;
         private int start = 0;
+        private int AC = 0;
+        private int heater = 0;
         public TrainModel()
         {
             InitializeComponent();
@@ -30,11 +41,15 @@ namespace TrainModelProject
         {
             if (start == 0) return;
             setTimeLabel(time);
+            mass = person_mass + train_mass;
             TC.trackPosition(currSpeedms);
-            if (!service) currSpeedms = currSpeedms + power / 10000;
-            else currSpeedms = currSpeedms - 1;
+            if (!service && !emergency) calculateSpeed();
+            else if (service) calculateService();
+            else if (emergency) calculateEmergency();
+            calculateTemperature();
             label5.Text = currSpeedms.ToString();
             TC.updateCurrentSpeed(currSpeedms);
+            TC.updateCurrentTemp(currTemp);
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
@@ -60,6 +75,52 @@ namespace TrainModelProject
         {
             start = 1;
         }
+        private void calculateSpeed()
+        {
+            if (currSpeedms > 0)
+            {
+                force = power / currSpeedms;
+                acceleration = force / mass;
+                if (acceleration > max_acceleration) acceleration = max_acceleration;
+                currSpeedms = acceleration + currSpeedms;
+            }
+            else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
+        }
+        private void calculateService()
+        {
+            currSpeedms = currSpeedms - serviceBrake;
+            if (currSpeedms < serviceBrake) currSpeedms = 0;
+        }
+        private void calculateEmergency()
+        {
+            currSpeedms = currSpeedms - emergencyBrake;
+            if (currSpeedms < emergencyBrake) currSpeedms = 0;
+        }
+        public void updateThermostat(int status)
+        {
+            if(status == 0)
+            {
+                AC = 0;
+                heater = 0;
+            }
+            else if(status == 1)
+            {
+                AC = 1;
+                heater = 0;
+            }
+            else if(status == 2)
+            {
+                AC = 0;
+                heater = 1;
+            }
+        }
+        private void calculateTemperature()
+        {
+            if (AC == 1) currTemp = currTemp - 1;
+            if (heater == 1) currTemp = currTemp + 1;
+        }
+
+
         private void TrainModel_Load(object sender, EventArgs e)
         {
 

@@ -64,12 +64,6 @@
   <ItemGroup>
     <Compile Include="DatabaseInterface.cs" />
     <Compile Include="HelperObjects\Block.cs" />
-    <Compile Include="CentralTrainControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CentralTrainControl.Designer.cs">
-      <DependentUpon>CentralTrainControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperObjects\Station.cs" />
     <Compile Include="HelperObjects\ExcelFileLayout.cs" />
     <Compile Include="HelperObjects\Line.cs" />
@@ -80,6 +74,14 @@
     <Compile Include="HelperObjects\Switch.cs" />
     <Compile Include="ListViewExtender.cs" />
     <Compile Include="HelperObjects\PowerController.cs" />
+    <Compile Include="Office.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Office.designer.cs">
+      <DependentUpon>Office.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLCProgram.cs" />
+    <Compile Include="TrackController.cs" />
     <Compile Include="TrackControllerModule.cs" />
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
@@ -90,6 +92,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackControllerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrackControllerWindow.Designer.cs">
+      <DependentUpon>TrackControllerWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrackDBDataSet.cs">
       <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
     </Compile>
@@ -104,12 +112,6 @@
     <Compile Include="TrackModel.designer.cs">
       <DependentUpon>TrackModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrackController.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TrackController.Designer.cs">
-      <DependentUpon>TrackController.cs</DependentUpon>
-    </Compile>
     <Compile Include="TrainModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,8 +125,17 @@
       <DependentUpon>TrainController.cs</DependentUpon>
     </Compile>
     <Compile Include="TrackControllerTest.cs" />
+    <Compile Include="TrainSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainSimulation.Designer.cs">
+      <DependentUpon>TrainSimulation.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Office.resx">
+      <DependentUpon>Office.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -136,17 +147,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TrackControllerWindow.resx">
+      <DependentUpon>TrackControllerWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrackModel.resx">
       <DependentUpon>TrackModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TrackController.resx">
-      <DependentUpon>TrackController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrainModel.resx">
       <DependentUpon>TrainModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrainController.resx">
       <DependentUpon>TrainController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainSimulation.resx">
+      <DependentUpon>TrainSimulation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
