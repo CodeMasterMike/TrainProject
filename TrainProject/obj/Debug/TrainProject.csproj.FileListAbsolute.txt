@@ -43,3 +43,4 @@ C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProje
 C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\Clock\TrackDB.mdf
 C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\Clock\TrackDB_log.ldf
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
+C:\Users\pvn03\Documents\GitHub\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
