@@ -64,3 +64,4 @@ C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProj
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\CTC.Office.resources
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\CTC.Office.resources

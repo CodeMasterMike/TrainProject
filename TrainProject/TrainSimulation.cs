@@ -35,8 +35,6 @@ namespace TrainProject
             trackControllerWindow.Show();
             TrackModelUI trackModelWindow = new TrackModelUI();
             trackModelWindow.Show();
-            CentralTrainControl ctcWindow = new CentralTrainControl();
-            ctcWindow.Show();
             mainOffice = new Office();
             mainOffice.Show();
         }
@@ -52,6 +50,7 @@ namespace TrainProject
             if (trainModelWindow != null)
             {
                 Invoke(new MethodInvoker(delegate { trainModelWindow.updateTime(displayTime); }));
+            }
             if (mainOffice != null)
             {
                 Invoke(new MethodInvoker(delegate { mainOffice.updateTime(displayTime); }));
