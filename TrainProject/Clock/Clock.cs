@@ -19,9 +19,9 @@ namespace TrainProject.Clock
         private string hours { get; set; }
         private string minutes { get; set; }
         private string seconds { get; set; }
-        private Homepage homepage;
+        private TrainSimulation homepage;
 
-        public CustomClock(Homepage s)
+        public CustomClock(TrainSimulation s)
         {
             Console.WriteLine("Starting System Clock");
             interval = 1000; //starting in real time, 1000ms
