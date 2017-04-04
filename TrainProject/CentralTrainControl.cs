@@ -267,7 +267,7 @@ namespace CTC
         private void dispatchTrainButton_Click(object sender, EventArgs e)
         {
             try
-            {
+            { 
                 int trainIndex = currentTrainSelection.Index;
                 switch (trainIndex)
                 {
