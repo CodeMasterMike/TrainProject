@@ -2,7 +2,6 @@ C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProje
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.exe
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
-C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\CTC.CentralTrainControl.resources
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
@@ -35,3 +34,4 @@ C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainC
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainModel.TrainModel.resources
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
 C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
+C:\Users\Kaitlyn\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\CTC.Office.resources

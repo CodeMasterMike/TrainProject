@@ -63,18 +63,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperObjects\Block.cs" />
-    <Compile Include="CentralTrainControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CentralTrainControl.Designer.cs">
-      <DependentUpon>CentralTrainControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperObjects\Crossing.cs" />
     <Compile Include="HelperObjects\Line.cs" />
     <Compile Include="HelperObjects\Section.cs" />
     <Compile Include="HelperObjects\Train.cs" />
     <Compile Include="HelperObjects\Switch.cs" />
     <Compile Include="ListViewExtender.cs" />
+    <Compile Include="Office.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Office.Designer.cs">
+      <DependentUpon>Office.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrackControllerModule.cs" />
     <Compile Include="Clock\Clock.cs" />
     <Compile Include="Homepage.cs">
@@ -105,9 +105,6 @@
     <Compile Include="TrackController.Designer.cs">
       <DependentUpon>TrackController.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CentralTrainControl.resx">
-      <DependentUpon>CentralTrainControl.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="TrainModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +120,9 @@
     <Compile Include="TrackControllerTest.cs" />
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Office.resx">
+      <DependentUpon>Office.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
