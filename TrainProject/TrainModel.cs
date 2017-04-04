@@ -24,10 +24,13 @@ namespace TrainModelProject
         private double friction = 0.3;
         private double currSpeedms = 0;
         private double power = 0;
+        private double currTemp = 69;
         private bool service = false;
         private bool emergency = false;
         private TrainController TC;
         private int start = 0;
+        private int AC = 0;
+        private int heater = 0;
         public TrainModel()
         {
             InitializeComponent();
@@ -43,8 +46,10 @@ namespace TrainModelProject
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
             else if (emergency) calculateEmergency();
+            calculateTemperature();
             label5.Text = currSpeedms.ToString();
             TC.updateCurrentSpeed(currSpeedms);
+            TC.updateCurrentTemp(currTemp);
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
@@ -91,6 +96,30 @@ namespace TrainModelProject
             currSpeedms = currSpeedms - emergencyBrake;
             if (currSpeedms < emergencyBrake) currSpeedms = 0;
         }
+        public void updateThermostat(int status)
+        {
+            if(status == 0)
+            {
+                AC = 0;
+                heater = 0;
+            }
+            else if(status == 1)
+            {
+                AC = 1;
+                heater = 0;
+            }
+            else if(status == 2)
+            {
+                AC = 0;
+                heater = 1;
+            }
+        }
+        private void calculateTemperature()
+        {
+            if (AC == 1) currTemp = currTemp - 1;
+            if (heater == 1) currTemp = currTemp + 1;
+        }
+
 
         private void TrainModel_Load(object sender, EventArgs e)
         {

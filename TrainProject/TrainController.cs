@@ -20,13 +20,14 @@ namespace TrainControllerProject
         private double ctcSetSpeed = 0;
         private double setSpeed = 0;
         private double setTemp = 0;
-        private double temp = 0;
+        private double temp = 69;
         private SmallBlock[] blocks;
         int testMode = 0; //test mode off = 0 test mode on = 1
         int mode = 0; //manual = 0 automatic  = 1
         int currentBlock;
         int speedLimit;
         int direction = 0;
+        int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         double distanceLeft = 0;
         double Kp = 0;//100000;
         double Ki = 0;//5000;
@@ -75,6 +76,7 @@ namespace TrainControllerProject
                 speedLimit = blocks[currentBlock].getSpeedLimit();
             }
             if (testMode == 0) {
+                //figure out setSpeed;
                 if (mode == 0) setSpeed = driverSetSpeed;
                 else setSpeed = ctcSetSpeed;
                 setSpeedms = setSpeed * 0.44704;
@@ -89,7 +91,11 @@ namespace TrainControllerProject
                 sBreakON();
                 power = 0;
             }
+            setThermostat();
             TM.updatePower(power);
+            TM.updateThermostat(thermostat);
+
+            //update the GUI
             trainSpeedLabel.Text = (currSpeed).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
             ctcSpeedLabel.Text = (ctcSetSpeed).ToString("#.###") + "MPH";
@@ -103,10 +109,6 @@ namespace TrainControllerProject
             currSpeedms = s;
             currSpeed = s / (0.44704);
         }
-
-
-
-
         //set control functionality for set speed trackbar
         private void setSpeedTrackBar_Scroll(object sender, EventArgs e)
         {
@@ -186,8 +188,18 @@ namespace TrainControllerProject
             serviceButton.Checked = false;
             TM.setService(false);
         }
+        private void setThermostat()
+        {
+            if (setTemp > temp + 1) thermostat = 2;
+            else if (setTemp < temp - 1) thermostat = 1;
+            else thermostat = 0;
+        }
+        public void updateCurrentTemp(double t)
+        {
+            temp = t;
+        }
 
-        private void raiseTemp()
+        /*private void raiseTemp()
         {
             Heater_On.Checked = true;
             AC_OFF.Checked = true;
@@ -199,7 +211,7 @@ namespace TrainControllerProject
             Heater_Off.Checked = true;
             AC_ON.Checked = true;
             temp = temp - 1;
-        }
+        }*/
 
         private void updateDoors()
         {
