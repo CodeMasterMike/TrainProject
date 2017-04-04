@@ -8,14 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainProject;
+using TrainModelProject;
 
 namespace CTC
 {
     public partial class Office : Form
     {
+        TrainModel tm_window;
+
         public Office()
         {
             InitializeComponent();
+        }
+
+        public void updateTime(String time)
+        {
+            updateTimeLabel.Text = time;
+            if (tm_window != null)
+            {
+                Invoke(new MethodInvoker(delegate { tm_window.updateTime(time); }));
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -55,7 +67,8 @@ namespace CTC
 
         private void dispTrain_Click(object sender, EventArgs e)
         {
-
+            tm_window = new TrainModel();
+            tm_window.Show(); 
         }
 
         private void dispatchGroup_Enter(object sender, EventArgs e)
@@ -122,5 +135,6 @@ namespace CTC
         {
 
         }
+
     }
 }
