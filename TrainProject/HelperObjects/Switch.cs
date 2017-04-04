@@ -9,15 +9,15 @@ namespace TrainProject
     public class Switch
     {
         public int switchId { get; set; }
-        public int sourceBlockId { get; set; }
-        public int targetBlockId1 { get; set; }
-        public int targetBlockId2 { get; set; }
-        public int currentState { get; set; }
+        public int? sourceBlockId { get; set; }
+        public int? targetBlockId1 { get; set; }
+        public int? targetBlockId2 { get; set; }
+        public int? currentState { get; set; }
         public bool sourceLight { get; set; }
         public bool t1Light { get; set; }
         public bool t2Light { get; set; }
 
-        public Switch(int s, int sb, int t1, int t2)
+        public Switch(int s, int? sb, int? t1, int? t2)
         {
             switchId = s;
             sourceBlockId = sb;
@@ -30,7 +30,7 @@ namespace TrainProject
         }
 
         //This method simply changes the switch and returns the current target block the switch is point to
-        public int changeSwitchState()
+        public int? changeSwitchState()
         {
             if(currentState == targetBlockId1)
             {
@@ -48,7 +48,7 @@ namespace TrainProject
         //this boolean expression should be changeable by the PLC program!!!! later
         //changing to directions! positive number means train heading towards switch from that direction
         //this function assumes a unidirectional source, t1, and t2 but can easily be extrapolated to bidirectional given 
-        public int determineSwitchState(int s, int t1, int t2)
+        public int? determineSwitchState(int s, int t1, int t2)
         {
             //train approaching from switch source
             if (s > 0)

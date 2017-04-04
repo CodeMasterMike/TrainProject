@@ -122,7 +122,7 @@ namespace TrackController
             return crossings;
         }
 
-        public int changeSwitchState(int id)
+        public int? changeSwitchState(int? id)
         {
             return switches.Find(x => x.switchId == id).changeSwitchState();
         }

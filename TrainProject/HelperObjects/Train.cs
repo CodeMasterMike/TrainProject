@@ -22,6 +22,5 @@ namespace TrainProject
             suggestedSpeed = ss;
             authority = a;
         }
-
     }
 }

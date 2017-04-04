@@ -114,8 +114,8 @@ namespace TrackController
 
         private void changeSwitch(object sender, ListViewColumnMouseEventArgs e)
         {
-            int switchId = Int32.Parse(e.Item.SubItems[0].Text); //get switch id
-            int newState = ctrl.changeSwitchState(switchId);
+            int? switchId = Int32.Parse(e.Item.SubItems[0].Text); //get switch id
+            int? newState = ctrl.changeSwitchState(switchId);
             e.Item.SubItems[2].Text = newState.ToString();
             MessageBox.Show(this, @"Switch " + switchId + " changed to block " + newState);
         }
