@@ -25,12 +25,25 @@ namespace Track_Layout_UI
         public List<Section> sectionList = new List<Section>();
         public List<Line> lineList = new List<Line>();
         public List<Switch> switchList = new List<Switch>();
+        public List<Train> trainList = new List<Train>();
         public Block selectedBlock;
         public Line selectedLine;
 
         public TrackModelUI()
         {
             InitializeComponent();
+        }
+
+        public void updateSpeedAndAuthority(int trainId, double speed, int authority)
+        {
+            foreach(Train train in trainList)
+            {
+                if(trainId == train.trainId)
+                {
+                    //train.updateSpeedAndAuthority(speed, authority);
+                    break;
+                }
+            }
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
