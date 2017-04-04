@@ -1,4 +1,4 @@
-﻿namespace TrainModel
+﻿namespace TrainModelProject
 {
     partial class TrainModel
     {

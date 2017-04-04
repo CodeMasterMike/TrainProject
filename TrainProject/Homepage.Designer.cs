@@ -85,6 +85,7 @@
             this.openTrainModel.TabIndex = 3;
             this.openTrainModel.Text = "Train Model";
             this.openTrainModel.UseVisualStyleBackColor = true;
+            this.openTrainModel.Click += new System.EventHandler(this.openTrainModel_Click);
             // 
             // openTrainController
             // 
