@@ -30,8 +30,8 @@
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Passenger_Tab = new System.Windows.Forms.TabPage();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.trackFileTextBox = new System.Windows.Forms.TextBox();
+            this.uploadTrackButton = new System.Windows.Forms.Button();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.Driver_Tab = new System.Windows.Forms.TabPage();
             this.simulateButton = new System.Windows.Forms.Button();
@@ -67,6 +67,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.trainIDLabel = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.lightStatusLabel = new System.Windows.Forms.Label();
+            this.leftDoorStatusLabel = new System.Windows.Forms.Label();
+            this.rightDoorStatusLabel = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.Heater_GroupBox = new System.Windows.Forms.GroupBox();
             this.Heater_Off = new System.Windows.Forms.RadioButton();
             this.Heater_On = new System.Windows.Forms.RadioButton();
@@ -120,12 +126,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.rightDoorStatusLabel = new System.Windows.Forms.Label();
-            this.leftDoorStatusLabel = new System.Windows.Forms.Label();
-            this.lightStatusLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -152,8 +152,8 @@
             // Passenger_Tab
             // 
             this.Passenger_Tab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Passenger_Tab.Controls.Add(this.textBox7);
-            this.Passenger_Tab.Controls.Add(this.button3);
+            this.Passenger_Tab.Controls.Add(this.trackFileTextBox);
+            this.Passenger_Tab.Controls.Add(this.uploadTrackButton);
             this.Passenger_Tab.Location = new System.Drawing.Point(8, 39);
             this.Passenger_Tab.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Passenger_Tab.Name = "Passenger_Tab";
@@ -162,27 +162,27 @@
             this.Passenger_Tab.TabIndex = 1;
             this.Passenger_Tab.Text = "Load Track Model";
             // 
-            // textBox7
+            // trackFileTextBox
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(699, 294);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(569, 60);
-            this.textBox7.TabIndex = 1;
-            this.textBox7.Text = "TrackLayout.xls";
+            this.trackFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackFileTextBox.Location = new System.Drawing.Point(699, 294);
+            this.trackFileTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.trackFileTextBox.Multiline = true;
+            this.trackFileTextBox.Name = "trackFileTextBox";
+            this.trackFileTextBox.Size = new System.Drawing.Size(569, 60);
+            this.trackFileTextBox.TabIndex = 1;
             // 
-            // button3
+            // uploadTrackButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(260, 294);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(403, 61);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Upload Track Model";
-            this.button3.UseVisualStyleBackColor = true;
+            this.uploadTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadTrackButton.Location = new System.Drawing.Point(260, 294);
+            this.uploadTrackButton.Margin = new System.Windows.Forms.Padding(4);
+            this.uploadTrackButton.Name = "uploadTrackButton";
+            this.uploadTrackButton.Size = new System.Drawing.Size(403, 61);
+            this.uploadTrackButton.TabIndex = 0;
+            this.uploadTrackButton.Text = "Upload Track Model";
+            this.uploadTrackButton.UseVisualStyleBackColor = true;
+            this.uploadTrackButton.Click += new System.EventHandler(this.uploadTrackButton_Click);
             // 
             // Users_Tab
             // 
@@ -341,9 +341,9 @@
             this.tunnelStatusLabel.Location = new System.Drawing.Point(314, 153);
             this.tunnelStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tunnelStatusLabel.Name = "tunnelStatusLabel";
-            this.tunnelStatusLabel.Size = new System.Drawing.Size(127, 37);
+            this.tunnelStatusLabel.Size = new System.Drawing.Size(27, 37);
             this.tunnelStatusLabel.TabIndex = 24;
-            this.tunnelStatusLabel.Text = "Outside";
+            this.tunnelStatusLabel.Text = "-";
             // 
             // stationLabel
             // 
@@ -363,9 +363,10 @@
             this.blockSpeedLimitLabel.Location = new System.Drawing.Point(314, 43);
             this.blockSpeedLimitLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blockSpeedLimitLabel.Name = "blockSpeedLimitLabel";
-            this.blockSpeedLimitLabel.Size = new System.Drawing.Size(123, 37);
+            this.blockSpeedLimitLabel.Size = new System.Drawing.Size(186, 37);
             this.blockSpeedLimitLabel.TabIndex = 22;
-            this.blockSpeedLimitLabel.Text = "35MPH";
+            this.blockSpeedLimitLabel.Text = "35.763MPH";
+            this.blockSpeedLimitLabel.Click += new System.EventHandler(this.blockSpeedLimitLabel_Click);
             // 
             // label9
             // 
@@ -626,6 +627,66 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Status Center";
             this.groupBox13.Enter += new System.EventHandler(this.groupBox13_Enter);
+            // 
+            // lightStatusLabel
+            // 
+            this.lightStatusLabel.AutoSize = true;
+            this.lightStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lightStatusLabel.Location = new System.Drawing.Point(190, 66);
+            this.lightStatusLabel.Name = "lightStatusLabel";
+            this.lightStatusLabel.Size = new System.Drawing.Size(50, 31);
+            this.lightStatusLabel.TabIndex = 5;
+            this.lightStatusLabel.Text = "On";
+            // 
+            // leftDoorStatusLabel
+            // 
+            this.leftDoorStatusLabel.AutoSize = true;
+            this.leftDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftDoorStatusLabel.Location = new System.Drawing.Point(190, 112);
+            this.leftDoorStatusLabel.Name = "leftDoorStatusLabel";
+            this.leftDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
+            this.leftDoorStatusLabel.TabIndex = 4;
+            this.leftDoorStatusLabel.Text = "Closed";
+            // 
+            // rightDoorStatusLabel
+            // 
+            this.rightDoorStatusLabel.AutoSize = true;
+            this.rightDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightDoorStatusLabel.Location = new System.Drawing.Point(190, 155);
+            this.rightDoorStatusLabel.Name = "rightDoorStatusLabel";
+            this.rightDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
+            this.rightDoorStatusLabel.TabIndex = 3;
+            this.rightDoorStatusLabel.Text = "Closed";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(7, 112);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(148, 31);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Left Door : ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(7, 155);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(159, 31);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Right Door :";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(7, 66);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 31);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Lights : ";
             // 
             // Heater_GroupBox
             // 
@@ -1221,6 +1282,7 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Engineer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // setParametersButton
             // 
@@ -1271,66 +1333,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(7, 66);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(109, 31);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Lights : ";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(7, 155);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(159, 31);
-            this.label21.TabIndex = 1;
-            this.label21.Text = "Right Door :";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(7, 112);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(148, 31);
-            this.label22.TabIndex = 2;
-            this.label22.Text = "Left Door : ";
-            // 
-            // rightDoorStatusLabel
-            // 
-            this.rightDoorStatusLabel.AutoSize = true;
-            this.rightDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightDoorStatusLabel.Location = new System.Drawing.Point(190, 155);
-            this.rightDoorStatusLabel.Name = "rightDoorStatusLabel";
-            this.rightDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
-            this.rightDoorStatusLabel.TabIndex = 3;
-            this.rightDoorStatusLabel.Text = "Closed";
-            // 
-            // leftDoorStatusLabel
-            // 
-            this.leftDoorStatusLabel.AutoSize = true;
-            this.leftDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leftDoorStatusLabel.Location = new System.Drawing.Point(190, 112);
-            this.leftDoorStatusLabel.Name = "leftDoorStatusLabel";
-            this.leftDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
-            this.leftDoorStatusLabel.TabIndex = 4;
-            this.leftDoorStatusLabel.Text = "Closed";
-            // 
-            // lightStatusLabel
-            // 
-            this.lightStatusLabel.AutoSize = true;
-            this.lightStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lightStatusLabel.Location = new System.Drawing.Point(190, 66);
-            this.lightStatusLabel.Name = "lightStatusLabel";
-            this.lightStatusLabel.Size = new System.Drawing.Size(50, 31);
-            this.lightStatusLabel.TabIndex = 5;
-            this.lightStatusLabel.Text = "On";
-            // 
             // TrainController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1379,8 +1381,8 @@
         private System.Windows.Forms.TabPage Passenger_Tab;
         private System.Windows.Forms.TabControl Users_Tab;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox trackFileTextBox;
+        private System.Windows.Forms.Button uploadTrackButton;
         private System.Windows.Forms.TabPage Driver_Tab;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.GroupBox groupBox17;
