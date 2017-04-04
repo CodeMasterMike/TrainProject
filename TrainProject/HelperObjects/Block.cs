@@ -11,15 +11,15 @@ namespace TrainProject
         //these properties keep track of block info
         public int blockId { get; set; }
         public int blockNum { get; set; }
-        public int sectionId { get; set; }
-        public int direction { get; set; }
         public String section { get; set; }
         public String line { get; set; }
         public int length { get; set; }
         public int speedLimit { get; set; }
-        public double grade { get; set; } //need to change these to decimal
+        public double grade { get; set; }
         public double elevation { get; set; }
         public double cumElevation { get; set; }
+        public int sectionId { get; set; }
+        public int direction { get; set; }
         public bool isUnderground { get; set; }
 
         //need to discuss how to do this further
@@ -33,6 +33,8 @@ namespace TrainProject
         private Boolean hasCrossing { get; set; }
         private Boolean hasSwitch { get; set; } //maybe make this int to say which crossing?
 
+        public Block()
+
 
         //now infrastructure related things
         //public Station station { get; set; }
@@ -41,8 +43,7 @@ namespace TrainProject
 
         public Block(int bN, int d)
         {
-            blockNum = bN;
-            direction = d;
+            
         }
 
         public Block(int bId, int bn, int sId, decimal l, decimal g, decimal e, decimal ce, int sl, bool ug)

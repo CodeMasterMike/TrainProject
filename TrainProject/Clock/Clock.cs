@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using CTC;
 using TrainProject;
-using TrainControllerProject;
 
 namespace TrainProject.Clock
 {
@@ -23,14 +23,15 @@ namespace TrainProject.Clock
 
         public CustomClock(TrainSimulation s)
         {
-            Console.WriteLine("Starting System Clock");
-            interval = 1000; //starting in real time, 1000ms
-            numIntervals = 7*3600; //8 AM because 0000 is 1AM :)
+            //Console.WriteLine("Starting");
+            interval = 1;
+            numIntervals = 0;
             homepage = s;
             t = new Timer(interval);
             t.Elapsed += HandleIntervalElapsed;
             t.Start();
         }
+
 
         private void HandleIntervalElapsed(object sender, ElapsedEventArgs e)
         {
@@ -67,7 +68,9 @@ namespace TrainProject.Clock
 
 
             //trigger module events here
+           
             homepage.updateTime(displayString);
+            
         }
 
         public void changeInterval(int ms)

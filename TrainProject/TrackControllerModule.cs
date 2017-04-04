@@ -5,17 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrainProject;
 
 namespace TrackController
 {
     public class TrackController
     {
-        public int controllerId;
-        public List<Block> blocks; //this represents the occupied blocks
-        public List<Train> trains;
-        public List<Switch> switches;
-        public List<Crossing> crossings;
+        private int controllerId;
         //need to declare an array of blocks that this controller will keep track of
         //maybe an array of switches too
         public void testMethod()

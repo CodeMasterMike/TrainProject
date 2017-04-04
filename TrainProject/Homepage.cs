@@ -10,8 +10,8 @@ using System.Windows.Forms;
 using Track_Layout_UI;
 using TrackController;
 using TrainProject.Clock;
-using CTC;
 using TrainControllerProject;
+using CTC;
 using TrainModelProject;
 
 
@@ -51,7 +51,7 @@ namespace TrainProject
 
         private void openCTC_Click(object sender, EventArgs e)
         {
-            CentralTrainControl ctcWindow = new CentralTrainControl();
+            Office ctcWindow = new Office();
             ctcWindow.Show();
         }
 
@@ -68,6 +68,7 @@ namespace TrainProject
                 clockDisplayedText.Invoke(new MethodInvoker(delegate { this.clockDisplayedText.Text = displayTime; }));
             }
             //this.clockDisplayedText.Text = displayTime;
+
             if (trainControllerWindow != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
@@ -81,6 +82,12 @@ namespace TrainProject
 
         private void openTrainController_Click(object sender, EventArgs e)
         {
+            trainControllerWindow = new TrainController();
+            trainControllerWindow.Show();
+
+        }
+
+        
             //trainControllerWindow = new TrainController();
             //trainControllerWindow.Show();
         }
@@ -90,5 +97,6 @@ namespace TrainProject
             trainModelWindow = new TrainModel();
             trainModelWindow.Show();
         }
+
     }
 }

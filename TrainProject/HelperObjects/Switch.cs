@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace TrainProject
 {
-    public class Switch
+    class Switch
     {
+<<<<<<< HEAD
+        int switchId { get; set; }
+        int sourceBlockId { get; set; }
+        int targetBlockId1 { get; set; }
+        int targetBlockId2 { get; set; }
+        int currentState { get; set; }
+=======
         public int switchId { get; set; }
         public int? sourceBlockId { get; set; }
         public int? targetBlockId1 { get; set; }
@@ -16,6 +23,7 @@ namespace TrainProject
         public bool sourceLight { get; set; }
         public bool t1Light { get; set; }
         public bool t2Light { get; set; }
+>>>>>>> c7510bf413ac33f2808f5bcad8eafd047018940a
 
         public Switch(int s, int? sb, int? t1, int? t2)
         {
@@ -24,6 +32,8 @@ namespace TrainProject
             targetBlockId1 = t1;
             targetBlockId2 = t2;
             currentState = targetBlockId1;
+<<<<<<< HEAD
+=======
             sourceLight = true;
             t1Light = true;
             t2Light = false;
@@ -78,6 +88,7 @@ namespace TrainProject
                 }
             }
             return -1;
+>>>>>>> c7510bf413ac33f2808f5bcad8eafd047018940a
         }
     }
 }

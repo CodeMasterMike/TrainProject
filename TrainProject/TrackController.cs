@@ -7,18 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TrainProject;
 
 namespace TrackController
 {
     public partial class TrackControllerWindow : Form
     {
-
-        public TrackController ctrl = new TrackController();
-
         public TrackControllerWindow()
         {
             InitializeComponent();
+<<<<<<< HEAD
+=======
             Switch s1 = new Switch(0, 12, 1, 13);
             Switch s2 = new Switch(1, 29, 28, 150);
             Switch s3 = new Switch(2, 50, 57, 151);
@@ -118,6 +116,7 @@ namespace TrackController
             int? newState = ctrl.changeSwitchState(switchId);
             e.Item.SubItems[2].Text = newState.ToString();
             MessageBox.Show(this, @"Switch " + switchId + " changed to block " + newState);
+>>>>>>> c7510bf413ac33f2808f5bcad8eafd047018940a
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -181,69 +180,6 @@ namespace TrackController
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            String testBlocks = textBox2.Text;
-            if (string.IsNullOrEmpty(testBlocks))
-            {
-                return;
-            }
-            String[] vectors = testBlocks.Split(' ');
-            ctrl.blocks.Clear();
-            richTextBox1.Text = "Test Inputs:\n ";
-            richTextBox1.Text += "Occupancy\tTowards/Away\n";
-            foreach (String v in vectors)
-            {
-                if (string.IsNullOrEmpty(v))
-                {
-                    return;
-                }
-                String v2 = v.Trim('{');
-                v2 = v2.Trim('}');
-                //vector[0] represents block, vector[1] represents direction
-                String[] vector = v2.Split(',');
-                Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
-                ctrl.addNewBlock(b);
-                //Console.WriteLine(vector[0] + " " + vector[1]);
-                richTextBox1.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1])>0).ToString() + "\n";
-            }
-            ctrl.monitorSwitches();
-            ctrl.monitorCrossings();
-            updateSwitches();
-            updateCrossings();
-            richTextBox1.Text += "\n---------\nTest Complete";
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView4_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

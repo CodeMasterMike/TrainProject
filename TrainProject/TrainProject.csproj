@@ -64,6 +64,18 @@
   <ItemGroup>
     <Compile Include="DatabaseInterface.cs" />
     <Compile Include="HelperObjects\Block.cs" />
+    <Compile Include="HelperObjects\Crossing.cs" />
+    <Compile Include="HelperObjects\Line.cs" />
+    <Compile Include="HelperObjects\Section.cs" />
+    <Compile Include="HelperObjects\Train.cs" />
+    <Compile Include="HelperObjects\Switch.cs" />
+    <Compile Include="ListViewExtender.cs" />
+    <Compile Include="Office.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Office.Designer.cs">
+      <DependentUpon>Office.cs</DependentUpon>
+    </Compile>
     <Compile Include="CentralTrainControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Office.resx">
+      <DependentUpon>Office.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
