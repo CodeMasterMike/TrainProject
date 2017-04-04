@@ -12,6 +12,9 @@ using TrackController;
 using TrainProject.Clock;
 using TrainControllerProject;
 using CTC;
+using TrainModelProject;
+
+
 using TrainProject;
 
 namespace TrainProject
@@ -19,6 +22,7 @@ namespace TrainProject
     public partial class Homepage : Form
     {
         private TrainController trainControllerWindow;
+        private TrainModel trainModelWindow;
 
         public Homepage()
         {
@@ -70,6 +74,10 @@ namespace TrainProject
                 //trainControllerWindow.updateTime(displayTime);
                 Invoke(new MethodInvoker(delegate { trainControllerWindow.updateTime(displayTime); }));
             }
+            if (trainModelWindow != null)
+            {
+                Invoke(new MethodInvoker(delegate { trainModelWindow.updateTime(displayTime); }));
+            }
         }
 
         private void openTrainController_Click(object sender, EventArgs e)
@@ -80,5 +88,15 @@ namespace TrainProject
         }
 
         
+            //trainControllerWindow = new TrainController();
+            //trainControllerWindow.Show();
+        }
+
+        private void openTrainModel_Click(object sender, EventArgs e)
+        {
+            trainModelWindow = new TrainModel();
+            trainModelWindow.Show();
+        }
+
     }
 }

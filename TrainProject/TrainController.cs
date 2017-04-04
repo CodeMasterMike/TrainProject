@@ -7,43 +7,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrainProject;
+using TrainModelProject;
+using System.IO;
 
 namespace TrainControllerProject
 {
     public partial class TrainController : Form
     {
         //initialize variables
-        private decimal driverSetSpeed = 0;
-        private decimal ctcSetSpeed = 0;
-        private decimal setSpeed = 0;
-        private decimal setTemp = 0;
-        private decimal temp = 0;
+        private double driverSetSpeed = 0;
+        private double ctcSetSpeed = 0;
+        private double setSpeed = 0;
+        private double setTemp = 0;
+        private double temp = 0;
+        private SmallBlock[] blocks;
         int testMode = 0; //test mode off = 0 test mode on = 1
         int mode = 0; //manual = 0 automatic  = 1
-        decimal Kp = 0;//100000;
-        decimal Ki = 0;//5000;
-        decimal error = 0;
-        decimal ek = 0;
-        decimal mass = 37103;
-        decimal u = 0;
-        decimal uk = 0;
-        decimal currSpeed = 0;
-        decimal power = 0;
-        decimal acceleration = 0;
-        decimal currSpeedkmh = 0;
-        decimal setSpeedkmh = 0;
-        decimal force = 0;
-        decimal serviceBreak = Convert.ToDecimal(1.2);
+        int currentBlock;
+        int speedLimit;
+        int direction = 0;
+        double distanceLeft = 0;
+        double Kp = 0;//100000;
+        double Ki = 0;//5000;
+        double error = 0;
+        double ek = 0;
+        double mass = 37103;
+        double u = 0;
+        double uk = 0;
+        double currSpeed = 0;
+        double power = 80000;
+        double acceleration = 0;
+        double currSpeedms = 0;
+        double setSpeedms = 0;
+        double force = 0;
+        double serviceBreak = 1.2;
+        
         bool simulate = false;
+        PowerController powerController;
+        TrainModel TM;
+
       
         
         //initialize labels and controls
 
         //methods
-        public TrainController()
+        public TrainController(TrainModel t)
         {
             InitializeComponent();
-
+            TM = t;
             testMode = 0;
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
@@ -51,66 +63,50 @@ namespace TrainControllerProject
             ctcSpeedTestTextBox.Enabled = false;
             ctcAuthorityTestTextBox.Enabled = false;
             timeLabel.Text = "-";
+            powerController = new PowerController(mass, 12000);
 
         }
-        //every time interval update all of the displays and internal variables
+        //every time interval update all of the displays and internal variables, set calculations for real time
         public void updateTime(String time)
         {
-            /* if (this.timeLabel.InvokeRequired)
-             {
-                 timeLabel.Invoke(new MethodInvoker(delegate { timeLabel.Text = time; }));
-             }*/
-            timeLabel.Text = time;
-            if (testMode == 0)
+            setTimeLabel(time);
+            if (blocks != null)
             {
-                //ctcSetSpeed = currSpeedkmh;
-                // currSpeedkmh = 0;
+                speedLimit = blocks[currentBlock].getSpeedLimit();
+            }
+            if (testMode == 0) {
+                if (mode == 0) setSpeed = driverSetSpeed;
+                else setSpeed = ctcSetSpeed;
+                setSpeedms = setSpeed * 0.44704;
+            }
+            if (currSpeed <= setSpeed)
+            {
+                sBreakOFF();
+                power = powerController.getPower(currSpeedms, setSpeedms);
             }
             else
             {
-                
-                
-                if (!simulate)
-                {
-                    if (speedTestTextBox.Text != "") currSpeedkmh = Convert.ToDecimal(speedTestTextBox.Text);
-                    if (ctcSpeedTestTextBox.Text != "") ctcSetSpeed = Convert.ToDecimal(ctcSpeedTestTextBox.Text);
-                    if (tempTestTextBox.Text != "") temp = Convert.ToDecimal(tempTestTextBox.Text);
-                    u = 0;
-                    uk = 0;
-                    ek = 0;
-                }
-                else currSpeedkmh = currSpeed * 3600 / 1000;
-                //trainTempLabel.Text = Convert.ToString(setSpeed);
-                driverSetSpeed = (setSpeedTrackBar.Value) / Convert.ToDecimal(0.44704);
-                if (mode == 0)
-                {
-                    setSpeedkmh = driverSetSpeed;
-                }
-                else setSpeedkmh = ctcSetSpeed;
-                setTemp = setTempTrackBar.Value;
-                setSpeed = setSpeedkmh * 1000 / 3600;
-                currSpeed = currSpeedkmh * 1000 / 3600;
-                if ((currSpeedkmh < (setSpeedkmh - setSpeedkmh * (1 / 100))) && simulate) calculate_power();
-                if ((currSpeedkmh > setSpeedkmh + setSpeedkmh * (1 / 100)) && simulate) sBreak();
-                if ((temp < setTemp) && simulate) raiseTemp();
-                if ((temp > setTemp) && simulate) lowerTemp();
-                if ((temp == setTemp) && simulate)
-                {
-                    AC_OFF.Checked = true;
-                    Heater_Off.Checked = true;
-                }
-                //trainPowerLabel.Text = String.Format("{0:F2}",Convert.ToString(power / 1000));
-                trainSpeedLabel.Text = (currSpeed * 3600 / 1000 * Convert.ToDecimal(0.44704)).ToString("#.###") + "MPH";
-                trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
-                ctcSpeedLabel.Text = ((ctcSetSpeed) * Convert.ToDecimal(0.44704)).ToString("#.###") + "MPH";
-                trainTempLabel.Text = (temp.ToString());
-                //speedTestTextBox.Text = Convert.ToString(currSpeed * 3600 / 1000);
-
-
+                sBreakON();
+                power = 0;
             }
-
-
+            TM.updatePower(power);
+            trainSpeedLabel.Text = (currSpeed).ToString("#.###") + "MPH";
+            trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
+            ctcSpeedLabel.Text = (ctcSetSpeed).ToString("#.###") + "MPH";
+            trainTempLabel.Text = (temp.ToString()) + "F";
+            blockSpeedLimitLabel.Text = speedLimit.ToString();
+            distanceToLabel.Text = distanceLeft.ToString();
+            stationLabel.Text = currentBlock.ToString();
         }
+        public void updateCurrentSpeed(double s)
+        {
+            currSpeedms = s;
+            currSpeed = s / (0.44704);
+        }
+
+
+
+
         //set control functionality for set speed trackbar
         private void setSpeedTrackBar_Scroll(object sender, EventArgs e)
         {
@@ -130,13 +126,13 @@ namespace TrainControllerProject
             blockTestTextBox.Enabled = true;
             blockTestTextBox.Text = "0";
             speedTestTextBox.Enabled = true;
-            //speedTestTextBox.Text = Convert.ToString(currSpeedkmh);
+            //speedTestTextBox.Text = Convert.ToString(currSpeedms);
             speedTestTextBox.Text = "0";
             tempTestTextBox.Enabled = true;
             //tempTestTextBox.Text = Convert.ToString(temp);
             tempTestTextBox.Text = "0";
             ctcSpeedTestTextBox.Enabled = true;
-            //ctcSpeedTestTextBox.Text = Convert.ToString(currSpeedkmh);
+            //ctcSpeedTestTextBox.Text = Convert.ToString(currSpeedms);
             ctcSpeedTestTextBox.Text = "0";
             ctcAuthorityTestTextBox.Enabled = true;
             ctcAuthorityTestTextBox.Text = "0";
@@ -164,29 +160,6 @@ namespace TrainControllerProject
             setSpeedTrackBar.Enabled = true;
         }
 
-        private decimal calculate_power()
-        {
-            serviceButton.Checked = false;
-            error = setSpeed - currSpeed;
-            u = uk + (1/2)*(error + ek);
-            ek = error;
-            power = Kp * error + Ki * u;
-            if (power > 120000)
-            {
-                u = uk;
-                power = 120000;
-            }
-            else uk = u;
-            if (currSpeed != 0)
-            {
-                acceleration = power / (currSpeed * mass);
-            }
-            else acceleration = power / (mass);
-            currSpeed = currSpeed + acceleration;
-
-            return 0;
-        }
-
         private void updateTimeLabel(String time)
         {
             timeLabel.Text = time;
@@ -201,11 +174,17 @@ namespace TrainControllerProject
             }
         }
 
-        private void sBreak()
+        private void sBreakON()
         {
             serviceButton.Checked = true;
-            currSpeed = currSpeed - serviceBreak;
-            power = 0;
+            TM.setService(true);
+            //currSpeed = currSpeed - serviceBreak;
+        }
+
+        private void sBreakOFF()
+        {
+            serviceButton.Checked = false;
+            TM.setService(false);
         }
 
         private void raiseTemp()
@@ -221,6 +200,125 @@ namespace TrainControllerProject
             AC_ON.Checked = true;
             temp = temp - 1;
         }
+
+        private void updateDoors()
+        {
+            if (Left_Open.Checked) leftDoorStatusLabel.Text = "Open";
+            else leftDoorStatusLabel.Text = "Closed";
+            if (Right_Open.Checked) rightDoorStatusLabel.Text = "Open";
+            else rightDoorStatusLabel.Text = "Closed";
+            if (Lights_On.Checked) lightStatusLabel.Text = "On";
+            else lightStatusLabel.Text = "Off";
+        }
+        private void setTimeLabel(String t)
+        {
+            timeLabel.Text = t;
+        }
+
+        private void updateSetPoints()
+        {
+            if (testMode == 0)
+            {
+                //ctcSetSpeed = currSpeedms;
+                // currSpeedms = 0;
+            }
+            else
+            {
+                if (!simulate)
+                {
+                    if (speedTestTextBox.Text != "") currSpeedms = Convert.ToDouble(speedTestTextBox.Text);
+                    if (ctcSpeedTestTextBox.Text != "") ctcSetSpeed = Convert.ToDouble(ctcSpeedTestTextBox.Text);
+                    if (tempTestTextBox.Text != "") temp = Convert.ToDouble(tempTestTextBox.Text);
+                    u = 0;
+                    uk = 0;
+                    ek = 0;
+                }
+                else currSpeedms = currSpeed * 3600 / 1000;
+                driverSetSpeed = (setSpeedTrackBar.Value) / Convert.ToDouble(0.44704);
+                if (mode == 0)
+                {
+                    setSpeedms = driverSetSpeed;
+                }
+                else setSpeedms = ctcSetSpeed;
+                if (setSpeedms > 80) setSpeedms = 80;
+                setTemp = setTempTrackBar.Value;
+                setSpeed = setSpeedms * 1000 / 3600;
+                currSpeed = currSpeedms * 1000 / 3600;
+            }
+        }
+
+        private void uploadTrackButton_Click(object sender, EventArgs e)
+        {
+            setTrack(trackFileTextBox.Text);
+            TM.Start();
+            uploadTrackButton.Enabled = false;
+        }
+
+        private void setTrack(String input)
+        {
+            StreamReader file = new StreamReader(input);
+            string line = file.ReadLine();
+            blocks = new SmallBlock[Convert.ToInt32(line) + 1];
+            line = file.ReadLine();
+            currentBlock = Convert.ToInt32(line);
+            tunnelStatusLabel.Text = line;
+            for (int i = 0; i < 10; i++) //instead of 10 put block.Length
+            {
+                line = file.ReadLine();
+                string[] elements = line.Split('\t');
+                int id = Convert.ToInt32(elements[0]);
+                blocks[id] = new SmallBlock(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7]);
+            }
+            distanceLeft = blocks[currentBlock].getSize();
+        }
+        public void trackPosition(double p)
+        {
+            if(distanceLeft >= p) distanceLeft -= p;
+            else
+            {
+                p = p - distanceLeft;
+                if (getNextBlock() == 0)
+                {
+                    currentBlock = readBeacon();
+                    distanceLeft = blocks[currentBlock].getSize() - p;
+                }
+                else
+                {
+                    currentBlock = getNextBlock();
+                    distanceLeft = blocks[currentBlock].getSize() - p;
+                }
+            }
+        }
+        private int getNextBlock()
+        {
+            if (direction == 0)
+            {
+                if (blocks[currentBlock].getNext2() == 0) return blocks[currentBlock].getNext1();
+                else return 0;
+            }
+            else {
+                if (blocks[currentBlock].getPrev2() == 0) return blocks[currentBlock].getPrev2();
+                else return 0;
+            }
+        }
+        private int readBeacon() { return 0; }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //*******************************************************************************//
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -345,13 +443,30 @@ namespace TrainControllerProject
 
         private void setParametersButton_Click(object sender, EventArgs e)
         {
-            if(KpTextBox.Text != "") Kp = Convert.ToDecimal(KpTextBox.Text);
-            if(KpTextBox.Text != "") Ki = Convert.ToDecimal(KiTextBox.Text);
+            if(KpTextBox.Text != "") Kp = Convert.ToDouble(KpTextBox.Text);
+            if(KpTextBox.Text != "") Ki = Convert.ToDouble(KiTextBox.Text);
         }
 
         private void Heater_On_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void Left_Open_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blockSpeedLimitLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
