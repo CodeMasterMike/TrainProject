@@ -21,6 +21,7 @@ namespace TrainProject
         int start = 0;
         CustomClock clk;
         private TrainModel trainModelWindow;
+        Office mainOffice;
         public TrainSimulation()
         {
             InitializeComponent();
@@ -36,6 +37,8 @@ namespace TrainProject
             trackModelWindow.Show();
             CentralTrainControl ctcWindow = new CentralTrainControl();
             ctcWindow.Show();
+            mainOffice = new Office();
+            mainOffice.Show();
         }
         public void updateTime(String displayTime)
         {
@@ -49,6 +52,9 @@ namespace TrainProject
             if (trainModelWindow != null)
             {
                 Invoke(new MethodInvoker(delegate { trainModelWindow.updateTime(displayTime); }));
+            if (mainOffice != null)
+            {
+                Invoke(new MethodInvoker(delegate { mainOffice.updateTime(displayTime); }));
             }
         }
 
