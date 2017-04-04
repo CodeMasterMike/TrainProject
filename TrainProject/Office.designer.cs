@@ -69,6 +69,8 @@
             this.systemBox = new System.Windows.Forms.GroupBox();
             this.MurphyTab = new System.Windows.Forms.TabPage();
             this.updateTimeLabel = new System.Windows.Forms.Label();
+            this.yardTrain = new System.Windows.Forms.Button();
+            this.trackTrain = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -76,6 +78,7 @@
             this.trackBox.SuspendLayout();
             this.dispatchGroup.SuspendLayout();
             this.infoBox.SuspendLayout();
+            this.systemBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -501,6 +504,8 @@
             // 
             // systemBox
             // 
+            this.systemBox.Controls.Add(this.trackTrain);
+            this.systemBox.Controls.Add(this.yardTrain);
             this.systemBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.systemBox.Location = new System.Drawing.Point(3, 295);
             this.systemBox.Name = "systemBox";
@@ -529,6 +534,26 @@
             this.updateTimeLabel.TabIndex = 5;
             this.updateTimeLabel.Text = "00:00:00";
             // 
+            // yardTrain
+            // 
+            this.yardTrain.Location = new System.Drawing.Point(13, 99);
+            this.yardTrain.Name = "yardTrain";
+            this.yardTrain.Size = new System.Drawing.Size(54, 44);
+            this.yardTrain.TabIndex = 0;
+            this.yardTrain.Text = "yard";
+            this.yardTrain.UseVisualStyleBackColor = true;
+            this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
+            // 
+            // trackTrain
+            // 
+            this.trackTrain.Location = new System.Drawing.Point(78, 99);
+            this.trackTrain.Name = "trackTrain";
+            this.trackTrain.Size = new System.Drawing.Size(60, 44);
+            this.trackTrain.TabIndex = 1;
+            this.trackTrain.Text = "train";
+            this.trackTrain.UseVisualStyleBackColor = true;
+            this.trackTrain.Click += new System.EventHandler(this.trackTrain_Click);
+            // 
             // Office
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -549,6 +574,7 @@
             this.dispatchGroup.PerformLayout();
             this.infoBox.ResumeLayout(false);
             this.infoBox.PerformLayout();
+            this.systemBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -596,5 +622,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label updateTimeLabel;
+        private System.Windows.Forms.Button yardTrain;
+        private System.Windows.Forms.Button trackTrain;
     }
 }

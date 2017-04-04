@@ -15,6 +15,9 @@ namespace CTC
     public partial class Office : Form
     {
         TrainModel tm_window;
+        int trainId;
+        int selTrainId;
+        bool trainSelected;
 
         public Office()
         {
@@ -28,6 +31,17 @@ namespace CTC
             {
                 Invoke(new MethodInvoker(delegate { tm_window.updateTime(time); }));
             }
+        }
+
+        public void dispatchNewTrain()
+        {
+            tm_window = new TrainModel();
+            tm_window.Show();
+        }
+
+        public void dispatchOldTrain(int trainId)
+        {
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -67,8 +81,14 @@ namespace CTC
 
         private void dispTrain_Click(object sender, EventArgs e)
         {
-            tm_window = new TrainModel();
-            tm_window.Show(); 
+           if (trainSelected)
+            {
+                dispatchOldTrain(selTrainId);
+            }
+           else
+            {
+                dispatchNewTrain();
+            }
         }
 
         private void dispatchGroup_Enter(object sender, EventArgs e)
@@ -136,5 +156,15 @@ namespace CTC
 
         }
 
+        private void yardTrain_Click(object sender, EventArgs e)
+        {
+            trainSelected = false;
+        }
+
+        private void trackTrain_Click(object sender, EventArgs e)
+        {
+            trainSelected = true;
+            trainId = 1;
+        }
     }
 }
