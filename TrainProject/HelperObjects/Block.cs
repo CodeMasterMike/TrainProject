@@ -37,7 +37,7 @@ namespace TrainProject
 
 
         //now infrastructure related things
-        //public Station station { get; set; }
+        public Station station { get; set; }
         public Crossing crossing { get; set; }
         public Switch parentSwitch { get; set; }
 

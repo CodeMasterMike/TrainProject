@@ -133,6 +133,24 @@ namespace TrainProject
                     block.isToYard = false;
                     block.isFromYard = false;
                 }
+                if(infrastructure.Contains("STATION"))
+                {
+                    Char[] splitChars = new Char[]{';'};
+                    String[] infSplit = infrastructure.Split(splitChars);
+                    bool found = false;
+                    foreach (String infItem in infSplit)
+                    {
+                        if(found)
+                        {
+                            block.station = new Station(infItem);
+                            break;
+                        }
+                        if(infItem.Contains("STATION"))
+                        {
+                            found = true;
+                        }
+                    }
+                }
                 blocks.Add(block);
 
                 foreach (Line line in lineList)
