@@ -20,6 +20,7 @@ namespace TrainProject
     {
         int start = 0;
         CustomClock clk;
+        Office mainOffice;
         public TrainSimulation()
         {
             InitializeComponent();
@@ -33,6 +34,8 @@ namespace TrainProject
             trackControllerWindow.Show();
             TrackModelUI trackModelWindow = new TrackModelUI();
             trackModelWindow.Show();
+            mainOffice = new Office();
+            mainOffice.Show();
         }
         public void updateTime(String displayTime)
         {
@@ -43,6 +46,10 @@ namespace TrainProject
                 clockDisplayedText.Invoke(new MethodInvoker(delegate { this.clockDisplayedText.Text = displayTime; }));
             }
             //this.clockDisplayedText.Text = displayTime;
+            if (mainOffice != null)
+            {
+                Invoke(new MethodInvoker(delegate { mainOffice.updateTime(displayTime); }));
+            }
         }
 
         private void speedButton1_Click(object sender, EventArgs e)

@@ -63,3 +63,4 @@ C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProj
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.exe
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
+C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\CTC.Office.resources
