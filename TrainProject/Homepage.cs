@@ -51,7 +51,7 @@ namespace TrainProject
 
         private void openCTC_Click(object sender, EventArgs e)
         {
-            CentralTrainControl ctcWindow = new CentralTrainControl();
+            Office ctcWindow = new Office();
             ctcWindow.Show();
         }
 
