@@ -108,6 +108,54 @@ namespace TrainProject
             this.restoreTMComm = new System.Windows.Forms.Button();
             this.severCtcComm = new System.Windows.Forms.Button();
             this.openPLCFile = new System.Windows.Forms.OpenFileDialog();
+            this.red1TrainsGroupBox = new System.Windows.Forms.GroupBox();
+            this.red1TrainsListView = new System.Windows.Forms.ListView();
+            this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.red1SwitchGroupBox = new System.Windows.Forms.GroupBox();
+            this.red1SwitchListView = new System.Windows.Forms.ListView();
+            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.red1CrossingGroupBox = new System.Windows.Forms.GroupBox();
+            this.red1CrossingListView = new System.Windows.Forms.ListView();
+            this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.red1TestGroupBox = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.red2TestGroupBox = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.red2CrossingGroupBox = new System.Windows.Forms.GroupBox();
+            this.red2CrossingListView = new System.Windows.Forms.ListView();
+            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.red2SwitchGroupBox = new System.Windows.Forms.GroupBox();
+            this.red2SwitchListView = new System.Windows.Forms.ListView();
+            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.red2TrainsGroupBox = new System.Windows.Forms.GroupBox();
+            this.red2TrainListView = new System.Windows.Forms.ListView();
+            this.columnHeader48 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader49 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader50 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader51 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Engineer.SuspendLayout();
             this.summaryTab.SuspendLayout();
             this.trainsSummaryBox.SuspendLayout();
@@ -126,7 +174,19 @@ namespace TrainProject
             this.green2CrossingGroupBox.SuspendLayout();
             this.green2SwitchGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.redCtrl1.SuspendLayout();
+            this.redCtrl2.SuspendLayout();
             this.murphyTab.SuspendLayout();
+            this.red1TrainsGroupBox.SuspendLayout();
+            this.red1SwitchGroupBox.SuspendLayout();
+            this.red1CrossingGroupBox.SuspendLayout();
+            this.red1TestGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.red2TestGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.red2CrossingGroupBox.SuspendLayout();
+            this.red2SwitchGroupBox.SuspendLayout();
+            this.red2TrainsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // Engineer
@@ -730,6 +790,10 @@ namespace TrainProject
             // redCtrl1
             // 
             this.redCtrl1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.redCtrl1.Controls.Add(this.red1TestGroupBox);
+            this.redCtrl1.Controls.Add(this.red1CrossingGroupBox);
+            this.redCtrl1.Controls.Add(this.red1SwitchGroupBox);
+            this.redCtrl1.Controls.Add(this.red1TrainsGroupBox);
             this.redCtrl1.Location = new System.Drawing.Point(4, 38);
             this.redCtrl1.Name = "redCtrl1";
             this.redCtrl1.Padding = new System.Windows.Forms.Padding(3);
@@ -740,6 +804,10 @@ namespace TrainProject
             // redCtrl2
             // 
             this.redCtrl2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.redCtrl2.Controls.Add(this.red2TestGroupBox);
+            this.redCtrl2.Controls.Add(this.red2CrossingGroupBox);
+            this.redCtrl2.Controls.Add(this.red2SwitchGroupBox);
+            this.redCtrl2.Controls.Add(this.red2TrainsGroupBox);
             this.redCtrl2.Location = new System.Drawing.Point(4, 38);
             this.redCtrl2.Name = "redCtrl2";
             this.redCtrl2.Padding = new System.Windows.Forms.Padding(3);
@@ -802,6 +870,408 @@ namespace TrainProject
             this.openPLCFile.FileName = "openFileDialog1";
             this.openPLCFile.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // red1TrainsGroupBox
+            // 
+            this.red1TrainsGroupBox.Controls.Add(this.red1TrainsListView);
+            this.red1TrainsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1TrainsGroupBox.Location = new System.Drawing.Point(6, 15);
+            this.red1TrainsGroupBox.Name = "red1TrainsGroupBox";
+            this.red1TrainsGroupBox.Size = new System.Drawing.Size(672, 208);
+            this.red1TrainsGroupBox.TabIndex = 14;
+            this.red1TrainsGroupBox.TabStop = false;
+            this.red1TrainsGroupBox.Text = "Trains";
+            // 
+            // red1TrainsListView
+            // 
+            this.red1TrainsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader30,
+            this.columnHeader31,
+            this.columnHeader32,
+            this.columnHeader33});
+            this.red1TrainsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1TrainsListView.Location = new System.Drawing.Point(12, 38);
+            this.red1TrainsListView.Name = "red1TrainsListView";
+            this.red1TrainsListView.Scrollable = false;
+            this.red1TrainsListView.Size = new System.Drawing.Size(654, 164);
+            this.red1TrainsListView.TabIndex = 5;
+            this.red1TrainsListView.UseCompatibleStateImageBehavior = false;
+            this.red1TrainsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader30
+            // 
+            this.columnHeader30.Text = "Train ID";
+            this.columnHeader30.Width = 75;
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Current Block";
+            this.columnHeader31.Width = 120;
+            // 
+            // columnHeader32
+            // 
+            this.columnHeader32.Text = "Speed (km/h)";
+            this.columnHeader32.Width = 120;
+            // 
+            // columnHeader33
+            // 
+            this.columnHeader33.Text = "Authority (km)";
+            this.columnHeader33.Width = 200;
+            // 
+            // red1SwitchGroupBox
+            // 
+            this.red1SwitchGroupBox.Controls.Add(this.red1SwitchListView);
+            this.red1SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1SwitchGroupBox.Location = new System.Drawing.Point(6, 250);
+            this.red1SwitchGroupBox.Name = "red1SwitchGroupBox";
+            this.red1SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
+            this.red1SwitchGroupBox.TabIndex = 16;
+            this.red1SwitchGroupBox.TabStop = false;
+            this.red1SwitchGroupBox.Text = "Switch Information";
+            // 
+            // red1SwitchListView
+            // 
+            this.red1SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader34,
+            this.columnHeader35,
+            this.columnHeader36,
+            this.columnHeader37});
+            this.red1SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.red1SwitchListView.Name = "red1SwitchListView";
+            this.red1SwitchListView.Scrollable = false;
+            this.red1SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.red1SwitchListView.TabIndex = 14;
+            this.red1SwitchListView.UseCompatibleStateImageBehavior = false;
+            this.red1SwitchListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader34
+            // 
+            this.columnHeader34.Text = "Switch Id";
+            this.columnHeader34.Width = 92;
+            // 
+            // columnHeader35
+            // 
+            this.columnHeader35.Text = "Source Block";
+            this.columnHeader35.Width = 108;
+            // 
+            // columnHeader36
+            // 
+            this.columnHeader36.Text = "Target Block";
+            this.columnHeader36.Width = 78;
+            // 
+            // columnHeader37
+            // 
+            this.columnHeader37.Text = "Actions";
+            this.columnHeader37.Width = 100;
+            // 
+            // red1CrossingGroupBox
+            // 
+            this.red1CrossingGroupBox.Controls.Add(this.red1CrossingListView);
+            this.red1CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1CrossingGroupBox.Location = new System.Drawing.Point(6, 583);
+            this.red1CrossingGroupBox.Name = "red1CrossingGroupBox";
+            this.red1CrossingGroupBox.Size = new System.Drawing.Size(672, 214);
+            this.red1CrossingGroupBox.TabIndex = 20;
+            this.red1CrossingGroupBox.TabStop = false;
+            this.red1CrossingGroupBox.Text = "Crossing Information";
+            // 
+            // red1CrossingListView
+            // 
+            this.red1CrossingListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader38,
+            this.columnHeader39,
+            this.columnHeader40});
+            this.red1CrossingListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1CrossingListView.Location = new System.Drawing.Point(12, 38);
+            this.red1CrossingListView.Name = "red1CrossingListView";
+            this.red1CrossingListView.Size = new System.Drawing.Size(654, 170);
+            this.red1CrossingListView.TabIndex = 0;
+            this.red1CrossingListView.UseCompatibleStateImageBehavior = false;
+            this.red1CrossingListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader38
+            // 
+            this.columnHeader38.Text = "Block ID";
+            this.columnHeader38.Width = 130;
+            // 
+            // columnHeader39
+            // 
+            this.columnHeader39.Text = "Activated";
+            this.columnHeader39.Width = 150;
+            // 
+            // columnHeader40
+            // 
+            this.columnHeader40.Text = "";
+            // 
+            // red1TestGroupBox
+            // 
+            this.red1TestGroupBox.Controls.Add(this.label5);
+            this.red1TestGroupBox.Controls.Add(this.richTextBox3);
+            this.red1TestGroupBox.Controls.Add(this.button3);
+            this.red1TestGroupBox.Controls.Add(this.label6);
+            this.red1TestGroupBox.Controls.Add(this.textBox4);
+            this.red1TestGroupBox.Controls.Add(this.pictureBox3);
+            this.red1TestGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1TestGroupBox.Location = new System.Drawing.Point(688, 15);
+            this.red1TestGroupBox.Name = "red1TestGroupBox";
+            this.red1TestGroupBox.Size = new System.Drawing.Size(696, 873);
+            this.red1TestGroupBox.TabIndex = 21;
+            this.red1TestGroupBox.TabStop = false;
+            this.red1TestGroupBox.Text = "Test Panel";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 266);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 32);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Test Output";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(26, 313);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(649, 540);
+            this.richTextBox3.TabIndex = 4;
+            this.richTextBox3.Text = "";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(26, 123);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(511, 46);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Test Controller";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(21, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 29);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Occupancy:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(165, 61);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(372, 39);
+            this.textBox4.TabIndex = 1;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(6, 38);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(684, 829);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // red2TestGroupBox
+            // 
+            this.red2TestGroupBox.Controls.Add(this.label7);
+            this.red2TestGroupBox.Controls.Add(this.richTextBox4);
+            this.red2TestGroupBox.Controls.Add(this.button4);
+            this.red2TestGroupBox.Controls.Add(this.label8);
+            this.red2TestGroupBox.Controls.Add(this.textBox5);
+            this.red2TestGroupBox.Controls.Add(this.pictureBox4);
+            this.red2TestGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2TestGroupBox.Location = new System.Drawing.Point(686, 34);
+            this.red2TestGroupBox.Name = "red2TestGroupBox";
+            this.red2TestGroupBox.Size = new System.Drawing.Size(696, 873);
+            this.red2TestGroupBox.TabIndex = 25;
+            this.red2TestGroupBox.TabStop = false;
+            this.red2TestGroupBox.Text = "Test Panel";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 266);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(163, 32);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Test Output";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Location = new System.Drawing.Point(26, 313);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(649, 540);
+            this.richTextBox4.TabIndex = 4;
+            this.richTextBox4.Text = "";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(26, 123);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(511, 46);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Test Controller";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(21, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(138, 29);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Occupancy:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(165, 61);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(372, 39);
+            this.textBox5.TabIndex = 1;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(6, 38);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(684, 829);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // red2CrossingGroupBox
+            // 
+            this.red2CrossingGroupBox.Controls.Add(this.red2CrossingListView);
+            this.red2CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2CrossingGroupBox.Location = new System.Drawing.Point(4, 602);
+            this.red2CrossingGroupBox.Name = "red2CrossingGroupBox";
+            this.red2CrossingGroupBox.Size = new System.Drawing.Size(672, 214);
+            this.red2CrossingGroupBox.TabIndex = 24;
+            this.red2CrossingGroupBox.TabStop = false;
+            this.red2CrossingGroupBox.Text = "Crossing Information";
+            // 
+            // red2CrossingListView
+            // 
+            this.red2CrossingListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader41,
+            this.columnHeader42,
+            this.columnHeader43});
+            this.red2CrossingListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2CrossingListView.Location = new System.Drawing.Point(12, 38);
+            this.red2CrossingListView.Name = "red2CrossingListView";
+            this.red2CrossingListView.Size = new System.Drawing.Size(654, 170);
+            this.red2CrossingListView.TabIndex = 0;
+            this.red2CrossingListView.UseCompatibleStateImageBehavior = false;
+            this.red2CrossingListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader41
+            // 
+            this.columnHeader41.Text = "Block ID";
+            this.columnHeader41.Width = 130;
+            // 
+            // columnHeader42
+            // 
+            this.columnHeader42.Text = "Activated";
+            this.columnHeader42.Width = 150;
+            // 
+            // columnHeader43
+            // 
+            this.columnHeader43.Text = "";
+            // 
+            // red2SwitchGroupBox
+            // 
+            this.red2SwitchGroupBox.Controls.Add(this.red2SwitchListView);
+            this.red2SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2SwitchGroupBox.Location = new System.Drawing.Point(4, 269);
+            this.red2SwitchGroupBox.Name = "red2SwitchGroupBox";
+            this.red2SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
+            this.red2SwitchGroupBox.TabIndex = 23;
+            this.red2SwitchGroupBox.TabStop = false;
+            this.red2SwitchGroupBox.Text = "Switch Information";
+            // 
+            // red2SwitchListView
+            // 
+            this.red2SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader44,
+            this.columnHeader45,
+            this.columnHeader46,
+            this.columnHeader47});
+            this.red2SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.red2SwitchListView.Name = "red2SwitchListView";
+            this.red2SwitchListView.Scrollable = false;
+            this.red2SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.red2SwitchListView.TabIndex = 14;
+            this.red2SwitchListView.UseCompatibleStateImageBehavior = false;
+            this.red2SwitchListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader44
+            // 
+            this.columnHeader44.Text = "Switch Id";
+            this.columnHeader44.Width = 92;
+            // 
+            // columnHeader45
+            // 
+            this.columnHeader45.Text = "Source Block";
+            this.columnHeader45.Width = 108;
+            // 
+            // columnHeader46
+            // 
+            this.columnHeader46.Text = "Target Block";
+            this.columnHeader46.Width = 78;
+            // 
+            // columnHeader47
+            // 
+            this.columnHeader47.Text = "Actions";
+            this.columnHeader47.Width = 100;
+            // 
+            // red2TrainsGroupBox
+            // 
+            this.red2TrainsGroupBox.Controls.Add(this.red2TrainListView);
+            this.red2TrainsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2TrainsGroupBox.Location = new System.Drawing.Point(4, 34);
+            this.red2TrainsGroupBox.Name = "red2TrainsGroupBox";
+            this.red2TrainsGroupBox.Size = new System.Drawing.Size(672, 208);
+            this.red2TrainsGroupBox.TabIndex = 22;
+            this.red2TrainsGroupBox.TabStop = false;
+            this.red2TrainsGroupBox.Text = "Trains";
+            // 
+            // red2TrainListView
+            // 
+            this.red2TrainListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader48,
+            this.columnHeader49,
+            this.columnHeader50,
+            this.columnHeader51});
+            this.red2TrainListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2TrainListView.Location = new System.Drawing.Point(12, 38);
+            this.red2TrainListView.Name = "red2TrainListView";
+            this.red2TrainListView.Scrollable = false;
+            this.red2TrainListView.Size = new System.Drawing.Size(654, 164);
+            this.red2TrainListView.TabIndex = 5;
+            this.red2TrainListView.UseCompatibleStateImageBehavior = false;
+            this.red2TrainListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader48
+            // 
+            this.columnHeader48.Text = "Train ID";
+            this.columnHeader48.Width = 75;
+            // 
+            // columnHeader49
+            // 
+            this.columnHeader49.Text = "Current Block";
+            this.columnHeader49.Width = 120;
+            // 
+            // columnHeader50
+            // 
+            this.columnHeader50.Text = "Speed (km/h)";
+            this.columnHeader50.Width = 120;
+            // 
+            // columnHeader51
+            // 
+            this.columnHeader51.Text = "Authority (km)";
+            this.columnHeader51.Width = 200;
+            // 
             // TrackControllerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -832,7 +1302,21 @@ namespace TrainProject
             this.green2CrossingGroupBox.ResumeLayout(false);
             this.green2SwitchGroupBox.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.redCtrl1.ResumeLayout(false);
+            this.redCtrl2.ResumeLayout(false);
             this.murphyTab.ResumeLayout(false);
+            this.red1TrainsGroupBox.ResumeLayout(false);
+            this.red1SwitchGroupBox.ResumeLayout(false);
+            this.red1CrossingGroupBox.ResumeLayout(false);
+            this.red1TestGroupBox.ResumeLayout(false);
+            this.red1TestGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.red2TestGroupBox.ResumeLayout(false);
+            this.red2TestGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.red2CrossingGroupBox.ResumeLayout(false);
+            this.red2SwitchGroupBox.ResumeLayout(false);
+            this.red2TrainsGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -914,6 +1398,54 @@ namespace TrainProject
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.OpenFileDialog openPLCFile;
+        private System.Windows.Forms.GroupBox red1TrainsGroupBox;
+        private System.Windows.Forms.ListView red1TrainsListView;
+        private System.Windows.Forms.ColumnHeader columnHeader30;
+        private System.Windows.Forms.ColumnHeader columnHeader31;
+        private System.Windows.Forms.ColumnHeader columnHeader32;
+        private System.Windows.Forms.ColumnHeader columnHeader33;
+        private System.Windows.Forms.GroupBox red1SwitchGroupBox;
+        private System.Windows.Forms.ListView red1SwitchListView;
+        private System.Windows.Forms.ColumnHeader columnHeader34;
+        private System.Windows.Forms.ColumnHeader columnHeader35;
+        private System.Windows.Forms.ColumnHeader columnHeader36;
+        private System.Windows.Forms.ColumnHeader columnHeader37;
+        private System.Windows.Forms.GroupBox red1CrossingGroupBox;
+        private System.Windows.Forms.ListView red1CrossingListView;
+        private System.Windows.Forms.ColumnHeader columnHeader38;
+        private System.Windows.Forms.ColumnHeader columnHeader39;
+        private System.Windows.Forms.ColumnHeader columnHeader40;
+        private System.Windows.Forms.GroupBox red1TestGroupBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.GroupBox red2TestGroupBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.GroupBox red2CrossingGroupBox;
+        private System.Windows.Forms.ListView red2CrossingListView;
+        private System.Windows.Forms.ColumnHeader columnHeader41;
+        private System.Windows.Forms.ColumnHeader columnHeader42;
+        private System.Windows.Forms.ColumnHeader columnHeader43;
+        private System.Windows.Forms.GroupBox red2SwitchGroupBox;
+        private System.Windows.Forms.ListView red2SwitchListView;
+        private System.Windows.Forms.ColumnHeader columnHeader44;
+        private System.Windows.Forms.ColumnHeader columnHeader45;
+        private System.Windows.Forms.ColumnHeader columnHeader46;
+        private System.Windows.Forms.ColumnHeader columnHeader47;
+        private System.Windows.Forms.GroupBox red2TrainsGroupBox;
+        private System.Windows.Forms.ListView red2TrainListView;
+        private System.Windows.Forms.ColumnHeader columnHeader48;
+        private System.Windows.Forms.ColumnHeader columnHeader49;
+        private System.Windows.Forms.ColumnHeader columnHeader50;
+        private System.Windows.Forms.ColumnHeader columnHeader51;
     }
 }
 

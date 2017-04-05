@@ -225,6 +225,7 @@ namespace TrainProject
                     else if (currSwitch.targetBlockId1 == null)
                     {
                         currSwitch.targetBlockId1 = currBlock.blockId;
+                        currSwitch.currentState = currBlock.blockId; 
                     }
                     else
                     {

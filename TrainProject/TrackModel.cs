@@ -322,7 +322,7 @@ namespace Track_Layout_UI
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
             }
-            //TrackControllerModule.initializeSwitches(switchList);
+            TrackControllerModule.initializeSwitches(switchList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
