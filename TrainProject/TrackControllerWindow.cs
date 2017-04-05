@@ -14,13 +14,17 @@ namespace TrainProject
     public partial class TrackControllerWindow : Form
     {
 
-        public static TrackControllerModule controllerModule = new TrackControllerModule();
+        public static TrackControllerModule controllerModule;
         public static PLCProgram plc = new PLCProgram();
         //need to make call to track controller module?
         //set up tabs for individual controllers
         public TrackControllerWindow()
         {
             InitializeComponent();
+
+            //check if controllerModule has already been instantiated from office
+            controllerModule = new TrackControllerModule();
+
             controllerModule.initializeTrackControllers();//might have to move this elsewhere
             updateTrains();
             initializeSwitchTable();
