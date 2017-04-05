@@ -125,6 +125,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label23 = new System.Windows.Forms.Label();
+            this.blockIDLabel = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -161,7 +164,7 @@
             this.Passenger_Tab.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Passenger_Tab.Name = "Passenger_Tab";
             this.Passenger_Tab.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Passenger_Tab.Size = new System.Drawing.Size(1019, 969);
+            this.Passenger_Tab.Size = new System.Drawing.Size(1016, 969);
             this.Passenger_Tab.TabIndex = 1;
             this.Passenger_Tab.Text = "Load Track Model";
             // 
@@ -275,7 +278,7 @@
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(99, 46);
+            this.timeLabel.Location = new System.Drawing.Point(99, 48);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(120, 31);
@@ -284,6 +287,9 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.label24);
+            this.groupBox17.Controls.Add(this.blockIDLabel);
+            this.groupBox17.Controls.Add(this.label23);
             this.groupBox17.Controls.Add(this.distanceToLabel);
             this.groupBox17.Controls.Add(this.tunnelStatusLabel);
             this.groupBox17.Controls.Add(this.stationLabel);
@@ -293,11 +299,11 @@
             this.groupBox17.Controls.Add(this.label2);
             this.groupBox17.Controls.Add(this.label10);
             this.groupBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox17.Location = new System.Drawing.Point(265, 516);
+            this.groupBox17.Location = new System.Drawing.Point(34, 711);
             this.groupBox17.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox17.Size = new System.Drawing.Size(380, 208);
+            this.groupBox17.Size = new System.Drawing.Size(570, 208);
             this.groupBox17.TabIndex = 43;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Track Information";
@@ -341,12 +347,12 @@
             // 
             this.blockSpeedLimitLabel.AutoSize = true;
             this.blockSpeedLimitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockSpeedLimitLabel.Location = new System.Drawing.Point(239, 43);
+            this.blockSpeedLimitLabel.Location = new System.Drawing.Point(253, 41);
             this.blockSpeedLimitLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blockSpeedLimitLabel.Name = "blockSpeedLimitLabel";
-            this.blockSpeedLimitLabel.Size = new System.Drawing.Size(137, 29);
+            this.blockSpeedLimitLabel.Size = new System.Drawing.Size(21, 29);
             this.blockSpeedLimitLabel.TabIndex = 22;
-            this.blockSpeedLimitLabel.Text = "35.763MPH";
+            this.blockSpeedLimitLabel.Text = "-";
             this.blockSpeedLimitLabel.Click += new System.EventHandler(this.blockSpeedLimitLabel_Click);
             // 
             // label9
@@ -399,7 +405,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(4, 46);
+            this.label11.Location = new System.Drawing.Point(4, 45);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 37);
@@ -414,12 +420,13 @@
             this.trainIDLabel.Location = new System.Drawing.Point(4, 5);
             this.trainIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.trainIDLabel.Name = "trainIDLabel";
-            this.trainIDLabel.Size = new System.Drawing.Size(163, 31);
+            this.trainIDLabel.Size = new System.Drawing.Size(148, 31);
             this.trainIDLabel.TabIndex = 40;
-            this.trainIDLabel.Text = "Train ID : 56";
+            this.trainIDLabel.Text = "Train ID : 1";
             // 
             // groupBox13
             // 
+            this.groupBox13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox13.Controls.Add(this.lightStatusLabel);
             this.groupBox13.Controls.Add(this.leftDoorStatusLabel);
             this.groupBox13.Controls.Add(this.rightDoorStatusLabel);
@@ -431,7 +438,7 @@
             this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox13.Size = new System.Drawing.Size(339, 278);
+            this.groupBox13.Size = new System.Drawing.Size(339, 434);
             this.groupBox13.TabIndex = 39;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Status Center";
@@ -439,7 +446,6 @@
             // 
             // lightStatusLabel
             // 
-            this.lightStatusLabel.AutoSize = true;
             this.lightStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lightStatusLabel.Location = new System.Drawing.Point(190, 66);
             this.lightStatusLabel.Name = "lightStatusLabel";
@@ -449,7 +455,6 @@
             // 
             // leftDoorStatusLabel
             // 
-            this.leftDoorStatusLabel.AutoSize = true;
             this.leftDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leftDoorStatusLabel.Location = new System.Drawing.Point(190, 112);
             this.leftDoorStatusLabel.Name = "leftDoorStatusLabel";
@@ -459,7 +464,6 @@
             // 
             // rightDoorStatusLabel
             // 
-            this.rightDoorStatusLabel.AutoSize = true;
             this.rightDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rightDoorStatusLabel.Location = new System.Drawing.Point(190, 155);
             this.rightDoorStatusLabel.Name = "rightDoorStatusLabel";
@@ -469,7 +473,6 @@
             // 
             // label22
             // 
-            this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(7, 112);
             this.label22.Name = "label22";
@@ -479,7 +482,6 @@
             // 
             // label21
             // 
-            this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(7, 155);
             this.label21.Name = "label21";
@@ -489,7 +491,6 @@
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(7, 66);
             this.label19.Name = "label19";
@@ -620,12 +621,14 @@
             // automaticRadioButton
             // 
             this.automaticRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.automaticRadioButton.Checked = true;
             this.automaticRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.automaticRadioButton.Location = new System.Drawing.Point(207, 51);
             this.automaticRadioButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.automaticRadioButton.Name = "automaticRadioButton";
             this.automaticRadioButton.Size = new System.Drawing.Size(173, 62);
             this.automaticRadioButton.TabIndex = 4;
+            this.automaticRadioButton.TabStop = true;
             this.automaticRadioButton.Text = "Automatic";
             this.automaticRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.automaticRadioButton.UseVisualStyleBackColor = true;
@@ -634,14 +637,12 @@
             // manualRadioButton
             // 
             this.manualRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.manualRadioButton.Checked = true;
             this.manualRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.manualRadioButton.Location = new System.Drawing.Point(24, 50);
             this.manualRadioButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.manualRadioButton.Name = "manualRadioButton";
             this.manualRadioButton.Size = new System.Drawing.Size(173, 62);
             this.manualRadioButton.TabIndex = 3;
-            this.manualRadioButton.TabStop = true;
             this.manualRadioButton.Text = "Manual";
             this.manualRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.manualRadioButton.UseVisualStyleBackColor = true;
@@ -694,11 +695,11 @@
             this.groupBox10.Controls.Add(this.label4);
             this.groupBox10.Controls.Add(this.label3);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(265, 732);
+            this.groupBox10.Location = new System.Drawing.Point(265, 456);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox10.Size = new System.Drawing.Size(380, 144);
+            this.groupBox10.Size = new System.Drawing.Size(339, 232);
             this.groupBox10.TabIndex = 26;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "SetPoints";
@@ -710,9 +711,9 @@
             this.label12.Location = new System.Drawing.Point(209, 94);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 29);
+            this.label12.Size = new System.Drawing.Size(102, 29);
             this.label12.TabIndex = 4;
-            this.label12.Text = "10mi";
+            this.label12.Text = "0 blocks";
             // 
             // ctcSpeedLabel
             // 
@@ -721,9 +722,9 @@
             this.ctcSpeedLabel.Location = new System.Drawing.Point(209, 49);
             this.ctcSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ctcSpeedLabel.Name = "ctcSpeedLabel";
-            this.ctcSpeedLabel.Size = new System.Drawing.Size(92, 29);
+            this.ctcSpeedLabel.Size = new System.Drawing.Size(79, 29);
             this.ctcSpeedLabel.TabIndex = 3;
-            this.ctcSpeedLabel.Text = "35MPH";
+            this.ctcSpeedLabel.Text = "0MPH";
             // 
             // label5
             // 
@@ -800,11 +801,11 @@
             this.groupBox6.Controls.Add(this.Show_Power);
             this.groupBox6.Controls.Add(this.Show_Speed);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(265, 320);
+            this.groupBox6.Location = new System.Drawing.Point(613, 723);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(336, 175);
+            this.groupBox6.Size = new System.Drawing.Size(394, 196);
             this.groupBox6.TabIndex = 22;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Train Information";
@@ -824,7 +825,7 @@
             // 
             this.trainPowerLabel.AutoSize = true;
             this.trainPowerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainPowerLabel.Location = new System.Drawing.Point(260, 86);
+            this.trainPowerLabel.Location = new System.Drawing.Point(222, 87);
             this.trainPowerLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.trainPowerLabel.Name = "trainPowerLabel";
             this.trainPowerLabel.Size = new System.Drawing.Size(60, 29);
@@ -835,7 +836,7 @@
             // 
             this.trainSpeedLabel.AutoSize = true;
             this.trainSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainSpeedLabel.Location = new System.Drawing.Point(260, 50);
+            this.trainSpeedLabel.Location = new System.Drawing.Point(222, 50);
             this.trainSpeedLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.trainSpeedLabel.Name = "trainSpeedLabel";
             this.trainSpeedLabel.Size = new System.Drawing.Size(79, 29);
@@ -869,7 +870,7 @@
             // 
             this.Show_Speed.AutoSize = true;
             this.Show_Speed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Show_Speed.Location = new System.Drawing.Point(10, 50);
+            this.Show_Speed.Location = new System.Drawing.Point(19, 41);
             this.Show_Speed.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Show_Speed.Name = "Show_Speed";
             this.Show_Speed.Size = new System.Drawing.Size(97, 29);
@@ -882,11 +883,11 @@
             this.Brakes_GroupBox.Controls.Add(this.serviceButton);
             this.Brakes_GroupBox.Controls.Add(this.Emergency_Button);
             this.Brakes_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Brakes_GroupBox.Location = new System.Drawing.Point(15, 704);
+            this.Brakes_GroupBox.Location = new System.Drawing.Point(612, 516);
             this.Brakes_GroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.Brakes_GroupBox.Name = "Brakes_GroupBox";
             this.Brakes_GroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.Brakes_GroupBox.Size = new System.Drawing.Size(239, 175);
+            this.Brakes_GroupBox.Size = new System.Drawing.Size(395, 175);
             this.Brakes_GroupBox.TabIndex = 21;
             this.Brakes_GroupBox.TabStop = false;
             this.Brakes_GroupBox.Text = "Brakes";
@@ -902,6 +903,8 @@
             this.serviceButton.Text = "Service";
             this.serviceButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.serviceButton.UseVisualStyleBackColor = true;
+            this.serviceButton.CheckedChanged += new System.EventHandler(this.serviceButton_CheckedChanged);
+            this.serviceButton.Click += new System.EventHandler(this.serviceButton_Click);
             // 
             // Emergency_Button
             // 
@@ -1093,7 +1096,7 @@
             this.tabPage1.Location = new System.Drawing.Point(8, 39);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1019, 969);
+            this.tabPage1.Size = new System.Drawing.Size(1016, 969);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Test Window";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1323,14 +1326,44 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(369, 46);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(114, 29);
+            this.label23.TabIndex = 26;
+            this.label23.Text = "Block ID :";
+            // 
+            // blockIDLabel
+            // 
+            this.blockIDLabel.AutoSize = true;
+            this.blockIDLabel.Location = new System.Drawing.Point(493, 41);
+            this.blockIDLabel.Name = "blockIDLabel";
+            this.blockIDLabel.Size = new System.Drawing.Size(27, 37);
+            this.blockIDLabel.TabIndex = 27;
+            this.blockIDLabel.Text = "-";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(604, 50);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(0, 37);
+            this.label24.TabIndex = 28;
+            // 
             // TrainController
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1035, 945);
+            this.ClientSize = new System.Drawing.Size(1035, 990);
             this.Controls.Add(this.Users_Tab);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.MaximumSize = new System.Drawing.Size(1061, 1061);
+            this.MinimumSize = new System.Drawing.Size(1061, 1061);
             this.Name = "TrainController";
             this.Text = "Train Controller";
             this.Passenger_Tab.ResumeLayout(false);
@@ -1341,7 +1374,6 @@
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
             this.Heater_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).EndInit();
@@ -1464,6 +1496,9 @@
         private System.Windows.Forms.RadioButton testModeOff;
         private System.Windows.Forms.RadioButton testModeOn;
         private System.Windows.Forms.Label testModeLabel;
+        private System.Windows.Forms.Label blockIDLabel;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
     }
 }
 
