@@ -100,16 +100,15 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.Testing = new System.Windows.Forms.TabPage();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dvgBlocks = new System.Windows.Forms.DataGridView();
-            this.InsertToSql = new System.Windows.Forms.Button();
-            this.SelectFile = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.InsertToSql = new System.Windows.Forms.Button();
+            this.dvgBlocks = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.Testing = new System.Windows.Forms.TabPage();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -120,13 +119,13 @@
             this.Murphy.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.Testing.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.Testing.SuspendLayout();
             this.SuspendLayout();
             // 
             // uploadExcelFileButton
@@ -149,7 +148,6 @@
             this.label1.Size = new System.Drawing.Size(289, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selected Configuration";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ExcelFileName
             // 
@@ -159,7 +157,6 @@
             this.ExcelFileName.ReadOnly = true;
             this.ExcelFileName.Size = new System.Drawing.Size(243, 26);
             this.ExcelFileName.TabIndex = 2;
-            this.ExcelFileName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -180,7 +177,6 @@
             this.label3.Size = new System.Drawing.Size(384, 73);
             this.label3.TabIndex = 4;
             this.label3.Text = "Track Model";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button2
             // 
@@ -242,7 +238,6 @@
             this.lineTextBox.ReadOnly = true;
             this.lineTextBox.Size = new System.Drawing.Size(47, 13);
             this.lineTextBox.TabIndex = 14;
-            this.lineTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // sectionTextBox
             // 
@@ -254,7 +249,6 @@
             this.sectionTextBox.ReadOnly = true;
             this.sectionTextBox.Size = new System.Drawing.Size(47, 13);
             this.sectionTextBox.TabIndex = 16;
-            this.sectionTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label7
             // 
@@ -276,7 +270,6 @@
             this.blockNumberTextBox.ReadOnly = true;
             this.blockNumberTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockNumberTextBox.TabIndex = 18;
-            this.blockNumberTextBox.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label8
             // 
@@ -298,7 +291,6 @@
             this.blockLengthTextBox.ReadOnly = true;
             this.blockLengthTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockLengthTextBox.TabIndex = 20;
-            this.blockLengthTextBox.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label9
             // 
@@ -320,7 +312,6 @@
             this.blockGradeTextBox.ReadOnly = true;
             this.blockGradeTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockGradeTextBox.TabIndex = 22;
-            this.blockGradeTextBox.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label10
             // 
@@ -342,7 +333,6 @@
             this.blockSpeedLimitTextBox.ReadOnly = true;
             this.blockSpeedLimitTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockSpeedLimitTextBox.TabIndex = 24;
-            this.blockSpeedLimitTextBox.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label11
             // 
@@ -353,7 +343,6 @@
             this.label11.Size = new System.Drawing.Size(125, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Speed Limit (Km/Hr):";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // blockElevationTextBox
             // 
@@ -365,7 +354,6 @@
             this.blockElevationTextBox.ReadOnly = true;
             this.blockElevationTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockElevationTextBox.TabIndex = 26;
-            this.blockElevationTextBox.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label12
             // 
@@ -387,7 +375,6 @@
             this.blockTemperatureTextBox.ReadOnly = true;
             this.blockTemperatureTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockTemperatureTextBox.TabIndex = 28;
-            this.blockTemperatureTextBox.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label13
             // 
@@ -574,7 +561,6 @@
             this.label16.Size = new System.Drawing.Size(107, 13);
             this.label16.TabIndex = 51;
             this.label16.Text = "Switch Activated:";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // blockHeaterStatusTextBox
             // 
@@ -586,7 +572,6 @@
             this.blockHeaterStatusTextBox.ReadOnly = true;
             this.blockHeaterStatusTextBox.Size = new System.Drawing.Size(47, 13);
             this.blockHeaterStatusTextBox.TabIndex = 50;
-            this.blockHeaterStatusTextBox.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // label15
             // 
@@ -763,7 +748,6 @@
             this.blockCumElevationTextBox.Size = new System.Drawing.Size(765, 142);
             this.blockCumElevationTextBox.TabIndex = 41;
             this.blockCumElevationTextBox.TabStop = false;
-            this.blockCumElevationTextBox.Text = "69";
             // 
             // label4
             // 
@@ -970,70 +954,10 @@
             this.button9.Text = "Power Failure";
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // Testing
+            // openExcelFileDialog
             // 
-            this.Testing.Controls.Add(this.dataGridView6);
-            this.Testing.Controls.Add(this.dataGridView5);
-            this.Testing.Controls.Add(this.dataGridView4);
-            this.Testing.Controls.Add(this.dataGridView3);
-            this.Testing.Controls.Add(this.dataGridView2);
-            this.Testing.Controls.Add(this.dvgBlocks);
-            this.Testing.Controls.Add(this.InsertToSql);
-            this.Testing.Controls.Add(this.SelectFile);
-            this.Testing.Location = new System.Drawing.Point(4, 22);
-            this.Testing.Name = "Testing";
-            this.Testing.Size = new System.Drawing.Size(1203, 626);
-            this.Testing.TabIndex = 2;
-            this.Testing.Text = "Testing";
-            this.Testing.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView6
-            // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Location = new System.Drawing.Point(507, 210);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView6.TabIndex = 7;
-            // 
-            // dataGridView5
-            // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(261, 210);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView5.TabIndex = 6;
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(15, 210);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView4.TabIndex = 5;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(507, 42);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView3.TabIndex = 4;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(261, 42);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView2.TabIndex = 3;
-            // 
-            // dvgBlocks
-            // 
-            this.dvgBlocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgBlocks.Location = new System.Drawing.Point(15, 42);
-            this.dvgBlocks.Name = "dvgBlocks";
-            this.dvgBlocks.Size = new System.Drawing.Size(240, 150);
-            this.dvgBlocks.TabIndex = 2;
+            this.openExcelFileDialog.FileName = "openExcelFileDialog";
+            this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
             // 
             // InsertToSql
             // 
@@ -1045,20 +969,69 @@
             this.InsertToSql.UseVisualStyleBackColor = true;
             this.InsertToSql.Click += new System.EventHandler(this.InsertToSql_Click);
             // 
-            // SelectFile
+            // dvgBlocks
             // 
-            this.SelectFile.Location = new System.Drawing.Point(15, 13);
-            this.SelectFile.Name = "SelectFile";
-            this.SelectFile.Size = new System.Drawing.Size(75, 23);
-            this.SelectFile.TabIndex = 0;
-            this.SelectFile.Text = "Select File";
-            this.SelectFile.UseVisualStyleBackColor = true;
-            this.SelectFile.Click += new System.EventHandler(this.selectFile);
+            this.dvgBlocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgBlocks.Location = new System.Drawing.Point(15, 42);
+            this.dvgBlocks.Name = "dvgBlocks";
+            this.dvgBlocks.Size = new System.Drawing.Size(240, 150);
+            this.dvgBlocks.TabIndex = 2;
             // 
-            // openExcelFileDialog
+            // dataGridView2
             // 
-            this.openExcelFileDialog.FileName = "openExcelFileDialog";
-            this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(261, 42);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 3;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(507, 42);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView3.TabIndex = 4;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(15, 210);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView4.TabIndex = 5;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(261, 210);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView5.TabIndex = 6;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(507, 210);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView6.TabIndex = 7;
+            // 
+            // Testing
+            // 
+            this.Testing.Controls.Add(this.dataGridView6);
+            this.Testing.Controls.Add(this.dataGridView5);
+            this.Testing.Controls.Add(this.dataGridView4);
+            this.Testing.Controls.Add(this.dataGridView3);
+            this.Testing.Controls.Add(this.dataGridView2);
+            this.Testing.Controls.Add(this.dvgBlocks);
+            this.Testing.Controls.Add(this.InsertToSql);
+            this.Testing.Location = new System.Drawing.Point(4, 22);
+            this.Testing.Name = "Testing";
+            this.Testing.Size = new System.Drawing.Size(1203, 626);
+            this.Testing.TabIndex = 2;
+            this.Testing.Text = "Testing";
+            this.Testing.UseVisualStyleBackColor = true;
             // 
             // TrackModelUI
             // 
@@ -1086,13 +1059,13 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.Testing.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.Testing.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1168,18 +1141,17 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox blockBeaconTextBox;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TabPage Testing;
-        private System.Windows.Forms.DataGridView dvgBlocks;
-        private System.Windows.Forms.Button InsertToSql;
-        private System.Windows.Forms.Button SelectFile;
         private System.Windows.Forms.OpenFileDialog openExcelFileDialog;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage Testing;
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dvgBlocks;
+        private System.Windows.Forms.Button InsertToSql;
     }
 }
 
