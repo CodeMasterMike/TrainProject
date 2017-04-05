@@ -324,6 +324,8 @@ namespace Track_Layout_UI
             }
             //TrackControllerModule.initializeSwitches(switchList);
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
+            TrackControllerModule.initializeSwitches(switchList);
+            //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
 

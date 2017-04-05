@@ -22,6 +22,7 @@ namespace TrainProject
         private TrainModel trainModelWindow;
         public static Office mainOffice;
         public static TrackModelUI trackModelWindow;
+        public static TrackControllerWindow trackControllerWindow;
         public TrainSimulation()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace TrainProject
         public void beginButton_Click(object sender, EventArgs e)
         {
             start = 1;
-            TrackControllerWindow trackControllerWindow = new TrackControllerWindow();
+            trackControllerWindow = new TrackControllerWindow();
             trackControllerWindow.Show();
             trackModelWindow = new TrackModelUI();
             trackModelWindow.Show();
