@@ -34,6 +34,11 @@ namespace Track_Layout_UI
             InitializeComponent();
         }
 
+        public void dispatchTrain(Train train)
+        {
+            trainList.Add(train);
+        }
+
         public void updateSpeedAndAuthority(int trainId, double speed, int authority)
         {
             foreach(Train train in trainList)
@@ -44,6 +49,12 @@ namespace Track_Layout_UI
                     break;
                 }
             }
+        }
+
+        public Block getNextBlock(Block prevBlock, Block currBlock)
+        {
+            Block nextBlock = null;
+            return nextBlock;
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
