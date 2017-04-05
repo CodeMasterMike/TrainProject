@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using CTC;
 
 namespace Track_Layout_UI
 {
@@ -25,12 +26,117 @@ namespace Track_Layout_UI
         public List<Section> sectionList = new List<Section>();
         public List<Line> lineList = new List<Line>();
         public List<Switch> switchList = new List<Switch>();
+        public List<Train> trainList = new List<Train>();
         public Block selectedBlock;
         public Line selectedLine;
+        //temporary variables
+        private int yardBlockId = 229;
 
         public TrackModelUI()
         {
             InitializeComponent();
+        }
+
+        public void dispatchTrain(Train train)
+        {
+            trainList.Add(train);
+        }
+
+        public void updateSpeedAndAuthority(int trainId, double speed, int authority)
+        {
+            foreach(Train train in trainList)
+            {
+                if(trainId == train.trainId)
+                {
+                    //train.updateSpeedAndAuthority(speed, authority);
+                    break;
+                }
+            }
+        }
+
+        private Block findBlock(int blockId)
+        {
+            foreach(Block block in blockList)
+            {
+                if(block.blockId == blockId)
+                {
+                    return block;
+                }
+            }
+            return null;
+        }
+
+        //only returns null if the yard
+        public Block getNextBlock(Block prevBlock, Block currBlock)
+        {    
+            Block nextBlock = null;
+            bool isSource = false;
+            bool isTarget = false;
+            if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+            {
+                isSource = true;
+            }
+            else if(currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
+            {
+                isTarget = true;
+            }
+
+            if(prevBlock == null && nextBlock == null) //coming from yard
+            {
+                return findBlock(yardBlockId);
+            }
+            else if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            {
+                if(isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if(isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else if(prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
+            {
+                if(currBlock.prevBlockId == null)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
+            else if(currBlock.parentSwitch != null && prevBlock.parentSwitch == null) //if entering a switch
+            {
+                if (isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if (isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else //if no switches involved
+            {
+                if(prevBlock.nextBlockId != null && prevBlock.nextBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else if(prevBlock.prevBlockId != null && prevBlock.prevBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
+            return nextBlock;
+        }
+
+        public void updateBlockStatus(int blockId, bool occupied)
+        {
+            TrackControllerModule.updateBlockOccupancy(blockId, occupied);
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
@@ -295,6 +401,8 @@ namespace Track_Layout_UI
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
             }
+            TrackControllerModule.initializeSwitches(switchList);
+            //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
 

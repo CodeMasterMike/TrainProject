@@ -14,25 +14,28 @@ namespace TrainProject
     public partial class TrackControllerWindow : Form
     {
 
-        public static TrackControllerModule controllerModule = new TrackControllerModule();
+        public static TrackControllerModule controllerModule;
         public static PLCProgram plc = new PLCProgram();
         //need to make call to track controller module?
         //set up tabs for individual controllers
         public TrackControllerWindow()
         {
             InitializeComponent();
-            controllerModule.initializeTrackControllers();//might have to move this elsewhere
+
+            //check if controllerModule has already been instantiated from office
+            controllerModule = new TrackControllerModule();
+
+            //controllerModule.initializeTrackControllers();//might have to move this elsewhere
             updateTrains();
-            initializeSwitchTable();
             initializeCrossingTable();
             updateSwitches();
             updateCrossings();
-            initializeControllerTable();
+            //initializeControllerTable();
         }
 
 
         //function displays all the active controllers, and the switches/crossings they control
-        private void initializeControllerTable()
+        public void initializeControllerTable()
         {
             activeControllersListView.Items.Clear();
             foreach(TrackController ctrl in TrackControllerModule.activeControllers)
@@ -121,7 +124,7 @@ namespace TrainProject
             MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
         }
 
-        private void initializeSwitchTable()
+        public void initializeSwitchTable()
         {
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -141,13 +144,13 @@ namespace TrainProject
             }
         }
 
-        private void updateSwitches()
+        public void updateSwitches()
         {
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
                 try
                 {
-                    ListView temp = (ListView)this.Controls.Find(ctrl.controllerName + "SwitchListView", true)[0];
+                    ListView temp = (ListView)Controls.Find(ctrl.controllerName + "SwitchListView", true)[0];
                     temp.Items.Clear();
                     foreach (Switch s in ctrl.getSwitches())
                     {
@@ -160,7 +163,7 @@ namespace TrainProject
                 }
             }
         }
-        private void updateTrains()
+        public void updateTrains()
         {
             green1TrainsListView.Items.Clear();
             foreach (var train in TrackControllerModule.redLineCtrl1.getTrains())
