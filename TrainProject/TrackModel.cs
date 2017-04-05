@@ -29,6 +29,8 @@ namespace Track_Layout_UI
         public List<Train> trainList = new List<Train>();
         public Block selectedBlock;
         public Line selectedLine;
+        //temporary variables
+        private int yardBlockId = 229;
 
         public TrackModelUI()
         {
@@ -52,11 +54,45 @@ namespace Track_Layout_UI
             }
         }
 
+        private Block findBlock(int blockId)
+        {
+            foreach(Block block in blockList)
+            {
+                if(block.blockId == blockId)
+                {
+                    return block;
+                }
+            }
+            return null;
+        }
+
         //only returns null if the yard
         public Block getNextBlock(Block prevBlock, Block currBlock)
-        {
+        {    
             Block nextBlock = null;
-            //if(currBlock.prevBlockId == null)
+            bool isSource = false;
+            bool isTarget = false;
+            if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+            {
+                isSource = true;
+            }
+            else if(currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
+            {
+                isTarget = true;
+            }
+
+            if(prevBlock == null && nextBlock == null) //coming from yard
+            {
+                return findBlock(yardBlockId);
+            }
+            else if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            {
+                if(isTarget)
+                {
+                    return findBlock(currBlock.parentSwitch.sourceBlockId);
+                }
+                else if()
+            }
             return nextBlock;
         }
 
