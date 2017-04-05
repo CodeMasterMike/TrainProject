@@ -71,7 +71,6 @@ C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProj
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
-C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrackController.TrackControllerWindow.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainModelProject.TrainModel.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.TrainSimulation.resources
@@ -87,6 +86,7 @@ C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainControllerProje
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.TrainSimulation.resources
 C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
 C:\Users\Gabe\Documents\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
+C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.TrackControllerWindow.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.TrackControllerWindow.resources
 C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\CTC.Office.resources
 C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainProject.TrackControllerWindow.resources
