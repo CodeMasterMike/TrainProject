@@ -226,6 +226,7 @@ namespace TrainProject
                     {
                         currSwitch.targetBlockId1 = currBlock.blockId;
                         currBlock.beacon = new Beacon(currBlock.blockId);
+                        currSwitch.currentState = currBlock.blockId; 
                     }
                     else
                     {
