@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrainProject
 {
-    public class Station
+    public class Beacon
     {
-        public String name { get; set; }
+        public int blockId;
 
-        public Station(String n)
+        public Beacon(int bId)
         {
-            name = n;
+            blockId = bId;
         }
     }
 }

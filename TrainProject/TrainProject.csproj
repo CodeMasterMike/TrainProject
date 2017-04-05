@@ -64,7 +64,11 @@
   <ItemGroup>
     <Compile Include="DatabaseInterface.cs" />
     <Compile Include="HelperObjects\Block.cs" />
+<<<<<<< HEAD
     <Compile Include="HelperObjects\BlockTracker.cs" />
+=======
+    <Compile Include="HelperObjects\Beacon.cs" />
+>>>>>>> fe02bde54502c1b7455a951f339c3bb28b8df95c
     <Compile Include="HelperObjects\Station.cs" />
     <Compile Include="HelperObjects\ExcelFileLayout.cs" />
     <Compile Include="HelperObjects\Line.cs" />
