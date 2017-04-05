@@ -89,11 +89,54 @@ namespace Track_Layout_UI
             {
                 if(isTarget)
                 {
-                    return findBlock(currBlock.parentSwitch.sourceBlockId);
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
                 }
-                else if()
+                else if(isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else if(prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
+            {
+                if(currBlock.prevBlockId == null)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
+            else if(currBlock.parentSwitch != null && prevBlock.parentSwitch == null) //if entering a switch
+            {
+                if (isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if (isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else //if no switches involved
+            {
+                if(prevBlock.nextBlockId != null && prevBlock.nextBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else if(prevBlock.prevBlockId != null && prevBlock.prevBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
             }
             return nextBlock;
+        }
+
+        public void updateBlockStatus(int blockId, bool occupied)
+        {
+            TrackControllerModule.updateBlockOccupancy(blockId, occupied);
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
