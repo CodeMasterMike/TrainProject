@@ -141,6 +141,7 @@ namespace TrainProject
             activeControllers.Add(greenLineCtrl1);
             activeControllers.Add(greenLineCtrl2);
             TrainSimulation.trackControllerWindow.initializeControllerTable();
+            TrainSimulation.trackControllerWindow.initializeSwitchTable();
             TrainSimulation.trackControllerWindow.updateSwitches();
         }
     }

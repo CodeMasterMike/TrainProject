@@ -27,7 +27,6 @@ namespace TrainProject
 
             //controllerModule.initializeTrackControllers();//might have to move this elsewhere
             updateTrains();
-            initializeSwitchTable();
             initializeCrossingTable();
             updateSwitches();
             updateCrossings();
@@ -125,7 +124,7 @@ namespace TrainProject
             MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
         }
 
-        private void initializeSwitchTable()
+        public void initializeSwitchTable()
         {
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
