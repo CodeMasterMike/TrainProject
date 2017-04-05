@@ -29,6 +29,8 @@ namespace Track_Layout_UI
         public List<Train> trainList = new List<Train>();
         public Block selectedBlock;
         public Line selectedLine;
+        //temporary variables
+        private int yardBlockId = 229;
 
         public TrackModelUI()
         {
@@ -52,12 +54,89 @@ namespace Track_Layout_UI
             }
         }
 
+        private Block findBlock(int blockId)
+        {
+            foreach(Block block in blockList)
+            {
+                if(block.blockId == blockId)
+                {
+                    return block;
+                }
+            }
+            return null;
+        }
+
         //only returns null if the yard
         public Block getNextBlock(Block prevBlock, Block currBlock)
-        {
+        {    
             Block nextBlock = null;
-            //if(currBlock.prevBlockId == null)
+            bool isSource = false;
+            bool isTarget = false;
+            if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+            {
+                isSource = true;
+            }
+            else if(currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
+            {
+                isTarget = true;
+            }
+
+            if(prevBlock == null && nextBlock == null) //coming from yard
+            {
+                return findBlock(yardBlockId);
+            }
+            else if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            {
+                if(isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if(isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else if(prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
+            {
+                if(currBlock.prevBlockId == null)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
+            else if(currBlock.parentSwitch != null && prevBlock.parentSwitch == null) //if entering a switch
+            {
+                if (isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if (isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else //if no switches involved
+            {
+                if(prevBlock.nextBlockId != null && prevBlock.nextBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else if(prevBlock.prevBlockId != null && prevBlock.prevBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
             return nextBlock;
+        }
+
+        public void updateBlockStatus(int blockId, bool occupied)
+        {
+            TrackControllerModule.updateBlockOccupancy(blockId, occupied);
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)

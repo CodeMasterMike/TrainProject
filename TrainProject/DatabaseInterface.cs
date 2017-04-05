@@ -225,11 +225,13 @@ namespace TrainProject
                     else if (currSwitch.targetBlockId1 == null)
                     {
                         currSwitch.targetBlockId1 = currBlock.blockId;
+                        currBlock.beacon = new Beacon(currBlock.blockId);
                         currSwitch.currentState = currBlock.blockId; 
                     }
                     else
                     {
                         currSwitch.targetBlockId2 = currBlock.blockId;
+                        currBlock.beacon = new Beacon(currBlock.blockId);
                     }
                     if (isNew)
                     {

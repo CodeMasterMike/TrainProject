@@ -43,7 +43,6 @@ C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\pvn03\Documents\GitHub\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
-C:\Users\Mike\Documents\Train-Project\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
 C:\Users\Kaitlyn\Desktop\Trainz\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
