@@ -21,6 +21,8 @@ namespace TrainProject
         public double elevation { get; set; }
         public double cumElevation { get; set; }
         public bool isUnderground { get; set; }
+        public bool isFromYard { get; set; }
+        public bool isToYard { get; set; }
 
         //need to discuss how to do this further
         public int? prevBlockId { get; set; }
@@ -35,7 +37,7 @@ namespace TrainProject
 
 
         //now infrastructure related things
-        //public Station station { get; set; }
+        public Station station { get; set; }
         public Crossing crossing { get; set; }
         public Switch parentSwitch { get; set; }
 

@@ -103,10 +103,54 @@ namespace TrainProject
                 decimal elevation = reader.GetDecimal(5);
                 decimal cumulativeElevation = reader.GetDecimal(6);
                 int speedLimit = reader.GetInt32(7);
+                String infrastructure = reader.GetString(8);
 
                 Block block = new Block(blockId, blockNumber, sectionId, length, grade, elevation, cumulativeElevation, speedLimit, false);
                 block.prevBlockId = null;
                 block.nextBlockId = null;
+                block.isUnderground = false;
+                if(infrastructure.Contains("UNDERGROUND"))
+                {
+                    block.isUnderground = true;
+                }
+                if(infrastructure.Contains("TO/FROM YARD"))
+                {
+                    block.isToYard = true;
+                    block.isFromYard = true;
+                }
+                else if(infrastructure.Contains("TO YARD"))
+                {
+                    block.isToYard = true;
+                    block.isFromYard = false;
+                }
+                else if (infrastructure.Contains("FROM YARD"))
+                {
+                    block.isToYard = false;
+                    block.isFromYard = true;
+                }
+                else
+                {
+                    block.isToYard = false;
+                    block.isFromYard = false;
+                }
+                if(infrastructure.Contains("STATION"))
+                {
+                    Char[] splitChars = new Char[]{';'};
+                    String[] infSplit = infrastructure.Split(splitChars);
+                    bool found = false;
+                    foreach (String infItem in infSplit)
+                    {
+                        if(found)
+                        {
+                            block.station = new Station(infItem);
+                            break;
+                        }
+                        if(infItem.Contains("STATION"))
+                        {
+                            found = true;
+                        }
+                    }
+                }
                 blocks.Add(block);
 
                 foreach (Line line in lineList)
