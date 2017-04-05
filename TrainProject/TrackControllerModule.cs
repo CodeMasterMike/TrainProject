@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Track_Layout_UI;
 
 namespace TrainProject
 {
@@ -22,12 +23,14 @@ namespace TrainProject
 
         public void dispatchNewTrain(int trainId, Double speed, Double authority)
         {
-
+            //Track.dispatchTrain(Train t, Double speed, int authority)
         }
 
         public void dispatchNewTrain(Train newTrain)
         {
             Console.WriteLine("dispatching train!!!!!");
+            TrainSimulation.trackModelWindow.dispatchTrain(newTrain);
+            //TrackModelUI.
         }
 
         public void updateBlockOccupancy(int blockId, Boolean occupied)
