@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainProject.HelperObjects
+namespace TrainProject
 {
-    class Station
+    public class Station
     {
         public String name { get; set; }
 
