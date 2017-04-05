@@ -25,6 +25,11 @@ namespace TrainProject
 
         }
 
+        public void dispatchNewTrain(Train newTrain)
+        {
+            Console.WriteLine("dispatching train!!!!!");
+        }
+
         public void updateBlockOccupancy(int blockId, Boolean occupied)
         {
             foreach(TrackController ctrl in activeControllers)
