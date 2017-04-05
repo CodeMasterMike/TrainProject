@@ -1,2 +1,4 @@
 # TrainProject
-Semester long fun!
+Semester long fun!! 
+
+I hate my life.

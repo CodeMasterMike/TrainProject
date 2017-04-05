@@ -21,6 +21,7 @@ namespace TrainProject
         CustomClock clk;
         private TrainModel trainModelWindow;
         public static Office mainOffice;
+        public static TrackModelUI trackModelWindow;
         public TrainSimulation()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace TrainProject
             start = 1;
             TrackControllerWindow trackControllerWindow = new TrackControllerWindow();
             trackControllerWindow.Show();
-            TrackModelUI trackModelWindow = new TrackModelUI();
+            trackModelWindow = new TrackModelUI();
             trackModelWindow.Show();
             mainOffice = new Office();
             mainOffice.Show();

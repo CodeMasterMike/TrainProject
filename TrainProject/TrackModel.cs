@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using CTC;
 
 namespace Track_Layout_UI
 {
@@ -25,12 +26,38 @@ namespace Track_Layout_UI
         public List<Section> sectionList = new List<Section>();
         public List<Line> lineList = new List<Line>();
         public List<Switch> switchList = new List<Switch>();
+        public List<Train> trainList = new List<Train>();
         public Block selectedBlock;
         public Line selectedLine;
 
         public TrackModelUI()
         {
             InitializeComponent();
+        }
+
+        public void dispatchTrain(Train train)
+        {
+            trainList.Add(train);
+        }
+
+        public void updateSpeedAndAuthority(int trainId, double speed, int authority)
+        {
+            foreach(Train train in trainList)
+            {
+                if(trainId == train.trainId)
+                {
+                    //train.updateSpeedAndAuthority(speed, authority);
+                    break;
+                }
+            }
+        }
+
+        //only returns null if the yard
+        public Block getNextBlock(Block prevBlock, Block currBlock)
+        {
+            Block nextBlock = null;
+            //if(currBlock.prevBlockId == null)
+            return nextBlock;
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
@@ -295,6 +322,8 @@ namespace Track_Layout_UI
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
             }
+            //TrackControllerModule.initializeSwitches(switchList);
+            //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
 
