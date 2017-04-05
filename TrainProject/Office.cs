@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainProject;
 using TrainModelProject;
+using TrainProject.HelperObjects;
 
 namespace CTC
 {
@@ -27,6 +28,7 @@ namespace CTC
         {
             InitializeComponent();
             module = new TrackControllerModule();
+
         }
 
         public void updateTime(String time)
@@ -50,6 +52,20 @@ namespace CTC
         public void dispatchOldTrain(int trainId)
         {
             module.dispatchNewTrain(trainId, sugSpeed, sugAuth);
+        }
+
+        public void initializeTrackLayout(List<Line> trackLines)
+        {
+            foreach(Line line in trackLines)
+            {
+                foreach(Section section in line.sections)
+                {
+                    foreach(Block block in section.blocks)
+                    {
+                        ListViewItem blockItem = new ListViewItem(block.blockId.ToString());
+                    }
+                }
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -87,6 +103,15 @@ namespace CTC
            else
             {
                 dispatchNewTrain();
+               /* 
+                Button t = new Button();
+                t.Size = new Size(100, 100);
+                t.Location = new Point(100, 100);
+                t.Text = "1";
+                TrainSimulation.mainOffice.systemBox.Controls.Add(t);
+                Controls.Add(t);
+                Console.WriteLine("past button create");
+                */
             }
         }
 
@@ -164,6 +189,7 @@ namespace CTC
         {
             trainSelected = true;
             trainId = 1;
+
         }
 
         private void speedScrollBar_Scroll(object sender, ScrollEventArgs e)

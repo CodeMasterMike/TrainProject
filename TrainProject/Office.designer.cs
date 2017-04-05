@@ -48,6 +48,8 @@
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.selLineLabel = new System.Windows.Forms.Label();
             this.dispatchGroup = new System.Windows.Forms.GroupBox();
+            this.speedScrollBar = new System.Windows.Forms.HScrollBar();
+            this.authScrollBar = new System.Windows.Forms.HScrollBar();
             this.authValueLabel = new System.Windows.Forms.Label();
             this.speedValueLabel = new System.Windows.Forms.Label();
             this.dispTrain = new System.Windows.Forms.Button();
@@ -69,8 +71,11 @@
             this.trackTrain = new System.Windows.Forms.Button();
             this.yardTrain = new System.Windows.Forms.Button();
             this.MurphyTab = new System.Windows.Forms.TabPage();
-            this.authScrollBar = new System.Windows.Forms.HScrollBar();
-            this.speedScrollBar = new System.Windows.Forms.HScrollBar();
+            this.systemListView = new System.Windows.Forms.ListView();
+            this.BlockId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Occupancy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SwitchState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CrossingState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -316,6 +321,24 @@
             this.dispatchGroup.Text = "Dispatch Control";
             this.dispatchGroup.Enter += new System.EventHandler(this.dispatchGroup_Enter);
             // 
+            // speedScrollBar
+            // 
+            this.speedScrollBar.Location = new System.Drawing.Point(21, 104);
+            this.speedScrollBar.Maximum = 110;
+            this.speedScrollBar.Name = "speedScrollBar";
+            this.speedScrollBar.Size = new System.Drawing.Size(186, 18);
+            this.speedScrollBar.TabIndex = 4;
+            this.speedScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.speedScrollBar_Scroll);
+            // 
+            // authScrollBar
+            // 
+            this.authScrollBar.Location = new System.Drawing.Point(21, 155);
+            this.authScrollBar.Maximum = 30;
+            this.authScrollBar.Name = "authScrollBar";
+            this.authScrollBar.Size = new System.Drawing.Size(186, 18);
+            this.authScrollBar.TabIndex = 4;
+            this.authScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.authScrollBar_Scroll);
+            // 
             // authValueLabel
             // 
             this.authValueLabel.AutoSize = true;
@@ -497,6 +520,7 @@
             // 
             // systemBox
             // 
+            this.systemBox.Controls.Add(this.systemListView);
             this.systemBox.Controls.Add(this.trackTrain);
             this.systemBox.Controls.Add(this.yardTrain);
             this.systemBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -538,23 +562,34 @@
             this.MurphyTab.Text = "Murphy";
             this.MurphyTab.UseVisualStyleBackColor = true;
             // 
-            // authScrollBar
+            // systemListView
             // 
-            this.authScrollBar.Location = new System.Drawing.Point(21, 155);
-            this.authScrollBar.Maximum = 30;
-            this.authScrollBar.Name = "authScrollBar";
-            this.authScrollBar.Size = new System.Drawing.Size(186, 18);
-            this.authScrollBar.TabIndex = 4;
-            this.authScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.authScrollBar_Scroll);
+            this.systemListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BlockId,
+            this.Occupancy,
+            this.SwitchState,
+            this.CrossingState});
+            this.systemListView.Location = new System.Drawing.Point(236, 13);
+            this.systemListView.Name = "systemListView";
+            this.systemListView.Size = new System.Drawing.Size(483, 333);
+            this.systemListView.TabIndex = 2;
+            this.systemListView.UseCompatibleStateImageBehavior = false;
             // 
-            // speedScrollBar
+            // BlockId
             // 
-            this.speedScrollBar.Location = new System.Drawing.Point(21, 104);
-            this.speedScrollBar.Maximum = 110;
-            this.speedScrollBar.Name = "speedScrollBar";
-            this.speedScrollBar.Size = new System.Drawing.Size(186, 18);
-            this.speedScrollBar.TabIndex = 4;
-            this.speedScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.speedScrollBar_Scroll);
+            this.BlockId.Text = "Block Id";
+            // 
+            // Occupancy
+            // 
+            this.Occupancy.Text = "Occupancy";
+            // 
+            // SwitchState
+            // 
+            this.SwitchState.Text = "Switch State";
+            // 
+            // CrossingState
+            // 
+            this.CrossingState.Text = "CrossingState";
             // 
             // Office
             // 
@@ -626,5 +661,10 @@
         private System.Windows.Forms.Button trackTrain;
         private System.Windows.Forms.HScrollBar speedScrollBar;
         private System.Windows.Forms.HScrollBar authScrollBar;
+        private System.Windows.Forms.ListView systemListView;
+        private System.Windows.Forms.ColumnHeader BlockId;
+        private System.Windows.Forms.ColumnHeader Occupancy;
+        private System.Windows.Forms.ColumnHeader SwitchState;
+        private System.Windows.Forms.ColumnHeader CrossingState;
     }
 }
