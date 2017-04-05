@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using CTC;
 
 namespace Track_Layout_UI
 {
@@ -51,9 +52,11 @@ namespace Track_Layout_UI
             }
         }
 
+        //only returns null if the yard
         public Block getNextBlock(Block prevBlock, Block currBlock)
         {
             Block nextBlock = null;
+            //if(currBlock.prevBlockId == null)
             return nextBlock;
         }
 
@@ -319,6 +322,8 @@ namespace Track_Layout_UI
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
             }
+            //TrackControllerModule.initializeSwitches(switchList);
+            //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
 
