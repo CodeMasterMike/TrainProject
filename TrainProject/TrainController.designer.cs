@@ -40,6 +40,9 @@
             this.Driver_Tab = new System.Windows.Forms.TabPage();
             this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.blockIDLabel = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.distanceToLabel = new System.Windows.Forms.Label();
             this.tunnelStatusLabel = new System.Windows.Forms.Label();
             this.stationLabel = new System.Windows.Forms.Label();
@@ -125,9 +128,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label23 = new System.Windows.Forms.Label();
-            this.blockIDLabel = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -308,6 +308,34 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Track Information";
             this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(604, 50);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(0, 37);
+            this.label24.TabIndex = 28;
+            // 
+            // blockIDLabel
+            // 
+            this.blockIDLabel.AutoSize = true;
+            this.blockIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockIDLabel.Location = new System.Drawing.Point(493, 41);
+            this.blockIDLabel.Name = "blockIDLabel";
+            this.blockIDLabel.Size = new System.Drawing.Size(21, 29);
+            this.blockIDLabel.TabIndex = 27;
+            this.blockIDLabel.Text = "-";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(369, 46);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(114, 29);
+            this.label23.TabIndex = 26;
+            this.label23.Text = "Block ID :";
             // 
             // distanceToLabel
             // 
@@ -1325,33 +1353,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(369, 46);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(114, 29);
-            this.label23.TabIndex = 26;
-            this.label23.Text = "Block ID :";
-            // 
-            // blockIDLabel
-            // 
-            this.blockIDLabel.AutoSize = true;
-            this.blockIDLabel.Location = new System.Drawing.Point(493, 41);
-            this.blockIDLabel.Name = "blockIDLabel";
-            this.blockIDLabel.Size = new System.Drawing.Size(27, 37);
-            this.blockIDLabel.TabIndex = 27;
-            this.blockIDLabel.Text = "-";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(604, 50);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(0, 37);
-            this.label24.TabIndex = 28;
             // 
             // TrainController
             // 

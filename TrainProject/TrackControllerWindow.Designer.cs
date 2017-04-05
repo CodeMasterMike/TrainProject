@@ -839,16 +839,13 @@ namespace TrainProject
             // redCtrl1
             // 
             this.redCtrl1.BackColor = System.Drawing.Color.WhiteSmoke;
-<<<<<<< HEAD
             this.redCtrl1.Location = new System.Drawing.Point(8, 51);
             this.redCtrl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.redCtrl1.Controls.Add(this.red1TestGroupBox);
             this.redCtrl1.Controls.Add(this.red1CrossingGroupBox);
             this.redCtrl1.Controls.Add(this.red1SwitchGroupBox);
             this.redCtrl1.Controls.Add(this.red1TrainsGroupBox);
             this.redCtrl1.Location = new System.Drawing.Point(4, 38);
->>>>>>> fe02bde54502c1b7455a951f339c3bb28b8df95c
             this.redCtrl1.Name = "redCtrl1";
             this.redCtrl1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.redCtrl1.Size = new System.Drawing.Size(1844, 1169);
@@ -858,16 +855,13 @@ namespace TrainProject
             // redCtrl2
             // 
             this.redCtrl2.BackColor = System.Drawing.Color.WhiteSmoke;
-<<<<<<< HEAD
             this.redCtrl2.Location = new System.Drawing.Point(8, 51);
             this.redCtrl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.redCtrl2.Controls.Add(this.red2TestGroupBox);
             this.redCtrl2.Controls.Add(this.red2CrossingGroupBox);
             this.redCtrl2.Controls.Add(this.red2SwitchGroupBox);
             this.redCtrl2.Controls.Add(this.red2TrainsGroupBox);
             this.redCtrl2.Location = new System.Drawing.Point(4, 38);
->>>>>>> fe02bde54502c1b7455a951f339c3bb28b8df95c
             this.redCtrl2.Name = "redCtrl2";
             this.redCtrl2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.redCtrl2.Size = new System.Drawing.Size(1844, 1169);
