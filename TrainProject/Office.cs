@@ -18,10 +18,15 @@ namespace CTC
         int trainId;
         int selTrainId;
         bool trainSelected;
+        double sugSpeed;
+        int sugAuth;
+        int trainCounter = 0;
+        public static TrackControllerModule module;
 
         public Office()
         {
             InitializeComponent();
+            module = new TrackControllerModule();
         }
 
         public void updateTime(String time)
@@ -35,13 +40,16 @@ namespace CTC
 
         public void dispatchNewTrain()
         {
+            trainCounter++;
+            Train newTrain = new Train(trainCounter, sugSpeed, sugAuth);
+            module.dispatchNewTrain(newTrain);
             tm_window = new TrainModel();
             tm_window.Show();
         }
 
         public void dispatchOldTrain(int trainId)
         {
-
+            module.dispatchNewTrain(trainId, sugSpeed, sugAuth);
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -69,15 +77,6 @@ namespace CTC
 
         }
 
-        private void hScrollBar2_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
 
         private void dispTrain_Click(object sender, EventArgs e)
         {
@@ -165,6 +164,18 @@ namespace CTC
         {
             trainSelected = true;
             trainId = 1;
+        }
+
+        private void speedScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            sugSpeed = speedScrollBar.Value;
+            speedValueLabel.Text = sugSpeed + " mph";
+        }
+
+        private void authScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            sugAuth = authScrollBar.Value;
+            authValueLabel.Text = sugAuth + " blocks";
         }
     }
 }

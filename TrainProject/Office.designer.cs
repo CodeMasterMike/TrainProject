@@ -33,6 +33,7 @@
             this.notifBox = new System.Windows.Forms.GroupBox();
             this.notifLabel = new System.Windows.Forms.Label();
             this.systemConBox = new System.Windows.Forms.GroupBox();
+            this.updateTimeLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.fbRadio = new System.Windows.Forms.RadioButton();
             this.mboButton = new System.Windows.Forms.RadioButton();
@@ -47,10 +48,8 @@
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.selLineLabel = new System.Windows.Forms.Label();
             this.dispatchGroup = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.hScrollBar2 = new System.Windows.Forms.HScrollBar();
-            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
+            this.authValueLabel = new System.Windows.Forms.Label();
+            this.speedValueLabel = new System.Windows.Forms.Label();
             this.dispTrain = new System.Windows.Forms.Button();
             this.selAuthLabel = new System.Windows.Forms.Label();
             this.selSpeedLabel = new System.Windows.Forms.Label();
@@ -67,10 +66,11 @@
             this.sugSpeedLabel = new System.Windows.Forms.Label();
             this.trainNumLabel = new System.Windows.Forms.Label();
             this.systemBox = new System.Windows.Forms.GroupBox();
-            this.MurphyTab = new System.Windows.Forms.TabPage();
-            this.updateTimeLabel = new System.Windows.Forms.Label();
-            this.yardTrain = new System.Windows.Forms.Button();
             this.trackTrain = new System.Windows.Forms.Button();
+            this.yardTrain = new System.Windows.Forms.Button();
+            this.MurphyTab = new System.Windows.Forms.TabPage();
+            this.authScrollBar = new System.Windows.Forms.HScrollBar();
+            this.speedScrollBar = new System.Windows.Forms.HScrollBar();
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -146,6 +146,15 @@
             this.systemConBox.TabIndex = 2;
             this.systemConBox.TabStop = false;
             this.systemConBox.Text = "System Control";
+            // 
+            // updateTimeLabel
+            // 
+            this.updateTimeLabel.AutoSize = true;
+            this.updateTimeLabel.Location = new System.Drawing.Point(87, 111);
+            this.updateTimeLabel.Name = "updateTimeLabel";
+            this.updateTimeLabel.Size = new System.Drawing.Size(73, 20);
+            this.updateTimeLabel.TabIndex = 5;
+            this.updateTimeLabel.Text = "00:00:00";
             // 
             // timeLabel
             // 
@@ -289,10 +298,10 @@
             // 
             // dispatchGroup
             // 
-            this.dispatchGroup.Controls.Add(this.label2);
-            this.dispatchGroup.Controls.Add(this.label1);
-            this.dispatchGroup.Controls.Add(this.hScrollBar2);
-            this.dispatchGroup.Controls.Add(this.hScrollBar1);
+            this.dispatchGroup.Controls.Add(this.speedScrollBar);
+            this.dispatchGroup.Controls.Add(this.authScrollBar);
+            this.dispatchGroup.Controls.Add(this.authValueLabel);
+            this.dispatchGroup.Controls.Add(this.speedValueLabel);
             this.dispatchGroup.Controls.Add(this.dispTrain);
             this.dispatchGroup.Controls.Add(this.selAuthLabel);
             this.dispatchGroup.Controls.Add(this.selSpeedLabel);
@@ -307,41 +316,25 @@
             this.dispatchGroup.Text = "Dispatch Control";
             this.dispatchGroup.Enter += new System.EventHandler(this.dispatchGroup_Enter);
             // 
-            // label2
+            // authValueLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(218, 153);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "blocks";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.authValueLabel.AutoSize = true;
+            this.authValueLabel.Location = new System.Drawing.Point(210, 153);
+            this.authValueLabel.Name = "authValueLabel";
+            this.authValueLabel.Size = new System.Drawing.Size(71, 20);
+            this.authValueLabel.TabIndex = 3;
+            this.authValueLabel.Text = "0 blocks";
+            this.authValueLabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label1
+            // speedValueLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(210, 102);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "mph";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // hScrollBar2
-            // 
-            this.hScrollBar2.Location = new System.Drawing.Point(21, 101);
-            this.hScrollBar2.Name = "hScrollBar2";
-            this.hScrollBar2.Size = new System.Drawing.Size(186, 21);
-            this.hScrollBar2.TabIndex = 0;
-            this.hScrollBar2.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar2_Scroll);
-            // 
-            // hScrollBar1
-            // 
-            this.hScrollBar1.Location = new System.Drawing.Point(21, 153);
-            this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(186, 21);
-            this.hScrollBar1.TabIndex = 0;
-            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
+            this.speedValueLabel.AutoSize = true;
+            this.speedValueLabel.Location = new System.Drawing.Point(210, 102);
+            this.speedValueLabel.Name = "speedValueLabel";
+            this.speedValueLabel.Size = new System.Drawing.Size(55, 20);
+            this.speedValueLabel.TabIndex = 3;
+            this.speedValueLabel.Text = "0 mph";
+            this.speedValueLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // dispTrain
             // 
@@ -515,24 +508,15 @@
             this.systemBox.Text = "System Overview";
             this.systemBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // MurphyTab
+            // trackTrain
             // 
-            this.MurphyTab.Location = new System.Drawing.Point(4, 25);
-            this.MurphyTab.Name = "MurphyTab";
-            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MurphyTab.Size = new System.Drawing.Size(1323, 647);
-            this.MurphyTab.TabIndex = 1;
-            this.MurphyTab.Text = "Murphy";
-            this.MurphyTab.UseVisualStyleBackColor = true;
-            // 
-            // updateTimeLabel
-            // 
-            this.updateTimeLabel.AutoSize = true;
-            this.updateTimeLabel.Location = new System.Drawing.Point(87, 111);
-            this.updateTimeLabel.Name = "updateTimeLabel";
-            this.updateTimeLabel.Size = new System.Drawing.Size(73, 20);
-            this.updateTimeLabel.TabIndex = 5;
-            this.updateTimeLabel.Text = "00:00:00";
+            this.trackTrain.Location = new System.Drawing.Point(78, 99);
+            this.trackTrain.Name = "trackTrain";
+            this.trackTrain.Size = new System.Drawing.Size(60, 44);
+            this.trackTrain.TabIndex = 1;
+            this.trackTrain.Text = "train";
+            this.trackTrain.UseVisualStyleBackColor = true;
+            this.trackTrain.Click += new System.EventHandler(this.trackTrain_Click);
             // 
             // yardTrain
             // 
@@ -544,15 +528,33 @@
             this.yardTrain.UseVisualStyleBackColor = true;
             this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
             // 
-            // trackTrain
+            // MurphyTab
             // 
-            this.trackTrain.Location = new System.Drawing.Point(78, 99);
-            this.trackTrain.Name = "trackTrain";
-            this.trackTrain.Size = new System.Drawing.Size(60, 44);
-            this.trackTrain.TabIndex = 1;
-            this.trackTrain.Text = "train";
-            this.trackTrain.UseVisualStyleBackColor = true;
-            this.trackTrain.Click += new System.EventHandler(this.trackTrain_Click);
+            this.MurphyTab.Location = new System.Drawing.Point(4, 25);
+            this.MurphyTab.Name = "MurphyTab";
+            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3);
+            this.MurphyTab.Size = new System.Drawing.Size(1323, 647);
+            this.MurphyTab.TabIndex = 1;
+            this.MurphyTab.Text = "Murphy";
+            this.MurphyTab.UseVisualStyleBackColor = true;
+            // 
+            // authScrollBar
+            // 
+            this.authScrollBar.Location = new System.Drawing.Point(21, 155);
+            this.authScrollBar.Maximum = 30;
+            this.authScrollBar.Name = "authScrollBar";
+            this.authScrollBar.Size = new System.Drawing.Size(186, 18);
+            this.authScrollBar.TabIndex = 4;
+            this.authScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.authScrollBar_Scroll);
+            // 
+            // speedScrollBar
+            // 
+            this.speedScrollBar.Location = new System.Drawing.Point(21, 104);
+            this.speedScrollBar.Maximum = 110;
+            this.speedScrollBar.Name = "speedScrollBar";
+            this.speedScrollBar.Size = new System.Drawing.Size(186, 18);
+            this.speedScrollBar.TabIndex = 4;
+            this.speedScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.speedScrollBar_Scroll);
             // 
             // Office
             // 
@@ -617,12 +619,12 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.GroupBox notifBox;
         private System.Windows.Forms.Label notifLabel;
-        private System.Windows.Forms.HScrollBar hScrollBar2;
-        private System.Windows.Forms.HScrollBar hScrollBar1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label authValueLabel;
+        private System.Windows.Forms.Label speedValueLabel;
         private System.Windows.Forms.Label updateTimeLabel;
         private System.Windows.Forms.Button yardTrain;
         private System.Windows.Forms.Button trackTrain;
+        private System.Windows.Forms.HScrollBar speedScrollBar;
+        private System.Windows.Forms.HScrollBar authScrollBar;
     }
 }

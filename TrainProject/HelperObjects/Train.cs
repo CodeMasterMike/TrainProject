@@ -12,11 +12,11 @@ namespace TrainProject
         public int currBlock { get; set; }
         public int prevBlock { get; set; }
         public double suggestedSpeed { get; set; }
-        public double authority { get; set; }
-        public double remainingAuthority { get; set; }
+        public int authority { get; set; }
+        public int remainingAuthority { get; set; }
         public double actualSpeed { get; set; }
 
-        public Train(int id, double ss, double a)
+        public Train(int id, double ss, int a)
         {
             trainId = id;
             suggestedSpeed = ss;
