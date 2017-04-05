@@ -19,8 +19,8 @@ namespace TrainControllerProject
         private double driverSetSpeed = 0;
         private double ctcSetSpeed = 0;
         private double setSpeed = 0;
-        private double setTemp = 0;
-        private double temp = 69;
+        private double setTemp = 70;
+        private double temp = 70;
         private SmallBlock[] blocks;
         int testMode = 0; //test mode off = 0 test mode on = 1
         int mode = 0; //manual = 0 automatic  = 1
@@ -190,8 +190,8 @@ namespace TrainControllerProject
         }
         private void setThermostat()
         {
-            if (setTemp > temp + 1) thermostat = 2;
-            else if (setTemp < temp - 1) thermostat = 1;
+            if (setTemp > temp) thermostat = 2;
+            else if (setTemp < temp) thermostat = 1;
             else thermostat = 0;
         }
         public void updateCurrentTemp(double t)
