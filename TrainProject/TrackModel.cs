@@ -323,7 +323,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
             }
             //TrackControllerModule.initializeSwitches(switchList);
-            //Office.initializeTrackLayout(lineList);
+            TrainSimulation.mainOffice.initializeTrackLayout(lineList);
             initializeLists();
         }
 
