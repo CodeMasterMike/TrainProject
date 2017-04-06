@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DriverSchedule.cs" />
     <Compile Include="HelperObjects\Block.cs" />
     <Compile Include="CentralTrainControl.cs">
       <SubType>Form</SubType>
@@ -124,6 +125,7 @@
       <DependentUpon>TrainController.cs</DependentUpon>
     </Compile>
     <Compile Include="TrackControllerTest.cs" />
+    <Compile Include="TrainSchedule.cs" />
     <EmbeddedResource Include="CentralTrainControl.resx">
       <DependentUpon>CentralTrainControl.cs</DependentUpon>
     </EmbeddedResource>

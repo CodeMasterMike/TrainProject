@@ -56,8 +56,8 @@ namespace TrainProject
 
         private void openMBO_Click(object sender, EventArgs e)
         {
-            //MBO mboWindow = new MBO();
-            //mboWindow.Show();
+            MBO MBOWindow = new MBO();
+            MBOWindow.Show();
         }
 
         private void clockDisplayedText_Click(object sender, EventArgs e)

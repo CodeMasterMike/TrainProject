@@ -9,14 +9,40 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.IO;
+using System.Data.OleDb;
+using System.Configuration;
+using System.Data.SqlClient;
+using TrainProject;
+using TrainProject.HelperObjects;
 
 namespace MBO_UI
 {
     public partial class MBO : Form
     {
+        public List<Block> blockList = new List<Block>();
+        public List<Block> filteredBlockList = new List<Block>();
+        public List<Section> sectionList = new List<Section>();
+        public List<Line> lineList = new List<Line>();
+        public Block selectedBlock;
+        public Line selectedLine;
+
+        public Boolean autoMode = false;
+        public Boolean liveGPS;
+        public int trainId;
+        public int trainsPerHour;
+        public int numDrivers;
+        public int blockAdjustment;
+        public int SuggestedSpeed;
+        public int lineId;
+
+
+
         public MBO()
         {
             InitializeComponent();
+            label18.Text = "Inactive";
+            label18.ForeColor = System.Drawing.Color.Red;  
         }
 
         private void createTrainScheduleButton_Click(object sender, EventArgs e)
@@ -41,28 +67,40 @@ namespace MBO_UI
             }
 
 
-            Excel.Workbook schedulesWorkBook;
-            Excel.Worksheet schedulesWorkSheet;
+            Excel.Workbook schedulesWorkbook;
+            Excel.Worksheet schedulesWorksheet;
             object misValue = System.Reflection.Missing.Value;
 
-            schedulesWorkBook = schedulesApp.Workbooks.Add(misValue);
-            schedulesWorkSheet = (Excel.Worksheet)schedulesWorkBook.Worksheets.get_Item(1);
+            schedulesWorkbook = schedulesApp.Workbooks.Add(misValue);
+            schedulesWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
 
-            schedulesWorkSheet.Cells[1, 1] = "ID";
-            schedulesWorkSheet.Cells[1, 2] = "Name";
-            schedulesWorkSheet.Cells[2, 1] = "1";
-            schedulesWorkSheet.Cells[2, 2] = "One";
-            schedulesWorkSheet.Cells[3, 1] = "2";
-            schedulesWorkSheet.Cells[3, 2] = "Two";
+            schedulesWorksheet.Cells[1, 1] = "ID";
+            schedulesWorksheet.Cells[1, 2] = "Name";
+            schedulesWorksheet.Cells[2, 1] = "1";
+            schedulesWorksheet.Cells[2, 2] = "One";
+            schedulesWorksheet.Cells[3, 1] = "2";
+            schedulesWorksheet.Cells[3, 2] = "Two";
 
 
 
-            schedulesWorkBook.SaveAs("C:\\Users\\Alejandro\\Documents\\TrainProject\\TrainProject\\MBOSchedules-Excel.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            schedulesWorkBook.Close(true, misValue, misValue);
+            schedulesWorkbook.SaveAs("C:\\Users\\Public\\Schedules", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            //schedulesWorkBook.Open("C:\\Users\\Public\\Schedules");
+
+            System.Diagnostics.Process.Start(@"C:\\Users\\Public\\Schedules.xls");
+
+
+
+            schedulesWorkbook = schedulesApp.Workbooks.Open("C:\\Users\\Public\\Schedules", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+
+            schedulesWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
+
+            MessageBox.Show(schedulesWorksheet.get_Range("A1", "A1").Value2.ToString());
+
+            schedulesWorkbook.Close(true, misValue, misValue);
             schedulesApp.Quit();
 
-            Marshal.ReleaseComObject(schedulesWorkSheet);
-            Marshal.ReleaseComObject(schedulesWorkBook);
+            Marshal.ReleaseComObject(schedulesWorksheet);
+            Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);
 
             MessageBox.Show("Excel file created , you can find the file at fuck you I made it");
@@ -70,7 +108,7 @@ namespace MBO_UI
 
         private void createDriverSchedule()
         {
-            ShowDialog();
+            tableLayoutPanel1.Show();
         }
 
         public void updateTrainSchedule()
@@ -79,6 +117,11 @@ namespace MBO_UI
         }
 
         public void updateDriverSchedule()
+        {
+
+        }
+
+        public void dispatchTrain()
         {
 
         }
@@ -98,12 +141,23 @@ namespace MBO_UI
 
         }
 
-        public void isAuto()
+        public void isAuto(Boolean mode)
         {
-
+            if (mode)
+            {
+                autoMode = true;
+                label18.Text = "Active";
+                label18.ForeColor = System.Drawing.Color.Lime;
+            }
+            else
+            {
+                autoMode = false;
+                label18.Text = "Inactive";
+                label18.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
-        public void getPost()
+        public void getPos()
         {
 
         }
