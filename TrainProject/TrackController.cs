@@ -12,6 +12,8 @@ namespace TrainProject
     public class TrackController
     {
         public int controllerId;
+        //public int startBlock;
+        //public int endBlock;
         public List<Block> blocks; //this represents the occupied blocks
         public List<Train> trains;
         public List<Switch> switches;
@@ -33,6 +35,8 @@ namespace TrainProject
         {
             controllerId = id;
             controllerName = name;
+            //sB = startBlock;
+            //eB = endBlock;
             blocks = new List<Block>();
             trains = new List<Train>();
             switches = new List<Switch>();

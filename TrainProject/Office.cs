@@ -91,8 +91,9 @@ namespace CTC
                                     if (block.blockId == block.parentSwitch.sourceBlockId)
                                     {
                                         int switchId = block.parentSwitch.switchId;
-                                        int currState = (int)TrackControllerWindow.controllerModule.getSwitchState(switchId);
-                                        foreach(Block b in section.blocks)
+                                        int currState = (int)TrackControllerModule.getSwitchState(switchId);
+                                        //int currState = (int)TrackControllerWindow.controllerModule.getSwitchState(switchId);
+                                        foreach (Block b in section.blocks)
                                         {
                                             if (currState == b.blockId)
                                                 {
