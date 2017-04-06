@@ -198,10 +198,11 @@ namespace TrainProject
             this.Engineer.Controls.Add(this.redCtrl2);
             this.Engineer.Controls.Add(this.murphyTab);
             this.Engineer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Engineer.Location = new System.Drawing.Point(12, 12);
+            this.Engineer.Location = new System.Drawing.Point(16, 15);
+            this.Engineer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Engineer.Name = "Engineer";
             this.Engineer.SelectedIndex = 0;
-            this.Engineer.Size = new System.Drawing.Size(1395, 982);
+            this.Engineer.Size = new System.Drawing.Size(1860, 1228);
             this.Engineer.TabIndex = 15;
             // 
             // summaryTab
@@ -212,9 +213,10 @@ namespace TrainProject
             this.summaryTab.Controls.Add(this.uploadPlcFile);
             this.summaryTab.Controls.Add(this.activeControllersGroupBox);
             this.summaryTab.Controls.Add(this.systemInfoGroupBox);
-            this.summaryTab.Location = new System.Drawing.Point(4, 38);
+            this.summaryTab.Location = new System.Drawing.Point(8, 51);
+            this.summaryTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.summaryTab.Name = "summaryTab";
-            this.summaryTab.Size = new System.Drawing.Size(1387, 940);
+            this.summaryTab.Size = new System.Drawing.Size(1844, 1169);
             this.summaryTab.TabIndex = 2;
             this.summaryTab.Text = "Summary";
             // 
@@ -222,9 +224,11 @@ namespace TrainProject
             // 
             this.trainsSummaryBox.Controls.Add(this.trainsSummaryList);
             this.trainsSummaryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainsSummaryBox.Location = new System.Drawing.Point(9, 400);
+            this.trainsSummaryBox.Location = new System.Drawing.Point(12, 500);
+            this.trainsSummaryBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.trainsSummaryBox.Name = "trainsSummaryBox";
-            this.trainsSummaryBox.Size = new System.Drawing.Size(634, 208);
+            this.trainsSummaryBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trainsSummaryBox.Size = new System.Drawing.Size(845, 260);
             this.trainsSummaryBox.TabIndex = 21;
             this.trainsSummaryBox.TabStop = false;
             this.trainsSummaryBox.Text = "Trains";
@@ -237,10 +241,11 @@ namespace TrainProject
             this.columnHeader21,
             this.columnHeader22});
             this.trainsSummaryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainsSummaryList.Location = new System.Drawing.Point(12, 38);
+            this.trainsSummaryList.Location = new System.Drawing.Point(16, 48);
+            this.trainsSummaryList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.trainsSummaryList.Name = "trainsSummaryList";
             this.trainsSummaryList.Scrollable = false;
-            this.trainsSummaryList.Size = new System.Drawing.Size(616, 164);
+            this.trainsSummaryList.Size = new System.Drawing.Size(820, 204);
             this.trainsSummaryList.TabIndex = 5;
             this.trainsSummaryList.UseCompatibleStateImageBehavior = false;
             this.trainsSummaryList.View = System.Windows.Forms.View.Details;
@@ -267,19 +272,21 @@ namespace TrainProject
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 867);
+            this.textBox1.Location = new System.Drawing.Point(4, 1084);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(445, 35);
+            this.textBox1.Size = new System.Drawing.Size(592, 44);
             this.textBox1.TabIndex = 20;
             this.textBox1.Text = "plcFile.plc";
             // 
             // uploadPlcFile
             // 
             this.uploadPlcFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uploadPlcFile.Location = new System.Drawing.Point(3, 773);
+            this.uploadPlcFile.Location = new System.Drawing.Point(4, 966);
+            this.uploadPlcFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uploadPlcFile.Name = "uploadPlcFile";
-            this.uploadPlcFile.Size = new System.Drawing.Size(215, 63);
+            this.uploadPlcFile.Size = new System.Drawing.Size(287, 79);
             this.uploadPlcFile.TabIndex = 19;
             this.uploadPlcFile.Text = "Upload PLC";
             this.uploadPlcFile.UseVisualStyleBackColor = true;
@@ -289,9 +296,11 @@ namespace TrainProject
             // 
             this.activeControllersGroupBox.Controls.Add(this.activeControllersListView);
             this.activeControllersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeControllersGroupBox.Location = new System.Drawing.Point(3, 35);
+            this.activeControllersGroupBox.Location = new System.Drawing.Point(4, 44);
+            this.activeControllersGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.activeControllersGroupBox.Name = "activeControllersGroupBox";
-            this.activeControllersGroupBox.Size = new System.Drawing.Size(640, 341);
+            this.activeControllersGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.activeControllersGroupBox.Size = new System.Drawing.Size(853, 426);
             this.activeControllersGroupBox.TabIndex = 18;
             this.activeControllersGroupBox.TabStop = false;
             this.activeControllersGroupBox.Text = "Active Controllers";
@@ -303,9 +312,10 @@ namespace TrainProject
             this.columnHeader13,
             this.columnHeader14});
             this.activeControllersListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeControllersListView.Location = new System.Drawing.Point(6, 38);
+            this.activeControllersListView.Location = new System.Drawing.Point(8, 48);
+            this.activeControllersListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.activeControllersListView.Name = "activeControllersListView";
-            this.activeControllersListView.Size = new System.Drawing.Size(628, 288);
+            this.activeControllersListView.Size = new System.Drawing.Size(836, 359);
             this.activeControllersListView.TabIndex = 0;
             this.activeControllersListView.UseCompatibleStateImageBehavior = false;
             this.activeControllersListView.View = System.Windows.Forms.View.Details;
@@ -330,9 +340,11 @@ namespace TrainProject
             // 
             this.systemInfoGroupBox.Controls.Add(this.systemInfoPictureBox);
             this.systemInfoGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.systemInfoGroupBox.Location = new System.Drawing.Point(649, 35);
+            this.systemInfoGroupBox.Location = new System.Drawing.Point(865, 44);
+            this.systemInfoGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.systemInfoGroupBox.Name = "systemInfoGroupBox";
-            this.systemInfoGroupBox.Size = new System.Drawing.Size(696, 873);
+            this.systemInfoGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.systemInfoGroupBox.Size = new System.Drawing.Size(928, 1091);
             this.systemInfoGroupBox.TabIndex = 17;
             this.systemInfoGroupBox.TabStop = false;
             this.systemInfoGroupBox.Text = "System Information";
@@ -341,9 +353,10 @@ namespace TrainProject
             // systemInfoPictureBox
             // 
             this.systemInfoPictureBox.Image = global::TrainProject.Properties.Resources.Track_Layout;
-            this.systemInfoPictureBox.Location = new System.Drawing.Point(6, 38);
+            this.systemInfoPictureBox.Location = new System.Drawing.Point(8, 48);
+            this.systemInfoPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.systemInfoPictureBox.Name = "systemInfoPictureBox";
-            this.systemInfoPictureBox.Size = new System.Drawing.Size(672, 829);
+            this.systemInfoPictureBox.Size = new System.Drawing.Size(896, 1036);
             this.systemInfoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.systemInfoPictureBox.TabIndex = 0;
             this.systemInfoPictureBox.TabStop = false;
@@ -356,10 +369,11 @@ namespace TrainProject
             this.greenCtrl1.Controls.Add(this.green1TestGroupBox);
             this.greenCtrl1.Controls.Add(this.green1SwitchGroupBox);
             this.greenCtrl1.Controls.Add(this.green1TrainsGroupBox);
-            this.greenCtrl1.Location = new System.Drawing.Point(4, 38);
+            this.greenCtrl1.Location = new System.Drawing.Point(8, 51);
+            this.greenCtrl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.greenCtrl1.Name = "greenCtrl1";
-            this.greenCtrl1.Padding = new System.Windows.Forms.Padding(3);
-            this.greenCtrl1.Size = new System.Drawing.Size(1387, 940);
+            this.greenCtrl1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.greenCtrl1.Size = new System.Drawing.Size(1844, 1169);
             this.greenCtrl1.TabIndex = 0;
             this.greenCtrl1.Text = "Green Line, CTRL 1";
             // 
@@ -367,9 +381,11 @@ namespace TrainProject
             // 
             this.green1CrossingGroupBox.Controls.Add(this.green1CrossingListView);
             this.green1CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1CrossingGroupBox.Location = new System.Drawing.Point(13, 532);
+            this.green1CrossingGroupBox.Location = new System.Drawing.Point(17, 665);
+            this.green1CrossingGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1CrossingGroupBox.Name = "green1CrossingGroupBox";
-            this.green1CrossingGroupBox.Size = new System.Drawing.Size(672, 214);
+            this.green1CrossingGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green1CrossingGroupBox.Size = new System.Drawing.Size(896, 268);
             this.green1CrossingGroupBox.TabIndex = 18;
             this.green1CrossingGroupBox.TabStop = false;
             this.green1CrossingGroupBox.Text = "Crossing Information";
@@ -381,9 +397,10 @@ namespace TrainProject
             this.columnHeader11,
             this.columnHeader12});
             this.green1CrossingListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1CrossingListView.Location = new System.Drawing.Point(12, 38);
+            this.green1CrossingListView.Location = new System.Drawing.Point(16, 48);
+            this.green1CrossingListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1CrossingListView.Name = "green1CrossingListView";
-            this.green1CrossingListView.Size = new System.Drawing.Size(654, 170);
+            this.green1CrossingListView.Size = new System.Drawing.Size(871, 212);
             this.green1CrossingListView.TabIndex = 0;
             this.green1CrossingListView.UseCompatibleStateImageBehavior = false;
             this.green1CrossingListView.View = System.Windows.Forms.View.Details;
@@ -411,9 +428,11 @@ namespace TrainProject
             this.green1TestGroupBox.Controls.Add(this.textBox2);
             this.green1TestGroupBox.Controls.Add(this.pictureBox1);
             this.green1TestGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1TestGroupBox.Location = new System.Drawing.Point(685, 27);
+            this.green1TestGroupBox.Location = new System.Drawing.Point(913, 34);
+            this.green1TestGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1TestGroupBox.Name = "green1TestGroupBox";
-            this.green1TestGroupBox.Size = new System.Drawing.Size(696, 873);
+            this.green1TestGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green1TestGroupBox.Size = new System.Drawing.Size(928, 1091);
             this.green1TestGroupBox.TabIndex = 16;
             this.green1TestGroupBox.TabStop = false;
             this.green1TestGroupBox.Text = "Test Panel";
@@ -422,26 +441,29 @@ namespace TrainProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 266);
+            this.label2.Location = new System.Drawing.Point(27, 332);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 32);
+            this.label2.Size = new System.Drawing.Size(219, 44);
             this.label2.TabIndex = 5;
             this.label2.Text = "Test Output";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(26, 313);
+            this.richTextBox1.Location = new System.Drawing.Point(35, 391);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(649, 540);
+            this.richTextBox1.Size = new System.Drawing.Size(864, 674);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(26, 123);
+            this.button2.Location = new System.Drawing.Point(35, 154);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(511, 46);
+            this.button2.Size = new System.Drawing.Size(681, 58);
             this.button2.TabIndex = 3;
             this.button2.Text = "Test Controller";
             this.button2.UseVisualStyleBackColor = true;
@@ -451,25 +473,28 @@ namespace TrainProject
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 61);
+            this.label1.Location = new System.Drawing.Point(28, 76);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 29);
+            this.label1.Size = new System.Drawing.Size(186, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "Occupancy:";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(165, 61);
+            this.textBox2.Location = new System.Drawing.Point(220, 76);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(372, 39);
+            this.textBox2.Size = new System.Drawing.Size(495, 50);
             this.textBox2.TabIndex = 1;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 38);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 48);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(684, 829);
+            this.pictureBox1.Size = new System.Drawing.Size(912, 1036);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -479,9 +504,11 @@ namespace TrainProject
             // 
             this.green1SwitchGroupBox.Controls.Add(this.green1SwitchListView);
             this.green1SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1SwitchGroupBox.Location = new System.Drawing.Point(13, 241);
+            this.green1SwitchGroupBox.Location = new System.Drawing.Point(17, 301);
+            this.green1SwitchGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1SwitchGroupBox.Name = "green1SwitchGroupBox";
-            this.green1SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
+            this.green1SwitchGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green1SwitchGroupBox.Size = new System.Drawing.Size(896, 356);
             this.green1SwitchGroupBox.TabIndex = 14;
             this.green1SwitchGroupBox.TabStop = false;
             this.green1SwitchGroupBox.Text = "Switch Information";
@@ -495,10 +522,11 @@ namespace TrainProject
             this.columnHeader7,
             this.columnHeader8});
             this.green1SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.green1SwitchListView.Location = new System.Drawing.Point(8, 48);
+            this.green1SwitchListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1SwitchListView.Name = "green1SwitchListView";
             this.green1SwitchListView.Scrollable = false;
-            this.green1SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.green1SwitchListView.Size = new System.Drawing.Size(879, 290);
             this.green1SwitchListView.TabIndex = 14;
             this.green1SwitchListView.UseCompatibleStateImageBehavior = false;
             this.green1SwitchListView.View = System.Windows.Forms.View.Details;
@@ -528,9 +556,11 @@ namespace TrainProject
             // 
             this.green1TrainsGroupBox.Controls.Add(this.green1TrainsListView);
             this.green1TrainsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1TrainsGroupBox.Location = new System.Drawing.Point(7, 27);
+            this.green1TrainsGroupBox.Location = new System.Drawing.Point(9, 34);
+            this.green1TrainsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1TrainsGroupBox.Name = "green1TrainsGroupBox";
-            this.green1TrainsGroupBox.Size = new System.Drawing.Size(672, 208);
+            this.green1TrainsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green1TrainsGroupBox.Size = new System.Drawing.Size(896, 260);
             this.green1TrainsGroupBox.TabIndex = 12;
             this.green1TrainsGroupBox.TabStop = false;
             this.green1TrainsGroupBox.Text = "Trains";
@@ -543,10 +573,11 @@ namespace TrainProject
             this.columnHeader3,
             this.columnHeader4});
             this.green1TrainsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1TrainsListView.Location = new System.Drawing.Point(12, 38);
+            this.green1TrainsListView.Location = new System.Drawing.Point(16, 48);
+            this.green1TrainsListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green1TrainsListView.Name = "green1TrainsListView";
             this.green1TrainsListView.Scrollable = false;
-            this.green1TrainsListView.Size = new System.Drawing.Size(654, 164);
+            this.green1TrainsListView.Size = new System.Drawing.Size(871, 204);
             this.green1TrainsListView.TabIndex = 5;
             this.green1TrainsListView.UseCompatibleStateImageBehavior = false;
             this.green1TrainsListView.View = System.Windows.Forms.View.Details;
@@ -579,10 +610,11 @@ namespace TrainProject
             this.greenCtrl2.Controls.Add(this.green2CrossingGroupBox);
             this.greenCtrl2.Controls.Add(this.green2SwitchGroupBox);
             this.greenCtrl2.Controls.Add(this.groupBox1);
-            this.greenCtrl2.Location = new System.Drawing.Point(4, 38);
+            this.greenCtrl2.Location = new System.Drawing.Point(8, 51);
+            this.greenCtrl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.greenCtrl2.Name = "greenCtrl2";
-            this.greenCtrl2.Padding = new System.Windows.Forms.Padding(3);
-            this.greenCtrl2.Size = new System.Drawing.Size(1387, 940);
+            this.greenCtrl2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.greenCtrl2.Size = new System.Drawing.Size(1844, 1169);
             this.greenCtrl2.TabIndex = 3;
             this.greenCtrl2.Text = "Green Line, CTRL 2";
             // 
@@ -595,9 +627,11 @@ namespace TrainProject
             this.green2TestGroupBox.Controls.Add(this.textBox3);
             this.green2TestGroupBox.Controls.Add(this.pictureBox2);
             this.green2TestGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green2TestGroupBox.Location = new System.Drawing.Point(684, 21);
+            this.green2TestGroupBox.Location = new System.Drawing.Point(912, 26);
+            this.green2TestGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green2TestGroupBox.Name = "green2TestGroupBox";
-            this.green2TestGroupBox.Size = new System.Drawing.Size(696, 873);
+            this.green2TestGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green2TestGroupBox.Size = new System.Drawing.Size(928, 1091);
             this.green2TestGroupBox.TabIndex = 20;
             this.green2TestGroupBox.TabStop = false;
             this.green2TestGroupBox.Text = "Test Panel";
@@ -605,25 +639,28 @@ namespace TrainProject
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 266);
+            this.label3.Location = new System.Drawing.Point(27, 332);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 32);
+            this.label3.Size = new System.Drawing.Size(219, 44);
             this.label3.TabIndex = 5;
             this.label3.Text = "Test Output";
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(26, 313);
+            this.richTextBox2.Location = new System.Drawing.Point(35, 391);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(649, 540);
+            this.richTextBox2.Size = new System.Drawing.Size(864, 674);
             this.richTextBox2.TabIndex = 4;
             this.richTextBox2.Text = "";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(26, 123);
+            this.button1.Location = new System.Drawing.Point(35, 154);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(511, 46);
+            this.button1.Size = new System.Drawing.Size(681, 58);
             this.button1.TabIndex = 3;
             this.button1.Text = "Test Controller";
             this.button1.UseVisualStyleBackColor = true;
@@ -632,24 +669,27 @@ namespace TrainProject
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(21, 61);
+            this.label4.Location = new System.Drawing.Point(28, 76);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 29);
+            this.label4.Size = new System.Drawing.Size(186, 37);
             this.label4.TabIndex = 2;
             this.label4.Text = "Occupancy:";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(165, 61);
+            this.textBox3.Location = new System.Drawing.Point(220, 76);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(372, 39);
+            this.textBox3.Size = new System.Drawing.Size(495, 50);
             this.textBox3.TabIndex = 1;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(6, 38);
+            this.pictureBox2.Location = new System.Drawing.Point(8, 48);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(684, 829);
+            this.pictureBox2.Size = new System.Drawing.Size(912, 1036);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -658,9 +698,11 @@ namespace TrainProject
             // 
             this.green2CrossingGroupBox.Controls.Add(this.listView3);
             this.green2CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green2CrossingGroupBox.Location = new System.Drawing.Point(6, 613);
+            this.green2CrossingGroupBox.Location = new System.Drawing.Point(8, 766);
+            this.green2CrossingGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green2CrossingGroupBox.Name = "green2CrossingGroupBox";
-            this.green2CrossingGroupBox.Size = new System.Drawing.Size(672, 214);
+            this.green2CrossingGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green2CrossingGroupBox.Size = new System.Drawing.Size(896, 268);
             this.green2CrossingGroupBox.TabIndex = 19;
             this.green2CrossingGroupBox.TabStop = false;
             this.green2CrossingGroupBox.Text = "Crossing Information";
@@ -672,9 +714,10 @@ namespace TrainProject
             this.columnHeader28,
             this.columnHeader29});
             this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView3.Location = new System.Drawing.Point(12, 38);
+            this.listView3.Location = new System.Drawing.Point(16, 48);
+            this.listView3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(654, 170);
+            this.listView3.Size = new System.Drawing.Size(871, 212);
             this.listView3.TabIndex = 0;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
@@ -697,9 +740,11 @@ namespace TrainProject
             // 
             this.green2SwitchGroupBox.Controls.Add(this.green2SwitchListView);
             this.green2SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green2SwitchGroupBox.Location = new System.Drawing.Point(6, 272);
+            this.green2SwitchGroupBox.Location = new System.Drawing.Point(8, 340);
+            this.green2SwitchGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green2SwitchGroupBox.Name = "green2SwitchGroupBox";
-            this.green2SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
+            this.green2SwitchGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.green2SwitchGroupBox.Size = new System.Drawing.Size(896, 356);
             this.green2SwitchGroupBox.TabIndex = 15;
             this.green2SwitchGroupBox.TabStop = false;
             this.green2SwitchGroupBox.Text = "Switch Information";
@@ -712,10 +757,11 @@ namespace TrainProject
             this.columnHeader25,
             this.columnHeader26});
             this.green2SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green2SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.green2SwitchListView.Location = new System.Drawing.Point(8, 48);
+            this.green2SwitchListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.green2SwitchListView.Name = "green2SwitchListView";
             this.green2SwitchListView.Scrollable = false;
-            this.green2SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.green2SwitchListView.Size = new System.Drawing.Size(879, 290);
             this.green2SwitchListView.TabIndex = 14;
             this.green2SwitchListView.UseCompatibleStateImageBehavior = false;
             this.green2SwitchListView.View = System.Windows.Forms.View.Details;
@@ -744,9 +790,11 @@ namespace TrainProject
             // 
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 21);
+            this.groupBox1.Location = new System.Drawing.Point(8, 26);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(672, 208);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(896, 260);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Trains";
@@ -759,10 +807,11 @@ namespace TrainProject
             this.columnHeader17,
             this.columnHeader18});
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.Location = new System.Drawing.Point(12, 38);
+            this.listView1.Location = new System.Drawing.Point(16, 48);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(654, 164);
+            this.listView1.Size = new System.Drawing.Size(871, 204);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -790,28 +839,32 @@ namespace TrainProject
             // redCtrl1
             // 
             this.redCtrl1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.redCtrl1.Location = new System.Drawing.Point(8, 51);
+            this.redCtrl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.redCtrl1.Controls.Add(this.red1TestGroupBox);
             this.redCtrl1.Controls.Add(this.red1CrossingGroupBox);
             this.redCtrl1.Controls.Add(this.red1SwitchGroupBox);
             this.redCtrl1.Controls.Add(this.red1TrainsGroupBox);
             this.redCtrl1.Location = new System.Drawing.Point(4, 38);
             this.redCtrl1.Name = "redCtrl1";
-            this.redCtrl1.Padding = new System.Windows.Forms.Padding(3);
-            this.redCtrl1.Size = new System.Drawing.Size(1387, 940);
+            this.redCtrl1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.redCtrl1.Size = new System.Drawing.Size(1844, 1169);
             this.redCtrl1.TabIndex = 4;
             this.redCtrl1.Text = "Red Line, CTRL 1";
             // 
             // redCtrl2
             // 
             this.redCtrl2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.redCtrl2.Location = new System.Drawing.Point(8, 51);
+            this.redCtrl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.redCtrl2.Controls.Add(this.red2TestGroupBox);
             this.redCtrl2.Controls.Add(this.red2CrossingGroupBox);
             this.redCtrl2.Controls.Add(this.red2SwitchGroupBox);
             this.redCtrl2.Controls.Add(this.red2TrainsGroupBox);
             this.redCtrl2.Location = new System.Drawing.Point(4, 38);
             this.redCtrl2.Name = "redCtrl2";
-            this.redCtrl2.Padding = new System.Windows.Forms.Padding(3);
-            this.redCtrl2.Size = new System.Drawing.Size(1387, 940);
+            this.redCtrl2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.redCtrl2.Size = new System.Drawing.Size(1844, 1169);
             this.redCtrl2.TabIndex = 5;
             this.redCtrl2.Text = "Red Line, CTRL 2";
             // 
@@ -822,45 +875,50 @@ namespace TrainProject
             this.murphyTab.Controls.Add(this.severTMComm);
             this.murphyTab.Controls.Add(this.restoreTMComm);
             this.murphyTab.Controls.Add(this.severCtcComm);
-            this.murphyTab.Location = new System.Drawing.Point(4, 38);
+            this.murphyTab.Location = new System.Drawing.Point(8, 51);
+            this.murphyTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.murphyTab.Name = "murphyTab";
-            this.murphyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.murphyTab.Size = new System.Drawing.Size(1387, 940);
+            this.murphyTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.murphyTab.Size = new System.Drawing.Size(1844, 1169);
             this.murphyTab.TabIndex = 1;
             this.murphyTab.Text = "Murphy";
             // 
             // restoreCtcComm
             // 
-            this.restoreCtcComm.Location = new System.Drawing.Point(380, 349);
+            this.restoreCtcComm.Location = new System.Drawing.Point(507, 436);
+            this.restoreCtcComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.restoreCtcComm.Name = "restoreCtcComm";
-            this.restoreCtcComm.Size = new System.Drawing.Size(266, 123);
+            this.restoreCtcComm.Size = new System.Drawing.Size(355, 154);
             this.restoreCtcComm.TabIndex = 3;
             this.restoreCtcComm.Text = "Restore Communication with CTC";
             this.restoreCtcComm.UseVisualStyleBackColor = true;
             // 
             // severTMComm
             // 
-            this.severTMComm.Location = new System.Drawing.Point(652, 220);
+            this.severTMComm.Location = new System.Drawing.Point(869, 275);
+            this.severTMComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.severTMComm.Name = "severTMComm";
-            this.severTMComm.Size = new System.Drawing.Size(253, 123);
+            this.severTMComm.Size = new System.Drawing.Size(337, 154);
             this.severTMComm.TabIndex = 2;
             this.severTMComm.Text = "Sever Communication with Track Model\r\n";
             this.severTMComm.UseVisualStyleBackColor = true;
             // 
             // restoreTMComm
             // 
-            this.restoreTMComm.Location = new System.Drawing.Point(652, 349);
+            this.restoreTMComm.Location = new System.Drawing.Point(869, 436);
+            this.restoreTMComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.restoreTMComm.Name = "restoreTMComm";
-            this.restoreTMComm.Size = new System.Drawing.Size(253, 123);
+            this.restoreTMComm.Size = new System.Drawing.Size(337, 154);
             this.restoreTMComm.TabIndex = 1;
             this.restoreTMComm.Text = "Restore Communication with Track Model";
             this.restoreTMComm.UseVisualStyleBackColor = true;
             // 
             // severCtcComm
             // 
-            this.severCtcComm.Location = new System.Drawing.Point(380, 220);
+            this.severCtcComm.Location = new System.Drawing.Point(507, 275);
+            this.severCtcComm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.severCtcComm.Name = "severCtcComm";
-            this.severCtcComm.Size = new System.Drawing.Size(266, 123);
+            this.severCtcComm.Size = new System.Drawing.Size(355, 154);
             this.severCtcComm.TabIndex = 0;
             this.severCtcComm.Text = "Sever Communication with CTC";
             this.severCtcComm.UseVisualStyleBackColor = true;
@@ -1274,10 +1332,11 @@ namespace TrainProject
             // 
             // TrackControllerWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1419, 1006);
+            this.ClientSize = new System.Drawing.Size(1892, 1258);
             this.Controls.Add(this.Engineer);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TrackControllerWindow";
             this.Text = "Track Controller";
             this.Load += new System.EventHandler(this.Form1_Load);
