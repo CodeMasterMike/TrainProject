@@ -324,11 +324,13 @@ namespace TrainProject
                     }
                 }
             }
-        }
+        }*/
 
-        private static void traverseDownTrack(int remainingBlocks, int currDistance, Block currBlock, bool prevToNext)
+        private static void traverseDownTrack(List<Block> blockList, int remainingBlocks, int currDistance, Block currBlock, bool prevToNext)
         {
-            Block nextBlock = null;
+            //if coming from a switch, prevToNext should have already been calculated
+            Block nextBlock1 = null;
+            Block nextBlock2 = null;
             int? nextBlockId;
             if(prevToNext)
             {
@@ -338,7 +340,16 @@ namespace TrainProject
             {
                 nextBlockId = currBlock.prevBlockId;
             }
+            //if entering a switch, nextBlockId will be null
+            if(nextBlockId == null)
+            {
+                if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+                {
+                    nextBlock1 = findBlock((int)currBlock.parentSwitch.targetBlockId1, blockList);
+                }
+            }
+            //now need to find next block
 
-        }*/
+        }
     }
 }

@@ -49,11 +49,13 @@ namespace TrainModelProject
         Block prev_block;
         private int TM_count = 0;
         double p;
+        double sugSpeed;
+        int sugAuthority;
 
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
-
+            TC.updateSpeedAndAuthority(speed, authority);
         }
 
         public TrainModel()

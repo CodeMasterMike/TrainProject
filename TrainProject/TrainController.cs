@@ -20,6 +20,7 @@ namespace TrainControllerProject
         private double driverSetSpeed = 0;
         private double ctcSetSpeed = 0;
         private double setSpeed = 0;
+        private int authority = 0;
         private double setTemp = 70;
         private double temp = 70;
         private double distanceToStop = 1000;
@@ -31,7 +32,6 @@ namespace TrainControllerProject
         int currentBlockID;
         int speedLimit;
         int direction = 0;
-        int authority = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         double distanceLeft = 0;
         double Kp = 0;//100000;
@@ -357,8 +357,6 @@ namespace TrainControllerProject
             ctcSetSpeed = s;
             authority = a;
         }
-
-  
 
 
 
