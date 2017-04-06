@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Track_Layout_UI;
+using MBO_UI;
 using TrainProject.Clock;
 using CTC;
 using TrainControllerProject;
@@ -23,6 +24,8 @@ namespace TrainProject
         public static Office mainOffice;
         public static TrackModelUI trackModelWindow;
         public static TrackControllerWindow trackControllerWindow;
+        public static MBO MBOWindow;
+
         public TrainSimulation()
         {
             InitializeComponent();
@@ -36,6 +39,8 @@ namespace TrainProject
             trackControllerWindow.Show();
             trackModelWindow = new TrackModelUI();
             trackModelWindow.Show();
+            MBOWindow = new MBO();
+            MBOWindow.Show();
             mainOffice = new Office();
             mainOffice.Show();
         }
