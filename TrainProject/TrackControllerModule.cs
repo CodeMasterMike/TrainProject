@@ -35,7 +35,7 @@ namespace TrainProject
             //TrackModelUI.
         }
 
-        public void updateBlockOccupancy(int blockId, Boolean occupied)
+        public static void updateBlockOccupancy(int blockId, Boolean occupied)
         {
             foreach(TrackController ctrl in activeControllers)
             {
@@ -82,7 +82,7 @@ namespace TrainProject
             //update a new block, from that you can get direction too
         }
 
-        public int? getSwitchState(int switchId)
+        public static int? getSwitchState(int switchId)
         {
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
