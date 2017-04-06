@@ -79,7 +79,6 @@ namespace TrainModelProject
             setTimeLabel(time);
             mass = person_mass + train_mass;
             TC.trackPosition(currSpeedms);
-            currentBlock();
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
             else if (emergency) calculateEmergency();
@@ -101,6 +100,7 @@ namespace TrainModelProject
             if (block_distance >= p) block_distance -= p;
             else
             {
+                double p = currSpeedms;
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
@@ -161,16 +161,17 @@ namespace TrainModelProject
         {
             if (currSpeedms > 0)
             {
-                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+                //double cos_value = Math.Cos(1 * (Math.PI / 180.0));
 
                 force = power / currSpeedms;
 
-                force = force - mass * 9.8 * 0.2 * cos_value;
+                //force = force - mass * 9.8 * 0.2 * cos_value;
                 
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
-                if (currSpeedms + acceleration < 0) currSpeedms = 0;
-                else currSpeedms = acceleration + currSpeedms;
+                //if (currSpeedms + acceleration < 0) currSpeedms = 0;
+                //else currSpeedms = acceleration + currSpeedms;
+                currSpeedms = acceleration + currSpeedms;
             }
             else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
@@ -226,6 +227,11 @@ namespace TrainModelProject
 
 
         private void TrainModel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
         }

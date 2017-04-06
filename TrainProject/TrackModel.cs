@@ -37,6 +37,9 @@ namespace Track_Layout_UI
         {
             //StationBeacon currBeacon;
             //currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+            //redLineStationBeacons[8] = currBeacon;
+            //currBeacon = new StationBeacon("HERRON AVE", 50, false);
+            //redLineStationBeacons[1] = currBeacon;
            // redLineStationBeacons[8] = currBeacon;
            // currBeacon = new StationBeacon("HERRON AVE", 50, false);
            // redLineStationBeacons[1] = currBeacon;
