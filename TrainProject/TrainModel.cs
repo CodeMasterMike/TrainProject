@@ -102,6 +102,7 @@ namespace TrainModelProject
             if (block_distance >= p) block_distance -= p;
             else
             {
+                double p = currSpeedms;
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
@@ -228,6 +229,11 @@ namespace TrainModelProject
 
 
         private void TrainModel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
         }

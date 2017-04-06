@@ -23,6 +23,8 @@ namespace TrainControllerProject
         private int authority = 0;
         private double setTemp = 70;
         private double temp = 70;
+        private double distanceToStop = 1000;
+        private double minStopDistance = 1000;
         private SmallBlock[] blocks;
         private BlockTracker blockTracker;
         int testMode = 0; //test mode off = 0 test mode on = 1
@@ -30,6 +32,7 @@ namespace TrainControllerProject
         int currentBlockID;
         int speedLimit;
         int direction = 0;
+        int authority = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         double distanceLeft = 0;
         double Kp = 0;//100000;
@@ -47,6 +50,7 @@ namespace TrainControllerProject
         double force = 0;
         double serviceBreak = 1.2;
         bool serviceOverride = false;
+        bool forceStop = false;
         Block currentBlock;
         Block nextBlock;
         
@@ -71,7 +75,7 @@ namespace TrainControllerProject
             ctcSpeedTestTextBox.Enabled = false;
             ctcAuthorityTestTextBox.Enabled = false;
             timeLabel.Text = "-";
-            powerController = new PowerController(mass, 12000);
+            powerController = new PowerController(mass, 120000);
 
             //begin in automatic mode
             testMode = 0;
@@ -96,7 +100,9 @@ namespace TrainControllerProject
                 else setSpeed = ctcSetSpeed;
                 setSpeedms = setSpeed * 0.44704;
             }
-            if (currSpeed <= setSpeed)
+            //considerAuthority(); 
+            //considerStations();
+            if ((currSpeed <= setSpeed) && !forceStop)
             {
                 sBreakOFF();
                 power = powerController.getPower(currSpeedms, setSpeedms);
@@ -114,6 +120,7 @@ namespace TrainControllerProject
             trainSpeedLabel.Text = (currSpeedms).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
             ctcSpeedLabel.Text = (ctcSetSpeed).ToString("#.###") + "MPH";
+            ctcAuthorityLabel.Text = authority.ToString() + " blocks";
             trainTempLabel.Text = (temp.ToString()) + "F";
             blockIDLabel.Text = currentBlock.blockNum.ToString();
             blockSpeedLimitLabel.Text = speedLimit.ToString();
@@ -318,6 +325,7 @@ namespace TrainControllerProject
            if(distanceLeft >= p) distanceLeft -= p;
             else
             {
+                authority = authority - 1;
                 p = p - distanceLeft;
                 nextBlock = blockTracker.getNextBlock(currentBlock.blockNum);
                 if (nextBlock == null)
@@ -345,6 +353,11 @@ namespace TrainControllerProject
             }
         }*/
         private int readBeacon() { return 0; }
+        public void updateSpeedAndAuthority(double s, int a)
+        {
+            ctcSetSpeed = s;
+            authority = a;
+        }
 
         public void updateSpeedAndAuthority(double s, int a)
         {
