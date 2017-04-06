@@ -74,7 +74,7 @@ namespace TrainControllerProject
             ctcSpeedTestTextBox.Enabled = false;
             ctcAuthorityTestTextBox.Enabled = false;
             timeLabel.Text = "-";
-            powerController = new PowerController(mass, 12000);
+            powerController = new PowerController(mass, 120000);
 
             //begin in automatic mode
             testMode = 0;
@@ -101,7 +101,7 @@ namespace TrainControllerProject
             }
             //considerAuthority(); 
             //considerStations();
-            if ((currSpeed <= setSpeed) && forceStop)
+            if ((currSpeed <= setSpeed) && !forceStop)
             {
                 sBreakOFF();
                 power = powerController.getPower(currSpeedms, setSpeedms);

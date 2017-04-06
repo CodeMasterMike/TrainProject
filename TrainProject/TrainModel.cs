@@ -78,7 +78,6 @@ namespace TrainModelProject
             setTimeLabel(time);
             mass = person_mass + train_mass;
             TC.trackPosition(currSpeedms);
-            currentBlock();
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
             else if (emergency) calculateEmergency();
@@ -96,10 +95,14 @@ namespace TrainModelProject
 
         public void currentBlock()
         {
-            double p = currSpeedms;
-            if (block_distance >= p) block_distance -= p;
+            
+            if (block_distance >= currSpeedms)
+            {
+                block_distance = block_distance - currSpeedms;
+            }
             else
             {
+                double p = currSpeedms;
                 p = p - block_distance;
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
                 prev_block = current_block;
@@ -216,6 +219,11 @@ namespace TrainModelProject
 
 
         private void TrainModel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
         }
