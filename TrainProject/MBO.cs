@@ -103,7 +103,7 @@ namespace MBO_UI
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);
 
-            MessageBox.Show("Excel file created , you can find the file at fuck you I made it");
+            MessageBox.Show("Excel file created , you can find the file at....");
         }
 
         private void createDriverSchedule()

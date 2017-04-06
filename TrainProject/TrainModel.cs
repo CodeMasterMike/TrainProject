@@ -110,7 +110,7 @@ namespace TrainModelProject
                 prev_block = current_block;
                 current_block = next_block;
                 block_distance = current_block.length - p;
-
+                if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                 Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
@@ -154,6 +154,11 @@ namespace TrainModelProject
         {
             if (b) service = true;
             else service = false;
+        }
+        public void setEmergency(bool b)
+        {
+            if (b) emergency = true;
+            else emergency = false;
         }
         public void Start()
         {
