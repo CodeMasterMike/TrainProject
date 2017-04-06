@@ -33,39 +33,35 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(600, 30);
+            this.dateTimePicker1.Location = new System.Drawing.Point(600, 13);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(298, 26);
@@ -75,8 +71,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(2, 49);
+            this.tabControl1.Location = new System.Drawing.Point(2, 51);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1168, 518);
@@ -88,7 +83,7 @@
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1160, 485);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Train Schedule";
@@ -128,6 +123,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button10);
+            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.button9);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.button5);
@@ -142,103 +142,74 @@
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
-            // tabPage2
+            // button8
             // 
-            this.tabPage2.Controls.Add(this.pictureBox2);
-            this.tabPage2.Controls.Add(this.dateTimePicker2);
-            this.tabPage2.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Controls.Add(this.listBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1160, 485);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Driver Schedule";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.button8.Location = new System.Drawing.Point(765, 390);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(192, 43);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Fix Antenna";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.fixAntenna_Click);
             // 
-            // button1
+            // button6
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 64);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Create Schedule\r\n";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.createDriverScheduleButton_Click);
+            this.button6.Location = new System.Drawing.Point(515, 164);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(193, 43);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "View Train Schedule";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.viewTrainSchedule_Click);
             // 
-            // tableLayoutPanel1
+            // button5
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.28411F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.125176F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.86217F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button7, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(459, 48);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(695, 421);
-            this.tableLayoutPanel1.TabIndex = 8;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
+            this.button5.Location = new System.Drawing.Point(765, 240);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(192, 43);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "Calculate Variance";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.calculateVariance_Click);
             // 
-            // label16
+            // pictureBox1
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(524, 3);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(257, 37);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "Driver Schedule\r\n";
+            this.pictureBox1.Image = global::TrainProject.Properties.Resources.Track_Layout;
+            this.pictureBox1.Location = new System.Drawing.Point(48, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(442, 429);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
-            // listBox2
+            // button4
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Items.AddRange(new object[] {
-            "Station Square",
-            "Penn Station",
-            "Steel Plaza",
-            "PITT",
-            "Dormont",
-            "First Ave",
-            "Shadyside",
-            "Edgebrook",
-            "Pioneer",
-            "South Hills",
-            "Swissville",
-            "Herron Ave",
-            "Pioneer",
-            "South Bank",
-            "Whited",
-            "Inglewood",
-            "Overbrook",
-            "Mt. Lebanon",
-            "Castle Shannon",
-            "Glenbury",
-            "Poplar"});
-            this.listBox2.Location = new System.Drawing.Point(8, 35);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(122, 444);
-            this.listBox2.TabIndex = 6;
+            this.button4.Location = new System.Drawing.Point(515, 388);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(193, 45);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Break Antenna";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.breakAntenna_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(765, 88);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(192, 43);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Get Position/Speed";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.getPos_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(515, 88);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(193, 43);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Create Train Schedule";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.createTrainScheduleButton_Click);
             // 
             // panel2
             // 
@@ -305,94 +276,75 @@
             this.label18.Text = "Active";
             this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
-            // button2
+            // label3
             // 
-            this.button2.Location = new System.Drawing.Point(515, 112);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 43);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Create Schedule";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.createTrainScheduleButton_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(761, 609);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 29);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Variance:";
+            this.label3.Click += new System.EventHandler(this.label3_Click_2);
             // 
-            // button3
+            // label4
             // 
-            this.button3.Location = new System.Drawing.Point(765, 110);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 46);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Get Position";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.createDriverScheduleButton_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Lime;
+            this.label4.Location = new System.Drawing.Point(893, 609);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 29);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "-";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // button4
+            // button1
             // 
-            this.button4.Location = new System.Drawing.Point(515, 368);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(176, 43);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Break Antenna";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(515, 240);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 43);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Create Driver Schedule\r\n";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.createDriverScheduleButton_Click);
             // 
-            // pictureBox1
+            // button9
             // 
-            this.pictureBox1.Image = global::TrainProject.Properties.Resources.Track_Layout;
-            this.pictureBox1.Location = new System.Drawing.Point(48, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(442, 429);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(765, 240);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(176, 43);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Calculate Variance";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(515, 240);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(176, 43);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "View Schedule";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(855, 14);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(298, 26);
-            this.dateTimePicker2.TabIndex = 10;
+            this.button9.Location = new System.Drawing.Point(765, 164);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(192, 43);
+            this.button9.TabIndex = 14;
+            this.button9.Text = "Send Authority";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.setAuthority_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(3, 73);
+            this.button7.Location = new System.Drawing.Point(515, 313);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(121, 64);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "View";
+            this.button7.Size = new System.Drawing.Size(193, 45);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "View Driver Schedule";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // button10
             // 
-            this.pictureBox2.Image = global::TrainProject.Properties.Resources.Track_Layout;
-            this.pictureBox2.Location = new System.Drawing.Point(136, 48);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(305, 418);
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
+            this.button10.Location = new System.Drawing.Point(764, 313);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(193, 45);
+            this.button10.TabIndex = 16;
+            this.button10.Text = "Passenger Movement";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.passengerMovement_Click);
             // 
             // MBO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 669);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
@@ -406,13 +358,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,24 +374,23 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button10;
     }
 }
 

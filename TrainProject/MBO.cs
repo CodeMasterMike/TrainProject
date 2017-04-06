@@ -79,7 +79,23 @@ namespace MBO_UI
             schedulesWorksheet.Cells[2, 1] = "1";
             schedulesWorksheet.Cells[2, 2] = "Drive";
             schedulesWorksheet.Cells[2, 3] = "Drive";
-            schedulesWorksheet.Cells[3, 1] = "2";
+            schedulesWorksheet.Cells[2, 4] = "Drive";
+            schedulesWorksheet.Cells[2, 5] = "Drive";
+            schedulesWorksheet.Cells[2, 6] = "Drive";
+            schedulesWorksheet.Cells[2, 7] = "Drive";
+            schedulesWorksheet.Cells[2, 8] = "Drive";
+            schedulesWorksheet.Cells[2, 9] = "Drive";
+            schedulesWorksheet.Cells[2, 10] = "Drive";
+            schedulesWorksheet.Cells[2, 11] = "Drive";
+            schedulesWorksheet.Cells[2, 12] = "Drive";
+            schedulesWorksheet.Cells[2, 13] = "Drive";
+            schedulesWorksheet.Cells[2, 14] = "Drive";
+            schedulesWorksheet.Cells[2, 15] = "Drive";
+            schedulesWorksheet.Cells[2, 16] = "Drive";
+            schedulesWorksheet.Cells[2, 17] = "Drive";
+            schedulesWorksheet.Cells[2, 18] = "Drive";
+            schedulesWorksheet.Cells[2, 19] = "Clock Out";
+
 
 
             schedulesWorksheet.Cells[1, 2] = "8:00";
@@ -134,9 +150,10 @@ namespace MBO_UI
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);
 
-            MessageBox.Show("Excel file created , you can find the file at @");
+            MessageBox.Show("Excel file created , you can find the file at C:\\Users\\Public\\TrainSchedule");
         }
 
+       
         private void createDriverSchedule()
         {
             Excel.Application schedulesApp = new Microsoft.Office.Interop.Excel.Application();
@@ -160,8 +177,46 @@ namespace MBO_UI
             schedulesWorksheet.Cells[2, 1] = "1";
             schedulesWorksheet.Cells[2, 2] = "Drive";
             schedulesWorksheet.Cells[2, 3] = "Drive";
-            schedulesWorksheet.Cells[3, 1] = "2";
+            schedulesWorksheet.Cells[2, 4] = "Drive";
+            schedulesWorksheet.Cells[2, 5] = "Drive";
+            schedulesWorksheet.Cells[2, 6] = "Drive";
+            schedulesWorksheet.Cells[2, 7] = "Drive";
+            schedulesWorksheet.Cells[2, 8] = "Drive";
+            schedulesWorksheet.Cells[2, 9] = "Drive";
+            schedulesWorksheet.Cells[2, 10] = "Break";
+            schedulesWorksheet.Cells[2, 11] = "Lunch";
+            schedulesWorksheet.Cells[2, 12] = "Lunch";
+            schedulesWorksheet.Cells[2, 13] = "Drive";
+            schedulesWorksheet.Cells[2, 14] = "Drive";
+            schedulesWorksheet.Cells[2, 15] = "Drive";
+            schedulesWorksheet.Cells[2, 16] = "Drive";
+            schedulesWorksheet.Cells[2, 17] = "Drive";
+            schedulesWorksheet.Cells[2, 18] = "Drive";
+            schedulesWorksheet.Cells[2, 19] = "Clock Out";
+            
 
+          
+            schedulesWorksheet.Cells[3, 1] = "2";
+            schedulesWorksheet.Cells[3, 10] = "Drive";
+            schedulesWorksheet.Cells[3, 11] = "Drive";
+            schedulesWorksheet.Cells[3, 12] = "Drive";
+            schedulesWorksheet.Cells[3, 13] = "Lunch";
+            schedulesWorksheet.Cells[3, 14] = "Lunch";
+            schedulesWorksheet.Cells[3, 15] = "Break";
+            schedulesWorksheet.Cells[3, 16] = "Break";
+            schedulesWorksheet.Cells[3, 17] = "Break";
+            schedulesWorksheet.Cells[3, 18] = "Break";
+            schedulesWorksheet.Cells[3, 19] = "Drive";
+            schedulesWorksheet.Cells[3, 20] = "Drive";
+            schedulesWorksheet.Cells[3, 21] = "Drive";
+            schedulesWorksheet.Cells[3, 22] = "Drive";
+            schedulesWorksheet.Cells[3, 23] = "Drive";
+            schedulesWorksheet.Cells[3, 20] = "Drive";
+            schedulesWorksheet.Cells[3, 21] = "Drive";
+            schedulesWorksheet.Cells[3, 22] = "Drive";
+            schedulesWorksheet.Cells[3, 23] = "Drive";
+            schedulesWorksheet.Cells[3, 24] = "Drive";
+           
 
             schedulesWorksheet.Cells[1, 2] = "8:00";
             schedulesWorksheet.Cells[1, 3] = "8:30";
@@ -181,14 +236,12 @@ namespace MBO_UI
             schedulesWorksheet.Cells[1, 17] = "3:30";
             schedulesWorksheet.Cells[1, 18] = "4:00";
             schedulesWorksheet.Cells[1, 19] = "4:30";
-
             schedulesWorksheet.Cells[1, 20] = "5:00";
             schedulesWorksheet.Cells[1, 21] = "5:30";
             schedulesWorksheet.Cells[1, 22] = "6:00";
-
             schedulesWorksheet.Cells[1, 23] = "6:30";
             schedulesWorksheet.Cells[1, 24] = "7:00";
-
+            
 
 
 
@@ -215,9 +268,29 @@ namespace MBO_UI
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);
 
-            MessageBox.Show("Excel file created , you can find the file at @");
+            MessageBox.Show("Excel file created , you can find the file at C:\\Users\\Public\\DriverSchedule.xls");
         }
 
+        public void viewTrainSchedule_Click(object Sender, EventArgs e)
+        {
+            viewTrainSchedule();
+        }
+
+        public void viewDriverSchedule_Click(object Sender, EventArgs e)
+        {
+            viewDriverSchedule();
+        }
+        public void viewTrainSchedule()
+        {
+            System.Diagnostics.Process.Start(@"C:\\Users\\Public\\TrainSchedule.xls");
+            //Excel.Application schedulesApp = new Microsoft.Office.Interop.Excel.Application();
+            //schedulesApp.Workbooks.Open("C:\\Users\\Public\\TrainSchedule", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+        }
+
+        public void viewDriverSchedule()
+        {
+            System.Diagnostics.Process.Start(@"C:\\Users\\Public\\DriverSchedule.xls");
+        }
         public void updateTrainSchedule()
         {
 
@@ -264,9 +337,14 @@ namespace MBO_UI
             }
         }
 
+        public void getPos_Click(object Sender, EventArgs e)
+        {
+            getPos();
+        }
+
         public void getPos()
         {
-
+            MessageBox.Show("Position and speed received.");
         }
 
         public void getSuggestedSpeed()
@@ -274,9 +352,14 @@ namespace MBO_UI
 
         }
 
+        public void setAuthority_Click(object Sender, EventArgs e)
+        {
+            setAuthority();
+        }
+
         public void setAuthority()
         {
-
+            MessageBox.Show("Authority sent.");
         }
 
         public void getTrainSchedule()
@@ -300,10 +383,52 @@ namespace MBO_UI
 
         }
 
+        private void breakAntenna_Click(object sender, EventArgs e)
+        {
+            breakAntenna();
+        }
+
+        private void fixAntenna_Click(object sender, EventArgs e)
+        {
+            fixAntenna();
+        }
+
         public void breakAntenna()
         {
-
+            label15.Text = "Disconnected";
+            label15.ForeColor = System.Drawing.Color.Red;
         }
+
+        public void fixAntenna()
+        {
+            label15.Text = "Connected";
+            label15.ForeColor = System.Drawing.Color.Lime;
+        }
+
+        private void calculateVariance_Click(object sender, EventArgs e)
+        {
+            calculateVariance();
+        }
+
+        private void calculateVariance()
+        {
+            label4.Text = "0";
+            label4.ForeColor = System.Drawing.Color.Lime;
+        }
+
+        private void passengerMovement_Click(object sender, EventArgs e)
+        {
+            passengerMovement();
+        }
+
+        private void passengerMovement()
+        {
+            MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me.");
+        }
+
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -431,6 +556,21 @@ namespace MBO_UI
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
