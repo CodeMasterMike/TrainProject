@@ -21,14 +21,14 @@ namespace Track_Layout_UI
     {
         private string Excel03ConString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
         private string Excel07ConString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
-        public List<Block> blockList = new List<Block>();
-        public List<Block> filteredBlockList = new List<Block>();
-        public List<Section> sectionList = new List<Section>();
-        public List<Line> lineList = new List<Line>();
-        public List<Switch> switchList = new List<Switch>();
-        public List<Train> trainList = new List<Train>();
-        public Block selectedBlock;
-        public Line selectedLine;
+        public static List<Block> blockList = new List<Block>();
+        public static List<Block> filteredBlockList = new List<Block>();
+        public static List<Section> sectionList = new List<Section>();
+        public static List<Line> lineList = new List<Line>();
+        public static List<Switch> switchList = new List<Switch>();
+        public static List<Train> trainList = new List<Train>();
+        public static Block selectedBlock;
+        public static Line selectedLine;
         //temporary variables
         private int yardBlockId = 229;
         static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
@@ -90,20 +90,22 @@ namespace Track_Layout_UI
             Block nextBlock = null;
             bool isSource = false;
             bool isTarget = false;
-            if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
-            {
-                isSource = true;
-            }
-            else if(currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
-            {
-                isTarget = true;
-            }
-
-            if(prevBlock == null && nextBlock == null) //coming from yard
+            if (prevBlock == null && currBlock == null) //coming from yard
             {
                 return findBlock(yardBlockId);
             }
-            else if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            if(currBlock.parentSwitch != null)
+            {
+                if (currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+                {
+                    isSource = true;
+                }
+                else if (currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
+                {
+                    isTarget = true;
+                }
+            }
+            if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
             {
                 if(isTarget)
                 {
@@ -150,6 +152,11 @@ namespace Track_Layout_UI
                 }
             }
             return nextBlock;
+        }
+
+        internal void getNextBlock(object g)
+        {
+            throw new NotImplementedException();
         }
 
         public void updateBlockStatus(int blockId, bool occupied)
