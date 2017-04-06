@@ -429,6 +429,7 @@ namespace Track_Layout_UI
                 initializeRedLineStationBeacons();
             }
             TrackControllerModule.initializeSwitches(switchList);
+            TrainSimulation.mainOffice.initializeTrackLayout(lineList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
