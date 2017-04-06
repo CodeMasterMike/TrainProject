@@ -96,11 +96,6 @@ namespace TrainModelProject
 
         public void currentBlock()
         {
-            
-            if (block_distance >= currSpeedms)
-            {
-                block_distance = block_distance - currSpeedms;
-            }
             p = currSpeedms;
             if (block_distance >= p) block_distance -= p;
             else
@@ -166,16 +161,17 @@ namespace TrainModelProject
         {
             if (currSpeedms > 0)
             {
-                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+                //double cos_value = Math.Cos(1 * (Math.PI / 180.0));
 
                 force = power / currSpeedms;
 
-                force = force - mass * 9.8 * 0.2 * cos_value;
+                //force = force - mass * 9.8 * 0.2 * cos_value;
                 
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
-                if (currSpeedms + acceleration < 0) currSpeedms = 0;
-                else currSpeedms = acceleration + currSpeedms;
+                //if (currSpeedms + acceleration < 0) currSpeedms = 0;
+                //else currSpeedms = acceleration + currSpeedms;
+                currSpeedms = acceleration + currSpeedms;
             }
             else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
