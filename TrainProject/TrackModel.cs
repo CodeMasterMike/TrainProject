@@ -35,11 +35,11 @@ namespace Track_Layout_UI
         static StationBeacon[] redLineStationBeacons = new StationBeacon[78];
         private static void initializeRedLineStationBeacons()
         {
-            StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false);
-            redLineStationBeacons[8] = currBeacon;
-            currBeacon = new StationBeacon("HERRON AVE", 50, false);
-            redLineStationBeacons[1] = currBeacon;
+            //StationBeacon currBeacon;
+            //currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+           // redLineStationBeacons[8] = currBeacon;
+           // currBeacon = new StationBeacon("HERRON AVE", 50, false);
+           // redLineStationBeacons[1] = currBeacon;
         }
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
