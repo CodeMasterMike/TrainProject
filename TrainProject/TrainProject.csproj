@@ -64,8 +64,9 @@
   <ItemGroup>
     <Compile Include="DatabaseInterface.cs" />
     <Compile Include="HelperObjects\Block.cs" />
+    <Compile Include="HelperObjects\SwitchBeacon.cs" />
+	<Compile Include="HelperObjects\StationBeacon.cs" />
     <Compile Include="HelperObjects\BlockTracker.cs" />
-    <Compile Include="HelperObjects\Beacon.cs" />
     <Compile Include="HelperObjects\Station.cs" />
     <Compile Include="HelperObjects\ExcelFileLayout.cs" />
     <Compile Include="HelperObjects\Line.cs" />
