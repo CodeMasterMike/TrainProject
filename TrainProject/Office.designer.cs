@@ -58,6 +58,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.selDenLabel = new System.Windows.Forms.Label();
             this.infoBox = new System.Windows.Forms.GroupBox();
+            this.updateThroughputLabel = new System.Windows.Forms.Label();
+            this.updateNumTrainsLabel = new System.Windows.Forms.Label();
+            this.updateLineLabel = new System.Windows.Forms.Label();
+            this.updateSectionLabel = new System.Windows.Forms.Label();
+            this.updateBlockStatLabel = new System.Windows.Forms.Label();
+            this.updateBlockLabel = new System.Windows.Forms.Label();
+            this.updateSugAuthLabel = new System.Windows.Forms.Label();
+            this.updateSugSpeedLabel = new System.Windows.Forms.Label();
+            this.updateTrainLabel = new System.Windows.Forms.Label();
             this.throughLabel = new System.Windows.Forms.Label();
             this.lineLabel = new System.Windows.Forms.Label();
             this.numTrainsLabel = new System.Windows.Forms.Label();
@@ -69,22 +78,14 @@
             this.trainNumLabel = new System.Windows.Forms.Label();
             this.systemBox = new System.Windows.Forms.GroupBox();
             this.systemListView = new System.Windows.Forms.ListView();
-            this.BlockId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Occupancy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SwitchState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CrossingState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.trackTrain = new System.Windows.Forms.Button();
             this.yardTrain = new System.Windows.Forms.Button();
             this.MurphyTab = new System.Windows.Forms.TabPage();
-            this.updateTrainLabel = new System.Windows.Forms.Label();
-            this.updateSugSpeedLabel = new System.Windows.Forms.Label();
-            this.updateSugAuthLabel = new System.Windows.Forms.Label();
-            this.updateBlockLabel = new System.Windows.Forms.Label();
-            this.updateBlockStatLabel = new System.Windows.Forms.Label();
-            this.updateSectionLabel = new System.Windows.Forms.Label();
-            this.updateLineLabel = new System.Windows.Forms.Label();
-            this.updateNumTrainsLabel = new System.Windows.Forms.Label();
-            this.updateThroughputLabel = new System.Windows.Forms.Label();
+            this.Block = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Trains = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Switches = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Crossings = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -465,6 +466,87 @@
             this.infoBox.Text = "Train and Track Information";
             this.infoBox.Enter += new System.EventHandler(this.infoBox_Enter);
             // 
+            // updateThroughputLabel
+            // 
+            this.updateThroughputLabel.AutoSize = true;
+            this.updateThroughputLabel.Location = new System.Drawing.Point(146, 248);
+            this.updateThroughputLabel.Name = "updateThroughputLabel";
+            this.updateThroughputLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateThroughputLabel.TabIndex = 3;
+            this.updateThroughputLabel.Text = "-";
+            // 
+            // updateNumTrainsLabel
+            // 
+            this.updateNumTrainsLabel.AutoSize = true;
+            this.updateNumTrainsLabel.Location = new System.Drawing.Point(146, 219);
+            this.updateNumTrainsLabel.Name = "updateNumTrainsLabel";
+            this.updateNumTrainsLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateNumTrainsLabel.TabIndex = 3;
+            this.updateNumTrainsLabel.Text = "-";
+            // 
+            // updateLineLabel
+            // 
+            this.updateLineLabel.AutoSize = true;
+            this.updateLineLabel.Location = new System.Drawing.Point(146, 191);
+            this.updateLineLabel.Name = "updateLineLabel";
+            this.updateLineLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateLineLabel.TabIndex = 3;
+            this.updateLineLabel.Text = "-";
+            // 
+            // updateSectionLabel
+            // 
+            this.updateSectionLabel.AutoSize = true;
+            this.updateSectionLabel.Location = new System.Drawing.Point(146, 162);
+            this.updateSectionLabel.Name = "updateSectionLabel";
+            this.updateSectionLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateSectionLabel.TabIndex = 3;
+            this.updateSectionLabel.Text = "-";
+            // 
+            // updateBlockStatLabel
+            // 
+            this.updateBlockStatLabel.AutoSize = true;
+            this.updateBlockStatLabel.Location = new System.Drawing.Point(146, 133);
+            this.updateBlockStatLabel.Name = "updateBlockStatLabel";
+            this.updateBlockStatLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateBlockStatLabel.TabIndex = 3;
+            this.updateBlockStatLabel.Text = "-";
+            // 
+            // updateBlockLabel
+            // 
+            this.updateBlockLabel.AutoSize = true;
+            this.updateBlockLabel.Location = new System.Drawing.Point(146, 105);
+            this.updateBlockLabel.Name = "updateBlockLabel";
+            this.updateBlockLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateBlockLabel.TabIndex = 3;
+            this.updateBlockLabel.Text = "-";
+            // 
+            // updateSugAuthLabel
+            // 
+            this.updateSugAuthLabel.AutoSize = true;
+            this.updateSugAuthLabel.Location = new System.Drawing.Point(146, 78);
+            this.updateSugAuthLabel.Name = "updateSugAuthLabel";
+            this.updateSugAuthLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateSugAuthLabel.TabIndex = 3;
+            this.updateSugAuthLabel.Text = "-";
+            // 
+            // updateSugSpeedLabel
+            // 
+            this.updateSugSpeedLabel.AutoSize = true;
+            this.updateSugSpeedLabel.Location = new System.Drawing.Point(146, 50);
+            this.updateSugSpeedLabel.Name = "updateSugSpeedLabel";
+            this.updateSugSpeedLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateSugSpeedLabel.TabIndex = 3;
+            this.updateSugSpeedLabel.Text = "-";
+            // 
+            // updateTrainLabel
+            // 
+            this.updateTrainLabel.AutoSize = true;
+            this.updateTrainLabel.Location = new System.Drawing.Point(146, 23);
+            this.updateTrainLabel.Name = "updateTrainLabel";
+            this.updateTrainLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateTrainLabel.TabIndex = 3;
+            this.updateTrainLabel.Text = "-";
+            // 
             // throughLabel
             // 
             this.throughLabel.AutoSize = true;
@@ -572,35 +654,20 @@
             // systemListView
             // 
             this.systemListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.BlockId,
-            this.Occupancy,
-            this.SwitchState,
-            this.CrossingState});
-            this.systemListView.Location = new System.Drawing.Point(236, 13);
+            this.Block,
+            this.Status,
+            this.Trains,
+            this.Switches,
+            this.Crossings});
+            this.systemListView.Location = new System.Drawing.Point(69, 26);
             this.systemListView.Name = "systemListView";
-            this.systemListView.Size = new System.Drawing.Size(483, 333);
+            this.systemListView.Size = new System.Drawing.Size(1229, 320);
             this.systemListView.TabIndex = 2;
             this.systemListView.UseCompatibleStateImageBehavior = false;
             // 
-            // BlockId
-            // 
-            this.BlockId.Text = "Block Id";
-            // 
-            // Occupancy
-            // 
-            this.Occupancy.Text = "Occupancy";
-            // 
-            // SwitchState
-            // 
-            this.SwitchState.Text = "Switch State";
-            // 
-            // CrossingState
-            // 
-            this.CrossingState.Text = "CrossingState";
-            // 
             // trackTrain
             // 
-            this.trackTrain.Location = new System.Drawing.Point(78, 99);
+            this.trackTrain.Location = new System.Drawing.Point(7, 149);
             this.trackTrain.Name = "trackTrain";
             this.trackTrain.Size = new System.Drawing.Size(60, 44);
             this.trackTrain.TabIndex = 1;
@@ -628,86 +695,30 @@
             this.MurphyTab.Text = "Murphy";
             this.MurphyTab.UseVisualStyleBackColor = true;
             // 
-            // updateTrainLabel
+            // Block
             // 
-            this.updateTrainLabel.AutoSize = true;
-            this.updateTrainLabel.Location = new System.Drawing.Point(146, 23);
-            this.updateTrainLabel.Name = "updateTrainLabel";
-            this.updateTrainLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateTrainLabel.TabIndex = 3;
-            this.updateTrainLabel.Text = "-";
+            this.Block.Text = "Block Number";
+            this.Block.Width = 120;
             // 
-            // updateSugSpeedLabel
+            // Status
             // 
-            this.updateSugSpeedLabel.AutoSize = true;
-            this.updateSugSpeedLabel.Location = new System.Drawing.Point(146, 50);
-            this.updateSugSpeedLabel.Name = "updateSugSpeedLabel";
-            this.updateSugSpeedLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateSugSpeedLabel.TabIndex = 3;
-            this.updateSugSpeedLabel.Text = "-";
+            this.Status.Text = "Block Status";
+            this.Status.Width = 120;
             // 
-            // updateSugAuthLabel
+            // Trains
             // 
-            this.updateSugAuthLabel.AutoSize = true;
-            this.updateSugAuthLabel.Location = new System.Drawing.Point(146, 78);
-            this.updateSugAuthLabel.Name = "updateSugAuthLabel";
-            this.updateSugAuthLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateSugAuthLabel.TabIndex = 3;
-            this.updateSugAuthLabel.Text = "-";
+            this.Trains.Text = "Occupancy";
+            this.Trains.Width = 120;
             // 
-            // updateBlockLabel
+            // Switches
             // 
-            this.updateBlockLabel.AutoSize = true;
-            this.updateBlockLabel.Location = new System.Drawing.Point(146, 105);
-            this.updateBlockLabel.Name = "updateBlockLabel";
-            this.updateBlockLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateBlockLabel.TabIndex = 3;
-            this.updateBlockLabel.Text = "-";
+            this.Switches.Text = "Switch State";
+            this.Switches.Width = 120;
             // 
-            // updateBlockStatLabel
+            // Crossings
             // 
-            this.updateBlockStatLabel.AutoSize = true;
-            this.updateBlockStatLabel.Location = new System.Drawing.Point(146, 133);
-            this.updateBlockStatLabel.Name = "updateBlockStatLabel";
-            this.updateBlockStatLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateBlockStatLabel.TabIndex = 3;
-            this.updateBlockStatLabel.Text = "-";
-            // 
-            // updateSectionLabel
-            // 
-            this.updateSectionLabel.AutoSize = true;
-            this.updateSectionLabel.Location = new System.Drawing.Point(146, 162);
-            this.updateSectionLabel.Name = "updateSectionLabel";
-            this.updateSectionLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateSectionLabel.TabIndex = 3;
-            this.updateSectionLabel.Text = "-";
-            // 
-            // updateLineLabel
-            // 
-            this.updateLineLabel.AutoSize = true;
-            this.updateLineLabel.Location = new System.Drawing.Point(146, 191);
-            this.updateLineLabel.Name = "updateLineLabel";
-            this.updateLineLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateLineLabel.TabIndex = 3;
-            this.updateLineLabel.Text = "-";
-            // 
-            // updateNumTrainsLabel
-            // 
-            this.updateNumTrainsLabel.AutoSize = true;
-            this.updateNumTrainsLabel.Location = new System.Drawing.Point(146, 219);
-            this.updateNumTrainsLabel.Name = "updateNumTrainsLabel";
-            this.updateNumTrainsLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateNumTrainsLabel.TabIndex = 3;
-            this.updateNumTrainsLabel.Text = "-";
-            // 
-            // updateThroughputLabel
-            // 
-            this.updateThroughputLabel.AutoSize = true;
-            this.updateThroughputLabel.Location = new System.Drawing.Point(146, 248);
-            this.updateThroughputLabel.Name = "updateThroughputLabel";
-            this.updateThroughputLabel.Size = new System.Drawing.Size(15, 20);
-            this.updateThroughputLabel.TabIndex = 3;
-            this.updateThroughputLabel.Text = "-";
+            this.Crossings.Text = "Crossing State";
+            this.Crossings.Width = 120;
             // 
             // Office
             // 
@@ -780,10 +791,6 @@
         private System.Windows.Forms.HScrollBar speedScrollBar;
         private System.Windows.Forms.HScrollBar authScrollBar;
         private System.Windows.Forms.ListView systemListView;
-        private System.Windows.Forms.ColumnHeader BlockId;
-        private System.Windows.Forms.ColumnHeader Occupancy;
-        private System.Windows.Forms.ColumnHeader SwitchState;
-        private System.Windows.Forms.ColumnHeader CrossingState;
         private System.Windows.Forms.Label updateThroughputLabel;
         private System.Windows.Forms.Label updateNumTrainsLabel;
         private System.Windows.Forms.Label updateLineLabel;
@@ -793,5 +800,10 @@
         private System.Windows.Forms.Label updateSugAuthLabel;
         private System.Windows.Forms.Label updateSugSpeedLabel;
         private System.Windows.Forms.Label updateTrainLabel;
+        private System.Windows.Forms.ColumnHeader Block;
+        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.ColumnHeader Trains;
+        private System.Windows.Forms.ColumnHeader Switches;
+        private System.Windows.Forms.ColumnHeader Crossings;
     }
 }
