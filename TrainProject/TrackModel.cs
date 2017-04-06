@@ -72,19 +72,22 @@ namespace Track_Layout_UI
             Block nextBlock = null;
             bool isSource = false;
             bool isTarget = false;
-            if (prevBlock == null && nextBlock == null) //coming from yard
+            if (prevBlock == null && currBlock == null) //coming from yard
             {
                 return findBlock(yardBlockId);
             }
-            if (currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+            if(currBlock.parentSwitch != null)
             {
-                isSource = true;
+                if (currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+                {
+                    isSource = true;
+                }
+                else if (currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
+                {
+                    isTarget = true;
+                }
             }
-            else if(currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
-            {
-                isTarget = true;
-            }
-            else if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
             {
                 if(isTarget)
                 {

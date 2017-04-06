@@ -67,7 +67,7 @@ namespace TrainModelProject
 
             current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null);
             prev_block = null;
-            block_length = first_block.length;
+            block_distance = current_block.length;
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
@@ -107,7 +107,7 @@ namespace TrainModelProject
                 block_distance = current_block.length - p;
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
-                Train_Height_L.Text = current_block.ToString() + " ..";
+                Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
             }
         }
 
@@ -117,7 +117,7 @@ namespace TrainModelProject
         }
         public void updateGUI()
         {
-            currSpeedmsF = currSpeedms / 0.44704;
+            currSpeedmsF = currSpeedms;// / 0.44704;
             currSpeedmsF = Math.Round(currSpeedmsF, 2);
             Train_Speed.Text = currSpeedmsF.ToString() + " m/hr";
             Train_Passenger_L.Text = train_pass.ToString();
@@ -126,11 +126,12 @@ namespace TrainModelProject
             Train_Mass_L.Text = mass.ToString() + " kg";
             Train_Width_L.Text = train_width.ToString() + " m";
             //Train_Height_L.Text = acceleration.ToString() + " m";
-            Train_Length_L.Text = train_length.ToString() + " m";
+            Train_Length_L.Text = block_distance.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
             Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
+           
         }
 
         public void updatePower(double p)
