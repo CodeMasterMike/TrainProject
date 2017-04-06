@@ -32,7 +32,6 @@ namespace TrainControllerProject
         int currentBlockID;
         int speedLimit;
         int direction = 0;
-        int authority = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         double distanceLeft = 0;
         double Kp = 0;//100000;
@@ -353,12 +352,6 @@ namespace TrainControllerProject
             }
         }*/
         private int readBeacon() { return 0; }
-        public void updateSpeedAndAuthority(double s, int a)
-        {
-            ctcSetSpeed = s;
-            authority = a;
-        }
-
         public void updateSpeedAndAuthority(double s, int a)
         {
             ctcSetSpeed = s;
