@@ -54,8 +54,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.blockTemperatureTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.blockTypeTextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -65,8 +63,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.blockPersonsWaitingTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.blockSwitchActivatedTextBox = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.blockHeaterStatusTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.blockStationTextBox = new System.Windows.Forms.TextBox();
@@ -100,15 +96,17 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.InsertToSql = new System.Windows.Forms.Button();
-            this.dvgBlocks = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.Testing = new System.Windows.Forms.TabPage();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dvgBlocks = new System.Windows.Forms.DataGridView();
+            this.InsertToSql = new System.Windows.Forms.Button();
+            this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label14 = new System.Windows.Forms.Label();
+            this.switchNumTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -119,13 +117,13 @@
             this.Murphy.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.Testing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).BeginInit();
             this.SuspendLayout();
             // 
             // uploadExcelFileButton
@@ -386,30 +384,11 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "Current Temperature (F):";
             // 
-            // blockTypeTextBox
-            // 
-            this.blockTypeTextBox.BackColor = System.Drawing.Color.White;
-            this.blockTypeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.blockTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockTypeTextBox.Location = new System.Drawing.Point(371, 189);
-            this.blockTypeTextBox.Name = "blockTypeTextBox";
-            this.blockTypeTextBox.ReadOnly = true;
-            this.blockTypeTextBox.Size = new System.Drawing.Size(47, 13);
-            this.blockTypeTextBox.TabIndex = 30;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(316, 189);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "Type:";
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.switchNumTextBox);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.blockBeaconTextBox);
@@ -418,8 +397,6 @@
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.blockPersonsWaitingTextBox);
             this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.blockSwitchActivatedTextBox);
-            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.blockHeaterStatusTextBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.blockStationTextBox);
@@ -442,9 +419,7 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.blockGradeTextBox);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.blockTypeTextBox);
             this.groupBox2.Controls.Add(this.blockSpeedLimitTextBox);
-            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.blockTemperatureTextBox);
             this.groupBox2.Controls.Add(this.blockElevationTextBox);
@@ -541,27 +516,6 @@
             this.label17.TabIndex = 53;
             this.label17.Text = "Persons Waiting:";
             // 
-            // blockSwitchActivatedTextBox
-            // 
-            this.blockSwitchActivatedTextBox.BackColor = System.Drawing.Color.White;
-            this.blockSwitchActivatedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.blockSwitchActivatedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockSwitchActivatedTextBox.Location = new System.Drawing.Point(371, 241);
-            this.blockSwitchActivatedTextBox.Name = "blockSwitchActivatedTextBox";
-            this.blockSwitchActivatedTextBox.ReadOnly = true;
-            this.blockSwitchActivatedTextBox.Size = new System.Drawing.Size(47, 13);
-            this.blockSwitchActivatedTextBox.TabIndex = 52;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(248, 241);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(107, 13);
-            this.label16.TabIndex = 51;
-            this.label16.Text = "Switch Activated:";
-            // 
             // blockHeaterStatusTextBox
             // 
             this.blockHeaterStatusTextBox.BackColor = System.Drawing.Color.White;
@@ -651,10 +605,10 @@
             this.blockSwitchTextBox.BackColor = System.Drawing.Color.White;
             this.blockSwitchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.blockSwitchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockSwitchTextBox.Location = new System.Drawing.Point(371, 215);
+            this.blockSwitchTextBox.Location = new System.Drawing.Point(361, 215);
             this.blockSwitchTextBox.Name = "blockSwitchTextBox";
             this.blockSwitchTextBox.ReadOnly = true;
-            this.blockSwitchTextBox.Size = new System.Drawing.Size(47, 13);
+            this.blockSwitchTextBox.Size = new System.Drawing.Size(57, 13);
             this.blockSwitchTextBox.TabIndex = 42;
             // 
             // label20
@@ -954,69 +908,6 @@
             this.button9.Text = "Power Failure";
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // openExcelFileDialog
-            // 
-            this.openExcelFileDialog.FileName = "openExcelFileDialog";
-            this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
-            // 
-            // InsertToSql
-            // 
-            this.InsertToSql.Location = new System.Drawing.Point(106, 13);
-            this.InsertToSql.Name = "InsertToSql";
-            this.InsertToSql.Size = new System.Drawing.Size(75, 23);
-            this.InsertToSql.TabIndex = 1;
-            this.InsertToSql.Text = "Insert to Sql";
-            this.InsertToSql.UseVisualStyleBackColor = true;
-            this.InsertToSql.Click += new System.EventHandler(this.InsertToSql_Click);
-            // 
-            // dvgBlocks
-            // 
-            this.dvgBlocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgBlocks.Location = new System.Drawing.Point(15, 42);
-            this.dvgBlocks.Name = "dvgBlocks";
-            this.dvgBlocks.Size = new System.Drawing.Size(240, 150);
-            this.dvgBlocks.TabIndex = 2;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(261, 42);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView2.TabIndex = 3;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(507, 42);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView3.TabIndex = 4;
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(15, 210);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView4.TabIndex = 5;
-            // 
-            // dataGridView5
-            // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(261, 210);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView5.TabIndex = 6;
-            // 
-            // dataGridView6
-            // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Location = new System.Drawing.Point(507, 210);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView6.TabIndex = 7;
-            // 
             // Testing
             // 
             this.Testing.Controls.Add(this.dataGridView6);
@@ -1032,6 +923,90 @@
             this.Testing.TabIndex = 2;
             this.Testing.Text = "Testing";
             this.Testing.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(507, 210);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView6.TabIndex = 7;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(261, 210);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView5.TabIndex = 6;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(15, 210);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView4.TabIndex = 5;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(507, 42);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView3.TabIndex = 4;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(261, 42);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 3;
+            // 
+            // dvgBlocks
+            // 
+            this.dvgBlocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgBlocks.Location = new System.Drawing.Point(15, 42);
+            this.dvgBlocks.Name = "dvgBlocks";
+            this.dvgBlocks.Size = new System.Drawing.Size(240, 150);
+            this.dvgBlocks.TabIndex = 2;
+            // 
+            // InsertToSql
+            // 
+            this.InsertToSql.Location = new System.Drawing.Point(106, 13);
+            this.InsertToSql.Name = "InsertToSql";
+            this.InsertToSql.Size = new System.Drawing.Size(75, 23);
+            this.InsertToSql.TabIndex = 1;
+            this.InsertToSql.Text = "Insert to Sql";
+            this.InsertToSql.UseVisualStyleBackColor = true;
+            this.InsertToSql.Click += new System.EventHandler(this.InsertToSql_Click);
+            // 
+            // openExcelFileDialog
+            // 
+            this.openExcelFileDialog.FileName = "openExcelFileDialog";
+            this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(277, 241);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Switch Num:";
+            // 
+            // switchNumTextBox
+            // 
+            this.switchNumTextBox.BackColor = System.Drawing.Color.White;
+            this.switchNumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.switchNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.switchNumTextBox.Location = new System.Drawing.Point(371, 241);
+            this.switchNumTextBox.Name = "switchNumTextBox";
+            this.switchNumTextBox.ReadOnly = true;
+            this.switchNumTextBox.Size = new System.Drawing.Size(47, 13);
+            this.switchNumTextBox.TabIndex = 62;
             // 
             // TrackModelUI
             // 
@@ -1059,13 +1034,13 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.Testing.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgBlocks)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1097,8 +1072,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox blockTemperatureTextBox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox blockTypeTextBox;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1114,8 +1087,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox blockHeaterStatusTextBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox blockSwitchActivatedTextBox;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage User;
         private System.Windows.Forms.TabPage Murphy;
@@ -1152,6 +1123,8 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dvgBlocks;
         private System.Windows.Forms.Button InsertToSql;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox switchNumTextBox;
     }
 }
 
