@@ -48,11 +48,14 @@ namespace TrainModelProject
         Block next_block;
         Block prev_block;
         private int TM_count = 0;
+        double p;
+        double sugSpeed;
+        int sugAuthority;
 
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
-
+            TC.updateSpeedAndAuthority(speed, authority);
         }
 
         public TrainModel()
@@ -78,7 +81,6 @@ namespace TrainModelProject
             setTimeLabel(time);
             mass = person_mass + train_mass;
             TC.trackPosition(currSpeedms);
-            currentBlock();
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
             else if (emergency) calculateEmergency();
@@ -96,15 +98,19 @@ namespace TrainModelProject
 
         public void currentBlock()
         {
-            double p = currSpeedms;
+            p = currSpeedms;
             if (block_distance >= p) block_distance -= p;
             else
             {
+                double p = currSpeedms;
                 p = p - block_distance;
+
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
+
                 prev_block = current_block;
                 current_block = next_block;
                 block_distance = current_block.length - p;
+
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                 Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
@@ -124,7 +130,7 @@ namespace TrainModelProject
             Train_Crew_L.Text = train_crew.ToString();
             Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
-            Train_Width_L.Text = train_width.ToString() + " m";
+            Train_Width_L.Text = force.ToString() + " m";
             //Train_Height_L.Text = acceleration.ToString() + " m";
             Train_Length_L.Text = block_distance.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
@@ -157,10 +163,26 @@ namespace TrainModelProject
         {
             if (currSpeedms > 0)
             {
+                double gravity = 9.8;
+                double friction_coeff = 0.002;
+                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+                
                 force = power / currSpeedms;
+
+                force = force - (mass * gravity * friction_coeff * cos_value);
+                
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
-                currSpeedms = acceleration + currSpeedms;
+                if (currSpeedms + acceleration < 0)
+                {
+                    currSpeedms = 0;
+                    currSpeedms = acceleration + currSpeedms;
+                }
+                else
+                {
+                    currSpeedms = acceleration + currSpeedms;
+                }
+                //currSpeedms = acceleration + currSpeedms;
             }
             else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
@@ -216,6 +238,11 @@ namespace TrainModelProject
 
 
         private void TrainModel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
         }

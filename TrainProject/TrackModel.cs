@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
 using CTC;
+using TrainModelProject;
 
 namespace Track_Layout_UI
 {
@@ -26,7 +27,7 @@ namespace Track_Layout_UI
         public static List<Section> sectionList = new List<Section>();
         public static List<Line> lineList = new List<Line>();
         public static List<Switch> switchList = new List<Switch>();
-        public static List<Train> trainList = new List<Train>();
+        public static TrainModel[] trainList = new TrainModel[100];
         public static Block selectedBlock;
         public static Line selectedLine;
         //temporary variables
@@ -35,11 +36,14 @@ namespace Track_Layout_UI
         static StationBeacon[] redLineStationBeacons = new StationBeacon[78];
         private static void initializeRedLineStationBeacons()
         {
-            StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false);
-            redLineStationBeacons[8] = currBeacon;
-            currBeacon = new StationBeacon("HERRON AVE", 50, false);
-            redLineStationBeacons[1] = currBeacon;
+            //StationBeacon currBeacon;
+            //currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+            //redLineStationBeacons[8] = currBeacon;
+            //currBeacon = new StationBeacon("HERRON AVE", 50, false);
+            //redLineStationBeacons[1] = currBeacon;
+           // redLineStationBeacons[8] = currBeacon;
+           // currBeacon = new StationBeacon("HERRON AVE", 50, false);
+           // redLineStationBeacons[1] = currBeacon;
         }
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
@@ -55,21 +59,15 @@ namespace Track_Layout_UI
             InitializeComponent();
         }
 
-        public void dispatchTrain(Train train)
+        public void dispatchTrain(int trainId, TrainModel train, double speed, int authority)
         {
-            trainList.Add(train);
+            trainList[trainId] = train;
+            train.updateSpeedAndAuthority(speed,authority);
         }
 
         public void updateSpeedAndAuthority(int trainId, double speed, int authority)
         {
-            foreach(Train train in trainList)
-            {
-                if(trainId == train.trainId)
-                {
-                    //train.updateSpeedAndAuthority(speed, authority);
-                    break;
-                }
-            }
+            trainList[trainId].updateSpeedAndAuthority(speed, authority);
         }
 
         private Block findBlock(int blockId)
@@ -428,8 +426,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 initializeRedLineStationBeacons();
             }
-            //TrackControllerModule.initializeSwitches(switchList);
-            TrackControllerModule.initializeSwitches(switchList); //make sure to use initial switch then initialize layout order for kait
+            TrackControllerModule.initializeSwitches(switchList);
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
@@ -603,15 +600,24 @@ namespace Track_Layout_UI
                     blockElevationTextBox.Text = selectedBlock.elevation.ToString();
                     blockCumElevationTextBox.Text = selectedBlock.cumElevation.ToString();
                     blockSpeedLimitTextBox.Text = selectedBlock.speedLimit.ToString();
-                    blockStationTextBox.Text = "X"; //TODO - here and below
-                    blockPersonsUnloadingTextBox.Text = "X";
-                    blockTemperatureTextBox.Text = "69";
-                    blockHeaterStatusTextBox.Text = "X";
-                    blockIsUndergroundTextBox.Text = "X";
-                    blockTypeTextBox.Text = "X";
-                    blockSwitchTextBox.Text = "X";
-                    blockSwitchActivatedTextBox.Text = "X";
-                    blockArrowDirectionTextBox.Text = "X";
+                    blockStationTextBox.Text = "X";
+                    if (selectedBlock.station != null)
+                        blockPersonsUnloadingTextBox.Text = selectedBlock.station.name;
+                    blockTemperatureTextBox.Text = "69"; //TODO
+                    blockHeaterStatusTextBox.Text = "Off"; //TODO
+                    blockIsUndergroundTextBox.Text = "NO";
+                    if(selectedBlock.isUnderground)
+                        blockIsUndergroundTextBox.Text = "YES";
+                    blockSwitchTextBox.Text = "None";
+                    if(selectedBlock.parentSwitch != null)
+                    {
+                        if (selectedBlock.parentSwitch.sourceBlockId == selectedBlock.blockId)
+                            blockSwitchTextBox.Text = "Source";
+                        else
+                            blockSwitchTextBox.Text = "Target";
+                        switchNumTextBox.Text = selectedBlock.parentSwitch.switchId.ToString();
+                    }
+                    blockArrowDirectionTextBox.Text = "<-->"; //TODO
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
                 }
