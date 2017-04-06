@@ -128,7 +128,7 @@ namespace TrainModelProject
             Train_Crew_L.Text = train_crew.ToString();
             Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
-            Train_Width_L.Text = train_width.ToString() + " m";
+            Train_Width_L.Text = force.ToString() + " m";
             //Train_Height_L.Text = acceleration.ToString() + " m";
             Train_Length_L.Text = block_distance.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
@@ -161,17 +161,26 @@ namespace TrainModelProject
         {
             if (currSpeedms > 0)
             {
-                //double cos_value = Math.Cos(1 * (Math.PI / 180.0));
-
+                double gravity = 9.8;
+                double friction_coeff = 0.002;
+                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+                
                 force = power / currSpeedms;
 
-                //force = force - mass * 9.8 * 0.2 * cos_value;
+                force = force - (mass * gravity * friction_coeff * cos_value);
                 
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
-                //if (currSpeedms + acceleration < 0) currSpeedms = 0;
-                //else currSpeedms = acceleration + currSpeedms;
-                currSpeedms = acceleration + currSpeedms;
+                if (currSpeedms + acceleration < 0)
+                {
+                    currSpeedms = 0;
+                    currSpeedms = acceleration + currSpeedms;
+                }
+                else
+                {
+                    currSpeedms = acceleration + currSpeedms;
+                }
+                //currSpeedms = acceleration + currSpeedms;
             }
             else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
