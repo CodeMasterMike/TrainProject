@@ -23,8 +23,9 @@ namespace TrainControllerProject
         private int authority = 0;
         private double setTemp = 70;
         private double temp = 70;
-        private double distanceToStop = 1000;
-        private double minStopDistance = 1000;
+        private double distanceToStop = 0;
+        private double distanceToStation = 0;
+        private double minStopDistance = 0;
         private SmallBlock[] blocks;
         private BlockTracker blockTracker;
         int testMode = 0; //test mode off = 0 test mode on = 1
@@ -52,6 +53,8 @@ namespace TrainControllerProject
         bool forceStop = false;
         Block currentBlock;
         Block nextBlock;
+        String stationName = "";
+        bool stationPrevToNext;
         
         bool simulate = false;
         PowerController powerController;
@@ -99,7 +102,7 @@ namespace TrainControllerProject
                 else setSpeed = ctcSetSpeed;
                 setSpeedms = setSpeed * 0.44704;
             }
-            //considerAuthority(); 
+            //considerAuthority();
             //considerStations();
             if ((currSpeed <= setSpeed) && !forceStop)
             {
@@ -123,8 +126,16 @@ namespace TrainControllerProject
             trainTempLabel.Text = (temp.ToString()) + "F";
             blockIDLabel.Text = currentBlock.blockNum.ToString();
             blockSpeedLimitLabel.Text = speedLimit.ToString();
-            distanceToLabel.Text = distanceLeft.ToString();
+            distanceLeftLabel.Text = distanceLeft.ToString();
+            distanceToLabel.Text = distanceToStation.ToString();
+            stationLabel.Text = stationName.ToString();
             
+        }
+        public void getStationBeaconInfo(bool pn, double distance, String n)
+        {
+            distanceToStation = distance;
+            stationName = n;
+            stationPrevToNext = pn;
         }
         public void updateCurrentSpeed(double s)
         {
@@ -321,6 +332,8 @@ namespace TrainControllerProject
         }*/
         public void trackPosition(double p)
         {
+            distanceToStation = distanceToStation - p;
+            if (distanceToStation < 0) distanceToStation = 0;
            if(distanceLeft >= p) distanceLeft -= p;
             else
             {

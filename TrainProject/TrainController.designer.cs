@@ -128,6 +128,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label12 = new System.Windows.Forms.Label();
+            this.distanceLeftLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -287,6 +289,8 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.distanceLeftLabel);
+            this.groupBox17.Controls.Add(this.label12);
             this.groupBox17.Controls.Add(this.label24);
             this.groupBox17.Controls.Add(this.blockIDLabel);
             this.groupBox17.Controls.Add(this.label23);
@@ -1354,6 +1358,26 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(320, 121);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(163, 29);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Distance Left :";
+            // 
+            // distanceLeftLabel
+            // 
+            this.distanceLeftLabel.AutoSize = true;
+            this.distanceLeftLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.distanceLeftLabel.Location = new System.Drawing.Point(493, 121);
+            this.distanceLeftLabel.Name = "distanceLeftLabel";
+            this.distanceLeftLabel.Size = new System.Drawing.Size(21, 29);
+            this.distanceLeftLabel.TabIndex = 30;
+            this.distanceLeftLabel.Text = "-";
+            // 
             // TrainController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -1500,6 +1524,8 @@
         private System.Windows.Forms.Label blockIDLabel;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label distanceLeftLabel;
+        private System.Windows.Forms.Label label12;
     }
 }
 
