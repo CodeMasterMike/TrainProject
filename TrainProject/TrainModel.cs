@@ -113,8 +113,9 @@ namespace TrainModelProject
                 if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
-                Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
+               // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
             }
+
         }
 
         public void travel()
@@ -123,16 +124,16 @@ namespace TrainModelProject
         }
         public void updateGUI()
         {
-            currSpeedmsF = currSpeedms;// / 0.44704;
+            currSpeedmsF = currSpeedms / 0.44704;
             currSpeedmsF = Math.Round(currSpeedmsF, 2);
             Train_Speed.Text = currSpeedmsF.ToString() + " m/hr";
             Train_Passenger_L.Text = train_pass.ToString();
             Train_Crew_L.Text = train_crew.ToString();
             Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
-            Train_Width_L.Text = force.ToString() + " m";
-            //Train_Height_L.Text = acceleration.ToString() + " m";
-            Train_Length_L.Text = block_distance.ToString() + " m";
+            Train_Width_L.Text = train_width.ToString() + " m";
+            Train_Height_L.Text = train_height.ToString() + " m";
+            Train_Length_L.Text = train_length.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
             Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
