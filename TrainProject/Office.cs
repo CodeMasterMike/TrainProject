@@ -23,6 +23,7 @@ namespace CTC
         int sugAuth;
         int trainCounter = 0;
         public static TrackControllerModule module;
+        
         List<Block> myBlockList;
 
         public Office()
@@ -46,6 +47,7 @@ namespace CTC
             trainCounter++;            
             tm_window = new TrainModel();
             tm_window.Show();
+
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
         }
 
@@ -79,6 +81,9 @@ namespace CTC
                                 if (block != null)
                                 {
                                     myBlockList.Add(block);
+                                    block.isOccupied = false;
+                                    block.line = "Red";
+                                    block.section = section.name;
                                 }
                                 String bl = block.blockNum.ToString();
                             ListViewItem item = new ListViewItem();
@@ -118,8 +123,25 @@ namespace CTC
 
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
-            int blockSelected = Int32.Parse(e.Item.SubItems[0].Text);
+            Console.WriteLine("hit sel block");
+            int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) +1;
             Console.WriteLine(blockSelected);
+            Block b = myBlockList[blockSelected];
+            updateBlockLabel.Text = b.blockNum.ToString();
+            Console.WriteLine(updateBlockLabel.Text);
+            if (b.isOccupied == true)
+            {
+                updateBlockStatLabel.Text = "Occupied";
+            }
+            else
+            {
+                updateBlockStatLabel.Text = "Empty";
+            }
+            updateSectionLabel.Text = b.section;
+            Console.WriteLine(updateSectionLabel.Text);
+            updateLineLabel.Text = b.line;
+            Console.WriteLine(updateLineLabel.Text);
+
         }
 
         private void selTrain(object sender, ListViewColumnMouseEventArgs e)
@@ -127,17 +149,35 @@ namespace CTC
             //something
         }
 
-        public void updateBlockOccupancy(int blockId, bool occupied)
+        public void updateBlockOccupancy(int bId, bool occupied)
         {
-            foreach(Block b in myBlockList)
+            foreach (Block b in myBlockList)
             {
-                foreach(ListViewItem item in systemListView.Items)
+                if ((b.blockId == bId) && (occupied == true))
                 {
-                    if (b.blockId == blockId)
+                    Console.WriteLine(b.blockId);
+                    Console.WriteLine(bId);
+                    foreach (ListViewItem item in systemListView.Items)
                     {
-                        item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "occipied" };
-                        break;
+                        if (item.Index == b.blockNum)
+                        {
+                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "Train 1" };
+                        }
                     }
+                    b.isOccupied = true;
+                }
+                else if ((b.blockId == bId) && (occupied == false))
+                {
+                    Console.WriteLine(b.blockNum);
+                    Console.WriteLine(bId);
+                    foreach (ListViewItem item in systemListView.Items)
+                    {
+                        if (item.Index == b.blockNum)
+                        {
+                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
+                        }
+                    }
+                    b.isOccupied = false;
                 }
             }
         }
