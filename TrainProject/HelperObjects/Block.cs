@@ -21,17 +21,27 @@ namespace TrainProject
         public double elevation { get; set; }
         public double cumElevation { get; set; }
         public bool isUnderground { get; set; }
+        public bool isFromYard { get; set; }
+        public bool isToYard { get; set; }
 
         //need to discuss how to do this further
-        private int prevBlock { get; set; }
-        private int nextBlock { get; set; }
-        private Boolean bidirectional { get; set; }
+        public int? prevBlockId { get; set; }
+        public int? nextBlockId { get; set; }
+        public Boolean bidirectional { get; set; }
         
         //these boolean properties keep track of state of block 
         private Boolean broken { get; set; }
         private Boolean occupied { get; set; }
         private Boolean hasCrossing { get; set; }
         private Boolean hasSwitch { get; set; } //maybe make this int to say which crossing?
+
+
+        //now infrastructure related things
+        public Station station { get; set; }
+        public Crossing crossing { get; set; }
+        public Switch parentSwitch { get; set; }
+        public SwitchBeacon switchBeacon { get; set; }
+        public SwitchBeacon stationBeacon { get; set; }
 
         public Block(int bN, int d)
         {

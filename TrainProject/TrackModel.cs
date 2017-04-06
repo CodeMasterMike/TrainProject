@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using CTC;
 
 namespace Track_Layout_UI
 {
@@ -20,34 +21,154 @@ namespace Track_Layout_UI
     {
         private string Excel03ConString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
         private string Excel07ConString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
-        public List<Block> blockList = new List<Block>();
-        public List<Block> filteredBlockList = new List<Block>();
-        public List<Section> sectionList = new List<Section>();
-        public List<Line> lineList = new List<Line>();
-        public Block selectedBlock;
-        public Line selectedLine;
-
+        public static List<Block> blockList = new List<Block>();
+        public static List<Block> filteredBlockList = new List<Block>();
+        public static List<Section> sectionList = new List<Section>();
+        public static List<Line> lineList = new List<Line>();
+        public static List<Switch> switchList = new List<Switch>();
+        public static List<Train> trainList = new List<Train>();
+        public static Block selectedBlock;
+        public static Line selectedLine;
+        //temporary variables
+        private int yardBlockId = 229;
+        //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
+        static StationBeacon[] redLineStationBeacons = new StationBeacon[78];
+        private static void initializeRedLineStationBeacons()
+        {
+            //StationBeacon currBeacon;
+            //currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+            //redLineStationBeacons[8] = currBeacon;
+            //currBeacon = new StationBeacon("HERRON AVE", 50, false);
+            //redLineStationBeacons[1] = currBeacon;
+           // redLineStationBeacons[8] = currBeacon;
+           // currBeacon = new StationBeacon("HERRON AVE", 50, false);
+           // redLineStationBeacons[1] = currBeacon;
+        }
+        public static StationBeacon getStationBeacon(int lineNum, int blockNum)
+        {
+            if (lineNum == 2)
+            {
+                return redLineStationBeacons[blockNum];
+            }
+            return null;
+        }
+        //end temp stuff
         public TrackModelUI()
         {
             InitializeComponent();
         }
 
+        public void dispatchTrain(Train train)
+        {
+            trainList.Add(train);
+        }
+
+        public void updateSpeedAndAuthority(int trainId, double speed, int authority)
+        {
+            foreach(Train train in trainList)
+            {
+                if(trainId == train.trainId)
+                {
+                    //train.updateSpeedAndAuthority(speed, authority);
+                    break;
+                }
+            }
+        }
+
+        private Block findBlock(int blockId)
+        {
+            foreach(Block block in blockList)
+            {
+                if(block.blockId == blockId)
+                {
+                    return block;
+                }
+            }
+            return null;
+        }
+
+        //only returns null if the yard
+        //need to test
+        public Block getNextBlock(Block prevBlock, Block currBlock)
+        {    
+            Block nextBlock = null;
+            bool isSource = false;
+            bool isTarget = false;
+            if (prevBlock == null && currBlock == null) //coming from yard
+            {
+                return findBlock(yardBlockId);
+            }
+            if(currBlock.parentSwitch != null)
+            {
+                if (currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+                {
+                    isSource = true;
+                }
+                else if (currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
+                {
+                    isTarget = true;
+                }
+            }
+            if(prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            {
+                if(isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if(isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else if(prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
+            {
+                if(currBlock.prevBlockId == null)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
+            else if(currBlock.parentSwitch != null && prevBlock.parentSwitch == null) //if entering a switch
+            {
+                if (isTarget)
+                {
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if (isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else //if no switches involved
+            {
+                if(prevBlock.nextBlockId != null && prevBlock.nextBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else if(prevBlock.prevBlockId != null && prevBlock.prevBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
+            }
+            return nextBlock;
+        }
+
+        internal void getNextBlock(object g)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateBlockStatus(int blockId, bool occupied)
+        {
+            TrackControllerModule.updateBlockOccupancy(blockId, occupied);
+        }
+
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
         {
 
         }
@@ -62,67 +183,12 @@ namespace Track_Layout_UI
 
         }
 
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
         {
 
         }
@@ -137,6 +203,132 @@ namespace Track_Layout_UI
             openExcelFileDialog.ShowDialog();
         }
 
+        private List<ExcelFileLayout> loadDvgIntoList(DataGridView excelFileData, List<ExcelFileLayout> excelFileList)
+        {
+            foreach (DataGridViewRow row in excelFileData.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    ExcelFileLayout currEntry = new ExcelFileLayout(
+                        row.Cells[0].Value.ToString(),
+                        row.Cells[1].Value.ToString(),
+                        Convert.ToInt32(row.Cells[2].Value),
+                        Convert.ToDouble(row.Cells[3].Value),
+                        Convert.ToDouble(row.Cells[4].Value),
+                        Convert.ToInt32(row.Cells[5].Value),
+                        row.Cells[6].Value.ToString(),
+                        Convert.ToDouble(row.Cells[8].Value),
+                        Convert.ToDouble(row.Cells[9].Value),
+                        row.Cells[10].Value.ToString(),
+                        row.Cells[11].Value.ToString());
+                    excelFileList.Add(currEntry);
+                }
+            }            
+            return excelFileList;
+        }
+
+        private List<ExcelFileLayout> populateExcelListOfUniqueLines(List<ExcelFileLayout> allLines)
+        {
+            List<ExcelFileLayout> uniqueLines = new List<ExcelFileLayout>();
+            foreach(ExcelFileLayout line in allLines)
+            {
+                bool found = false;
+                foreach(ExcelFileLayout uniqueLine in uniqueLines)
+                {
+                    if(String.Compare(line.Line, uniqueLine.Line) == 0)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if(!found)
+                {
+                    uniqueLines.Add(line);
+                }
+            }
+            return uniqueLines;
+        }
+        private List<ExcelFileLayout> populateExcelListOfUniqueSections(List<ExcelFileLayout> allSections)
+        {
+            List<ExcelFileLayout> uniqueSections = new List<ExcelFileLayout>();
+            foreach (ExcelFileLayout section in allSections)
+            {
+                bool found = false;
+                foreach (ExcelFileLayout uniqueSection in uniqueSections)
+                {
+                    //must also check line uniqueness since sections are repeated per line
+                    if (String.Compare(section.Section, uniqueSection.Section) == 0 && String.Compare(section.Line, uniqueSection.Line) == 0)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    uniqueSections.Add(section);
+                }
+            }
+            return uniqueSections;
+        }
+        private void insertLineIntoDB(SqlConnection con, ExcelFileLayout line)
+        {
+            SqlCommand cmd = new SqlCommand("INSERT INTO Lines (Name) VALUES (@Name)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@Name", line.Line);
+            cmd.ExecuteNonQuery();
+        }
+        private void insertSectionIntoDB(SqlConnection con, ExcelFileLayout section) //assumes associated line is already in DB
+        {
+            SqlCommand read = new SqlCommand("SELECT * FROM Lines WHERE Name = @Name");
+            read.CommandType = CommandType.Text;
+            read.Connection = con;
+            read.Parameters.AddWithValue("@Name", section.Line);
+            SqlDataReader reader = read.ExecuteReader();
+            if (reader.Read())
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Sections (Name, LineId) VALUES (@Name, @LineId)");
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@Name", section.Section);
+                int lineId = reader.GetInt32(0);
+                cmd.Parameters.AddWithValue("@LineId", lineId);
+                reader.Close();
+                cmd.ExecuteNonQuery();
+            }
+            else
+                Console.WriteLine("Associated line not found for section.");
+        }
+        private void insertBlockIntoDB(SqlConnection con, ExcelFileLayout block)
+        {
+            SqlCommand read = new SqlCommand("SELECT Sections.SectionId, Sections.Name AS SectionName, Lines.Name AS LineName FROM Sections JOIN Lines ON Sections.LineId = Lines.LineId WHERE Sections.Name = @SectionName AND Lines.Name = @LineName");
+            read.CommandType = CommandType.Text;
+            read.Connection = con;
+            read.Parameters.AddWithValue("@SectionName", block.Section);
+            read.Parameters.AddWithValue("@LineName", block.Line);
+            SqlDataReader reader = read.ExecuteReader();
+            if (reader.Read())
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Blocks (BlockNumber, SectionId, Length, Grade, Elevation, CumulativeElevation, SpeedLimit, Infrastructure, SwitchBlock, ArrowDirection) VALUES (@BlockNumber, @SectionId, @Length, @Grade, @Elevation, @CumulativeElevation, @SpeedLimit, @Infrastructure, @SwitchBlock, @ArrowDirection)");
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@BlockNumber", block.BlockNumber);
+                int sectionId = reader.GetInt32(0);
+                cmd.Parameters.AddWithValue("@SectionId", sectionId);
+                cmd.Parameters.AddWithValue("@Length", block.BlockLength);
+                cmd.Parameters.AddWithValue("@Grade", block.BlockGrade);
+                cmd.Parameters.AddWithValue("@Elevation", block.Elevation);
+                cmd.Parameters.AddWithValue("@CumulativeElevation", block.CumulativeElevation);
+                cmd.Parameters.AddWithValue("@SpeedLimit", block.SpeedLimit);
+                cmd.Parameters.AddWithValue("@Infrastructure", block.Infrastructure);
+                cmd.Parameters.AddWithValue("@SwitchBlock", block.SwitchBlock);
+                cmd.Parameters.AddWithValue("@ArrowDirection", block.ArrowDirection);
+                reader.Close();
+                cmd.ExecuteNonQuery();
+            }
+            else
+                Console.WriteLine("Associated section not found for block.");
+        }
         // ***still need to get second sheet (need Green AND Red line)
         private void openExcelFileDialog_FileOk(object sender, CancelEventArgs e)
         {
@@ -184,142 +376,39 @@ namespace Track_Layout_UI
                     dvgBlocks.DataSource = dt; //inserts entire excel table (not parsed) into DataSource
                 }
             }
+            //now load the data into a list of ExcelFileLayout classes
+            List<ExcelFileLayout> excelFileEntries = new List<ExcelFileLayout>();
+            excelFileEntries = loadDvgIntoList(dvgBlocks, excelFileEntries);
 
-            //now actually load the data into the database
+            List<ExcelFileLayout> excelFileLines = populateExcelListOfUniqueLines(excelFileEntries);
+            List<ExcelFileLayout> excelFileSections = populateExcelListOfUniqueSections(excelFileEntries);
+            List<ExcelFileLayout> excelFileBlocks = excelFileEntries;
+
+            //now actually write/load the data into the database
             string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(str))
             {
                 //first delete all current db rows
                 deleteAllDbRows(con);
-
                 //then insert into Line table
-                List<string> lineNames = new List<string>();
                 con.Open();
-                foreach (DataGridViewRow row in dvgBlocks.Rows)
+                foreach(ExcelFileLayout line in excelFileLines)
                 {
-                    if (row.Cells[0].Value != null)
-                    {
-                        bool found = false;
-                        string currName = row.Cells[0].Value.ToString();
-                        foreach (string name in lineNames)
-                        {
-                            if (string.Compare(name, currName) == 0)
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found)
-                        {
-                            lineNames.Add(currName);
-                            SqlCommand cmd = new SqlCommand("INSERT INTO Lines (Name) VALUES (@Name)");
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Connection = con;
-                            cmd.Parameters.AddWithValue("@Name", row.Cells[0].Value.ToString());
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
+                    insertLineIntoDB(con, line);
                 }
                 con.Close();
-
-                List<string> lineSectionNames = new List<string>();
-                con.Open();
                 //now insert into Sections table
-                foreach (DataGridViewRow row in dvgBlocks.Rows)
+                con.Open();
+                foreach (ExcelFileLayout section in excelFileSections)
                 {
-                    if (row.Cells[1].Value != null)
-                    {
-                        bool found = false;
-                        string currLine = row.Cells[0].Value.ToString();
-                        string currName = row.Cells[1].Value.ToString();
-                        foreach (string name in lineSectionNames)
-                        {
-                            if (string.Compare(name, currLine + currName) == 0)
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found)
-                        {
-                            lineSectionNames.Add(currLine + currName);
-                            SqlCommand read = new SqlCommand("SELECT * FROM Lines WHERE Name = @Name");
-                            read.CommandType = CommandType.Text;
-                            read.Connection = con;
-                            read.Parameters.AddWithValue("@Name", currLine);
-                            SqlDataReader reader = read.ExecuteReader();
-                            if (reader.Read())
-                            {
-                                SqlCommand cmd = new SqlCommand("INSERT INTO Sections (Name, LineId) VALUES (@Name, @LineId)");
-                                cmd.CommandType = CommandType.Text;
-                                cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@Name", currName);
-                                int lineId = reader.GetInt32(0);
-                                cmd.Parameters.AddWithValue("@LineId", lineId);
-                                reader.Close();
-                                cmd.ExecuteNonQuery();
-                            }
-                            else
-                                Console.WriteLine("Associated line not found for section.");
-                        }
-                    }
+                    insertSectionIntoDB(con, section);
                 }
                 con.Close();
-
-                List<string> lineBlockNames = new List<string>();
+                //now insert into Blocks table
                 con.Open();
-                //now insert into Sections table
-                foreach (DataGridViewRow row in dvgBlocks.Rows)
+                foreach (ExcelFileLayout block in excelFileBlocks)
                 {
-                    if (row.Cells[2].Value != null) //Block Id
-                    {
-                        bool found = false;
-                        string currLine = row.Cells[0].Value.ToString();
-                        string currSection = row.Cells[1].Value.ToString();
-                        string currNumber = row.Cells[2].Value.ToString();
-                        decimal currLength = Convert.ToDecimal(row.Cells[3].Value);
-                        decimal currGrade = Convert.ToDecimal(row.Cells[4].Value);
-                        int currSpeedLimit = Convert.ToInt32(row.Cells[5].Value);
-                        decimal currElevation = Convert.ToDecimal(row.Cells[8].Value);
-                        decimal currCumElevation = Convert.ToDecimal(row.Cells[9].Value);
-                        foreach (string name in lineBlockNames)
-                        {
-                            if (string.Compare(name, currLine + currNumber) == 0)
-                            {
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found)
-                        {
-                            lineBlockNames.Add(currLine + currNumber);
-                            SqlCommand read = new SqlCommand("SELECT Sections.SectionId, Sections.Name AS SectionName, Lines.Name AS LineName FROM Sections JOIN Lines ON Sections.LineId = Lines.LineId WHERE Sections.Name = @SectionName AND Lines.Name = @LineName");
-                            read.CommandType = CommandType.Text;
-                            read.Connection = con;
-                            read.Parameters.AddWithValue("@SectionName", currSection);
-                            read.Parameters.AddWithValue("@LineName", currLine);
-                            SqlDataReader reader = read.ExecuteReader();
-                            if (reader.Read())
-                            {
-                                SqlCommand cmd = new SqlCommand("INSERT INTO Blocks (BlockNumber, SectionId, Length, Grade, Elevation, CumulativeElevation, SpeedLimit, IsUnderground) VALUES (@BlockNumber, @SectionId, @Length, @Grade, @Elevation, @CumulativeElevation, @SpeedLimit, @IsUnderground)");
-                                cmd.CommandType = CommandType.Text;
-                                cmd.Connection = con;
-                                cmd.Parameters.AddWithValue("@BlockNumber", currNumber);
-                                int sectionId = reader.GetInt32(0);
-                                cmd.Parameters.AddWithValue("@SectionId", sectionId);
-                                cmd.Parameters.AddWithValue("@Length", currLength);
-                                cmd.Parameters.AddWithValue("@Grade", currGrade);
-                                cmd.Parameters.AddWithValue("@Elevation", currElevation);
-                                cmd.Parameters.AddWithValue("@CumulativeElevation", currCumElevation);
-                                cmd.Parameters.AddWithValue("@SpeedLimit", currSpeedLimit);
-                                cmd.Parameters.AddWithValue("@IsUnderground", false);
-                                reader.Close();
-                                cmd.ExecuteNonQuery();
-                            }
-                            else
-                                Console.WriteLine("Associated section not found for block.");
-                        }
-                    }
+                    insertBlockIntoDB(con, block);
                 }
                 con.Close();
 
@@ -335,11 +424,16 @@ namespace Track_Layout_UI
             string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(str))
             {
-                blockList = loadBlocksFromDB(con);
-                sectionList = loadSectionsFromDB(con);
-                lineList = loadLinesFromDB(con);
+                lineList = DatabaseInterface.loadLinesFromDB(con);
+                sectionList = DatabaseInterface.loadSectionsFromDB(con, lineList);
+                blockList = DatabaseInterface.loadBlocksFromDB(con, lineList);
+                switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
+                DatabaseInterface.updateBlocksNextPrevious(lineList);
+                initializeRedLineStationBeacons();
             }
-
+            TrackControllerModule.initializeSwitches(switchList);
+            TrainSimulation.mainOffice.initializeTrackLayout(lineList);
+            //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
 
@@ -376,84 +470,6 @@ namespace Track_Layout_UI
             blockSelectListBox.DataSource = filteredBlockList;
             blockSelectListBox.DisplayMember = "blockNum";
             blockSelectListBox.ValueMember = "blockId";
-
-        }
-
-        private List<Line> loadLinesFromDB(SqlConnection con)
-        {
-            List<Line> lines = new List<Line>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Lines");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while (reader.Read())
-            {
-                int lineId = reader.GetInt32(0);
-                string name = reader.GetString(1);
-                Line line = new Line(lineId, name);
-                lines.Add(line);
-            }
-            reader.Close();
-            con.Close();
-
-            return lines;
-        }
-
-        private List<Section> loadSectionsFromDB(SqlConnection con)
-        {
-            List<Section> sections = new List<Section>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Sections");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while (reader.Read())
-            {
-                int sectionId = reader.GetInt32(0);
-                string name = reader.GetString(1);
-                int lineId = reader.GetInt32(2);
-                //int? startBlockId = reader.GetInt32(3); //TODO
-                //int? endBlockId = reader.GetInt32(4);
-                //bool isBidirectional = reader.GetBoolean(5);
-                Section section = new Section(sectionId, name, lineId, null, null, false);
-                sections.Add(section);
-            }
-            reader.Close();
-            con.Close();
-
-            return sections;
-        }
-
-        private List<Block> loadBlocksFromDB(SqlConnection con)
-        {
-            List<Block> blocks = new List<Block>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Blocks");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while(reader.Read())
-            {
-                int blockId = reader.GetInt32(0);
-                int blockNumber = reader.GetInt32(1);
-                int sectionId = reader.GetInt32(2);
-                decimal length = reader.GetDecimal(3);
-                decimal grade = reader.GetDecimal(4);
-                decimal elevation = reader.GetDecimal(5);
-                decimal cumulativeElevation = reader.GetDecimal(6);
-                int speedLimit = reader.GetInt32(7);
-                bool isUndergound = reader.GetBoolean(8);
-                Block block = new Block(blockId, blockNumber, sectionId, length, grade, elevation, cumulativeElevation, speedLimit, isUndergound);
-                blocks.Add(block);
-            }
-            reader.Close();
-            con.Close();
-
-            return blocks;
         }
         
         private void deleteAllDbRows(SqlConnection con)
@@ -589,15 +605,24 @@ namespace Track_Layout_UI
                     blockElevationTextBox.Text = selectedBlock.elevation.ToString();
                     blockCumElevationTextBox.Text = selectedBlock.cumElevation.ToString();
                     blockSpeedLimitTextBox.Text = selectedBlock.speedLimit.ToString();
-                    blockStationTextBox.Text = "X"; //TODO - here and below
-                    blockPersonsUnloadingTextBox.Text = "X";
-                    blockTemperatureTextBox.Text = "69";
-                    blockHeaterStatusTextBox.Text = "X";
-                    blockIsUndergroundTextBox.Text = "X";
-                    blockTypeTextBox.Text = "X";
-                    blockSwitchTextBox.Text = "X";
-                    blockSwitchActivatedTextBox.Text = "X";
-                    blockArrowDirectionTextBox.Text = "X";
+                    blockStationTextBox.Text = "X";
+                    if (selectedBlock.station != null)
+                        blockPersonsUnloadingTextBox.Text = selectedBlock.station.name;
+                    blockTemperatureTextBox.Text = "69"; //TODO
+                    blockHeaterStatusTextBox.Text = "Off"; //TODO
+                    blockIsUndergroundTextBox.Text = "NO";
+                    if(selectedBlock.isUnderground)
+                        blockIsUndergroundTextBox.Text = "YES";
+                    blockSwitchTextBox.Text = "None";
+                    if(selectedBlock.parentSwitch != null)
+                    {
+                        if (selectedBlock.parentSwitch.sourceBlockId == selectedBlock.blockId)
+                            blockSwitchTextBox.Text = "Source";
+                        else
+                            blockSwitchTextBox.Text = "Target";
+                        switchNumTextBox.Text = selectedBlock.parentSwitch.switchId.ToString();
+                    }
+                    blockArrowDirectionTextBox.Text = "<-->"; //TODO
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
                 }
