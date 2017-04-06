@@ -95,7 +95,13 @@ namespace TrainModelProject
                 Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
-
+        public void updateDoorStatus(int n)
+        {
+            if (n == 0) Train_Door_L.Text = "Closed";
+            else if (n == 1) Train_Door_L.Text = "Left";
+            else if (n == 2) Train_Door_L.Text = "Right";
+                   
+        }
         public void currentBlock()
         {
             p = currSpeedms;
@@ -135,7 +141,7 @@ namespace TrainModelProject
             Train_Height_L.Text = train_height.ToString() + " m";
             Train_Length_L.Text = train_length.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
-            Train_Door_L.Text = "Closed";
+            //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
            
@@ -144,6 +150,7 @@ namespace TrainModelProject
         public void updatePower(double p)
         {
             power = p;
+            train_power.Text = p.ToString("#.##");
         }
 
         private void setTimeLabel(String t)
