@@ -48,6 +48,7 @@ namespace TrainModelProject
         Block next_block;
         Block prev_block;
         private int TM_count = 0;
+        double p;
 
 
         public void updateSpeedAndAuthority(double speed, int authority)
@@ -100,14 +101,19 @@ namespace TrainModelProject
             {
                 block_distance = block_distance - currSpeedms;
             }
+            p = currSpeedms;
+            if (block_distance >= p) block_distance -= p;
             else
             {
                 double p = currSpeedms;
                 p = p - block_distance;
+
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
+
                 prev_block = current_block;
                 current_block = next_block;
                 block_distance = current_block.length - p;
+
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                 Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
@@ -160,10 +166,16 @@ namespace TrainModelProject
         {
             if (currSpeedms > 0)
             {
+                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+
                 force = power / currSpeedms;
+
+                force = force - mass * 9.8 * 0.2 * cos_value;
+                
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
-                currSpeedms = acceleration + currSpeedms;
+                if (currSpeedms + acceleration < 0) currSpeedms = 0;
+                else currSpeedms = acceleration + currSpeedms;
             }
             else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
