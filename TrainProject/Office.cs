@@ -43,16 +43,15 @@ namespace CTC
 
         public void dispatchNewTrain()
         {
-            trainCounter++;
-            Train newTrain = new Train(trainCounter, sugSpeed, sugAuth);
-            module.dispatchNewTrain(newTrain);
+            trainCounter++;            
             tm_window = new TrainModel();
             tm_window.Show();
+            module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
         }
 
         public void dispatchOldTrain(int trainId)
         {
-            module.dispatchNewTrain(trainId, sugSpeed, sugAuth);
+            module.updateSpeedAndAuthority(trainId, sugSpeed, sugAuth);
         }
 
         public void initializeTrackLayout(List<Line> trackLines)

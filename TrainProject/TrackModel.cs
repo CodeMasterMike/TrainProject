@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
 using CTC;
+using TrainModelProject;
 
 namespace Track_Layout_UI
 {
@@ -26,7 +27,7 @@ namespace Track_Layout_UI
         public static List<Section> sectionList = new List<Section>();
         public static List<Line> lineList = new List<Line>();
         public static List<Switch> switchList = new List<Switch>();
-        public static List<Train> trainList = new List<Train>();
+        public static TrainModel[] trainList = new TrainModel[100];
         public static Block selectedBlock;
         public static Line selectedLine;
         //temporary variables
@@ -55,21 +56,15 @@ namespace Track_Layout_UI
             InitializeComponent();
         }
 
-        public void dispatchTrain(Train train)
+        public void dispatchTrain(int trainId, TrainModel train, double speed, int authority)
         {
-            trainList.Add(train);
+            trainList[trainId] = train;
+            train.updateSpeedAndAuthority(speed,authority);
         }
 
         public void updateSpeedAndAuthority(int trainId, double speed, int authority)
         {
-            foreach(Train train in trainList)
-            {
-                if(trainId == train.trainId)
-                {
-                    //train.updateSpeedAndAuthority(speed, authority);
-                    break;
-                }
-            }
+            trainList[trainId].updateSpeedAndAuthority(speed, authority);
         }
 
         private Block findBlock(int blockId)

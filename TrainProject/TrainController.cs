@@ -20,6 +20,7 @@ namespace TrainControllerProject
         private double driverSetSpeed = 0;
         private double ctcSetSpeed = 0;
         private double setSpeed = 0;
+        private int authority = 0;
         private double setTemp = 70;
         private double temp = 70;
         private SmallBlock[] blocks;
@@ -345,7 +346,11 @@ namespace TrainControllerProject
         }*/
         private int readBeacon() { return 0; }
 
-  
+        public void updateSpeedAndAuthority(double s, int a)
+        {
+            ctcSetSpeed = s;
+            authority = a;
+        }
 
 
 
