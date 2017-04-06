@@ -36,7 +36,6 @@ C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.exe
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
-C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
@@ -144,7 +143,6 @@ C:\Users\pvn03\Documents\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
 C:\Users\pvn03\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe
 C:\Users\pvn03\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
-C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\CTC.Office.resources
 C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
 C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
@@ -176,3 +174,7 @@ C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\CTC.Office.reso
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.TrackControllerWindow.resources
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainModelProject.TrainModel.resources
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.TrainSimulation.resources
+C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
+C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
