@@ -40,7 +40,8 @@ namespace TrainProject
         public Station station { get; set; }
         public Crossing crossing { get; set; }
         public Switch parentSwitch { get; set; }
-        public Beacon beacon { get; set; }
+        public SwitchBeacon switchBeacon { get; set; }
+        public SwitchBeacon stationBeacon { get; set; }
 
         public Block(int bN, int d)
         {

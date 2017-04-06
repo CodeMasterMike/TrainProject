@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrainProject
 {
-    public class Beacon
+    public class SwitchBeacon
     {
         public int blockId;
 
-        public Beacon(int bId)
+        public SwitchBeacon(int bId)
         {
             blockId = bId;
         }
