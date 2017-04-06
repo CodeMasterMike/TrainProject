@@ -20,7 +20,7 @@ namespace TrainProject
         int start = 0;
         CustomClock clk;
         private TrainModel trainModelWindow;
-        Office mainOffice;
+        public static Office mainOffice;
         public static TrackModelUI trackModelWindow;
         public static TrackControllerWindow trackControllerWindow;
         public TrainSimulation()
@@ -29,7 +29,7 @@ namespace TrainProject
             clk = new CustomClock(this);
         }
 
-        private void beginButton_Click(object sender, EventArgs e)
+        public void beginButton_Click(object sender, EventArgs e)
         {
             start = 1;
             trackControllerWindow = new TrackControllerWindow();

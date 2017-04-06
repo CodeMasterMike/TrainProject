@@ -85,7 +85,7 @@ namespace TrainProject
             return true;
         }
 
-        public List<int> runProgram(List<int> blockOccupancies)
+        public List<int> runProgram(List<Block> blockOccupancies)
         {
             List<int> switchIds = new List<int>();
             return switchIds;
@@ -96,6 +96,36 @@ namespace TrainProject
         //changing to directions! positive number means train heading towards switch from that direction
         //this function assumes a unidirectional source, t1, and t2 but can easily be extrapolated to bidirectional given 
         public int determineSwitchState(int switchId, int s, int t1, int t2)
+        {
+            SwitchTypes type = switchTypes[switchId];
+            switch (type)
+            {
+
+            }
+            return -1;
+        }
+
+        private int Loop1()
+        {
+            return -1;
+        }
+
+        private int Loop2()
+        {
+            return -1;
+        }
+
+        private int BiLoop()
+        {
+            return -1;
+        }
+
+        private int SplitIn()
+        {
+            return -1;
+        }
+
+        private int SplitOut()
         {
             return -1;
         }
