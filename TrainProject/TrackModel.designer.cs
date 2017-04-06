@@ -55,6 +55,8 @@
             this.blockTemperatureTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.switchNumTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.blockBeaconTextBox = new System.Windows.Forms.TextBox();
@@ -105,8 +107,6 @@
             this.dvgBlocks = new System.Windows.Forms.DataGridView();
             this.InsertToSql = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label14 = new System.Windows.Forms.Label();
-            this.switchNumTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -432,6 +432,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // switchNumTextBox
+            // 
+            this.switchNumTextBox.BackColor = System.Drawing.Color.White;
+            this.switchNumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.switchNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.switchNumTextBox.Location = new System.Drawing.Point(371, 241);
+            this.switchNumTextBox.Name = "switchNumTextBox";
+            this.switchNumTextBox.ReadOnly = true;
+            this.switchNumTextBox.Size = new System.Drawing.Size(47, 13);
+            this.switchNumTextBox.TabIndex = 62;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(277, 241);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Switch Num:";
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -715,7 +736,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.Red;
+            this.button4.BackColor = System.Drawing.Color.Lime;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -723,7 +744,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(227, 63);
             this.button4.TabIndex = 8;
-            this.button4.Text = "Rail - BROKEN";
+            this.button4.Text = "Rail - OK";
             this.button4.UseVisualStyleBackColor = false;
             // 
             // button5
@@ -986,27 +1007,6 @@
             // 
             this.openExcelFileDialog.FileName = "openExcelFileDialog";
             this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(277, 241);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 13);
-            this.label14.TabIndex = 61;
-            this.label14.Text = "Switch Num:";
-            // 
-            // switchNumTextBox
-            // 
-            this.switchNumTextBox.BackColor = System.Drawing.Color.White;
-            this.switchNumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.switchNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchNumTextBox.Location = new System.Drawing.Point(371, 241);
-            this.switchNumTextBox.Name = "switchNumTextBox";
-            this.switchNumTextBox.ReadOnly = true;
-            this.switchNumTextBox.Size = new System.Drawing.Size(47, 13);
-            this.switchNumTextBox.TabIndex = 62;
             // 
             // TrackModelUI
             // 

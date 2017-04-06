@@ -427,9 +427,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 initializeRedLineStationBeacons();
             }
-            //TrackControllerModule.initializeSwitches(switchList);
-            TrackControllerModule.initializeSwitches(switchList); //make sure to use initial switch then initialize layout order for kait
-            TrainSimulation.mainOffice.initializeTrackLayout(lineList);
+            TrackControllerModule.initializeSwitches(switchList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
