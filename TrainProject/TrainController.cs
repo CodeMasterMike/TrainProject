@@ -110,7 +110,7 @@ namespace TrainControllerProject
             TM.updateThermostat(thermostat);
 
             //update the GUI
-            trainSpeedLabel.Text = (currSpeed).ToString("#.###") + "MPH";
+            trainSpeedLabel.Text = (currSpeedms).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
             ctcSpeedLabel.Text = (ctcSetSpeed).ToString("#.###") + "MPH";
             trainTempLabel.Text = (temp.ToString()) + "F";
