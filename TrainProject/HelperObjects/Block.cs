@@ -23,6 +23,7 @@ namespace TrainProject
         public bool isUnderground { get; set; }
         public bool isFromYard { get; set; }
         public bool isToYard { get; set; }
+        public bool isOccupied { get; set; }
 
         //need to discuss how to do this further
         public int? prevBlockId { get; set; }
