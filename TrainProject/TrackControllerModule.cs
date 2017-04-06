@@ -16,6 +16,7 @@ namespace TrainProject
         public static TrackController greenLineCtrl2 = new TrackController(1, "green2");
         public static TrackController redLineCtrl1 = new TrackController(2, "red1");
         public static TrackController redLineCtrl2 = new TrackController(3, "red2");
+        public static List<Train> activeTrains = new List<Train>();
         public static List<TrackController> activeControllers = new List<TrackController>();
 
         public void updateSpeedAndAuthority(int trainId, Double speed, Double authority)
@@ -31,8 +32,9 @@ namespace TrainProject
         public void dispatchNewTrain(Train newTrain)
         {
             Console.WriteLine("dispatching train!!!!!");
+            activeTrains.Add(newTrain);
             TrainSimulation.trackModelWindow.dispatchTrain(newTrain);
-            //TrackModelUI.
+            TrainSimulation.trackControllerWindow.updateTrains();
         }
 
         public static void updateBlockOccupancy(int blockId, Boolean occupied)
@@ -58,6 +60,7 @@ namespace TrainProject
                             ctrl.addNewBlock(newBlock);
                             break;
                         }
+                        TrackControllerWindow.plc.runProgram(ctrl.blocks);
 
                         //after this, call monitor switches
                         ctrl.monitorSwitches();
@@ -80,6 +83,7 @@ namespace TrainProject
             }
             //find the controller who has the block + or - 1 in active blocks
             //update a new block, from that you can get direction too
+            TrainSimulation.mainOffice.updateBlockOccupancy(blockId, occupied);
         }
 
         public static int? getSwitchState(int switchId)
