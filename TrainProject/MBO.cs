@@ -94,7 +94,7 @@ namespace MBO_UI
 
             schedulesWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
 
-            MessageBox.Show(schedulesWorksheet.get_Range("A1", "A1").Value2.ToString());
+            //MessageBox.Show(schedulesWorksheet.get_Range("A1", "A1").Value2.ToString());
 
             schedulesWorkbook.Close(true, misValue, misValue);
             schedulesApp.Quit();
@@ -103,7 +103,7 @@ namespace MBO_UI
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);
 
-            MessageBox.Show("Excel file created , you can find the file at fuck you I made it");
+            MessageBox.Show("Excel file created , you can find the file at @");
         }
 
         private void createDriverSchedule()
