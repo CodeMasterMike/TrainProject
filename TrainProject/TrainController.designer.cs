@@ -76,7 +76,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.ctcAuthorityLabel = new System.Windows.Forms.Label();
             this.ctcSpeedLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -271,7 +271,7 @@
             this.Driver_Tab.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Driver_Tab.Size = new System.Drawing.Size(1016, 969);
             this.Driver_Tab.TabIndex = 0;
-            this.Driver_Tab.Text = "Driver";
+            this.Driver_Tab.Text = " ";
             this.Driver_Tab.Click += new System.EventHandler(this.Driver_Tab_Click);
             // 
             // timeLabel
@@ -717,7 +717,7 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.label12);
+            this.groupBox10.Controls.Add(this.ctcAuthorityLabel);
             this.groupBox10.Controls.Add(this.ctcSpeedLabel);
             this.groupBox10.Controls.Add(this.label5);
             this.groupBox10.Controls.Add(this.label4);
@@ -732,16 +732,16 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "SetPoints";
             // 
-            // label12
+            // ctcAuthorityLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(209, 94);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 29);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "0 blocks";
+            this.ctcAuthorityLabel.AutoSize = true;
+            this.ctcAuthorityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctcAuthorityLabel.Location = new System.Drawing.Point(209, 94);
+            this.ctcAuthorityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ctcAuthorityLabel.Name = "ctcAuthorityLabel";
+            this.ctcAuthorityLabel.Size = new System.Drawing.Size(102, 29);
+            this.ctcAuthorityLabel.TabIndex = 4;
+            this.ctcAuthorityLabel.Text = "0 blocks";
             // 
             // ctcSpeedLabel
             // 
@@ -1464,7 +1464,7 @@
         private System.Windows.Forms.Label tunnelStatusLabel;
         private System.Windows.Forms.Label stationLabel;
         private System.Windows.Forms.Label blockSpeedLimitLabel;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label ctcAuthorityLabel;
         private System.Windows.Forms.Label ctcSpeedLabel;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label22;
