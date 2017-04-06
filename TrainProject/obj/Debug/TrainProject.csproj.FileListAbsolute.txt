@@ -97,3 +97,5 @@ C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
+C:\Users\user\Documents\SourceTree\TrainProject\bin\Debug\TrainProject.exe.config
+C:\Users\user\Documents\SourceTree\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
