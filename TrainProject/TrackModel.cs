@@ -31,7 +31,24 @@ namespace Track_Layout_UI
         public static Line selectedLine;
         //temporary variables
         private int yardBlockId = 229;
-
+        static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
+        private static void initializeRedLineStationBeacons()
+        {
+            StationBeacon currBeacon;
+            currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+            redLineStationBeacons[8] = currBeacon;
+            currBeacon = new StationBeacon("HERRON AVE", 50, false);
+            redLineStationBeacons[1] = currBeacon;
+        }
+        public static StationBeacon getStationBeacon(int lineNum, int blockNum)
+        {
+            if (lineNum == 2)
+            {
+                return redLineStationBeacons[blockNum];
+            }
+            return null;
+        }
+        //end temp stuff
         public TrackModelUI()
         {
             InitializeComponent();
@@ -67,6 +84,7 @@ namespace Track_Layout_UI
         }
 
         //only returns null if the yard
+        //need to test
         public Block getNextBlock(Block prevBlock, Block currBlock)
         {    
             Block nextBlock = null;
@@ -407,6 +425,7 @@ namespace Track_Layout_UI
                 blockList = DatabaseInterface.loadBlocksFromDB(con, lineList);
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
+                initializeRedLineStationBeacons();
             }
             TrackControllerModule.initializeSwitches(switchList);
             //Office.initializeTrackLayout(lineList);
@@ -447,199 +466,6 @@ namespace Track_Layout_UI
             blockSelectListBox.DisplayMember = "blockNum";
             blockSelectListBox.ValueMember = "blockId";
         }
-
-        /*public List<Line> loadLinesFromDB(SqlConnection con)
-        {
-            List<Line> lines = new List<Line>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Lines");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while (reader.Read())
-            {
-                int lineId = reader.GetInt32(0);
-                string name = reader.GetString(1);
-                Line line = new Line(lineId, name);
-                lines.Add(line);
-            }
-            reader.Close();
-            con.Close();
-
-            return lines;
-        }
-
-        public List<Section> loadSectionsFromDB(SqlConnection con)
-        {
-            List<Section> sections = new List<Section>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Sections");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while (reader.Read())
-            {
-                int sectionId = reader.GetInt32(0);
-                string name = reader.GetString(1);
-                int lineId = reader.GetInt32(2);
-                //int? startBlockId = reader.GetInt32(3); //TODO
-                //int? endBlockId = reader.GetInt32(4);
-                //bool isBidirectional = reader.GetBoolean(5);
-                Section section = new Section(sectionId, name, lineId, null, null, false);
-                sections.Add(section);
-                foreach(Line line in lineList)
-                {
-                    if(line.lineId == section.lineId)
-                    {
-                        line.sections.Add(section);
-                    }
-                }
-            }
-            reader.Close();
-            con.Close();
-
-            return sections;
-        }
-
-        public List<Block> loadBlocksFromDB(SqlConnection con)
-        {
-            List<Block> blocks = new List<Block>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Blocks");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while(reader.Read())
-            {
-                int blockId = reader.GetInt32(0);
-                int blockNumber = reader.GetInt32(1);
-                int sectionId = reader.GetInt32(2);
-                decimal length = reader.GetDecimal(3);
-                decimal grade = reader.GetDecimal(4);
-                decimal elevation = reader.GetDecimal(5);
-                decimal cumulativeElevation = reader.GetDecimal(6);
-                int speedLimit = reader.GetInt32(7);
-                //bool isUndergound = reader.GetBoolean(8);
-
-                Block block = new Block(blockId, blockNumber, sectionId, length, grade, elevation, cumulativeElevation, speedLimit, false);
-                block.prevBlockId = null;
-                block.nextBlockId = null;
-                blocks.Add(block);
-
-                foreach(Line line in lineList)
-                {
-                    foreach(Section section in line.sections)
-                    {
-                        if(section.sectionId == block.sectionId)
-                        {
-                            section.blocks.Add(block);
-                        }
-                    }
-                }
-            }
-            reader.Close();
-            con.Close();
-
-            return blocks;
-        }
-
-        private void loadSwitchesFromDB(SqlConnection con)
-        {
-            List<Switch> switches = new List<Switch>();
-
-            SqlCommand read = new SqlCommand("SELECT * FROM Blocks");
-            read.CommandType = CommandType.Text;
-            read.Connection = con;
-            con.Open();
-            SqlDataReader reader = read.ExecuteReader();
-            while (reader.Read())
-            {
-                int blockId = reader.GetInt32(0);
-                int blockNumber = reader.GetInt32(1);
-                int sectionId = reader.GetInt32(2);
-                Block currBlock = null;
-                String infrastructure = reader.GetString(8);
-                String switchBlock = reader.GetString(9);
-                Switch currSwitch = null;
-
-                //now parse the SwitchBlock column
-                if (switchBlock != null && switchBlock.Length > 0)
-                {
-                    //first find block object currently being referenced
-                    foreach (Block block in blockList)
-                    {
-                        if (block.blockId == blockId)
-                        {
-                            currBlock = block;
-                        }
-                    }
-                    switchBlock = switchBlock.Replace("Switch ", "");
-                    int currId = Convert.ToInt32(switchBlock);
-                    bool found = false;
-                    foreach (Switch s in switchList)
-                    {
-                        if(s.switchId == currId)
-                        {
-                            currSwitch = s;
-                            found = true;
-                            break;
-                        }
-                    }
-                    bool isNew = false;
-                    if(!found)
-                    {
-                        currSwitch = new Switch(currId, null, null, null);
-                        isNew = true;
-                    }
-                    if(infrastructure.Contains("SWITCH"))
-                    {
-                        currSwitch.sourceBlockId = currBlock.blockId;
-                    }
-                    else if(currSwitch.targetBlockId1 == null)
-                    {
-                        currSwitch.targetBlockId1 = currBlock.blockId;
-                    }
-                    else
-                    {
-                        currSwitch.targetBlockId2 = currBlock.blockId;
-                    }
-                    if(isNew)
-                    {
-                        switchList.Add(currSwitch);
-                    }
-                    currBlock.parentSwitch = currSwitch;
-                }
-                
-            }
-            reader.Close();
-            con.Close();
-        }
-
-        private void updateBlocksNextPrevious() //uses blocks in Line/Section/Block format
-        {
-            foreach(Line line in lineList)
-            {
-                Block prevBlock = null;
-                foreach(Section section in line.sections)
-                {
-                    foreach (Block block in section.blocks)
-                    {
-                        if (prevBlock != null)
-                        {
-                            if(!(prevBlock.parentSwitch != null && block.parentSwitch != null))
-                            {
-                                block.prevBlockId = prevBlock.blockId;
-                                prevBlock.nextBlockId = block.blockId;
-                            }
-                        }
-                        prevBlock = block;
-                    }
-                }
-            }
-        }*/
         
         private void deleteAllDbRows(SqlConnection con)
         {
