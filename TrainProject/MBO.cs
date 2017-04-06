@@ -73,6 +73,76 @@ namespace MBO_UI
             ShowDialog();
         }
 
+        public void updateTrainSchedule()
+        {
+
+        }
+
+        public void updateDriverSchedule()
+        {
+
+        }
+
+        public void sendTrainSchedule()
+        {
+
+        }
+
+        public void sendDriverSchedule()
+        {
+
+        }
+
+        public void isGPS()
+        {
+
+        }
+
+        public void isAuto()
+        {
+
+        }
+
+        public void getPost()
+        {
+
+        }
+
+        public void getSuggestedSpeed()
+        {
+
+        }
+
+        public void setAuthority()
+        {
+
+        }
+
+        public void getTrainSchedule()
+        {
+
+        }
+
+        public void getDriverSchedule()
+        {
+
+        }
+        
+
+        public void setNumDrivers()
+        {
+
+        }
+
+        public void setTrainsPerHour()
+        {
+
+        }
+
+        public void breakAntenna()
+        {
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

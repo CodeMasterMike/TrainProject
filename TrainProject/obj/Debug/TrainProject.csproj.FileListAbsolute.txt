@@ -93,3 +93,7 @@ C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainModel.Trai
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
 C:\Users\Alejandro\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
+C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
+C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
+C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe
+C:\Users\Alejandro\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
