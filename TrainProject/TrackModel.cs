@@ -428,8 +428,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 initializeRedLineStationBeacons();
             }
-            //TrackControllerModule.initializeSwitches(switchList);
-            TrackControllerModule.initializeSwitches(switchList); //make sure to use initial switch then initialize layout order for kait
+            TrackControllerModule.initializeSwitches(switchList);
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
@@ -603,15 +602,24 @@ namespace Track_Layout_UI
                     blockElevationTextBox.Text = selectedBlock.elevation.ToString();
                     blockCumElevationTextBox.Text = selectedBlock.cumElevation.ToString();
                     blockSpeedLimitTextBox.Text = selectedBlock.speedLimit.ToString();
-                    blockStationTextBox.Text = "X"; //TODO - here and below
-                    blockPersonsUnloadingTextBox.Text = "X";
-                    blockTemperatureTextBox.Text = "69";
-                    blockHeaterStatusTextBox.Text = "X";
-                    blockIsUndergroundTextBox.Text = "X";
-                    blockTypeTextBox.Text = "X";
-                    blockSwitchTextBox.Text = "X";
-                    blockSwitchActivatedTextBox.Text = "X";
-                    blockArrowDirectionTextBox.Text = "X";
+                    blockStationTextBox.Text = "X";
+                    if (selectedBlock.station != null)
+                        blockPersonsUnloadingTextBox.Text = selectedBlock.station.name;
+                    blockTemperatureTextBox.Text = "69"; //TODO
+                    blockHeaterStatusTextBox.Text = "Off"; //TODO
+                    blockIsUndergroundTextBox.Text = "NO";
+                    if(selectedBlock.isUnderground)
+                        blockIsUndergroundTextBox.Text = "YES";
+                    blockSwitchTextBox.Text = "None";
+                    if(selectedBlock.parentSwitch != null)
+                    {
+                        if (selectedBlock.parentSwitch.sourceBlockId == selectedBlock.blockId)
+                            blockSwitchTextBox.Text = "Source";
+                        else
+                            blockSwitchTextBox.Text = "Target";
+                        switchNumTextBox.Text = selectedBlock.parentSwitch.switchId.ToString();
+                    }
+                    blockArrowDirectionTextBox.Text = "<-->"; //TODO
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
                 }
