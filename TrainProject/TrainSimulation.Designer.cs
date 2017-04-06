@@ -41,9 +41,10 @@
             // beginButton
             // 
             this.beginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginButton.Location = new System.Drawing.Point(42, 30);
+            this.beginButton.Location = new System.Drawing.Point(32, 24);
+            this.beginButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.beginButton.Name = "beginButton";
-            this.beginButton.Size = new System.Drawing.Size(509, 145);
+            this.beginButton.Size = new System.Drawing.Size(382, 116);
             this.beginButton.TabIndex = 0;
             this.beginButton.Text = "Begin Train System";
             this.beginButton.UseVisualStyleBackColor = true;
@@ -53,9 +54,10 @@
             // 
             this.clockLabel.AutoSize = true;
             this.clockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockLabel.Location = new System.Drawing.Point(131, 189);
+            this.clockLabel.Location = new System.Drawing.Point(98, 151);
+            this.clockLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.clockLabel.Name = "clockLabel";
-            this.clockLabel.Size = new System.Drawing.Size(144, 46);
+            this.clockLabel.Size = new System.Drawing.Size(106, 36);
             this.clockLabel.TabIndex = 1;
             this.clockLabel.Text = "Clock :";
             // 
@@ -63,9 +65,10 @@
             // 
             this.clockDisplayedText.AutoSize = true;
             this.clockDisplayedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockDisplayedText.Location = new System.Drawing.Point(281, 189);
+            this.clockDisplayedText.Location = new System.Drawing.Point(211, 151);
+            this.clockDisplayedText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.clockDisplayedText.Name = "clockDisplayedText";
-            this.clockDisplayedText.Size = new System.Drawing.Size(174, 46);
+            this.clockDisplayedText.Size = new System.Drawing.Size(133, 36);
             this.clockDisplayedText.TabIndex = 2;
             this.clockDisplayedText.Text = "00:00:00";
             // 
@@ -73,9 +76,10 @@
             // 
             this.speedButton1.AutoSize = true;
             this.speedButton1.Checked = true;
-            this.speedButton1.Location = new System.Drawing.Point(38, 18);
+            this.speedButton1.Location = new System.Drawing.Point(28, 14);
+            this.speedButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.speedButton1.Name = "speedButton1";
-            this.speedButton1.Size = new System.Drawing.Size(137, 29);
+            this.speedButton1.Size = new System.Drawing.Size(104, 24);
             this.speedButton1.TabIndex = 4;
             this.speedButton1.TabStop = true;
             this.speedButton1.Text = "1X Speed";
@@ -85,9 +89,10 @@
             // speedButton10
             // 
             this.speedButton10.AutoSize = true;
-            this.speedButton10.Location = new System.Drawing.Point(38, 53);
+            this.speedButton10.Location = new System.Drawing.Point(28, 42);
+            this.speedButton10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.speedButton10.Name = "speedButton10";
-            this.speedButton10.Size = new System.Drawing.Size(149, 29);
+            this.speedButton10.Size = new System.Drawing.Size(113, 24);
             this.speedButton10.TabIndex = 5;
             this.speedButton10.Text = "10X Speed";
             this.speedButton10.UseVisualStyleBackColor = true;
@@ -97,17 +102,20 @@
             // 
             this.groupBox1.Controls.Add(this.speedButton10);
             this.groupBox1.Controls.Add(this.speedButton1);
-            this.groupBox1.Location = new System.Drawing.Point(174, 245);
+            this.groupBox1.Location = new System.Drawing.Point(130, 196);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 96);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(153, 77);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(426, 251);
+            this.button1.Location = new System.Drawing.Point(320, 201);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 75);
+            this.button1.Size = new System.Drawing.Size(106, 60);
             this.button1.TabIndex = 7;
             this.button1.Text = "openTM";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,16 +123,18 @@
             // 
             // TrainSimulation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 355);
+            this.ClientSize = new System.Drawing.Size(442, 284);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.clockDisplayedText);
             this.Controls.Add(this.clockLabel);
             this.Controls.Add(this.beginButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TrainSimulation";
             this.Text = "TrainSimulation";
+            this.Load += new System.EventHandler(this.TrainSimulation_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

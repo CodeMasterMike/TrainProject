@@ -123,7 +123,7 @@ namespace MBO_UI
 
         public void dispatchTrain()
         {
-
+            TrainSimulation.mainOffice.dispatchNewTrain();
         }
 
         public void sendTrainSchedule()
@@ -324,6 +324,11 @@ namespace MBO_UI
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
 
         }
