@@ -155,6 +155,11 @@ namespace TrainModelProject
             if (b) service = true;
             else service = false;
         }
+        public void setEmergency(bool b)
+        {
+            if (b) emergency = true;
+            else emergency = false;
+        }
         public void Start()
         {
             start = 1;
