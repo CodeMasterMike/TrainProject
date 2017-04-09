@@ -34,6 +34,14 @@ namespace TrainProject.HelperObjects
             currentBlock = getBlock(229);
             
         }
+        public BlockTracker(bool b, int i)
+        {
+            lineID = 2;
+            loadClassesFromDB();
+            int blockID = getDataBaseID(i);
+            currentBlock = getBlock(blockID);
+            prevToNext = b;
+        }
         private void loadClassesFromDB()
         {
             string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
@@ -138,6 +146,24 @@ namespace TrainProject.HelperObjects
         public Block getCurrentBlock()
         {
             return currentBlock;
+        }
+        public double getDistance(int n)
+        {
+            int distance = currentBlock.length;
+            for(int i = 0; i < n-1; i++)
+            {
+                currentBlock = getNextBlock(currentBlock.blockNum);
+                distance += currentBlock.length;
+            }
+            return distance;
+        }
+        public bool getPrevToNext()
+        {
+            return prevToNext;
+        }
+        public bool getOnSwtich()
+        {
+            return onSwitch;
         }
     }
 }

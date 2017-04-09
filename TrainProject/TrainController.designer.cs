@@ -40,6 +40,8 @@
             this.Driver_Tab = new System.Windows.Forms.TabPage();
             this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.distanceLeftLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.blockIDLabel = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -54,12 +56,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.trainIDLabel = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.lightStatusLabel = new System.Windows.Forms.Label();
-            this.leftDoorStatusLabel = new System.Windows.Forms.Label();
-            this.rightDoorStatusLabel = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.Heater_GroupBox = new System.Windows.Forms.GroupBox();
             this.Heater_Off = new System.Windows.Forms.RadioButton();
             this.Heater_On = new System.Windows.Forms.RadioButton();
@@ -93,7 +89,7 @@
             this.Show_Speed = new System.Windows.Forms.Label();
             this.Brakes_GroupBox = new System.Windows.Forms.GroupBox();
             this.serviceButton = new System.Windows.Forms.CheckBox();
-            this.Emergency_Button = new System.Windows.Forms.CheckBox();
+            this.emergencyButton = new System.Windows.Forms.CheckBox();
             this.RightDoor_GroupBox = new System.Windows.Forms.GroupBox();
             this.Right_Closed = new System.Windows.Forms.RadioButton();
             this.Right_Open = new System.Windows.Forms.RadioButton();
@@ -132,7 +128,6 @@
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
             this.groupBox17.SuspendLayout();
-            this.groupBox13.SuspendLayout();
             this.Heater_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).BeginInit();
@@ -287,6 +282,8 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.distanceLeftLabel);
+            this.groupBox17.Controls.Add(this.label12);
             this.groupBox17.Controls.Add(this.label24);
             this.groupBox17.Controls.Add(this.blockIDLabel);
             this.groupBox17.Controls.Add(this.label23);
@@ -308,6 +305,26 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Track Information";
             this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
+            // 
+            // distanceLeftLabel
+            // 
+            this.distanceLeftLabel.AutoSize = true;
+            this.distanceLeftLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.distanceLeftLabel.Location = new System.Drawing.Point(493, 136);
+            this.distanceLeftLabel.Name = "distanceLeftLabel";
+            this.distanceLeftLabel.Size = new System.Drawing.Size(21, 29);
+            this.distanceLeftLabel.TabIndex = 30;
+            this.distanceLeftLabel.Text = "-";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(320, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(163, 29);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Distance Left :";
             // 
             // label24
             // 
@@ -341,7 +358,7 @@
             // 
             this.distanceToLabel.AutoSize = true;
             this.distanceToLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.distanceToLabel.Location = new System.Drawing.Point(253, 113);
+            this.distanceToLabel.Location = new System.Drawing.Point(253, 121);
             this.distanceToLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.distanceToLabel.Name = "distanceToLabel";
             this.distanceToLabel.Size = new System.Drawing.Size(21, 29);
@@ -455,12 +472,6 @@
             // groupBox13
             // 
             this.groupBox13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox13.Controls.Add(this.lightStatusLabel);
-            this.groupBox13.Controls.Add(this.leftDoorStatusLabel);
-            this.groupBox13.Controls.Add(this.rightDoorStatusLabel);
-            this.groupBox13.Controls.Add(this.label22);
-            this.groupBox13.Controls.Add(this.label21);
-            this.groupBox13.Controls.Add(this.label19);
             this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(265, 15);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
@@ -471,60 +482,6 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Status Center";
             this.groupBox13.Enter += new System.EventHandler(this.groupBox13_Enter);
-            // 
-            // lightStatusLabel
-            // 
-            this.lightStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lightStatusLabel.Location = new System.Drawing.Point(190, 66);
-            this.lightStatusLabel.Name = "lightStatusLabel";
-            this.lightStatusLabel.Size = new System.Drawing.Size(50, 31);
-            this.lightStatusLabel.TabIndex = 5;
-            this.lightStatusLabel.Text = "On";
-            // 
-            // leftDoorStatusLabel
-            // 
-            this.leftDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leftDoorStatusLabel.Location = new System.Drawing.Point(190, 112);
-            this.leftDoorStatusLabel.Name = "leftDoorStatusLabel";
-            this.leftDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
-            this.leftDoorStatusLabel.TabIndex = 4;
-            this.leftDoorStatusLabel.Text = "Closed";
-            // 
-            // rightDoorStatusLabel
-            // 
-            this.rightDoorStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightDoorStatusLabel.Location = new System.Drawing.Point(190, 155);
-            this.rightDoorStatusLabel.Name = "rightDoorStatusLabel";
-            this.rightDoorStatusLabel.Size = new System.Drawing.Size(99, 31);
-            this.rightDoorStatusLabel.TabIndex = 3;
-            this.rightDoorStatusLabel.Text = "Closed";
-            // 
-            // label22
-            // 
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(7, 112);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(148, 31);
-            this.label22.TabIndex = 2;
-            this.label22.Text = "Left Door : ";
-            // 
-            // label21
-            // 
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(7, 155);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(159, 31);
-            this.label21.TabIndex = 1;
-            this.label21.Text = "Right Door :";
-            // 
-            // label19
-            // 
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(7, 66);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(109, 31);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Lights : ";
             // 
             // Heater_GroupBox
             // 
@@ -909,7 +866,7 @@
             // Brakes_GroupBox
             // 
             this.Brakes_GroupBox.Controls.Add(this.serviceButton);
-            this.Brakes_GroupBox.Controls.Add(this.Emergency_Button);
+            this.Brakes_GroupBox.Controls.Add(this.emergencyButton);
             this.Brakes_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Brakes_GroupBox.Location = new System.Drawing.Point(612, 516);
             this.Brakes_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -934,17 +891,18 @@
             this.serviceButton.CheckedChanged += new System.EventHandler(this.serviceButton_CheckedChanged);
             this.serviceButton.Click += new System.EventHandler(this.serviceButton_Click);
             // 
-            // Emergency_Button
+            // emergencyButton
             // 
-            this.Emergency_Button.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Emergency_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Emergency_Button.Location = new System.Drawing.Point(9, 41);
-            this.Emergency_Button.Name = "Emergency_Button";
-            this.Emergency_Button.Size = new System.Drawing.Size(200, 50);
-            this.Emergency_Button.TabIndex = 0;
-            this.Emergency_Button.Text = "EMERGENCY";
-            this.Emergency_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Emergency_Button.UseVisualStyleBackColor = true;
+            this.emergencyButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.emergencyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emergencyButton.Location = new System.Drawing.Point(9, 41);
+            this.emergencyButton.Name = "emergencyButton";
+            this.emergencyButton.Size = new System.Drawing.Size(200, 50);
+            this.emergencyButton.TabIndex = 0;
+            this.emergencyButton.Text = "EMERGENCY";
+            this.emergencyButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.emergencyButton.UseVisualStyleBackColor = true;
+            this.emergencyButton.Click += new System.EventHandler(this.emergencyButton_Click);
             // 
             // RightDoor_GroupBox
             // 
@@ -1374,7 +1332,6 @@
             this.Driver_Tab.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
             this.Heater_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.setSpeedTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.setTempTrackBar)).EndInit();
@@ -1444,7 +1401,7 @@
         private System.Windows.Forms.Label Show_Speed;
         private System.Windows.Forms.GroupBox Brakes_GroupBox;
         private System.Windows.Forms.CheckBox serviceButton;
-        private System.Windows.Forms.CheckBox Emergency_Button;
+        private System.Windows.Forms.CheckBox emergencyButton;
         private System.Windows.Forms.GroupBox RightDoor_GroupBox;
         private System.Windows.Forms.RadioButton Right_Closed;
         private System.Windows.Forms.RadioButton Right_Open;
@@ -1467,12 +1424,6 @@
         private System.Windows.Forms.Label ctcAuthorityLabel;
         private System.Windows.Forms.Label ctcSpeedLabel;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label lightStatusLabel;
-        private System.Windows.Forms.Label leftDoorStatusLabel;
-        private System.Windows.Forms.Label rightDoorStatusLabel;
         private System.Windows.Forms.TextBox KiTextBox;
         private System.Windows.Forms.TextBox KpTextBox;
         private System.Windows.Forms.Label label14;
@@ -1500,6 +1451,8 @@
         private System.Windows.Forms.Label blockIDLabel;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label distanceLeftLabel;
+        private System.Windows.Forms.Label label12;
     }
 }
 

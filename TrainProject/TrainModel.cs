@@ -95,7 +95,13 @@ namespace TrainModelProject
                 Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
-
+        public void updateDoorStatus(int n)
+        {
+            if (n == 0) Train_Door_L.Text = "Closed";
+            else if (n == 1) Train_Door_L.Text = "Left";
+            else if (n == 2) Train_Door_L.Text = "Right";
+                   
+        }
         public void currentBlock()
         {
             p = currSpeedms;
@@ -110,11 +116,12 @@ namespace TrainModelProject
                 prev_block = current_block;
                 current_block = next_block;
                 block_distance = current_block.length - p;
-
+                if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
-                Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
+               // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
             }
+
         }
 
         public void travel()
@@ -123,18 +130,18 @@ namespace TrainModelProject
         }
         public void updateGUI()
         {
-            currSpeedmsF = currSpeedms;// / 0.44704;
+            currSpeedmsF = currSpeedms / 0.44704;
             currSpeedmsF = Math.Round(currSpeedmsF, 2);
             Train_Speed.Text = currSpeedmsF.ToString() + " m/hr";
             Train_Passenger_L.Text = train_pass.ToString();
             Train_Crew_L.Text = train_crew.ToString();
             Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
-            Train_Width_L.Text = force.ToString() + " m";
-            //Train_Height_L.Text = acceleration.ToString() + " m";
-            Train_Length_L.Text = block_distance.ToString() + " m";
+            Train_Width_L.Text = train_width.ToString() + " m";
+            Train_Height_L.Text = train_height.ToString() + " m";
+            Train_Length_L.Text = train_length.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
-            Train_Door_L.Text = "Closed";
+            //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
            
@@ -143,6 +150,7 @@ namespace TrainModelProject
         public void updatePower(double p)
         {
             power = p;
+            train_power.Text = p.ToString("#.##");
         }
 
         private void setTimeLabel(String t)
@@ -154,6 +162,11 @@ namespace TrainModelProject
         {
             if (b) service = true;
             else service = false;
+        }
+        public void setEmergency(bool b)
+        {
+            if (b) emergency = true;
+            else emergency = false;
         }
         public void Start()
         {
