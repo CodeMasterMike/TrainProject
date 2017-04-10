@@ -16,6 +16,7 @@ namespace TrainProject
         public bool sourceLight { get; set; }
         public bool t1Light { get; set; }
         public bool t2Light { get; set; }
+        public String infrastructure { get; set; }
 
         public Switch(int s, int? sb, int? t1, int? t2)
         {
