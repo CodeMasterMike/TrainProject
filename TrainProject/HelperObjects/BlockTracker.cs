@@ -161,5 +161,9 @@ namespace TrainProject.HelperObjects
         {
             return prevToNext;
         }
+        public bool getOnSwtich()
+        {
+            return onSwitch;
+        }
     }
 }
