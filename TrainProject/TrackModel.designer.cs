@@ -55,6 +55,7 @@
             this.blockTemperatureTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.blockCumElevationTextBox = new System.Windows.Forms.TextBox();
             this.switchNumTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -106,7 +107,6 @@
             this.dvgBlocks = new System.Windows.Forms.DataGridView();
             this.InsertToSql = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.blockCumElevationTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -432,13 +432,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // blockCumElevationTextBox
+            // 
+            this.blockCumElevationTextBox.BackColor = System.Drawing.Color.White;
+            this.blockCumElevationTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.blockCumElevationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockCumElevationTextBox.Location = new System.Drawing.Point(156, 274);
+            this.blockCumElevationTextBox.Name = "blockCumElevationTextBox";
+            this.blockCumElevationTextBox.ReadOnly = true;
+            this.blockCumElevationTextBox.Size = new System.Drawing.Size(47, 13);
+            this.blockCumElevationTextBox.TabIndex = 63;
+            // 
             // switchNumTextBox
             // 
             this.switchNumTextBox.BackColor = System.Drawing.Color.White;
             this.switchNumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.switchNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.switchNumTextBox.Location = new System.Drawing.Point(377, 194);
-            this.switchNumTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.switchNumTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.switchNumTextBox.Name = "switchNumTextBox";
             this.switchNumTextBox.ReadOnly = true;
             this.switchNumTextBox.Size = new System.Drawing.Size(31, 13);
@@ -697,7 +708,7 @@
             this.User.Controls.Add(this.groupBox4);
             this.User.Location = new System.Drawing.Point(4, 22);
             this.User.Name = "User";
-            this.User.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.User.Padding = new System.Windows.Forms.Padding(3);
             this.User.Size = new System.Drawing.Size(1203, 643);
             this.User.TabIndex = 0;
             this.User.Text = "User";
@@ -726,7 +737,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.Lime;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -769,7 +780,7 @@
             this.Murphy.Controls.Add(this.groupBox5);
             this.Murphy.Location = new System.Drawing.Point(4, 22);
             this.Murphy.Name = "Murphy";
-            this.Murphy.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Murphy.Padding = new System.Windows.Forms.Padding(3);
             this.Murphy.Size = new System.Drawing.Size(1203, 643);
             this.Murphy.TabIndex = 1;
             this.Murphy.Text = "Murphy";
@@ -997,17 +1008,6 @@
             // 
             this.openExcelFileDialog.FileName = "openExcelFileDialog";
             this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
-            // 
-            // blockCumElevationTextBox
-            // 
-            this.blockCumElevationTextBox.BackColor = System.Drawing.Color.White;
-            this.blockCumElevationTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.blockCumElevationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockCumElevationTextBox.Location = new System.Drawing.Point(156, 274);
-            this.blockCumElevationTextBox.Name = "blockCumElevationTextBox";
-            this.blockCumElevationTextBox.ReadOnly = true;
-            this.blockCumElevationTextBox.Size = new System.Drawing.Size(47, 13);
-            this.blockCumElevationTextBox.TabIndex = 63;
             // 
             // TrackModelUI
             // 
