@@ -39,7 +39,6 @@ C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
-C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
 C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
 C:\Users\Alejandro\Source\Repos\TrainProject\TrainProject\obj\Debug\CTC.CentralTrainControl.resources
@@ -179,3 +178,5 @@ C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj
 C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources

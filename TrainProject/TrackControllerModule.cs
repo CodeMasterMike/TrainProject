@@ -124,8 +124,24 @@ namespace TrainProject
                     redLineCtrl2.addNewSwitch(s);
                 }
             }
-            initializeTrackControllers();
             return true;
+        }
+
+        public static void initializeCrossings(List<Crossing> crossings)
+        {
+            Console.WriteLine("Initializing crossings");
+            foreach (Crossing c in crossings)
+            {
+                if(c.blockId == 19)
+                {
+                    greenLineCtrl1.addNewCrossing(c);
+                }
+                else
+                {
+                    redLineCtrl1.addNewCrossing(c);
+                }
+            }
+            initializeTrackControllers();
         }
 
         //manually add switches, crossings, blocks to controllers for now
