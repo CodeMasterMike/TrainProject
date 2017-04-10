@@ -165,16 +165,18 @@
             // 
             // KiTextBox
             // 
-            this.KiTextBox.Location = new System.Drawing.Point(448, 291);
+            this.KiTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KiTextBox.Location = new System.Drawing.Point(448, 305);
             this.KiTextBox.Name = "KiTextBox";
-            this.KiTextBox.Size = new System.Drawing.Size(220, 31);
+            this.KiTextBox.Size = new System.Drawing.Size(220, 44);
             this.KiTextBox.TabIndex = 7;
             // 
             // KpTextBox
             // 
-            this.KpTextBox.Location = new System.Drawing.Point(448, 195);
+            this.KpTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KpTextBox.Location = new System.Drawing.Point(448, 207);
             this.KpTextBox.Name = "KpTextBox";
-            this.KpTextBox.Size = new System.Drawing.Size(220, 31);
+            this.KpTextBox.Size = new System.Drawing.Size(220, 44);
             this.KpTextBox.TabIndex = 6;
             // 
             // label14
@@ -204,18 +206,18 @@
             this.trackFileTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.trackFileTextBox.Multiline = true;
             this.trackFileTextBox.Name = "trackFileTextBox";
-            this.trackFileTextBox.Size = new System.Drawing.Size(569, 60);
+            this.trackFileTextBox.Size = new System.Drawing.Size(523, 60);
             this.trackFileTextBox.TabIndex = 1;
             // 
             // uploadTrackButton
             // 
-            this.uploadTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uploadTrackButton.Location = new System.Drawing.Point(9, 402);
+            this.uploadTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadTrackButton.Location = new System.Drawing.Point(9, 384);
             this.uploadTrackButton.Margin = new System.Windows.Forms.Padding(4);
             this.uploadTrackButton.Name = "uploadTrackButton";
-            this.uploadTrackButton.Size = new System.Drawing.Size(403, 61);
+            this.uploadTrackButton.Size = new System.Drawing.Size(403, 94);
             this.uploadTrackButton.TabIndex = 0;
-            this.uploadTrackButton.Text = "Upload Track Model";
+            this.uploadTrackButton.Text = "Load Parameters and Choose Line";
             this.uploadTrackButton.UseVisualStyleBackColor = true;
             this.uploadTrackButton.Click += new System.EventHandler(this.uploadTrackButton_Click);
             // 
@@ -266,7 +268,7 @@
             this.Driver_Tab.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Driver_Tab.Size = new System.Drawing.Size(1016, 969);
             this.Driver_Tab.TabIndex = 0;
-            this.Driver_Tab.Text = " ";
+            this.Driver_Tab.Text = " Driver";
             this.Driver_Tab.Click += new System.EventHandler(this.Driver_Tab_Click);
             // 
             // timeLabel
