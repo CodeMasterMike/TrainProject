@@ -88,6 +88,7 @@ namespace TrainProject
         public static List<Block> loadBlocksFromDB(SqlConnection con, List<Line> lineList)
         {
             List<Block> blocks = new List<Block>();
+            int crossingId = 0;
 
             SqlCommand read = new SqlCommand("SELECT * FROM Blocks");
             read.CommandType = CommandType.Text;
@@ -151,6 +152,11 @@ namespace TrainProject
                             found = true;
                         }
                     }
+                }
+                if (infrastructure.Contains("CROSSING"))
+                {
+                    block.crossing = new Crossing(crossingId, block.blockId);
+                    crossingId++;
                 }
                 blocks.Add(block);
 
@@ -326,7 +332,7 @@ namespace TrainProject
             }
         }*/
 
-        private static void traverseDownTrack(List<Block> blockList, int remainingBlocks, int currDistance, Block currBlock, bool prevToNext)
+        /*private static void traverseDownTrack(List<Block> blockList, int remainingBlocks, int currDistance, Block currBlock, bool prevToNext)
         {
             //if coming from a switch, prevToNext should have already been calculated
             Block nextBlock1 = null;
@@ -347,9 +353,13 @@ namespace TrainProject
                 {
                     nextBlock1 = findBlock((int)currBlock.parentSwitch.targetBlockId1, blockList);
                 }
+
             }
             //now need to find next block
+            else if()
+            {
 
-        }
+            }
+        }*/
     }
 }

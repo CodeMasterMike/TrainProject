@@ -77,5 +77,10 @@ namespace TrainProject
             trainModelWindow = new TrainModel();
             trainModelWindow.Show();
         }
+
+        private void TrainSimulation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace CTC
         public static TrackControllerModule module;
         
         List<Block> myBlockList;
+        Boolean mode;
 
         public Office()
         {
@@ -181,6 +182,19 @@ namespace CTC
                 }
             }
         }
+
+        private void setAuto()
+        {
+            mode = true;
+            TrainSimulation.MBOWindow.isAuto(mode);
+        }
+
+        private void setManual()
+        {
+            mode = false;
+            TrainSimulation.MBOWindow.isAuto(mode);
+        }
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -270,12 +284,13 @@ namespace CTC
 
         private void manButton_Click(object sender, EventArgs e)
         {
-
+            setManual();
         }
 
         private void autoButton_Click(object sender, EventArgs e)
         {
-
+            setAuto();
+            dispatchNewTrain();
         }
 
         private void fbRadio_CheckedChanged(object sender, EventArgs e)
@@ -315,6 +330,11 @@ namespace CTC
         {
             sugAuth = authScrollBar.Value;
             authValueLabel.Text = sugAuth + " blocks";
+        }
+
+        private void Office_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

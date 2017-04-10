@@ -78,14 +78,14 @@
             this.trainNumLabel = new System.Windows.Forms.Label();
             this.systemBox = new System.Windows.Forms.GroupBox();
             this.systemListView = new System.Windows.Forms.ListView();
-            this.trackTrain = new System.Windows.Forms.Button();
-            this.yardTrain = new System.Windows.Forms.Button();
-            this.MurphyTab = new System.Windows.Forms.TabPage();
             this.Block = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Trains = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Switches = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Crossings = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.trackTrain = new System.Windows.Forms.Button();
+            this.yardTrain = new System.Windows.Forms.Button();
+            this.MurphyTab = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -100,10 +100,11 @@
             // 
             this.tabControl1.Controls.Add(this.DispatcherTab);
             this.tabControl1.Controls.Add(this.MurphyTab);
-            this.tabControl1.Location = new System.Drawing.Point(12, 1);
+            this.tabControl1.Location = new System.Drawing.Point(14, 1);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1331, 676);
+            this.tabControl1.Size = new System.Drawing.Size(1597, 811);
             this.tabControl1.TabIndex = 0;
             // 
             // DispatcherTab
@@ -114,10 +115,11 @@
             this.DispatcherTab.Controls.Add(this.dispatchGroup);
             this.DispatcherTab.Controls.Add(this.infoBox);
             this.DispatcherTab.Controls.Add(this.systemBox);
-            this.DispatcherTab.Location = new System.Drawing.Point(4, 25);
+            this.DispatcherTab.Location = new System.Drawing.Point(4, 29);
+            this.DispatcherTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DispatcherTab.Name = "DispatcherTab";
-            this.DispatcherTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DispatcherTab.Size = new System.Drawing.Size(1323, 647);
+            this.DispatcherTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DispatcherTab.Size = new System.Drawing.Size(1589, 778);
             this.DispatcherTab.TabIndex = 0;
             this.DispatcherTab.Text = "Dispatcher";
             this.DispatcherTab.UseVisualStyleBackColor = true;
@@ -126,9 +128,11 @@
             // 
             this.notifBox.Controls.Add(this.notifLabel);
             this.notifBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notifBox.Location = new System.Drawing.Point(947, 159);
+            this.notifBox.Location = new System.Drawing.Point(1136, 191);
+            this.notifBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.notifBox.Name = "notifBox";
-            this.notifBox.Size = new System.Drawing.Size(381, 130);
+            this.notifBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.notifBox.Size = new System.Drawing.Size(457, 156);
             this.notifBox.TabIndex = 2;
             this.notifBox.TabStop = false;
             this.notifBox.Text = "Notification Center";
@@ -138,9 +142,10 @@
             this.notifLabel.AutoSize = true;
             this.notifLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notifLabel.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.notifLabel.Location = new System.Drawing.Point(126, 47);
+            this.notifLabel.Location = new System.Drawing.Point(151, 56);
+            this.notifLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.notifLabel.Name = "notifLabel";
-            this.notifLabel.Size = new System.Drawing.Size(108, 18);
+            this.notifLabel.Size = new System.Drawing.Size(127, 22);
             this.notifLabel.TabIndex = 0;
             this.notifLabel.Text = "A-Ok for now";
             this.notifLabel.Click += new System.EventHandler(this.notifLabel_Click);
@@ -155,9 +160,11 @@
             this.systemConBox.Controls.Add(this.manButton);
             this.systemConBox.Controls.Add(this.sysModeLabel);
             this.systemConBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.systemConBox.Location = new System.Drawing.Point(947, 6);
+            this.systemConBox.Location = new System.Drawing.Point(1136, 7);
+            this.systemConBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.systemConBox.Name = "systemConBox";
-            this.systemConBox.Size = new System.Drawing.Size(381, 150);
+            this.systemConBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.systemConBox.Size = new System.Drawing.Size(457, 180);
             this.systemConBox.TabIndex = 2;
             this.systemConBox.TabStop = false;
             this.systemConBox.Text = "System Control";
@@ -165,9 +172,10 @@
             // updateTimeLabel
             // 
             this.updateTimeLabel.AutoSize = true;
-            this.updateTimeLabel.Location = new System.Drawing.Point(87, 111);
+            this.updateTimeLabel.Location = new System.Drawing.Point(104, 133);
+            this.updateTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateTimeLabel.Name = "updateTimeLabel";
-            this.updateTimeLabel.Size = new System.Drawing.Size(73, 20);
+            this.updateTimeLabel.Size = new System.Drawing.Size(96, 25);
             this.updateTimeLabel.TabIndex = 5;
             this.updateTimeLabel.Text = "00:00:00";
             // 
@@ -175,18 +183,20 @@
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLabel.Location = new System.Drawing.Point(6, 104);
+            this.timeLabel.Location = new System.Drawing.Point(7, 125);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(75, 29);
+            this.timeLabel.Size = new System.Drawing.Size(86, 32);
             this.timeLabel.TabIndex = 4;
             this.timeLabel.Text = "Time:";
             // 
             // fbRadio
             // 
             this.fbRadio.AutoSize = true;
-            this.fbRadio.Location = new System.Drawing.Point(224, 50);
+            this.fbRadio.Location = new System.Drawing.Point(269, 60);
+            this.fbRadio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fbRadio.Name = "fbRadio";
-            this.fbRadio.Size = new System.Drawing.Size(117, 24);
+            this.fbRadio.Size = new System.Drawing.Size(148, 29);
             this.fbRadio.TabIndex = 3;
             this.fbRadio.TabStop = true;
             this.fbRadio.Text = "Fixed Block";
@@ -196,9 +206,10 @@
             // mboButton
             // 
             this.mboButton.AutoSize = true;
-            this.mboButton.Location = new System.Drawing.Point(224, 71);
+            this.mboButton.Location = new System.Drawing.Point(269, 85);
+            this.mboButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mboButton.Name = "mboButton";
-            this.mboButton.Size = new System.Drawing.Size(130, 24);
+            this.mboButton.Size = new System.Drawing.Size(165, 29);
             this.mboButton.TabIndex = 3;
             this.mboButton.TabStop = true;
             this.mboButton.Text = "Moving Block";
@@ -208,9 +219,10 @@
             // autoButton
             // 
             this.autoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoButton.Location = new System.Drawing.Point(115, 50);
+            this.autoButton.Location = new System.Drawing.Point(138, 60);
+            this.autoButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.autoButton.Name = "autoButton";
-            this.autoButton.Size = new System.Drawing.Size(103, 45);
+            this.autoButton.Size = new System.Drawing.Size(124, 54);
             this.autoButton.TabIndex = 2;
             this.autoButton.Text = "Automatic";
             this.autoButton.UseVisualStyleBackColor = true;
@@ -221,9 +233,10 @@
             this.manButton.BackColor = System.Drawing.Color.Black;
             this.manButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.manButton.ForeColor = System.Drawing.Color.White;
-            this.manButton.Location = new System.Drawing.Point(6, 50);
+            this.manButton.Location = new System.Drawing.Point(7, 60);
+            this.manButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.manButton.Name = "manButton";
-            this.manButton.Size = new System.Drawing.Size(103, 45);
+            this.manButton.Size = new System.Drawing.Size(124, 54);
             this.manButton.TabIndex = 2;
             this.manButton.Text = "Manual";
             this.manButton.UseVisualStyleBackColor = false;
@@ -233,9 +246,10 @@
             // 
             this.sysModeLabel.AutoSize = true;
             this.sysModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sysModeLabel.Location = new System.Drawing.Point(123, 23);
+            this.sysModeLabel.Location = new System.Drawing.Point(148, 28);
+            this.sysModeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sysModeLabel.Name = "sysModeLabel";
-            this.sysModeLabel.Size = new System.Drawing.Size(111, 18);
+            this.sysModeLabel.Size = new System.Drawing.Size(129, 22);
             this.sysModeLabel.TabIndex = 0;
             this.sysModeLabel.Text = "System Mode";
             // 
@@ -248,9 +262,11 @@
             this.trackBox.Controls.Add(this.comboBox6);
             this.trackBox.Controls.Add(this.selLineLabel);
             this.trackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trackBox.Location = new System.Drawing.Point(661, 6);
+            this.trackBox.Location = new System.Drawing.Point(793, 7);
+            this.trackBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.trackBox.Name = "trackBox";
-            this.trackBox.Size = new System.Drawing.Size(280, 283);
+            this.trackBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBox.Size = new System.Drawing.Size(336, 340);
             this.trackBox.TabIndex = 2;
             this.trackBox.TabStop = false;
             this.trackBox.Text = "Track Control and Maintenance";
@@ -261,9 +277,10 @@
             this.fixTrackButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.fixTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fixTrackButton.ForeColor = System.Drawing.Color.White;
-            this.fixTrackButton.Location = new System.Drawing.Point(6, 161);
+            this.fixTrackButton.Location = new System.Drawing.Point(7, 193);
+            this.fixTrackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fixTrackButton.Name = "fixTrackButton";
-            this.fixTrackButton.Size = new System.Drawing.Size(268, 45);
+            this.fixTrackButton.Size = new System.Drawing.Size(322, 54);
             this.fixTrackButton.TabIndex = 2;
             this.fixTrackButton.Text = "Fix Track";
             this.fixTrackButton.UseVisualStyleBackColor = false;
@@ -274,9 +291,10 @@
             this.fixTrainButton.BackColor = System.Drawing.Color.DodgerBlue;
             this.fixTrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fixTrainButton.ForeColor = System.Drawing.Color.White;
-            this.fixTrainButton.Location = new System.Drawing.Point(6, 212);
+            this.fixTrainButton.Location = new System.Drawing.Point(7, 254);
+            this.fixTrainButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fixTrainButton.Name = "fixTrainButton";
-            this.fixTrainButton.Size = new System.Drawing.Size(268, 45);
+            this.fixTrainButton.Size = new System.Drawing.Size(322, 54);
             this.fixTrainButton.TabIndex = 2;
             this.fixTrainButton.Text = "Fix Train";
             this.fixTrainButton.UseVisualStyleBackColor = false;
@@ -287,9 +305,10 @@
             this.closeBlockButton.BackColor = System.Drawing.Color.DarkRed;
             this.closeBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBlockButton.ForeColor = System.Drawing.Color.White;
-            this.closeBlockButton.Location = new System.Drawing.Point(142, 88);
+            this.closeBlockButton.Location = new System.Drawing.Point(170, 106);
+            this.closeBlockButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeBlockButton.Name = "closeBlockButton";
-            this.closeBlockButton.Size = new System.Drawing.Size(132, 45);
+            this.closeBlockButton.Size = new System.Drawing.Size(158, 54);
             this.closeBlockButton.TabIndex = 2;
             this.closeBlockButton.Text = "Close Block";
             this.closeBlockButton.UseVisualStyleBackColor = false;
@@ -300,9 +319,10 @@
             this.openBlockButton.BackColor = System.Drawing.Color.SeaGreen;
             this.openBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openBlockButton.ForeColor = System.Drawing.Color.White;
-            this.openBlockButton.Location = new System.Drawing.Point(6, 88);
+            this.openBlockButton.Location = new System.Drawing.Point(7, 106);
+            this.openBlockButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.openBlockButton.Name = "openBlockButton";
-            this.openBlockButton.Size = new System.Drawing.Size(130, 45);
+            this.openBlockButton.Size = new System.Drawing.Size(156, 54);
             this.openBlockButton.TabIndex = 2;
             this.openBlockButton.Text = "Open Block";
             this.openBlockButton.UseVisualStyleBackColor = false;
@@ -311,9 +331,10 @@
             // comboBox6
             // 
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(6, 40);
+            this.comboBox6.Location = new System.Drawing.Point(7, 48);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(268, 28);
+            this.comboBox6.Size = new System.Drawing.Size(321, 33);
             this.comboBox6.TabIndex = 1;
             this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             // 
@@ -321,9 +342,10 @@
             // 
             this.selLineLabel.AutoSize = true;
             this.selLineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selLineLabel.Location = new System.Drawing.Point(96, 19);
+            this.selLineLabel.Location = new System.Drawing.Point(115, 23);
+            this.selLineLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selLineLabel.Name = "selLineLabel";
-            this.selLineLabel.Size = new System.Drawing.Size(91, 18);
+            this.selLineLabel.Size = new System.Drawing.Size(110, 22);
             this.selLineLabel.TabIndex = 0;
             this.selLineLabel.Text = "Select Line";
             // 
@@ -339,9 +361,11 @@
             this.dispatchGroup.Controls.Add(this.comboBox1);
             this.dispatchGroup.Controls.Add(this.selDenLabel);
             this.dispatchGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dispatchGroup.Location = new System.Drawing.Point(339, 6);
+            this.dispatchGroup.Location = new System.Drawing.Point(407, 7);
+            this.dispatchGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dispatchGroup.Name = "dispatchGroup";
-            this.dispatchGroup.Size = new System.Drawing.Size(316, 283);
+            this.dispatchGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dispatchGroup.Size = new System.Drawing.Size(379, 340);
             this.dispatchGroup.TabIndex = 2;
             this.dispatchGroup.TabStop = false;
             this.dispatchGroup.Text = "Dispatch Control";
@@ -349,28 +373,29 @@
             // 
             // speedScrollBar
             // 
-            this.speedScrollBar.Location = new System.Drawing.Point(21, 104);
+            this.speedScrollBar.Location = new System.Drawing.Point(25, 125);
             this.speedScrollBar.Maximum = 110;
             this.speedScrollBar.Name = "speedScrollBar";
-            this.speedScrollBar.Size = new System.Drawing.Size(186, 18);
+            this.speedScrollBar.Size = new System.Drawing.Size(223, 18);
             this.speedScrollBar.TabIndex = 4;
             this.speedScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.speedScrollBar_Scroll);
             // 
             // authScrollBar
             // 
-            this.authScrollBar.Location = new System.Drawing.Point(21, 155);
+            this.authScrollBar.Location = new System.Drawing.Point(25, 186);
             this.authScrollBar.Maximum = 30;
             this.authScrollBar.Name = "authScrollBar";
-            this.authScrollBar.Size = new System.Drawing.Size(186, 18);
+            this.authScrollBar.Size = new System.Drawing.Size(223, 18);
             this.authScrollBar.TabIndex = 4;
             this.authScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.authScrollBar_Scroll);
             // 
             // authValueLabel
             // 
             this.authValueLabel.AutoSize = true;
-            this.authValueLabel.Location = new System.Drawing.Point(210, 153);
+            this.authValueLabel.Location = new System.Drawing.Point(252, 184);
+            this.authValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.authValueLabel.Name = "authValueLabel";
-            this.authValueLabel.Size = new System.Drawing.Size(71, 20);
+            this.authValueLabel.Size = new System.Drawing.Size(92, 25);
             this.authValueLabel.TabIndex = 3;
             this.authValueLabel.Text = "0 blocks";
             this.authValueLabel.Click += new System.EventHandler(this.label2_Click);
@@ -378,9 +403,10 @@
             // speedValueLabel
             // 
             this.speedValueLabel.AutoSize = true;
-            this.speedValueLabel.Location = new System.Drawing.Point(210, 102);
+            this.speedValueLabel.Location = new System.Drawing.Point(252, 122);
+            this.speedValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.speedValueLabel.Name = "speedValueLabel";
-            this.speedValueLabel.Size = new System.Drawing.Size(55, 20);
+            this.speedValueLabel.Size = new System.Drawing.Size(71, 25);
             this.speedValueLabel.TabIndex = 3;
             this.speedValueLabel.Text = "0 mph";
             this.speedValueLabel.Click += new System.EventHandler(this.label1_Click_1);
@@ -390,9 +416,10 @@
             this.dispTrain.BackColor = System.Drawing.Color.DodgerBlue;
             this.dispTrain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dispTrain.ForeColor = System.Drawing.Color.White;
-            this.dispTrain.Location = new System.Drawing.Point(34, 200);
+            this.dispTrain.Location = new System.Drawing.Point(41, 240);
+            this.dispTrain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dispTrain.Name = "dispTrain";
-            this.dispTrain.Size = new System.Drawing.Size(254, 45);
+            this.dispTrain.Size = new System.Drawing.Size(305, 54);
             this.dispTrain.TabIndex = 2;
             this.dispTrain.Text = "Dispatch Train";
             this.dispTrain.UseVisualStyleBackColor = false;
@@ -402,9 +429,10 @@
             // 
             this.selAuthLabel.AutoSize = true;
             this.selAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selAuthLabel.Location = new System.Drawing.Point(77, 132);
+            this.selAuthLabel.Location = new System.Drawing.Point(92, 158);
+            this.selAuthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selAuthLabel.Name = "selAuthLabel";
-            this.selAuthLabel.Size = new System.Drawing.Size(140, 18);
+            this.selAuthLabel.Size = new System.Drawing.Size(169, 22);
             this.selAuthLabel.TabIndex = 0;
             this.selAuthLabel.Text = "Suggest Authority";
             // 
@@ -412,18 +440,20 @@
             // 
             this.selSpeedLabel.AutoSize = true;
             this.selSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selSpeedLabel.Location = new System.Drawing.Point(77, 77);
+            this.selSpeedLabel.Location = new System.Drawing.Point(92, 92);
+            this.selSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selSpeedLabel.Name = "selSpeedLabel";
-            this.selSpeedLabel.Size = new System.Drawing.Size(121, 18);
+            this.selSpeedLabel.Size = new System.Drawing.Size(146, 22);
             this.selSpeedLabel.TabIndex = 0;
             this.selSpeedLabel.Text = "Suggest Speed";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(21, 42);
+            this.comboBox1.Location = new System.Drawing.Point(25, 50);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(254, 28);
+            this.comboBox1.Size = new System.Drawing.Size(304, 33);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -431,9 +461,10 @@
             // 
             this.selDenLabel.AutoSize = true;
             this.selDenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selDenLabel.Location = new System.Drawing.Point(77, 21);
+            this.selDenLabel.Location = new System.Drawing.Point(92, 25);
+            this.selDenLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.selDenLabel.Name = "selDenLabel";
-            this.selDenLabel.Size = new System.Drawing.Size(145, 18);
+            this.selDenLabel.Size = new System.Drawing.Size(173, 22);
             this.selDenLabel.TabIndex = 0;
             this.selDenLabel.Text = "Select Destination";
             // 
@@ -458,9 +489,11 @@
             this.infoBox.Controls.Add(this.sugSpeedLabel);
             this.infoBox.Controls.Add(this.trainNumLabel);
             this.infoBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoBox.Location = new System.Drawing.Point(7, 4);
+            this.infoBox.Location = new System.Drawing.Point(8, 5);
+            this.infoBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(326, 285);
+            this.infoBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.infoBox.Size = new System.Drawing.Size(391, 342);
             this.infoBox.TabIndex = 1;
             this.infoBox.TabStop = false;
             this.infoBox.Text = "Train and Track Information";
@@ -469,81 +502,90 @@
             // updateThroughputLabel
             // 
             this.updateThroughputLabel.AutoSize = true;
-            this.updateThroughputLabel.Location = new System.Drawing.Point(146, 248);
+            this.updateThroughputLabel.Location = new System.Drawing.Point(175, 298);
+            this.updateThroughputLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateThroughputLabel.Name = "updateThroughputLabel";
-            this.updateThroughputLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateThroughputLabel.Size = new System.Drawing.Size(19, 25);
             this.updateThroughputLabel.TabIndex = 3;
             this.updateThroughputLabel.Text = "-";
             // 
             // updateNumTrainsLabel
             // 
             this.updateNumTrainsLabel.AutoSize = true;
-            this.updateNumTrainsLabel.Location = new System.Drawing.Point(146, 219);
+            this.updateNumTrainsLabel.Location = new System.Drawing.Point(175, 263);
+            this.updateNumTrainsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateNumTrainsLabel.Name = "updateNumTrainsLabel";
-            this.updateNumTrainsLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateNumTrainsLabel.Size = new System.Drawing.Size(19, 25);
             this.updateNumTrainsLabel.TabIndex = 3;
             this.updateNumTrainsLabel.Text = "-";
             // 
             // updateLineLabel
             // 
             this.updateLineLabel.AutoSize = true;
-            this.updateLineLabel.Location = new System.Drawing.Point(146, 191);
+            this.updateLineLabel.Location = new System.Drawing.Point(175, 229);
+            this.updateLineLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateLineLabel.Name = "updateLineLabel";
-            this.updateLineLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateLineLabel.Size = new System.Drawing.Size(19, 25);
             this.updateLineLabel.TabIndex = 3;
             this.updateLineLabel.Text = "-";
             // 
             // updateSectionLabel
             // 
             this.updateSectionLabel.AutoSize = true;
-            this.updateSectionLabel.Location = new System.Drawing.Point(146, 162);
+            this.updateSectionLabel.Location = new System.Drawing.Point(175, 194);
+            this.updateSectionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateSectionLabel.Name = "updateSectionLabel";
-            this.updateSectionLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateSectionLabel.Size = new System.Drawing.Size(19, 25);
             this.updateSectionLabel.TabIndex = 3;
             this.updateSectionLabel.Text = "-";
             // 
             // updateBlockStatLabel
             // 
             this.updateBlockStatLabel.AutoSize = true;
-            this.updateBlockStatLabel.Location = new System.Drawing.Point(146, 133);
+            this.updateBlockStatLabel.Location = new System.Drawing.Point(175, 160);
+            this.updateBlockStatLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateBlockStatLabel.Name = "updateBlockStatLabel";
-            this.updateBlockStatLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateBlockStatLabel.Size = new System.Drawing.Size(19, 25);
             this.updateBlockStatLabel.TabIndex = 3;
             this.updateBlockStatLabel.Text = "-";
             // 
             // updateBlockLabel
             // 
             this.updateBlockLabel.AutoSize = true;
-            this.updateBlockLabel.Location = new System.Drawing.Point(146, 105);
+            this.updateBlockLabel.Location = new System.Drawing.Point(175, 126);
+            this.updateBlockLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateBlockLabel.Name = "updateBlockLabel";
-            this.updateBlockLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateBlockLabel.Size = new System.Drawing.Size(19, 25);
             this.updateBlockLabel.TabIndex = 3;
             this.updateBlockLabel.Text = "-";
             // 
             // updateSugAuthLabel
             // 
             this.updateSugAuthLabel.AutoSize = true;
-            this.updateSugAuthLabel.Location = new System.Drawing.Point(146, 78);
+            this.updateSugAuthLabel.Location = new System.Drawing.Point(175, 94);
+            this.updateSugAuthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateSugAuthLabel.Name = "updateSugAuthLabel";
-            this.updateSugAuthLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateSugAuthLabel.Size = new System.Drawing.Size(19, 25);
             this.updateSugAuthLabel.TabIndex = 3;
             this.updateSugAuthLabel.Text = "-";
             // 
             // updateSugSpeedLabel
             // 
             this.updateSugSpeedLabel.AutoSize = true;
-            this.updateSugSpeedLabel.Location = new System.Drawing.Point(146, 50);
+            this.updateSugSpeedLabel.Location = new System.Drawing.Point(175, 60);
+            this.updateSugSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateSugSpeedLabel.Name = "updateSugSpeedLabel";
-            this.updateSugSpeedLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateSugSpeedLabel.Size = new System.Drawing.Size(19, 25);
             this.updateSugSpeedLabel.TabIndex = 3;
             this.updateSugSpeedLabel.Text = "-";
             // 
             // updateTrainLabel
             // 
             this.updateTrainLabel.AutoSize = true;
-            this.updateTrainLabel.Location = new System.Drawing.Point(146, 23);
+            this.updateTrainLabel.Location = new System.Drawing.Point(175, 28);
+            this.updateTrainLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.updateTrainLabel.Name = "updateTrainLabel";
-            this.updateTrainLabel.Size = new System.Drawing.Size(15, 20);
+            this.updateTrainLabel.Size = new System.Drawing.Size(19, 25);
             this.updateTrainLabel.TabIndex = 3;
             this.updateTrainLabel.Text = "-";
             // 
@@ -551,9 +593,10 @@
             // 
             this.throughLabel.AutoSize = true;
             this.throughLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.throughLabel.Location = new System.Drawing.Point(62, 248);
+            this.throughLabel.Location = new System.Drawing.Point(74, 298);
+            this.throughLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.throughLabel.Name = "throughLabel";
-            this.throughLabel.Size = new System.Drawing.Size(87, 18);
+            this.throughLabel.Size = new System.Drawing.Size(108, 22);
             this.throughLabel.TabIndex = 0;
             this.throughLabel.Text = "Throughput:";
             // 
@@ -561,9 +604,10 @@
             // 
             this.lineLabel.AutoSize = true;
             this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lineLabel.Location = new System.Drawing.Point(110, 191);
+            this.lineLabel.Location = new System.Drawing.Point(132, 229);
+            this.lineLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lineLabel.Name = "lineLabel";
-            this.lineLabel.Size = new System.Drawing.Size(39, 18);
+            this.lineLabel.Size = new System.Drawing.Size(49, 22);
             this.lineLabel.TabIndex = 0;
             this.lineLabel.Text = "Line:";
             // 
@@ -571,9 +615,10 @@
             // 
             this.numTrainsLabel.AutoSize = true;
             this.numTrainsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numTrainsLabel.Location = new System.Drawing.Point(16, 219);
+            this.numTrainsLabel.Location = new System.Drawing.Point(19, 263);
+            this.numTrainsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.numTrainsLabel.Name = "numTrainsLabel";
-            this.numTrainsLabel.Size = new System.Drawing.Size(133, 18);
+            this.numTrainsLabel.Size = new System.Drawing.Size(165, 22);
             this.numTrainsLabel.TabIndex = 0;
             this.numTrainsLabel.Text = "# Trains in Service:";
             // 
@@ -581,9 +626,10 @@
             // 
             this.sectionLabel.AutoSize = true;
             this.sectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sectionLabel.Location = new System.Drawing.Point(87, 163);
+            this.sectionLabel.Location = new System.Drawing.Point(104, 196);
+            this.sectionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sectionLabel.Name = "sectionLabel";
-            this.sectionLabel.Size = new System.Drawing.Size(62, 18);
+            this.sectionLabel.Size = new System.Drawing.Size(75, 22);
             this.sectionLabel.TabIndex = 0;
             this.sectionLabel.Text = "Section:";
             // 
@@ -591,9 +637,10 @@
             // 
             this.sugAuthLabel.AutoSize = true;
             this.sugAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sugAuthLabel.Location = new System.Drawing.Point(6, 79);
+            this.sugAuthLabel.Location = new System.Drawing.Point(7, 95);
+            this.sugAuthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sugAuthLabel.Name = "sugAuthLabel";
-            this.sugAuthLabel.Size = new System.Drawing.Size(143, 18);
+            this.sugAuthLabel.Size = new System.Drawing.Size(177, 22);
             this.sugAuthLabel.TabIndex = 0;
             this.sugAuthLabel.Text = "Suggested Authority:";
             // 
@@ -601,9 +648,10 @@
             // 
             this.blockStatusLabel.AutoSize = true;
             this.blockStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockStatusLabel.Location = new System.Drawing.Point(53, 134);
+            this.blockStatusLabel.Location = new System.Drawing.Point(64, 161);
+            this.blockStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blockStatusLabel.Name = "blockStatusLabel";
-            this.blockStatusLabel.Size = new System.Drawing.Size(96, 18);
+            this.blockStatusLabel.Size = new System.Drawing.Size(115, 22);
             this.blockStatusLabel.TabIndex = 0;
             this.blockStatusLabel.Text = "Block Status:";
             // 
@@ -611,9 +659,10 @@
             // 
             this.blockLabel.AutoSize = true;
             this.blockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockLabel.Location = new System.Drawing.Point(99, 106);
+            this.blockLabel.Location = new System.Drawing.Point(119, 127);
+            this.blockLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blockLabel.Name = "blockLabel";
-            this.blockLabel.Size = new System.Drawing.Size(50, 18);
+            this.blockLabel.Size = new System.Drawing.Size(59, 22);
             this.blockLabel.TabIndex = 0;
             this.blockLabel.Text = "Block:";
             // 
@@ -621,9 +670,10 @@
             // 
             this.sugSpeedLabel.AutoSize = true;
             this.sugSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sugSpeedLabel.Location = new System.Drawing.Point(21, 52);
+            this.sugSpeedLabel.Location = new System.Drawing.Point(25, 62);
+            this.sugSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sugSpeedLabel.Name = "sugSpeedLabel";
-            this.sugSpeedLabel.Size = new System.Drawing.Size(128, 18);
+            this.sugSpeedLabel.Size = new System.Drawing.Size(158, 22);
             this.sugSpeedLabel.TabIndex = 0;
             this.sugSpeedLabel.Text = "Suggested Speed:";
             // 
@@ -631,9 +681,10 @@
             // 
             this.trainNumLabel.AutoSize = true;
             this.trainNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainNumLabel.Location = new System.Drawing.Point(47, 23);
+            this.trainNumLabel.Location = new System.Drawing.Point(56, 28);
+            this.trainNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.trainNumLabel.Name = "trainNumLabel";
-            this.trainNumLabel.Size = new System.Drawing.Size(102, 18);
+            this.trainNumLabel.Size = new System.Drawing.Size(125, 22);
             this.trainNumLabel.TabIndex = 0;
             this.trainNumLabel.Text = "Train Number:";
             // 
@@ -643,9 +694,11 @@
             this.systemBox.Controls.Add(this.trackTrain);
             this.systemBox.Controls.Add(this.yardTrain);
             this.systemBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.systemBox.Location = new System.Drawing.Point(3, 295);
+            this.systemBox.Location = new System.Drawing.Point(4, 354);
+            this.systemBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.systemBox.Name = "systemBox";
-            this.systemBox.Size = new System.Drawing.Size(1325, 354);
+            this.systemBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.systemBox.Size = new System.Drawing.Size(1590, 425);
             this.systemBox.TabIndex = 0;
             this.systemBox.TabStop = false;
             this.systemBox.Text = "System Overview";
@@ -659,41 +712,12 @@
             this.Trains,
             this.Switches,
             this.Crossings});
-            this.systemListView.Location = new System.Drawing.Point(69, 26);
+            this.systemListView.Location = new System.Drawing.Point(83, 31);
+            this.systemListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.systemListView.Name = "systemListView";
-            this.systemListView.Size = new System.Drawing.Size(1229, 320);
+            this.systemListView.Size = new System.Drawing.Size(1474, 383);
             this.systemListView.TabIndex = 2;
             this.systemListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // trackTrain
-            // 
-            this.trackTrain.Location = new System.Drawing.Point(7, 149);
-            this.trackTrain.Name = "trackTrain";
-            this.trackTrain.Size = new System.Drawing.Size(60, 44);
-            this.trackTrain.TabIndex = 1;
-            this.trackTrain.Text = "train";
-            this.trackTrain.UseVisualStyleBackColor = true;
-            this.trackTrain.Click += new System.EventHandler(this.trackTrain_Click);
-            // 
-            // yardTrain
-            // 
-            this.yardTrain.Location = new System.Drawing.Point(13, 99);
-            this.yardTrain.Name = "yardTrain";
-            this.yardTrain.Size = new System.Drawing.Size(54, 44);
-            this.yardTrain.TabIndex = 0;
-            this.yardTrain.Text = "yard";
-            this.yardTrain.UseVisualStyleBackColor = true;
-            this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
-            // 
-            // MurphyTab
-            // 
-            this.MurphyTab.Location = new System.Drawing.Point(4, 25);
-            this.MurphyTab.Name = "MurphyTab";
-            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MurphyTab.Size = new System.Drawing.Size(1323, 647);
-            this.MurphyTab.TabIndex = 1;
-            this.MurphyTab.Text = "Murphy";
-            this.MurphyTab.UseVisualStyleBackColor = true;
             // 
             // Block
             // 
@@ -720,14 +744,49 @@
             this.Crossings.Text = "Crossing State";
             this.Crossings.Width = 120;
             // 
+            // trackTrain
+            // 
+            this.trackTrain.Location = new System.Drawing.Point(8, 179);
+            this.trackTrain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackTrain.Name = "trackTrain";
+            this.trackTrain.Size = new System.Drawing.Size(72, 53);
+            this.trackTrain.TabIndex = 1;
+            this.trackTrain.Text = "train";
+            this.trackTrain.UseVisualStyleBackColor = true;
+            this.trackTrain.Click += new System.EventHandler(this.trackTrain_Click);
+            // 
+            // yardTrain
+            // 
+            this.yardTrain.Location = new System.Drawing.Point(16, 119);
+            this.yardTrain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.yardTrain.Name = "yardTrain";
+            this.yardTrain.Size = new System.Drawing.Size(65, 53);
+            this.yardTrain.TabIndex = 0;
+            this.yardTrain.Text = "yard";
+            this.yardTrain.UseVisualStyleBackColor = true;
+            this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
+            // 
+            // MurphyTab
+            // 
+            this.MurphyTab.Location = new System.Drawing.Point(4, 29);
+            this.MurphyTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MurphyTab.Name = "MurphyTab";
+            this.MurphyTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MurphyTab.Size = new System.Drawing.Size(1589, 778);
+            this.MurphyTab.TabIndex = 1;
+            this.MurphyTab.Text = "Murphy";
+            this.MurphyTab.UseVisualStyleBackColor = true;
+            // 
             // Office
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1346, 689);
+            this.ClientSize = new System.Drawing.Size(1615, 827);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Office";
             this.Text = "Office";
+            this.Load += new System.EventHandler(this.Office_Load);
             this.tabControl1.ResumeLayout(false);
             this.DispatcherTab.ResumeLayout(false);
             this.notifBox.ResumeLayout(false);
