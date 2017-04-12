@@ -35,6 +35,7 @@ namespace TrainProject
         {
             controllerId = id;
             controllerName = name;
+            //startBlock = sb
             //sB = startBlock;
             //eB = endBlock;
             blocks = new List<Block>();

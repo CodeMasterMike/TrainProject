@@ -100,7 +100,18 @@ namespace TrainProject
             SwitchTypes type = switchTypes[switchId];
             switch (type)
             {
-
+                case SwitchTypes.Loop1:
+                    break;
+                case SwitchTypes.Loop2:
+                    break;
+                case SwitchTypes.BiLoop:
+                    break;
+                case SwitchTypes.SplitIn:
+                    break;
+                case SwitchTypes.SplitOut:
+                    break;
+                default:
+                    return -1;
             }
             return -1;
         }

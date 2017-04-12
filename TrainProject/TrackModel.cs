@@ -427,9 +427,23 @@ namespace Track_Layout_UI
                 initializeRedLineStationBeacons();
             }
             TrackControllerModule.initializeSwitches(switchList);
+            TrackControllerModule.initializeCrossings(getCrossings());
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
+        }
+
+        private List<Crossing> getCrossings()
+        {
+            List<Crossing> crossingList = new List<Crossing>();
+            foreach(Block block in blockList)
+            {
+                if(block.crossing != null)
+                {
+                    crossingList.Add(block.crossing);
+                }
+            }
+            return crossingList;
         }
 
         public void initializeLists()
