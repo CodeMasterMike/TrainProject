@@ -58,6 +58,59 @@ namespace Track_Layout_UI
         {
             InitializeComponent();
         }
+        private void parseSwitchEnds()
+        {
+            Block sourceBlock, t1Block, t2Block;
+            foreach(Switch s in switchList)
+            {
+                //find source block
+                sourceBlock = blockList.Find(x => s.sourceBlockId == x.blockId);
+                s.sourceBlockId_end = findEndBlock(sourceBlock);
+                t1Block = blockList.Find(x => s.targetBlockId1 == x.blockId);
+                s.targetBlockId1_end = findEndBlock(t1Block);
+                t2Block = blockList.Find(x => s.targetBlockId2 == x.blockId);
+                s.targetBlockId2_end = findEndBlock(t2Block);
+            }
+        }
+
+        private int? findEndBlock(Block startBlock)
+        {
+            Boolean prevToNext;
+            Block curBlock = startBlock;
+            //if yard block
+            if (startBlock.prevBlockId == null && startBlock.nextBlockId == null)
+            {
+                return -1;
+            }
+
+            if(startBlock.nextBlockId == null)
+            {
+                prevToNext = false;
+                curBlock = findBlock((int)startBlock.prevBlockId);
+            }
+            else if (startBlock.prevBlockId == null)
+            {
+                prevToNext = true;
+                curBlock = findBlock((int)startBlock.nextBlockId);
+            }
+            else
+            {
+                return -1;
+            }
+            
+            while(curBlock.parentSwitch == null)
+            {
+                if (prevToNext)
+                {
+                    curBlock = findBlock((int)curBlock.nextBlockId);
+                }
+                else
+                {
+                    curBlock = findBlock((int)curBlock.prevBlockId);
+                }
+            }
+            return curBlock.blockId;
+        }
 
         public void dispatchTrain(int trainId, TrainModel train, double speed, int authority)
         {
@@ -426,6 +479,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 initializeRedLineStationBeacons();
             }
+            parseSwitchEnds();
             TrackControllerModule.initializeSwitches(switchList);
             TrackControllerModule.initializeCrossings(getCrossings());
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
