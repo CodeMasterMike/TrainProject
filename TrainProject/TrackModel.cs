@@ -57,6 +57,16 @@ namespace Track_Layout_UI
         public TrackModelUI()
         {
             InitializeComponent();
+            List<Line> testLineList;
+            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(str))
+            {
+                testLineList = DatabaseInterface.loadLinesFromDB(con);
+            }
+            if(testLineList.Count > 0)
+            {
+                loadClassesFromDB();
+            }
         }
         private void parseSwitchEnds()
         {
@@ -123,7 +133,7 @@ namespace Track_Layout_UI
             trainList[trainId].updateSpeedAndAuthority(speed, authority);
         }
 
-        private Block findBlock(int blockId)
+        public Block findBlock(int blockId)
         {
             foreach(Block block in blockList)
             {
@@ -135,8 +145,26 @@ namespace Track_Layout_UI
             return null;
         }
 
+        public Block findYardBlock(int blockId, int lineId)
+        {
+            foreach (Line line in lineList)
+            {
+                if(line.lineId == lineId)
+                {
+                    foreach(Section section in line.sections)
+                    {
+                        foreach(Block block in section.blocks)
+                        {
+                            if (block.isFromYard)
+                                return block;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         //only returns null if the yard
-        //need to test
         public Block getNextBlock(Block prevBlock, Block currBlock)
         {    
             Block nextBlock = null;
@@ -144,7 +172,7 @@ namespace Track_Layout_UI
             bool isTarget = false;
             if (prevBlock == null && currBlock == null) //coming from yard
             {
-                return findBlock(yardBlockId);
+                return findBlock(yardBlockId); //TODO use findYardBlock
             }
             if(currBlock.parentSwitch != null)
             {
