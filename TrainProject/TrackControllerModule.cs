@@ -25,6 +25,16 @@ namespace TrainProject
             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
         }
 
+        public void closeBlock(int blockId)
+        {
+
+        }
+
+        public void openBlock(int blockId)
+        {
+
+        }
+
         public void dispatchNewTrain(int trainId, Double speed, Double authority)
         {
             //Track.dispatchTrain(Train t, Double speed, int authority)
@@ -40,10 +50,11 @@ namespace TrainProject
 
         public static void updateBlockOccupancy(int blockId, Boolean occupied)
         {
+            Boolean found = false;
             foreach(TrackController ctrl in activeControllers)
             {
                 //new block occupied
-                if (occupied)
+                if (occupied && !found)
                 {
                     Block newBlock;
                     foreach (Block b in ctrl.getBlocks())
@@ -53,29 +64,33 @@ namespace TrainProject
                         {
                             newBlock = new Block(blockId, 1);
                             ctrl.addNewBlock(newBlock);
-                            break;
+                            found = true;
                         }
                         else if (b.blockId == blockId - 1)
                         {
                             newBlock = new Block(blockId, -1);
                             ctrl.addNewBlock(newBlock);
-                            break;
+                            found = true;
                         }
-                        TrackControllerWindow.plc.runProgram(ctrl.blocks);
+                        //TrackControllerWindow.plc.runProgram(ctrl.blocks);
 
                         //after this, call monitor switches
-                        ctrl.monitorSwitches();
-                        ctrl.monitorCrossings();
+                        if (found)
+                        {
+                            ctrl.monitorSwitches();
+                            ctrl.monitorCrossings();
+                        }
                     }
                 }
                 //block unoccupied
-                else
+                else if (!found)
                 {
                     foreach (Block b in ctrl.getBlocks())
                     {
                         if (b.blockId == blockId)
                         {
                             ctrl.blocks.Remove(b);
+                            found = true;
                         }
                     }
                     //remove block from ctrl
@@ -85,6 +100,7 @@ namespace TrainProject
             //find the controller who has the block + or - 1 in active blocks
             //update a new block, from that you can get direction too
             TrainSimulation.mainOffice.updateBlockOccupancy(blockId, occupied);
+            //need to update Trains table too
         }
 
         public static int? getSwitchState(int switchId)
@@ -105,8 +121,15 @@ namespace TrainProject
         public static Boolean initializeSwitches(List<Switch> switches)
         {
             Console.WriteLine("Initializing switches");
+            Console.WriteLine(switches.Count);
             foreach(Switch s in switches)
             {
+                Console.WriteLine("SwitchId: " + s.switchId);
+                Console.WriteLine(s.sourceBlockId + ", " + s.sourceBlockId_end);
+                Console.WriteLine(s.targetBlockId1 + ", " + s.targetBlockId1_end);
+                Console.WriteLine(s.targetBlockId2 + ", " + s.targetBlockId2_end);
+                Console.WriteLine("\n");
+
                 if (s.switchId >= 0 && s.switchId <= 2)
                 {
                     greenLineCtrl1.addNewSwitch(s);
@@ -148,16 +171,6 @@ namespace TrainProject
         //eventually will get them from track model
         public static void initializeTrackControllers()
         {
-            Switch s1 = new Switch(0, 12, 1, 13);
-            Switch s2 = new Switch(1, 29, 28, 150);
-            Switch s3 = new Switch(2, 50, 57, 151);
-            Train t1 = new Train(1, 15.0, 20);
-            Crossing c1 = new Crossing(0, 19);
-            //greenLineCtrl1.addNewSwitch(s1);
-            //greenLineCtrl1.addNewSwitch(s2);
-            //greenLineCtrl1.addNewSwitch(s3);
-            //greenLineCtrl1.addNewTrain(t1);
-            //greenLineCtrl1.addNewCrossing(c1);
             activeControllers.Add(redLineCtrl1);
             activeControllers.Add(redLineCtrl2);
             activeControllers.Add(greenLineCtrl1);
