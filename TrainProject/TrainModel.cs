@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainControllerProject;
+using Track_Layout_UI;
+using TrainProject;
 
 namespace TrainModelProject
 {
@@ -39,11 +41,21 @@ namespace TrainModelProject
         private int AC = 0;
         private int heater = 0;
         private double block_distance = 0;
+        Block current_block;
+        Block currentT_block;
+        Block first_block;
+        Block second_block;
+        Block next_block;
+        Block prev_block;
+        private int TM_count = 0;
+        double p;
+        double sugSpeed;
+        int sugAuthority;
 
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
-
+            TC.updateSpeedAndAuthority(speed, authority);
         }
 
         public TrainModel()
@@ -51,6 +63,15 @@ namespace TrainModelProject
             InitializeComponent();
             TC = new TrainController(this);
             TC.Show();
+
+           
+            double block_length = 0;
+            double train_distance = 0;
+
+            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null);
+            prev_block = null;
+            block_distance = current_block.length;
+            TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
  
@@ -67,6 +88,7 @@ namespace TrainModelProject
             TC.updateCurrentSpeed(currSpeedms);
             TC.updateCurrentTemp(currTemp);
             updateGUI();
+            currentBlock();
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
@@ -76,10 +98,30 @@ namespace TrainModelProject
 
         public void currentBlock()
         {
-         //Figure out block occupancy!   
+            p = currSpeedms;
+            if (block_distance >= p) block_distance -= p;
+            else
+            {
+                double p = currSpeedms;
+                p = p - block_distance;
+
+                next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
+
+                prev_block = current_block;
+                current_block = next_block;
+                block_distance = current_block.length - p;
+                if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
+                TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
+               // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
+            }
 
         }
 
+        public void travel()
+        {
+
+        }
         public void updateGUI()
         {
             currSpeedmsF = currSpeedms / 0.44704;
@@ -96,6 +138,7 @@ namespace TrainModelProject
             Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
+           
         }
 
         public void updatePower(double p)
@@ -113,6 +156,11 @@ namespace TrainModelProject
             if (b) service = true;
             else service = false;
         }
+        public void setEmergency(bool b)
+        {
+            if (b) emergency = true;
+            else emergency = false;
+        }
         public void Start()
         {
             start = 1;
@@ -121,22 +169,40 @@ namespace TrainModelProject
         {
             if (currSpeedms > 0)
             {
+                double gravity = 9.8;
+                double friction_coeff = 0.002;
+                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+                
                 force = power / currSpeedms;
+
+                force = force - (mass * gravity * friction_coeff * cos_value);
+                
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
-                currSpeedms = acceleration + currSpeedms;
+                if (currSpeedms + acceleration < 0)
+                {
+                    currSpeedms = 0;
+                    currSpeedms = acceleration + currSpeedms;
+                }
+                else
+                {
+                    currSpeedms = acceleration + currSpeedms;
+                }
+                //currSpeedms = acceleration + currSpeedms;
             }
             else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
         private void calculateService()
         {
-            currSpeedms = currSpeedms - serviceBrake;
             if (currSpeedms < serviceBrake) currSpeedms = 0;
+            else currSpeedms = currSpeedms - serviceBrake;
+           
         }
         private void calculateEmergency()
         {
-            currSpeedms = currSpeedms - emergencyBrake;
             if (currSpeedms < emergencyBrake) currSpeedms = 0;
+            else currSpeedms = currSpeedms - emergencyBrake;
+            
         }
         public void updateThermostat(int status)
         {
@@ -178,6 +244,11 @@ namespace TrainModelProject
 
 
         private void TrainModel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
         }

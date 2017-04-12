@@ -15,6 +15,7 @@ namespace TrainProject
 {
     static class DatabaseInterface
     {
+
         //Use the below format to properly get and update your lists (ALWAYS)
         /*private void loadClassesFromDB()
         {
@@ -225,11 +226,13 @@ namespace TrainProject
                     else if (currSwitch.targetBlockId1 == null)
                     {
                         currSwitch.targetBlockId1 = currBlock.blockId;
+                        currBlock.switchBeacon = new SwitchBeacon(currBlock.blockId);
                         currSwitch.currentState = currBlock.blockId; 
                     }
                     else
                     {
                         currSwitch.targetBlockId2 = currBlock.blockId;
+                        currBlock.switchBeacon = new SwitchBeacon(currBlock.blockId);
                     }
                     if (isNew)
                     {
@@ -267,6 +270,86 @@ namespace TrainProject
                     }
                 }
             }
+        }
+
+        private static Block findBlock(int blockId, List<Block> blockList)
+        {
+            foreach (Block block in blockList)
+            {
+                if (block.blockId == blockId)
+                {
+                    return block;
+                }
+            }
+            return null;
+        }
+
+        /*
+        public static void addStationBeacons(List<Block> blockList)
+        {
+            foreach(Block block in blockList)
+            {
+                if(block.station != null)
+                {
+                    bool direction;
+                    int? nextBlockId = block.nextBlockId;
+                    if (block.parentSwitch.targetBlockId1 == block.blockId || block.parentSwitch.targetBlockId2 == block.blockId)
+                    {
+                        nextBlockId = block.parentSwitch.sourceBlockId;
+                        if(findBlock((int)nextBlockId,blockList).prevBlockId == null)
+                        {
+                            direction = true;
+                        }
+                    }
+                    if(nextBlockId != null)
+                    {
+                        traverseDownTrack(3, 0, findBlock((int)nextBlockId, blockList), direction);
+                    }
+                    else //at switch, must go both ways
+                    {
+
+                    }
+                    int? prevBlockId = block.prevBlockId;
+                    if (block.parentSwitch.targetBlockId1 == block.blockId || block.parentSwitch.targetBlockId2 == block.blockId)
+                    {
+                        prevBlockId = block.parentSwitch.sourceBlockId;
+                    }
+                    if (block.prevBlockId != null)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+        }*/
+
+        private static void traverseDownTrack(List<Block> blockList, int remainingBlocks, int currDistance, Block currBlock, bool prevToNext)
+        {
+            //if coming from a switch, prevToNext should have already been calculated
+            Block nextBlock1 = null;
+            Block nextBlock2 = null;
+            int? nextBlockId;
+            if(prevToNext)
+            {
+                nextBlockId = currBlock.nextBlockId;
+            }
+            else
+            {
+                nextBlockId = currBlock.prevBlockId;
+            }
+            //if entering a switch, nextBlockId will be null
+            if(nextBlockId == null)
+            {
+                if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
+                {
+                    nextBlock1 = findBlock((int)currBlock.parentSwitch.targetBlockId1, blockList);
+                }
+            }
+            //now need to find next block
+
         }
     }
 }

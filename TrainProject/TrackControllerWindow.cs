@@ -165,10 +165,18 @@ namespace TrainProject
         }
         public void updateTrains()
         {
-            green1TrainsListView.Items.Clear();
-            foreach (var train in TrackControllerModule.redLineCtrl1.getTrains())
+            try
             {
-                green1TrainsListView.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
+                ListView temp = (ListView)Controls.Find("trainsSummaryView", true)[0];
+                temp.Items.Clear();
+                foreach (var train in TrackControllerModule.activeTrains)
+                {
+                    //temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
+                }
+            }
+            catch (Exception e)
+            {
+
             }
         }
 

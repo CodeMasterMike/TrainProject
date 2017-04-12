@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Track_Layout_UI;
+using MBO_UI;
 using TrainProject.Clock;
 using CTC;
 using TrainControllerProject;
@@ -20,22 +21,26 @@ namespace TrainProject
         int start = 0;
         CustomClock clk;
         private TrainModel trainModelWindow;
-        Office mainOffice;
+        public static Office mainOffice;
         public static TrackModelUI trackModelWindow;
         public static TrackControllerWindow trackControllerWindow;
+        public static MBO MBOWindow;
+
         public TrainSimulation()
         {
             InitializeComponent();
             clk = new CustomClock(this);
         }
 
-        private void beginButton_Click(object sender, EventArgs e)
+        public void beginButton_Click(object sender, EventArgs e)
         {
             start = 1;
             trackControllerWindow = new TrackControllerWindow();
             trackControllerWindow.Show();
             trackModelWindow = new TrackModelUI();
             trackModelWindow.Show();
+            MBOWindow = new MBO();
+            MBOWindow.Show();
             mainOffice = new Office();
             mainOffice.Show();
         }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Track_Layout_UI;
+using TrainModelProject;
+
 
 namespace TrainProject
 {
@@ -15,11 +17,12 @@ namespace TrainProject
         public static TrackController greenLineCtrl2 = new TrackController(1, "green2");
         public static TrackController redLineCtrl1 = new TrackController(2, "red1");
         public static TrackController redLineCtrl2 = new TrackController(3, "red2");
+        public static List<TrainModel> activeTrains = new List<TrainModel>();
         public static List<TrackController> activeControllers = new List<TrackController>();
 
-        public void updateSpeedAndAuthority(int trainId, Double speed, Double authority)
+        public void updateSpeedAndAuthority(int trainId, Double speed, int authority)
         {
-
+            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
         }
 
         public void dispatchNewTrain(int trainId, Double speed, Double authority)
@@ -27,14 +30,15 @@ namespace TrainProject
             //Track.dispatchTrain(Train t, Double speed, int authority)
         }
 
-        public void dispatchNewTrain(Train newTrain)
+        public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
         {
             Console.WriteLine("dispatching train!!!!!");
-            TrainSimulation.trackModelWindow.dispatchTrain(newTrain);
-            //TrackModelUI.
+            activeTrains.Add(newTrain);
+            TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
+            TrainSimulation.trackControllerWindow.updateTrains();
         }
 
-        public void updateBlockOccupancy(int blockId, Boolean occupied)
+        public static void updateBlockOccupancy(int blockId, Boolean occupied)
         {
             foreach(TrackController ctrl in activeControllers)
             {
@@ -57,6 +61,7 @@ namespace TrainProject
                             ctrl.addNewBlock(newBlock);
                             break;
                         }
+                        TrackControllerWindow.plc.runProgram(ctrl.blocks);
 
                         //after this, call monitor switches
                         ctrl.monitorSwitches();
@@ -79,9 +84,10 @@ namespace TrainProject
             }
             //find the controller who has the block + or - 1 in active blocks
             //update a new block, from that you can get direction too
+            TrainSimulation.mainOffice.updateBlockOccupancy(blockId, occupied);
         }
 
-        public int? getSwitchState(int switchId)
+        public static int? getSwitchState(int switchId)
         {
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
