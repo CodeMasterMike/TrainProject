@@ -50,11 +50,9 @@ namespace CTC
             tm_window = new TrainModel();
             tm_window.Show();
             Train train = new Train(trainCounter, sugSpeed, sugAuth);
-
             myTrainList.Add(train);
             train.currBlock = 0;
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
-
         }
 
         public void dispatchOldTrain(int trainId)
