@@ -49,7 +49,10 @@ namespace CTC
             trainCounter++;            
             tm_window = new TrainModel();
             tm_window.Show();
+            Train train = new Train(trainCounter, sugSpeed, sugAuth);
 
+            myTrainList.Add(train);
+            train.currBlock = 0;
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
 
         }
@@ -73,6 +76,8 @@ namespace CTC
             trainClick.FixedWidth = true;
             extendo.AddColumn(trainClick);
             myBlockList = new List<Block>();
+            Block yard = new TrainProject.Block(0, 1);
+            myBlockList.Add(yard);
             myTrainList = new List<Train>();
             foreach (Line line in trackLines)
             {
@@ -101,7 +106,6 @@ namespace CTC
                 item.Text = block.blockNum.ToString();
                 item.SubItems.Add("Open");
                 item.SubItems.Add("-");//occupancy
-                item.SubItems.Add("-");//crossing state
                 systemListView.Items.Add(item);
 
                 if (block.parentSwitch != null) //check if block is associated with switch
@@ -129,8 +133,10 @@ namespace CTC
                 {
                     item.SubItems.Add("-");//switch state
                 }
+
+                item.SubItems.Add("-");//crossing state
             }
-            
+
         }
 
         private Block findBlock(int blockId)
@@ -150,7 +156,7 @@ namespace CTC
             Console.WriteLine("hit sel block");
             int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) +1;
             Console.WriteLine(blockSelected);
-            Block b = myBlockList[blockSelected];
+            Block b = myBlockList[blockSelected-2];//bc index starts at zero + header row
             updateBlockLabel.Text = b.blockNum.ToString();
             Console.WriteLine(updateBlockLabel.Text);
             if (b.isOccupied == true)
@@ -185,7 +191,8 @@ namespace CTC
                     {
                         if (item.Index == (b.blockNum - 1))
                         {
-                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "Train 1" };
+                            item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                            { Text = "Train 1" };
                         }
                     }
                     b.isOccupied = true;
