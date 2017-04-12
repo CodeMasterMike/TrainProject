@@ -115,26 +115,8 @@ namespace TrainProject
                 {
                     block.isUnderground = true;
                 }
-                if(infrastructure.Contains("TO/FROM YARD"))
-                {
-                    block.isToYard = true;
-                    block.isFromYard = true;
-                }
-                else if(infrastructure.Contains("TO YARD"))
-                {
-                    block.isToYard = true;
-                    block.isFromYard = false;
-                }
-                else if (infrastructure.Contains("FROM YARD"))
-                {
-                    block.isToYard = false;
-                    block.isFromYard = true;
-                }
-                else
-                {
-                    block.isToYard = false;
-                    block.isFromYard = false;
-                }
+                block.isToYard = false;
+                block.isFromYard = false;
                 if(infrastructure.Contains("STATION"))
                 {
                     Char[] splitChars = new Char[]{';'};
@@ -244,14 +226,68 @@ namespace TrainProject
                     {
                         switches.Add(currSwitch);
                     }
+                    if (infrastructure.Contains("YARD"))
+                    {
+                        currSwitch.infrastructure = infrastructure;
+                    }
                     currBlock.parentSwitch = currSwitch;
                 }
-
             }
             reader.Close();
             con.Close();
 
             return switches;
+        }
+
+        public static void addYardBooleans(List<Block> blockList, List<Switch> switchList)
+        {
+            foreach(Switch currSwitch in switchList)
+            {
+                if(currSwitch.infrastructure != null)
+                {
+                    if(currSwitch.infrastructure.Contains("TO/FROM YARD"))
+                    {
+                        Block block1 = findBlock((int)currSwitch.targetBlockId1, blockList);
+                        Block block2 = findBlock((int)currSwitch.targetBlockId2, blockList);
+                        if(block1.nextBlockId == null && block1.prevBlockId == null)
+                        {
+                            block1.isToYard = true;
+                            block1.isFromYard = true;
+                        }
+                        else if (block2.nextBlockId == null && block2.prevBlockId == null)
+                        {
+                            block2.isToYard = true;
+                            block2.isFromYard = true;
+                        }
+                    }
+                    else if(currSwitch.infrastructure.Contains("TO YARD"))
+                    {
+                        Block block1 = findBlock((int)currSwitch.targetBlockId1, blockList);
+                        Block block2 = findBlock((int)currSwitch.targetBlockId2, blockList);
+                        if (block1.nextBlockId == null && block1.prevBlockId == null)
+                        {
+                            block1.isToYard = true;
+                        }
+                        else if (block2.nextBlockId == null && block2.prevBlockId == null)
+                        {
+                            block2.isToYard = true;
+                        }
+                    }
+                    else if (currSwitch.infrastructure.Contains("FROM YARD"))
+                    {
+                        Block block1 = findBlock((int)currSwitch.targetBlockId1, blockList);
+                        Block block2 = findBlock((int)currSwitch.targetBlockId2, blockList);
+                        if (block1.nextBlockId == null && block1.prevBlockId == null)
+                        {
+                            block1.isFromYard = true;
+                        }
+                        else if (block2.nextBlockId == null && block2.prevBlockId == null)
+                        {
+                            block2.isFromYard = true;
+                        }
+                    }
+                }
+            }
         }
 
         //uses blocks in Line/Section/Block format

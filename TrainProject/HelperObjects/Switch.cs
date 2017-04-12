@@ -12,10 +12,14 @@ namespace TrainProject
         public int? sourceBlockId { get; set; }
         public int? targetBlockId1 { get; set; }
         public int? targetBlockId2 { get; set; }
+        public int? sourceBlockId_end { get; set; }
+        public int? targetBlockId1_end { get; set; }
+        public int? targetBlockId2_end { get; set; }
         public int? currentState { get; set; }
         public bool sourceLight { get; set; }
         public bool t1Light { get; set; }
         public bool t2Light { get; set; }
+        public String infrastructure { get; set; }
 
         public Switch(int s, int? sb, int? t1, int? t2)
         {
