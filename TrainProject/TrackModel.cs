@@ -63,7 +63,7 @@ namespace Track_Layout_UI
             {
                 testLineList = DatabaseInterface.loadLinesFromDB(con);
             }
-            if(testLineList.Count > 0)
+            if(testLineList.Count > 1)
             {
                 loadClassesFromDB();
             }
@@ -348,11 +348,15 @@ namespace Track_Layout_UI
         }
         private void insertLineIntoDB(SqlConnection con, ExcelFileLayout line)
         {
+            //SqlTransaction transaction;
+            //transaction = con.BeginTransaction("LineTransaction");
             SqlCommand cmd = new SqlCommand("INSERT INTO Lines (Name) VALUES (@Name)");
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
+            //cmd.Transaction = transaction;
             cmd.Parameters.AddWithValue("@Name", line.Line);
             cmd.ExecuteNonQuery();
+            //transaction.Commit();
         }
         private void insertSectionIntoDB(SqlConnection con, ExcelFileLayout section) //assumes associated line is already in DB
         {
@@ -363,14 +367,18 @@ namespace Track_Layout_UI
             SqlDataReader reader = read.ExecuteReader();
             if (reader.Read())
             {
+                //SqlTransaction transaction;
+                //transaction = con.BeginTransaction("SectionTransaction");
                 SqlCommand cmd = new SqlCommand("INSERT INTO Sections (Name, LineId) VALUES (@Name, @LineId)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
+                //cmd.Transaction = transaction;
                 cmd.Parameters.AddWithValue("@Name", section.Section);
                 int lineId = reader.GetInt32(0);
                 cmd.Parameters.AddWithValue("@LineId", lineId);
                 reader.Close();
                 cmd.ExecuteNonQuery();
+                //transaction.Commit();
             }
             else
                 Console.WriteLine("Associated line not found for section.");
@@ -385,9 +393,12 @@ namespace Track_Layout_UI
             SqlDataReader reader = read.ExecuteReader();
             if (reader.Read())
             {
+                //SqlTransaction transaction;
+                //transaction = con.BeginTransaction("BlockTransaction");
                 SqlCommand cmd = new SqlCommand("INSERT INTO Blocks (BlockNumber, SectionId, Length, Grade, Elevation, CumulativeElevation, SpeedLimit, Infrastructure, SwitchBlock, ArrowDirection) VALUES (@BlockNumber, @SectionId, @Length, @Grade, @Elevation, @CumulativeElevation, @SpeedLimit, @Infrastructure, @SwitchBlock, @ArrowDirection)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
+                //cmd.Transaction = transaction;
                 cmd.Parameters.AddWithValue("@BlockNumber", block.BlockNumber);
                 int sectionId = reader.GetInt32(0);
                 cmd.Parameters.AddWithValue("@SectionId", sectionId);
@@ -401,6 +412,7 @@ namespace Track_Layout_UI
                 cmd.Parameters.AddWithValue("@ArrowDirection", block.ArrowDirection);
                 reader.Close();
                 cmd.ExecuteNonQuery();
+                //transaction.Commit();
             }
             else
                 Console.WriteLine("Associated section not found for block.");
