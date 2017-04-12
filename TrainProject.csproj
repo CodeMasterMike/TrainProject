@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2211E227-F083-42FD-B84A-6FD4F407CA21}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrainProject</RootNamespace>
+    <AssemblyName>TrainProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DatabaseInterface.cs" />
+    <Compile Include="HelperObjects\Block.cs" />
+    <Compile Include="HelperObjects\Station.cs" />
+    <Compile Include="HelperObjects\ExcelFileLayout.cs" />
+    <Compile Include="HelperObjects\Line.cs" />
+    <Compile Include="HelperObjects\Section.cs" />
+    <Compile Include="HelperObjects\Crossing.cs" />
+    <Compile Include="HelperObjects\SmallBlock.cs" />
+    <Compile Include="HelperObjects\Train.cs" />
+    <Compile Include="HelperObjects\Switch.cs" />
+    <Compile Include="ListViewExtender.cs" />
+    <Compile Include="HelperObjects\PowerController.cs" />
+    <Compile Include="Office.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Office.designer.cs">
+      <DependentUpon>Office.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLCProgram.cs" />
+    <Compile Include="TrackController.cs" />
+    <Compile Include="TrackControllerModule.cs" />
+    <Compile Include="Clock\Clock.cs" />
+    <Compile Include="Homepage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Homepage.designer.cs">
+      <DependentUpon>Homepage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackControllerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrackControllerWindow.Designer.cs">
+      <DependentUpon>TrackControllerWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackDBDataSet.cs">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TrackDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TrackModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrackModel.designer.cs">
+      <DependentUpon>TrackModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrainModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainModel.Designer.cs">
+      <DependentUpon>TrainModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrainController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainController.designer.cs">
+      <DependentUpon>TrainController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackControllerTest.cs" />
+    <Compile Include="TrainSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainSimulation.Designer.cs">
+      <DependentUpon>TrainSimulation.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Homepage.resx">
+      <DependentUpon>Homepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Office.resx">
+      <DependentUpon>Office.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TrackControllerWindow.resx">
+      <DependentUpon>TrackControllerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrackModel.resx">
+      <DependentUpon>TrackModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainModel.resx">
+      <DependentUpon>TrainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainController.resx">
+      <DependentUpon>TrainController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainSimulation.resx">
+      <DependentUpon>TrainSimulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="TrackDBDataSet.xsc">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TrackDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TrackDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TrackDBDataSet.xss">
+      <DependentUpon>TrackDBDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TrackDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TrackDB_log.ldf">
+      <DependentUpon>TrackDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Track_Layout.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TrainController\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
