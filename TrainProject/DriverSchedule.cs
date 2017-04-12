@@ -12,6 +12,7 @@ namespace TrainProject
 {
     public class DriverSchedule
     {
+        int shift;
 
         public DriverSchedule()
         {
@@ -23,6 +24,9 @@ namespace TrainProject
                 return;
             }
 
+            MessageBox.Show("Please wait while the schedule is being generated...");
+
+
 
             Excel.Workbook schedulesWorkbook;
             Excel.Worksheet schedulesWorksheet;
@@ -32,49 +36,107 @@ namespace TrainProject
             schedulesWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
 
             schedulesWorksheet.Cells[1, 1] = "Driver ID";
+
+
+
+            int z = 8;
+            for (int i = 1; i < z; i++)
+            {
+
+                schedulesWorksheet.Cells[(i+1), 1] = "" + i + "";
+
+
+                shift = 0;
+
+                //Main drivers of a train
+                if (i % 2 == 1)
+                {
+                    
+
+                    for (int j = 2; j < 25; j++)
+                    {
+
+
+                        schedulesWorksheet.Cells[(i + 1), j] = "Drive";
+
+                        if (shift == 8 || shift == 9)
+                            schedulesWorksheet.Cells[(i + 1), j] = "Lunch";
+
+                        if (shift == 10)
+                            schedulesWorksheet.Cells[(i + 1), j] = "Break";
+
+                        if (shift == 18)
+                        {
+                            schedulesWorksheet.Cells[(i + 1), j] = "Clock out";
+                            break;
+                        }
+
+                        shift++;
+                    }
+                }
+
+                //secondary drivers of same train
+                if (i % 2 == 0)
+                {
+                    for (int j = 2; j < 25; j++)
+                    {
+
+
+                        schedulesWorksheet.Cells[(i + 1), j] = "";
+
+                        if (shift == 8 || shift == 9)
+                            schedulesWorksheet.Cells[(i + 1), j] = "Drive";
+
+                        if (shift == 10)
+                            schedulesWorksheet.Cells[(i + 1), j] = "Drive";
+
+                        if(shift > 10 && shift <= 17)
+                        {
+                            schedulesWorksheet.Cells[(i + 1), j] = "Break";
+                        }
+
+                        if (shift > 17 && shift < 22)
+                        {
+                            schedulesWorksheet.Cells[(i + 1), j] = "Drive";
+
+                        }
+
+                        if (shift == 22)
+                        {
+                            schedulesWorksheet.Cells[(i + 1), j] = "Clock out";
+                            break;
+                        }
+
+                        
+
+                        shift++;
+                    }
+                }
+            }
             //schedulesWorksheet.Cells[1, 2] = "Name";
-            schedulesWorksheet.Cells[2, 1] = "1";
-            schedulesWorksheet.Cells[2, 2] = "Drive";
-            schedulesWorksheet.Cells[2, 3] = "Drive";
-            schedulesWorksheet.Cells[2, 4] = "Drive";
-            schedulesWorksheet.Cells[2, 5] = "Drive";
-            schedulesWorksheet.Cells[2, 6] = "Drive";
-            schedulesWorksheet.Cells[2, 7] = "Drive";
-            schedulesWorksheet.Cells[2, 8] = "Drive";
-            schedulesWorksheet.Cells[2, 9] = "Drive";
-            schedulesWorksheet.Cells[2, 10] = "Break";
-            schedulesWorksheet.Cells[2, 11] = "Lunch";
-            schedulesWorksheet.Cells[2, 12] = "Lunch";
-            schedulesWorksheet.Cells[2, 13] = "Drive";
-            schedulesWorksheet.Cells[2, 14] = "Drive";
-            schedulesWorksheet.Cells[2, 15] = "Drive";
-            schedulesWorksheet.Cells[2, 16] = "Drive";
-            schedulesWorksheet.Cells[2, 17] = "Drive";
-            schedulesWorksheet.Cells[2, 18] = "Drive";
-            schedulesWorksheet.Cells[2, 19] = "Clock Out";
+
+            //schedulesWorksheet.Cells[2, 1] = "1";
+            //schedulesWorksheet.Cells[2, 2] = "Drive";
+            //schedulesWorksheet.Cells[2, 3] = "Drive";
+            //schedulesWorksheet.Cells[2, 4] = "Drive";
+            //schedulesWorksheet.Cells[2, 5] = "Drive";
+            //schedulesWorksheet.Cells[2, 6] = "Drive";
+            //schedulesWorksheet.Cells[2, 7] = "Drive";
+            //schedulesWorksheet.Cells[2, 8] = "Drive";
+            //schedulesWorksheet.Cells[2, 9] = "Drive";
+            //schedulesWorksheet.Cells[2, 10] = "Break";
+            //schedulesWorksheet.Cells[2, 11] = "Lunch";
+            //schedulesWorksheet.Cells[2, 12] = "Lunch";
+            //schedulesWorksheet.Cells[2, 13] = "Drive";
+            //schedulesWorksheet.Cells[2, 14] = "Drive";
+            //schedulesWorksheet.Cells[2, 15] = "Drive";
+            //schedulesWorksheet.Cells[2, 16] = "Drive";
+            //schedulesWorksheet.Cells[2, 17] = "Drive";
+            //schedulesWorksheet.Cells[2, 18] = "Drive";
+            //schedulesWorksheet.Cells[2, 19] = "Clock Out";
 
 
 
-            schedulesWorksheet.Cells[3, 1] = "2";
-            schedulesWorksheet.Cells[3, 10] = "Drive";
-            schedulesWorksheet.Cells[3, 11] = "Drive";
-            schedulesWorksheet.Cells[3, 12] = "Drive";
-            schedulesWorksheet.Cells[3, 13] = "Lunch";
-            schedulesWorksheet.Cells[3, 14] = "Lunch";
-            schedulesWorksheet.Cells[3, 15] = "Break";
-            schedulesWorksheet.Cells[3, 16] = "Break";
-            schedulesWorksheet.Cells[3, 17] = "Break";
-            schedulesWorksheet.Cells[3, 18] = "Break";
-            schedulesWorksheet.Cells[3, 19] = "Drive";
-            schedulesWorksheet.Cells[3, 20] = "Drive";
-            schedulesWorksheet.Cells[3, 21] = "Drive";
-            schedulesWorksheet.Cells[3, 22] = "Drive";
-            schedulesWorksheet.Cells[3, 23] = "Drive";
-            schedulesWorksheet.Cells[3, 20] = "Drive";
-            schedulesWorksheet.Cells[3, 21] = "Drive";
-            schedulesWorksheet.Cells[3, 22] = "Drive";
-            schedulesWorksheet.Cells[3, 23] = "Drive";
-            schedulesWorksheet.Cells[3, 24] = "Drive";
 
 
             schedulesWorksheet.Cells[1, 2] = "8:00";

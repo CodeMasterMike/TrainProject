@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using TrainModelProject;
 
 namespace MBO_UI
 {
@@ -36,6 +37,7 @@ namespace MBO_UI
         public int SuggestedSpeed;
         public int lineId;
 
+        public TrainModel TM;
         public DriverSchedule driverSchedule;
 
         public MBO()
@@ -234,6 +236,10 @@ namespace MBO_UI
 
         public void getPos()
         {
+            //TM = new TrainModel();
+            //int test = TM.getTrainTest();
+            //MessageBox.Show("TrainID testing value set from TrainController is " + test); 
+
             MessageBox.Show("Position and speed received.");
         }
 

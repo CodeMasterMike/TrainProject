@@ -51,7 +51,7 @@ namespace TrainModelProject
         double p;
         double sugSpeed;
         int sugAuthority;
-
+        int trainTestId = 0;
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
@@ -64,7 +64,7 @@ namespace TrainModelProject
             TC = new TrainController(this);
             TC.Show();
 
-           
+            
             double block_length = 0;
             double train_distance = 0;
 
@@ -74,7 +74,18 @@ namespace TrainModelProject
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
- 
+        public void setTrainTest(int test)
+        {
+            trainTestId = test;
+        }
+
+        public int getTrainTest()
+        {
+            return trainTestId;
+        }
+
+
+
         public void updateTime(String time)
         {
             if (start == 0) return;

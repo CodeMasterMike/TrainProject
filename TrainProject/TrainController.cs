@@ -65,6 +65,7 @@ namespace TrainControllerProject
         bool simulate = false;
         bool approachingStation = false;
         bool authorityChanged = false;
+
         PowerController powerController;
         TrainModel TM;
 
@@ -78,7 +79,8 @@ namespace TrainControllerProject
             
             InitializeComponent();
             TM = t;
-            
+
+            t.setTrainTest(69);
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
             tempTestTextBox.Enabled = false;
@@ -652,6 +654,11 @@ namespace TrainControllerProject
             //serviceOverride = true;
             //setSpeedTrackBar.Value = 0;
             //setSpeedLabel.Text = "0MPH";
+        }
+
+        private void TrainController_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
