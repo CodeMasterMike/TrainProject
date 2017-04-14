@@ -391,6 +391,7 @@ namespace TrainProject
                 {
                     redLineCtrl2.addNewSwitch(s);
                 }
+                TrackControllerWindow.plc.addSwitch(s);
             }
             return true;
         }

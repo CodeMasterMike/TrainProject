@@ -20,6 +20,11 @@ namespace TrainProject
             closedBlocks = new List<Block>();
         }
 
+        public void addNewSwitch(Switch s)
+        {
+
+        }
+
         //id is switch id
         //which branch determines whether source, t1, or t2 is to be gotten
         public int? getSwitchDirection(int id, int whichBranch)
