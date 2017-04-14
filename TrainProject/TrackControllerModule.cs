@@ -93,13 +93,12 @@ namespace TrainProject
             Boolean found = false;
             foreach(TrackController ctrl in activeControllers)
             {
-                //new block occupied
-                if (occupied && !found)
+                //block hasnt been found yet
+                if (!found)
                 {
                     Block newBlock;
                     foreach (Block b in ctrl.getBlocks())
                     {
-                        //need better way of determining direction
                         if (b.blockId == blockId + 1)
                         {
                             newBlock = new Block(blockId, 1);
@@ -112,9 +111,12 @@ namespace TrainProject
                             ctrl.addNewBlock(newBlock);
                             found = true;
                         }
-
-                        if (found)
-                        { 
+                    }
+                    if (found && occupied)
+                    {
+                        foreach (Block b in ctrl.getBlocks())
+                        {
+                            //need better way of determining direction
                             //check if block is within range
                             foreach (Switch s in ctrl.getSwitches())
                             {
@@ -284,26 +286,41 @@ namespace TrainProject
                                 //should also determine lights too
                                 TrackControllerWindow.plc.determineSwitchState(s.switchId, sourceState, target1State, target2State);
                             }
-                        }
-                        else if (!found)
-                        {
-                            //can check on the block
+                            foreach (Crossing c in ctrl.getCrossings())
+                            {
+                                if (c.blockId == blockId)
+                                {
+                                    c.activated = true;
+                                }
+                            }
                         }
                     }
                     //block wasnt found in system, possible coming from yard
-                }
-                //block unoccupied
-                else if (!found)
-                {
-                    foreach (Block b in ctrl.getBlocks())
+                    else if (!found && occupied)
                     {
-                        if (b.blockId == blockId)
-                        {
-                            ctrl.blocks.Remove(b);
-                            found = true;
-                        }
+                        //can check on the block
                     }
-                    //remove block from ctrl
+
+                    //block unoccupied
+                    else if (!occupied && found)
+                    {
+                        foreach (Block b in ctrl.getBlocks())
+                        {
+                            if (b.blockId == blockId)
+                            {
+                                ctrl.blocks.Remove(b);
+                                found = true;
+                            }
+                        }
+                        foreach (Crossing c in ctrl.getCrossings())
+                        {
+                            if (c.blockId == blockId)
+                            {
+                                c.activated = false;
+                            }
+                        }
+                        //remove block from ctrl
+                    }
                 }
             }
             //find the controller who has the block + or - 1 in active blocks

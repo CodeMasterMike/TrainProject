@@ -179,7 +179,7 @@ namespace TrainProject
                 temp.Items.Clear();
                 foreach (var train in TrackControllerModule.activeTrains)
                 {
-                    //temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
+                    temp.Items.Add(new ListViewItem(new[] { train.getTrainId().ToString(), train.getCurrBlock().ToString(), train.getCurrSpeed().ToString(), train.getTC().getRemainingAuthority().ToString() }));
                 }
             }
             catch (Exception e)
