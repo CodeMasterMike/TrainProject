@@ -180,3 +180,4 @@ C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Map.resources

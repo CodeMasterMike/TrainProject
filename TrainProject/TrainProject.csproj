@@ -65,6 +65,7 @@
     <Compile Include="DriverSchedule.cs" />
     <Compile Include="DatabaseInterface.cs" />
     <Compile Include="HelperObjects\Block.cs" />
+    <Compile Include="HelperObjects\Pair.cs" />
     <Compile Include="HelperObjects\SwitchBeacon.cs" />
     <Compile Include="HelperObjects\StationBeacon.cs" />
     <Compile Include="HelperObjects\BlockTracker.cs" />
@@ -77,6 +78,12 @@
     <Compile Include="HelperObjects\Train.cs" />
     <Compile Include="HelperObjects\Switch.cs" />
     <Compile Include="ListViewExtender.cs" />
+    <Compile Include="Map.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map.Designer.cs">
+      <DependentUpon>Map.cs</DependentUpon>
+    </Compile>
     <Compile Include="MBO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +137,9 @@
     </Compile>
     <Compile Include="TrackControllerTest.cs" />
     <Compile Include="TrainSchedule.cs" />
+    <EmbeddedResource Include="Map.resx">
+      <DependentUpon>Map.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MBO.resx">
       <DependentUpon>MBO.cs</DependentUpon>
     </EmbeddedResource>

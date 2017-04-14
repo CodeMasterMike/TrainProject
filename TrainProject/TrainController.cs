@@ -11,6 +11,7 @@ using TrainProject;
 using TrainModelProject;
 using TrainProject.HelperObjects;
 using System.IO;
+using System.Media;
 
 namespace TrainControllerProject
 {
@@ -36,6 +37,7 @@ namespace TrainControllerProject
         int mode = 1; //manual = 0 automatic  = 1
         int currentBlockID;
         int speedLimit;
+        int blockNum;
         bool prevToNext = true;
         int wait = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
@@ -67,7 +69,9 @@ namespace TrainControllerProject
         bool authorityChanged = false;
         PowerController powerController;
         TrainModel TM;
+        Map map;
 
+        //private SpeechSynthesizer speaker;
       
         
         //initialize labels and controls
@@ -78,7 +82,7 @@ namespace TrainControllerProject
             
             InitializeComponent();
             TM = t;
-            
+            //speaker = new SpeechSynthesizer();
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
             tempTestTextBox.Enabled = false;
@@ -93,14 +97,15 @@ namespace TrainControllerProject
             Left_Closed.Enabled = false;
             Left_Open.Enabled = false;
             serviceButton.Enabled = false;
-
+            map = new Map();
+            map.Show();
 
         }
         //every time interval update all of the displays and internal variables, set calculations for real time
         public void updateTime(String time)
         {
             setTimeLabel(time);
-            
+            Invoke(new MethodInvoker(delegate { map.updateBlock(currentBlock.blockNum); }));
             speedLimit = currentBlock.speedLimit;
             speedLimitms = speedLimit / 3.6;
            
@@ -145,7 +150,7 @@ namespace TrainControllerProject
             ctcAuthorityLabel.Text = authority.ToString() + " blocks";
             trainTempLabel.Text = (temp.ToString()) + "F";
             blockIDLabel.Text = currentBlock.blockNum.ToString();
-            blockSpeedLimitLabel.Text = speedLimit.ToString();
+            blockSpeedLimitLabel.Text = (speedLimit * 0.621371).ToString("#.##") + "MPH";
             //blockSpeedLimitLabel.Text = minStopDistanceAuthority.ToString();
             //tunnelStatusLabel.Text = distanceToAuthority.ToString();
             distanceLeftLabel.Text = distanceLeft.ToString("#.##");
@@ -217,6 +222,10 @@ namespace TrainControllerProject
             stationName = n;
             stationPrevToNext = pn;
             approachingStation = true;
+        }
+        public void sendSwitchBeaconInfo(int b)
+        {
+            blockNum = b;
         }
         public void updateCurrentSpeed(double s)
         {
@@ -441,7 +450,7 @@ namespace TrainControllerProject
                 nextBlock = blockTracker.getNextBlock(currentBlock.blockNum);
                 if (nextBlock == null)
                 {
-                    currentBlock = blockTracker.getNextBlock(readBeacon());
+                    currentBlock = blockTracker.getBlock(blockNum);
                     distanceLeft = currentBlock.length - p;
                 }
                 else

@@ -394,7 +394,7 @@
             // 
             this.blockSpeedLimitLabel.AutoSize = true;
             this.blockSpeedLimitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockSpeedLimitLabel.Location = new System.Drawing.Point(253, 41);
+            this.blockSpeedLimitLabel.Location = new System.Drawing.Point(253, 44);
             this.blockSpeedLimitLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blockSpeedLimitLabel.Name = "blockSpeedLimitLabel";
             this.blockSpeedLimitLabel.Size = new System.Drawing.Size(21, 29);

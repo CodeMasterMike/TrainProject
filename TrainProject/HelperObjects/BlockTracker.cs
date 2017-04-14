@@ -68,7 +68,7 @@ namespace TrainProject.HelperObjects
                 }
             }
         }
-        private Block getBlock(int blockID)
+        public Block getBlock(int blockID)
         {
             foreach (Block block in blocks)
             {
@@ -130,7 +130,7 @@ namespace TrainProject.HelperObjects
                 }
             }
         }
-        private int getDataBaseID(int i)
+        public int getDataBaseID(int i)
         {
             foreach(Block block in blocks)
             {

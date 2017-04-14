@@ -112,9 +112,12 @@ namespace TrainModelProject
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
-
+                
                 prev_block = current_block;
                 current_block = next_block;
+                int number = 0;
+                if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
+                TC.sendSwitchBeaconInfo(number);
                 block_distance = current_block.length - p;
                 if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
