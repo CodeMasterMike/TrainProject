@@ -106,11 +106,13 @@ namespace TrainProject
                 decimal cumulativeElevation = reader.GetDecimal(6);
                 int speedLimit = reader.GetInt32(7);
                 String infrastructure = reader.GetString(8);
+                String arrowDirection = reader.GetString(10);
 
                 Block block = new Block(blockId, blockNumber, sectionId, length, grade, elevation, cumulativeElevation, speedLimit, false);
                 block.prevBlockId = null;
                 block.nextBlockId = null;
                 block.isUnderground = false;
+                block.arrowDirection = arrowDirection;
                 if(infrastructure.Contains("UNDERGROUND"))
                 {
                     block.isUnderground = true;
@@ -313,6 +315,93 @@ namespace TrainProject
                 }
             }
         }
+
+        /*public static void updateBlockDirection(List<Line> lineList)
+        {
+            foreach (Line line in lineList)
+            {
+                foreach (Section section in line.sections)
+                {
+                    Block firstBlock = section.blocks.First();
+                    Block lastBlock = section.blocks.Last();
+                    bool isBidirectional;
+                    bool? forcePrevToNext = null;
+
+                    if(firstBlock.blockId != lastBlock.blockId) //if >1 blocks in section
+                    {
+                        if(firstBlock.arrowDirection.Equals("Head") && lastBlock.arrowDirection.Equals("Head"))
+                        {
+                            isBidirectional = true;
+                        }
+                        else //"Tail" and "Head"
+                        {
+                            isBidirectional = false;
+                            bool firstToLast;
+                            bool prevToNext;
+                            if(firstBlock.arrowDirection.Equals("Tail"))
+                            {
+                                firstToLast = true;
+                            }
+                            else
+                            {
+                                firstToLast = false;
+                            }
+                            if(firstBlock.prevBlockId == null)
+                            {
+                                prevToNext = true;
+                            }
+                            else if(firstBlock.nextBlockId == null)
+                            {
+                                prevToNext = false;
+                            }
+                            else if(lastBlock.prevBlockId == null)
+                            {
+                                prevToNext = false;
+                            }
+                            else if (lastBlock.nextBlockId == null)
+                            {
+                                prevToNext = true;
+                            }
+                            else
+                            {
+                                if(findBlock((int)firstBlock.nextBlockId,section.blocks) != null)
+                                {
+                                    prevToNext = true;
+                                }
+                                else
+                                {
+                                    prevToNext = false;
+                                }
+                            }
+                            if(prevToNext == firstToLast)
+                            {
+                                forcePrevToNext = true;
+                            }
+                            else
+                            {
+                                forcePrevToNext = false;
+                            }
+                        }
+                    }
+                    else //need to account for yard blocks
+                    {
+                        if(firstBlock.arrowDirection.Equals("Head/Head"))
+                        {
+                            isBidirectional = true;
+                        }
+                        else //"Tail/Head"
+                        {
+                            isBidirectional = false;
+                        }
+                    }
+                    foreach(Block block in section.blocks)
+                    {
+                        block.bidirectional = isBidirectional;
+                        block.forcePreviousToNext = forcePrevToNext;
+                    }
+                }
+            }
+        }*/
 
         private static Block findBlock(int blockId, List<Block> blockList)
         {

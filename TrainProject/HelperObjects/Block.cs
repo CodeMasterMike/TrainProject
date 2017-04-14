@@ -29,7 +29,9 @@ namespace TrainProject
         public int? prevBlockId { get; set; }
         public int? nextBlockId { get; set; }
         public Boolean bidirectional { get; set; }
-        
+        public String arrowDirection { get; set; }
+        public Boolean? forcePreviousToNext { get; set; }
+
         //these boolean properties keep track of state of block 
         private Boolean broken { get; set; }
         private Boolean occupied { get; set; }
