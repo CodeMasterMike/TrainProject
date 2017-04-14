@@ -69,7 +69,7 @@ namespace TrainProject
             }
         }
 
-        public void causeFailure(int blockId)
+        public static void causeFailure(int blockId)
         {
 
         }
