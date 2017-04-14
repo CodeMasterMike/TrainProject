@@ -319,12 +319,76 @@ namespace MBO_UI
 
         private void passengerMovement()
         {
-            MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me.");
+            //MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me.");
+
+
+            //string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
+            string input = "";
+            String result = ShowInputDialog(ref input);
+            MessageBox.Show(result);
+
+            MessageBox.Show("Today is " + dateTimePicker1.Value.Date);
+            MessageBox.Show("the time is " + dateTimePicker1.Value.Date.ToShortTimeString());
+
+            //How to Parse strings to time
+            //String timeString = "1:00 am";
+            //TimeSpan chosenTime = TimeSpan.Parse(timeString);
+
+            //MessageBox.Show("Time parsed is " + chosenTime + "");
+
+            //This is how i will add time
+            TimeSpan time = new TimeSpan(0, 13, 0, 0);
+
+            MessageBox.Show("Time chosen is " + time + "");
+
+            TimeSpan addTime = new TimeSpan(0, 0, 30, 0);
+
+            time = time.Add(addTime);
+            
+            MessageBox.Show("Added time to chosen time is " + time);
+
         }
 
 
+        private static string ShowInputDialog(ref string input)
+        {
+            System.Drawing.Size size = new System.Drawing.Size(200, 70);
+            Form inputBox = new Form();
 
+            inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            inputBox.ClientSize = size;
+            inputBox.Text = "Name";
 
+            System.Windows.Forms.TextBox textBox = new TextBox();
+            textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
+            textBox.Location = new System.Drawing.Point(5, 5);
+            textBox.Text = input;
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button();
+            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(75, 23);
+            okButton.Text = "&OK";
+            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+            inputBox.Controls.Add(okButton);
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Text = "&Cancel";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+            inputBox.Controls.Add(cancelButton);
+
+            inputBox.AcceptButton = okButton;
+            inputBox.CancelButton = cancelButton;
+
+            DialogResult result = inputBox.ShowDialog();
+            input = textBox.Text;
+            return input;
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

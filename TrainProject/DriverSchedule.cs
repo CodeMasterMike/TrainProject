@@ -13,6 +13,13 @@ namespace TrainProject
     public class DriverSchedule
     {
         int shift;
+        int timeStart;
+        int timeEnd;
+        enum days { fri, sat};
+        //enum Hours {(3:00),3:30,4:00,4:30,5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,1:00,1:30,2:00,2:30,3:00,3:30,4:00,4:30,5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,1:00};
+        //enum Hours {3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        //enum fuckyou { 1:00 pm, 2:00 pm , 3:00 pm};
+
 
         public DriverSchedule()
         {
@@ -23,6 +30,17 @@ namespace TrainProject
                 MessageBox.Show("Excel is not properly installed!!");
                 return;
             }
+
+            String input = "Please enter train station opening time";
+            int timeStart = ShowInputDialog(ref input);
+            MessageBox.Show("You chose " + timeStart + " o'clock");
+            input = "Please enter train station closing time";
+            int timeEnd = ShowInputDialog(ref input);
+            MessageBox.Show("You chose " + timeEnd + " o'clock");
+
+            //DateTime date1 = new DateTime(2017, 4, 20);
+
+
 
             MessageBox.Show("Please wait while the schedule is being generated...");
 
@@ -203,6 +221,45 @@ namespace TrainProject
             System.Diagnostics.Process.Start(@"C:\\Users\\Public\\DriverSchedule.xls");
         }
 
+        private static int ShowInputDialog(ref string input)
+        {
+            System.Drawing.Size size = new System.Drawing.Size(200, 70);
+            Form inputBox = new Form();
+
+            inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            inputBox.ClientSize = size;
+            inputBox.Text = "Name";
+
+            System.Windows.Forms.TextBox textBox = new TextBox();
+            textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
+            textBox.Location = new System.Drawing.Point(5, 5);
+            textBox.Text = input;
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button();
+            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(75, 23);
+            okButton.Text = "&OK";
+            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+            inputBox.Controls.Add(okButton);
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Text = "&Cancel";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+            inputBox.Controls.Add(cancelButton);
+
+            inputBox.AcceptButton = okButton;
+            inputBox.CancelButton = cancelButton;
+
+            DialogResult result = inputBox.ShowDialog();
+            int value = Convert.ToInt32(textBox.Text);
+            return value;
+
+        }
     }
 
 
