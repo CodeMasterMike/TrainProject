@@ -323,29 +323,37 @@ namespace MBO_UI
 
 
             //string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
-            string input = "";
+            string input = "Choose a starting time";
             String result = ShowInputDialog(ref input);
-            MessageBox.Show(result);
+            //MessageBox.Show(result);
 
-            MessageBox.Show("Today is " + dateTimePicker1.Value.Date);
-            MessageBox.Show("the time is " + dateTimePicker1.Value.Date.ToShortTimeString());
+            int startTime = Convert.ToInt32(result);
+           // MessageBox.Show("Today is " + dateTimePicker1.Value.Date);
+            //MessageBox.Show("the time is " + dateTimePicker1.Value.Date.ToShortTimeString());
 
             //How to Parse strings to time
             //String timeString = "1:00 am";
             //TimeSpan chosenTime = TimeSpan.Parse(timeString);
 
+
+
             //MessageBox.Show("Time parsed is " + chosenTime + "");
 
             //This is how i will add time
-            TimeSpan time = new TimeSpan(0, 13, 0, 0);
-
-            MessageBox.Show("Time chosen is " + time + "");
+            //TimeSpan time = new TimeSpan(13, 0, 0);
+            TimeSpan timespan = new TimeSpan(startTime, 0, 0);
+            DateTime time = DateTime.Today.Add(timespan);
+            MessageBox.Show("Time chosen is " + time.ToString("hh:mm tt") + "");
 
             TimeSpan addTime = new TimeSpan(0, 0, 30, 0);
 
             time = time.Add(addTime);
             
             MessageBox.Show("Added time to chosen time is " + time);
+
+            input = "Choose a closing time";
+            result = ShowInputDialog(ref input);
+            int closeTime = Convert.ToInt32(result);
 
         }
 
