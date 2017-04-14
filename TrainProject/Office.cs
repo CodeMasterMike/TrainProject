@@ -47,7 +47,7 @@ namespace CTC
         public void dispatchNewTrain()
         {
             trainCounter++;            
-            tm_window = new TrainModel();
+            tm_window = new TrainModel(trainCounter);
             tm_window.Show();
 
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
