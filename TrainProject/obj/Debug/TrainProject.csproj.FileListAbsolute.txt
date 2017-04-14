@@ -125,7 +125,6 @@ C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\bin\Debug\TrackDB_l
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\bin\Debug\TrainProject.exe
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
-C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.Homepage.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainModelProject.TrainModel.resources
@@ -178,5 +177,7 @@ C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj
 C:\Users\pvn03\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
+C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
