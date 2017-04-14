@@ -57,7 +57,7 @@ namespace Track_Layout_UI
         public TrackModelUI()
         {
             InitializeComponent();
-            List<Line> testLineList;
+            /*List<Line> testLineList;
             string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(str))
             {
@@ -66,7 +66,7 @@ namespace Track_Layout_UI
             if(testLineList.Count > 1)
             {
                 loadClassesFromDB();
-            }
+            }*/
         }
         private void parseSwitchEnds()
         {
@@ -145,7 +145,7 @@ namespace Track_Layout_UI
             return null;
         }
 
-        public Block findYardBlock(int blockId, int lineId)
+        public Block findYardBlock(int blockId, int lineId) //TODO actually use this
         {
             foreach (Line line in lineList)
             {
@@ -710,7 +710,8 @@ namespace Track_Layout_UI
                     blockSpeedLimitTextBox.Text = selectedBlock.speedLimit.ToString();
                     blockStationTextBox.Text = "X";
                     if (selectedBlock.station != null)
-                        blockPersonsUnloadingTextBox.Text = selectedBlock.station.name;
+                        blockStationTextBox.Text = selectedBlock.station.name;
+                    blockPersonsUnloadingTextBox.Text = "0"; //TODO
                     blockTemperatureTextBox.Text = "69"; //TODO
                     blockHeaterStatusTextBox.Text = "Off"; //TODO
                     blockIsUndergroundTextBox.Text = "NO";
@@ -728,8 +729,75 @@ namespace Track_Layout_UI
                     blockArrowDirectionTextBox.Text = "<-->"; //TODO
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
+                    updateFailureButtons();
                 }
             }
+        }
+
+        private void updateFailureButtons()
+        {
+            if(selectedBlock.isCircuitBroken)
+            {
+                railStatus.Text = "Rail - FAIL";
+                railStatus.BackColor = Color.Red;
+            }
+            else
+            {
+                railStatus.Text = "Rail - OK";
+                railStatus.BackColor = Color.Lime;
+            }
+            if (selectedBlock.isCircuitBroken)
+            {
+                trackCircuitStatus.Text = "Track Circuit - FAIL";
+                trackCircuitStatus.BackColor = Color.Red;
+            }
+            else
+            {
+                trackCircuitStatus.Text = "Track Circuit - OK";
+                trackCircuitStatus.BackColor = Color.Lime;
+            }
+            if (selectedBlock.isCircuitBroken)
+            {
+                powerStatus.Text = "Power - FAIL";
+                powerStatus.BackColor = Color.Red;
+            }
+            else
+            {
+                powerStatus.Text = "Power - OK";
+                powerStatus.BackColor = Color.Lime;
+            }
+        }
+
+        public void fixBlock(int blockId)
+        {
+            Block currBlock = findBlock(blockId);
+            currBlock.isCircuitBroken = false;
+            currBlock.isPowerBroken = false;
+            currBlock.isRailBroken = false;
+            if (selectedBlock.blockId == currBlock.blockId)
+            {
+                railStatus.Text = "Rail - OK";
+                trackCircuitStatus.Text = "Track Circuit - OK";
+                powerStatus.Text = "Power - OK";
+                railStatus.BackColor = Color.Lime;
+                trackCircuitStatus.BackColor = Color.Lime;
+                powerStatus.BackColor = Color.Lime;
+            }
+        }
+
+        private void brokenRailButton_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock.blockId);
+        }
+
+        private void trackCircuitStatus_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock.blockId);
+        }
+
+        private void powerStatus_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock.blockId);
         }
     }
 }

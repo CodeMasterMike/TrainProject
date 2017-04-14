@@ -46,10 +46,18 @@ namespace TrainProject
         public SwitchBeacon switchBeacon { get; set; }
         public SwitchBeacon stationBeacon { get; set; }
 
+        //break statuses
+        public Boolean isRailBroken;
+        public Boolean isCircuitBroken;
+        public Boolean isPowerBroken;
+
         public Block(int bN, int d)
         {
             blockNum = bN;
             direction = d;
+            isRailBroken = false;
+            isCircuitBroken = false;
+            isPowerBroken = false;
         }
 
         public Block(int bId, int bn, int sId, decimal l, decimal g, decimal e, decimal ce, int sl, bool ug)
@@ -63,6 +71,9 @@ namespace TrainProject
             cumElevation = (double)ce;
             speedLimit = sl;
             isUnderground = ug;
+            isRailBroken = false;
+            isCircuitBroken = false;
+            isPowerBroken = false;
         }
     }
 }

@@ -83,9 +83,9 @@
             this.User = new System.Windows.Forms.TabPage();
             this.blockEmergencyTextBox = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.railStatus = new System.Windows.Forms.Button();
+            this.trackCircuitStatus = new System.Windows.Forms.Button();
+            this.powerStatus = new System.Windows.Forms.Button();
             this.Murphy = new System.Windows.Forms.TabPage();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -95,9 +95,9 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.brokenRailButton = new System.Windows.Forms.Button();
+            this.brokenTrackCircuitButton = new System.Windows.Forms.Button();
+            this.powerFailureButton = new System.Windows.Forms.Button();
             this.Testing = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
@@ -716,9 +716,9 @@
             // blockEmergencyTextBox
             // 
             this.blockEmergencyTextBox.Controls.Add(this.label4);
-            this.blockEmergencyTextBox.Controls.Add(this.button4);
-            this.blockEmergencyTextBox.Controls.Add(this.button5);
-            this.blockEmergencyTextBox.Controls.Add(this.button6);
+            this.blockEmergencyTextBox.Controls.Add(this.railStatus);
+            this.blockEmergencyTextBox.Controls.Add(this.trackCircuitStatus);
+            this.blockEmergencyTextBox.Controls.Add(this.powerStatus);
             this.blockEmergencyTextBox.Location = new System.Drawing.Point(446, 495);
             this.blockEmergencyTextBox.Name = "blockEmergencyTextBox";
             this.blockEmergencyTextBox.Size = new System.Drawing.Size(765, 145);
@@ -735,42 +735,44 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "A1, Red Line - Emergencies";
             // 
-            // button4
+            // railStatus
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(12, 61);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(227, 65);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Rail - OK";
-            this.button4.UseVisualStyleBackColor = false;
+            this.railStatus.BackColor = System.Drawing.Color.Lime;
+            this.railStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.railStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.railStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.railStatus.Location = new System.Drawing.Point(12, 61);
+            this.railStatus.Name = "railStatus";
+            this.railStatus.Size = new System.Drawing.Size(227, 65);
+            this.railStatus.TabIndex = 8;
+            this.railStatus.Text = "Rail - OK";
+            this.railStatus.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // trackCircuitStatus
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(268, 61);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(223, 65);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Track Circuit - OK";
-            this.button5.UseVisualStyleBackColor = false;
+            this.trackCircuitStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.trackCircuitStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.trackCircuitStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackCircuitStatus.Location = new System.Drawing.Point(268, 61);
+            this.trackCircuitStatus.Name = "trackCircuitStatus";
+            this.trackCircuitStatus.Size = new System.Drawing.Size(223, 65);
+            this.trackCircuitStatus.TabIndex = 9;
+            this.trackCircuitStatus.Text = "Track Circuit - OK";
+            this.trackCircuitStatus.UseVisualStyleBackColor = false;
+            this.trackCircuitStatus.Click += new System.EventHandler(this.trackCircuitStatus_Click);
             // 
-            // button6
+            // powerStatus
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(522, 61);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(214, 65);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Power - OK";
-            this.button6.UseVisualStyleBackColor = false;
+            this.powerStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.powerStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.powerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerStatus.Location = new System.Drawing.Point(522, 61);
+            this.powerStatus.Name = "powerStatus";
+            this.powerStatus.Size = new System.Drawing.Size(214, 65);
+            this.powerStatus.TabIndex = 10;
+            this.powerStatus.Text = "Power - OK";
+            this.powerStatus.UseVisualStyleBackColor = false;
+            this.powerStatus.Click += new System.EventHandler(this.powerStatus_Click);
             // 
             // Murphy
             // 
@@ -873,9 +875,9 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Controls.Add(this.button9);
+            this.groupBox5.Controls.Add(this.brokenRailButton);
+            this.groupBox5.Controls.Add(this.brokenTrackCircuitButton);
+            this.groupBox5.Controls.Add(this.powerFailureButton);
             this.groupBox5.Location = new System.Drawing.Point(418, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(573, 441);
@@ -893,42 +895,43 @@
             this.label19.Text = "A1, Red Line - Emergency Reporting";
             this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
-            // button7
+            // brokenRailButton
             // 
-            this.button7.BackColor = System.Drawing.Color.Red;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(166, 88);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(230, 65);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Broken Rail";
-            this.button7.UseVisualStyleBackColor = false;
+            this.brokenRailButton.BackColor = System.Drawing.Color.Red;
+            this.brokenRailButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.brokenRailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brokenRailButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.brokenRailButton.Location = new System.Drawing.Point(166, 88);
+            this.brokenRailButton.Name = "brokenRailButton";
+            this.brokenRailButton.Size = new System.Drawing.Size(230, 65);
+            this.brokenRailButton.TabIndex = 8;
+            this.brokenRailButton.Text = "Broken Rail";
+            this.brokenRailButton.UseVisualStyleBackColor = false;
+            this.brokenRailButton.Click += new System.EventHandler(this.brokenRailButton_Click);
             // 
-            // button8
+            // brokenTrackCircuitButton
             // 
-            this.button8.BackColor = System.Drawing.Color.Red;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(166, 200);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(230, 65);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "Track Circuit Failure";
-            this.button8.UseVisualStyleBackColor = false;
+            this.brokenTrackCircuitButton.BackColor = System.Drawing.Color.Red;
+            this.brokenTrackCircuitButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.brokenTrackCircuitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brokenTrackCircuitButton.Location = new System.Drawing.Point(166, 200);
+            this.brokenTrackCircuitButton.Name = "brokenTrackCircuitButton";
+            this.brokenTrackCircuitButton.Size = new System.Drawing.Size(230, 65);
+            this.brokenTrackCircuitButton.TabIndex = 9;
+            this.brokenTrackCircuitButton.Text = "Track Circuit Failure";
+            this.brokenTrackCircuitButton.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // powerFailureButton
             // 
-            this.button9.BackColor = System.Drawing.Color.Red;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(166, 318);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(230, 65);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "Power Failure";
-            this.button9.UseVisualStyleBackColor = false;
+            this.powerFailureButton.BackColor = System.Drawing.Color.Red;
+            this.powerFailureButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.powerFailureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerFailureButton.Location = new System.Drawing.Point(166, 318);
+            this.powerFailureButton.Name = "powerFailureButton";
+            this.powerFailureButton.Size = new System.Drawing.Size(230, 65);
+            this.powerFailureButton.TabIndex = 10;
+            this.powerFailureButton.Text = "Power Failure";
+            this.powerFailureButton.UseVisualStyleBackColor = false;
             // 
             // Testing
             // 
@@ -1097,9 +1100,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox blockEmergencyTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button railStatus;
+        private System.Windows.Forms.Button trackCircuitStatus;
+        private System.Windows.Forms.Button powerStatus;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label24;
@@ -1108,9 +1111,9 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button brokenRailButton;
+        private System.Windows.Forms.Button brokenTrackCircuitButton;
+        private System.Windows.Forms.Button powerFailureButton;
         private System.Windows.Forms.TextBox blockBeaconTextBox;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.OpenFileDialog openExcelFileDialog;
