@@ -68,6 +68,11 @@ namespace TrainControllerProject
         PowerController powerController;
         TrainModel TM;
 
+        public double getRemainingAuthority()
+        {
+            return distanceToAuthority;
+        }
+
       
         
         //initialize labels and controls
