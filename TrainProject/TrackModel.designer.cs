@@ -34,8 +34,6 @@
             this.ExcelFileName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.lineSelectComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -87,12 +85,10 @@
             this.trackCircuitStatus = new System.Windows.Forms.Button();
             this.powerStatus = new System.Windows.Forms.Button();
             this.Murphy = new System.Windows.Forms.TabPage();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.blockSelectListBox_Murphy = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.lineSelectComboBox_Murphy = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.brokenRailButton = new System.Windows.Forms.Button();
@@ -175,26 +171,6 @@
             this.label3.Size = new System.Drawing.Size(384, 73);
             this.label3.TabIndex = 4;
             this.label3.Text = "Track Model";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(287, 17);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 29);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Next";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(194, 17);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 29);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Previous";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // lineSelectComboBox
             // 
@@ -657,8 +633,6 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.lineSelectComboBox);
             this.groupBox4.Location = new System.Drawing.Point(11, 200);
             this.groupBox4.Name = "groupBox4";
@@ -777,7 +751,7 @@
             // Murphy
             // 
             this.Murphy.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Murphy.Controls.Add(this.listBox2);
+            this.Murphy.Controls.Add(this.blockSelectListBox_Murphy);
             this.Murphy.Controls.Add(this.groupBox6);
             this.Murphy.Controls.Add(this.groupBox5);
             this.Murphy.Location = new System.Drawing.Point(4, 22);
@@ -787,10 +761,10 @@
             this.Murphy.TabIndex = 1;
             this.Murphy.Text = "Murphy";
             // 
-            // listBox2
+            // blockSelectListBox_Murphy
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Items.AddRange(new object[] {
+            this.blockSelectListBox_Murphy.FormattingEnabled = true;
+            this.blockSelectListBox_Murphy.Items.AddRange(new object[] {
             "Section A, Block 1",
             "Section A, Block 2",
             "Section A, Block 3",
@@ -811,18 +785,17 @@
             "Section F, Block 18",
             "Section F, Block 19",
             "Section F, Block 20"});
-            this.listBox2.Location = new System.Drawing.Point(6, 110);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.ScrollAlwaysVisible = true;
-            this.listBox2.Size = new System.Drawing.Size(395, 329);
-            this.listBox2.TabIndex = 47;
+            this.blockSelectListBox_Murphy.Location = new System.Drawing.Point(6, 110);
+            this.blockSelectListBox_Murphy.Name = "blockSelectListBox_Murphy";
+            this.blockSelectListBox_Murphy.ScrollAlwaysVisible = true;
+            this.blockSelectListBox_Murphy.Size = new System.Drawing.Size(395, 329);
+            this.blockSelectListBox_Murphy.TabIndex = 47;
+            this.blockSelectListBox_Murphy.SelectedIndexChanged += new System.EventHandler(this.blockSelectedListBox_SelectedIndexChanged);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.button10);
-            this.groupBox6.Controls.Add(this.button11);
-            this.groupBox6.Controls.Add(this.comboBox2);
+            this.groupBox6.Controls.Add(this.lineSelectComboBox_Murphy);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(395, 97);
@@ -839,38 +812,19 @@
             this.label24.TabIndex = 3;
             this.label24.Text = "Selected Line";
             // 
-            // button10
+            // lineSelectComboBox_Murphy
             // 
-            this.button10.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(287, 17);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(89, 29);
-            this.button10.TabIndex = 5;
-            this.button10.Text = "Next";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(194, 17);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(87, 29);
-            this.button11.TabIndex = 6;
-            this.button11.Text = "Previous";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.lineSelectComboBox_Murphy.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lineSelectComboBox_Murphy.FormattingEnabled = true;
+            this.lineSelectComboBox_Murphy.Items.AddRange(new object[] {
             "Red Line",
             "Green Line"});
-            this.comboBox2.Location = new System.Drawing.Point(12, 53);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(364, 26);
-            this.comboBox2.TabIndex = 7;
-            this.comboBox2.Text = "Red Line";
+            this.lineSelectComboBox_Murphy.Location = new System.Drawing.Point(12, 53);
+            this.lineSelectComboBox_Murphy.Name = "lineSelectComboBox_Murphy";
+            this.lineSelectComboBox_Murphy.Size = new System.Drawing.Size(364, 26);
+            this.lineSelectComboBox_Murphy.TabIndex = 7;
+            this.lineSelectComboBox_Murphy.Text = "Red Line";
+            this.lineSelectComboBox_Murphy.SelectedIndexChanged += new System.EventHandler(this.lineSelect_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -1056,8 +1010,6 @@
         private System.Windows.Forms.TextBox ExcelFileName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox lineSelectComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1103,12 +1055,10 @@
         private System.Windows.Forms.Button railStatus;
         private System.Windows.Forms.Button trackCircuitStatus;
         private System.Windows.Forms.Button powerStatus;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox blockSelectListBox_Murphy;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox lineSelectComboBox_Murphy;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button brokenRailButton;

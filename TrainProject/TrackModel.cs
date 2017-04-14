@@ -30,6 +30,8 @@ namespace Track_Layout_UI
         public static TrainModel[] trainList = new TrainModel[100];
         public static Block selectedBlock;
         public static Line selectedLine;
+        public static Block selectedBlock_Murphy;
+        public static Line selectedLine_Murphy;
         //temporary variables
         private int yardBlockId = 229;
         //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
@@ -691,6 +693,9 @@ namespace Track_Layout_UI
             blockSelectListBox.DataSource = filteredBlockList;
             blockSelectListBox.DisplayMember = "blockNum";
             blockSelectListBox.ValueMember = "blockId";
+            blockSelectListBox_Murphy.DataSource = filteredBlockList;
+            blockSelectListBox_Murphy.DisplayMember = "blockNum";
+            blockSelectListBox_Murphy.ValueMember = "blockId";
         }
 
         private void blockSelectedListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -733,6 +738,8 @@ namespace Track_Layout_UI
                 }
             }
         }
+
+
 
         private void updateFailureButtons()
         {
