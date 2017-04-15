@@ -44,50 +44,18 @@ namespace TrainProject
         {
             if(currentState == targetBlockId1)
             {
+                t1Light = false;
+                t2Light = true;
                 currentState = targetBlockId2;
                 return targetBlockId2;
             }
             else
             {
+                t2Light = false;
+                t1Light = true;
                 currentState = targetBlockId1;
                 return targetBlockId1;
             }
-        }
-
-        //given the occupancy of the three blocks, the switch determines whether it should change or not
-        //this boolean expression should be changeable by the PLC program!!!! later
-        //changing to directions! positive number means train heading towards switch from that direction
-        //this function assumes a unidirectional source, t1, and t2 but can easily be extrapolated to bidirectional given 
-        public int? determineSwitchState(int s, int t1, int t2)
-        {
-            //train approaching from switch source
-            if (s > 0)
-            {
-                sourceLight = true;
-                t1Light = true;
-                t2Light = false;
-                if (currentState != targetBlockId1)
-                {
-                    changeSwitchState();
-                }
-                return currentState;
-            }
-            else
-            {
-                //if train approaching from t2
-                if (t2 > 0)
-                {
-                    sourceLight = false;
-                    t1Light = false;
-                    t2Light = true;
-                    if(currentState != targetBlockId2)
-                    {
-                        changeSwitchState();
-                    }
-                    return currentState;
-                }
-            }
-            return -1;
         }
     }
 }
