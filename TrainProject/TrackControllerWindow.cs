@@ -313,6 +313,7 @@ namespace TrainProject
 
         }
 
+        //testing green1 controller
         private void button2_Click(object sender, EventArgs e)
         {
             String testBlocks = textBox2.Text;
@@ -321,9 +322,10 @@ namespace TrainProject
                 return;
             }
             String[] vectors = testBlocks.Split(' ');
-            TrackControllerModule.redLineCtrl1.blocks.Clear();
+            TrackControllerModule.greenLineCtrl1.blocks.Clear();
             richTextBox1.Text = "Test Inputs:\n ";
             richTextBox1.Text += "Occupancy\tTowards/Away\n";
+            List<Block> testBlockList = new List<Block>();
             foreach (String v in vectors)
             {
                 if (string.IsNullOrEmpty(v))
@@ -335,14 +337,14 @@ namespace TrainProject
                 //vector[0] represents block, vector[1] represents direction
                 String[] vector = v2.Split(',');
                 Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
-                TrackControllerModule.redLineCtrl1.addNewBlock(b);
+                testBlockList.Add(b);
                 //Console.WriteLine(vector[0] + " " + vector[1]);
                 richTextBox1.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1])>0).ToString() + "\n";
             }
-            TrackControllerModule.greenLineCtrl1.monitorSwitches();
-            TrackControllerModule.greenLineCtrl1.monitorCrossings();
+            TrackControllerModule.greenLineCtrl1.testController(testBlockList);
             updateSwitches();
             updateCrossings();
+
             richTextBox1.Text += "\n---------\nTest Complete";
         }
 
@@ -404,6 +406,41 @@ namespace TrainProject
         private void restoreTMComm_Click(object sender, EventArgs e)
         {
             TrackControllerModule.resume();
+        }
+
+        //testing green2 controller
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            String testBlocks = textBox3.Text;
+            if (string.IsNullOrEmpty(testBlocks))
+            {
+                return;
+            }
+            String[] vectors = testBlocks.Split(' ');
+            TrackControllerModule.greenLineCtrl2.blocks.Clear();
+            richTextBox2.Text = "Test Inputs:\n ";
+            richTextBox2.Text += "Occupancy\tTowards/Away\n";
+            List<Block> testBlockList = new List<Block>();
+            foreach (String v in vectors)
+            {
+                if (string.IsNullOrEmpty(v))
+                {
+                    return;
+                }
+                String v2 = v.Trim('{');
+                v2 = v2.Trim('}');
+                //vector[0] represents block, vector[1] represents direction
+                String[] vector = v2.Split(',');
+                Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
+                testBlockList.Add(b);
+                //Console.WriteLine(vector[0] + " " + vector[1]);
+                richTextBox2.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1]) > 0).ToString() + "\n";
+            }
+            TrackControllerModule.greenLineCtrl2.testController(testBlockList);
+            updateSwitches();
+            updateCrossings();
+
+            richTextBox2.Text += "\n---------\nTest Complete";
         }
     }
 }

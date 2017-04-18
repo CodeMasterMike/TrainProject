@@ -119,6 +119,8 @@ namespace TrainProject
                             t2Dir = ctrl.trainHeadingTowardsSwitch(t, s, 2);
                             int switchState = (int)TrackControllerWindow.plc.determineSwitchState(s.switchId, srcDir, t1Dir, t2Dir);
                             Console.WriteLine("Switch " + s.switchId + " pointing to " + switchState);
+                            ctrl.checkSafety(s);
+                            Console.WriteLine("After checking safety, Switch " + s.switchId + " pointing to " + switchState);
                         }
                         foreach (Crossing c in ctrl.crossings)
                         {

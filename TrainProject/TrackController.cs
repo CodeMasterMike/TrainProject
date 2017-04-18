@@ -173,15 +173,15 @@ namespace TrainProject
             return false;
         }
 
-
-        public void monitorSwitches()
+        //send a list of Blocks
+        public void testController(List<Block> blockOccupancies) 
         {
             foreach (Switch s in switches)
             {
                 int a = 0, b = 0, c = 0;
-                Block src = blocks.Find(x => x.blockNum == s.sourceBlockId);
-                Block t1 = (blocks.Find(x => x.blockNum == s.targetBlockId1));
-                Block t2 = (blocks.Find(x => x.blockNum == s.targetBlockId2));
+                Block src = blockOccupancies.Find(x => x.blockNum == s.sourceBlockId);
+                Block t1 = (blockOccupancies.Find(x => x.blockNum == s.targetBlockId1));
+                Block t2 = (blockOccupancies.Find(x => x.blockNum == s.targetBlockId2));
                 if (src != null)
                 {
                     a = src.direction;
@@ -190,7 +190,7 @@ namespace TrainProject
                 {
                     b = t1.direction;
                 }
-                if(t2 != null)
+                if (t2 != null)
                 {
                     c = t2.direction;
                 }
@@ -202,13 +202,10 @@ namespace TrainProject
                 Console.WriteLine("Switch " + s.switchId);
                 Console.WriteLine(TrackControllerWindow.plc.determineSwitchState(s.switchId, a, b, c));
             }
-        }
 
-        public void monitorCrossings()
-        {
-            foreach(Crossing c in crossings)
+            foreach (Crossing c in crossings)
             {
-                Block b = blocks.Find(x => x.blockNum == c.blockId);
+                Block b = blockOccupancies.Find(x => x.blockNum == c.blockId);
                 if (b != null)
                 {
                     c.activated = true;
@@ -219,6 +216,42 @@ namespace TrainProject
                 }
             }
         }
+
+
+        //public void monitorSwitches()
+        //{
+        //    foreach (Switch s in switches)
+        //    {
+        //        int a = 0, b = 0, c = 0;
+        //        Block src = blocks.Find(x => x.blockNum == s.sourceBlockId);
+        //        Block t1 = (blocks.Find(x => x.blockNum == s.targetBlockId1));
+        //        Block t2 = (blocks.Find(x => x.blockNum == s.targetBlockId2));
+        //        if (src != null)
+        //        {
+        //            a = src.direction;
+        //        }
+        //        if (t1 != null)
+        //        {
+        //            b = t1.direction;
+        //        }
+        //        if(t2 != null)
+        //        {
+        //            c = t2.direction;
+        //        }
+        //        if (a == -1 && b == -1 && c == -1)
+        //        {
+        //            return;
+        //        }
+        //        //if target block 1 is occupied
+        //        Console.WriteLine("Switch " + s.switchId);
+        //        Console.WriteLine(TrackControllerWindow.plc.determineSwitchState(s.switchId, a, b, c));
+        //    }
+        //}
+
+        //public void monitorCrossings()
+        //{
+            
+        //}
 
         public void addNewCrossing(Crossing c)
         {
