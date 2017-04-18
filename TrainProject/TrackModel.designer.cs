@@ -34,8 +34,6 @@
             this.ExcelFileName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.lineSelectComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -83,21 +81,19 @@
             this.User = new System.Windows.Forms.TabPage();
             this.blockEmergencyTextBox = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.railStatus = new System.Windows.Forms.Button();
+            this.trackCircuitStatus = new System.Windows.Forms.Button();
+            this.powerStatus = new System.Windows.Forms.Button();
             this.Murphy = new System.Windows.Forms.TabPage();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.blockSelectListBox_Murphy = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.lineSelectComboBox_Murphy = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.brokenRailButton = new System.Windows.Forms.Button();
+            this.brokenTrackCircuitButton = new System.Windows.Forms.Button();
+            this.powerFailureButton = new System.Windows.Forms.Button();
             this.Testing = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
@@ -107,6 +103,11 @@
             this.dvgBlocks = new System.Windows.Forms.DataGridView();
             this.InsertToSql = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.occupancyLabel = new System.Windows.Forms.Label();
+            this.blockOccupiedTextBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.temperatureScrollBar = new System.Windows.Forms.HScrollBar();
+            this.temperatureLabel = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -175,26 +176,6 @@
             this.label3.Size = new System.Drawing.Size(384, 73);
             this.label3.TabIndex = 4;
             this.label3.Text = "Track Model";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(287, 17);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 29);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Next";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(194, 17);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 29);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Previous";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // lineSelectComboBox
             // 
@@ -387,6 +368,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.blockOccupiedTextBox);
+            this.groupBox2.Controls.Add(this.occupancyLabel);
             this.groupBox2.Controls.Add(this.blockCumElevationTextBox);
             this.groupBox2.Controls.Add(this.switchNumTextBox);
             this.groupBox2.Controls.Add(this.label14);
@@ -657,8 +640,6 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.lineSelectComboBox);
             this.groupBox4.Location = new System.Drawing.Point(11, 200);
             this.groupBox4.Name = "groupBox4";
@@ -699,6 +680,9 @@
             // User
             // 
             this.User.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.User.Controls.Add(this.temperatureLabel);
+            this.User.Controls.Add(this.temperatureScrollBar);
+            this.User.Controls.Add(this.label16);
             this.User.Controls.Add(this.label3);
             this.User.Controls.Add(this.pictureBox1);
             this.User.Controls.Add(this.groupBox3);
@@ -716,9 +700,9 @@
             // blockEmergencyTextBox
             // 
             this.blockEmergencyTextBox.Controls.Add(this.label4);
-            this.blockEmergencyTextBox.Controls.Add(this.button4);
-            this.blockEmergencyTextBox.Controls.Add(this.button5);
-            this.blockEmergencyTextBox.Controls.Add(this.button6);
+            this.blockEmergencyTextBox.Controls.Add(this.railStatus);
+            this.blockEmergencyTextBox.Controls.Add(this.trackCircuitStatus);
+            this.blockEmergencyTextBox.Controls.Add(this.powerStatus);
             this.blockEmergencyTextBox.Location = new System.Drawing.Point(446, 495);
             this.blockEmergencyTextBox.Name = "blockEmergencyTextBox";
             this.blockEmergencyTextBox.Size = new System.Drawing.Size(765, 145);
@@ -735,47 +719,49 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "A1, Red Line - Emergencies";
             // 
-            // button4
+            // railStatus
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(12, 61);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(227, 65);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Rail - OK";
-            this.button4.UseVisualStyleBackColor = false;
+            this.railStatus.BackColor = System.Drawing.Color.Lime;
+            this.railStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.railStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.railStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.railStatus.Location = new System.Drawing.Point(12, 61);
+            this.railStatus.Name = "railStatus";
+            this.railStatus.Size = new System.Drawing.Size(227, 65);
+            this.railStatus.TabIndex = 8;
+            this.railStatus.Text = "Rail - OK";
+            this.railStatus.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // trackCircuitStatus
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(268, 61);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(223, 65);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Track Circuit - OK";
-            this.button5.UseVisualStyleBackColor = false;
+            this.trackCircuitStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.trackCircuitStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.trackCircuitStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trackCircuitStatus.Location = new System.Drawing.Point(268, 61);
+            this.trackCircuitStatus.Name = "trackCircuitStatus";
+            this.trackCircuitStatus.Size = new System.Drawing.Size(223, 65);
+            this.trackCircuitStatus.TabIndex = 9;
+            this.trackCircuitStatus.Text = "Track Circuit - OK";
+            this.trackCircuitStatus.UseVisualStyleBackColor = false;
+            this.trackCircuitStatus.Click += new System.EventHandler(this.trackCircuitStatus_Click);
             // 
-            // button6
+            // powerStatus
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(522, 61);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(214, 65);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Power - OK";
-            this.button6.UseVisualStyleBackColor = false;
+            this.powerStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.powerStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.powerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerStatus.Location = new System.Drawing.Point(522, 61);
+            this.powerStatus.Name = "powerStatus";
+            this.powerStatus.Size = new System.Drawing.Size(214, 65);
+            this.powerStatus.TabIndex = 10;
+            this.powerStatus.Text = "Power - OK";
+            this.powerStatus.UseVisualStyleBackColor = false;
+            this.powerStatus.Click += new System.EventHandler(this.powerStatus_Click);
             // 
             // Murphy
             // 
             this.Murphy.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Murphy.Controls.Add(this.listBox2);
+            this.Murphy.Controls.Add(this.blockSelectListBox_Murphy);
             this.Murphy.Controls.Add(this.groupBox6);
             this.Murphy.Controls.Add(this.groupBox5);
             this.Murphy.Location = new System.Drawing.Point(4, 22);
@@ -785,10 +771,10 @@
             this.Murphy.TabIndex = 1;
             this.Murphy.Text = "Murphy";
             // 
-            // listBox2
+            // blockSelectListBox_Murphy
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Items.AddRange(new object[] {
+            this.blockSelectListBox_Murphy.FormattingEnabled = true;
+            this.blockSelectListBox_Murphy.Items.AddRange(new object[] {
             "Section A, Block 1",
             "Section A, Block 2",
             "Section A, Block 3",
@@ -809,18 +795,17 @@
             "Section F, Block 18",
             "Section F, Block 19",
             "Section F, Block 20"});
-            this.listBox2.Location = new System.Drawing.Point(6, 110);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.ScrollAlwaysVisible = true;
-            this.listBox2.Size = new System.Drawing.Size(395, 329);
-            this.listBox2.TabIndex = 47;
+            this.blockSelectListBox_Murphy.Location = new System.Drawing.Point(6, 110);
+            this.blockSelectListBox_Murphy.Name = "blockSelectListBox_Murphy";
+            this.blockSelectListBox_Murphy.ScrollAlwaysVisible = true;
+            this.blockSelectListBox_Murphy.Size = new System.Drawing.Size(395, 329);
+            this.blockSelectListBox_Murphy.TabIndex = 47;
+            this.blockSelectListBox_Murphy.SelectedIndexChanged += new System.EventHandler(this.blockSelectedListBox_SelectedIndexChanged);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.button10);
-            this.groupBox6.Controls.Add(this.button11);
-            this.groupBox6.Controls.Add(this.comboBox2);
+            this.groupBox6.Controls.Add(this.lineSelectComboBox_Murphy);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(395, 97);
@@ -837,45 +822,26 @@
             this.label24.TabIndex = 3;
             this.label24.Text = "Selected Line";
             // 
-            // button10
+            // lineSelectComboBox_Murphy
             // 
-            this.button10.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(287, 17);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(89, 29);
-            this.button10.TabIndex = 5;
-            this.button10.Text = "Next";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(194, 17);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(87, 29);
-            this.button11.TabIndex = 6;
-            this.button11.Text = "Previous";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.lineSelectComboBox_Murphy.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lineSelectComboBox_Murphy.FormattingEnabled = true;
+            this.lineSelectComboBox_Murphy.Items.AddRange(new object[] {
             "Red Line",
             "Green Line"});
-            this.comboBox2.Location = new System.Drawing.Point(12, 53);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(364, 26);
-            this.comboBox2.TabIndex = 7;
-            this.comboBox2.Text = "Red Line";
+            this.lineSelectComboBox_Murphy.Location = new System.Drawing.Point(12, 53);
+            this.lineSelectComboBox_Murphy.Name = "lineSelectComboBox_Murphy";
+            this.lineSelectComboBox_Murphy.Size = new System.Drawing.Size(364, 26);
+            this.lineSelectComboBox_Murphy.TabIndex = 7;
+            this.lineSelectComboBox_Murphy.Text = "Red Line";
+            this.lineSelectComboBox_Murphy.SelectedIndexChanged += new System.EventHandler(this.lineSelect_SelectedIndexChanged);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Controls.Add(this.button9);
+            this.groupBox5.Controls.Add(this.brokenRailButton);
+            this.groupBox5.Controls.Add(this.brokenTrackCircuitButton);
+            this.groupBox5.Controls.Add(this.powerFailureButton);
             this.groupBox5.Location = new System.Drawing.Point(418, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(573, 441);
@@ -893,42 +859,43 @@
             this.label19.Text = "A1, Red Line - Emergency Reporting";
             this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
-            // button7
+            // brokenRailButton
             // 
-            this.button7.BackColor = System.Drawing.Color.Red;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(166, 88);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(230, 65);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Broken Rail";
-            this.button7.UseVisualStyleBackColor = false;
+            this.brokenRailButton.BackColor = System.Drawing.Color.Red;
+            this.brokenRailButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.brokenRailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brokenRailButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.brokenRailButton.Location = new System.Drawing.Point(166, 88);
+            this.brokenRailButton.Name = "brokenRailButton";
+            this.brokenRailButton.Size = new System.Drawing.Size(230, 65);
+            this.brokenRailButton.TabIndex = 8;
+            this.brokenRailButton.Text = "Broken Rail";
+            this.brokenRailButton.UseVisualStyleBackColor = false;
+            this.brokenRailButton.Click += new System.EventHandler(this.brokenRailButton_Click);
             // 
-            // button8
+            // brokenTrackCircuitButton
             // 
-            this.button8.BackColor = System.Drawing.Color.Red;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(166, 200);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(230, 65);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "Track Circuit Failure";
-            this.button8.UseVisualStyleBackColor = false;
+            this.brokenTrackCircuitButton.BackColor = System.Drawing.Color.Red;
+            this.brokenTrackCircuitButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.brokenTrackCircuitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brokenTrackCircuitButton.Location = new System.Drawing.Point(166, 200);
+            this.brokenTrackCircuitButton.Name = "brokenTrackCircuitButton";
+            this.brokenTrackCircuitButton.Size = new System.Drawing.Size(230, 65);
+            this.brokenTrackCircuitButton.TabIndex = 9;
+            this.brokenTrackCircuitButton.Text = "Track Circuit Failure";
+            this.brokenTrackCircuitButton.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // powerFailureButton
             // 
-            this.button9.BackColor = System.Drawing.Color.Red;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(166, 318);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(230, 65);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "Power Failure";
-            this.button9.UseVisualStyleBackColor = false;
+            this.powerFailureButton.BackColor = System.Drawing.Color.Red;
+            this.powerFailureButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.powerFailureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerFailureButton.Location = new System.Drawing.Point(166, 318);
+            this.powerFailureButton.Name = "powerFailureButton";
+            this.powerFailureButton.Size = new System.Drawing.Size(230, 65);
+            this.powerFailureButton.TabIndex = 10;
+            this.powerFailureButton.Text = "Power Failure";
+            this.powerFailureButton.UseVisualStyleBackColor = false;
             // 
             // Testing
             // 
@@ -1009,6 +976,56 @@
             this.openExcelFileDialog.FileName = "openExcelFileDialog";
             this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
             // 
+            // occupancyLabel
+            // 
+            this.occupancyLabel.AutoSize = true;
+            this.occupancyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.occupancyLabel.Location = new System.Drawing.Point(290, 247);
+            this.occupancyLabel.Name = "occupancyLabel";
+            this.occupancyLabel.Size = new System.Drawing.Size(65, 13);
+            this.occupancyLabel.TabIndex = 64;
+            this.occupancyLabel.Text = "Occupied:";
+            // 
+            // blockOccupiedTextBox
+            // 
+            this.blockOccupiedTextBox.BackColor = System.Drawing.Color.White;
+            this.blockOccupiedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.blockOccupiedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockOccupiedTextBox.Location = new System.Drawing.Point(371, 247);
+            this.blockOccupiedTextBox.Name = "blockOccupiedTextBox";
+            this.blockOccupiedTextBox.ReadOnly = true;
+            this.blockOccupiedTextBox.Size = new System.Drawing.Size(47, 13);
+            this.blockOccupiedTextBox.TabIndex = 65;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(440, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(275, 31);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "System Temperature:";
+            // 
+            // temperatureScrollBar
+            // 
+            this.temperatureScrollBar.Location = new System.Drawing.Point(832, 19);
+            this.temperatureScrollBar.Minimum = -30;
+            this.temperatureScrollBar.Name = "temperatureScrollBar";
+            this.temperatureScrollBar.Size = new System.Drawing.Size(360, 31);
+            this.temperatureScrollBar.TabIndex = 48;
+            this.temperatureScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.temperatureScrollBar_Scroll);
+            // 
+            // temperatureLabel
+            // 
+            this.temperatureLabel.AutoSize = true;
+            this.temperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.temperatureLabel.Location = new System.Drawing.Point(730, 19);
+            this.temperatureLabel.Name = "temperatureLabel";
+            this.temperatureLabel.Size = new System.Drawing.Size(68, 31);
+            this.temperatureLabel.TabIndex = 50;
+            this.temperatureLabel.Text = "70 F";
+            // 
             // TrackModelUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1016,7 +1033,7 @@
             this.ClientSize = new System.Drawing.Size(1212, 678);
             this.Controls.Add(this.tabControl1);
             this.Name = "TrackModelUI";
-            this.Text = "Red A1";
+            this.Text = "Track Model";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1053,8 +1070,6 @@
         private System.Windows.Forms.TextBox ExcelFileName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox lineSelectComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1097,20 +1112,18 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox blockEmergencyTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button railStatus;
+        private System.Windows.Forms.Button trackCircuitStatus;
+        private System.Windows.Forms.Button powerStatus;
+        private System.Windows.Forms.ListBox blockSelectListBox_Murphy;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox lineSelectComboBox_Murphy;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button brokenRailButton;
+        private System.Windows.Forms.Button brokenTrackCircuitButton;
+        private System.Windows.Forms.Button powerFailureButton;
         private System.Windows.Forms.TextBox blockBeaconTextBox;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.OpenFileDialog openExcelFileDialog;
@@ -1126,6 +1139,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox switchNumTextBox;
         private System.Windows.Forms.TextBox blockCumElevationTextBox;
+        private System.Windows.Forms.Label occupancyLabel;
+        private System.Windows.Forms.TextBox blockOccupiedTextBox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.HScrollBar temperatureScrollBar;
+        private System.Windows.Forms.Label temperatureLabel;
     }
 }
 

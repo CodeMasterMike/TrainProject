@@ -24,12 +24,15 @@ namespace TrainProject
         public bool isFromYard { get; set; }
         public bool isToYard { get; set; }
         public bool isOccupied { get; set; }
+        public bool heaterStatus { get; set; }
 
         //need to discuss how to do this further
         public int? prevBlockId { get; set; }
         public int? nextBlockId { get; set; }
         public Boolean bidirectional { get; set; }
-        
+        public String arrowDirection { get; set; }
+        public Boolean? forcePreviousToNext { get; set; }
+
         //these boolean properties keep track of state of block 
         private Boolean broken { get; set; }
         private Boolean occupied { get; set; }
@@ -44,10 +47,19 @@ namespace TrainProject
         public SwitchBeacon switchBeacon { get; set; }
         public SwitchBeacon stationBeacon { get; set; }
 
+        //break statuses
+        public Boolean isRailBroken;
+        public Boolean isCircuitBroken;
+        public Boolean isPowerBroken;
+
         public Block(int bN, int d)
         {
             blockNum = bN;
             direction = d;
+            isRailBroken = false;
+            isCircuitBroken = false;
+            isPowerBroken = false;
+            isOccupied = false;
         }
 
         public Block(int bId, int bn, int sId, decimal l, decimal g, decimal e, decimal ce, int sl, bool ug)
@@ -61,6 +73,10 @@ namespace TrainProject
             cumElevation = (double)ce;
             speedLimit = sl;
             isUnderground = ug;
+            isRailBroken = false;
+            isCircuitBroken = false;
+            isPowerBroken = false;
+            isOccupied = false;
         }
     }
 }

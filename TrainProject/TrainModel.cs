@@ -52,6 +52,7 @@ namespace TrainModelProject
         double p;
         double sugSpeed;
         int sugAuthority;
+        int lineId;
 
         public double getCurrSpeed()
         {
@@ -79,17 +80,19 @@ namespace TrainModelProject
             TC.updateSpeedAndAuthority(speed, authority);
         }
 
-        public TrainModel(int tId)
+        public TrainModel() { }
+
+        public TrainModel(int lId, int trainId) 
         {
             InitializeComponent();
             TC = new TrainController(this);
             TC.Show();
-            trainId = tId;
+            lineId = lId;
            
             double block_length = 0;
             double train_distance = 0;
 
-            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null);
+            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null, lineId);
             prev_block = null;
             block_distance = current_block.length;
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
@@ -113,7 +116,7 @@ namespace TrainModelProject
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
-                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
+               Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
         public void updateDoorStatus(int n)
