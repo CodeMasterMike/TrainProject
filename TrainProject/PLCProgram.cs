@@ -20,11 +20,6 @@ namespace TrainProject
             closedBlocks = new List<Block>();
         }
 
-        public void addNewSwitch(Switch s)
-        {
-
-        }
-
         //id is switch id
         //which branch determines whether source, t1, or t2 is to be gotten
         public int? getSwitchDirection(int id, int whichBranch)
@@ -197,7 +192,7 @@ namespace TrainProject
         //this boolean expression should be changeable by the PLC program!!!! later
         //changing to directions! positive number means train heading towards switch from that direction
         //this function assumes a unidirectional source, t1, and t2 but can easily be extrapolated to bidirectional given 
-        public int? determineSwitchState(int switchId, int s, int t1, int t2)
+        public int? determineSwitchState(int switchId, int? s, int? t1, int? t2)
         {
             Switch sw = switches.Find(x => x.switchId == switchId);
             SwitchTypes type = switchTypes[sw];
@@ -219,7 +214,7 @@ namespace TrainProject
         }
 
         //Loop1 has a bidirectional source, going into t1 and back in from t2
-        private int? Loop1(Switch sw, int s, int t1, int t2)
+        private int? Loop1(Switch sw, int? s, int? t1, int? t2)
         {
 
             if(!sw.sourceActive || !sw.t1Active || !sw.t2Active)
@@ -263,7 +258,7 @@ namespace TrainProject
         }
 
         //Loop2 has a bidirectional source, going into t2 and back in from t1
-        private int? Loop2(Switch sw, int s, int t1, int t2)
+        private int? Loop2(Switch sw, int? s, int? t1, int? t2)
         {
             //train approaches from source
             if (s > 0 && t1 == 0)
@@ -311,7 +306,7 @@ namespace TrainProject
             return sw.currentState;
         }
 
-        private int BiLoop(Switch sw, int s, int t1, int t2)
+        private int BiLoop(Switch sw, int? s, int? t1, int? t2)
         {
             
             if(s > 0)
@@ -441,7 +436,7 @@ namespace TrainProject
             return (int)sw.currentState;
         }
 
-        private int SplitIn(Switch sw, int s, int t1, int t2)
+        private int SplitIn(Switch sw, int? s, int? t1, int? t2)
         {
             if (t1 > 0 && t2 > 0)
             {
@@ -521,7 +516,7 @@ namespace TrainProject
             return (int)sw.currentState;
         }
 
-        private int SplitOut(Switch sw, int s, int t1, int t2)
+        private int SplitOut(Switch sw, int? s, int? t1, int? t2)
         {
 
             if (sw.sourceActive)
