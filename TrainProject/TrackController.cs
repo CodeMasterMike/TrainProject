@@ -44,10 +44,135 @@ namespace TrainProject
             crossings = new List<Crossing>();
         }
 
-        public Boolean dispatchNewTrain(int trainId, int speed, int authority)
+        public void checkSafety(Switch s)
         {
-            return true;
+            foreach (Train t in TrackControllerModule.trainTrackings)
+            {
+                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceLight == false)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                }
+                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Light == false)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                }
+                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Light == false)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                }
+            }
         }
+
+        public int? trainHeadingTowardsSwitch(Train t, Switch s, int whichBranch)
+        {
+            if (t.direction == 0 || t.direction == null)
+            {
+                Console.WriteLine("Error. Train has no direction");
+            }
+            switch (whichBranch)
+            {
+                case 0:
+                    //if train is contained in source branch
+                    if (checkWithinRange(t.currBlock, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                    {
+                        int srcDir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 0);
+                        if (srcDir > 0 || srcDir < 0)
+                        {
+                            return srcDir;
+                        }
+                        else if (srcDir == 0)
+                        {
+                            if (t.direction > 0 && s.sourceBlockId > s.sourceBlockId_end)
+                            {
+                                return 1;
+                            }
+                            else if (t.direction < 0 && s.sourceBlockId < s.sourceBlockId_end)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    //if train is contained in source branch
+                    if (checkWithinRange(t.currBlock, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                    {
+                        int t1Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
+                        if (t1Dir > 0 || t1Dir < 0)
+                        {
+                            return t1Dir;
+                        }
+                        else if (t1Dir == 0)
+                        {
+                            if (t.direction > 0 && s.targetBlockId1 > s.targetBlockId1_end)
+                            {
+                                return 1;
+                            }
+                            else if (t.direction < 0 && s.targetBlockId1 < s.targetBlockId1_end)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    if (checkWithinRange(t.currBlock, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                    {
+                        int t2Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
+                        if (t2Dir > 0 || t2Dir < 0)
+                        {
+                            return t2Dir;
+                        }
+                        else if (t2Dir == 0)
+                        {
+                            if (t.direction > 0 && s.targetBlockId2 > s.targetBlockId2_end)
+                            {
+                                return 1;
+                            }
+                            else if (t.direction < 0 && s.targetBlockId2 < s.targetBlockId2_end)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return null;
+        }
+
+        public Boolean checkWithinRange(int numToCheck, int bound1, int bound2)
+        {
+            if (bound1 < bound2)
+            {
+                if (numToCheck >= bound1 && numToCheck <= bound2)
+                {
+                    return true;
+                }
+            }
+            else if (bound1 > bound2)
+            {
+                if (numToCheck <= bound1 && numToCheck >= bound2)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         public void monitorSwitches()
         {

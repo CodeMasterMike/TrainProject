@@ -339,8 +339,8 @@ namespace TrainProject
                 //Console.WriteLine(vector[0] + " " + vector[1]);
                 richTextBox1.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1])>0).ToString() + "\n";
             }
-            TrackControllerModule.redLineCtrl1.monitorSwitches();
-            TrackControllerModule.redLineCtrl1.monitorCrossings();
+            TrackControllerModule.greenLineCtrl1.monitorSwitches();
+            TrackControllerModule.greenLineCtrl1.monitorCrossings();
             updateSwitches();
             updateCrossings();
             richTextBox1.Text += "\n---------\nTest Complete";
