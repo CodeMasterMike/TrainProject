@@ -380,5 +380,25 @@ namespace TrainProject
             reader.Close();
             MessageBox.Show(this, @"PLC File parsed");
         }
+
+        private void severCtcComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.shutdown();
+        }
+
+        private void severTMComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.shutdown();
+        }
+
+        private void restoreCtcComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.resume();
+        }
+
+        private void restoreTMComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.resume();
+        }
     }
 }
