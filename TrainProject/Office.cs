@@ -24,7 +24,7 @@ namespace CTC
         int trainCounter = 0;
         public static TrackControllerModule module;
         Block currentBlock;
-        int currentLineSelection = 0;
+        int currentLineSelection = 1;
         
         List<Block> myBlockList;
         public List<Train> myTrainList;
@@ -581,7 +581,7 @@ namespace CTC
 
         private void lineSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentLineSelection = lineSelect.SelectedIndex;
+            currentLineSelection = lineSelect.SelectedIndex + 1;
         }
 
         private void updateTrainLabel_Click(object sender, EventArgs e)
