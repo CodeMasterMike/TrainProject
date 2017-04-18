@@ -705,9 +705,38 @@ namespace Track_Layout_UI
             blockSelectListBox.DataSource = filteredBlockList;
             blockSelectListBox.DisplayMember = "blockNum";
             blockSelectListBox.ValueMember = "blockId";
-            blockSelectListBox_Murphy.DataSource = filteredBlockList;
-            blockSelectListBox_Murphy.DisplayMember = "blockNum";
-            blockSelectListBox_Murphy.ValueMember = "blockId";
+        }
+
+        private void lineSelectMuphy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedLine = (Line)((ComboBox)sender).SelectedItem;
+            int selectedLineId = selectedLine.lineId;
+            List<Section> filteredSectionList = new List<Section>();
+            foreach (Section section in sectionList)
+            {
+                if (section.lineId == selectedLineId)
+                {
+                    filteredSectionList.Add(section);
+                }
+            }
+            filteredBlockList = new List<Block>();
+            foreach (var block in blockList)
+            {
+                Section parentSection = null;
+                foreach (Section section in filteredSectionList)
+                {
+                    if (block.sectionId == section.sectionId)
+                    {
+                        block.section = section.name;
+                        filteredBlockList.Add(block);
+                        break;
+                    }
+                }
+            }
+
+            blockSelectListBox.DataSource = filteredBlockList;
+            blockSelectListBox.DisplayMember = "blockNum";
+            blockSelectListBox.ValueMember = "blockId";
         }
 
         private void blockSelectedListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -844,6 +873,53 @@ namespace Track_Layout_UI
                     blockHeaterStatusTextBox.Text = "Off";
                     if (selectedBlock.heaterStatus)
                         blockHeaterStatusTextBox.Text = "On";
+                }
+            }
+        }
+
+        private void updateSelectedBlock_Murphy_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            bool invalid = false;
+            String lineName = "";
+            int blockNum = 0;
+            try
+            {
+                lineName = lineTextBox_Murphy.Text;
+                blockNum = Convert.ToInt32(blockTextBox_Murphy.Text);
+                foreach(Line line in lineList)
+                {
+                    if(line.name.Equals(lineName))
+                    {
+                        foreach(Section section in sectionList)
+                        {
+                            foreach(Block block in blockList)
+                            {
+                                if(block.blockNum == blockNum)
+                                {
+                                    found = true;
+                                    selectedBlock_Murphy = block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception exception)
+            {
+                invalid = true;
+                MessageBox.Show("Invalid input! Block not set...");
+            }
+            if(!invalid)
+            {
+                if(!found)
+                {
+                    MessageBox.Show("Input valid, block NOT found...");
+                }
+                else
+                {
+                    MessageBox.Show("Block found! Current Murphy block updated! Yee haw!!!");
+                    selectedMurphyBlockLabel.Text = lineName + " Line, Block " + blockNum.ToString() + " - Emergency Reporting";
                 }
             }
         }
