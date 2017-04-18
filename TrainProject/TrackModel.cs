@@ -274,8 +274,9 @@ namespace Track_Layout_UI
                 if(occupied)
                     blockOccupiedTextBox.Text = "Yes";
             }
+            Block blk = findBlock(blockId);
                 
-            TrackControllerModule.updateBlockOccupancy(blockId, occupied);
+            TrackControllerModule.updateBlockOccupancy(blk, occupied);
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
