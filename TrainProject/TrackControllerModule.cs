@@ -65,7 +65,7 @@ namespace TrainProject
         }
 
         //new function
-        public void updateBlockOccupancy(Block blk, Boolean occupied)
+        public static void updateBlockOccupancy(Block blk, Boolean occupied)
         {
             Boolean found = false;
             if(blk.isFromYard && blk.isToYard)
@@ -593,12 +593,18 @@ namespace TrainProject
 
         public static void shutdown()
         {
-
+            foreach (Train t in trainTrackings)
+            {
+                TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+            }
         }
 
         public static void resume()
         {
-
+            foreach (Train t in trainTrackings)
+            {
+                TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+            }
         }
 
         public static int? getSwitchState(int switchId)
