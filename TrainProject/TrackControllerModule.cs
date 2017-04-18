@@ -73,12 +73,16 @@ namespace TrainProject
             if(blk.isFromYard && blk.isToYard)
             {
                 TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 1, 0);
+                found = true;
+                yardOccupancy = true;
             }
 
             //green lines
             else if (blk.isFromYard)
             {
                 TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 0, 1);
+                found = true;
+                yardOccupancy = true;
             }
             else if (blk.isToYard)
             {
