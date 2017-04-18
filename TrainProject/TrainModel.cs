@@ -41,6 +41,7 @@ namespace TrainModelProject
         private int start = 0;
         private int AC = 0;
         private int heater = 0;
+        private int train_failures = 0;
         private double block_distance = 0;
         Block current_block;
         Block currentT_block;
@@ -56,6 +57,10 @@ namespace TrainModelProject
         public double getCurrSpeed()
         {
             return currSpeedms;
+        }
+        public void updateAnnouncement(string s)
+        {
+            announcementLabel.Text = s;
         }
 
         public int getCurrBlock()
@@ -122,7 +127,7 @@ namespace TrainModelProject
             if (n == 0) Train_Door_L.Text = "Closed";
             else if (n == 1) Train_Door_L.Text = "Left";
             else if (n == 2) Train_Door_L.Text = "Right";
-                   
+            if(n != 0) announcementLabel.Text = "";
         }
         public void currentBlock()
         {
@@ -283,6 +288,24 @@ namespace TrainModelProject
         private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void failTrainEngineButton_Click(object sender, EventArgs e)
+        {
+            train_failures = 1;
+            TC.updateFailure(train_failures);
+        }
+
+        private void failSignalPickupButton_Click(object sender, EventArgs e)
+        {
+            train_failures = 2;
+            TC.updateFailure(train_failures);
+        }
+
+        private void failBrakeButton_Click(object sender, EventArgs e)
+        {
+            train_failures = 3;
+            TC.updateFailure(train_failures);
         }
     }
 }

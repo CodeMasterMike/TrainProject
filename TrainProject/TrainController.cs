@@ -183,6 +183,26 @@ namespace TrainControllerProject
         public void updateFailure(int a)
         {
             failureStatus = a;
+            if (failureStatus > 0) emergencyOverride = true;
+            if (failureStatus == 0)
+            {
+                brakeStatusLabel.Text = "Normal";
+                engineStatusLabel.Text = "Normal";
+                signalStatusLabel.Text = "Normal";
+            }
+            if(failureStatus == 1)
+            {
+                engineStatusLabel.Text = "Failed";
+            }
+            if (failureStatus == 2)
+            {
+                signalStatusLabel.Text = "Failed";
+            }
+            if (failureStatus == 3)
+            {
+                brakeStatusLabel.Text = "Failed";
+            }
+
         }
         private void emergencyON()
         {
@@ -243,6 +263,10 @@ namespace TrainControllerProject
             stationName = n;
             stationPrevToNext = pn;
             approachingStation = true;
+            if(mode == 1)
+            {
+                TM.updateAnnouncement("Now arriving at station " + stationName);
+            }
         }
         public void sendSwitchBeaconInfo(int b)
         {
@@ -301,6 +325,7 @@ namespace TrainControllerProject
             setSpeedTrackBar.Enabled = false;
             automaticRadioButton.Checked = true;
             manualRadioButton.Checked = false;
+            sendAnnouncementButton.Enabled = false;
             serviceButton.Enabled = false;
             mode = 1;
         }
@@ -310,6 +335,7 @@ namespace TrainControllerProject
             automaticRadioButton.Checked = false;
             manualRadioButton.Checked = true;
             serviceButton.Enabled = true;
+            sendAnnouncementButton.Enabled = false;
             mode = 0;
         }
         private void updateTimeLabel(String time)
@@ -651,6 +677,8 @@ namespace TrainControllerProject
 
         private void sendAnnouncementButton_Click(object sender, EventArgs e)
         {
+            TM.updateAnnouncement(announcementTextBox.Text);
+            announcementTextBox.Text = "";
         }
     }
 }
