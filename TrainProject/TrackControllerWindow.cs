@@ -24,12 +24,6 @@ namespace TrainProject
 
             //check if controllerModule has already been instantiated from office
             controllerModule = new TrackControllerModule();
-
-            //controllerModule.initializeTrackControllers();//might have to move this elsewhere
-            //updateTrains();
-            //updateSwitches();
-            //updateCrossings();
-            //initializeControllerTable();
         }
 
 
@@ -170,6 +164,38 @@ namespace TrainProject
 
                 }
             }
+            updateSwitchLights();
+        }
+
+        public void updateSwitchLights()
+        {
+            foreach(TrackController ctrl in TrackControllerModule.activeControllers)
+            {
+                try
+                {
+                    ListView temp = (ListView)Controls.Find(ctrl.controllerName + "SwitchLightView", true)[0];
+                    temp.Items.Clear();
+                    int i = 0;
+                    foreach (Switch s in ctrl.getSwitches())
+                    {
+                        String sourceLight, t1Light, t2Light;
+                        sourceLight = (s.sourceLight) == true ? "Green" : "Red";
+                        t1Light = (s.t1Light) == true ? "Green" : "Red";
+                        t2Light = (s.t2Light) == true ? "Green" : "Red";
+                        temp.Items.Add(new ListViewItem(new[] { s.switchId.ToString(), sourceLight, t1Light, t2Light }));
+                        temp.Items[i].UseItemStyleForSubItems = false;
+                        temp.Items[i].SubItems[1].BackColor = System.Drawing.Color.GreenYellow;
+                        temp.Items[i].SubItems[1].BackColor = (s.sourceLight) == true ? System.Drawing.Color.GreenYellow : System.Drawing.Color.OrangeRed;
+                        temp.Items[i].SubItems[2].BackColor = (s.t1Light) == true ? System.Drawing.Color.GreenYellow : System.Drawing.Color.OrangeRed;
+                        temp.Items[i].SubItems[3].BackColor = (s.t2Light) == true ? System.Drawing.Color.GreenYellow : System.Drawing.Color.OrangeRed;
+                        i++;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
         public void updateTrains()
         {
@@ -179,7 +205,7 @@ namespace TrainProject
                 temp.Items.Clear();
                 foreach (var train in TrackControllerModule.activeTrains)
                 {
-                    //temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
+                    temp.Items.Add(new ListViewItem(new[] { train.getTrainId().ToString(), train.getCurrBlock().ToString(), train.getCurrSpeed().ToString(), train.getTC().getRemainingAuthority().ToString() }));
                 }
             }
             catch (Exception e)
@@ -200,6 +226,8 @@ namespace TrainProject
                     int? newState = ctrl.changeSwitchState(switchId);
                     e.Item.SubItems[2].Text = newState.ToString();
                     MessageBox.Show(this, @"Switch " + switchId + " changed to block " + newState);
+                    updateSwitchLights();
+                    break;
                 }
             }
             

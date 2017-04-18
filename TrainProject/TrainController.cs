@@ -73,6 +73,11 @@ namespace TrainControllerProject
         Map map;
 
         //private SpeechSynthesizer speaker;
+
+        public double getRemainingAuthority()
+        {
+            return distanceToAuthority;
+        }
       
         
         //initialize labels and controls

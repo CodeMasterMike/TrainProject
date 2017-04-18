@@ -23,6 +23,8 @@ namespace CTC
         int sugAuth;
         int trainCounter = 0;
         public static TrackControllerModule module;
+        Block currentBlock;
+        int currentLineSelection = 0;
         
         List<Block> myBlockList;
         public List<Train> myTrainList;
@@ -47,11 +49,12 @@ namespace CTC
         public void dispatchNewTrain()
         {
             trainCounter++;            
-            tm_window = new TrainModel();
+            Train train = new Train(trainCounter, sugSpeed, sugAuth);
+            myTrainList.Add(train);
+            train.currBlock = 0;
+            tm_window = new TrainModel(currentLineSelection, trainCounter);
             tm_window.Show();
-
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
-
         }
 
         public void dispatchOldTrain(int trainId)
@@ -73,6 +76,8 @@ namespace CTC
             trainClick.FixedWidth = true;
             extendo.AddColumn(trainClick);
             myBlockList = new List<Block>();
+            Block yard = new TrainProject.Block(0, 1);
+            myBlockList.Add(yard);
             myTrainList = new List<Train>();
             foreach (Line line in trackLines)
             {
@@ -101,7 +106,6 @@ namespace CTC
                 item.Text = block.blockNum.ToString();
                 item.SubItems.Add("Open");
                 item.SubItems.Add("-");//occupancy
-                item.SubItems.Add("-");//crossing state
                 systemListView.Items.Add(item);
 
                 if (block.parentSwitch != null) //check if block is associated with switch
@@ -111,14 +115,9 @@ namespace CTC
                         int switchId = block.parentSwitch.switchId;
                         int currState = (int)TrackControllerModule.getSwitchState(switchId);
                         Block b = findBlock(currState);
-                        Console.WriteLine("CURRENT SW STATE" + currState);
                         //int currState = (int)TrackControllerWindow.controllerModule.getSwitchState(switchId);
-                        Console.WriteLine(currState);
-                        Console.WriteLine(b.blockId);
-                        Console.WriteLine(b.blockNum);
                         if (currState == (b.blockId))
                         {
-                            Console.WriteLine("true");
                             currState = (b.blockNum);
                         }
 
@@ -129,8 +128,10 @@ namespace CTC
                 {
                     item.SubItems.Add("-");//switch state
                 }
+
+                item.SubItems.Add("-");//crossing state
             }
-            
+
         }
 
         private Block findBlock(int blockId)
@@ -147,12 +148,9 @@ namespace CTC
 
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
-            Console.WriteLine("hit sel block");
             int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) +1;
-            Console.WriteLine(blockSelected);
-            Block b = myBlockList[blockSelected];
+            Block b = myBlockList[blockSelected-2];//bc index starts at zero + header row
             updateBlockLabel.Text = b.blockNum.ToString();
-            Console.WriteLine(updateBlockLabel.Text);
             if (b.isOccupied == true)
             {
                 updateBlockStatLabel.Text = "Occupied";
@@ -162,10 +160,7 @@ namespace CTC
                 updateBlockStatLabel.Text = "Empty";
             }
             updateSectionLabel.Text = b.section;
-            Console.WriteLine(updateSectionLabel.Text);
             updateLineLabel.Text = b.line;
-            Console.WriteLine(updateLineLabel.Text);
-
         }
 
         private void selTrain(object sender, ListViewColumnMouseEventArgs e)
@@ -179,24 +174,59 @@ namespace CTC
             {
                 if ((b.blockId == bId) && (occupied == true))
                 {
-                    Console.WriteLine(b.blockId);
-                    Console.WriteLine(bId);
-                    foreach (ListViewItem item in systemListView.Items)
+                    if (b.isFromYard) //for the case when a train is just getting newly dispatched
                     {
-                        if (item.Index == (b.blockNum - 1))
+                        foreach(Train t in myTrainList)
                         {
-                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "Train 1" };
+                            if (t.currBlock == 0)
+                            {
+                                t.prevBlock = t.currBlock;
+                                t.currBlock = b.blockId; //curr block
+                            }
                         }
                     }
+                    
+                    else
+                    {
+                        foreach (ListViewItem item in systemListView.Items)
+                        {
+                            if (item.Index == (b.blockNum)) //the minus 1 is due to the index of rows in table being off by one
+
+                            {
+                                foreach (Train t in myTrainList)
+                                {
+                                    Console.WriteLine("in foreach");
+                                    int pBlock = t.currBlock;
+                                    int nBlock = (getNextBlock(pBlock)).blockId;
+                                    if (nBlock == b.blockId) //if trains curr block is this one
+                                    {
+                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                        { Text = "Train " + t.trainId.ToString() };
+                                    }
+                                }
+
+                            }
+                        }
+                        foreach (Train t in myTrainList)
+                        {
+                            int pBlock = t.currBlock;
+                            int nBlock = (getNextBlock(pBlock)).blockId;
+                            if (nBlock == b.blockId)
+                            {
+                                t.currBlock = b.blockId;
+                            }
+
+                        }
+                    }
+
                     b.isOccupied = true;
                 }
+
                 else if ((b.blockId == bId) && (occupied == false))
                 {
-                    Console.WriteLine(b.blockNum);
-                    Console.WriteLine(bId);
                     foreach (ListViewItem item in systemListView.Items)
                     {
-                        if (item.Index == (b.blockNum - 1))
+                        if (item.Index == (b.blockNum))
                         {
                             item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
                         }
@@ -204,6 +234,106 @@ namespace CTC
                     b.isOccupied = false;
                 }
             }
+        }
+
+        private Block getBlock(int blockID)
+        {
+            foreach (Block block in myBlockList)
+            {
+                if (block.blockId == blockID) return block;
+            }
+            return null;
+        }
+
+        bool onSwitch = false;
+        bool prevToNext = true;
+
+        public Block getNextBlock(int i)
+        {
+            currentBlock = getBlock(i);
+            int blockId = currentBlock.blockId;
+            if (onSwitch)
+            {
+                configureDirection();
+                onSwitch = false;
+            }
+
+            if (prevToNext)
+            {
+                if (currentBlock.nextBlockId != null)
+                {
+                    return getBlock((int)currentBlock.nextBlockId);
+                }
+                else if (currentBlock.parentSwitch.targetBlockId1 == blockId)
+                {
+                    onSwitch = true;
+                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
+                }
+                else if (currentBlock.parentSwitch.targetBlockId2 == blockId)
+                {
+                    onSwitch = true;
+                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
+                }
+                else
+                {
+                    onSwitch = true;
+                    return null;
+                }
+            }
+            else
+            {
+                if (currentBlock.prevBlockId != null)
+                {
+                    return getBlock((int)currentBlock.prevBlockId);
+                }
+                else if (currentBlock.parentSwitch.targetBlockId1 == blockId)
+                {
+                    onSwitch = true;
+                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
+                }
+                else if (currentBlock.parentSwitch.targetBlockId2 == blockId)
+                {
+                    onSwitch = true;
+                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
+                }
+                else
+                {
+                    onSwitch = true;
+                    return null;
+                }
+            }
+        }
+
+        private void configureDirection()
+        {
+            if (currentBlock.prevBlockId == null) prevToNext = true;
+            else prevToNext = false;
+        }
+
+        public Block getCurrentBlock()
+        {
+            return currentBlock;
+        }
+
+        public double getDistance(int n)
+        {
+            int distance = currentBlock.length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                currentBlock = getNextBlock(currentBlock.blockNum);
+                distance += currentBlock.length;
+            }
+            return distance;
+        }
+
+        public bool getPrevToNext()
+        {
+            return prevToNext;
+        }
+
+        public bool getOnSwtich()
+        {
+            return onSwitch;
         }
 
         private void setAuto()
@@ -280,11 +410,6 @@ namespace CTC
 
         }
 
-        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void openBlockButton_Click(object sender, EventArgs e)
         {
 
@@ -352,6 +477,11 @@ namespace CTC
         private void Office_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void lineSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentLineSelection = lineSelect.SelectedIndex;
         }
     }
 }
