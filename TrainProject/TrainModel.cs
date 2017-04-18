@@ -52,6 +52,7 @@ namespace TrainModelProject
         double p;
         double sugSpeed;
         int sugAuthority;
+        int lineId;
 
         public double getCurrSpeed()
         {
@@ -81,16 +82,17 @@ namespace TrainModelProject
 
         public TrainModel() { }
 
-        public TrainModel(int lineId, int trainId) 
+        public TrainModel(int lId, int trainId) 
         {
             InitializeComponent();
             TC = new TrainController(this);
             TC.Show();
+            lineId = lId;
            
             double block_length = 0;
             double train_distance = 0;
 
-            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null);
+            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null, lineId);
             prev_block = null;
             block_distance = current_block.length;
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);

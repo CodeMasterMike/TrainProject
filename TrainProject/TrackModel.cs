@@ -191,14 +191,14 @@ namespace Track_Layout_UI
         }
 
         //only returns null if the yard
-        public Block getNextBlock(Block prevBlock, Block currBlock)
+        public Block getNextBlock(Block prevBlock, Block currBlock, int? lineId = null)
         {    
             Block nextBlock = null;
             bool isSource = false;
             bool isTarget = false;
             if (prevBlock == null && currBlock == null) //coming from yard
             {
-                return findBlock(yardBlockId); //TODO use findYardBlock
+                return findYardBlock((int)lineId); //TODO use findYardBlock
             }
             if(currBlock.parentSwitch != null)
             {
