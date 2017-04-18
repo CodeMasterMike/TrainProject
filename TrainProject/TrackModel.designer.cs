@@ -103,6 +103,11 @@
             this.dvgBlocks = new System.Windows.Forms.DataGridView();
             this.InsertToSql = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.occupancyLabel = new System.Windows.Forms.Label();
+            this.blockOccupiedTextBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.temperatureScrollBar = new System.Windows.Forms.HScrollBar();
+            this.temperatureLabel = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -363,6 +368,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.blockOccupiedTextBox);
+            this.groupBox2.Controls.Add(this.occupancyLabel);
             this.groupBox2.Controls.Add(this.blockCumElevationTextBox);
             this.groupBox2.Controls.Add(this.switchNumTextBox);
             this.groupBox2.Controls.Add(this.label14);
@@ -673,6 +680,9 @@
             // User
             // 
             this.User.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.User.Controls.Add(this.temperatureLabel);
+            this.User.Controls.Add(this.temperatureScrollBar);
+            this.User.Controls.Add(this.label16);
             this.User.Controls.Add(this.label3);
             this.User.Controls.Add(this.pictureBox1);
             this.User.Controls.Add(this.groupBox3);
@@ -966,6 +976,56 @@
             this.openExcelFileDialog.FileName = "openExcelFileDialog";
             this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
             // 
+            // occupancyLabel
+            // 
+            this.occupancyLabel.AutoSize = true;
+            this.occupancyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.occupancyLabel.Location = new System.Drawing.Point(290, 247);
+            this.occupancyLabel.Name = "occupancyLabel";
+            this.occupancyLabel.Size = new System.Drawing.Size(65, 13);
+            this.occupancyLabel.TabIndex = 64;
+            this.occupancyLabel.Text = "Occupied:";
+            // 
+            // blockOccupiedTextBox
+            // 
+            this.blockOccupiedTextBox.BackColor = System.Drawing.Color.White;
+            this.blockOccupiedTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.blockOccupiedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockOccupiedTextBox.Location = new System.Drawing.Point(371, 247);
+            this.blockOccupiedTextBox.Name = "blockOccupiedTextBox";
+            this.blockOccupiedTextBox.ReadOnly = true;
+            this.blockOccupiedTextBox.Size = new System.Drawing.Size(47, 13);
+            this.blockOccupiedTextBox.TabIndex = 65;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(440, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(275, 31);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "System Temperature:";
+            // 
+            // temperatureScrollBar
+            // 
+            this.temperatureScrollBar.Location = new System.Drawing.Point(832, 19);
+            this.temperatureScrollBar.Minimum = -30;
+            this.temperatureScrollBar.Name = "temperatureScrollBar";
+            this.temperatureScrollBar.Size = new System.Drawing.Size(360, 31);
+            this.temperatureScrollBar.TabIndex = 48;
+            this.temperatureScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.temperatureScrollBar_Scroll);
+            // 
+            // temperatureLabel
+            // 
+            this.temperatureLabel.AutoSize = true;
+            this.temperatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.temperatureLabel.Location = new System.Drawing.Point(730, 19);
+            this.temperatureLabel.Name = "temperatureLabel";
+            this.temperatureLabel.Size = new System.Drawing.Size(68, 31);
+            this.temperatureLabel.TabIndex = 50;
+            this.temperatureLabel.Text = "70 F";
+            // 
             // TrackModelUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -973,7 +1033,7 @@
             this.ClientSize = new System.Drawing.Size(1212, 678);
             this.Controls.Add(this.tabControl1);
             this.Name = "TrackModelUI";
-            this.Text = "Red A1";
+            this.Text = "Track Model";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1079,6 +1139,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox switchNumTextBox;
         private System.Windows.Forms.TextBox blockCumElevationTextBox;
+        private System.Windows.Forms.Label occupancyLabel;
+        private System.Windows.Forms.TextBox blockOccupiedTextBox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.HScrollBar temperatureScrollBar;
+        private System.Windows.Forms.Label temperatureLabel;
     }
 }
 

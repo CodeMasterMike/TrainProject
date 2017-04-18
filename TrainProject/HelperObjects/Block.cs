@@ -24,6 +24,7 @@ namespace TrainProject
         public bool isFromYard { get; set; }
         public bool isToYard { get; set; }
         public bool isOccupied { get; set; }
+        public bool heaterStatus { get; set; }
 
         //need to discuss how to do this further
         public int? prevBlockId { get; set; }
@@ -58,6 +59,7 @@ namespace TrainProject
             isRailBroken = false;
             isCircuitBroken = false;
             isPowerBroken = false;
+            isOccupied = false;
         }
 
         public Block(int bId, int bn, int sId, decimal l, decimal g, decimal e, decimal ce, int sl, bool ug)
@@ -74,6 +76,7 @@ namespace TrainProject
             isRailBroken = false;
             isCircuitBroken = false;
             isPowerBroken = false;
+            isOccupied = false;
         }
     }
 }

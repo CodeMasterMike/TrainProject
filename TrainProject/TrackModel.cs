@@ -32,6 +32,7 @@ namespace Track_Layout_UI
         public static Line selectedLine;
         public static Block selectedBlock_Murphy;
         public static Line selectedLine_Murphy;
+        public static int temperature;
         //temporary variables
         private int yardBlockId = 229;
         //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
@@ -70,6 +71,28 @@ namespace Track_Layout_UI
                 loadClassesFromDB();
             }*/
         }
+
+        private void loadClassesFromDB()
+        {
+            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(str))
+            {
+                lineList = DatabaseInterface.loadLinesFromDB(con);
+                sectionList = DatabaseInterface.loadSectionsFromDB(con, lineList);
+                blockList = DatabaseInterface.loadBlocksFromDB(con, lineList);
+                switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
+                DatabaseInterface.updateBlocksNextPrevious(lineList);
+                DatabaseInterface.updateBlockDirection(lineList);
+                initializeRedLineStationBeacons();
+            }
+            parseSwitchEnds();
+            TrackControllerModule.initializeSwitches(switchList);
+            TrackControllerModule.initializeCrossings(getCrossings());
+            TrainSimulation.mainOffice.initializeTrackLayout(lineList);
+            //Office.initializeTrackLayout(lineList);
+            initializeLists();
+        }
+
         private void parseSwitchEnds()
         {
             Block sourceBlock, t1Block, t2Block;
@@ -147,7 +170,7 @@ namespace Track_Layout_UI
             return null;
         }
 
-        public Block findYardBlock(int blockId, int lineId) //TODO actually use this
+        public Block findYardBlock(int lineId) //TODO actually use this
         {
             foreach (Line line in lineList)
             {
@@ -243,6 +266,14 @@ namespace Track_Layout_UI
 
         public void updateBlockStatus(int blockId, bool occupied)
         {
+            findBlock(blockId).isOccupied = occupied;
+            if(selectedBlock.blockId == blockId)
+            {
+                blockOccupiedTextBox.Text = "No";
+                if(occupied)
+                    blockOccupiedTextBox.Text = "Yes";
+            }
+                
             TrackControllerModule.updateBlockOccupancy(blockId, occupied);
         }
 
@@ -509,26 +540,6 @@ namespace Track_Layout_UI
             }
         }
 
-        private void loadClassesFromDB()
-        {
-            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(str))
-            {
-                lineList = DatabaseInterface.loadLinesFromDB(con);
-                sectionList = DatabaseInterface.loadSectionsFromDB(con, lineList);
-                blockList = DatabaseInterface.loadBlocksFromDB(con, lineList);
-                switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
-                DatabaseInterface.updateBlocksNextPrevious(lineList);
-                initializeRedLineStationBeacons();
-            }
-            parseSwitchEnds();
-            TrackControllerModule.initializeSwitches(switchList);
-            TrackControllerModule.initializeCrossings(getCrossings());
-            TrainSimulation.mainOffice.initializeTrackLayout(lineList);
-            //Office.initializeTrackLayout(lineList);
-            initializeLists();
-        }
-
         private List<Crossing> getCrossings()
         {
             List<Crossing> crossingList = new List<Crossing>();
@@ -717,8 +728,10 @@ namespace Track_Layout_UI
                     if (selectedBlock.station != null)
                         blockStationTextBox.Text = selectedBlock.station.name;
                     blockPersonsUnloadingTextBox.Text = "0"; //TODO
-                    blockTemperatureTextBox.Text = "69"; //TODO
-                    blockHeaterStatusTextBox.Text = "Off"; //TODO
+                    blockTemperatureTextBox.Text = temperature.ToString();
+                    blockHeaterStatusTextBox.Text = "Off";
+                    if(selectedBlock.heaterStatus)
+                        blockHeaterStatusTextBox.Text = "On";
                     blockIsUndergroundTextBox.Text = "NO";
                     if(selectedBlock.isUnderground)
                         blockIsUndergroundTextBox.Text = "YES";
@@ -731,15 +744,18 @@ namespace Track_Layout_UI
                             blockSwitchTextBox.Text = "Target";
                         switchNumTextBox.Text = selectedBlock.parentSwitch.switchId.ToString();
                     }
-                    blockArrowDirectionTextBox.Text = "<-->"; //TODO
+                    blockOccupiedTextBox.Text = "No";
+                    if(selectedBlock.isOccupied)
+                        blockOccupiedTextBox.Text = "Yes";
+                    blockArrowDirectionTextBox.Text = "-->";
+                    if(selectedBlock.bidirectional)
+                        blockArrowDirectionTextBox.Text = "<-->";
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
                     updateFailureButtons();
                 }
             }
         }
-
-
 
         private void updateFailureButtons()
         {
@@ -805,6 +821,30 @@ namespace Track_Layout_UI
         private void powerStatus_Click(object sender, EventArgs e)
         {
             TrackControllerModule.causeFailure(selectedBlock.blockId);
+        }
+
+        private void temperatureScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            temperature = temperatureScrollBar.Value;
+            temperatureLabel.Text = temperature.ToString() + " F";
+            updateBlockHeaterStatuses();
+        }
+
+        private void updateBlockHeaterStatuses()
+        {
+            bool heaterRequired = false;
+            if (temperature <= 32)
+                heaterRequired = true;
+            foreach(Block block in blockList)
+            {
+                block.heaterStatus = heaterRequired;
+                if(selectedBlock.blockId == block.blockId)
+                {
+                    blockHeaterStatusTextBox.Text = "Off";
+                    if (selectedBlock.heaterStatus)
+                        blockHeaterStatusTextBox.Text = "On";
+                }
+            }
         }
     }
 }
