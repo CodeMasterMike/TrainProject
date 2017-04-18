@@ -65,6 +65,10 @@ namespace TrainProject
 
         public int? trainHeadingTowardsSwitch(Train t, Switch s, int whichBranch)
         {
+            if (s.switchId == 3)
+            {
+
+            }
             if (t.direction == 0 || t.direction == null)
             {
                 Console.WriteLine("Error. Train has no direction");

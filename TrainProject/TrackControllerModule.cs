@@ -67,14 +67,18 @@ namespace TrainProject
         //new function
         public static void updateBlockOccupancy(Block blk, Boolean occupied)
         {
-            Boolean found = false;
+            Boolean found = false, yardOccupancy = false;
+
+            //red line only
             if(blk.isFromYard && blk.isToYard)
             {
-
+                TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 1, 0);
             }
+
+            //green lines
             else if (blk.isFromYard)
             {
-
+                TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 0, 1);
             }
             else if (blk.isToYard)
             {
