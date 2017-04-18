@@ -24,6 +24,8 @@ namespace TrainProject
         public bool isFromYard { get; set; }
         public bool isToYard { get; set; }
         public bool isOccupied { get; set; }
+        public int lineId { get; set; }
+
 
         //need to discuss how to do this further
         public int? prevBlockId { get; set; }

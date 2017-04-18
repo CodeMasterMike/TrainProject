@@ -28,7 +28,7 @@ namespace CTC
         
         List<Block> myBlockList;
         public List<Train> myTrainList;
-        Boolean mode;
+        Boolean mode; // 0 = man, 1 = auto
 
         public Office()
         {
@@ -55,6 +55,8 @@ namespace CTC
             tm_window = new TrainModel(currentLineSelection, trainCounter);
             tm_window.Show();
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
+            train.authority = sugAuth;
+            train.suggestedSpeed = sugSpeed;
         }
 
         public void dispatchOldTrain(int trainId)
@@ -72,7 +74,7 @@ namespace CTC
             blockClick.FixedWidth = true;
             extendo.AddColumn(blockClick);
             ListViewButtonColumn trainClick = new ListViewButtonColumn(2);
-            blockClick.Click += selTrain;
+            trainClick.Click += selTrain;
             trainClick.FixedWidth = true;
             extendo.AddColumn(trainClick);
             myBlockList = new List<Block>();
@@ -91,7 +93,8 @@ namespace CTC
                             {
                                 myBlockList.Add(block);
                                 block.isOccupied = false;
-                                block.line = line.name;
+                                block.lineId = 2;
+                                Console.WriteLine(block.line);
                                 block.section = section.name;
                             }                               
                         }
@@ -101,35 +104,106 @@ namespace CTC
 
             foreach(Block block in myBlockList)
             {
-                String bl = block.blockNum.ToString();
-                ListViewItem item = new ListViewItem();
-                item.Text = block.blockNum.ToString();
-                item.SubItems.Add("Open");
-                item.SubItems.Add("-");//occupancy
-                systemListView.Items.Add(item);
-
-                if (block.parentSwitch != null) //check if block is associated with switch
+                if (block.lineId == 2)
                 {
-                    if (block.blockId == block.parentSwitch.sourceBlockId)
+                    String bl = block.blockNum.ToString();
+                    ListViewItem item = new ListViewItem();
+                    item.Text = block.blockNum.ToString();
+                    item.SubItems.Add("Open");
+                    item.SubItems.Add("-");//occupancy
+                    systemListView.Items.Add(item);
+
+                    if (block.parentSwitch != null) //check if block is associated with switch
                     {
-                        int switchId = block.parentSwitch.switchId;
-                        int currState = (int)TrackControllerModule.getSwitchState(switchId);
-                        Block b = findBlock(currState);
-                        //int currState = (int)TrackControllerWindow.controllerModule.getSwitchState(switchId);
-                        if (currState == (b.blockId))
+                        if (block.blockId == block.parentSwitch.sourceBlockId)
                         {
-                            currState = (b.blockNum);
+                            int switchId = block.parentSwitch.switchId;
+                            int currState = (int)TrackControllerModule.getSwitchState(switchId);
+                            Block b = findBlock(currState);
+                            //int currState = (int)TrackControllerWindow.controllerModule.getSwitchState(switchId);
+                            if (currState == (b.blockId))
+                            {
+                                currState = (b.blockNum);
+                            }
+
+                            item.SubItems.Add(currState.ToString());
                         }
-
-                        item.SubItems.Add(currState.ToString());
                     }
+                    else
+                    {
+                        item.SubItems.Add("-");//switch state
+                    }
+                    item.SubItems.Add("-");//crossing state
                 }
-                else
-                {
-                    item.SubItems.Add("-");//switch state
-                }
+            }
 
-                item.SubItems.Add("-");//crossing state
+
+            //-----------------Green Line--------------------
+
+            systemListView2.View = View.Details;
+            systemListView2.FullRowSelect = true;
+            ListViewExtender extendo2 = new ListViewExtender(systemListView2);
+            ListViewButtonColumn blockClick2 = new ListViewButtonColumn(0);
+            blockClick2.Click += selBlock;
+            blockClick2.FixedWidth = true;
+            extendo2.AddColumn(blockClick2);
+            ListViewButtonColumn trainClick2 = new ListViewButtonColumn(2);
+            trainClick2.Click += selTrain;
+            trainClick2.FixedWidth = true;
+            extendo2.AddColumn(trainClick2);
+            foreach (Line line in trackLines)
+            {
+                foreach (Section section in line.sections)
+                    if (line.lineId == 1) //green line
+                    {
+                        foreach (Block block in section.blocks)
+                        {
+                            {
+                                if (block != null)
+                                {
+                                    myBlockList.Add(block);
+                                    block.isOccupied = false;
+                                    block.lineId = 1;
+                                    block.section = section.name;
+                                }
+                            }
+                        }
+                    }
+            }
+
+            foreach (Block block in myBlockList)
+            {
+                if (block.lineId == 1)
+                {
+                    String bl = block.blockNum.ToString();
+                    ListViewItem item = new ListViewItem();
+                    item.Text = block.blockNum.ToString();
+                    item.SubItems.Add("Open");
+                    item.SubItems.Add("-");//occupancy
+                    systemListView2.Items.Add(item);
+
+                    if (block.parentSwitch != null) //check if block is associated with switch
+                    {
+                        if (block.blockId == block.parentSwitch.sourceBlockId)
+                        {
+                            int switchId = block.parentSwitch.switchId;
+                            int currState = (int)TrackControllerModule.getSwitchState(switchId);
+                            Block b = findBlock(currState);
+                            //int currState = (int)TrackControllerWindow.controllerModule.getSwitchState(switchId);
+                            if (currState == (b.blockId))
+                            {
+                                currState = (b.blockNum);
+                            }
+
+                            item.SubItems.Add(currState.ToString());
+                        }
+                    }
+                    else
+                    {
+                        item.SubItems.Add("-");//switch state
+                    }
+                    item.SubItems.Add("-");//crossing state
+                }
             }
 
         }
@@ -149,7 +223,7 @@ namespace CTC
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
             int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) +1;
-            Block b = myBlockList[blockSelected-2];//bc index starts at zero + header row
+            Block b = myBlockList[blockSelected-1];//bc index starts at zero + header row
             updateBlockLabel.Text = b.blockNum.ToString();
             if (b.isOccupied == true)
             {
@@ -165,7 +239,23 @@ namespace CTC
 
         private void selTrain(object sender, ListViewColumnMouseEventArgs e)
         {
-            //something
+            String trainSelected = e.Item.SubItems[2].Text;
+            if (!(trainSelected.Equals("-")))
+            {
+                Char delimiter = ' ';
+                String[] txtSubstrings = trainSelected.Split(delimiter);
+                Console.WriteLine(txtSubstrings[0]);
+                Console.WriteLine(txtSubstrings[1]);
+                int trainSelectedInt = Int32.Parse(txtSubstrings[1]);
+                Console.WriteLine("train selected is: " + trainSelectedInt);
+                updateTrainLabel.Text = txtSubstrings[1];
+                foreach (Train t in myTrainList)
+                    if(t.trainId == trainSelectedInt)
+                    {
+                        updateSugSpeedLabel.Text = t.suggestedSpeed.ToString();
+                        updateSugSpeedLabel.Text = t.authority.ToString();
+                    }
+            }
         }
 
         public void updateBlockOccupancy(int bId, bool occupied)
@@ -190,12 +280,10 @@ namespace CTC
                     {
                         foreach (ListViewItem item in systemListView.Items)
                         {
-                            if (item.Index == (b.blockNum)) //the minus 1 is due to the index of rows in table being off by one
-
+                            if (item.Index == (b.blockNum))
                             {
                                 foreach (Train t in myTrainList)
                                 {
-                                    Console.WriteLine("in foreach");
                                     int pBlock = t.currBlock;
                                     int nBlock = (getNextBlock(pBlock)).blockId;
                                     if (nBlock == b.blockId) //if trains curr block is this one
@@ -433,12 +521,24 @@ namespace CTC
         private void manButton_Click(object sender, EventArgs e)
         {
             setManual();
+            mode = false;
+            autoButton.ForeColor = Color.Black;
+            autoButton.BackColor = Color.White;
+            manButton.ForeColor = Color.White;
+            manButton.BackColor = Color.Black;
+
         }
 
         private void autoButton_Click(object sender, EventArgs e)
         {
             setAuto();
             dispatchNewTrain();
+            mode = true;
+            autoButton.ForeColor = Color.White;
+            autoButton.BackColor = Color.Black;
+            manButton.ForeColor = Color.Black;
+            manButton.BackColor = Color.White;
+
         }
 
         private void fbRadio_CheckedChanged(object sender, EventArgs e)
@@ -482,6 +582,51 @@ namespace CTC
         private void lineSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentLineSelection = lineSelect.SelectedIndex;
+        }
+
+        private void updateTrainLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateSugSpeedLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateSugAuthLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateBlockLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateBlockStatLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateSectionLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateLineLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateNumTrainsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateThroughputLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
