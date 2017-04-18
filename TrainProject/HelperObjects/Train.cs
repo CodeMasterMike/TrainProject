@@ -11,6 +11,7 @@ namespace TrainProject
         public int trainId { get; set; }
         public int currBlock { get; set; }
         public int prevBlock { get; set; }
+        public int? direction { get; set; }
         public double suggestedSpeed { get; set; }
         public int authority { get; set; }
         public int remainingAuthority { get; set; }
