@@ -58,7 +58,9 @@ namespace TrainModelProject
             TC.updateSpeedAndAuthority(speed, authority);
         }
 
-        public TrainModel()
+        public TrainModel() { }
+
+        public TrainModel(int lineId, int trainId) 
         {
             InitializeComponent();
             TC = new TrainController(this);
@@ -92,7 +94,7 @@ namespace TrainModelProject
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
-                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
+               Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
         public void updateDoorStatus(int n)

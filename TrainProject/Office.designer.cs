@@ -45,7 +45,7 @@
             this.fixTrainButton = new System.Windows.Forms.Button();
             this.closeBlockButton = new System.Windows.Forms.Button();
             this.openBlockButton = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.lineSelect = new System.Windows.Forms.ComboBox();
             this.selLineLabel = new System.Windows.Forms.Label();
             this.dispatchGroup = new System.Windows.Forms.GroupBox();
             this.speedScrollBar = new System.Windows.Forms.HScrollBar();
@@ -115,7 +115,7 @@
             this.DispatcherTab.Controls.Add(this.systemBox);
             this.DispatcherTab.Location = new System.Drawing.Point(4, 25);
             this.DispatcherTab.Name = "DispatcherTab";
-            this.DispatcherTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.DispatcherTab.Padding = new System.Windows.Forms.Padding(3);
             this.DispatcherTab.Size = new System.Drawing.Size(1323, 647);
             this.DispatcherTab.TabIndex = 0;
             this.DispatcherTab.Text = "Dispatcher";
@@ -244,7 +244,7 @@
             this.trackBox.Controls.Add(this.fixTrainButton);
             this.trackBox.Controls.Add(this.closeBlockButton);
             this.trackBox.Controls.Add(this.openBlockButton);
-            this.trackBox.Controls.Add(this.comboBox6);
+            this.trackBox.Controls.Add(this.lineSelect);
             this.trackBox.Controls.Add(this.selLineLabel);
             this.trackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackBox.Location = new System.Drawing.Point(661, 6);
@@ -307,14 +307,17 @@
             this.openBlockButton.UseVisualStyleBackColor = false;
             this.openBlockButton.Click += new System.EventHandler(this.openBlockButton_Click);
             // 
-            // comboBox6
+            // lineSelect
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(6, 40);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(268, 28);
-            this.comboBox6.TabIndex = 1;
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
+            this.lineSelect.FormattingEnabled = true;
+            this.lineSelect.Items.AddRange(new object[] {
+            "Green",
+            "Red"});
+            this.lineSelect.Location = new System.Drawing.Point(6, 40);
+            this.lineSelect.Name = "lineSelect";
+            this.lineSelect.Size = new System.Drawing.Size(268, 28);
+            this.lineSelect.TabIndex = 1;
+            this.lineSelect.SelectedIndexChanged += new System.EventHandler(this.lineSelect_SelectedIndexChanged);
             // 
             // selLineLabel
             // 
@@ -702,7 +705,7 @@
             // 
             this.MurphyTab.Location = new System.Drawing.Point(4, 25);
             this.MurphyTab.Name = "MurphyTab";
-            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3);
             this.MurphyTab.Size = new System.Drawing.Size(1323, 647);
             this.MurphyTab.TabIndex = 1;
             this.MurphyTab.Text = "Murphy";
@@ -759,7 +762,7 @@
         private System.Windows.Forms.GroupBox trackBox;
         private System.Windows.Forms.Button closeBlockButton;
         private System.Windows.Forms.Button openBlockButton;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox lineSelect;
         private System.Windows.Forms.Label selLineLabel;
         private System.Windows.Forms.Button fixTrackButton;
         private System.Windows.Forms.Button fixTrainButton;

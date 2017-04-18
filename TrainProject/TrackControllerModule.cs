@@ -40,7 +40,7 @@ namespace TrainProject
             //Track.dispatchTrain(Train t, Double speed, int authority)
         }
 
-        public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
+        public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority, int lineId)
         {
             Console.WriteLine("dispatching train!!!!!");
             activeTrains.Add(newTrain);
