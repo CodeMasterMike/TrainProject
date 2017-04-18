@@ -51,6 +51,12 @@ namespace TrainProject
             this.systemInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.systemInfoPictureBox = new System.Windows.Forms.PictureBox();
             this.greenCtrl1 = new System.Windows.Forms.TabPage();
+            this.green1SwitchLightGroupBox = new System.Windows.Forms.GroupBox();
+            this.green1SwitchLightView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.green1CrossingGroupBox = new System.Windows.Forms.GroupBox();
             this.green1CrossingListView = new System.Windows.Forms.ListView();
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,12 +75,6 @@ namespace TrainProject
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.green1TrainsGroupBox = new System.Windows.Forms.GroupBox();
-            this.green1TrainsListView = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.greenCtrl2 = new System.Windows.Forms.TabPage();
             this.green2TestGroupBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -88,18 +88,6 @@ namespace TrainProject
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.green2SwitchGroupBox = new System.Windows.Forms.GroupBox();
-            this.green2SwitchListView = new System.Windows.Forms.ListView();
-            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.redCtrl1 = new System.Windows.Forms.TabPage();
             this.red1TestGroupBox = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -113,18 +101,6 @@ namespace TrainProject
             this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.red1SwitchGroupBox = new System.Windows.Forms.GroupBox();
-            this.red1SwitchListView = new System.Windows.Forms.ListView();
-            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.red1TrainsGroupBox = new System.Windows.Forms.GroupBox();
-            this.red1TrainsListView = new System.Windows.Forms.ListView();
-            this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.redCtrl2 = new System.Windows.Forms.TabPage();
             this.red2TestGroupBox = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -138,24 +114,53 @@ namespace TrainProject
             this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.red2SwitchGroupBox = new System.Windows.Forms.GroupBox();
-            this.red2SwitchListView = new System.Windows.Forms.ListView();
-            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.red2TrainsGroupBox = new System.Windows.Forms.GroupBox();
-            this.red2TrainListView = new System.Windows.Forms.ListView();
-            this.columnHeader48 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader49 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader50 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader51 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.murphyTab = new System.Windows.Forms.TabPage();
             this.restoreCtcComm = new System.Windows.Forms.Button();
             this.severTMComm = new System.Windows.Forms.Button();
             this.restoreTMComm = new System.Windows.Forms.Button();
             this.severCtcComm = new System.Windows.Forms.Button();
+            this.random = new System.Windows.Forms.ListView();
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openPLCFile = new System.Windows.Forms.OpenFileDialog();
+            this.green2SwitchGroupBox = new System.Windows.Forms.GroupBox();
+            this.green2SwitchListView = new System.Windows.Forms.ListView();
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.green2SwitchLightView = new System.Windows.Forms.ListView();
+            this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.red1SwitchListView = new System.Windows.Forms.ListView();
+            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.red1SwitchLightView = new System.Windows.Forms.ListView();
+            this.columnHeader48 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader49 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader50 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader51 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.red2SwitchListView = new System.Windows.Forms.ListView();
+            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.red2SwitchLightView = new System.Windows.Forms.ListView();
+            this.columnHeader52 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader53 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader54 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader55 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Engineer.SuspendLayout();
             this.summaryTab.SuspendLayout();
             this.trainsSummaryBox.SuspendLayout();
@@ -163,30 +168,30 @@ namespace TrainProject
             this.systemInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemInfoPictureBox)).BeginInit();
             this.greenCtrl1.SuspendLayout();
+            this.green1SwitchLightGroupBox.SuspendLayout();
             this.green1CrossingGroupBox.SuspendLayout();
             this.green1TestGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.green1SwitchGroupBox.SuspendLayout();
-            this.green1TrainsGroupBox.SuspendLayout();
             this.greenCtrl2.SuspendLayout();
             this.green2TestGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.green2CrossingGroupBox.SuspendLayout();
-            this.green2SwitchGroupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.redCtrl1.SuspendLayout();
             this.red1TestGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.red1CrossingGroupBox.SuspendLayout();
-            this.red1SwitchGroupBox.SuspendLayout();
-            this.red1TrainsGroupBox.SuspendLayout();
             this.redCtrl2.SuspendLayout();
             this.red2TestGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.red2CrossingGroupBox.SuspendLayout();
-            this.red2SwitchGroupBox.SuspendLayout();
-            this.red2TrainsGroupBox.SuspendLayout();
             this.murphyTab.SuspendLayout();
+            this.green2SwitchGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // Engineer
@@ -352,22 +357,67 @@ namespace TrainProject
             // greenCtrl1
             // 
             this.greenCtrl1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.greenCtrl1.Controls.Add(this.green1SwitchLightGroupBox);
             this.greenCtrl1.Controls.Add(this.green1CrossingGroupBox);
             this.greenCtrl1.Controls.Add(this.green1TestGroupBox);
             this.greenCtrl1.Controls.Add(this.green1SwitchGroupBox);
-            this.greenCtrl1.Controls.Add(this.green1TrainsGroupBox);
             this.greenCtrl1.Location = new System.Drawing.Point(4, 38);
             this.greenCtrl1.Name = "greenCtrl1";
-            this.greenCtrl1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.greenCtrl1.Padding = new System.Windows.Forms.Padding(3);
             this.greenCtrl1.Size = new System.Drawing.Size(1387, 940);
             this.greenCtrl1.TabIndex = 0;
             this.greenCtrl1.Text = "Green Line, CTRL 1";
+            // 
+            // green1SwitchLightGroupBox
+            // 
+            this.green1SwitchLightGroupBox.Controls.Add(this.green1SwitchLightView);
+            this.green1SwitchLightGroupBox.Location = new System.Drawing.Point(13, 331);
+            this.green1SwitchLightGroupBox.Name = "green1SwitchLightGroupBox";
+            this.green1SwitchLightGroupBox.Size = new System.Drawing.Size(666, 281);
+            this.green1SwitchLightGroupBox.TabIndex = 19;
+            this.green1SwitchLightGroupBox.TabStop = false;
+            this.green1SwitchLightGroupBox.Text = "Switch Lights";
+            // 
+            // green1SwitchLightView
+            // 
+            this.green1SwitchLightView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.green1SwitchLightView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.green1SwitchLightView.Location = new System.Drawing.Point(12, 34);
+            this.green1SwitchLightView.Name = "green1SwitchLightView";
+            this.green1SwitchLightView.Size = new System.Drawing.Size(648, 241);
+            this.green1SwitchLightView.TabIndex = 0;
+            this.green1SwitchLightView.UseCompatibleStateImageBehavior = false;
+            this.green1SwitchLightView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Switch Id";
+            this.columnHeader1.Width = 106;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Source Light";
+            this.columnHeader2.Width = 87;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "T1 Light";
+            this.columnHeader3.Width = 62;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "T2 Light";
+            this.columnHeader4.Width = 136;
             // 
             // green1CrossingGroupBox
             // 
             this.green1CrossingGroupBox.Controls.Add(this.green1CrossingListView);
             this.green1CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1CrossingGroupBox.Location = new System.Drawing.Point(13, 532);
+            this.green1CrossingGroupBox.Location = new System.Drawing.Point(7, 618);
             this.green1CrossingGroupBox.Name = "green1CrossingGroupBox";
             this.green1CrossingGroupBox.Size = new System.Drawing.Size(672, 214);
             this.green1CrossingGroupBox.TabIndex = 18;
@@ -479,7 +529,7 @@ namespace TrainProject
             // 
             this.green1SwitchGroupBox.Controls.Add(this.green1SwitchListView);
             this.green1SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1SwitchGroupBox.Location = new System.Drawing.Point(13, 241);
+            this.green1SwitchGroupBox.Location = new System.Drawing.Point(7, 27);
             this.green1SwitchGroupBox.Name = "green1SwitchGroupBox";
             this.green1SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
             this.green1SwitchGroupBox.TabIndex = 14;
@@ -524,64 +574,16 @@ namespace TrainProject
             this.columnHeader8.Text = "Actions";
             this.columnHeader8.Width = 100;
             // 
-            // green1TrainsGroupBox
-            // 
-            this.green1TrainsGroupBox.Controls.Add(this.green1TrainsListView);
-            this.green1TrainsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1TrainsGroupBox.Location = new System.Drawing.Point(7, 27);
-            this.green1TrainsGroupBox.Name = "green1TrainsGroupBox";
-            this.green1TrainsGroupBox.Size = new System.Drawing.Size(672, 208);
-            this.green1TrainsGroupBox.TabIndex = 12;
-            this.green1TrainsGroupBox.TabStop = false;
-            this.green1TrainsGroupBox.Text = "Trains";
-            // 
-            // green1TrainsListView
-            // 
-            this.green1TrainsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.green1TrainsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green1TrainsListView.Location = new System.Drawing.Point(12, 38);
-            this.green1TrainsListView.Name = "green1TrainsListView";
-            this.green1TrainsListView.Scrollable = false;
-            this.green1TrainsListView.Size = new System.Drawing.Size(654, 164);
-            this.green1TrainsListView.TabIndex = 5;
-            this.green1TrainsListView.UseCompatibleStateImageBehavior = false;
-            this.green1TrainsListView.View = System.Windows.Forms.View.Details;
-            this.green1TrainsListView.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Train ID";
-            this.columnHeader1.Width = 75;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Current Block";
-            this.columnHeader2.Width = 120;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Speed (km/h)";
-            this.columnHeader3.Width = 120;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Authority (km)";
-            this.columnHeader4.Width = 200;
-            // 
             // greenCtrl2
             // 
             this.greenCtrl2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.greenCtrl2.Controls.Add(this.green2TestGroupBox);
-            this.greenCtrl2.Controls.Add(this.green2CrossingGroupBox);
             this.greenCtrl2.Controls.Add(this.green2SwitchGroupBox);
             this.greenCtrl2.Controls.Add(this.groupBox1);
+            this.greenCtrl2.Controls.Add(this.green2TestGroupBox);
+            this.greenCtrl2.Controls.Add(this.green2CrossingGroupBox);
             this.greenCtrl2.Location = new System.Drawing.Point(4, 38);
             this.greenCtrl2.Name = "greenCtrl2";
-            this.greenCtrl2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.greenCtrl2.Padding = new System.Windows.Forms.Padding(3);
             this.greenCtrl2.Size = new System.Drawing.Size(1387, 940);
             this.greenCtrl2.TabIndex = 3;
             this.greenCtrl2.Text = "Green Line, CTRL 2";
@@ -693,110 +695,16 @@ namespace TrainProject
             // 
             this.columnHeader29.Text = "";
             // 
-            // green2SwitchGroupBox
-            // 
-            this.green2SwitchGroupBox.Controls.Add(this.green2SwitchListView);
-            this.green2SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green2SwitchGroupBox.Location = new System.Drawing.Point(6, 272);
-            this.green2SwitchGroupBox.Name = "green2SwitchGroupBox";
-            this.green2SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
-            this.green2SwitchGroupBox.TabIndex = 15;
-            this.green2SwitchGroupBox.TabStop = false;
-            this.green2SwitchGroupBox.Text = "Switch Information";
-            // 
-            // green2SwitchListView
-            // 
-            this.green2SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader23,
-            this.columnHeader24,
-            this.columnHeader25,
-            this.columnHeader26});
-            this.green2SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.green2SwitchListView.Location = new System.Drawing.Point(6, 38);
-            this.green2SwitchListView.Name = "green2SwitchListView";
-            this.green2SwitchListView.Scrollable = false;
-            this.green2SwitchListView.Size = new System.Drawing.Size(660, 233);
-            this.green2SwitchListView.TabIndex = 14;
-            this.green2SwitchListView.UseCompatibleStateImageBehavior = false;
-            this.green2SwitchListView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader23
-            // 
-            this.columnHeader23.Text = "Switch Id";
-            this.columnHeader23.Width = 92;
-            // 
-            // columnHeader24
-            // 
-            this.columnHeader24.Text = "Source Block";
-            this.columnHeader24.Width = 108;
-            // 
-            // columnHeader25
-            // 
-            this.columnHeader25.Text = "Target Block";
-            this.columnHeader25.Width = 78;
-            // 
-            // columnHeader26
-            // 
-            this.columnHeader26.Text = "Actions";
-            this.columnHeader26.Width = 100;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.listView1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 21);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(672, 208);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Trains";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader17,
-            this.columnHeader18});
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.Location = new System.Drawing.Point(12, 38);
-            this.listView1.Name = "listView1";
-            this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(654, 164);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Train ID";
-            this.columnHeader15.Width = 75;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Current Block";
-            this.columnHeader16.Width = 120;
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Speed (km/h)";
-            this.columnHeader17.Width = 120;
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "Authority (km)";
-            this.columnHeader18.Width = 200;
-            // 
             // redCtrl1
             // 
             this.redCtrl1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.redCtrl1.Controls.Add(this.groupBox3);
+            this.redCtrl1.Controls.Add(this.groupBox2);
             this.redCtrl1.Controls.Add(this.red1TestGroupBox);
             this.redCtrl1.Controls.Add(this.red1CrossingGroupBox);
-            this.redCtrl1.Controls.Add(this.red1SwitchGroupBox);
-            this.redCtrl1.Controls.Add(this.red1TrainsGroupBox);
             this.redCtrl1.Location = new System.Drawing.Point(4, 38);
             this.redCtrl1.Name = "redCtrl1";
-            this.redCtrl1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.redCtrl1.Padding = new System.Windows.Forms.Padding(3);
             this.redCtrl1.Size = new System.Drawing.Size(1387, 940);
             this.redCtrl1.TabIndex = 4;
             this.redCtrl1.Text = "Red Line, CTRL 1";
@@ -810,11 +718,11 @@ namespace TrainProject
             this.red1TestGroupBox.Controls.Add(this.textBox4);
             this.red1TestGroupBox.Controls.Add(this.pictureBox3);
             this.red1TestGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red1TestGroupBox.Location = new System.Drawing.Point(782, 12);
-            this.red1TestGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.red1TestGroupBox.Location = new System.Drawing.Point(685, 12);
+            this.red1TestGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.red1TestGroupBox.Name = "red1TestGroupBox";
-            this.red1TestGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1TestGroupBox.Size = new System.Drawing.Size(591, 923);
+            this.red1TestGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.red1TestGroupBox.Size = new System.Drawing.Size(697, 923);
             this.red1TestGroupBox.TabIndex = 21;
             this.red1TestGroupBox.TabStop = false;
             this.red1TestGroupBox.Text = "Test Panel";
@@ -832,16 +740,16 @@ namespace TrainProject
             // richTextBox3
             // 
             this.richTextBox3.Location = new System.Drawing.Point(20, 250);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(554, 655);
+            this.richTextBox3.Size = new System.Drawing.Size(673, 655);
             this.richTextBox3.TabIndex = 4;
             this.richTextBox3.Text = "";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(45, 112);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(170, 128);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(383, 37);
             this.button3.TabIndex = 3;
@@ -862,7 +770,7 @@ namespace TrainProject
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(211, 55);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(280, 39);
             this.textBox4.TabIndex = 1;
@@ -870,9 +778,9 @@ namespace TrainProject
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(4, 30);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(583, 889);
+            this.pictureBox3.Size = new System.Drawing.Size(689, 889);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -882,10 +790,10 @@ namespace TrainProject
             this.red1CrossingGroupBox.Controls.Add(this.red1CrossingListView);
             this.red1CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.red1CrossingGroupBox.Location = new System.Drawing.Point(8, 618);
-            this.red1CrossingGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.red1CrossingGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.red1CrossingGroupBox.Name = "red1CrossingGroupBox";
-            this.red1CrossingGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1CrossingGroupBox.Size = new System.Drawing.Size(758, 313);
+            this.red1CrossingGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.red1CrossingGroupBox.Size = new System.Drawing.Size(672, 210);
             this.red1CrossingGroupBox.TabIndex = 20;
             this.red1CrossingGroupBox.TabStop = false;
             this.red1CrossingGroupBox.Text = "Crossing Information";
@@ -898,9 +806,9 @@ namespace TrainProject
             this.columnHeader40});
             this.red1CrossingListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.red1CrossingListView.Location = new System.Drawing.Point(9, 30);
-            this.red1CrossingListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.red1CrossingListView.Margin = new System.Windows.Forms.Padding(2);
             this.red1CrossingListView.Name = "red1CrossingListView";
-            this.red1CrossingListView.Size = new System.Drawing.Size(732, 269);
+            this.red1CrossingListView.Size = new System.Drawing.Size(642, 170);
             this.red1CrossingListView.TabIndex = 0;
             this.red1CrossingListView.UseCompatibleStateImageBehavior = false;
             this.red1CrossingListView.View = System.Windows.Forms.View.Details;
@@ -919,116 +827,16 @@ namespace TrainProject
             // 
             this.columnHeader40.Text = "";
             // 
-            // red1SwitchGroupBox
-            // 
-            this.red1SwitchGroupBox.Controls.Add(this.red1SwitchListView);
-            this.red1SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red1SwitchGroupBox.Location = new System.Drawing.Point(4, 200);
-            this.red1SwitchGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1SwitchGroupBox.Name = "red1SwitchGroupBox";
-            this.red1SwitchGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1SwitchGroupBox.Size = new System.Drawing.Size(762, 414);
-            this.red1SwitchGroupBox.TabIndex = 16;
-            this.red1SwitchGroupBox.TabStop = false;
-            this.red1SwitchGroupBox.Text = "Switch Information";
-            // 
-            // red1SwitchListView
-            // 
-            this.red1SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader34,
-            this.columnHeader35,
-            this.columnHeader36,
-            this.columnHeader37});
-            this.red1SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red1SwitchListView.Location = new System.Drawing.Point(4, 30);
-            this.red1SwitchListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1SwitchListView.Name = "red1SwitchListView";
-            this.red1SwitchListView.Scrollable = false;
-            this.red1SwitchListView.Size = new System.Drawing.Size(741, 380);
-            this.red1SwitchListView.TabIndex = 14;
-            this.red1SwitchListView.UseCompatibleStateImageBehavior = false;
-            this.red1SwitchListView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader34
-            // 
-            this.columnHeader34.Text = "Switch Id";
-            this.columnHeader34.Width = 92;
-            // 
-            // columnHeader35
-            // 
-            this.columnHeader35.Text = "Source Block";
-            this.columnHeader35.Width = 108;
-            // 
-            // columnHeader36
-            // 
-            this.columnHeader36.Text = "Target Block";
-            this.columnHeader36.Width = 78;
-            // 
-            // columnHeader37
-            // 
-            this.columnHeader37.Text = "Actions";
-            this.columnHeader37.Width = 100;
-            // 
-            // red1TrainsGroupBox
-            // 
-            this.red1TrainsGroupBox.Controls.Add(this.red1TrainsListView);
-            this.red1TrainsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red1TrainsGroupBox.Location = new System.Drawing.Point(4, 12);
-            this.red1TrainsGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1TrainsGroupBox.Name = "red1TrainsGroupBox";
-            this.red1TrainsGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1TrainsGroupBox.Size = new System.Drawing.Size(504, 166);
-            this.red1TrainsGroupBox.TabIndex = 14;
-            this.red1TrainsGroupBox.TabStop = false;
-            this.red1TrainsGroupBox.Text = "Trains";
-            // 
-            // red1TrainsListView
-            // 
-            this.red1TrainsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader30,
-            this.columnHeader31,
-            this.columnHeader32,
-            this.columnHeader33});
-            this.red1TrainsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red1TrainsListView.Location = new System.Drawing.Point(9, 30);
-            this.red1TrainsListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red1TrainsListView.Name = "red1TrainsListView";
-            this.red1TrainsListView.Scrollable = false;
-            this.red1TrainsListView.Size = new System.Drawing.Size(492, 132);
-            this.red1TrainsListView.TabIndex = 5;
-            this.red1TrainsListView.UseCompatibleStateImageBehavior = false;
-            this.red1TrainsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader30
-            // 
-            this.columnHeader30.Text = "Train ID";
-            this.columnHeader30.Width = 75;
-            // 
-            // columnHeader31
-            // 
-            this.columnHeader31.Text = "Current Block";
-            this.columnHeader31.Width = 120;
-            // 
-            // columnHeader32
-            // 
-            this.columnHeader32.Text = "Speed (km/h)";
-            this.columnHeader32.Width = 120;
-            // 
-            // columnHeader33
-            // 
-            this.columnHeader33.Text = "Authority (km)";
-            this.columnHeader33.Width = 200;
-            // 
             // redCtrl2
             // 
             this.redCtrl2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.redCtrl2.Controls.Add(this.groupBox5);
+            this.redCtrl2.Controls.Add(this.groupBox4);
             this.redCtrl2.Controls.Add(this.red2TestGroupBox);
             this.redCtrl2.Controls.Add(this.red2CrossingGroupBox);
-            this.redCtrl2.Controls.Add(this.red2SwitchGroupBox);
-            this.redCtrl2.Controls.Add(this.red2TrainsGroupBox);
             this.redCtrl2.Location = new System.Drawing.Point(4, 38);
             this.redCtrl2.Name = "redCtrl2";
-            this.redCtrl2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.redCtrl2.Padding = new System.Windows.Forms.Padding(3);
             this.redCtrl2.Size = new System.Drawing.Size(1387, 940);
             this.redCtrl2.TabIndex = 5;
             this.redCtrl2.Text = "Red Line, CTRL 2";
@@ -1042,11 +850,11 @@ namespace TrainProject
             this.red2TestGroupBox.Controls.Add(this.textBox5);
             this.red2TestGroupBox.Controls.Add(this.pictureBox4);
             this.red2TestGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2TestGroupBox.Location = new System.Drawing.Point(514, 27);
-            this.red2TestGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.red2TestGroupBox.Location = new System.Drawing.Point(684, 24);
+            this.red2TestGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.red2TestGroupBox.Name = "red2TestGroupBox";
-            this.red2TestGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2TestGroupBox.Size = new System.Drawing.Size(522, 698);
+            this.red2TestGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.red2TestGroupBox.Size = new System.Drawing.Size(698, 911);
             this.red2TestGroupBox.TabIndex = 25;
             this.red2TestGroupBox.TabStop = false;
             this.red2TestGroupBox.Text = "Test Panel";
@@ -1064,16 +872,16 @@ namespace TrainProject
             // richTextBox4
             // 
             this.richTextBox4.Location = new System.Drawing.Point(20, 250);
-            this.richTextBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox4.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(488, 433);
+            this.richTextBox4.Size = new System.Drawing.Size(674, 646);
             this.richTextBox4.TabIndex = 4;
             this.richTextBox4.Text = "";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(20, 98);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Location = new System.Drawing.Point(141, 104);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(383, 37);
             this.button4.TabIndex = 3;
@@ -1093,8 +901,8 @@ namespace TrainProject
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(124, 49);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Location = new System.Drawing.Point(185, 49);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(280, 39);
             this.textBox5.TabIndex = 1;
@@ -1102,9 +910,9 @@ namespace TrainProject
             // pictureBox4
             // 
             this.pictureBox4.Location = new System.Drawing.Point(4, 30);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(513, 663);
+            this.pictureBox4.Size = new System.Drawing.Size(690, 881);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
@@ -1113,11 +921,11 @@ namespace TrainProject
             // 
             this.red2CrossingGroupBox.Controls.Add(this.red2CrossingListView);
             this.red2CrossingGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2CrossingGroupBox.Location = new System.Drawing.Point(3, 482);
-            this.red2CrossingGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.red2CrossingGroupBox.Location = new System.Drawing.Point(7, 583);
+            this.red2CrossingGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.red2CrossingGroupBox.Name = "red2CrossingGroupBox";
-            this.red2CrossingGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2CrossingGroupBox.Size = new System.Drawing.Size(504, 171);
+            this.red2CrossingGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.red2CrossingGroupBox.Size = new System.Drawing.Size(666, 215);
             this.red2CrossingGroupBox.TabIndex = 24;
             this.red2CrossingGroupBox.TabStop = false;
             this.red2CrossingGroupBox.Text = "Crossing Information";
@@ -1129,10 +937,10 @@ namespace TrainProject
             this.columnHeader42,
             this.columnHeader43});
             this.red2CrossingListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2CrossingListView.Location = new System.Drawing.Point(9, 30);
-            this.red2CrossingListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.red2CrossingListView.Location = new System.Drawing.Point(6, 36);
+            this.red2CrossingListView.Margin = new System.Windows.Forms.Padding(2);
             this.red2CrossingListView.Name = "red2CrossingListView";
-            this.red2CrossingListView.Size = new System.Drawing.Size(492, 137);
+            this.red2CrossingListView.Size = new System.Drawing.Size(654, 175);
             this.red2CrossingListView.TabIndex = 0;
             this.red2CrossingListView.UseCompatibleStateImageBehavior = false;
             this.red2CrossingListView.View = System.Windows.Forms.View.Details;
@@ -1151,106 +959,6 @@ namespace TrainProject
             // 
             this.columnHeader43.Text = "";
             // 
-            // red2SwitchGroupBox
-            // 
-            this.red2SwitchGroupBox.Controls.Add(this.red2SwitchListView);
-            this.red2SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2SwitchGroupBox.Location = new System.Drawing.Point(3, 215);
-            this.red2SwitchGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2SwitchGroupBox.Name = "red2SwitchGroupBox";
-            this.red2SwitchGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2SwitchGroupBox.Size = new System.Drawing.Size(504, 228);
-            this.red2SwitchGroupBox.TabIndex = 23;
-            this.red2SwitchGroupBox.TabStop = false;
-            this.red2SwitchGroupBox.Text = "Switch Information";
-            // 
-            // red2SwitchListView
-            // 
-            this.red2SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader44,
-            this.columnHeader45,
-            this.columnHeader46,
-            this.columnHeader47});
-            this.red2SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2SwitchListView.Location = new System.Drawing.Point(4, 30);
-            this.red2SwitchListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2SwitchListView.Name = "red2SwitchListView";
-            this.red2SwitchListView.Scrollable = false;
-            this.red2SwitchListView.Size = new System.Drawing.Size(496, 187);
-            this.red2SwitchListView.TabIndex = 14;
-            this.red2SwitchListView.UseCompatibleStateImageBehavior = false;
-            this.red2SwitchListView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader44
-            // 
-            this.columnHeader44.Text = "Switch Id";
-            this.columnHeader44.Width = 92;
-            // 
-            // columnHeader45
-            // 
-            this.columnHeader45.Text = "Source Block";
-            this.columnHeader45.Width = 108;
-            // 
-            // columnHeader46
-            // 
-            this.columnHeader46.Text = "Target Block";
-            this.columnHeader46.Width = 78;
-            // 
-            // columnHeader47
-            // 
-            this.columnHeader47.Text = "Actions";
-            this.columnHeader47.Width = 100;
-            // 
-            // red2TrainsGroupBox
-            // 
-            this.red2TrainsGroupBox.Controls.Add(this.red2TrainListView);
-            this.red2TrainsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2TrainsGroupBox.Location = new System.Drawing.Point(3, 27);
-            this.red2TrainsGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2TrainsGroupBox.Name = "red2TrainsGroupBox";
-            this.red2TrainsGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2TrainsGroupBox.Size = new System.Drawing.Size(504, 166);
-            this.red2TrainsGroupBox.TabIndex = 22;
-            this.red2TrainsGroupBox.TabStop = false;
-            this.red2TrainsGroupBox.Text = "Trains";
-            // 
-            // red2TrainListView
-            // 
-            this.red2TrainListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader48,
-            this.columnHeader49,
-            this.columnHeader50,
-            this.columnHeader51});
-            this.red2TrainListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.red2TrainListView.Location = new System.Drawing.Point(9, 30);
-            this.red2TrainListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.red2TrainListView.Name = "red2TrainListView";
-            this.red2TrainListView.Scrollable = false;
-            this.red2TrainListView.Size = new System.Drawing.Size(492, 132);
-            this.red2TrainListView.TabIndex = 5;
-            this.red2TrainListView.UseCompatibleStateImageBehavior = false;
-            this.red2TrainListView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader48
-            // 
-            this.columnHeader48.Text = "Train ID";
-            this.columnHeader48.Width = 75;
-            // 
-            // columnHeader49
-            // 
-            this.columnHeader49.Text = "Current Block";
-            this.columnHeader49.Width = 120;
-            // 
-            // columnHeader50
-            // 
-            this.columnHeader50.Text = "Speed (km/h)";
-            this.columnHeader50.Width = 120;
-            // 
-            // columnHeader51
-            // 
-            this.columnHeader51.Text = "Authority (km)";
-            this.columnHeader51.Width = 200;
-            // 
             // murphyTab
             // 
             this.murphyTab.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1260,7 +968,7 @@ namespace TrainProject
             this.murphyTab.Controls.Add(this.severCtcComm);
             this.murphyTab.Location = new System.Drawing.Point(4, 38);
             this.murphyTab.Name = "murphyTab";
-            this.murphyTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.murphyTab.Padding = new System.Windows.Forms.Padding(3);
             this.murphyTab.Size = new System.Drawing.Size(1387, 940);
             this.murphyTab.TabIndex = 1;
             this.murphyTab.Text = "Murphy";
@@ -1301,10 +1009,322 @@ namespace TrainProject
             this.severCtcComm.Text = "Sever Communication with CTC";
             this.severCtcComm.UseVisualStyleBackColor = true;
             // 
+            // random
+            // 
+            this.random.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader23,
+            this.columnHeader24,
+            this.columnHeader25,
+            this.columnHeader26});
+            this.random.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.random.Location = new System.Drawing.Point(6, 38);
+            this.random.Name = "random";
+            this.random.Scrollable = false;
+            this.random.Size = new System.Drawing.Size(660, 233);
+            this.random.TabIndex = 14;
+            this.random.UseCompatibleStateImageBehavior = false;
+            this.random.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Switch Id";
+            this.columnHeader23.Width = 92;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Source Block";
+            this.columnHeader24.Width = 108;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Target Block";
+            this.columnHeader25.Width = 78;
+            // 
+            // columnHeader26
+            // 
+            this.columnHeader26.Text = "Actions";
+            this.columnHeader26.Width = 100;
+            // 
             // openPLCFile
             // 
             this.openPLCFile.FileName = "openFileDialog1";
             this.openPLCFile.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // green2SwitchGroupBox
+            // 
+            this.green2SwitchGroupBox.Controls.Add(this.green2SwitchListView);
+            this.green2SwitchGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.green2SwitchGroupBox.Location = new System.Drawing.Point(3, 21);
+            this.green2SwitchGroupBox.Name = "green2SwitchGroupBox";
+            this.green2SwitchGroupBox.Size = new System.Drawing.Size(672, 285);
+            this.green2SwitchGroupBox.TabIndex = 21;
+            this.green2SwitchGroupBox.TabStop = false;
+            this.green2SwitchGroupBox.Text = "Switch Information";
+            // 
+            // green2SwitchListView
+            // 
+            this.green2SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18});
+            this.green2SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.green2SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.green2SwitchListView.Name = "green2SwitchListView";
+            this.green2SwitchListView.Scrollable = false;
+            this.green2SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.green2SwitchListView.TabIndex = 14;
+            this.green2SwitchListView.UseCompatibleStateImageBehavior = false;
+            this.green2SwitchListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Switch Id";
+            this.columnHeader15.Width = 92;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Source Block";
+            this.columnHeader16.Width = 108;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Target Block";
+            this.columnHeader17.Width = 78;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Actions";
+            this.columnHeader18.Width = 100;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.green2SwitchLightView);
+            this.groupBox1.Location = new System.Drawing.Point(6, 312);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(666, 281);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Switch Lights";
+            // 
+            // green2SwitchLightView
+            // 
+            this.green2SwitchLightView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader30,
+            this.columnHeader31,
+            this.columnHeader32,
+            this.columnHeader33});
+            this.green2SwitchLightView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.green2SwitchLightView.Location = new System.Drawing.Point(12, 34);
+            this.green2SwitchLightView.Name = "green2SwitchLightView";
+            this.green2SwitchLightView.Size = new System.Drawing.Size(648, 241);
+            this.green2SwitchLightView.TabIndex = 0;
+            this.green2SwitchLightView.UseCompatibleStateImageBehavior = false;
+            this.green2SwitchLightView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader30
+            // 
+            this.columnHeader30.Text = "Switch Id";
+            this.columnHeader30.Width = 106;
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Source Light";
+            this.columnHeader31.Width = 87;
+            // 
+            // columnHeader32
+            // 
+            this.columnHeader32.Text = "T1 Light";
+            this.columnHeader32.Width = 62;
+            // 
+            // columnHeader33
+            // 
+            this.columnHeader33.Text = "T2 Light";
+            this.columnHeader33.Width = 136;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.red1SwitchListView);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(8, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(672, 285);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Switch Information";
+            // 
+            // red1SwitchListView
+            // 
+            this.red1SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader34,
+            this.columnHeader35,
+            this.columnHeader36,
+            this.columnHeader37});
+            this.red1SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.red1SwitchListView.Name = "red1SwitchListView";
+            this.red1SwitchListView.Scrollable = false;
+            this.red1SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.red1SwitchListView.TabIndex = 14;
+            this.red1SwitchListView.UseCompatibleStateImageBehavior = false;
+            this.red1SwitchListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader34
+            // 
+            this.columnHeader34.Text = "Switch Id";
+            this.columnHeader34.Width = 92;
+            // 
+            // columnHeader35
+            // 
+            this.columnHeader35.Text = "Source Block";
+            this.columnHeader35.Width = 108;
+            // 
+            // columnHeader36
+            // 
+            this.columnHeader36.Text = "Target Block";
+            this.columnHeader36.Width = 78;
+            // 
+            // columnHeader37
+            // 
+            this.columnHeader37.Text = "Actions";
+            this.columnHeader37.Width = 100;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.red1SwitchLightView);
+            this.groupBox3.Location = new System.Drawing.Point(8, 315);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(666, 281);
+            this.groupBox3.TabIndex = 23;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Switch Lights";
+            // 
+            // red1SwitchLightView
+            // 
+            this.red1SwitchLightView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader48,
+            this.columnHeader49,
+            this.columnHeader50,
+            this.columnHeader51});
+            this.red1SwitchLightView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red1SwitchLightView.Location = new System.Drawing.Point(12, 34);
+            this.red1SwitchLightView.Name = "red1SwitchLightView";
+            this.red1SwitchLightView.Size = new System.Drawing.Size(648, 241);
+            this.red1SwitchLightView.TabIndex = 0;
+            this.red1SwitchLightView.UseCompatibleStateImageBehavior = false;
+            this.red1SwitchLightView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader48
+            // 
+            this.columnHeader48.Text = "Switch Id";
+            this.columnHeader48.Width = 106;
+            // 
+            // columnHeader49
+            // 
+            this.columnHeader49.Text = "Source Light";
+            this.columnHeader49.Width = 87;
+            // 
+            // columnHeader50
+            // 
+            this.columnHeader50.Text = "T1 Light";
+            this.columnHeader50.Width = 62;
+            // 
+            // columnHeader51
+            // 
+            this.columnHeader51.Text = "T2 Light";
+            this.columnHeader51.Width = 136;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.red2SwitchListView);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(7, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(672, 285);
+            this.groupBox4.TabIndex = 26;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Switch Information";
+            // 
+            // red2SwitchListView
+            // 
+            this.red2SwitchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader44,
+            this.columnHeader45,
+            this.columnHeader46,
+            this.columnHeader47});
+            this.red2SwitchListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2SwitchListView.Location = new System.Drawing.Point(6, 38);
+            this.red2SwitchListView.Name = "red2SwitchListView";
+            this.red2SwitchListView.Scrollable = false;
+            this.red2SwitchListView.Size = new System.Drawing.Size(660, 233);
+            this.red2SwitchListView.TabIndex = 14;
+            this.red2SwitchListView.UseCompatibleStateImageBehavior = false;
+            this.red2SwitchListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader44
+            // 
+            this.columnHeader44.Text = "Switch Id";
+            this.columnHeader44.Width = 92;
+            // 
+            // columnHeader45
+            // 
+            this.columnHeader45.Text = "Source Block";
+            this.columnHeader45.Width = 108;
+            // 
+            // columnHeader46
+            // 
+            this.columnHeader46.Text = "Target Block";
+            this.columnHeader46.Width = 78;
+            // 
+            // columnHeader47
+            // 
+            this.columnHeader47.Text = "Actions";
+            this.columnHeader47.Width = 100;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.red2SwitchLightView);
+            this.groupBox5.Location = new System.Drawing.Point(7, 297);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(666, 281);
+            this.groupBox5.TabIndex = 27;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Switch Lights";
+            // 
+            // red2SwitchLightView
+            // 
+            this.red2SwitchLightView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader52,
+            this.columnHeader53,
+            this.columnHeader54,
+            this.columnHeader55});
+            this.red2SwitchLightView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.red2SwitchLightView.Location = new System.Drawing.Point(12, 34);
+            this.red2SwitchLightView.Name = "red2SwitchLightView";
+            this.red2SwitchLightView.Size = new System.Drawing.Size(648, 241);
+            this.red2SwitchLightView.TabIndex = 0;
+            this.red2SwitchLightView.UseCompatibleStateImageBehavior = false;
+            this.red2SwitchLightView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader52
+            // 
+            this.columnHeader52.Text = "Switch Id";
+            this.columnHeader52.Width = 106;
+            // 
+            // columnHeader53
+            // 
+            this.columnHeader53.Text = "Source Light";
+            this.columnHeader53.Width = 87;
+            // 
+            // columnHeader54
+            // 
+            this.columnHeader54.Text = "T1 Light";
+            this.columnHeader54.Width = 62;
+            // 
+            // columnHeader55
+            // 
+            this.columnHeader55.Text = "T2 Light";
+            this.columnHeader55.Width = 136;
             // 
             // TrackControllerWindow
             // 
@@ -1313,7 +1333,7 @@ namespace TrainProject
             this.ClientSize = new System.Drawing.Size(1419, 1006);
             this.Controls.Add(this.Engineer);
             this.Name = "TrackControllerWindow";
-            this.Text = "Track Controller";
+            this.Text = "Wayside Controller";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Engineer.ResumeLayout(false);
             this.summaryTab.ResumeLayout(false);
@@ -1323,34 +1343,34 @@ namespace TrainProject
             this.systemInfoGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.systemInfoPictureBox)).EndInit();
             this.greenCtrl1.ResumeLayout(false);
+            this.green1SwitchLightGroupBox.ResumeLayout(false);
             this.green1CrossingGroupBox.ResumeLayout(false);
             this.green1TestGroupBox.ResumeLayout(false);
             this.green1TestGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.green1SwitchGroupBox.ResumeLayout(false);
-            this.green1TrainsGroupBox.ResumeLayout(false);
             this.greenCtrl2.ResumeLayout(false);
             this.green2TestGroupBox.ResumeLayout(false);
             this.green2TestGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.green2CrossingGroupBox.ResumeLayout(false);
-            this.green2SwitchGroupBox.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.redCtrl1.ResumeLayout(false);
             this.red1TestGroupBox.ResumeLayout(false);
             this.red1TestGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.red1CrossingGroupBox.ResumeLayout(false);
-            this.red1SwitchGroupBox.ResumeLayout(false);
-            this.red1TrainsGroupBox.ResumeLayout(false);
             this.redCtrl2.ResumeLayout(false);
             this.red2TestGroupBox.ResumeLayout(false);
             this.red2TestGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.red2CrossingGroupBox.ResumeLayout(false);
-            this.red2SwitchGroupBox.ResumeLayout(false);
-            this.red2TrainsGroupBox.ResumeLayout(false);
             this.murphyTab.ResumeLayout(false);
+            this.green2SwitchGroupBox.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1363,12 +1383,6 @@ namespace TrainProject
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox green1SwitchGroupBox;
         private System.Windows.Forms.ListView green1SwitchListView;
-        private System.Windows.Forms.GroupBox green1TrainsGroupBox;
-        private System.Windows.Forms.ListView green1TrainsListView;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TabPage murphyTab;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
@@ -1419,31 +1433,12 @@ namespace TrainProject
         private System.Windows.Forms.ColumnHeader columnHeader27;
         private System.Windows.Forms.ColumnHeader columnHeader28;
         private System.Windows.Forms.ColumnHeader columnHeader29;
-        private System.Windows.Forms.GroupBox green2SwitchGroupBox;
-        private System.Windows.Forms.ListView green2SwitchListView;
+        private System.Windows.Forms.ListView random;
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.ColumnHeader columnHeader25;
         private System.Windows.Forms.ColumnHeader columnHeader26;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.ColumnHeader columnHeader17;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.OpenFileDialog openPLCFile;
-        private System.Windows.Forms.GroupBox red1TrainsGroupBox;
-        private System.Windows.Forms.ListView red1TrainsListView;
-        private System.Windows.Forms.ColumnHeader columnHeader30;
-        private System.Windows.Forms.ColumnHeader columnHeader31;
-        private System.Windows.Forms.ColumnHeader columnHeader32;
-        private System.Windows.Forms.ColumnHeader columnHeader33;
-        private System.Windows.Forms.GroupBox red1SwitchGroupBox;
-        private System.Windows.Forms.ListView red1SwitchListView;
-        private System.Windows.Forms.ColumnHeader columnHeader34;
-        private System.Windows.Forms.ColumnHeader columnHeader35;
-        private System.Windows.Forms.ColumnHeader columnHeader36;
-        private System.Windows.Forms.ColumnHeader columnHeader37;
         private System.Windows.Forms.GroupBox red1CrossingGroupBox;
         private System.Windows.Forms.ListView red1CrossingListView;
         private System.Windows.Forms.ColumnHeader columnHeader38;
@@ -1468,18 +1463,48 @@ namespace TrainProject
         private System.Windows.Forms.ColumnHeader columnHeader41;
         private System.Windows.Forms.ColumnHeader columnHeader42;
         private System.Windows.Forms.ColumnHeader columnHeader43;
-        private System.Windows.Forms.GroupBox red2SwitchGroupBox;
+        private System.Windows.Forms.GroupBox green1SwitchLightGroupBox;
+        private System.Windows.Forms.ListView green1SwitchLightView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.GroupBox green2SwitchGroupBox;
+        private System.Windows.Forms.ListView green2SwitchListView;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView green2SwitchLightView;
+        private System.Windows.Forms.ColumnHeader columnHeader30;
+        private System.Windows.Forms.ColumnHeader columnHeader31;
+        private System.Windows.Forms.ColumnHeader columnHeader32;
+        private System.Windows.Forms.ColumnHeader columnHeader33;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListView red1SwitchListView;
+        private System.Windows.Forms.ColumnHeader columnHeader34;
+        private System.Windows.Forms.ColumnHeader columnHeader35;
+        private System.Windows.Forms.ColumnHeader columnHeader36;
+        private System.Windows.Forms.ColumnHeader columnHeader37;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ColumnHeader columnHeader48;
+        private System.Windows.Forms.ColumnHeader columnHeader49;
+        private System.Windows.Forms.ColumnHeader columnHeader50;
+        private System.Windows.Forms.ColumnHeader columnHeader51;
+        private System.Windows.Forms.ListView red1SwitchLightView;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListView red2SwitchLightView;
+        private System.Windows.Forms.ColumnHeader columnHeader52;
+        private System.Windows.Forms.ColumnHeader columnHeader53;
+        private System.Windows.Forms.ColumnHeader columnHeader54;
+        private System.Windows.Forms.ColumnHeader columnHeader55;
+        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ListView red2SwitchListView;
         private System.Windows.Forms.ColumnHeader columnHeader44;
         private System.Windows.Forms.ColumnHeader columnHeader45;
         private System.Windows.Forms.ColumnHeader columnHeader46;
         private System.Windows.Forms.ColumnHeader columnHeader47;
-        private System.Windows.Forms.GroupBox red2TrainsGroupBox;
-        private System.Windows.Forms.ListView red2TrainListView;
-        private System.Windows.Forms.ColumnHeader columnHeader48;
-        private System.Windows.Forms.ColumnHeader columnHeader49;
-        private System.Windows.Forms.ColumnHeader columnHeader50;
-        private System.Windows.Forms.ColumnHeader columnHeader51;
     }
 }
 

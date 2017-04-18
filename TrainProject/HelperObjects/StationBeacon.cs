@@ -11,12 +11,14 @@ namespace TrainProject
         public String name { get; set; }
         public short distanceTo { get; set; }
         public bool isPreviousToNext { get; set; }
+        public bool isLeft { get; set; }
 
         public StationBeacon(string n, short dt, bool isPTN)
         {
             name = n;
             distanceTo = dt;
             isPreviousToNext = isPTN;
+            isLeft = true;
         }
     }
 }

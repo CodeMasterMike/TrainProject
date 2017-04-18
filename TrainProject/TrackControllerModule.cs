@@ -18,6 +18,7 @@ namespace TrainProject
         public static TrackController redLineCtrl1 = new TrackController(2, "red1");
         public static TrackController redLineCtrl2 = new TrackController(3, "red2");
         public static List<TrainModel> activeTrains = new List<TrainModel>();
+        public static List<Train> trainTrackings = new List<Train>();
         public static List<TrackController> activeControllers = new List<TrackController>();
 
         public void updateSpeedAndAuthority(int trainId, Double speed, int authority)
@@ -25,7 +26,7 @@ namespace TrainProject
             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
         }
 
-        public void closeBlock(int blockId)
+        public static void closeBlock(int blockId)
         {
             foreach (TrackController ctrl in activeControllers)
             {
@@ -43,11 +44,79 @@ namespace TrainProject
                     {
                         s.t2Active = false;
                     }
+                    foreach (Train t in trainTrackings)
+                    {
+                        if (checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                        {
+                            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                        }
+                        if (checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                        {
+                            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                        }
+                        if (checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                        {
+                            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                        }
+                    }
                 }
+                
             }
         }
 
-        public void openBlock(int blockId)
+        //new function
+        public void updateBlockOccupancy(Block blk, Boolean occupied)
+        {
+            if(blk.isFromYard || blk.isToYard)
+            {
+
+            }
+            foreach (Train t in trainTrackings)
+            {
+                //increasing in block id
+                if(t.currBlock == blk.blockId + 1)
+                {
+                    t.direction = 1;
+                }
+
+                //decreasing in block id
+                else if (t.currBlock == blk.blockId - 1)
+                {
+                    t.direction = -1;
+                }
+                else //check switches to see if train just traveled over switch
+                {
+                    foreach (TrackController ctrl in activeControllers)
+                    {
+                        foreach (Switch s in ctrl.switches)
+                        {
+                            if(s.sourceBlockId == blk.blockId)
+                            {
+
+                            }
+                            else if (s.targetBlockId1 == blk.blockId)
+                            {
+
+                            }
+                            else if (s.targetBlockId2 == blk.blockId)
+                            {
+
+                            }
+                            int? srcDir, t1Dir, t2Dir;
+                            srcDir = trainHeadingTowardsSwitch(t, s, 0);
+                            t1Dir = trainHeadingTowardsSwitch(t, s, 1);
+                            t2Dir = trainHeadingTowardsSwitch(t, s, 2);
+                            int switchState = (int)TrackControllerWindow.plc.determineSwitchState(s.switchId, srcDir, t1Dir, t2Dir);
+                        }
+                    }
+                }
+
+                
+            }//end foreach
+            
+        }
+
+        public static void openBlock(int blockId)
         {
             foreach (TrackController ctrl in activeControllers)
             {
@@ -65,23 +134,36 @@ namespace TrainProject
                     {
                         s.t2Active = true;
                     }
+                    foreach (Train t in trainTrackings)
+                    {
+                        if (checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                        {
+                            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+                        }
+                        if (checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                        {
+                            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+                        }
+                        if (checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                        {
+                            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+                        }
+                    }
                 }
             }
         }
 
         public static void causeFailure(int blockId)
         {
-
-        }
-
-        public void dispatchNewTrain(int trainId, Double speed, Double authority)
-        {
-            //Track.dispatchTrain(Train t, Double speed, int authority)
+            closeBlock(blockId);
         }
 
         public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
         {
             Console.WriteLine("dispatching train!!!!!");
+            Train newT = new Train(newTrain.getTrainId(), speed, authority);
+            newT.currBlock = newTrain.getCurrBlock();
+            trainTrackings.Add(newT);
             activeTrains.Add(newTrain);
             TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
             TrainSimulation.trackControllerWindow.updateTrains();
@@ -101,12 +183,28 @@ namespace TrainProject
                     {
                         if (b.blockId == blockId + 1)
                         {
+                            foreach(Train t in trainTrackings)
+                            {
+                                if(t.currBlock == blockId - 1)
+                                {
+                                    t.currBlock = blockId;
+                                    t.direction = 1;
+                                }
+                            }
                             newBlock = new Block(blockId, 1);
                             ctrl.addNewBlock(newBlock);
                             found = true;
                         }
                         else if (b.blockId == blockId - 1)
                         {
+                            foreach (Train t in trainTrackings)
+                            {
+                                if (t.currBlock == blockId + 1)
+                                {
+                                    t.currBlock = blockId;
+                                    t.direction = -1;
+                                }
+                            }
                             newBlock = new Block(blockId, -1);
                             ctrl.addNewBlock(newBlock);
                             found = true;
@@ -285,6 +383,7 @@ namespace TrainProject
                                 }
                                 //should also determine lights too
                                 TrackControllerWindow.plc.determineSwitchState(s.switchId, sourceState, target1State, target2State);
+                                checkSafety(s);
                             }
                             foreach (Crossing c in ctrl.getCrossings())
                             {
@@ -298,7 +397,7 @@ namespace TrainProject
                     //block wasnt found in system, possible coming from yard
                     else if (!found && occupied)
                     {
-                        //can check on the block
+
                     }
 
                     //block unoccupied
@@ -327,6 +426,120 @@ namespace TrainProject
             //update a new block, from that you can get direction too
             TrainSimulation.mainOffice.updateBlockOccupancy(blockId, occupied);
             //need to update Trains table too
+        }
+
+
+        //function checks each train. if it is heading towards an unsafe switch, sends kill signal
+        public static void checkSafety(Switch s)
+        {
+            foreach (Train t in trainTrackings)
+            {
+                if (trainHeadingTowardsSwitch(t, s, 0)  > 0 && s.sourceLight == false)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                }
+                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Light == false)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                }
+                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Light == false)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
+                }
+            }
+        }
+
+        //given a train and a switch, it returns whether a train is heading towards a switch
+        //returns direction as well
+        public static int? trainHeadingTowardsSwitch(Train t, Switch s, int whichBranch)
+        {
+            if(t.direction == 0 || t.direction == null)
+            {
+                Console.WriteLine("Error. Train has no direction");
+            }
+            switch (whichBranch)
+            {
+                case 0:
+                    //if train is contained in source branch
+                    if (checkWithinRange(t.currBlock, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                    {
+                        int srcDir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 0);
+                        if (srcDir > 0 || srcDir < 0)
+                        {
+                            return srcDir;
+                        }
+                        else if (srcDir == 0)
+                        {
+                            if(t.direction > 0 && s.sourceBlockId > s.sourceBlockId_end)
+                            {
+                                return 1;
+                            }
+                            else if (t.direction < 0 && s.sourceBlockId < s.sourceBlockId_end)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    //if train is contained in source branch
+                    if (checkWithinRange(t.currBlock, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                    {
+                        int t1Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
+                        if (t1Dir > 0 || t1Dir < 0)
+                        {
+                            return t1Dir;
+                        }
+                        else if (t1Dir == 0)
+                        {
+                            if (t.direction > 0 && s.targetBlockId1 > s.targetBlockId1_end)
+                            {
+                                return 1;
+                            }
+                            else if (t.direction < 0 && s.targetBlockId1 < s.targetBlockId1_end)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    if (checkWithinRange(t.currBlock, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                    {
+                        int t2Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
+                        if (t2Dir > 0 || t2Dir < 0)
+                        {
+                            return t2Dir;
+                        }
+                        else if (t2Dir == 0)
+                        {
+                            if (t.direction > 0 && s.targetBlockId2 > s.targetBlockId2_end)
+                            {
+                                return 1;
+                            }
+                            else if (t.direction < 0 && s.targetBlockId2 < s.targetBlockId2_end)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return null;
         }
 
         private static Boolean checkWithinRange(int numToCheck, int bound1, int bound2)

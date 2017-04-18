@@ -316,7 +316,7 @@ namespace TrainProject
             }
         }
 
-        /*public static void updateBlockDirection(List<Line> lineList)
+        public static void updateBlockDirection(List<Line> lineList)
         {
             foreach (Line line in lineList)
             {
@@ -401,7 +401,7 @@ namespace TrainProject
                     }
                 }
             }
-        }*/
+        }
 
         private static Block findBlock(int blockId, List<Block> blockList)
         {
