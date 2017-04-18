@@ -67,7 +67,16 @@ namespace TrainProject
         //new function
         public void updateBlockOccupancy(Block blk, Boolean occupied)
         {
-            if(blk.isFromYard || blk.isToYard)
+            Boolean found = false;
+            if(blk.isFromYard && blk.isToYard)
+            {
+
+            }
+            else if (blk.isFromYard)
+            {
+
+            }
+            else if (blk.isToYard)
             {
 
             }
@@ -77,12 +86,14 @@ namespace TrainProject
                 if(t.currBlock == blk.blockId + 1)
                 {
                     t.direction = 1;
+                    found = true;
                 }
 
                 //decreasing in block id
                 else if (t.currBlock == blk.blockId - 1)
                 {
                     t.direction = -1;
+                    found = true;
                 }
                 else //check switches to see if train just traveled over switch
                 {
@@ -107,6 +118,7 @@ namespace TrainProject
                             t1Dir = trainHeadingTowardsSwitch(t, s, 1);
                             t2Dir = trainHeadingTowardsSwitch(t, s, 2);
                             int switchState = (int)TrackControllerWindow.plc.determineSwitchState(s.switchId, srcDir, t1Dir, t2Dir);
+                            Console.WriteLine("Switch " + s.switchId + " pointing to " + switchState);
                         }
                         foreach (Crossing c in ctrl.crossings)
                         {
@@ -122,6 +134,11 @@ namespace TrainProject
                     }
                 }
             }//end foreach
+            if (!found)
+            {
+                Console.WriteLine("Train not found in system");
+                Console.WriteLine(blk.blockId);
+            }
             TrainSimulation.trackControllerWindow.updateSwitches();
             TrainSimulation.trackControllerWindow.updateCrossings();
         }
