@@ -15,6 +15,7 @@ namespace TrainModelProject
 {
     public partial class TrainModel : Form
     {
+        private int trainId;
         private double train_mass = 37103.86; //kg
         private double person_mass = 73; //kg
         private double mass = 0;
@@ -52,18 +53,39 @@ namespace TrainModelProject
         double sugSpeed;
         int sugAuthority;
 
+        public double getCurrSpeed()
+        {
+            return currSpeedms;
+        }
+
+        public int getCurrBlock()
+        {
+            return current_block.blockId;
+        }
+
+        public int getTrainId()
+        {
+            return trainId;
+        }
+
+        public TrainController getTC()
+        {
+            return TC;
+        }
+
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
             TC.updateSpeedAndAuthority(speed, authority);
         }
 
-        public TrainModel()
+        public TrainModel() { }
+
+        public TrainModel(int lineId, int trainId) 
         {
             InitializeComponent();
             TC = new TrainController(this);
             TC.Show();
-
            
             double block_length = 0;
             double train_distance = 0;
@@ -92,10 +114,16 @@ namespace TrainModelProject
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
-                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
+               Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
-
+        public void updateDoorStatus(int n)
+        {
+            if (n == 0) Train_Door_L.Text = "Closed";
+            else if (n == 1) Train_Door_L.Text = "Left";
+            else if (n == 2) Train_Door_L.Text = "Right";
+                   
+        }
         public void currentBlock()
         {
             p = currSpeedms;
@@ -135,7 +163,7 @@ namespace TrainModelProject
             Train_Height_L.Text = train_height.ToString() + " m";
             Train_Length_L.Text = train_length.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
-            Train_Door_L.Text = "Closed";
+            //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
            
@@ -144,6 +172,7 @@ namespace TrainModelProject
         public void updatePower(double p)
         {
             power = p;
+            train_power.Text = p.ToString("#.##");
         }
 
         private void setTimeLabel(String t)

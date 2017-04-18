@@ -45,7 +45,7 @@
             this.fixTrainButton = new System.Windows.Forms.Button();
             this.closeBlockButton = new System.Windows.Forms.Button();
             this.openBlockButton = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.lineSelect = new System.Windows.Forms.ComboBox();
             this.selLineLabel = new System.Windows.Forms.Label();
             this.dispatchGroup = new System.Windows.Forms.GroupBox();
             this.speedScrollBar = new System.Windows.Forms.HScrollBar();
@@ -78,14 +78,13 @@
             this.trainNumLabel = new System.Windows.Forms.Label();
             this.systemBox = new System.Windows.Forms.GroupBox();
             this.systemListView = new System.Windows.Forms.ListView();
-            this.trackTrain = new System.Windows.Forms.Button();
-            this.yardTrain = new System.Windows.Forms.Button();
-            this.MurphyTab = new System.Windows.Forms.TabPage();
             this.Block = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Trains = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Switches = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Crossings = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.yardTrain = new System.Windows.Forms.Button();
+            this.MurphyTab = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -245,7 +244,7 @@
             this.trackBox.Controls.Add(this.fixTrainButton);
             this.trackBox.Controls.Add(this.closeBlockButton);
             this.trackBox.Controls.Add(this.openBlockButton);
-            this.trackBox.Controls.Add(this.comboBox6);
+            this.trackBox.Controls.Add(this.lineSelect);
             this.trackBox.Controls.Add(this.selLineLabel);
             this.trackBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackBox.Location = new System.Drawing.Point(661, 6);
@@ -308,14 +307,17 @@
             this.openBlockButton.UseVisualStyleBackColor = false;
             this.openBlockButton.Click += new System.EventHandler(this.openBlockButton_Click);
             // 
-            // comboBox6
+            // lineSelect
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(6, 40);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(268, 28);
-            this.comboBox6.TabIndex = 1;
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
+            this.lineSelect.FormattingEnabled = true;
+            this.lineSelect.Items.AddRange(new object[] {
+            "Green",
+            "Red"});
+            this.lineSelect.Location = new System.Drawing.Point(6, 40);
+            this.lineSelect.Name = "lineSelect";
+            this.lineSelect.Size = new System.Drawing.Size(268, 28);
+            this.lineSelect.TabIndex = 1;
+            this.lineSelect.SelectedIndexChanged += new System.EventHandler(this.lineSelect_SelectedIndexChanged);
             // 
             // selLineLabel
             // 
@@ -640,7 +642,6 @@
             // systemBox
             // 
             this.systemBox.Controls.Add(this.systemListView);
-            this.systemBox.Controls.Add(this.trackTrain);
             this.systemBox.Controls.Add(this.yardTrain);
             this.systemBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.systemBox.Location = new System.Drawing.Point(3, 295);
@@ -664,36 +665,6 @@
             this.systemListView.Size = new System.Drawing.Size(1229, 320);
             this.systemListView.TabIndex = 2;
             this.systemListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // trackTrain
-            // 
-            this.trackTrain.Location = new System.Drawing.Point(7, 149);
-            this.trackTrain.Name = "trackTrain";
-            this.trackTrain.Size = new System.Drawing.Size(60, 44);
-            this.trackTrain.TabIndex = 1;
-            this.trackTrain.Text = "train";
-            this.trackTrain.UseVisualStyleBackColor = true;
-            this.trackTrain.Click += new System.EventHandler(this.trackTrain_Click);
-            // 
-            // yardTrain
-            // 
-            this.yardTrain.Location = new System.Drawing.Point(13, 99);
-            this.yardTrain.Name = "yardTrain";
-            this.yardTrain.Size = new System.Drawing.Size(54, 44);
-            this.yardTrain.TabIndex = 0;
-            this.yardTrain.Text = "yard";
-            this.yardTrain.UseVisualStyleBackColor = true;
-            this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
-            // 
-            // MurphyTab
-            // 
-            this.MurphyTab.Location = new System.Drawing.Point(4, 25);
-            this.MurphyTab.Name = "MurphyTab";
-            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MurphyTab.Size = new System.Drawing.Size(1323, 647);
-            this.MurphyTab.TabIndex = 1;
-            this.MurphyTab.Text = "Murphy";
-            this.MurphyTab.UseVisualStyleBackColor = true;
             // 
             // Block
             // 
@@ -720,6 +691,26 @@
             this.Crossings.Text = "Crossing State";
             this.Crossings.Width = 120;
             // 
+            // yardTrain
+            // 
+            this.yardTrain.Location = new System.Drawing.Point(13, 99);
+            this.yardTrain.Name = "yardTrain";
+            this.yardTrain.Size = new System.Drawing.Size(54, 44);
+            this.yardTrain.TabIndex = 0;
+            this.yardTrain.Text = "yard";
+            this.yardTrain.UseVisualStyleBackColor = true;
+            this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
+            // 
+            // MurphyTab
+            // 
+            this.MurphyTab.Location = new System.Drawing.Point(4, 25);
+            this.MurphyTab.Name = "MurphyTab";
+            this.MurphyTab.Padding = new System.Windows.Forms.Padding(3);
+            this.MurphyTab.Size = new System.Drawing.Size(1323, 647);
+            this.MurphyTab.TabIndex = 1;
+            this.MurphyTab.Text = "Murphy";
+            this.MurphyTab.UseVisualStyleBackColor = true;
+            // 
             // Office
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -728,6 +719,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Office";
             this.Text = "Office";
+            this.Load += new System.EventHandler(this.Office_Load);
             this.tabControl1.ResumeLayout(false);
             this.DispatcherTab.ResumeLayout(false);
             this.notifBox.ResumeLayout(false);
@@ -770,7 +762,7 @@
         private System.Windows.Forms.GroupBox trackBox;
         private System.Windows.Forms.Button closeBlockButton;
         private System.Windows.Forms.Button openBlockButton;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox lineSelect;
         private System.Windows.Forms.Label selLineLabel;
         private System.Windows.Forms.Button fixTrackButton;
         private System.Windows.Forms.Button fixTrainButton;
@@ -787,7 +779,6 @@
         private System.Windows.Forms.Label speedValueLabel;
         private System.Windows.Forms.Label updateTimeLabel;
         private System.Windows.Forms.Button yardTrain;
-        private System.Windows.Forms.Button trackTrain;
         private System.Windows.Forms.HScrollBar speedScrollBar;
         private System.Windows.Forms.HScrollBar authScrollBar;
         private System.Windows.Forms.ListView systemListView;

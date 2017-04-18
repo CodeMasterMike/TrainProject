@@ -57,6 +57,69 @@ namespace Track_Layout_UI
         public TrackModelUI()
         {
             InitializeComponent();
+            List<Line> testLineList;
+            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(str))
+            {
+                testLineList = DatabaseInterface.loadLinesFromDB(con);
+            }
+            if(testLineList.Count > 1)
+            {
+                loadClassesFromDB();
+            }
+        }
+        private void parseSwitchEnds()
+        {
+            Block sourceBlock, t1Block, t2Block;
+            foreach(Switch s in switchList)
+            {
+                //find source block
+                sourceBlock = blockList.Find(x => s.sourceBlockId == x.blockId);
+                s.sourceBlockId_end = findEndBlock(sourceBlock);
+                t1Block = blockList.Find(x => s.targetBlockId1 == x.blockId);
+                s.targetBlockId1_end = findEndBlock(t1Block);
+                t2Block = blockList.Find(x => s.targetBlockId2 == x.blockId);
+                s.targetBlockId2_end = findEndBlock(t2Block);
+            }
+        }
+
+        private int? findEndBlock(Block startBlock)
+        {
+            Boolean prevToNext;
+            Block curBlock = startBlock;
+            //if yard block
+            if (startBlock.prevBlockId == null && startBlock.nextBlockId == null)
+            {
+                return -1;
+            }
+
+            if(startBlock.nextBlockId == null)
+            {
+                prevToNext = false;
+                curBlock = findBlock((int)startBlock.prevBlockId);
+            }
+            else if (startBlock.prevBlockId == null)
+            {
+                prevToNext = true;
+                curBlock = findBlock((int)startBlock.nextBlockId);
+            }
+            else
+            {
+                return -1;
+            }
+            
+            while(curBlock.parentSwitch == null)
+            {
+                if (prevToNext)
+                {
+                    curBlock = findBlock((int)curBlock.nextBlockId);
+                }
+                else
+                {
+                    curBlock = findBlock((int)curBlock.prevBlockId);
+                }
+            }
+            return curBlock.blockId;
         }
 
         public void dispatchTrain(int trainId, TrainModel train, double speed, int authority)
@@ -70,7 +133,7 @@ namespace Track_Layout_UI
             trainList[trainId].updateSpeedAndAuthority(speed, authority);
         }
 
-        private Block findBlock(int blockId)
+        public Block findBlock(int blockId)
         {
             foreach(Block block in blockList)
             {
@@ -82,8 +145,26 @@ namespace Track_Layout_UI
             return null;
         }
 
+        public Block findYardBlock(int blockId, int lineId)
+        {
+            foreach (Line line in lineList)
+            {
+                if(line.lineId == lineId)
+                {
+                    foreach(Section section in line.sections)
+                    {
+                        foreach(Block block in section.blocks)
+                        {
+                            if (block.isFromYard)
+                                return block;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         //only returns null if the yard
-        //need to test
         public Block getNextBlock(Block prevBlock, Block currBlock)
         {    
             Block nextBlock = null;
@@ -91,7 +172,7 @@ namespace Track_Layout_UI
             bool isTarget = false;
             if (prevBlock == null && currBlock == null) //coming from yard
             {
-                return findBlock(yardBlockId);
+                return findBlock(yardBlockId); //TODO use findYardBlock
             }
             if(currBlock.parentSwitch != null)
             {
@@ -267,11 +348,15 @@ namespace Track_Layout_UI
         }
         private void insertLineIntoDB(SqlConnection con, ExcelFileLayout line)
         {
+            //SqlTransaction transaction;
+            //transaction = con.BeginTransaction("LineTransaction");
             SqlCommand cmd = new SqlCommand("INSERT INTO Lines (Name) VALUES (@Name)");
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
+            //cmd.Transaction = transaction;
             cmd.Parameters.AddWithValue("@Name", line.Line);
             cmd.ExecuteNonQuery();
+            //transaction.Commit();
         }
         private void insertSectionIntoDB(SqlConnection con, ExcelFileLayout section) //assumes associated line is already in DB
         {
@@ -282,14 +367,18 @@ namespace Track_Layout_UI
             SqlDataReader reader = read.ExecuteReader();
             if (reader.Read())
             {
+                //SqlTransaction transaction;
+                //transaction = con.BeginTransaction("SectionTransaction");
                 SqlCommand cmd = new SqlCommand("INSERT INTO Sections (Name, LineId) VALUES (@Name, @LineId)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
+                //cmd.Transaction = transaction;
                 cmd.Parameters.AddWithValue("@Name", section.Section);
                 int lineId = reader.GetInt32(0);
                 cmd.Parameters.AddWithValue("@LineId", lineId);
                 reader.Close();
                 cmd.ExecuteNonQuery();
+                //transaction.Commit();
             }
             else
                 Console.WriteLine("Associated line not found for section.");
@@ -304,9 +393,12 @@ namespace Track_Layout_UI
             SqlDataReader reader = read.ExecuteReader();
             if (reader.Read())
             {
+                //SqlTransaction transaction;
+                //transaction = con.BeginTransaction("BlockTransaction");
                 SqlCommand cmd = new SqlCommand("INSERT INTO Blocks (BlockNumber, SectionId, Length, Grade, Elevation, CumulativeElevation, SpeedLimit, Infrastructure, SwitchBlock, ArrowDirection) VALUES (@BlockNumber, @SectionId, @Length, @Grade, @Elevation, @CumulativeElevation, @SpeedLimit, @Infrastructure, @SwitchBlock, @ArrowDirection)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
+                //cmd.Transaction = transaction;
                 cmd.Parameters.AddWithValue("@BlockNumber", block.BlockNumber);
                 int sectionId = reader.GetInt32(0);
                 cmd.Parameters.AddWithValue("@SectionId", sectionId);
@@ -320,6 +412,7 @@ namespace Track_Layout_UI
                 cmd.Parameters.AddWithValue("@ArrowDirection", block.ArrowDirection);
                 reader.Close();
                 cmd.ExecuteNonQuery();
+                //transaction.Commit();
             }
             else
                 Console.WriteLine("Associated section not found for block.");
@@ -425,11 +518,27 @@ namespace Track_Layout_UI
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 initializeRedLineStationBeacons();
+                DatabaseInterface.addYardBooleans(blockList, switchList);
             }
+            parseSwitchEnds();
             TrackControllerModule.initializeSwitches(switchList);
+            TrackControllerModule.initializeCrossings(getCrossings());
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
             //Office.initializeTrackLayout(lineList);
             initializeLists();
+        }
+
+        private List<Crossing> getCrossings()
+        {
+            List<Crossing> crossingList = new List<Crossing>();
+            foreach(Block block in blockList)
+            {
+                if(block.crossing != null)
+                {
+                    crossingList.Add(block.crossing);
+                }
+            }
+            return crossingList;
         }
 
         public void initializeLists()

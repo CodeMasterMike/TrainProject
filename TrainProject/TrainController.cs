@@ -39,6 +39,7 @@ namespace TrainControllerProject
         bool prevToNext = true;
         int wait = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
+        int doorStatus;
         double distanceLeft = 0;
         double Kp = 0;//100000;
         double Ki = 0;//5000;
@@ -66,6 +67,11 @@ namespace TrainControllerProject
         bool authorityChanged = false;
         PowerController powerController;
         TrainModel TM;
+
+        public double getRemainingAuthority()
+        {
+            return distanceToAuthority;
+        }
 
       
         
@@ -136,7 +142,7 @@ namespace TrainControllerProject
             setThermostat();
             TM.updatePower(power);
             TM.updateThermostat(thermostat);
-
+            TM.updateDoorStatus(doorStatus);
             //update the GUI
             trainSpeedLabel.Text = (currSpeedms* 2.23694).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
@@ -150,6 +156,21 @@ namespace TrainControllerProject
             distanceLeftLabel.Text = distanceLeft.ToString("#.##");
             distanceToLabel.Text = (distanceToStation).ToString("#.##");
             stationLabel.Text = stationName.ToString();
+            if(doorStatus == 0)
+            {
+                Left_Closed.Checked = true;
+                Right_Closed.Checked = true;
+            }
+            else if(doorStatus == 1)
+            {
+                Left_Open.Checked = true;
+                Right_Closed.Checked = true;
+            }
+            else if(doorStatus == 2)
+            {
+                Left_Closed.Checked = true;
+                Right_Open.Checked = true;
+            }
             
         }
         private void emergencyON()
@@ -169,12 +190,13 @@ namespace TrainControllerProject
                 forceStop = false;
                 stationName = "";
                 wait++;
-                
+                doorStatus = 2;
             }
             if (wait == 5 && distanceToStation == 0)
             {
                 minStopDistanceStation = 0;
                 wait = 0;
+                doorStatus = 0;
             }
         }
         private void considerStations()
@@ -296,9 +318,24 @@ namespace TrainControllerProject
         }
         private void setThermostat()
         {
-            if (setTemp > temp) thermostat = 2;
-            else if (setTemp < temp) thermostat = 1;
-            else thermostat = 0;
+            if (setTemp > temp)
+            {
+                thermostat = 2;
+                Heater_On.Checked = true;
+                AC_OFF.Checked = true;
+            }
+            else if (setTemp < temp)
+            {
+                thermostat = 1;
+                AC_ON.Checked = true;
+                Heater_Off.Checked = true;
+            }
+            else
+            {
+                thermostat = 0;
+                AC_OFF.Checked = true;
+                Heater_Off.Checked = true;
+            }
         }
         public void updateCurrentTemp(double t)
         {
