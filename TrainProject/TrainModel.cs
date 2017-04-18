@@ -86,7 +86,6 @@ namespace TrainModelProject
             InitializeComponent();
             TC = new TrainController(this);
             TC.Show();
-            trainId = tId;
            
             double block_length = 0;
             double train_distance = 0;

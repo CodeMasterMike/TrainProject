@@ -54,7 +54,7 @@ namespace CTC
             train.currBlock = 0;
             tm_window = new TrainModel(currentLineSelection, trainCounter);
             tm_window.Show();
-            module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth, currentLineSelection);
+            module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
         }
 
         public void dispatchOldTrain(int trainId)
