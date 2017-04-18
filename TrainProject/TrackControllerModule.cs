@@ -32,29 +32,29 @@ namespace TrainProject
             {
                 foreach (Switch s in ctrl.getSwitches())
                 {
-                    if (checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                    if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
                     {
                         s.sourceActive = false;
                     }
-                    if (checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
                     {
                         s.t1Active = false;
                     }
-                    if (checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
                     {
                         s.t2Active = false;
                     }
                     foreach (Train t in trainTrackings)
                     {
-                        if (checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                        if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
                         {
                             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                         }
-                        if (checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                        if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
                         {
                             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                         }
-                        if (checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                        if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
                         {
                             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                         }
@@ -67,14 +67,18 @@ namespace TrainProject
         //new function
         public static void updateBlockOccupancy(Block blk, Boolean occupied)
         {
-            Boolean found = false;
+            Boolean found = false, yardOccupancy = false;
+
+            //red line only
             if(blk.isFromYard && blk.isToYard)
             {
-
+                TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 1, 0);
             }
+
+            //green lines
             else if (blk.isFromYard)
             {
-
+                TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 0, 1);
             }
             else if (blk.isToYard)
             {
@@ -114,11 +118,13 @@ namespace TrainProject
 
                             }
                             int? srcDir, t1Dir, t2Dir;
-                            srcDir = trainHeadingTowardsSwitch(t, s, 0);
-                            t1Dir = trainHeadingTowardsSwitch(t, s, 1);
-                            t2Dir = trainHeadingTowardsSwitch(t, s, 2);
+                            srcDir = ctrl.trainHeadingTowardsSwitch(t, s, 0);
+                            t1Dir = ctrl.trainHeadingTowardsSwitch(t, s, 1);
+                            t2Dir = ctrl.trainHeadingTowardsSwitch(t, s, 2);
                             int switchState = (int)TrackControllerWindow.plc.determineSwitchState(s.switchId, srcDir, t1Dir, t2Dir);
                             Console.WriteLine("Switch " + s.switchId + " pointing to " + switchState);
+                            ctrl.checkSafety(s);
+                            Console.WriteLine("After checking safety, Switch " + s.switchId + " pointing to " + switchState);
                         }
                         foreach (Crossing c in ctrl.crossings)
                         {
@@ -149,29 +155,29 @@ namespace TrainProject
             {
                 foreach (Switch s in ctrl.getSwitches())
                 {
-                    if (checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                    if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
                     {
                         s.sourceActive = true;
                     }
-                    if (checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
                     {
                         s.t1Active = true;
                     }
-                    if (checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
                     {
                         s.t2Active = true;
                     }
                     foreach (Train t in trainTrackings)
                     {
-                        if (checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                        if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
                         {
                             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                         }
-                        if (checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                        if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
                         {
                             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                         }
-                        if (checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                        if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
                         {
                             TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                         }
@@ -460,136 +466,28 @@ namespace TrainProject
 
         //function checks each train. if it is heading towards an unsafe switch, sends kill signal
 
-        public static void checkSafety(Switch s)
-        {
-            foreach (Train t in trainTrackings)
-            {
-                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceLight == false)
-                {
-                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
-                }
-                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Light == false)
-                {
-                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
-                }
-                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Light == false)
-                {
-                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
-                }
-            }
-        }
-
         //given a train and a switch, it returns whether a train is heading towards a switch
         //returns direction as well
-        public static int? trainHeadingTowardsSwitch(Train t, Switch s, int whichBranch)
-        {
-            if (t.direction == 0 || t.direction == null)
-            {
-                Console.WriteLine("Error. Train has no direction");
-            }
-            switch (whichBranch)
-            {
-                case 0:
-                    //if train is contained in source branch
-                    if (checkWithinRange(t.currBlock, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
-                    {
-                        int srcDir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 0);
-                        if (srcDir > 0 || srcDir < 0)
-                        {
-                            return srcDir;
-                        }
-                        else if (srcDir == 0)
-                        {
-                            if (t.direction > 0 && s.sourceBlockId > s.sourceBlockId_end)
-                            {
-                                return 1;
-                            }
-                            else if (t.direction < 0 && s.sourceBlockId < s.sourceBlockId_end)
-                            {
-                                return 1;
-                            }
-                            else
-                            {
-                                return -1;
-                            }
-                        }
-                    }
-                    break;
-                case 1:
-                    //if train is contained in source branch
-                    if (checkWithinRange(t.currBlock, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
-                    {
-                        int t1Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
-                        if (t1Dir > 0 || t1Dir < 0)
-                        {
-                            return t1Dir;
-                        }
-                        else if (t1Dir == 0)
-                        {
-                            if (t.direction > 0 && s.targetBlockId1 > s.targetBlockId1_end)
-                            {
-                                return 1;
-                            }
-                            else if (t.direction < 0 && s.targetBlockId1 < s.targetBlockId1_end)
-                            {
-                                return 1;
-                            }
-                            else
-                            {
-                                return -1;
-                            }
-                        }
-                    }
-                    break;
-                case 2:
-                    if (checkWithinRange(t.currBlock, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
-                    {
-                        int t2Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
-                        if (t2Dir > 0 || t2Dir < 0)
-                        {
-                            return t2Dir;
-                        }
-                        else if (t2Dir == 0)
-                        {
-                            if (t.direction > 0 && s.targetBlockId2 > s.targetBlockId2_end)
-                            {
-                                return 1;
-                            }
-                            else if (t.direction < 0 && s.targetBlockId2 < s.targetBlockId2_end)
-                            {
-                                return 1;
-                            }
-                            else
-                            {
-                                return -1;
-                            }
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return null;
-        }
+        
 
-        private static Boolean checkWithinRange(int numToCheck, int bound1, int bound2)
-        {
-            if (bound1 < bound2)
-            {
-                if (numToCheck >= bound1 && numToCheck <= bound2)
-                {
-                    return true;
-                }
-            }
-            else if (bound1 > bound2)
-            {
-                if (numToCheck <= bound1 && numToCheck >= bound2)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        //private static Boolean checkWithinRange(int numToCheck, int bound1, int bound2)
+        //{
+        //    if (bound1 < bound2)
+        //    {
+        //        if (numToCheck >= bound1 && numToCheck <= bound2)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    else if (bound1 > bound2)
+        //    {
+        //        if (numToCheck <= bound1 && numToCheck >= bound2)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public static void shutdown()
         {
