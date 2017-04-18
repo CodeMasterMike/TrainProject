@@ -74,7 +74,7 @@ namespace TrainProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            trainModelWindow = new TrainModel();
+            trainModelWindow = new TrainModel(0);
             trainModelWindow.Show();
         }
 

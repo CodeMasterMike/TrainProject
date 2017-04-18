@@ -15,6 +15,7 @@ namespace TrainModelProject
 {
     public partial class TrainModel : Form
     {
+        private int trainId;
         private double train_mass = 37103.86; //kg
         private double person_mass = 73; //kg
         private double mass = 0;
@@ -52,6 +53,26 @@ namespace TrainModelProject
         double sugSpeed;
         int sugAuthority;
 
+        public double getCurrSpeed()
+        {
+            return currSpeedms;
+        }
+
+        public int getCurrBlock()
+        {
+            return current_block.blockId;
+        }
+
+        public int getTrainId()
+        {
+            return trainId;
+        }
+
+        public TrainController getTC()
+        {
+            return TC;
+        }
+
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
@@ -65,7 +86,7 @@ namespace TrainModelProject
             InitializeComponent();
             TC = new TrainController(this);
             TC.Show();
-
+            trainId = tId;
            
             double block_length = 0;
             double train_distance = 0;

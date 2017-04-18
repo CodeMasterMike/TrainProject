@@ -26,10 +26,9 @@ namespace TrainProject
             controllerModule = new TrackControllerModule();
 
             //controllerModule.initializeTrackControllers();//might have to move this elsewhere
-            updateTrains();
-            initializeCrossingTable();
-            updateSwitches();
-            updateCrossings();
+            //updateTrains();
+            //updateSwitches();
+            //updateCrossings();
             //initializeControllerTable();
         }
 
@@ -64,7 +63,7 @@ namespace TrainProject
             }
         }
 
-        private void initializeCrossingTable()
+        public void initializeCrossingTable()
         {
             foreach(TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -93,7 +92,7 @@ namespace TrainProject
             }
         }
 
-        private void updateCrossings()
+        public void updateCrossings()
         {
             foreach(TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -116,12 +115,21 @@ namespace TrainProject
 
         private void toggleCrossing(object sender, ListViewColumnMouseEventArgs e)
         {
-            Console.WriteLine(TrackControllerModule.greenLineCtrl1.getCrossings());
             int crossingId = Int32.Parse(e.Item.SubItems[0].Text); //get switch id
             Console.WriteLine(crossingId);
-            bool newState = TrackControllerModule.greenLineCtrl1.toggleCrossing(crossingId);
-            e.Item.SubItems[1].Text = newState.ToString();
-            MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
+            //bool newState = TrackControllerModule.greenLineCtrl1.toggleCrossing(crossingId);
+            //e.Item.SubItems[1].Text = newState.ToString();
+            
+            foreach (TrackController ctrl in TrackControllerModule.activeControllers)
+            {
+                Console.WriteLine(ctrl.controllerName);
+                if (ctrl.getCrossings().Find(x => x.blockId == crossingId) != null)
+                {
+                    bool newState = ctrl.toggleCrossing(crossingId);
+                    e.Item.SubItems[1].Text = newState.ToString();
+                    MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
+                }
+            }
         }
 
         public void initializeSwitchTable()
@@ -171,7 +179,7 @@ namespace TrainProject
                 temp.Items.Clear();
                 foreach (var train in TrackControllerModule.activeTrains)
                 {
-                    //temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
+                    temp.Items.Add(new ListViewItem(new[] { train.getTrainId().ToString(), train.getCurrBlock().ToString(), train.getCurrSpeed().ToString(), train.getTC().getRemainingAuthority().ToString() }));
                 }
             }
             catch (Exception e)
