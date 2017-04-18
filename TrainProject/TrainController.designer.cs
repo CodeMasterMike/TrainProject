@@ -64,7 +64,7 @@
             this.setSpeedTrackBar = new System.Windows.Forms.TrackBar();
             this.setTempTrackBar = new System.Windows.Forms.TrackBar();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.sendAnnouncementButton = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.automaticRadioButton = new System.Windows.Forms.RadioButton();
             this.manualRadioButton = new System.Windows.Forms.RadioButton();
@@ -247,7 +247,7 @@
             this.Driver_Tab.Controls.Add(this.setSpeedTrackBar);
             this.Driver_Tab.Controls.Add(this.setTempTrackBar);
             this.Driver_Tab.Controls.Add(this.textBox1);
-            this.Driver_Tab.Controls.Add(this.button7);
+            this.Driver_Tab.Controls.Add(this.sendAnnouncementButton);
             this.Driver_Tab.Controls.Add(this.groupBox11);
             this.Driver_Tab.Controls.Add(this.label7);
             this.Driver_Tab.Controls.Add(this.label6);
@@ -580,16 +580,17 @@
             this.textBox1.Size = new System.Drawing.Size(375, 125);
             this.textBox1.TabIndex = 33;
             // 
-            // button7
+            // sendAnnouncementButton
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(631, 15);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(376, 69);
-            this.button7.TabIndex = 32;
-            this.button7.Text = "Send Announcement";
-            this.button7.UseVisualStyleBackColor = true;
+            this.sendAnnouncementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAnnouncementButton.Location = new System.Drawing.Point(631, 15);
+            this.sendAnnouncementButton.Margin = new System.Windows.Forms.Padding(4);
+            this.sendAnnouncementButton.Name = "sendAnnouncementButton";
+            this.sendAnnouncementButton.Size = new System.Drawing.Size(376, 69);
+            this.sendAnnouncementButton.TabIndex = 32;
+            this.sendAnnouncementButton.Text = "Send Announcement";
+            this.sendAnnouncementButton.UseVisualStyleBackColor = true;
+            this.sendAnnouncementButton.Click += new System.EventHandler(this.sendAnnouncementButton_Click);
             // 
             // groupBox11
             // 
@@ -1383,7 +1384,7 @@
         private System.Windows.Forms.TrackBar setSpeedTrackBar;
         private System.Windows.Forms.TrackBar setTempTrackBar;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button sendAnnouncementButton;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.RadioButton automaticRadioButton;
         private System.Windows.Forms.RadioButton manualRadioButton;

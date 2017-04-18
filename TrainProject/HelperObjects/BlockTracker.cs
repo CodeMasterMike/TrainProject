@@ -138,7 +138,7 @@ namespace TrainProject.HelperObjects
             }
             return 0;
         }
-        private void configureDirection()
+        public void configureDirection()
         {
             if (currentBlock.prevBlockId == null) prevToNext = true;
             else prevToNext = false;
