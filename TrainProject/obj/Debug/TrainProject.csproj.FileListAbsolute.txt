@@ -181,4 +181,24 @@ C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProj
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\CTC.Office.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Properties.Resources.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.TrackControllerWindow.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\Track_Layout_UI.TrackModelUI.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainModelProject.TrainModel.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainControllerProject.TrainController.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.TrainSimulation.resources
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.GenerateResource.Cache
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\bin\Debug\TrackDB.mdf
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\bin\Debug\TrackDB_log.ldf
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe.config
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.exe
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\bin\Debug\TrainProject.pdb
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.exe
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.pdb
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\Interop.CUSTREGLib.dll
+C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\Interop.CUSTREGLib.dll
+C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\Interop.CUSTREGLib.dll
