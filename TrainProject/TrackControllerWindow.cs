@@ -308,6 +308,11 @@ namespace TrainProject
 
         }
 
+        private void testController(object sender, EventArgs e)
+        {
+
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             String testBlocks = textBox2.Text;
@@ -379,6 +384,26 @@ namespace TrainProject
             }
             reader.Close();
             MessageBox.Show(this, @"PLC File parsed");
+        }
+
+        private void severCtcComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.shutdown();
+        }
+
+        private void severTMComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.shutdown();
+        }
+
+        private void restoreCtcComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.resume();
+        }
+
+        private void restoreTMComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.resume();
         }
     }
 }
