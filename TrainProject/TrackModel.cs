@@ -518,6 +518,7 @@ namespace Track_Layout_UI
                 switchList = DatabaseInterface.loadSwitchesFromDB(con, blockList);
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 initializeRedLineStationBeacons();
+                DatabaseInterface.addYardBooleans(blockList, switchList);
             }
             parseSwitchEnds();
             TrackControllerModule.initializeSwitches(switchList);
