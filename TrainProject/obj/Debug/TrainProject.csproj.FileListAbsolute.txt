@@ -181,7 +181,9 @@ C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProj
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.csproj.ResolveComReference.cache
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\MBO_UI.MBO.resources
+
 C:\Users\user\Documents\SourceTree\TrainProject\obj\Debug\TrainProject.csprojResolveAssemblyReference.cache
+
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\TrainProject.Map.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\Interop.CUSTREGLib.dll
 C:\Users\Naran\Desktop\Trainzzz\TrainProject\TrainProject\obj\Debug\Interop.CUSTREGLib.dll
@@ -208,5 +210,3 @@ C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\Interop.CUSTREGLib.d
 C:\Users\Gabe\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Map.resources
 C:\Users\Kaitlyn\Desktop\trainproj\TrainProject\TrainProject\obj\Debug\TrainProject.Map.resources
 C:\Users\Michael McAlpin\Documents\TrainProject\TrainProject\obj\Debug\TrainProject.Map.resources
-C:\Users\user\Documents\SourceTree\TrainProject\obj\Debug\Interop.CUSTREGLib.dll
-C:\Users\user\Documents\SourceTree\TrainProject\obj\Debug\TrainProject.Map.resources

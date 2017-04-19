@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +19,7 @@ namespace TrainProject
         int timeEnd;
         enum days { fri, sat };
         Excel.Workbook schedulesWorkbook;
-        Excel.Worksheet schedulesWorksheet;
+        Excel.Worksheet redWorksheet;
         TimeSpan timespan;
         DateTime time;
         int breakCount;
@@ -46,11 +46,13 @@ namespace TrainProject
 
 
             Excel.Workbook schedulesWorkbook;
-            Excel.Worksheet schedulesWorksheet;
+            Excel.Worksheet redWorksheet;
+
+
             object misValue = System.Reflection.Missing.Value;
 
             schedulesWorkbook = schedulesApp.Workbooks.Add(misValue);
-            schedulesWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
+            redWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
 
             timespan = new TimeSpan(timeStart, 0, 0);
             time = DateTime.Today.Add(timespan);
@@ -64,10 +66,10 @@ namespace TrainProject
 
 
 
-            schedulesWorksheet.Cells[1, 1] = "Train ID";
-            schedulesWorksheet.Cells[1, 2] = time.ToString("hh:mm tt");
-            schedulesWorksheet.Cells[2, 1] = "1";
-            schedulesWorksheet.Cells[2, 2] = "Dispatch";
+            redWorksheet.Cells[1, 1] = "Train ID";
+            redWorksheet.Cells[1, 2] = time.ToString("hh:mm tt");
+            redWorksheet.Cells[2, 1] = "1";
+            redWorksheet.Cells[2, 2] = "Dispatch";
 
 
             //TimeSpan addTime = new TimeSpan(0, 30, 0);
@@ -102,50 +104,50 @@ namespace TrainProject
             {
                 addTime = new TimeSpan(0, 4, 42);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "Shadyside";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "Shadyside";
                 i++;
 
                 addTime = new TimeSpan(0, 3, 18);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "Herron Ave";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "Herron Ave";
                 i++;
 
                 addTime = new TimeSpan(0, 2, 30);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "Swissvale";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "Swissvale";
                 i++;
 
                 addTime = new TimeSpan(0, 2, 48);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "Penn Station";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "Penn Station";
                 i++;
 
                 addTime = new TimeSpan(0, 3, 6);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "Steel Plaza";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "Steel Plaza";
                 i++;
 
                 addTime = new TimeSpan(0, 3, 6);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "First Ave";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "First Ave";
                 i++;
 
                 addTime = new TimeSpan(0, 2, 42);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "Station Square";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "Station Square";
                 i++;
 
                 addTime = new TimeSpan(0, 3, 18);
                 time = time.Add(addTime);
-                schedulesWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                schedulesWorksheet.Cells[2, (i)] = "South Hills";
+                redWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
+                redWorksheet.Cells[2, (i)] = "South Hills";
                 i++;
 
                 nextCell = i;
@@ -156,32 +158,16 @@ namespace TrainProject
 
             addTime = new TimeSpan(0, 5, 0);
             time = time.Add(addTime);
-            schedulesWorksheet.Cells[1, (nextCell)] = time.ToString("hh:mm tt");
-            schedulesWorksheet.Cells[2, (nextCell)] = "Yard";
+            redWorksheet.Cells[1, (nextCell)] = time.ToString("hh:mm tt");
+            redWorksheet.Cells[2, (nextCell)] = "Yard";
+
+
+            Excel.Worksheet greenWorksheet = schedulesWorkbook.Sheets[2];
+            schedulesWorkbook.Sheets[2].Activate();
+            greenWorksheet.Cells[1, 1] = "Train ID";
 
 
 
-            //schedulesWorksheet.Cells[1, 2] = "Name";
-            /*schedulesWorksheet.Cells[2, 1] = "1";
-            schedulesWorksheet.Cells[2, 2] = "Drive";
-            schedulesWorksheet.Cells[2, 3] = "Drive";
-            schedulesWorksheet.Cells[2, 4] = "Drive";
-            schedulesWorksheet.Cells[2, 5] = "Drive";
-            schedulesWorksheet.Cells[2, 6] = "Drive";
-            schedulesWorksheet.Cells[2, 7] = "Drive";
-            schedulesWorksheet.Cells[2, 8] = "Drive";
-            schedulesWorksheet.Cells[2, 9] = "Drive";
-            schedulesWorksheet.Cells[2, 10] = "Drive";
-            schedulesWorksheet.Cells[2, 11] = "Drive";
-            schedulesWorksheet.Cells[2, 12] = "Drive";
-            schedulesWorksheet.Cells[2, 13] = "Drive";
-            schedulesWorksheet.Cells[2, 14] = "Drive";
-            schedulesWorksheet.Cells[2, 15] = "Drive";
-            schedulesWorksheet.Cells[2, 16] = "Drive";
-            schedulesWorksheet.Cells[2, 17] = "Drive";
-            schedulesWorksheet.Cells[2, 18] = "Drive";
-            schedulesWorksheet.Cells[2, 19] = "Clock Out";
-*/
 
 
 
@@ -201,14 +187,14 @@ namespace TrainProject
 
             schedulesWorkbook = schedulesApp.Workbooks.Open("C:\\Users\\Public\\TrainSchedule", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
 
-            schedulesWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
+            redWorksheet = (Excel.Worksheet)schedulesWorkbook.Worksheets.get_Item(1);
 
-            //MessageBox.Show(schedulesWorksheet.get_Range("A1", "A1").Value2.ToString());
+            //MessageBox.Show(redWorksheet.get_Range("A1", "A1").Value2.ToString());
 
             schedulesWorkbook.Close(true, misValue, misValue);
             schedulesApp.Quit();
 
-            Marshal.ReleaseComObject(schedulesWorksheet);
+            Marshal.ReleaseComObject(redWorksheet);
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);
 

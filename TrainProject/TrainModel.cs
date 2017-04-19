@@ -87,7 +87,7 @@ namespace TrainModelProject
 
         public TrainModel() { }
 
-        public TrainModel(int lId, int trainId)
+        public TrainModel(int lId, int trainId) 
         {
             InitializeComponent();
             lineId = lId;
@@ -103,7 +103,7 @@ namespace TrainModelProject
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
-
+ 
         public void updateTime(String time)
         {
             if (start == 0) return;
@@ -121,7 +121,7 @@ namespace TrainModelProject
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
-                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
+               Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
         public void updateDoorStatus(int n)
@@ -129,7 +129,7 @@ namespace TrainModelProject
             if (n == 0) Train_Door_L.Text = "Closed";
             else if (n == 1) Train_Door_L.Text = "Left";
             else if (n == 2) Train_Door_L.Text = "Right";
-            if (n != 0) announcementLabel.Text = "";
+            if(n != 0) announcementLabel.Text = "";
         }
         public void currentBlock()
         {
@@ -141,11 +141,11 @@ namespace TrainModelProject
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
-
+                
                 prev_block = current_block;
                 current_block = next_block;
                 int number = 0;
-                if (current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
+                if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
                 TC.sendSwitchBeaconInfo(number);
                 block_distance = current_block.length - p;
                 if (lineId == 2)
@@ -160,7 +160,7 @@ namespace TrainModelProject
                 }
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
-                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
+               // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
             }
 
         }
@@ -185,7 +185,7 @@ namespace TrainModelProject
             //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
-
+           
         }
 
         public void updatePower(double p)
@@ -198,7 +198,7 @@ namespace TrainModelProject
         {
             Train_ID_L.Text = t;
         }
-
+        
         public void setService(bool b)
         {
             if (b) service = true;
@@ -220,11 +220,11 @@ namespace TrainModelProject
                 double gravity = 9.8;
                 double friction_coeff = 0.002;
                 double cos_value = Math.Cos(1 * (Math.PI / 180.0));
-
+                
                 force = power / currSpeedms;
 
                 force = force - (mass * gravity * friction_coeff * cos_value);
-
+                
                 acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
                 if (currSpeedms + acceleration < 0)
@@ -238,35 +238,35 @@ namespace TrainModelProject
                 }
                 //currSpeedms = acceleration + currSpeedms;
             }
-            else if (power > 0) currSpeedms = max_acceleration + currSpeedms;
+            else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
         private void calculateService()
         {
             if (currSpeedms < serviceBrake) currSpeedms = 0;
             else currSpeedms = currSpeedms - serviceBrake;
-
+           
         }
         private void calculateEmergency()
         {
             if (currSpeedms < emergencyBrake) currSpeedms = 0;
             else currSpeedms = currSpeedms - emergencyBrake;
-
+            
         }
         public void updateThermostat(int status)
         {
-            if (status == 0)
+            if(status == 0)
             {
                 AC = 0;
                 heater = 0;
                 train_facilities = "Good";
             }
-            else if (status == 1)
+            else if(status == 1)
             {
                 AC = 1;
                 heater = 0;
                 train_facilities = "A/C On";
             }
-            else if (status == 2)
+            else if(status == 2)
             {
                 AC = 0;
                 heater = 1;
