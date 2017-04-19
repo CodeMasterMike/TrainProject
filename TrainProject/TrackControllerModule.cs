@@ -68,6 +68,8 @@ namespace TrainProject
         public static void updateBlockOccupancy(Block blk, Boolean occupied)
         {
             Boolean found = false, yardOccupancy = false;
+            TrainSimulation.mainOffice.updateBlockOccupancy(blk.blockId, occupied);
+
             //red line only
             if(blk.isFromYard && blk.isToYard)
             {
