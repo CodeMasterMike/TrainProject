@@ -288,7 +288,7 @@ namespace CTC
                         }
                     }
                     
-                    else
+                    else if (b.lineId == 2)
                     {
                         foreach (ListViewItem item in systemListView.Items)
                         {
@@ -319,10 +319,40 @@ namespace CTC
                         }
                     }
 
+                    else if (b.lineId == 1)
+                    {
+                        foreach (ListViewItem item in systemListView2.Items)
+                        {
+                            if (item.Index == (b.blockNum))
+                            {
+                                foreach (Train t in myTrainList)
+                                {
+                                    int pBlock = t.currBlock;
+                                    int nBlock = (getNextBlock(pBlock)).blockId;
+                                    if (nBlock == b.blockId) //if trains curr block is this one
+                                    {
+                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                        { Text = "Train " + t.trainId.ToString() };
+                                    }
+                                }
+
+                            }
+                        }
+                        foreach (Train t in myTrainList)
+                        {
+                            int pBlock = t.currBlock;
+                            int nBlock = (getNextBlock(pBlock)).blockId;
+                            if (nBlock == b.blockId)
+                            {
+                                t.currBlock = b.blockId;
+                            }
+
+                        }
+                    }
                     b.isOccupied = true;
                 }
 
-                else if ((b.blockId == bId) && (occupied == false))
+                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 2))
                 {
                     foreach (ListViewItem item in systemListView.Items)
                     {
@@ -333,6 +363,19 @@ namespace CTC
                     }
                     b.isOccupied = false;
                 }
+
+                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 1))
+                {
+                    foreach (ListViewItem item in systemListView2.Items)
+                    {
+                        if (item.Index == (b.blockNum))
+                        {
+                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
+                        }
+                    }
+                    b.isOccupied = false;
+                }
+
             }
         }
 
@@ -478,7 +521,7 @@ namespace CTC
         {
            if (trainSelected)
             {
-                dispatchOldTrain(selTrainId);
+                //dispatchOldTrain(selTrainId);
             }
            else
             {

@@ -148,7 +148,16 @@ namespace TrainModelProject
                 if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
                 TC.sendSwitchBeaconInfo(number);
                 block_distance = current_block.length - p;
-                if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                if (lineId == 2)
+                {
+                    if (TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                }
+
+                if (lineId == 1)
+                {
+                    if (TrackModelUI.greenLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.greenLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+
+                }
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
