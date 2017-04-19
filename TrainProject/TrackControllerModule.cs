@@ -146,6 +146,11 @@ namespace TrainProject
                             srcDir = ctrl.trainHeadingTowardsSwitch(t, s, 0);
                             t1Dir = ctrl.trainHeadingTowardsSwitch(t, s, 1);
                             t2Dir = ctrl.trainHeadingTowardsSwitch(t, s, 2);
+                            if(srcDir > 0 || t1Dir > 0 || t2Dir > 0)
+                            {
+                                t.currBlock = blk.blockId;
+                                found = true;
+                            }
                             int switchState = (int)TrackControllerWindow.plc.determineSwitchState(s.switchId, srcDir, t1Dir, t2Dir);
                             Console.WriteLine("Switch " + s.switchId + " pointing to " + switchState);
                             ctrl.checkSafety(s);
@@ -221,7 +226,7 @@ namespace TrainProject
         public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
         {
             //Console.WriteLine("dispatching train!!!!!");
-            Train newT = new Train(newTrain.getTrainId(), speed, authority);
+            Train newT = new Train(trainId, speed, authority);
             newT.currBlock = newTrain.getCurrBlock();
             double speedLimit = TrainSimulation.trackModelWindow.findBlock(newT.currBlock).speedLimit;
             if (speedLimit < speed)

@@ -13,12 +13,12 @@ namespace TrainProject
         public bool isPreviousToNext { get; set; }
         public bool isLeft { get; set; }
 
-        public StationBeacon(string n, short dt, bool isPTN)
+        public StationBeacon(string n, short dt, bool isPTN, bool iL)
         {
             name = n;
             distanceTo = dt;
             isPreviousToNext = isPTN;
-            isLeft = true;
+            isLeft = iL;
         }
     }
 }
