@@ -93,7 +93,7 @@ namespace TrainModelProject
             lineId = lId;
             TC = new TrainController(this, trainId, lineId);
             TC.Show();
-           
+
             double block_length = 0;
             double train_distance = 0;
 
