@@ -1,4 +1,4 @@
-﻿namespace MBO_UI
+namespace MBO_UI
 {
     partial class MBO
     {

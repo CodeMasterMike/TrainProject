@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +18,8 @@ namespace TrainProject
         int timeStart;
         int timeEnd;
         enum days { fri, sat };
-        
+        Excel.Workbook schedulesWorkbook;
+        Excel.Worksheet redWorksheet;
         TimeSpan timespan;
         DateTime time;
         int breakCount;
