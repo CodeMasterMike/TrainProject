@@ -1,8 +1,8 @@
 0,out,in,in
-1,bi,out,in
-2,bi,in,out
+1,bi,in,out
+2,bi,out,in
 3,in,out,out
-4,bi,out,in
+4,bi,in,out
 5,bi,out,in
 6,bi,bi,bi
 7,bi,bi,bi
