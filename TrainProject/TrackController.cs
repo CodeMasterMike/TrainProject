@@ -71,7 +71,7 @@ namespace TrainProject
             }
             if (t.direction == 0 || t.direction == null)
             {
-                Console.WriteLine("Error. Train has no direction");
+                //Console.WriteLine("Error. Train has no direction");
             }
             switch (whichBranch)
             {
