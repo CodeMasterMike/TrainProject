@@ -182,10 +182,11 @@ namespace TrainProject
             return true;
         }
 
-        public List<int> runProgram(List<Block> blockOccupancies)
+        public void runProgram()
         {
-            List<int> switchIds = new List<int>();
-            return switchIds;
+            foreach (Switch s in switches) {
+                determineSwitchState(s.switchId, 0, 0, 0);
+            }
         }
 
         //given the occupancy of the three blocks, the switch determines whether it should change or not
