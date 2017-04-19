@@ -60,15 +60,13 @@ namespace TrainProject
             int timeEnd = ShowInputDialog(ref input);
             MessageBox.Show("You chose " + timeEnd + " o'clock");
 
-            //DateTime date1 = new DateTime(2017, 4, 20);
+       
 
              timespan = new TimeSpan(timeStart, 0, 0);
              time = DateTime.Today.Add(timespan);
             MessageBox.Show("Time chosen is " + time.ToString("hh:mm tt") + "");
 
-           //TimeSpan addTime = new TimeSpan(0, 0, 30, 0);
-
-            //time = time.Add(addTime);
+         
 
 
 
@@ -85,7 +83,7 @@ namespace TrainProject
 
             schedulesWorksheet.Cells[1, 1] = "Driver ID";
             schedulesWorksheet.Cells[1, 2] = time.ToString("hh:mm tt");
-            String check = "test";
+            
 
             TimeSpan addTime = new TimeSpan(0, 30, 0);
             //time = time.Add(addTime);
@@ -113,7 +111,12 @@ namespace TrainProject
                 timeEnd = 12 + Math.Abs(operHours);
             }
 
-        
+            if (operHours == 0)
+            {
+                timeEnd = 12;
+            }
+
+
             timeEnd = timeEnd * 2;
 
             MessageBox.Show("timeEnd is " + timeEnd + "");
