@@ -29,6 +29,7 @@ namespace Track_Layout_UI
         public static List<Switch> switchList = new List<Switch>();
         public static TrainModel[] trainList = new TrainModel[100];
         public static Block selectedBlock;
+        public static Section selectedSection;
         public static Line selectedLine;
         public static Block selectedBlock_Murphy;
         public static Line selectedLine_Murphy;
@@ -36,17 +37,26 @@ namespace Track_Layout_UI
         //temporary variables
         private int yardBlockId = 229;
         //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
+        static public StationBeacon[] greenLineStationBeacons = new StationBeacon[154];
         static public StationBeacon[] redLineStationBeacons = new StationBeacon[79];
+
         private static void initializeRedLineStationBeacons()
         {
             StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
             redLineStationBeacons[8] = currBeacon;
-            currBeacon = new StationBeacon("HERRON AVE", 50, false);
+            currBeacon = new StationBeacon("HERRON AVE", 50, false, true);
             redLineStationBeacons[1] = currBeacon;
             //redLineStationBeacons[8] = currBeacon;
             //currBeacon = new StationBeacon("HERRON AVE", 50, false);
             //redLineStationBeacons[1] = currBeacon;
+        }
+        private static void initializeGreenLineStationBeacons()
+        {
+            StationBeacon currBeacon;
+            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
+            greenLineStationBeacons[8] = currBeacon;
+            
         }
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
@@ -706,9 +716,55 @@ namespace Track_Layout_UI
             blockSelectListBox.DataSource = filteredBlockList;
             blockSelectListBox.DisplayMember = "blockNum";
             blockSelectListBox.ValueMember = "blockId";
-            blockSelectListBox_Murphy.DataSource = filteredBlockList;
-            blockSelectListBox_Murphy.DisplayMember = "blockNum";
-            blockSelectListBox_Murphy.ValueMember = "blockId";
+        }
+
+        private void lineSelectMuphy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedLine = (Line)((ComboBox)sender).SelectedItem;
+            int selectedLineId = selectedLine.lineId;
+            List<Section> filteredSectionList = new List<Section>();
+            foreach (Section section in sectionList)
+            {
+                if (section.lineId == selectedLineId)
+                {
+                    filteredSectionList.Add(section);
+                }
+            }
+            filteredBlockList = new List<Block>();
+            foreach (var block in blockList)
+            {
+                Section parentSection = null;
+                foreach (Section section in filteredSectionList)
+                {
+                    if (block.sectionId == section.sectionId)
+                    {
+                        block.section = section.name;
+                        filteredBlockList.Add(block);
+                        break;
+                    }
+                }
+            }
+
+            blockSelectListBox.DataSource = filteredBlockList;
+            blockSelectListBox.DisplayMember = "blockNum";
+            blockSelectListBox.ValueMember = "blockId";
+        }
+
+        private void updateSelectedSection(int blockId)
+        {
+            foreach(Line line in lineList)
+            {
+                foreach(Section section in line.sections)
+                {
+                    foreach(Block block in section.blocks)
+                    {
+                        if(blockId == block.blockId)
+                        {
+                            selectedSection = section;
+                        }
+                    }
+                }
+            }
         }
 
         private void blockSelectedListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -716,6 +772,7 @@ namespace Track_Layout_UI
             if(selectedLine != null)
             {
                 selectedBlock = (Block)((ListBox)sender).SelectedItem;
+                updateSelectedSection(selectedBlock.blockId);
                 if(selectedBlock != null)
                 {
                     lineTextBox.Text = selectedLine.name;
@@ -754,6 +811,7 @@ namespace Track_Layout_UI
                         blockArrowDirectionTextBox.Text = "<-->";
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
+                    blockEmergencyLabel.Text = selectedLine.name + " Line, Block " +selectedSection.name+selectedBlock.blockNum;
                     updateFailureButtons();
                 }
             }
@@ -761,7 +819,7 @@ namespace Track_Layout_UI
 
         private void updateFailureButtons()
         {
-            if(selectedBlock.isCircuitBroken)
+            if(selectedBlock.isRailBroken)
             {
                 railStatus.Text = "Rail - FAIL";
                 railStatus.BackColor = Color.Red;
@@ -781,7 +839,7 @@ namespace Track_Layout_UI
                 trackCircuitStatus.Text = "Track Circuit - OK";
                 trackCircuitStatus.BackColor = Color.Lime;
             }
-            if (selectedBlock.isCircuitBroken)
+            if (selectedBlock.isPowerBroken)
             {
                 powerStatus.Text = "Power - FAIL";
                 powerStatus.BackColor = Color.Red;
@@ -812,17 +870,42 @@ namespace Track_Layout_UI
 
         private void brokenRailButton_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.causeFailure(selectedBlock.blockId);
+            TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
+            selectedBlock_Murphy.isRailBroken = true;
+            if(selectedBlock.blockId == selectedBlock_Murphy.blockId)
+            {
+                updateFailureButtons();
+            }
+        }
+
+        private void brokenTrackCircuitButton_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
+            selectedBlock_Murphy.isCircuitBroken = true;
+            if (selectedBlock.blockId == selectedBlock_Murphy.blockId)
+            {
+                updateFailureButtons();
+            }
+        }
+
+        private void powerFailureButton_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
+            selectedBlock_Murphy.isPowerBroken = true;
+            if (selectedBlock.blockId == selectedBlock_Murphy.blockId)
+            {
+                updateFailureButtons();
+            }
         }
 
         private void trackCircuitStatus_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.causeFailure(selectedBlock.blockId);
+            
         }
 
         private void powerStatus_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.causeFailure(selectedBlock.blockId);
+            
         }
 
         private void temperatureScrollBar_Scroll(object sender, ScrollEventArgs e)
@@ -848,5 +931,55 @@ namespace Track_Layout_UI
                 }
             }
         }
+
+        private void updateSelectedBlock_Murphy_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            bool invalid = false;
+            String lineName = "";
+            int blockNum = 0;
+            try
+            {
+                lineName = lineTextBox_Murphy.Text;
+                blockNum = Convert.ToInt32(blockTextBox_Murphy.Text);
+                foreach(Line line in lineList)
+                {
+                    if(line.name.Equals(lineName))
+                    {
+                        foreach(Section section in line.sections)
+                        {
+                            foreach(Block block in section.blocks)
+                            {
+                                if(block.blockNum == blockNum)
+                                {
+                                    found = true;
+                                    selectedBlock_Murphy = block;
+                                    selectedLine_Murphy = line;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch(Exception exception)
+            {
+                invalid = true;
+                MessageBox.Show("Invalid input! Block not set...");
+            }
+            if(!invalid)
+            {
+                if(!found)
+                {
+                    MessageBox.Show("Input valid, block NOT found...");
+                }
+                else
+                {
+                    MessageBox.Show("Block found! Current Murphy block updated! Yee haw!!!");
+                    selectedMurphyBlockLabel.Text = lineName + " Line, Block " + blockNum.ToString() + " - Emergency Reporting";
+                }
+            }
+        }
+
     }
 }
