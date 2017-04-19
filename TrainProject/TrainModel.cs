@@ -53,31 +53,6 @@ namespace TrainModelProject
         double p;
         double sugSpeed;
         int sugAuthority;
-        int lineId;
-
-        public double getCurrSpeed()
-        {
-            return currSpeedms;
-        }
-        public void updateAnnouncement(string s)
-        {
-            announcementLabel.Text = s;
-        }
-
-        public int getCurrBlock()
-        {
-            return current_block.blockId;
-        }
-
-        public int getTrainId()
-        {
-            return trainId;
-        }
-
-        public TrainController getTC()
-        {
-            return TC;
-        }
 
 
         public void updateSpeedAndAuthority(double speed, int authority)
@@ -93,7 +68,7 @@ namespace TrainModelProject
             lineId = lId;
             TC = new TrainController(this, trainId, lineId);
             TC.Show();
-           
+
             double block_length = 0;
             double train_distance = 0;
 
@@ -103,7 +78,18 @@ namespace TrainModelProject
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
- 
+        public void setTrainTest(int test)
+        {
+            trainTestId = test;
+        }
+
+        public int getTrainTest()
+        {
+            return trainTestId;
+        }
+
+
+
         public void updateTime(String time)
         {
             if (start == 0) return;
