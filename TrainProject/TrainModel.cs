@@ -90,7 +90,7 @@ namespace TrainModelProject
         public TrainModel(int lId, int trainId) 
         {
             InitializeComponent();
-            TC = new TrainController(this);
+            TC = new TrainController(this, trainId, lineId);
             TC.Show();
             lineId = lId;
            

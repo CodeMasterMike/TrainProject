@@ -42,6 +42,7 @@ namespace TrainControllerProject
         int wait = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         int doorStatus;
+        int trainID = 0;
         double distanceLeft = 0;
         double Kp = 0;//100000;
         double Ki = 0;//5000;
@@ -58,6 +59,7 @@ namespace TrainControllerProject
         double force = 0;
         double serviceBreak = 1.2;
         bool serviceOverride = false;
+        int lineID = 2;
         bool forceStop = false;
         bool emergencyOverride = false;
         Block currentBlock;
@@ -83,11 +85,13 @@ namespace TrainControllerProject
         //initialize labels and controls
 
         //methods
-        public TrainController(TrainModel t)
+        public TrainController(TrainModel t, int id, int line)
         {
             
             InitializeComponent();
             TM = t;
+            trainID = id;
+            lineID = line;
             //speaker = new SpeechSynthesizer();
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
@@ -250,7 +254,7 @@ namespace TrainControllerProject
             if(authority <= 3 && authorityChanged)
             {
                 
-                BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum);
+                BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
                 if (blockTracker.getOnSwtich()) bs.configureDirection();
                 distanceToAuthority = bs.getDistance(authority);
                 authorityChanged = false;
@@ -443,7 +447,7 @@ namespace TrainControllerProject
         }
         private void setTrack(string input)
         {
-            blockTracker = new BlockTracker(input);
+            blockTracker = new BlockTracker(input, lineID);
             currentBlock = blockTracker.getCurrentBlock();
             distanceLeft = currentBlock.length;
         }
