@@ -4,24 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainProject;
-using TrainProject.HelperObjects;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 
 namespace TrainProject
 {
     public class DriverSchedule
     {
-        int shift;
-        int timeStart;
-        int timeEnd;
-        enum days { fri, sat};
-        Excel.Workbook schedulesWorkbook;
-        Excel.Worksheet schedulesWorksheet;
-        TimeSpan timespan;
-        DateTime time;
-        //enum Hours {(3:00),3:30,4:00,4:30,5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,1:00,1:30,2:00,2:30,3:00,3:30,4:00,4:30,5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,1:00};
-        //enum Hours {3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
 
 
 
@@ -364,15 +352,6 @@ namespace TrainProject
         }
 
         
+
     }
-
-    /*public Range RealUsedRange()
-    {
-        // ...
-        return schedulesWorksheet.get_Range(xlWorkSheet.Cells[FirstRow, FirstColumn],
-                                     xlWorkSheet.Cells[LastRow, LastColumn]);
-    }*/
-
-
-
 }
