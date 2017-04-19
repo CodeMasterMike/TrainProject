@@ -201,9 +201,9 @@ namespace TrainProject
         {
             try
             {
-                ListView temp = (ListView)Controls.Find("trainsSummaryView", true)[0];
+                ListView temp = (ListView)Controls.Find("trainsSummaryList", true)[0];
                 temp.Items.Clear();
-                foreach (var train in TrackControllerModule.trainTrackings)
+                foreach (Train train in TrackControllerModule.trainTrackings)
                 {
                     temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
                 }
