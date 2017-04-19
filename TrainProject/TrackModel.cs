@@ -34,12 +34,12 @@ namespace Track_Layout_UI
         public static Block selectedBlock_Murphy;
         public static Line selectedLine_Murphy;
         public static int temperature;
-        //temporary variables
-        private int yardBlockId = 229;
-        //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
+        //hard coded variables
         static public StationBeacon[] greenLineStationBeacons = new StationBeacon[154];
         static public StationBeacon[] redLineStationBeacons = new StationBeacon[79];
 
+        //was forced to hard code these, could not get working properly in code with equation to calculate stopping distance
+        //stations are still attached to blocks, just had to hard code the beacons
         private static void initializeRedLineStationBeacons()
         {
             StationBeacon currBeacon;
@@ -47,16 +47,52 @@ namespace Track_Layout_UI
             redLineStationBeacons[8] = currBeacon;
             currBeacon = new StationBeacon("HERRON AVE", 50, false, true);
             redLineStationBeacons[1] = currBeacon;
-            //redLineStationBeacons[8] = currBeacon;
-            //currBeacon = new StationBeacon("HERRON AVE", 50, false);
-            //redLineStationBeacons[1] = currBeacon;
         }
         private static void initializeGreenLineStationBeacons()
         {
             StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
-            greenLineStationBeacons[8] = currBeacon;
-            
+            currBeacon = new StationBeacon("GLENBURY", 200, true, false);
+            greenLineStationBeacons[63] = currBeacon;
+            currBeacon = new StationBeacon("DORMONT", 200, true, false);
+            greenLineStationBeacons[71] = currBeacon;
+            currBeacon = new StationBeacon("MT LEBANON", 200, true, false);
+            greenLineStationBeacons[75] = currBeacon;
+            currBeacon = new StationBeacon("MT LEBANON", 300, false, true);
+            greenLineStationBeacons[78] = currBeacon;
+            currBeacon = new StationBeacon("POPLAR", 187, true, false);
+            greenLineStationBeacons[86] = currBeacon;
+            currBeacon = new StationBeacon("CASTLE SHANNON", 150, true, true);
+            greenLineStationBeacons[86] = currBeacon;
+            //need to set prevToNext properly
+            currBeacon = new StationBeacon("PIONEER", 100, true, true);
+            greenLineStationBeacons[3] = currBeacon;
+            currBeacon = new StationBeacon("EDGEBROOK", 100, true, true);
+            greenLineStationBeacons[10] = currBeacon;
+            currBeacon = new StationBeacon("NORTH POLE", 300, true, true);
+            greenLineStationBeacons[14] = currBeacon;
+            currBeacon = new StationBeacon("NORTH POLE", 150, false, false);
+            greenLineStationBeacons[17] = currBeacon;
+            currBeacon = new StationBeacon("WHITED", 300, true, true);
+            greenLineStationBeacons[21] = currBeacon;
+            currBeacon = new StationBeacon("WHITED", 300, false, false);
+            greenLineStationBeacons[23] = currBeacon;
+            currBeacon = new StationBeacon("SOUTH BANK", 200, true, true);
+            greenLineStationBeacons[27] = currBeacon;
+            currBeacon = new StationBeacon("CENTRAL UNDERGROUND", 200, true, false);
+            greenLineStationBeacons[35] = currBeacon;
+            currBeacon = new StationBeacon("INGLEWOOD", 200, true, false);
+            greenLineStationBeacons[44] = currBeacon;
+            currBeacon = new StationBeacon("DORMONT", 180, true, false);
+            greenLineStationBeacons[103] = currBeacon;
+            currBeacon = new StationBeacon("GLENBURY", 200, true, false);
+            greenLineStationBeacons[112] = currBeacon;
+            currBeacon = new StationBeacon("OVERBROOK", 190, true, false);
+            greenLineStationBeacons[119] = currBeacon;
+            currBeacon = new StationBeacon("INGLEWOOD", 200, true, true);
+            greenLineStationBeacons[128] = currBeacon;
+            currBeacon = new StationBeacon("CENTRAL UNDERGROUND", 200, true, false);
+            greenLineStationBeacons[137] = currBeacon;
+
         }
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
