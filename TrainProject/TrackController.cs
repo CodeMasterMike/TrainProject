@@ -48,15 +48,15 @@ namespace TrainProject
         {
             foreach (Train t in TrackControllerModule.trainTrackings)
             {
-                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceLight == false)
+                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceActive == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
-                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Light == false)
+                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Active == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
-                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Light == false)
+                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Active == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
