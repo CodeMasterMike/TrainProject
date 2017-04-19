@@ -83,8 +83,15 @@
             this.Trains = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Switches = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Crossings = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.yardTrain = new System.Windows.Forms.Button();
             this.MurphyTab = new System.Windows.Forms.TabPage();
+            this.systemListView2 = new System.Windows.Forms.ListView();
+            this.Blocks = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Occupancy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.occ = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.switchs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.crossing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.redLineLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.DispatcherTab.SuspendLayout();
             this.notifBox.SuspendLayout();
@@ -176,9 +183,9 @@
             this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLabel.Location = new System.Drawing.Point(6, 104);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(75, 29);
+            this.timeLabel.Size = new System.Drawing.Size(93, 29);
             this.timeLabel.TabIndex = 4;
-            this.timeLabel.Text = "Time:";
+            this.timeLabel.Text = "Time:   ";
             // 
             // fbRadio
             // 
@@ -234,9 +241,9 @@
             this.sysModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sysModeLabel.Location = new System.Drawing.Point(123, 23);
             this.sysModeLabel.Name = "sysModeLabel";
-            this.sysModeLabel.Size = new System.Drawing.Size(111, 18);
+            this.sysModeLabel.Size = new System.Drawing.Size(126, 18);
             this.sysModeLabel.TabIndex = 0;
-            this.sysModeLabel.Text = "System Mode";
+            this.sysModeLabel.Text = "System Mode   ";
             // 
             // trackBox
             // 
@@ -325,9 +332,9 @@
             this.selLineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selLineLabel.Location = new System.Drawing.Point(96, 19);
             this.selLineLabel.Name = "selLineLabel";
-            this.selLineLabel.Size = new System.Drawing.Size(91, 18);
+            this.selLineLabel.Size = new System.Drawing.Size(106, 18);
             this.selLineLabel.TabIndex = 0;
-            this.selLineLabel.Text = "Select Line";
+            this.selLineLabel.Text = "Select Line   ";
             // 
             // dispatchGroup
             // 
@@ -352,19 +359,19 @@
             // speedScrollBar
             // 
             this.speedScrollBar.Location = new System.Drawing.Point(21, 104);
-            this.speedScrollBar.Maximum = 110;
+            this.speedScrollBar.Maximum = 161;
             this.speedScrollBar.Name = "speedScrollBar";
             this.speedScrollBar.Size = new System.Drawing.Size(186, 18);
-            this.speedScrollBar.TabIndex = 4;
+            this.speedScrollBar.TabIndex = 1;
             this.speedScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.speedScrollBar_Scroll);
             // 
             // authScrollBar
             // 
             this.authScrollBar.Location = new System.Drawing.Point(21, 155);
-            this.authScrollBar.Maximum = 30;
+            this.authScrollBar.Maximum = 161;
             this.authScrollBar.Name = "authScrollBar";
             this.authScrollBar.Size = new System.Drawing.Size(186, 18);
-            this.authScrollBar.TabIndex = 4;
+            this.authScrollBar.TabIndex = 1;
             this.authScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.authScrollBar_Scroll);
             // 
             // authValueLabel
@@ -406,9 +413,9 @@
             this.selAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selAuthLabel.Location = new System.Drawing.Point(77, 132);
             this.selAuthLabel.Name = "selAuthLabel";
-            this.selAuthLabel.Size = new System.Drawing.Size(140, 18);
+            this.selAuthLabel.Size = new System.Drawing.Size(155, 18);
             this.selAuthLabel.TabIndex = 0;
-            this.selAuthLabel.Text = "Suggest Authority";
+            this.selAuthLabel.Text = "Suggest Authority   ";
             // 
             // selSpeedLabel
             // 
@@ -416,9 +423,9 @@
             this.selSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selSpeedLabel.Location = new System.Drawing.Point(77, 77);
             this.selSpeedLabel.Name = "selSpeedLabel";
-            this.selSpeedLabel.Size = new System.Drawing.Size(121, 18);
+            this.selSpeedLabel.Size = new System.Drawing.Size(136, 18);
             this.selSpeedLabel.TabIndex = 0;
-            this.selSpeedLabel.Text = "Suggest Speed";
+            this.selSpeedLabel.Text = "Suggest Speed   ";
             // 
             // comboBox1
             // 
@@ -435,9 +442,9 @@
             this.selDenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selDenLabel.Location = new System.Drawing.Point(77, 21);
             this.selDenLabel.Name = "selDenLabel";
-            this.selDenLabel.Size = new System.Drawing.Size(145, 18);
+            this.selDenLabel.Size = new System.Drawing.Size(160, 18);
             this.selDenLabel.TabIndex = 0;
-            this.selDenLabel.Text = "Select Destination";
+            this.selDenLabel.Text = "Select Destination   ";
             // 
             // infoBox
             // 
@@ -471,83 +478,92 @@
             // updateThroughputLabel
             // 
             this.updateThroughputLabel.AutoSize = true;
-            this.updateThroughputLabel.Location = new System.Drawing.Point(146, 248);
+            this.updateThroughputLabel.Location = new System.Drawing.Point(164, 247);
             this.updateThroughputLabel.Name = "updateThroughputLabel";
             this.updateThroughputLabel.Size = new System.Drawing.Size(15, 20);
             this.updateThroughputLabel.TabIndex = 3;
             this.updateThroughputLabel.Text = "-";
+            this.updateThroughputLabel.Click += new System.EventHandler(this.updateThroughputLabel_Click);
             // 
             // updateNumTrainsLabel
             // 
             this.updateNumTrainsLabel.AutoSize = true;
-            this.updateNumTrainsLabel.Location = new System.Drawing.Point(146, 219);
+            this.updateNumTrainsLabel.Location = new System.Drawing.Point(164, 218);
             this.updateNumTrainsLabel.Name = "updateNumTrainsLabel";
             this.updateNumTrainsLabel.Size = new System.Drawing.Size(15, 20);
             this.updateNumTrainsLabel.TabIndex = 3;
             this.updateNumTrainsLabel.Text = "-";
+            this.updateNumTrainsLabel.Click += new System.EventHandler(this.updateNumTrainsLabel_Click);
             // 
             // updateLineLabel
             // 
             this.updateLineLabel.AutoSize = true;
-            this.updateLineLabel.Location = new System.Drawing.Point(146, 191);
+            this.updateLineLabel.Location = new System.Drawing.Point(164, 190);
             this.updateLineLabel.Name = "updateLineLabel";
             this.updateLineLabel.Size = new System.Drawing.Size(15, 20);
             this.updateLineLabel.TabIndex = 3;
             this.updateLineLabel.Text = "-";
+            this.updateLineLabel.Click += new System.EventHandler(this.updateLineLabel_Click);
             // 
             // updateSectionLabel
             // 
             this.updateSectionLabel.AutoSize = true;
-            this.updateSectionLabel.Location = new System.Drawing.Point(146, 162);
+            this.updateSectionLabel.Location = new System.Drawing.Point(164, 161);
             this.updateSectionLabel.Name = "updateSectionLabel";
             this.updateSectionLabel.Size = new System.Drawing.Size(15, 20);
             this.updateSectionLabel.TabIndex = 3;
             this.updateSectionLabel.Text = "-";
+            this.updateSectionLabel.Click += new System.EventHandler(this.updateSectionLabel_Click);
             // 
             // updateBlockStatLabel
             // 
             this.updateBlockStatLabel.AutoSize = true;
-            this.updateBlockStatLabel.Location = new System.Drawing.Point(146, 133);
+            this.updateBlockStatLabel.Location = new System.Drawing.Point(164, 132);
             this.updateBlockStatLabel.Name = "updateBlockStatLabel";
             this.updateBlockStatLabel.Size = new System.Drawing.Size(15, 20);
             this.updateBlockStatLabel.TabIndex = 3;
             this.updateBlockStatLabel.Text = "-";
+            this.updateBlockStatLabel.Click += new System.EventHandler(this.updateBlockStatLabel_Click);
             // 
             // updateBlockLabel
             // 
             this.updateBlockLabel.AutoSize = true;
-            this.updateBlockLabel.Location = new System.Drawing.Point(146, 105);
+            this.updateBlockLabel.Location = new System.Drawing.Point(164, 104);
             this.updateBlockLabel.Name = "updateBlockLabel";
             this.updateBlockLabel.Size = new System.Drawing.Size(15, 20);
             this.updateBlockLabel.TabIndex = 3;
             this.updateBlockLabel.Text = "-";
+            this.updateBlockLabel.Click += new System.EventHandler(this.updateBlockLabel_Click);
             // 
             // updateSugAuthLabel
             // 
             this.updateSugAuthLabel.AutoSize = true;
-            this.updateSugAuthLabel.Location = new System.Drawing.Point(146, 78);
+            this.updateSugAuthLabel.Location = new System.Drawing.Point(164, 77);
             this.updateSugAuthLabel.Name = "updateSugAuthLabel";
             this.updateSugAuthLabel.Size = new System.Drawing.Size(15, 20);
             this.updateSugAuthLabel.TabIndex = 3;
             this.updateSugAuthLabel.Text = "-";
+            this.updateSugAuthLabel.Click += new System.EventHandler(this.updateSugAuthLabel_Click);
             // 
             // updateSugSpeedLabel
             // 
             this.updateSugSpeedLabel.AutoSize = true;
-            this.updateSugSpeedLabel.Location = new System.Drawing.Point(146, 50);
+            this.updateSugSpeedLabel.Location = new System.Drawing.Point(164, 49);
             this.updateSugSpeedLabel.Name = "updateSugSpeedLabel";
             this.updateSugSpeedLabel.Size = new System.Drawing.Size(15, 20);
             this.updateSugSpeedLabel.TabIndex = 3;
             this.updateSugSpeedLabel.Text = "-";
+            this.updateSugSpeedLabel.Click += new System.EventHandler(this.updateSugSpeedLabel_Click);
             // 
             // updateTrainLabel
             // 
             this.updateTrainLabel.AutoSize = true;
-            this.updateTrainLabel.Location = new System.Drawing.Point(146, 23);
+            this.updateTrainLabel.Location = new System.Drawing.Point(164, 22);
             this.updateTrainLabel.Name = "updateTrainLabel";
             this.updateTrainLabel.Size = new System.Drawing.Size(15, 20);
             this.updateTrainLabel.TabIndex = 3;
             this.updateTrainLabel.Text = "-";
+            this.updateTrainLabel.Click += new System.EventHandler(this.updateTrainLabel_Click);
             // 
             // throughLabel
             // 
@@ -555,9 +571,9 @@
             this.throughLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.throughLabel.Location = new System.Drawing.Point(62, 248);
             this.throughLabel.Name = "throughLabel";
-            this.throughLabel.Size = new System.Drawing.Size(87, 18);
+            this.throughLabel.Size = new System.Drawing.Size(99, 18);
             this.throughLabel.TabIndex = 0;
-            this.throughLabel.Text = "Throughput:";
+            this.throughLabel.Text = "Throughput:   ";
             // 
             // lineLabel
             // 
@@ -565,9 +581,9 @@
             this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineLabel.Location = new System.Drawing.Point(110, 191);
             this.lineLabel.Name = "lineLabel";
-            this.lineLabel.Size = new System.Drawing.Size(39, 18);
+            this.lineLabel.Size = new System.Drawing.Size(51, 18);
             this.lineLabel.TabIndex = 0;
-            this.lineLabel.Text = "Line:";
+            this.lineLabel.Text = "Line:   ";
             // 
             // numTrainsLabel
             // 
@@ -575,9 +591,9 @@
             this.numTrainsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numTrainsLabel.Location = new System.Drawing.Point(16, 219);
             this.numTrainsLabel.Name = "numTrainsLabel";
-            this.numTrainsLabel.Size = new System.Drawing.Size(133, 18);
+            this.numTrainsLabel.Size = new System.Drawing.Size(145, 18);
             this.numTrainsLabel.TabIndex = 0;
-            this.numTrainsLabel.Text = "# Trains in Service:";
+            this.numTrainsLabel.Text = "# Trains in Service:   ";
             // 
             // sectionLabel
             // 
@@ -585,9 +601,9 @@
             this.sectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sectionLabel.Location = new System.Drawing.Point(87, 163);
             this.sectionLabel.Name = "sectionLabel";
-            this.sectionLabel.Size = new System.Drawing.Size(62, 18);
+            this.sectionLabel.Size = new System.Drawing.Size(74, 18);
             this.sectionLabel.TabIndex = 0;
-            this.sectionLabel.Text = "Section:";
+            this.sectionLabel.Text = "Section:   ";
             // 
             // sugAuthLabel
             // 
@@ -595,9 +611,9 @@
             this.sugAuthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sugAuthLabel.Location = new System.Drawing.Point(6, 79);
             this.sugAuthLabel.Name = "sugAuthLabel";
-            this.sugAuthLabel.Size = new System.Drawing.Size(143, 18);
+            this.sugAuthLabel.Size = new System.Drawing.Size(155, 18);
             this.sugAuthLabel.TabIndex = 0;
-            this.sugAuthLabel.Text = "Suggested Authority:";
+            this.sugAuthLabel.Text = "Suggested Authority:   ";
             // 
             // blockStatusLabel
             // 
@@ -605,9 +621,9 @@
             this.blockStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blockStatusLabel.Location = new System.Drawing.Point(53, 134);
             this.blockStatusLabel.Name = "blockStatusLabel";
-            this.blockStatusLabel.Size = new System.Drawing.Size(96, 18);
+            this.blockStatusLabel.Size = new System.Drawing.Size(108, 18);
             this.blockStatusLabel.TabIndex = 0;
-            this.blockStatusLabel.Text = "Block Status:";
+            this.blockStatusLabel.Text = "Block Status:   ";
             // 
             // blockLabel
             // 
@@ -615,9 +631,9 @@
             this.blockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blockLabel.Location = new System.Drawing.Point(99, 106);
             this.blockLabel.Name = "blockLabel";
-            this.blockLabel.Size = new System.Drawing.Size(50, 18);
+            this.blockLabel.Size = new System.Drawing.Size(62, 18);
             this.blockLabel.TabIndex = 0;
-            this.blockLabel.Text = "Block:";
+            this.blockLabel.Text = "Block:   ";
             // 
             // sugSpeedLabel
             // 
@@ -625,9 +641,9 @@
             this.sugSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sugSpeedLabel.Location = new System.Drawing.Point(21, 52);
             this.sugSpeedLabel.Name = "sugSpeedLabel";
-            this.sugSpeedLabel.Size = new System.Drawing.Size(128, 18);
+            this.sugSpeedLabel.Size = new System.Drawing.Size(140, 18);
             this.sugSpeedLabel.TabIndex = 0;
-            this.sugSpeedLabel.Text = "Suggested Speed:";
+            this.sugSpeedLabel.Text = "Suggested Speed:   ";
             // 
             // trainNumLabel
             // 
@@ -635,14 +651,16 @@
             this.trainNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trainNumLabel.Location = new System.Drawing.Point(47, 23);
             this.trainNumLabel.Name = "trainNumLabel";
-            this.trainNumLabel.Size = new System.Drawing.Size(102, 18);
+            this.trainNumLabel.Size = new System.Drawing.Size(114, 18);
             this.trainNumLabel.TabIndex = 0;
-            this.trainNumLabel.Text = "Train Number:";
+            this.trainNumLabel.Text = "Train Number:   ";
             // 
             // systemBox
             // 
+            this.systemBox.Controls.Add(this.label1);
+            this.systemBox.Controls.Add(this.redLineLabel);
+            this.systemBox.Controls.Add(this.systemListView2);
             this.systemBox.Controls.Add(this.systemListView);
-            this.systemBox.Controls.Add(this.yardTrain);
             this.systemBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.systemBox.Location = new System.Drawing.Point(3, 295);
             this.systemBox.Name = "systemBox";
@@ -660,46 +678,36 @@
             this.Trains,
             this.Switches,
             this.Crossings});
-            this.systemListView.Location = new System.Drawing.Point(69, 26);
+            this.systemListView.Location = new System.Drawing.Point(6, 50);
             this.systemListView.Name = "systemListView";
-            this.systemListView.Size = new System.Drawing.Size(1229, 320);
+            this.systemListView.Size = new System.Drawing.Size(646, 296);
             this.systemListView.TabIndex = 2;
             this.systemListView.UseCompatibleStateImageBehavior = false;
             // 
             // Block
             // 
             this.Block.Text = "Block Number";
-            this.Block.Width = 120;
+            this.Block.Width = 100;
             // 
             // Status
             // 
             this.Status.Text = "Block Status";
-            this.Status.Width = 120;
+            this.Status.Width = 90;
             // 
             // Trains
             // 
             this.Trains.Text = "Occupancy";
-            this.Trains.Width = 120;
+            this.Trains.Width = 90;
             // 
             // Switches
             // 
             this.Switches.Text = "Switch State";
-            this.Switches.Width = 120;
+            this.Switches.Width = 90;
             // 
             // Crossings
             // 
-            this.Crossings.Text = "Crossing State";
-            this.Crossings.Width = 120;
-            // 
-            // yardTrain
-            // 
-            this.yardTrain.Location = new System.Drawing.Point(13, 99);
-            this.yardTrain.Name = "yardTrain";
-            this.yardTrain.Size = new System.Drawing.Size(54, 44);
-            this.yardTrain.TabIndex = 0;
-            this.yardTrain.Text = "yard";
-            this.yardTrain.UseVisualStyleBackColor = true;
-            this.yardTrain.Click += new System.EventHandler(this.yardTrain_Click);
+            this.Crossings.Text = "X-ing State";
+            this.Crossings.Width = 90;
             // 
             // MurphyTab
             // 
@@ -711,13 +719,78 @@
             this.MurphyTab.Text = "Murphy";
             this.MurphyTab.UseVisualStyleBackColor = true;
             // 
+            // systemListView2
+            // 
+            this.systemListView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Blocks,
+            this.Occupancy,
+            this.occ,
+            this.switchs,
+            this.crossing});
+            this.systemListView2.Location = new System.Drawing.Point(658, 50);
+            this.systemListView2.Name = "systemListView2";
+            this.systemListView2.Size = new System.Drawing.Size(646, 296);
+            this.systemListView2.TabIndex = 2;
+            this.systemListView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // Blocks
+            // 
+            this.Blocks.Text = "Block Number";
+            this.Blocks.Width = 100;
+            // 
+            // Occupancy
+            // 
+            this.Occupancy.Text = "Block Status";
+            this.Occupancy.Width = 90;
+            // 
+            // occ
+            // 
+            this.occ.Text = "Occupancy";
+            this.occ.Width = 90;
+            // 
+            // switchs
+            // 
+            this.switchs.Text = "Switch State";
+            this.switchs.Width = 90;
+            // 
+            // crossing
+            // 
+            this.crossing.Text = "X-ing State";
+            this.crossing.Width = 90;
+            // 
+            // redLineLabel
+            // 
+            this.redLineLabel.AutoSize = true;
+            this.redLineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redLineLabel.ForeColor = System.Drawing.Color.Red;
+            this.redLineLabel.Location = new System.Drawing.Point(225, 18);
+            this.redLineLabel.Name = "redLineLabel";
+            this.redLineLabel.Size = new System.Drawing.Size(167, 29);
+            this.redLineLabel.TabIndex = 3;
+            this.redLineLabel.Text = "Red Line       ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Green;
+            this.label1.Location = new System.Drawing.Point(907, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 29);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Green Line       ";
+            // 
             // Office
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1346, 689);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1364, 736);
+            this.MinimumSize = new System.Drawing.Size(1364, 736);
             this.Name = "Office";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Office";
             this.Load += new System.EventHandler(this.Office_Load);
             this.tabControl1.ResumeLayout(false);
@@ -733,6 +806,7 @@
             this.infoBox.ResumeLayout(false);
             this.infoBox.PerformLayout();
             this.systemBox.ResumeLayout(false);
+            this.systemBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -778,7 +852,6 @@
         private System.Windows.Forms.Label authValueLabel;
         private System.Windows.Forms.Label speedValueLabel;
         private System.Windows.Forms.Label updateTimeLabel;
-        private System.Windows.Forms.Button yardTrain;
         private System.Windows.Forms.HScrollBar speedScrollBar;
         private System.Windows.Forms.HScrollBar authScrollBar;
         private System.Windows.Forms.ListView systemListView;
@@ -796,5 +869,13 @@
         private System.Windows.Forms.ColumnHeader Trains;
         private System.Windows.Forms.ColumnHeader Switches;
         private System.Windows.Forms.ColumnHeader Crossings;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label redLineLabel;
+        private System.Windows.Forms.ListView systemListView2;
+        private System.Windows.Forms.ColumnHeader Blocks;
+        private System.Windows.Forms.ColumnHeader Occupancy;
+        private System.Windows.Forms.ColumnHeader occ;
+        private System.Windows.Forms.ColumnHeader switchs;
+        private System.Windows.Forms.ColumnHeader crossing;
     }
 }
