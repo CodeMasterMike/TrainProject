@@ -104,7 +104,7 @@ namespace TrainProject
                     t.direction = -1;
                     found = true;
                 }
-                else //check switches to see if train just traveled over switch
+                if (found) //check switches to see if train just traveled over switch
                 {
                     foreach (TrackController ctrl in activeControllers)
                     {
@@ -154,6 +154,10 @@ namespace TrainProject
             {
                 Console.WriteLine("Train not found in system");
                 Console.WriteLine(blk.blockId);
+                foreach (Train t in trainTrackings)
+                {
+                    Console.WriteLine(t.trainId + " at block " + t.currBlock);
+                }
             }
             TrainSimulation.trackControllerWindow.updateSwitches();
             TrainSimulation.trackControllerWindow.updateCrossings();

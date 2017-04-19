@@ -248,6 +248,17 @@ namespace TrainProject
                     sw.changeSwitchState();
                 }
             }
+            else
+            {
+                //sourceLightTrue
+                sw.sourceLight = true;
+                //t2LightFalse
+                sw.t2Light = false;
+                if (sw.currentState != sw.targetBlockId1)
+                {
+                    sw.changeSwitchState();
+                }
+            }
             return sw.currentState;
         }
 
