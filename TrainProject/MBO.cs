@@ -236,8 +236,7 @@ namespace MBO_UI
             //MessageBox.Show(result);
 
             int startTime = Convert.ToInt32(result);
-           // MessageBox.Show("Today is " + dateTimePicker1.Value.Date);
-            //MessageBox.Show("the time is " + dateTimePicker1.Value.Date.ToShortTimeString());
+         
 
             //How to Parse strings to time
             //String timeString = "1:00 am";
@@ -247,8 +246,7 @@ namespace MBO_UI
 
             //MessageBox.Show("Time parsed is " + chosenTime + "");
 
-            //This is how i will add time
-            //TimeSpan time = new TimeSpan(13, 0, 0);
+           
             TimeSpan timespan = new TimeSpan(startTime, 0, 0);
             DateTime time = DateTime.Today.Add(timespan);
             MessageBox.Show("Time chosen is " + time.ToString("hh:mm tt") + "");
