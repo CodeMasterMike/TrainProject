@@ -66,15 +66,15 @@ public class TrackControllerModule
                 }
                 foreach (Train t in trainTrackings)
                 {
-                    if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 0) > 0 && !s.sourceActive)
                     {
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                     }
-                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 1) > 0 && !s.t1Active)
                     {
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                     }
-                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 2) > 0 && !s.t2Active)
                     {
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                     }
@@ -209,22 +209,23 @@ public class TrackControllerModule
                 {
                     s.t2Active = true;
                 }
+                
                 foreach (Train t in trainTrackings)
                 {
-                    if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceActive)
                     {
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                     }
-                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Active)
                     {
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                     }
-                    if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Active)
                     {
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                     }
                 }
-            }
+                }
         }
     }
 
