@@ -69,7 +69,7 @@ namespace TrainControllerProject
         bool simulate = false;
         bool approachingStation = false;
         bool authorityChanged = false;
-
+        int failureStatus = 0;
         PowerController powerController;
         TrainModel TM;
         Map map;
@@ -90,7 +90,9 @@ namespace TrainControllerProject
             
             InitializeComponent();
             TM = t;
-
+            trainID = id;
+            lineID = line;
+            //speaker = new SpeechSynthesizer();
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
             tempTestTextBox.Enabled = false;
@@ -677,7 +679,10 @@ namespace TrainControllerProject
             //setSpeedLabel.Text = "0MPH";
         }
 
-
+        private void sendAnnouncementButton_Click(object sender, EventArgs e)
+        {
+            TM.updateAnnouncement(announcementTextBox.Text);
+            announcementTextBox.Text = "";
         }
     }
 }
