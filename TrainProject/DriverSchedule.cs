@@ -280,31 +280,7 @@ namespace TrainProject
 
 
 
-                                    /*schedulesWorksheet.Cells[1, 2] = "8:00";
-                                    schedulesWorksheet.Cells[1, 3] = "8:30";
-                                    schedulesWorksheet.Cells[1, 4] = "9:00";
-                                    schedulesWorksheet.Cells[1, 5] = "9:30";
-                                    schedulesWorksheet.Cells[1, 6] = "10:00";
-                                    schedulesWorksheet.Cells[1, 7] = "10:30";
-                                    schedulesWorksheet.Cells[1, 8] = "11:00";
-                                    schedulesWorksheet.Cells[1, 9] = "11:30";
-                                    schedulesWorksheet.Cells[1, 10] = "12:00";
-                                    schedulesWorksheet.Cells[1, 11] = "12:30";
-                                    schedulesWorksheet.Cells[1, 12] = "1:00";
-                                    schedulesWorksheet.Cells[1, 13] = "1:30";
-                                    schedulesWorksheet.Cells[1, 14] = "2:00";
-                                    schedulesWorksheet.Cells[1, 15] = "2:30";
-                                    schedulesWorksheet.Cells[1, 16] = "3:00";
-                                    schedulesWorksheet.Cells[1, 17] = "3:30";
-                                    schedulesWorksheet.Cells[1, 18] = "4:00";
-                                    schedulesWorksheet.Cells[1, 19] = "4:30";
-                                    schedulesWorksheet.Cells[1, 20] = "5:00";
-                                    schedulesWorksheet.Cells[1, 21] = "5:30";
-                                    schedulesWorksheet.Cells[1, 22] = "6:00";
-                                    schedulesWorksheet.Cells[1, 23] = "6:30";
-                                    schedulesWorksheet.Cells[1, 24] = "7:00";
-                                    */
-
+                                  
 
 
 
