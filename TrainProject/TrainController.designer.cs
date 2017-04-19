@@ -1,4 +1,4 @@
-namespace TrainControllerProject
+﻿namespace TrainControllerProject
 {
     partial class TrainController
     {
