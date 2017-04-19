@@ -23,7 +23,27 @@ namespace TrainProject
 
         public void updateSpeedAndAuthority(int trainId, Double speed, int authority)
         {
-            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
+            Boolean found = false;
+            int curBlock = -1;
+            foreach (Train t in trainTrackings)
+            {
+                if(t.trainId == trainId)
+                {
+                    found = true;
+                    curBlock = t.currBlock;
+                }
+            }
+            if (found)
+            {
+                if (TrainSimulation.trackModelWindow.findBlock(curBlock).speedLimit < speed)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, TrainSimulation.trackModelWindow.findBlock(curBlock).speedLimit, authority);
+                }
+                else
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
+                }
+            }
         }
 
         public static void closeBlock(int blockId)
@@ -94,18 +114,16 @@ namespace TrainProject
                 //increasing in block id
                 if (t.currBlock == blk.blockId + 1)
                 {
-                    t.direction = 1;
+                    t.direction = -1;
                     found = true;
                 }
 
                 //decreasing in block id
                 else if (t.currBlock == blk.blockId - 1)
                 {
-                    t.direction = -1;
+                    t.direction = 1;
                     found = true;
                 }
-                else //check switches to see if train just traveled over switch
-                {
                     foreach (TrackController ctrl in activeControllers)
                     {
                         foreach (Switch s in ctrl.switches)
@@ -126,7 +144,9 @@ namespace TrainProject
                             srcDir = ctrl.trainHeadingTowardsSwitch(t, s, 0);
                             t1Dir = ctrl.trainHeadingTowardsSwitch(t, s, 1);
                             t2Dir = ctrl.trainHeadingTowardsSwitch(t, s, 2);
-                            if(srcDir > 0 || t1Dir > 0 || t2Dir > 0)
+                            if((srcDir != 0 && ctrl.checkWithinRange(blk.blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end)) ||
+                                (t1Dir != 0 && ctrl.checkWithinRange(blk.blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end)) ||
+                                (t2Dir != 0 && ctrl.checkWithinRange(blk.blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end)))
                             {
                                 t.currBlock = blk.blockId;
                                 found = true;
@@ -148,12 +168,19 @@ namespace TrainProject
                             }
                         }
                     }
-                }
             }//end foreach
             if (!found)
             {
                 Console.WriteLine("Train not found in system");
                 Console.WriteLine(blk.blockId);
+                foreach (Train t in trainTrackings)
+                {
+                    Console.WriteLine(t.trainId + " at block " + t.currBlock);
+                }
+            }
+            foreach (Train t in trainTrackings)
+            {
+                Console.WriteLine(t.trainId + " at block " + t.currBlock + "Dir: " + t.direction);
             }
             TrainSimulation.trackControllerWindow.updateSwitches();
             TrainSimulation.trackControllerWindow.updateCrossings();
@@ -208,9 +235,17 @@ namespace TrainProject
             //Console.WriteLine("dispatching train!!!!!");
             Train newT = new Train(trainId, speed, authority);
             newT.currBlock = newTrain.getCurrBlock();
+            double speedLimit = TrainSimulation.trackModelWindow.findBlock(newT.currBlock).speedLimit;
+            if (speedLimit < speed)
+            {
+                TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speedLimit, authority);
+            }
+            else
+            {
+                TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
+            }
             trainTrackings.Add(newT);
             activeTrains.Add(newTrain);
-            TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
             TrainSimulation.trackControllerWindow.updateTrains();
         }
         
