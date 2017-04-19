@@ -69,7 +69,7 @@ namespace TrainControllerProject
         bool simulate = false;
         bool approachingStation = false;
         bool authorityChanged = false;
-
+        int failureStatus = 0;
         PowerController powerController;
         TrainModel TM;
         Map map;
@@ -80,17 +80,19 @@ namespace TrainControllerProject
         {
             return distanceToAuthority;
         }
-      
-        
+
+
         //initialize labels and controls
 
         //methods
         public TrainController(TrainModel t, int id, int line)
         {
-            
+
             InitializeComponent();
             TM = t;
-
+            trainID = id;
+            lineID = line;
+            //speaker = new SpeechSynthesizer();
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
             tempTestTextBox.Enabled = false;
@@ -116,8 +118,9 @@ namespace TrainControllerProject
             //Invoke(new MethodInvoker(delegate { map.updateBlock(currentBlock.blockNum); }));
             speedLimit = currentBlock.speedLimit;
             speedLimitms = speedLimit / 3.6;
-           
-            if (testMode == 0) {
+
+            if (testMode == 0)
+            {
                 //figure out setSpeed;
                 if (mode == 0) setSpeed = driverSetSpeed;
                 else setSpeed = ctcSetSpeed;
@@ -128,17 +131,17 @@ namespace TrainControllerProject
             considerStations();
             resetStation();
             if (distanceToStation < minStopDistanceStation || distanceToAuthority < minStopDistanceAuthority) forceStop = true;
-            if ((currSpeed <= setSpeed) && !forceStop &&!emergencyOverride && authority > 0)
+            if ((currSpeed <= setSpeed) && !forceStop && !emergencyOverride && authority > 0)
             {
                 sBreakOFF();
                 emergencyOFF();
                 power = powerController.getPower(currSpeedms, setSpeedms);
             }
             //else if (forceStop)
-           // {
-           //
-           // }
-           else if (emergencyOverride)
+            // {
+            //
+            // }
+            else if (emergencyOverride)
             {
                 emergencyON();
             }
@@ -152,7 +155,7 @@ namespace TrainControllerProject
             TM.updateThermostat(thermostat);
             TM.updateDoorStatus(doorStatus);
             //update the GUI
-            trainSpeedLabel.Text = (currSpeedms* 2.23694).ToString("#.###") + "MPH";
+            trainSpeedLabel.Text = (currSpeedms * 2.23694).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
             ctcSpeedLabel.Text = (ctcSetSpeed).ToString("#.###") + "MPH";
             ctcAuthorityLabel.Text = authority.ToString() + " blocks";
@@ -164,22 +167,22 @@ namespace TrainControllerProject
             distanceLeftLabel.Text = distanceLeft.ToString("#.##");
             distanceToLabel.Text = (distanceToStation).ToString("#.##");
             stationLabel.Text = stationName.ToString();
-            if(doorStatus == 0)
+            if (doorStatus == 0)
             {
                 Left_Closed.Checked = true;
                 Right_Closed.Checked = true;
             }
-            else if(doorStatus == 1)
+            else if (doorStatus == 1)
             {
                 Left_Open.Checked = true;
                 Right_Closed.Checked = true;
             }
-            else if(doorStatus == 2)
+            else if (doorStatus == 2)
             {
                 Left_Closed.Checked = true;
                 Right_Open.Checked = true;
             }
-            
+
         }
         //0 = no failure, 1 = Train Engine Failure, 2 = signal pickup failure, 3 = brake failure
         public void updateFailure(int a)
@@ -192,7 +195,7 @@ namespace TrainControllerProject
                 engineStatusLabel.Text = "Normal";
                 signalStatusLabel.Text = "Normal";
             }
-            if(failureStatus == 1)
+            if (failureStatus == 1)
             {
                 engineStatusLabel.Text = "Failed";
             }
@@ -242,22 +245,22 @@ namespace TrainControllerProject
         }
         private void considerStations()
         {
-            if(distanceToStation > 0)
+            if (distanceToStation > 0)
             {
-                minStopDistanceStation = (currSpeedms *currSpeedms) / (2 * serviceBreak);
+                minStopDistanceStation = (currSpeedms * currSpeedms) / (2 * serviceBreak);
             }
         }
         private void considerAuthority()
         {
-            if(authority <= 3 && authorityChanged)
+            if (authority <= 3 && authorityChanged)
             {
-                
+
                 BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
                 if (blockTracker.getOnSwtich()) bs.configureDirection();
                 distanceToAuthority = bs.getDistance(authority);
                 authorityChanged = false;
             }
-            if(distanceToAuthority > 0) minStopDistanceAuthority = (currSpeedms * currSpeedms) / (2 * serviceBreak);
+            if (distanceToAuthority > 0) minStopDistanceAuthority = (currSpeedms * currSpeedms) / (2 * serviceBreak);
         }
         public void getStationBeaconInfo(bool pn, double distance, String n)
         {
@@ -265,7 +268,7 @@ namespace TrainControllerProject
             stationName = n;
             stationPrevToNext = pn;
             approachingStation = true;
-            if(mode == 1)
+            if (mode == 1)
             {
                 TM.updateAnnouncement("Now arriving at station " + stationName);
             }
@@ -455,7 +458,7 @@ namespace TrainControllerProject
             if (distanceToStation < 0) distanceToStation = 0;
             distanceToAuthority = distanceToAuthority - p;
             if (distanceToAuthority < 0) distanceToAuthority = 0;
-           if(distanceLeft >= p) distanceLeft -= p;
+            if (distanceLeft >= p) distanceLeft -= p;
             else
             {
                 authority = authority - 1;
@@ -641,8 +644,8 @@ namespace TrainControllerProject
 
         private void setParametersButton_Click(object sender, EventArgs e)
         {
-            if(KpTextBox.Text != "") Kp = Convert.ToDouble(KpTextBox.Text);
-            if(KpTextBox.Text != "") Ki = Convert.ToDouble(KiTextBox.Text);
+            if (KpTextBox.Text != "") Kp = Convert.ToDouble(KpTextBox.Text);
+            if (KpTextBox.Text != "") Ki = Convert.ToDouble(KiTextBox.Text);
         }
 
         private void Heater_On_CheckedChanged(object sender, EventArgs e)
@@ -677,7 +680,10 @@ namespace TrainControllerProject
             //setSpeedLabel.Text = "0MPH";
         }
 
-
+        private void sendAnnouncementButton_Click(object sender, EventArgs e)
+        {
+            TM.updateAnnouncement(announcementTextBox.Text);
+            announcementTextBox.Text = "";
         }
     }
 }
