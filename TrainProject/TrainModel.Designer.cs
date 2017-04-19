@@ -55,9 +55,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Train_ID_L = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.failTrainEngineButton = new System.Windows.Forms.Button();
+            this.failSignalPickupButton = new System.Windows.Forms.Button();
+            this.failBrakeButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -65,6 +65,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.announcementLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -109,9 +110,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(24, 224);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox1.Size = new System.Drawing.Size(478, 156);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -162,9 +163,9 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(380, 24);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox2.Size = new System.Drawing.Size(482, 536);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
@@ -371,44 +372,47 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "Train ID:";
             // 
-            // button1
+            // failTrainEngineButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(26, 80);
-            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(214, 56);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Fail Train Engine";
-            this.button1.UseVisualStyleBackColor = true;
+            this.failTrainEngineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.failTrainEngineButton.Location = new System.Drawing.Point(26, 80);
+            this.failTrainEngineButton.Margin = new System.Windows.Forms.Padding(6);
+            this.failTrainEngineButton.Name = "failTrainEngineButton";
+            this.failTrainEngineButton.Size = new System.Drawing.Size(214, 56);
+            this.failTrainEngineButton.TabIndex = 6;
+            this.failTrainEngineButton.Text = "Fail Train Engine";
+            this.failTrainEngineButton.UseVisualStyleBackColor = true;
+            this.failTrainEngineButton.Click += new System.EventHandler(this.failTrainEngineButton_Click);
             // 
-            // button2
+            // failSignalPickupButton
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(252, 80);
-            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(276, 56);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Fail Signal Pickup";
-            this.button2.UseVisualStyleBackColor = true;
+            this.failSignalPickupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.failSignalPickupButton.Location = new System.Drawing.Point(252, 80);
+            this.failSignalPickupButton.Margin = new System.Windows.Forms.Padding(6);
+            this.failSignalPickupButton.Name = "failSignalPickupButton";
+            this.failSignalPickupButton.Size = new System.Drawing.Size(276, 56);
+            this.failSignalPickupButton.TabIndex = 7;
+            this.failSignalPickupButton.Text = "Fail Signal Pickup";
+            this.failSignalPickupButton.UseVisualStyleBackColor = true;
+            this.failSignalPickupButton.Click += new System.EventHandler(this.failSignalPickupButton_Click);
             // 
-            // button3
+            // failBrakeButton
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(540, 80);
-            this.button3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(204, 56);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Fail Brake";
-            this.button3.UseVisualStyleBackColor = true;
+            this.failBrakeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.failBrakeButton.Location = new System.Drawing.Point(540, 80);
+            this.failBrakeButton.Margin = new System.Windows.Forms.Padding(6);
+            this.failBrakeButton.Name = "failBrakeButton";
+            this.failBrakeButton.Size = new System.Drawing.Size(204, 56);
+            this.failBrakeButton.TabIndex = 8;
+            this.failBrakeButton.Text = "Fail Brake";
+            this.failBrakeButton.UseVisualStyleBackColor = true;
+            this.failBrakeButton.Click += new System.EventHandler(this.failBrakeButton_Click);
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(26, 146);
-            this.button4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button4.Margin = new System.Windows.Forms.Padding(6);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(214, 56);
             this.button4.TabIndex = 9;
@@ -419,7 +423,7 @@
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(252, 146);
-            this.button5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button5.Margin = new System.Windows.Forms.Padding(6);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(276, 56);
             this.button5.TabIndex = 10;
@@ -430,7 +434,7 @@
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(540, 146);
-            this.button6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button6.Margin = new System.Windows.Forms.Padding(6);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(204, 56);
             this.button6.TabIndex = 11;
@@ -445,14 +449,14 @@
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.failBrakeButton);
+            this.groupBox3.Controls.Add(this.failSignalPickupButton);
+            this.groupBox3.Controls.Add(this.failTrainEngineButton);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(24, 556);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox3.Size = new System.Drawing.Size(766, 224);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
@@ -491,16 +495,24 @@
             this.label26.TabIndex = 12;
             this.label26.Text = "Train Engine Failure";
             // 
+            // announcementLabel
+            // 
+            this.announcementLabel.Location = new System.Drawing.Point(19, 386);
+            this.announcementLabel.Name = "announcementLabel";
+            this.announcementLabel.Size = new System.Drawing.Size(352, 100);
+            this.announcementLabel.TabIndex = 15;
+            // 
             // TrainModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(888, 788);
+            this.Controls.Add(this.announcementLabel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "TrainModel";
             this.Text = "Train Model";
             this.Load += new System.EventHandler(this.TrainModel_Load);
@@ -540,9 +552,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label Train_ID_L;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button failTrainEngineButton;
+        private System.Windows.Forms.Button failSignalPickupButton;
+        private System.Windows.Forms.Button failBrakeButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
@@ -552,6 +564,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label Train_Speed;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label announcementLabel;
     }
 }
 

@@ -15,6 +15,7 @@ namespace TrainModelProject
 {
     public partial class TrainModel : Form
     {
+        private int trainId;
         private double train_mass = 37103.86; //kg
         private double person_mass = 73; //kg
         private double mass = 0;
@@ -40,6 +41,7 @@ namespace TrainModelProject
         private int start = 0;
         private int AC = 0;
         private int heater = 0;
+        private int train_failures = 0;
         private double block_distance = 0;
         Block current_block;
         Block currentT_block;
@@ -51,24 +53,26 @@ namespace TrainModelProject
         double p;
         double sugSpeed;
         int sugAuthority;
-        int trainTestId = 0;
+
 
         public void updateSpeedAndAuthority(double speed, int authority)
         {
             TC.updateSpeedAndAuthority(speed, authority);
         }
 
-        public TrainModel()
+        public TrainModel() { }
+
+        public TrainModel(int lId, int trainId) 
         {
             InitializeComponent();
-            TC = new TrainController(this);
+            lineId = lId;
+            TC = new TrainController(this, trainId, lineId);
             TC.Show();
 
-            
             double block_length = 0;
             double train_distance = 0;
 
-            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null);
+            current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null, lineId);
             prev_block = null;
             block_distance = current_block.length;
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
@@ -103,7 +107,7 @@ namespace TrainModelProject
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
-                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
+               Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
         public void updateDoorStatus(int n)
@@ -111,7 +115,7 @@ namespace TrainModelProject
             if (n == 0) Train_Door_L.Text = "Closed";
             else if (n == 1) Train_Door_L.Text = "Left";
             else if (n == 2) Train_Door_L.Text = "Right";
-                   
+            if(n != 0) announcementLabel.Text = "";
         }
         public void currentBlock()
         {
@@ -123,11 +127,23 @@ namespace TrainModelProject
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
-
+                
                 prev_block = current_block;
                 current_block = next_block;
+                int number = 0;
+                if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
+                TC.sendSwitchBeaconInfo(number);
                 block_distance = current_block.length - p;
-                if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                if (lineId == 2)
+                {
+                    if (TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                }
+
+                if (lineId == 1)
+                {
+                    if (TrackModelUI.greenLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.greenLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+
+                }
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
@@ -269,6 +285,24 @@ namespace TrainModelProject
         private void Train_Length_L_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void failTrainEngineButton_Click(object sender, EventArgs e)
+        {
+            train_failures = 1;
+            TC.updateFailure(train_failures);
+        }
+
+        private void failSignalPickupButton_Click(object sender, EventArgs e)
+        {
+            train_failures = 2;
+            TC.updateFailure(train_failures);
+        }
+
+        private void failBrakeButton_Click(object sender, EventArgs e)
+        {
+            train_failures = 3;
+            TC.updateFailure(train_failures);
         }
     }
 }
