@@ -97,7 +97,7 @@ namespace TrainProject
             int count = 1;
 
 
-            //red line
+            //red line schedule
             for (int i = 3; breakCount <= 8; i = i)
             {
                 addTime = new TimeSpan(0, 4, 42);
