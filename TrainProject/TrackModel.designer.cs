@@ -85,12 +85,16 @@
             this.temperatureScrollBar = new System.Windows.Forms.HScrollBar();
             this.label16 = new System.Windows.Forms.Label();
             this.blockEmergencyTextBox = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.blockEmergencyLabel = new System.Windows.Forms.Label();
             this.railStatus = new System.Windows.Forms.Button();
             this.trackCircuitStatus = new System.Windows.Forms.Button();
             this.powerStatus = new System.Windows.Forms.Button();
             this.Murphy = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.updateSelectedBlock_Murphy = new System.Windows.Forms.Button();
+            this.blockTextBox_Murphy = new System.Windows.Forms.TextBox();
+            this.lineTextBox_Murphy = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.selectedMurphyBlockLabel = new System.Windows.Forms.Label();
@@ -106,10 +110,6 @@
             this.dvgBlocks = new System.Windows.Forms.DataGridView();
             this.InsertToSql = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label27 = new System.Windows.Forms.Label();
-            this.lineTextBox_Murphy = new System.Windows.Forms.TextBox();
-            this.blockTextBox_Murphy = new System.Windows.Forms.TextBox();
-            this.updateSelectedBlock_Murphy = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -751,7 +751,7 @@
             // 
             // blockEmergencyTextBox
             // 
-            this.blockEmergencyTextBox.Controls.Add(this.label4);
+            this.blockEmergencyTextBox.Controls.Add(this.blockEmergencyLabel);
             this.blockEmergencyTextBox.Controls.Add(this.railStatus);
             this.blockEmergencyTextBox.Controls.Add(this.trackCircuitStatus);
             this.blockEmergencyTextBox.Controls.Add(this.powerStatus);
@@ -761,15 +761,15 @@
             this.blockEmergencyTextBox.TabIndex = 41;
             this.blockEmergencyTextBox.TabStop = false;
             // 
-            // label4
+            // blockEmergencyLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(170, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(412, 37);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "A1, Red Line - Emergencies";
+            this.blockEmergencyLabel.AutoSize = true;
+            this.blockEmergencyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockEmergencyLabel.Location = new System.Drawing.Point(170, 17);
+            this.blockEmergencyLabel.Name = "blockEmergencyLabel";
+            this.blockEmergencyLabel.Size = new System.Drawing.Size(251, 37);
+            this.blockEmergencyLabel.TabIndex = 11;
+            this.blockEmergencyLabel.Text = "X - Emergencies";
             // 
             // railStatus
             // 
@@ -823,6 +823,16 @@
             this.Murphy.TabIndex = 1;
             this.Murphy.Text = "Murphy";
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(16, 128);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(264, 31);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Enter Block Number:";
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.updateSelectedBlock_Murphy);
@@ -834,6 +844,30 @@
             this.groupBox6.Size = new System.Drawing.Size(395, 289);
             this.groupBox6.TabIndex = 46;
             this.groupBox6.TabStop = false;
+            // 
+            // updateSelectedBlock_Murphy
+            // 
+            this.updateSelectedBlock_Murphy.Location = new System.Drawing.Point(16, 226);
+            this.updateSelectedBlock_Murphy.Name = "updateSelectedBlock_Murphy";
+            this.updateSelectedBlock_Murphy.Size = new System.Drawing.Size(362, 39);
+            this.updateSelectedBlock_Murphy.TabIndex = 49;
+            this.updateSelectedBlock_Murphy.Text = "Update Selected Block";
+            this.updateSelectedBlock_Murphy.UseVisualStyleBackColor = true;
+            this.updateSelectedBlock_Murphy.Click += new System.EventHandler(this.updateSelectedBlock_Murphy_Click);
+            // 
+            // blockTextBox_Murphy
+            // 
+            this.blockTextBox_Murphy.Location = new System.Drawing.Point(16, 173);
+            this.blockTextBox_Murphy.Name = "blockTextBox_Murphy";
+            this.blockTextBox_Murphy.Size = new System.Drawing.Size(224, 20);
+            this.blockTextBox_Murphy.TabIndex = 48;
+            // 
+            // lineTextBox_Murphy
+            // 
+            this.lineTextBox_Murphy.Location = new System.Drawing.Point(16, 67);
+            this.lineTextBox_Murphy.Name = "lineTextBox_Murphy";
+            this.lineTextBox_Murphy.Size = new System.Drawing.Size(224, 20);
+            this.lineTextBox_Murphy.TabIndex = 4;
             // 
             // label24
             // 
@@ -853,7 +887,7 @@
             this.groupBox5.Controls.Add(this.powerFailureButton);
             this.groupBox5.Location = new System.Drawing.Point(418, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(573, 441);
+            this.groupBox5.Size = new System.Drawing.Size(774, 441);
             this.groupBox5.TabIndex = 42;
             this.groupBox5.TabStop = false;
             // 
@@ -893,6 +927,7 @@
             this.brokenTrackCircuitButton.TabIndex = 9;
             this.brokenTrackCircuitButton.Text = "Send Track Circuit Failure";
             this.brokenTrackCircuitButton.UseVisualStyleBackColor = false;
+            this.brokenTrackCircuitButton.Click += new System.EventHandler(this.brokenTrackCircuitButton_Click);
             // 
             // powerFailureButton
             // 
@@ -905,6 +940,7 @@
             this.powerFailureButton.TabIndex = 10;
             this.powerFailureButton.Text = "Send Power Failure";
             this.powerFailureButton.UseVisualStyleBackColor = false;
+            this.powerFailureButton.Click += new System.EventHandler(this.powerFailureButton_Click);
             // 
             // Testing
             // 
@@ -984,40 +1020,6 @@
             // 
             this.openExcelFileDialog.FileName = "openExcelFileDialog";
             this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(16, 128);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(264, 31);
-            this.label27.TabIndex = 47;
-            this.label27.Text = "Enter Block Number:";
-            // 
-            // lineTextBox_Murphy
-            // 
-            this.lineTextBox_Murphy.Location = new System.Drawing.Point(16, 67);
-            this.lineTextBox_Murphy.Name = "lineTextBox_Murphy";
-            this.lineTextBox_Murphy.Size = new System.Drawing.Size(224, 20);
-            this.lineTextBox_Murphy.TabIndex = 4;
-            // 
-            // blockTextBox_Murphy
-            // 
-            this.blockTextBox_Murphy.Location = new System.Drawing.Point(16, 173);
-            this.blockTextBox_Murphy.Name = "blockTextBox_Murphy";
-            this.blockTextBox_Murphy.Size = new System.Drawing.Size(224, 20);
-            this.blockTextBox_Murphy.TabIndex = 48;
-            // 
-            // updateSelectedBlock_Murphy
-            // 
-            this.updateSelectedBlock_Murphy.Location = new System.Drawing.Point(16, 226);
-            this.updateSelectedBlock_Murphy.Name = "updateSelectedBlock_Murphy";
-            this.updateSelectedBlock_Murphy.Size = new System.Drawing.Size(362, 39);
-            this.updateSelectedBlock_Murphy.TabIndex = 49;
-            this.updateSelectedBlock_Murphy.Text = "Update Selected Block";
-            this.updateSelectedBlock_Murphy.UseVisualStyleBackColor = true;
-            this.updateSelectedBlock_Murphy.Click += new System.EventHandler(this.updateSelectedBlock_Murphy_Click);
             // 
             // TrackModelUI
             // 
@@ -1105,7 +1107,7 @@
         private System.Windows.Forms.TextBox blockPersonsWaitingTextBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox blockEmergencyTextBox;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label blockEmergencyLabel;
         private System.Windows.Forms.Button railStatus;
         private System.Windows.Forms.Button trackCircuitStatus;
         private System.Windows.Forms.Button powerStatus;

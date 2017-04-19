@@ -29,6 +29,7 @@ namespace Track_Layout_UI
         public static List<Switch> switchList = new List<Switch>();
         public static TrainModel[] trainList = new TrainModel[100];
         public static Block selectedBlock;
+        public static Section selectedSection;
         public static Line selectedLine;
         public static Block selectedBlock_Murphy;
         public static Line selectedLine_Murphy;
@@ -37,16 +38,24 @@ namespace Track_Layout_UI
         private int yardBlockId = 229;
         //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
         static public StationBeacon[] redLineStationBeacons = new StationBeacon[78];
+        static public StationBeacon[] greenLineStationBeacons = new StationBeacon[154];
         private static void initializeRedLineStationBeacons()
         {
             StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false);
+            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
             redLineStationBeacons[8] = currBeacon;
-            currBeacon = new StationBeacon("HERRON AVE", 50, false);
+            currBeacon = new StationBeacon("HERRON AVE", 50, false, true);
             redLineStationBeacons[1] = currBeacon;
             //redLineStationBeacons[8] = currBeacon;
             //currBeacon = new StationBeacon("HERRON AVE", 50, false);
             //redLineStationBeacons[1] = currBeacon;
+        }
+        private static void initializeGreenLineStationBeacons()
+        {
+            StationBeacon currBeacon;
+            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
+            greenLineStationBeacons[8] = currBeacon;
+            
         }
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
@@ -740,11 +749,29 @@ namespace Track_Layout_UI
             blockSelectListBox.ValueMember = "blockId";
         }
 
+        private void updateSelectedSection(int blockId)
+        {
+            foreach(Line line in lineList)
+            {
+                foreach(Section section in line.sections)
+                {
+                    foreach(Block block in section.blocks)
+                    {
+                        if(blockId == block.blockId)
+                        {
+                            selectedSection = section;
+                        }
+                    }
+                }
+            }
+        }
+
         private void blockSelectedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(selectedLine != null)
             {
                 selectedBlock = (Block)((ListBox)sender).SelectedItem;
+                updateSelectedSection(selectedBlock.blockId);
                 if(selectedBlock != null)
                 {
                     lineTextBox.Text = selectedLine.name;
@@ -783,6 +810,7 @@ namespace Track_Layout_UI
                         blockArrowDirectionTextBox.Text = "<-->";
                     blockPersonsWaitingTextBox.Text = "X";
                     blockBeaconTextBox.Text = "X";
+                    blockEmergencyLabel.Text = selectedLine.name + " Line, Block " +selectedSection.name+selectedBlock.blockNum;
                     updateFailureButtons();
                 }
             }
@@ -790,7 +818,7 @@ namespace Track_Layout_UI
 
         private void updateFailureButtons()
         {
-            if(selectedBlock.isCircuitBroken)
+            if(selectedBlock.isRailBroken)
             {
                 railStatus.Text = "Rail - FAIL";
                 railStatus.BackColor = Color.Red;
@@ -810,7 +838,7 @@ namespace Track_Layout_UI
                 trackCircuitStatus.Text = "Track Circuit - OK";
                 trackCircuitStatus.BackColor = Color.Lime;
             }
-            if (selectedBlock.isCircuitBroken)
+            if (selectedBlock.isPowerBroken)
             {
                 powerStatus.Text = "Power - FAIL";
                 powerStatus.BackColor = Color.Red;
@@ -841,17 +869,42 @@ namespace Track_Layout_UI
 
         private void brokenRailButton_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.causeFailure(selectedBlock.blockId);
+            TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
+            selectedBlock_Murphy.isRailBroken = true;
+            if(selectedBlock.blockId == selectedBlock_Murphy.blockId)
+            {
+                updateFailureButtons();
+            }
+        }
+
+        private void brokenTrackCircuitButton_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
+            selectedBlock_Murphy.isCircuitBroken = true;
+            if (selectedBlock.blockId == selectedBlock_Murphy.blockId)
+            {
+                updateFailureButtons();
+            }
+        }
+
+        private void powerFailureButton_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
+            selectedBlock_Murphy.isPowerBroken = true;
+            if (selectedBlock.blockId == selectedBlock_Murphy.blockId)
+            {
+                updateFailureButtons();
+            }
         }
 
         private void trackCircuitStatus_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.causeFailure(selectedBlock.blockId);
+            
         }
 
         private void powerStatus_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.causeFailure(selectedBlock.blockId);
+            
         }
 
         private void temperatureScrollBar_Scroll(object sender, ScrollEventArgs e)
@@ -892,16 +945,18 @@ namespace Track_Layout_UI
                 {
                     if(line.name.Equals(lineName))
                     {
-                        foreach(Section section in sectionList)
+                        foreach(Section section in line.sections)
                         {
-                            foreach(Block block in blockList)
+                            foreach(Block block in section.blocks)
                             {
                                 if(block.blockNum == blockNum)
                                 {
                                     found = true;
                                     selectedBlock_Murphy = block;
+                                    selectedLine_Murphy = line;
                                 }
                             }
+
                         }
                     }
                 }
@@ -924,5 +979,6 @@ namespace Track_Layout_UI
                 }
             }
         }
+
     }
 }
