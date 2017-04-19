@@ -236,9 +236,9 @@ namespace MBO_UI
 
         public void getPos()
         {
-            //TM = new TrainModel();
-            //int test = TM.getTrainTest();
-            //MessageBox.Show("TrainID testing value set from TrainController is " + test); 
+            TM = new TrainModel();
+            int test = TM.getTrainTest();
+            MessageBox.Show("TrainID testing value set from TrainController is " + test); 
 
             MessageBox.Show("Position and speed received.");
         }
