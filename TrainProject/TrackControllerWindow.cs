@@ -386,6 +386,8 @@ namespace TrainProject
             }
             reader.Close();
             MessageBox.Show(this, @"PLC File parsed");
+            plc.runProgram();
+            updateSwitches();
         }
 
         private void severCtcComm_Click(object sender, EventArgs e)

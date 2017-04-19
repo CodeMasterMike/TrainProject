@@ -23,7 +23,27 @@ namespace TrainProject
 
         public void updateSpeedAndAuthority(int trainId, Double speed, int authority)
         {
-            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
+            Boolean found = false;
+            int curBlock = -1;
+            foreach (Train t in trainTrackings)
+            {
+                if(t.trainId == trainId)
+                {
+                    found = true;
+                    curBlock = t.currBlock;
+                }
+            }
+            if (found)
+            {
+                if (TrainSimulation.trackModelWindow.findBlock(curBlock).speedLimit < speed)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, TrainSimulation.trackModelWindow.findBlock(curBlock).speedLimit, authority);
+                }
+                else
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
+                }
+            }
         }
 
         public static void closeBlock(int blockId)
@@ -203,9 +223,17 @@ namespace TrainProject
             //Console.WriteLine("dispatching train!!!!!");
             Train newT = new Train(newTrain.getTrainId(), speed, authority);
             newT.currBlock = newTrain.getCurrBlock();
+            double speedLimit = TrainSimulation.trackModelWindow.findBlock(newT.currBlock).speedLimit;
+            if (speedLimit < speed)
+            {
+                TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speedLimit, authority);
+            }
+            else
+            {
+                TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
+            }
             trainTrackings.Add(newT);
             activeTrains.Add(newTrain);
-            TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
             TrainSimulation.trackControllerWindow.updateTrains();
         }
         
