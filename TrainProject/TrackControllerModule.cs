@@ -68,7 +68,6 @@ namespace TrainProject
         public static void updateBlockOccupancy(Block blk, Boolean occupied)
         {
             Boolean found = false, yardOccupancy = false;
-
             //red line only
             if(blk.isFromYard && blk.isToYard)
             {
@@ -199,7 +198,7 @@ namespace TrainProject
 
         public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
         {
-            Console.WriteLine("dispatching train!!!!!");
+            //Console.WriteLine("dispatching train!!!!!");
             Train newT = new Train(newTrain.getTrainId(), speed, authority);
             newT.currBlock = newTrain.getCurrBlock();
             trainTrackings.Add(newT);
