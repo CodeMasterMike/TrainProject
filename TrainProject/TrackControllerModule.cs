@@ -23,7 +23,27 @@ namespace TrainProject
 
         public void updateSpeedAndAuthority(int trainId, Double speed, int authority)
         {
-            TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
+            Boolean found = false;
+            int curBlock = -1;
+            foreach (Train t in trainTrackings)
+            {
+                if(t.trainId == trainId)
+                {
+                    found = true;
+                    curBlock = t.currBlock;
+                }
+            }
+            if (found)
+            {
+                if (TrainSimulation.trackModelWindow.findBlock(curBlock).speedLimit < speed)
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, TrainSimulation.trackModelWindow.findBlock(curBlock).speedLimit, authority);
+                }
+                else
+                {
+                    TrainSimulation.trackModelWindow.updateSpeedAndAuthority(trainId, speed, authority);
+                }
+            }
         }
 
         public static void closeBlock(int blockId)
@@ -126,15 +146,15 @@ namespace TrainProject
                             srcDir = ctrl.trainHeadingTowardsSwitch(t, s, 0);
                             t1Dir = ctrl.trainHeadingTowardsSwitch(t, s, 1);
                             t2Dir = ctrl.trainHeadingTowardsSwitch(t, s, 2);
-                            if(srcDir > 0 || t1Dir > 0 || t2Dir > 0)
+                            if(srcDir != 0 || t1Dir != 0 || t2Dir != 0)
                             {
                                 t.currBlock = blk.blockId;
                                 found = true;
                             }
                             int switchState = (int)TrackControllerWindow.plc.determineSwitchState(s.switchId, srcDir, t1Dir, t2Dir);
-                            Console.WriteLine("Switch " + s.switchId + " pointing to " + switchState);
+                            //Console.WriteLine("Switch " + s.switchId + " pointing to " + switchState);
                             ctrl.checkSafety(s);
-                            Console.WriteLine("After checking safety, Switch " + s.switchId + " pointing to " + switchState);
+                            //Console.WriteLine("After checking safety, Switch " + s.switchId + " pointing to " + switchState);
                         }
                         foreach (Crossing c in ctrl.crossings)
                         {
@@ -212,9 +232,17 @@ namespace TrainProject
             //Console.WriteLine("dispatching train!!!!!");
             Train newT = new Train(trainId, speed, authority);
             newT.currBlock = newTrain.getCurrBlock();
+            double speedLimit = TrainSimulation.trackModelWindow.findBlock(newT.currBlock).speedLimit;
+            if (speedLimit < speed)
+            {
+                TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speedLimit, authority);
+            }
+            else
+            {
+                TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
+            }
             trainTrackings.Add(newT);
             activeTrains.Add(newTrain);
-            TrainSimulation.trackModelWindow.dispatchTrain(trainId, newTrain, speed, authority);
             TrainSimulation.trackControllerWindow.updateTrains();
         }
         
