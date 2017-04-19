@@ -102,7 +102,13 @@ namespace CTC
                 }
             }
 
-            foreach(Block block in myBlockList)
+            //add yard
+            ListViewItem yrd = new ListViewItem();
+            yrd.Text = "Yard";
+            systemListView.Items.Add(yrd);
+
+
+            foreach (Block block in myBlockList)
             {
                 if (block.lineId == 2)
                 {
@@ -170,6 +176,12 @@ namespace CTC
                         }
                     }
             }
+
+            //add yard
+            yrd = new ListViewItem();
+            yrd.Text = "Yard";
+            systemListView2.Items.Add(yrd);
+
 
             foreach (Block block in myBlockList)
             {
