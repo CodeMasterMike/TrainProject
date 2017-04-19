@@ -36,7 +36,7 @@ namespace Track_Layout_UI
         //temporary variables
         private int yardBlockId = 229;
         //static List<StationBeacon> redLineStationBeacons = new List<StationBeacon>(78);
-        static public StationBeacon[] redLineStationBeacons = new StationBeacon[78];
+        static public StationBeacon[] redLineStationBeacons = new StationBeacon[79];
         private static void initializeRedLineStationBeacons()
         {
             StationBeacon currBeacon;

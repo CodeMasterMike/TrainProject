@@ -69,16 +69,21 @@ namespace TrainProject
         {
             Boolean found = false, yardOccupancy = false;
             TrainSimulation.mainOffice.updateBlockOccupancy(blk.blockId, occupied);
+
             //red line only
             if(blk.isFromYard && blk.isToYard)
             {
                 TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 1, 0);
+                found = true;
+                yardOccupancy = true;
             }
 
             //green lines
             else if (blk.isFromYard)
             {
                 TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch.switchId, 0, 0, 1);
+                found = true;
+                yardOccupancy = true;
             }
             else if (blk.isToYard)
             {
@@ -195,7 +200,7 @@ namespace TrainProject
 
         public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
         {
-            Console.WriteLine("dispatching train!!!!!");
+            //Console.WriteLine("dispatching train!!!!!");
             Train newT = new Train(newTrain.getTrainId(), speed, authority);
             newT.currBlock = newTrain.getCurrBlock();
             trainTrackings.Add(newT);
