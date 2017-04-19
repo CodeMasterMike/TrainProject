@@ -12,10 +12,17 @@ namespace TrainProject
         public int? sourceBlockId { get; set; }
         public int? targetBlockId1 { get; set; }
         public int? targetBlockId2 { get; set; }
+        public int? sourceBlockId_end { get; set; }
+        public int? targetBlockId1_end { get; set; }
+        public int? targetBlockId2_end { get; set; }
         public int? currentState { get; set; }
         public bool sourceLight { get; set; }
         public bool t1Light { get; set; }
         public bool t2Light { get; set; }
+        public bool sourceActive { get; set; }
+        public bool t1Active { get; set; }
+        public bool t2Active { get; set; }
+        public String infrastructure { get; set; }
 
         public Switch(int s, int? sb, int? t1, int? t2)
         {
@@ -27,6 +34,9 @@ namespace TrainProject
             sourceLight = true;
             t1Light = true;
             t2Light = false;
+            sourceActive = true;
+            t1Active = true;
+            t2Active = true;
         }
 
         //This method simply changes the switch and returns the current target block the switch is point to
@@ -34,50 +44,18 @@ namespace TrainProject
         {
             if(currentState == targetBlockId1)
             {
+                t1Light = false;
+                t2Light = true;
                 currentState = targetBlockId2;
                 return targetBlockId2;
             }
             else
             {
+                t2Light = false;
+                t1Light = true;
                 currentState = targetBlockId1;
                 return targetBlockId1;
             }
-        }
-
-        //given the occupancy of the three blocks, the switch determines whether it should change or not
-        //this boolean expression should be changeable by the PLC program!!!! later
-        //changing to directions! positive number means train heading towards switch from that direction
-        //this function assumes a unidirectional source, t1, and t2 but can easily be extrapolated to bidirectional given 
-        public int? determineSwitchState(int s, int t1, int t2)
-        {
-            //train approaching from switch source
-            if (s > 0)
-            {
-                sourceLight = true;
-                t1Light = true;
-                t2Light = false;
-                if (currentState != targetBlockId1)
-                {
-                    changeSwitchState();
-                }
-                return currentState;
-            }
-            else
-            {
-                //if train approaching from t2
-                if (t2 > 0)
-                {
-                    sourceLight = false;
-                    t1Light = false;
-                    t2Light = true;
-                    if(currentState != targetBlockId2)
-                    {
-                        changeSwitchState();
-                    }
-                    return currentState;
-                }
-            }
-            return -1;
         }
     }
 }

@@ -24,13 +24,6 @@ namespace TrainProject
 
             //check if controllerModule has already been instantiated from office
             controllerModule = new TrackControllerModule();
-
-            //controllerModule.initializeTrackControllers();//might have to move this elsewhere
-            updateTrains();
-            initializeCrossingTable();
-            updateSwitches();
-            updateCrossings();
-            //initializeControllerTable();
         }
 
 
@@ -64,7 +57,7 @@ namespace TrainProject
             }
         }
 
-        private void initializeCrossingTable()
+        public void initializeCrossingTable()
         {
             foreach(TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -93,7 +86,7 @@ namespace TrainProject
             }
         }
 
-        private void updateCrossings()
+        public void updateCrossings()
         {
             foreach(TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -116,12 +109,21 @@ namespace TrainProject
 
         private void toggleCrossing(object sender, ListViewColumnMouseEventArgs e)
         {
-            Console.WriteLine(TrackControllerModule.greenLineCtrl1.getCrossings());
             int crossingId = Int32.Parse(e.Item.SubItems[0].Text); //get switch id
             Console.WriteLine(crossingId);
-            bool newState = TrackControllerModule.greenLineCtrl1.toggleCrossing(crossingId);
-            e.Item.SubItems[1].Text = newState.ToString();
-            MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
+            //bool newState = TrackControllerModule.greenLineCtrl1.toggleCrossing(crossingId);
+            //e.Item.SubItems[1].Text = newState.ToString();
+            
+            foreach (TrackController ctrl in TrackControllerModule.activeControllers)
+            {
+                Console.WriteLine(ctrl.controllerName);
+                if (ctrl.getCrossings().Find(x => x.blockId == crossingId) != null)
+                {
+                    bool newState = ctrl.toggleCrossing(crossingId);
+                    e.Item.SubItems[1].Text = newState.ToString();
+                    MessageBox.Show(this, @"Crossing at block " + crossingId + ": Activated - " + newState);
+                }
+            }
         }
 
         public void initializeSwitchTable()
@@ -162,6 +164,38 @@ namespace TrainProject
 
                 }
             }
+            updateSwitchLights();
+        }
+
+        public void updateSwitchLights()
+        {
+            foreach(TrackController ctrl in TrackControllerModule.activeControllers)
+            {
+                try
+                {
+                    ListView temp = (ListView)Controls.Find(ctrl.controllerName + "SwitchLightView", true)[0];
+                    temp.Items.Clear();
+                    int i = 0;
+                    foreach (Switch s in ctrl.getSwitches())
+                    {
+                        String sourceLight, t1Light, t2Light;
+                        sourceLight = (s.sourceLight) == true ? "Green" : "Red";
+                        t1Light = (s.t1Light) == true ? "Green" : "Red";
+                        t2Light = (s.t2Light) == true ? "Green" : "Red";
+                        temp.Items.Add(new ListViewItem(new[] { s.switchId.ToString(), sourceLight, t1Light, t2Light }));
+                        temp.Items[i].UseItemStyleForSubItems = false;
+                        temp.Items[i].SubItems[1].BackColor = System.Drawing.Color.GreenYellow;
+                        temp.Items[i].SubItems[1].BackColor = (s.sourceLight) == true ? System.Drawing.Color.GreenYellow : System.Drawing.Color.OrangeRed;
+                        temp.Items[i].SubItems[2].BackColor = (s.t1Light) == true ? System.Drawing.Color.GreenYellow : System.Drawing.Color.OrangeRed;
+                        temp.Items[i].SubItems[3].BackColor = (s.t2Light) == true ? System.Drawing.Color.GreenYellow : System.Drawing.Color.OrangeRed;
+                        i++;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
         }
         public void updateTrains()
         {
@@ -169,9 +203,9 @@ namespace TrainProject
             {
                 ListView temp = (ListView)Controls.Find("trainsSummaryView", true)[0];
                 temp.Items.Clear();
-                foreach (var train in TrackControllerModule.activeTrains)
+                foreach (var train in TrackControllerModule.trainTrackings)
                 {
-                    //temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
+                    temp.Items.Add(new ListViewItem(new[] { train.trainId.ToString(), train.currBlock.ToString(), train.actualSpeed.ToString(), train.remainingAuthority.ToString() }));
                 }
             }
             catch (Exception e)
@@ -192,6 +226,8 @@ namespace TrainProject
                     int? newState = ctrl.changeSwitchState(switchId);
                     e.Item.SubItems[2].Text = newState.ToString();
                     MessageBox.Show(this, @"Switch " + switchId + " changed to block " + newState);
+                    updateSwitchLights();
+                    break;
                 }
             }
             
@@ -272,6 +308,12 @@ namespace TrainProject
 
         }
 
+        private void testController(object sender, EventArgs e)
+        {
+
+        }
+
+        //testing green1 controller
         private void button2_Click(object sender, EventArgs e)
         {
             String testBlocks = textBox2.Text;
@@ -280,9 +322,10 @@ namespace TrainProject
                 return;
             }
             String[] vectors = testBlocks.Split(' ');
-            TrackControllerModule.redLineCtrl1.blocks.Clear();
+            TrackControllerModule.greenLineCtrl1.blocks.Clear();
             richTextBox1.Text = "Test Inputs:\n ";
             richTextBox1.Text += "Occupancy\tTowards/Away\n";
+            List<Block> testBlockList = new List<Block>();
             foreach (String v in vectors)
             {
                 if (string.IsNullOrEmpty(v))
@@ -294,14 +337,14 @@ namespace TrainProject
                 //vector[0] represents block, vector[1] represents direction
                 String[] vector = v2.Split(',');
                 Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
-                TrackControllerModule.redLineCtrl1.addNewBlock(b);
+                testBlockList.Add(b);
                 //Console.WriteLine(vector[0] + " " + vector[1]);
                 richTextBox1.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1])>0).ToString() + "\n";
             }
-            TrackControllerModule.redLineCtrl1.monitorSwitches();
-            TrackControllerModule.redLineCtrl1.monitorCrossings();
+            TrackControllerModule.greenLineCtrl1.testController(testBlockList);
             updateSwitches();
             updateCrossings();
+
             richTextBox1.Text += "\n---------\nTest Complete";
         }
 
@@ -343,6 +386,132 @@ namespace TrainProject
             }
             reader.Close();
             MessageBox.Show(this, @"PLC File parsed");
+            plc.runProgram();
+            updateSwitches();
+        }
+
+        private void severCtcComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.shutdown();
+        }
+
+        private void severTMComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.shutdown();
+        }
+
+        private void restoreCtcComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.resume();
+        }
+
+        private void restoreTMComm_Click(object sender, EventArgs e)
+        {
+            TrackControllerModule.resume();
+        }
+
+        //testing green2 controller
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            String testBlocks = textBox3.Text;
+            if (string.IsNullOrEmpty(testBlocks))
+            {
+                return;
+            }
+            String[] vectors = testBlocks.Split(' ');
+            TrackControllerModule.greenLineCtrl2.blocks.Clear();
+            richTextBox2.Text = "Test Inputs:\n ";
+            richTextBox2.Text += "Occupancy\tTowards/Away\n";
+            List<Block> testBlockList = new List<Block>();
+            foreach (String v in vectors)
+            {
+                if (string.IsNullOrEmpty(v))
+                {
+                    return;
+                }
+                String v2 = v.Trim('{');
+                v2 = v2.Trim('}');
+                //vector[0] represents block, vector[1] represents direction
+                String[] vector = v2.Split(',');
+                Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
+                testBlockList.Add(b);
+                //Console.WriteLine(vector[0] + " " + vector[1]);
+                richTextBox2.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1]) > 0).ToString() + "\n";
+            }
+            TrackControllerModule.greenLineCtrl2.testController(testBlockList);
+            updateSwitches();
+            updateCrossings();
+
+            richTextBox2.Text += "\n---------\nTest Complete";
+        }
+
+        //redline ctrl1
+        private void button3_Click(object sender, EventArgs e)
+        {
+            String testBlocks = textBox4.Text;
+            if (string.IsNullOrEmpty(testBlocks))
+            {
+                return;
+            }
+            String[] vectors = testBlocks.Split(' ');
+            TrackControllerModule.redLineCtrl1.blocks.Clear();
+            richTextBox3.Text = "Test Inputs:\n ";
+            richTextBox3.Text += "Occupancy\tTowards/Away\n";
+            List<Block> testBlockList = new List<Block>();
+            foreach (String v in vectors)
+            {
+                if (string.IsNullOrEmpty(v))
+                {
+                    return;
+                }
+                String v2 = v.Trim('{');
+                v2 = v2.Trim('}');
+                //vector[0] represents block, vector[1] represents direction
+                String[] vector = v2.Split(',');
+                Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
+                testBlockList.Add(b);
+                //Console.WriteLine(vector[0] + " " + vector[1]);
+                richTextBox3.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1]) > 0).ToString() + "\n";
+            }
+            TrackControllerModule.redLineCtrl1.testController(testBlockList);
+            updateSwitches();
+            updateCrossings();
+
+            richTextBox3.Text += "\n---------\nTest Complete";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            String testBlocks = textBox5.Text;
+            if (string.IsNullOrEmpty(testBlocks))
+            {
+                return;
+            }
+            String[] vectors = testBlocks.Split(' ');
+            TrackControllerModule.redLineCtrl2.blocks.Clear();
+            richTextBox4.Text = "Test Inputs:\n ";
+            richTextBox4.Text += "Occupancy\tTowards/Away\n";
+            List<Block> testBlockList = new List<Block>();
+            foreach (String v in vectors)
+            {
+                if (string.IsNullOrEmpty(v))
+                {
+                    return;
+                }
+                String v2 = v.Trim('{');
+                v2 = v2.Trim('}');
+                //vector[0] represents block, vector[1] represents direction
+                String[] vector = v2.Split(',');
+                Block b = new Block(Int32.Parse(vector[0]), Int32.Parse(vector[1]));
+                testBlockList.Add(b);
+                //Console.WriteLine(vector[0] + " " + vector[1]);
+                richTextBox4.Text += vector[0] + "\t\t\t" + (Int32.Parse(vector[1]) > 0).ToString() + "\n";
+            }
+            TrackControllerModule.redLineCtrl2.testController(testBlockList);
+            updateSwitches();
+            updateCrossings();
+
+            richTextBox4.Text += "\n---------\nTest Complete";
         }
     }
 }

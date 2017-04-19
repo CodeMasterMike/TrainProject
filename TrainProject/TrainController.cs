@@ -11,6 +11,7 @@ using TrainProject;
 using TrainModelProject;
 using TrainProject.HelperObjects;
 using System.IO;
+using System.Media;
 
 namespace TrainControllerProject
 {
@@ -36,10 +37,12 @@ namespace TrainControllerProject
         int mode = 1; //manual = 0 automatic  = 1
         int currentBlockID;
         int speedLimit;
+        int blockNum;
         bool prevToNext = true;
         int wait = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         int doorStatus;
+        int trainID = 0;
         double distanceLeft = 0;
         double Kp = 0;//100000;
         double Ki = 0;//5000;
@@ -56,6 +59,7 @@ namespace TrainControllerProject
         double force = 0;
         double serviceBreak = 1.2;
         bool serviceOverride = false;
+        int lineID = 2;
         bool forceStop = false;
         bool emergencyOverride = false;
         Block currentBlock;
@@ -68,19 +72,25 @@ namespace TrainControllerProject
 
         PowerController powerController;
         TrainModel TM;
+        Map map;
 
+        //private SpeechSynthesizer speaker;
+
+        public double getRemainingAuthority()
+        {
+            return distanceToAuthority;
+        }
       
         
         //initialize labels and controls
 
         //methods
-        public TrainController(TrainModel t)
+        public TrainController(TrainModel t, int id, int line)
         {
             
             InitializeComponent();
             TM = t;
 
-            t.setTrainTest(69);
             blockTestTextBox.Enabled = false;
             speedTestTextBox.Enabled = false;
             tempTestTextBox.Enabled = false;
@@ -95,14 +105,15 @@ namespace TrainControllerProject
             Left_Closed.Enabled = false;
             Left_Open.Enabled = false;
             serviceButton.Enabled = false;
-
+            map = new Map();
+            map.Show();
 
         }
         //every time interval update all of the displays and internal variables, set calculations for real time
         public void updateTime(String time)
         {
             setTimeLabel(time);
-            
+            //Invoke(new MethodInvoker(delegate { map.updateBlock(currentBlock.blockNum); }));
             speedLimit = currentBlock.speedLimit;
             speedLimitms = speedLimit / 3.6;
            
@@ -147,7 +158,7 @@ namespace TrainControllerProject
             ctcAuthorityLabel.Text = authority.ToString() + " blocks";
             trainTempLabel.Text = (temp.ToString()) + "F";
             blockIDLabel.Text = currentBlock.blockNum.ToString();
-            blockSpeedLimitLabel.Text = speedLimit.ToString();
+            blockSpeedLimitLabel.Text = (speedLimit * 0.621371).ToString("#.##") + "MPH";
             //blockSpeedLimitLabel.Text = minStopDistanceAuthority.ToString();
             //tunnelStatusLabel.Text = distanceToAuthority.ToString();
             distanceLeftLabel.Text = distanceLeft.ToString("#.##");
@@ -170,10 +181,43 @@ namespace TrainControllerProject
             }
             
         }
+        //0 = no failure, 1 = Train Engine Failure, 2 = signal pickup failure, 3 = brake failure
+        public void updateFailure(int a)
+        {
+            failureStatus = a;
+            if (failureStatus > 0) emergencyOverride = true;
+            if (failureStatus == 0)
+            {
+                brakeStatusLabel.Text = "Normal";
+                engineStatusLabel.Text = "Normal";
+                signalStatusLabel.Text = "Normal";
+            }
+            if(failureStatus == 1)
+            {
+                engineStatusLabel.Text = "Failed";
+            }
+            if (failureStatus == 2)
+            {
+                signalStatusLabel.Text = "Failed";
+            }
+            if (failureStatus == 3)
+            {
+                brakeStatusLabel.Text = "Failed";
+            }
+
+        }
         private void emergencyON()
         {
-            emergencyButton.Checked = true;
-            TM.setEmergency(true);
+            if (failureStatus != 0 || currSpeedms > 0)
+            {
+                emergencyButton.Checked = true;
+                TM.setEmergency(true);
+            }
+            else
+            {
+                emergencyOFF();
+            }
+
         }
         private void emergencyOFF()
         {
@@ -207,7 +251,9 @@ namespace TrainControllerProject
         {
             if(authority <= 3 && authorityChanged)
             {
-                BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum);
+                
+                BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
+                if (blockTracker.getOnSwtich()) bs.configureDirection();
                 distanceToAuthority = bs.getDistance(authority);
                 authorityChanged = false;
             }
@@ -219,6 +265,14 @@ namespace TrainControllerProject
             stationName = n;
             stationPrevToNext = pn;
             approachingStation = true;
+            if(mode == 1)
+            {
+                TM.updateAnnouncement("Now arriving at station " + stationName);
+            }
+        }
+        public void sendSwitchBeaconInfo(int b)
+        {
+            blockNum = b;
         }
         public void updateCurrentSpeed(double s)
         {
@@ -268,25 +322,24 @@ namespace TrainControllerProject
             ctcAuthorityTestTextBox.Enabled = false;
             simulateButton.Enabled = false;
         }
-
         private void automaticRadioButton_Click(object sender, EventArgs e)
         {
             setSpeedTrackBar.Enabled = false;
             automaticRadioButton.Checked = true;
             manualRadioButton.Checked = false;
+            sendAnnouncementButton.Enabled = false;
             serviceButton.Enabled = false;
             mode = 1;
         }
-
         private void manualRadioButton_Click(object sender, EventArgs e)
         {
             setSpeedTrackBar.Enabled = true;
             automaticRadioButton.Checked = false;
             manualRadioButton.Checked = true;
             serviceButton.Enabled = true;
+            sendAnnouncementButton.Enabled = false;
             mode = 0;
         }
-
         private void updateTimeLabel(String time)
         {
             timeLabel.Text = time;
@@ -300,7 +353,6 @@ namespace TrainControllerProject
                 simulate = true;
             }
         }
-
         private void sBreakON()
         {
             serviceButton.Checked = true;
@@ -338,20 +390,6 @@ namespace TrainControllerProject
         {
             temp = t;
         }
-
-        /*private void raiseTemp()
-        {
-            Heater_On.Checked = true;
-            AC_OFF.Checked = true;
-            temp = temp + 1;
-        }
-
-        private void lowerTemp()
-        {
-            Heater_Off.Checked = true;
-            AC_ON.Checked = true;
-            temp = temp - 1;
-        }*/
 
         /*private void updateDoors()
         {
@@ -407,27 +445,10 @@ namespace TrainControllerProject
         }
         private void setTrack(string input)
         {
-            blockTracker = new BlockTracker(input);
+            blockTracker = new BlockTracker(input, lineID);
             currentBlock = blockTracker.getCurrentBlock();
             distanceLeft = currentBlock.length;
         }
-        /*private void setTrack(String input)
-        {
-            StreamReader file = new StreamReader(input);
-            string line = file.ReadLine();
-            blocks = new SmallBlock[Convert.ToInt32(line) + 1];
-            line = file.ReadLine();
-            currentBlock = Convert.ToInt32(line);
-            tunnelStatusLabel.Text = line;
-            for (int i = 0; i < 10; i++) //instead of 10 put block.Length
-            {
-                line = file.ReadLine();
-                string[] elements = line.Split('\t');
-                int id = Convert.ToInt32(elements[0]);
-                blocks[id] = new SmallBlock(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7]);
-            }
-            distanceLeft = blocks[currentBlock].getSize();
-        }*/
         public void trackPosition(double p)
         {
             distanceToStation = distanceToStation - p;
@@ -443,7 +464,7 @@ namespace TrainControllerProject
                 nextBlock = blockTracker.getNextBlock(currentBlock.blockNum);
                 if (nextBlock == null)
                 {
-                    currentBlock = blockTracker.getNextBlock(readBeacon());
+                    currentBlock = blockTracker.getBlock(blockNum);
                     distanceLeft = currentBlock.length - p;
                 }
                 else
@@ -656,8 +677,6 @@ namespace TrainControllerProject
             //setSpeedLabel.Text = "0MPH";
         }
 
-        private void TrainController_Load(object sender, EventArgs e)
-        {
 
         }
     }

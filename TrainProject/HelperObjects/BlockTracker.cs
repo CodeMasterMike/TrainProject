@@ -20,23 +20,17 @@ namespace TrainProject.HelperObjects
         List<Block> blockList = new List<Block>();
         List<Block> blocks = new List<Block>();
         List<Switch> switchList = new List<Switch>();
-        public BlockTracker(String line)
+        public BlockTracker(String line, int l)
         {
-            lineID = 2;
+            lineID = l;
             loadClassesFromDB();
-            /* if (line.Equals("Red"))
-             {
-                 lineID = 0;
-                 currentBlock = getBlock(229);
-             }
-             else lineID = 1;*/
-            
-            currentBlock = getBlock(229);
-            
+            if (lineID == 2) currentBlock = getBlock(229);
+            else currentBlock = getBlock(152);
+
         }
-        public BlockTracker(bool b, int i)
+        public BlockTracker(bool b, int i, int l)
         {
-            lineID = 2;
+            lineID = l;
             loadClassesFromDB();
             int blockID = getDataBaseID(i);
             currentBlock = getBlock(blockID);
@@ -68,7 +62,7 @@ namespace TrainProject.HelperObjects
                 }
             }
         }
-        private Block getBlock(int blockID)
+        public Block getBlock(int blockID)
         {
             foreach (Block block in blocks)
             {
@@ -130,7 +124,7 @@ namespace TrainProject.HelperObjects
                 }
             }
         }
-        private int getDataBaseID(int i)
+        public int getDataBaseID(int i)
         {
             foreach(Block block in blocks)
             {
@@ -138,7 +132,7 @@ namespace TrainProject.HelperObjects
             }
             return 0;
         }
-        private void configureDirection()
+        public void configureDirection()
         {
             if (currentBlock.prevBlockId == null) prevToNext = true;
             else prevToNext = false;
