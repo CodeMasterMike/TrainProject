@@ -15,6 +15,7 @@ namespace TrainModelProject
 {
     public partial class TrainModel : Form
     {
+        //variables
         private int trainId;
         private double train_mass = 37103.86; //kg
         private double person_mass = 73; //kg
