@@ -39,6 +39,7 @@ namespace TrainModelProject
         private double station_status = 0;
         private double passenger_off = 0;
         private double passenger_on = 0;
+        private double pass_count = 0;
         private bool service = false;
         private bool emergency = false;
         private TrainController TC;
@@ -198,19 +199,32 @@ namespace TrainModelProject
 
         public void stationPassengers(Station station)
         {
-            Random rnd = new Random();
-            passenger_off = rnd.Next(1, Convert.ToInt32(train_pass));
-            train_pass = Math.Abs(passenger_off - train_pass);
-            pass_from_station = curr_Station.getWaiting();
-            if (pass_from_station + train_pass > 75 )
+            pass_count = pass_count + 1;
+            if (pass_count == 1)
             {
-                passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
+
+                Random rnd = new Random();
+                passenger_off = rnd.Next(1, Convert.ToInt32(train_pass));
+                train_pass = Math.Abs(passenger_off - train_pass);
+
+                pass_from_station = station.getWaiting();
+                if (pass_from_station + train_pass > 75)
+                {
+                    passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
+                }
+                else
+                {
+                    passenger_on = pass_from_station;
+                }
+
+                //passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
+                train_pass = passenger_on + train_pass;
+
             }
-            else
+            if (pass_count == 4)
             {
-                passenger_on = pass_from_station;
+                pass_count = 0;
             }
-            train_pass = passenger_on + train_pass;
         }
 
         public void updateGUI()
@@ -219,7 +233,7 @@ namespace TrainModelProject
             currSpeedmsF = Math.Round(currSpeedmsF, 2);
             Train_Speed.Text = currSpeedmsF.ToString() + " m/hr";
             Train_Passenger_L.Text = train_pass.ToString();
-            Train_Crew_L.Text = passenger_off.ToString();
+            Train_Crew_L.Text = pass_count.ToString();
             Train_Internal_Temperature_L.Text = passenger_on.ToString() + " *F";
             //Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
