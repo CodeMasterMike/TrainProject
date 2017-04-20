@@ -79,7 +79,7 @@ namespace TrainControllerProject
         bool simulate = false;
         bool approachingStation = false;
         bool authorityChanged = false;
-        int failureStatus = 0;
+        public int failureStatus = 0;
         bool lightStatus = false;
         PowerController powerController;
         TrainModel TM;
@@ -273,7 +273,7 @@ namespace TrainControllerProject
         //freely after it exits the station
         private void resetStation()
         {
-            if (forceStop && currSpeedms == 0)
+            if (forceStop && currSpeedms == 0 && authority != 0)
             {
                 forceStop = false;
                 stationName = "";
