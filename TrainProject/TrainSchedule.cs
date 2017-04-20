@@ -449,7 +449,7 @@ namespace TrainProject
                     addTime = new TimeSpan(0, 3, 24);
                     time = time.Add(addTime);
                     greenWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                    greenWorksheet.Cells[2, (i)] = "Station";
+                    greenWorksheet.Cells[2, (i)] = "North Pole";
                     i++;
 
                     addTime = new TimeSpan(0, 3, 42);
@@ -648,7 +648,7 @@ namespace TrainProject
                     addTime = new TimeSpan(0, 3, 24);
                     time = time.Add(addTime);
                     greenWorksheet.Cells[3, (i)] = time.ToString("hh:mm tt");
-                    greenWorksheet.Cells[4, (i)] = "Station";
+                    greenWorksheet.Cells[4, (i)] = "North Pole";
                     i++;
 
                     addTime = new TimeSpan(0, 3, 42);
@@ -796,7 +796,7 @@ namespace TrainProject
 
             schedulesWorkbook.Close(true, misValue, misValue);
             schedulesApp.Quit();
-
+            
             Marshal.ReleaseComObject(redWorksheet);
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);

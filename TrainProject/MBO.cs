@@ -83,6 +83,8 @@ namespace MBO_UI
         {
 
             trainSchedule = new TrainSchedule();
+            MessageBox.Show("Please set up appropriate files and parameters then click okay.");
+            dispatchTrain();
         }
 
        
@@ -130,6 +132,18 @@ namespace MBO_UI
         {
             System.Diagnostics.Process.Start(@"C:\\Users\\Public\\DriverSchedule.xls");
         }
+
+        public void updateTime(String time)
+        {
+            setTimeLabel(time);
+        }
+
+        public void setTimeLabel(String time)
+        {
+            label6.Text = time;
+        }
+
+
         public void updateTrainSchedule()
         {
 
@@ -142,7 +156,9 @@ namespace MBO_UI
 
         public void dispatchTrain()
         {
-            TrainSimulation.mainOffice.dispatchNewTrain();
+            //TrainSimulation.mainOffice.dispatchNewTrain();
+            TrainSimulation.mainOffice.dispatchMBOTrain(1, 65,308);
+            TrainSimulation.mainOffice.dispatchMBOTrain(2, 65, 608);
         }
 
         public void sendTrainSchedule()
@@ -167,6 +183,12 @@ namespace MBO_UI
                 autoMode = true;
                 label18.Text = "MBO";
                 label18.ForeColor = System.Drawing.Color.Lime;
+                trainSchedule = new TrainSchedule();
+                timeStart = trainSchedule.getStart();
+                timeEnd = trainSchedule.getEnd();
+                driverSchedule = new DriverSchedule(timeStart, timeEnd);
+                MessageBox.Show("Please set up appropriate files and parameters then click okay.");
+                dispatchTrain();
             }
             else
             {
@@ -183,6 +205,12 @@ namespace MBO_UI
                 autoMode = true;
                 label18.Text = "Fixed Block";
                 label18.ForeColor = System.Drawing.Color.Lime;
+                trainSchedule = new TrainSchedule();
+                timeStart = trainSchedule.getStart();
+                timeEnd = trainSchedule.getEnd();
+                driverSchedule = new DriverSchedule(timeStart, timeEnd);
+                MessageBox.Show("Please set up appropriate files and parameters then click okay.");
+                dispatchTrain();
             }
             else
             {
@@ -215,7 +243,7 @@ namespace MBO_UI
 
         public void getVitalSpeed()
         {
-
+            
         }
 
         public void setAuthority_Click(object Sender, EventArgs e)
@@ -322,13 +350,37 @@ namespace MBO_UI
             }
         }
 
+        private void updateTrain_Click(object sender, EventArgs e)
+        {
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                updateTrainSchedule();
+            }
+        }
+
+        private void updateDriver_Click(object sender, EventArgs e)
+        {
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                updateDriverSchedule();
+            }
+        }
+
         private void passengerMovement()
         {
-            //MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me.");
+            MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me. How do you calculate this? Nobody knows, not even we know, it's one of the world's greatest mysteries");
 
 
             //string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
-            string input = "Choose a starting time";
+            /*string input = "Choose a starting time";
             String result = ShowInputDialog(ref input);
             //MessageBox.Show(result);
 
@@ -356,7 +408,7 @@ namespace MBO_UI
 
             input = "Choose a closing time";
             result = ShowInputDialog(ref input);
-            int closeTime = Convert.ToInt32(result);
+            int closeTime = Convert.ToInt32(result);*/
 
         }
 

@@ -68,8 +68,8 @@ namespace TrainProject
            // MessageBox.Show("You chose " + timeEnd + " o'clock");
             timespan = new TimeSpan(timeStart, 0, 0);
              time = DateTime.Today.Add(timespan);
-            MessageBox.Show("Starting time chosen is " + time.ToString("hh:mm tt") + "");
-            MessageBox.Show("Closing time chosen is " + timeEnd + "");
+            //MessageBox.Show("Starting time chosen is " + time.ToString("hh:mm tt") + "");
+           // MessageBox.Show("Closing time chosen is " + timeEnd + "");
 
 
 
@@ -123,7 +123,7 @@ namespace TrainProject
 
             timeEnd = timeEnd * 2;
 
-            MessageBox.Show("timeEnd is " + timeEnd + "");
+            //MessageBox.Show("timeEnd is " + timeEnd + "");
             int count = 1;
             for (int i = 3; count <= timeEnd; i++)
             {

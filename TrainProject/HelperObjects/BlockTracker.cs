@@ -70,6 +70,7 @@ namespace TrainProject.HelperObjects
             }
             return null;
         }
+
         public Block getNextBlock(int i)
         {
             int blockID = getDataBaseID(i);
