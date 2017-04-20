@@ -21,20 +21,34 @@ namespace TrainProject
         double power1 = 0;
         double power2 = 0;
         double power3 = 0;
+        Random rnd;
 
         public PowerController(double m, double mP)
         {
             maxPower = mP;
+            rnd = new Random();
         }
 
         public double getPower(double cS, double sS)
         {
+            int choice = rnd.Next(3);
             power1 = getPower1(cS, sS);
             power2 = getPower2(cS, sS);
             power3 = getPower3(cS, sS);
             if (power1 == power2 && power2 == power3)
             {
-                return (power1 + power2) / 2;
+                if (choice == 0)
+                {
+                    return (power1 + power2) / 2;
+                }
+                else if(choice == 1)
+                {
+                    return (power1 + power3) / 2;
+                }
+                else
+                {
+                    return (power2 + power3) / 2;
+                }
             }
             else return 0;
         }
