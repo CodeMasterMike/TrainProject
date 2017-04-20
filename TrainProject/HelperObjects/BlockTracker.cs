@@ -175,7 +175,7 @@ namespace TrainProject.HelperObjects
             int speed = currentBlock.speedLimit;
             for(int n = 0; n < 2; n++)
             {
-                currentBlock = getNextBlock(currentBlock.blockId);
+                currentBlock = getNextBlock(currentBlock.blockNum);
                 if(currentBlock != null)
                 {
                     if (currentBlock.speedLimit < speed)
