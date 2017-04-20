@@ -17,7 +17,7 @@ namespace CTC
     {
         TrainModel tm_window;
         int trainId;
-        int selTrainId;
+        int trainSelectedInt;
         bool trainSelectedBool;
         double sugSpeed;
         int sugAuth;
@@ -288,7 +288,7 @@ namespace CTC
                 String[] txtSubstrings = trainSelected.Split(delimiter);
                 Console.WriteLine(txtSubstrings[0]);
                 Console.WriteLine(txtSubstrings[1]);
-                int trainSelectedInt = Int32.Parse(txtSubstrings[1]);
+                trainSelectedInt = Int32.Parse(txtSubstrings[1]);
                 Console.WriteLine("train selected is: " + trainSelectedInt);
                 updateTrainLabel.Text = txtSubstrings[1];
                 foreach (Train t in myTrainList)
@@ -333,6 +333,16 @@ namespace CTC
                                 { Text = "-" };
                             }
                         }
+
+                        if((t.currBlock == 229) && (t.prevBlock == 161))
+                        {
+                            tm_window = trainModelArray[t.trainId];
+                            tm_window.closeTrainController();
+                            tm_window.Close();
+                            //t = null;
+                            //myTrainList.Remove(t);
+                        }
+
                     }
 
                     if (b.lineId == 1) //green line
@@ -351,106 +361,18 @@ namespace CTC
                                 { Text = "-" };
                             }
                         }
+                        if ((t.currBlock == 57) && (b.isToYard))
+                        {
+                            tm_window = trainModelArray[t.trainId];
+                            tm_window.closeTrainController();
+                            tm_window.Close();
+                            //t = null;
+                            //myTrainList.Remove(t);
+                        }
                     }
                 }
             }
         }
-
-       /*public void updateBlockOccupancy(int bId, bool occupied)
-        {
-            foreach (Block b in myBlockList)
-            {
-                if ((b.blockId == bId) && (occupied == true))
-                {                
-                    if (b.lineId == 2) //red line
-                    {
-                        foreach (ListViewItem item in systemListView.Items)
-                        {
-                            if (item.Index == (b.blockNum))
-                            {
-                                foreach (Train t in myTrainList) //might be an issue
-                                {
-                                    Block prevBlock = t.previousBlock;
-                                    Block currBlock = t.currentBlock;
-                                    Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
-                                    int nBlock = nextBlock.blockId;
-                                    Console.WriteLine(nBlock + " and " + b.blockId);
-                                    if (nBlock == b.blockId) //if trains curr block is this one
-                                    {
-                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
-                                        { Text = "Train " + t.trainId.ToString() };
-                                    }
-
-                                    t.previousBlock = t.currentBlock;
-                                    t.currentBlock = nextBlock;
-
-                                    //if (nextBlock.isFromYard)
-                                  //  {
-                                  //      myTrainList.Remove(t);
-                                  //  }
-                                }
-
-                            }
-                        }
-                    }
-
-                    else if (b.lineId == 1) //green line
-                    {
-                        foreach (ListViewItem item in systemListView2.Items)
-                        {
-                            if (item.Index == (b.blockNum))
-                            {
-                                foreach (Train t in myTrainList) //might be an issue
-                                {
-                                    Block prevBlock = t.previousBlock;
-                                    Block currBlock = t.currentBlock;
-                                    Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
-                                    int nBlock = nextBlock.blockId;
-
-                                    if (nBlock == b.blockId) //if trains curr block is this one
-                                    {
-                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
-                                        { Text = "Train " + t.trainId.ToString() };
-                                    }
-
-                                    t.previousBlock = t.currentBlock;
-                                    t.currentBlock = nextBlock;
-                                }
-
-                            }
-                        }
-                    }
-                    b.isOccupied = true;
-                }
-
-                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 2))
-                {
-                    foreach (ListViewItem item in systemListView.Items)
-                    {
-                        if (item.Index == (b.blockNum))
-                        {
-                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
-                        }
-                    }
-                    b.isOccupied = false;
-                }
-
-                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 1))
-                {
-                    foreach (ListViewItem item in systemListView2.Items)
-                    {
-                        if (item.Index == (b.blockNum))
-                        {
-                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
-                        }
-                    }
-                    b.isOccupied = false;
-                }
-
-            }
-
-
-        }*/
 
         public Block findBlock(int blockId)
         {
@@ -516,6 +438,12 @@ namespace CTC
                     return findBlock(targetId);
                 }
             }
+
+            if (prevBlock != null && currBlock.prevBlockId == null && currBlock.nextBlockId == null)
+            {
+                return null;
+            }
+
             else if (prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
             {
                 if (currBlock.prevBlockId == null)
@@ -595,20 +523,11 @@ namespace CTC
         {
            if (trainSelectedBool)
             {
-                dispatchOldTrain(selTrainId);
+                dispatchOldTrain(trainSelectedInt);
             }
            else
             {
                 dispatchNewTrain();
-               /* 
-                Button t = new Button();
-                t.Size = new Size(100, 100);
-                t.Location = new Point(100, 100);
-                t.Text = "1";
-                TrainSimulation.mainOffice.systemBox.Controls.Add(t);
-                Controls.Add(t);
-                Console.WriteLine("past button create");
-                */
             }
         }
 

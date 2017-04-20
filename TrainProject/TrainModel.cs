@@ -148,7 +148,10 @@ namespace TrainModelProject
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
-                
+                if (next_block == null)
+                {
+                    next_block = current_block;
+                }
                 prev_block = current_block;
                 current_block = next_block;
                 int number = 0;
@@ -333,6 +336,12 @@ namespace TrainModelProject
         {
             train_failures = 3;
             TC.updateFailure(train_failures);
+        }
+
+        public void closeTrainController()
+        {
+            TC.Close();
+            TC = null;
         }
     }
 }
