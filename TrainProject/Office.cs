@@ -42,7 +42,12 @@ namespace CTC
 
         }
 
-        public void updateTime(String time)
+        /*
+         * called by trainSimulator
+         * then updates other modules with time
+         */
+
+        public void updateTime(String time) 
         {
             updateTimeLabel.Text = time;
             for (int i = 1; i <= trainCounter; i++)
@@ -55,7 +60,14 @@ namespace CTC
             }
         }
 
-        public void dispatchNewTrain()
+        /*
+         * add new train to train list
+         * determine line
+         * create new train model which inturn adds new train controller
+         * send dispatch info to wayside
+         */
+
+        public void dispatchNewTrain() 
         {
             trainCounter++;            
             Train train = new Train(trainCounter, sugSpeed, sugAuth);
@@ -79,10 +91,20 @@ namespace CTC
             
         }
 
+        /*
+         * uses selected train to update speed and authority
+         */
         public void dispatchOldTrain(int trainId)
         {
             module.updateSpeedAndAuthority(trainId, sugSpeed, sugAuth);
         }
+
+        /*
+         * adds all block from DB to blockList
+         * initializes a trainList
+         * sets up train tables in CTC window
+         * 
+         */
 
         public void initializeTrackLayout(List<Line> trackLines)
         {
@@ -244,17 +266,10 @@ namespace CTC
 
         }
 
-       /* private Block findBlock(int blockId)
-        {
-            foreach (Block block in myBlockList)
-            {
-                if (block.blockId == blockId)
-                {
-                    return block;
-                }
-            }
-            return null;
-        }*/
+          /*
+           * when block is selected in table it sets the current selction to that 
+           * also updates the info table to dislpay block info
+           */
 
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
@@ -282,6 +297,11 @@ namespace CTC
             }
         }
 
+          /*
+           * when train is selected in table it sets the current selction to that 
+           * also updates the info table to dislpay train info
+           */
+
         private void selTrain(object sender, ListViewColumnMouseEventArgs e)
         {
             String trainSelected = e.Item.SubItems[2].Text;
@@ -304,7 +324,13 @@ namespace CTC
             }
         }
 
-       public void updateBlockOccupancy(int bId, bool occupied)
+          /*
+           *  called by wayside controller
+           *  updates the current occupancy of block and check if a train is going to yard
+           *  removes trains going to yard
+           *  
+           */
+        public void updateBlockOccupancy(int bId, bool occupied)
         {
             foreach (Train t in myTrainList)
             {
@@ -343,7 +369,7 @@ namespace CTC
                             tm_window.closeTrainController();
                             tm_window.Close();
                             throughCounter++;
-                            updateAuthority(trainCounter, throughCounter);
+                            updateThroughput(trainCounter, throughCounter); 
                             //t = null;
                             //myTrainList.Remove(t);
                         }
@@ -372,7 +398,7 @@ namespace CTC
                             tm_window.closeTrainController();
                             tm_window.Close();
                             throughCounter++;
-                            updateAuthority(trainCounter, throughCounter);
+                            updateThroughput(trainCounter, throughCounter);
                             //t = null;
                             //myTrainList.Remove(t);
                         }
@@ -380,6 +406,11 @@ namespace CTC
                 }
             }
         }
+
+          /*
+           * finds block from blockId
+           * 
+           */
 
         public Block findBlock(int blockId)
         {
@@ -393,6 +424,10 @@ namespace CTC
             return null;
         }
 
+          /*
+           * gets yard blocks
+           * 
+           */
         public Block findYardBlock(int lineId) 
         {
             foreach (Line line in myLineList)
@@ -413,6 +448,10 @@ namespace CTC
         }
 
         //only returns null if the yard
+          /*
+           * gets block after current
+           * 
+           */
         public Block getNextBlock(Block prevBlock, Block currBlock, int? lineId = null)
         {
             Block nextBlock = null;
@@ -488,12 +527,14 @@ namespace CTC
             return nextBlock;
         }
 
+        //sets to auto mode
         private void setAuto()
         {
             autoMode = true;
             TrainSimulation.MBOWindow.isAuto(autoMode);
         }
 
+        //sets to manual mode
         private void setManual()
         {
             autoMode = false;
@@ -526,7 +567,7 @@ namespace CTC
 
         }
 
-
+        //button for dispatch train
         private void dispTrain_Click(object sender, EventArgs e)
         {
            if (trainSelectedBool)
@@ -554,8 +595,10 @@ namespace CTC
 
         }
 
+        //opens block from closure
         private void openBlockButton_Click(object sender, EventArgs e)
         {
+
             TrackControllerModule.openBlock(blockSelected);
 
             Block block = findBlock(blockSelected);
@@ -586,11 +629,13 @@ namespace CTC
             }
         }
 
+        //closes block on button click
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
             TrackControllerModule.sendClosure(blockSelected);
 
             Block block = findBlock(blockSelected);
+
             if (block.lineId == 2)
             {
                 foreach (ListViewItem item in systemListView2.Items)
@@ -618,12 +663,14 @@ namespace CTC
             }
         }
 
+        //failure is called from another module
         public void causeFailure(int blockId)
         {
             notifLabel.Text = ("FAILURE!");
 
         }
 
+        //fix track after failure
         private void fixTrackButton_Click(object sender, EventArgs e)
         {
             TrackControllerModule.openBlock(blockSelected);
@@ -636,6 +683,7 @@ namespace CTC
 
         }
 
+        //update manual button
         private void manButton_Click(object sender, EventArgs e)
         {
             setManual();
@@ -647,6 +695,7 @@ namespace CTC
 
         }
 
+        //update auto button
         private void autoButton_Click(object sender, EventArgs e)
         {
             //setAuto();
@@ -678,12 +727,14 @@ namespace CTC
 
         }
 
+        //updates speed from gui
         private void speedScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             sugSpeed = speedScrollBar.Value;
             speedValueLabel.Text = sugSpeed + " mph";
         }
 
+        //updates auth from gui
         private void authScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             sugAuth = authScrollBar.Value;
@@ -695,6 +746,7 @@ namespace CTC
 
         }
 
+        //choose line for dispatching
         private void lineSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentLineSelection = lineSelect.SelectedIndex + 1;
@@ -745,7 +797,8 @@ namespace CTC
 
         }
 
-        private void updateAuthority(int trainCount, int trainThrough)
+        //calculate and display throughput
+        private void updateThroughput(int trainCount, int trainThrough)
         {
             int throughput = trainThrough / trainCount;
             updateThroughputLabel.Text = throughput.ToString();
