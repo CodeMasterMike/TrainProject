@@ -222,6 +222,10 @@ namespace TrainModelProject
             }
 
             //Check for train failures
+            if(TC == null)
+            {
+                return;
+            }
             if (TC.failureStatus == 0)
             {
                 label26.ForeColor = Color.Green;
