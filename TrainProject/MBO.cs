@@ -44,6 +44,7 @@ namespace MBO_UI
         public TrainModel TM;
         public DriverSchedule driverSchedule;
         public TrainSchedule trainSchedule;
+        public string initialClock;
 
         //public TrainSimulation trainSimulation = new TrainSimulation();
         //CustomClock clk = new CustomClock(trainSimulation);
@@ -135,12 +136,23 @@ namespace MBO_UI
 
         public void updateTime(String time)
         {
+            initialClock = time;
             setTimeLabel(time);
         }
 
         public void setTimeLabel(String time)
         {
             label6.Text = time;
+        }
+
+        public int getTime()
+        {
+            //MessageBox.Show(label6.Text);
+            char delimiter = ':';
+            string currentClock = label6.Text;
+            String[] textSubString = (currentClock.Split(delimiter));
+            int clockPassed = Int32.Parse(textSubString[0]);
+            return clockPassed;
         }
 
 
@@ -336,6 +348,8 @@ namespace MBO_UI
         {
             label4.Text = "0";
             label4.ForeColor = System.Drawing.Color.Lime;
+            dispatchTrain();
+            
         }
 
         private void passengerMovement_Click(object sender, EventArgs e)
@@ -347,6 +361,7 @@ namespace MBO_UI
             else
             {
                 passengerMovement();
+                //getTime();
             }
         }
 
@@ -376,8 +391,10 @@ namespace MBO_UI
 
         private void passengerMovement()
         {
-            MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me. How do you calculate this? Nobody knows, not even we know, it's one of the world's greatest mysteries");
-
+            //MessageBox.Show("We have the best passengers. We have the best trains. We move so many passengers you wouldn't believe it, believe me. How do you calculate this? Nobody knows, not even we know, it's one of the world's greatest mysteries");
+            getTime();
+            string currentClock = label6.Text;
+            MessageBox.Show("Passenger movement data recorded and sent from " + timeStart + " am up until " + currentClock + "");
 
             //string input = Microsoft.VisualBasic.Interaction.InputBox("Title", "Prompt", "Default", 0, 0);
             /*string input = "Choose a starting time";
