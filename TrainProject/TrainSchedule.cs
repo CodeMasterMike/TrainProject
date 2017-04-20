@@ -391,7 +391,7 @@ namespace TrainProject
 
 
             greenWorksheet.Cells[1, 2] = time.ToString("hh:mm tt");
-            greenWorksheet.Cells[2, 1] = "2";
+            greenWorksheet.Cells[2, 1] = "1";
             greenWorksheet.Cells[2, 2] = "Dispatch";
 
             breakCount = 0;
