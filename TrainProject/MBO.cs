@@ -648,6 +648,11 @@ namespace MBO_UI
         {
 
         }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

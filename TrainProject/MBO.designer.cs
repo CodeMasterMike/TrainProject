@@ -338,19 +338,20 @@ namespace MBO_UI
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(263, 479);
+            this.label17.Location = new System.Drawing.Point(273, 479);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(129, 20);
+            this.label17.Size = new System.Drawing.Size(117, 20);
             this.label17.TabIndex = 4;
-            this.label17.Text = "Automatic Mode:";
+            this.label17.Text = "Current Status:";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Lime;
-            this.label18.Location = new System.Drawing.Point(389, 479);
+            this.label18.Location = new System.Drawing.Point(390, 479);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(58, 20);
@@ -362,7 +363,7 @@ namespace MBO_UI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(498, 478);
+            this.label3.Location = new System.Drawing.Point(496, 478);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 20);
