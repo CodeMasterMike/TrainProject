@@ -22,10 +22,9 @@ namespace TrainModelProject
         private double train_length = 32.2; //m
         private double train_height = 3.42; //m
         private double train_width = 2.65; //m
-        private double train_pass = 10;
+        private double train_pass = 1;
         private double train_crew = 1; //m
-        private string train_facilities = "x";
-        private string train_lights = "x";
+        private string train_facilities = "Good";
         private double max_acceleration = 0.5; //m per s^2
         private double serviceBrake = 1.2;
         private double emergencyBrake = 2.73; //m per s^2
@@ -36,11 +35,6 @@ namespace TrainModelProject
         private double currSpeedmsF = 0;
         private double power = 0;
         private double currTemp = 69;
-        private double Train_Door = 0;
-        private double station_status = 0;
-        private double passenger_off = 0;
-        private double passenger_on = 0;
-        private double pass_count = 0;
         private bool service = false;
         private bool emergency = false;
         private TrainController TC;
@@ -50,14 +44,12 @@ namespace TrainModelProject
         private int train_failures = 0;
         private double block_distance = 0;
         private double train_slope = 0;
-        private double pass_from_station = 0;
         Block current_block;
         Block currentT_block;
         Block first_block;
         Block second_block;
         Block next_block;
         Block prev_block;
-        Station curr_Station;
         private int TM_count = 0;
         double p;
         double sugSpeed;
@@ -119,7 +111,7 @@ namespace TrainModelProject
         {
             if (start == 0) return;
             setTimeLabel(time);
-            mass = person_mass*train_pass + train_mass;
+            mass = person_mass + train_mass;
             TC.trackPosition(currSpeedms);
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
@@ -138,14 +130,6 @@ namespace TrainModelProject
         public void updateLightStatus(bool lights)
         {
             lightStatus = lights;
-            if (lightStatus == false)
-            {
-                train_lights = "Off";
-            }
-            else if (lightStatus == true)
-            {
-                train_lights = "On";
-            }
         }
         public void updateDoorStatus(int n)
         {
@@ -153,12 +137,9 @@ namespace TrainModelProject
             else if (n == 1) Train_Door_L.Text = "Left";
             else if (n == 2) Train_Door_L.Text = "Right";
             if(n != 0) announcementLabel.Text = "";
-            Train_Door = n;
         }
         public void currentBlock()
         {
-            
-            
             p = currSpeedms;
             if (block_distance >= p) block_distance -= p;
             else
@@ -167,14 +148,9 @@ namespace TrainModelProject
                 p = p - block_distance;
 
                 next_block = TrainSimulation.trackModelWindow.getNextBlock(prev_block, current_block);
-                if (next_block == null)
-                {
-                    next_block = current_block;
-                }
+                
                 prev_block = current_block;
                 current_block = next_block;
-                
-
                 int number = 0;
                 if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
                 TC.sendSwitchBeaconInfo(number);
@@ -192,51 +168,6 @@ namespace TrainModelProject
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
-               
-
-            }
-
-            if (Train_Door != 0)
-            {
-                // Enter Passenger Code
-                stationPassengers(current_block.station);
-                train_width = 6;
-            }
-            if (TC.failureStatus == 0)
-            {
-                label26.ForeColor = Color.Green;
-                label26.Text = "Train Engine - Good";
-                label27.ForeColor = Color.Green;
-                label27.Text = "Signal Pickup - Good";
-                label28.ForeColor = Color.Green;
-                label28.Text = "Brakes - Good";
-            }
-            else if (TC.failureStatus == 1)
-            {
-                label26.ForeColor = Color.Red;
-                label26.Text = "Train Engine Failure";
-                label27.ForeColor = Color.Green;
-                label27.Text = "Signal Pickup - Good";
-                label28.ForeColor = Color.Green;
-                label28.Text = "Brakes - Good";
-            }
-            else if (TC.failureStatus == 2)
-            {
-                label26.ForeColor = Color.Green;
-                label26.Text = "Train Engine - Good";
-                label27.ForeColor = Color.Red;
-                label27.Text = "Signal Pickup Failure";
-                label28.ForeColor = Color.Green;
-                label28.Text = "Brakes - Good";
-            }
-            else if (TC.failureStatus == 3)
-            {
-                label26.ForeColor = Color.Green;
-                label26.Text = "Train Engine - Good";
-                label27.ForeColor = Color.Green;
-                label27.Text = "Signal Pickup - Good";
-                label28.ForeColor = Color.Red;
-                label28.Text = "Brakes Failure";
             }
 
         }
@@ -245,37 +176,6 @@ namespace TrainModelProject
         {
 
         }
-
-        public void stationPassengers(Station station)
-        {
-            pass_count = pass_count + 1;
-            if (pass_count == 1)
-            {
-
-                Random rnd = new Random();
-                passenger_off = rnd.Next(1, Convert.ToInt32(train_pass));
-                train_pass = Math.Abs(passenger_off - train_pass);
-
-                pass_from_station = station.getWaiting();
-                if (pass_from_station + train_pass > 75)
-                {
-                    passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
-                }
-                else
-                {
-                    passenger_on = pass_from_station;
-                }
-
-                //passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
-                train_pass = passenger_on + train_pass;
-
-            }
-            if (pass_count == 4)
-            {
-                pass_count = 0;
-            }
-        }
-
         public void updateGUI()
         {
             currSpeedmsF = currSpeedms / 0.44704;
@@ -289,9 +189,6 @@ namespace TrainModelProject
             Train_Height_L.Text = train_height.ToString() + " m";
             Train_Length_L.Text = train_length.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
-            Passengers_on_L.Text = passenger_on.ToString();
-            Passengers_off_L.Text = passenger_off.ToString();
-            Light_Status_L.Text = train_lights.ToString();
             //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
@@ -437,23 +334,17 @@ namespace TrainModelProject
             train_failures = 3;
             TC.updateFailure(train_failures);
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
-            train_failures = 0;
-            TC.updateFailure(train_failures);
-        }
 
+        }
         private void button5_Click(object sender, EventArgs e)
         {
-            train_failures = 0;
-            TC.updateFailure(train_failures);
-        }
 
+        }
         private void button6_Click(object sender, EventArgs e)
         {
-            train_failures = 0;
-            TC.updateFailure(train_failures);
+
         }
         public void closeTrainController()
         {
