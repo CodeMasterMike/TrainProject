@@ -159,5 +159,16 @@ namespace TrainProject.HelperObjects
         {
             return onSwitch;
         }
+        public bool getDirection(int i)
+        {
+            Block temp = getBlock(i);
+            if (onSwitch)
+            {
+                if (temp.prevBlockId == null) return true;
+                else return false;
+            }
+            return prevToNext;
+        }
     }
+    
 }

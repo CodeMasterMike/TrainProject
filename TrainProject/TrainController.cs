@@ -38,7 +38,7 @@ namespace TrainControllerProject
         int currentBlockID;
         int speedLimit;
         int blockNum;
-        bool prevToNext = true;
+        private bool prevToNext = true;
         int wait = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         int doorStatus;
@@ -130,7 +130,7 @@ namespace TrainControllerProject
             considerStations();
             resetStation();
             if (distanceToStation < minStopDistanceStation || distanceToAuthority < minStopDistanceAuthority) forceStop = true;
-            if ((currSpeed <= setSpeed) && !forceStop &&!emergencyOverride && authority > 0)
+            if ((currSpeedms <= setSpeedms) && !forceStop &&!emergencyOverride && authority > 0)
             {
                 sBreakOFF();
                 emergencyOFF();
@@ -166,6 +166,7 @@ namespace TrainControllerProject
             distanceLeftLabel.Text = distanceLeft.ToString("#.##");
             distanceToLabel.Text = (distanceToStation).ToString("#.##");
             stationLabel.Text = stationName.ToString();
+            trainIDLabel.Text = prevToNext.ToString();
             if(doorStatus == 0)
             {
                 Left_Closed.Checked = true;
@@ -253,9 +254,8 @@ namespace TrainControllerProject
         {
             if(authority <= 3 && authorityChanged)
             {
-                
                 BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
-                if (blockTracker.getOnSwtich()) bs.configureDirection();
+                //if (blockTracker.getOnSwtich()) bs.configureDirection();
                 distanceToAuthority = bs.getDistance(authority);
                 authorityChanged = false;
             }
@@ -266,8 +266,9 @@ namespace TrainControllerProject
             distanceToStation = distance + 5;
             stationName = n;
             stationPrevToNext = pn;
+            if (prevToNext != stationPrevToNext) distanceToStation = 0;
             approachingStation = true;
-            if(mode == 1)
+            if(mode == 1 && distanceToStation != 0)
             {
                 TM.updateAnnouncement("Now arriving at station " + stationName);
             }
@@ -461,7 +462,6 @@ namespace TrainControllerProject
             else
             {
                 authority = authority - 1;
-                prevToNext = blockTracker.getPrevToNext();
                 p = p - distanceLeft;
                 nextBlock = blockTracker.getNextBlock(currentBlock.blockNum);
                 if (nextBlock == null)
@@ -474,6 +474,7 @@ namespace TrainControllerProject
                     currentBlock = nextBlock;
                     distanceLeft = currentBlock.length - p;
                 }
+                prevToNext = blockTracker.getDirection(currentBlock.blockId);
             }
         }
         /*private int getNextBlock()
