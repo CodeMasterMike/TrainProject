@@ -31,6 +31,8 @@ namespace TrainControllerProject
         private double minStopDistanceStation = 0;
         private double minStopDistanceAuthority = 0;
         private double minStopDistance = 0;
+        private double futureSpeedLimit = 0;
+        private double futureSpeedLimitms = 0;
         private SmallBlock[] blocks;
         private BlockTracker blockTracker;
         int testMode = 0; //test mode off = 0 test mode on = 1
@@ -120,7 +122,11 @@ namespace TrainControllerProject
             //Invoke(new MethodInvoker(delegate { map.updateBlock(currentBlock.blockNum); }));
             speedLimit = currentBlock.speedLimit;
             speedLimitms = speedLimit / 3.6;
-           
+            considerSpeedLimit();
+            if (futureSpeedLimitms < speedLimitms)
+            {
+                speedLimitms = futureSpeedLimitms;
+            }
             if (testMode == 0) {
                 //figure out setSpeed;
                 if (mode == 0) setSpeed = driverSetSpeed;
@@ -261,6 +267,12 @@ namespace TrainControllerProject
                 minStopDistanceStation = (currSpeedms *currSpeedms) / (2 * serviceBreak);
             }
         }
+        private void considerSpeedLimit()
+        {
+            BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
+            futureSpeedLimit = bs.getSpeedLimit();
+            futureSpeedLimitms = futureSpeedLimit / 3.6;
+        }
         private void considerAuthority()
         {
             if(authority <= 3 && authorityChanged)
@@ -279,7 +291,11 @@ namespace TrainControllerProject
             distanceToStation = distance + 5;
             stationName = n;
             stationPrevToNext = pn;
-            if (prevToNext != stationPrevToNext) distanceToStation = 0;
+            if (prevToNext != stationPrevToNext)
+            {
+                distanceToStation = 0;
+                stationName = "";
+            }
             approachingStation = true;
             if(mode == 1 && distanceToStation != 0)
             {
@@ -353,7 +369,7 @@ namespace TrainControllerProject
             automaticRadioButton.Checked = false;
             manualRadioButton.Checked = true;
             serviceButton.Enabled = true;
-            sendAnnouncementButton.Enabled = false;
+            sendAnnouncementButton.Enabled = true;
             mode = 0;
         }
         private void updateTimeLabel(String time)

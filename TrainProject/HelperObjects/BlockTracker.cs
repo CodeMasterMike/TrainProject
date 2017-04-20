@@ -169,6 +169,23 @@ namespace TrainProject.HelperObjects
             }
             return prevToNext;
         }
+        public double getSpeedLimit()
+        {
+            int speed = currentBlock.speedLimit;
+            for(int n = 0; n < 2; n++)
+            {
+                currentBlock = getNextBlock(currentBlock.blockId);
+                if(currentBlock != null)
+                {
+                    if (currentBlock.speedLimit < speed)
+                    {
+                        speed = currentBlock.speedLimit;
+                    }
+                }
+                else return speed - 15;
+            }
+            return speed;
+        }
     }
     
 }
