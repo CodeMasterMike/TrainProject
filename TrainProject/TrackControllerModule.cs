@@ -88,45 +88,6 @@ public class TrackControllerModule
         }
     }
 
-    //reopen specific block
-    public static void openBlock(int blockId)
-    {
-        foreach (TrackController ctrl in activeControllers)
-        {
-            foreach (Switch s in ctrl.getSwitches())
-            {
-                if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
-                {
-                    s.sourceActive = true;
-                }
-                if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
-                {
-                    s.t1Active = true;
-                }
-                if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
-                {
-                    s.t2Active = true;
-                }
-
-                foreach (Train t in trainTrackings)
-                {
-                    if (ctrl.trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceActive)
-                    {
-                        TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
-                    }
-                    if (ctrl.trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Active)
-                    {
-                        TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
-                    }
-                    if (ctrl.trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Active)
-                    {
-                        TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
-                    }
-                }
-            }
-        }
-    }
-
         
     //called by track model to update block occupancy
     //this function makes calls to track controller and plc
@@ -230,13 +191,59 @@ public class TrackControllerModule
         TrainSimulation.trackControllerWindow.updateTrains();
     }
 
+    //reopen specific block
+    public static void openBlock(int blockId)
+    {
+        foreach (TrackController ctrl in activeControllers)
+        {
+            foreach (Switch s in ctrl.getSwitches())
+            {
+                if (ctrl.checkWithinRange(blockId, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
+                {
+                    s.sourceActive = true;
+                }
+                if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
+                {
+                    s.t1Active = true;
+                }
+                if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
+                {
+                    s.t2Active = true;
+                }
+                
+                foreach (Train t in trainTrackings)
+                {
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceActive)
+                    {
+                        TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+                    }
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Active)
+                    {
+                        TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+                    }
+                    if (ctrl.trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Active)
+                    {
+                        TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
+                    }
+                }
+            }
+        }
+        TrainSimulation.trackModelWindow.fixBlock(blockId);    
+    }
+
    
 
     public static void causeFailure(int blockId)
     {
-            Console.WriteLine("Closing block " + blockId);
+        Console.WriteLine("Closing block " + blockId);
         closeBlock(blockId);
-        //TrainSimulation.mainOffice.causeFailure(blockId);  
+        TrainSimulation.mainOffice.causeFailure(blockId);  
+    }
+
+    public static void sendClosure(int blockId)
+    {
+        closeBlock(blockId);
+        TrainSimulation.trackModelWindow.closeBlock(blockId);
     }
 
     public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)

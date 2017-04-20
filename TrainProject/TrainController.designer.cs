@@ -38,6 +38,7 @@
             this.uploadTrackButton = new System.Windows.Forms.Button();
             this.Users_Tab = new System.Windows.Forms.TabControl();
             this.Driver_Tab = new System.Windows.Forms.TabPage();
+            this.trainIDLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.distanceLeftLabel = new System.Windows.Forms.Label();
@@ -63,8 +64,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.Heater_GroupBox = new System.Windows.Forms.GroupBox();
-            this.Heater_Off = new System.Windows.Forms.RadioButton();
-            this.Heater_On = new System.Windows.Forms.RadioButton();
+            this.heaterOFF = new System.Windows.Forms.RadioButton();
+            this.heaterON = new System.Windows.Forms.RadioButton();
             this.setTempLabel = new System.Windows.Forms.Label();
             this.setSpeedLabel = new System.Windows.Forms.Label();
             this.setSpeedTrackBar = new System.Windows.Forms.TrackBar();
@@ -97,17 +98,17 @@
             this.serviceButton = new System.Windows.Forms.CheckBox();
             this.emergencyButton = new System.Windows.Forms.CheckBox();
             this.RightDoor_GroupBox = new System.Windows.Forms.GroupBox();
-            this.Right_Closed = new System.Windows.Forms.RadioButton();
-            this.Right_Open = new System.Windows.Forms.RadioButton();
+            this.rightClosed = new System.Windows.Forms.RadioButton();
+            this.rightOpen = new System.Windows.Forms.RadioButton();
             this.LeftDoor_GroupBox = new System.Windows.Forms.GroupBox();
-            this.Left_Closed = new System.Windows.Forms.RadioButton();
-            this.Left_Open = new System.Windows.Forms.RadioButton();
+            this.leftClosed = new System.Windows.Forms.RadioButton();
+            this.leftOpen = new System.Windows.Forms.RadioButton();
             this.Lights_GroupBox = new System.Windows.Forms.GroupBox();
             this.Lights_Off = new System.Windows.Forms.RadioButton();
-            this.Lights_On = new System.Windows.Forms.RadioButton();
+            this.lightsON = new System.Windows.Forms.RadioButton();
             this.AC_GroupBox = new System.Windows.Forms.GroupBox();
-            this.AC_OFF = new System.Windows.Forms.RadioButton();
-            this.AC_ON = new System.Windows.Forms.RadioButton();
+            this.acOFF = new System.Windows.Forms.RadioButton();
+            this.acON = new System.Windows.Forms.RadioButton();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.simulateButton = new System.Windows.Forms.Button();
             this.testModeOff = new System.Windows.Forms.RadioButton();
@@ -130,7 +131,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.trainIDLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -227,7 +227,7 @@
             this.uploadTrackButton.TabIndex = 0;
             this.uploadTrackButton.Text = "Load Parameters and Choose Line";
             this.uploadTrackButton.UseVisualStyleBackColor = true;
-            this.uploadTrackButton.Click += new System.EventHandler(this.uploadTrackButton_Click);
+            this.uploadTrackButton.Click += new System.EventHandler(this.uploadTrackButtonClick);
             // 
             // Users_Tab
             // 
@@ -280,6 +280,15 @@
             this.Driver_Tab.Text = " Driver";
             this.Driver_Tab.Click += new System.EventHandler(this.Driver_Tab_Click);
             // 
+            // trainIDLabel
+            // 
+            this.trainIDLabel.AutoSize = true;
+            this.trainIDLabel.Location = new System.Drawing.Point(131, 11);
+            this.trainIDLabel.Name = "trainIDLabel";
+            this.trainIDLabel.Size = new System.Drawing.Size(19, 25);
+            this.trainIDLabel.TabIndex = 45;
+            this.trainIDLabel.Text = "-";
+            // 
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
@@ -321,7 +330,7 @@
             // 
             this.distanceLeftLabel.AutoSize = true;
             this.distanceLeftLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.distanceLeftLabel.Location = new System.Drawing.Point(493, 136);
+            this.distanceLeftLabel.Location = new System.Drawing.Point(518, 148);
             this.distanceLeftLabel.Name = "distanceLeftLabel";
             this.distanceLeftLabel.Size = new System.Drawing.Size(21, 29);
             this.distanceLeftLabel.TabIndex = 30;
@@ -331,7 +340,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(320, 136);
+            this.label12.Location = new System.Drawing.Point(339, 149);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(163, 29);
             this.label12.TabIndex = 29;
@@ -348,10 +357,10 @@
             // blockIDLabel
             // 
             this.blockIDLabel.AutoSize = true;
-            this.blockIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockIDLabel.Location = new System.Drawing.Point(493, 41);
+            this.blockIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blockIDLabel.Location = new System.Drawing.Point(493, 43);
             this.blockIDLabel.Name = "blockIDLabel";
-            this.blockIDLabel.Size = new System.Drawing.Size(21, 29);
+            this.blockIDLabel.Size = new System.Drawing.Size(25, 36);
             this.blockIDLabel.TabIndex = 27;
             this.blockIDLabel.Text = "-";
             // 
@@ -562,8 +571,8 @@
             // 
             // Heater_GroupBox
             // 
-            this.Heater_GroupBox.Controls.Add(this.Heater_Off);
-            this.Heater_GroupBox.Controls.Add(this.Heater_On);
+            this.Heater_GroupBox.Controls.Add(this.heaterOFF);
+            this.Heater_GroupBox.Controls.Add(this.heaterON);
             this.Heater_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Heater_GroupBox.Location = new System.Drawing.Point(9, 211);
             this.Heater_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -574,32 +583,34 @@
             this.Heater_GroupBox.TabStop = false;
             this.Heater_GroupBox.Text = "Heater";
             // 
-            // Heater_Off
+            // heaterOFF
             // 
-            this.Heater_Off.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Heater_Off.Checked = true;
-            this.Heater_Off.Location = new System.Drawing.Point(106, 34);
-            this.Heater_Off.Margin = new System.Windows.Forms.Padding(4);
-            this.Heater_Off.Name = "Heater_Off";
-            this.Heater_Off.Size = new System.Drawing.Size(109, 60);
-            this.Heater_Off.TabIndex = 1;
-            this.Heater_Off.TabStop = true;
-            this.Heater_Off.Text = "OFF";
-            this.Heater_Off.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Heater_Off.UseVisualStyleBackColor = true;
+            this.heaterOFF.Appearance = System.Windows.Forms.Appearance.Button;
+            this.heaterOFF.Checked = true;
+            this.heaterOFF.Enabled = false;
+            this.heaterOFF.Location = new System.Drawing.Point(106, 34);
+            this.heaterOFF.Margin = new System.Windows.Forms.Padding(4);
+            this.heaterOFF.Name = "heaterOFF";
+            this.heaterOFF.Size = new System.Drawing.Size(109, 60);
+            this.heaterOFF.TabIndex = 1;
+            this.heaterOFF.TabStop = true;
+            this.heaterOFF.Text = "OFF";
+            this.heaterOFF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.heaterOFF.UseVisualStyleBackColor = true;
             // 
-            // Heater_On
+            // heaterON
             // 
-            this.Heater_On.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Heater_On.Location = new System.Drawing.Point(8, 33);
-            this.Heater_On.Margin = new System.Windows.Forms.Padding(4);
-            this.Heater_On.Name = "Heater_On";
-            this.Heater_On.Size = new System.Drawing.Size(90, 60);
-            this.Heater_On.TabIndex = 0;
-            this.Heater_On.Text = "ON";
-            this.Heater_On.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Heater_On.UseVisualStyleBackColor = true;
-            this.Heater_On.CheckedChanged += new System.EventHandler(this.Heater_On_CheckedChanged);
+            this.heaterON.Appearance = System.Windows.Forms.Appearance.Button;
+            this.heaterON.Enabled = false;
+            this.heaterON.Location = new System.Drawing.Point(8, 33);
+            this.heaterON.Margin = new System.Windows.Forms.Padding(4);
+            this.heaterON.Name = "heaterON";
+            this.heaterON.Size = new System.Drawing.Size(90, 60);
+            this.heaterON.TabIndex = 0;
+            this.heaterON.Text = "ON";
+            this.heaterON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.heaterON.UseVisualStyleBackColor = true;
+            this.heaterON.CheckedChanged += new System.EventHandler(this.Heater_On_CheckedChanged);
             // 
             // setTempLabel
             // 
@@ -632,7 +643,7 @@
             this.setSpeedTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.setSpeedTrackBar.Size = new System.Drawing.Size(90, 99);
             this.setSpeedTrackBar.TabIndex = 35;
-            this.setSpeedTrackBar.Scroll += new System.EventHandler(this.setSpeedTrackBar_Scroll);
+            this.setSpeedTrackBar.Scroll += new System.EventHandler(this.setSpeedTrackBarScroll);
             // 
             // setTempTrackBar
             // 
@@ -644,7 +655,7 @@
             this.setTempTrackBar.Size = new System.Drawing.Size(90, 99);
             this.setTempTrackBar.TabIndex = 34;
             this.setTempTrackBar.Value = 70;
-            this.setTempTrackBar.Scroll += new System.EventHandler(this.setTempTrackBar_Scroll);
+            this.setTempTrackBar.Scroll += new System.EventHandler(this.setTempTrackBarScroll);
             // 
             // announcementTextBox
             // 
@@ -665,7 +676,7 @@
             this.sendAnnouncementButton.TabIndex = 32;
             this.sendAnnouncementButton.Text = "Send Announcement";
             this.sendAnnouncementButton.UseVisualStyleBackColor = true;
-            this.sendAnnouncementButton.Click += new System.EventHandler(this.sendAnnouncementButton_Click);
+            this.sendAnnouncementButton.Click += new System.EventHandler(this.sendAnnouncementButtonClick);
             // 
             // groupBox11
             // 
@@ -695,7 +706,7 @@
             this.automaticRadioButton.Text = "Automatic";
             this.automaticRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.automaticRadioButton.UseVisualStyleBackColor = true;
-            this.automaticRadioButton.Click += new System.EventHandler(this.automaticRadioButton_Click);
+            this.automaticRadioButton.Click += new System.EventHandler(this.automaticRadioButtonClick);
             // 
             // manualRadioButton
             // 
@@ -710,7 +721,7 @@
             this.manualRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.manualRadioButton.UseVisualStyleBackColor = true;
             this.manualRadioButton.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
-            this.manualRadioButton.Click += new System.EventHandler(this.manualRadioButton_Click);
+            this.manualRadioButton.Click += new System.EventHandler(this.manualRadioButtonClick);
             // 
             // label7
             // 
@@ -771,7 +782,7 @@
             // 
             this.ctcAuthorityLabel.AutoSize = true;
             this.ctcAuthorityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctcAuthorityLabel.Location = new System.Drawing.Point(209, 94);
+            this.ctcAuthorityLabel.Location = new System.Drawing.Point(181, 99);
             this.ctcAuthorityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ctcAuthorityLabel.Name = "ctcAuthorityLabel";
             this.ctcAuthorityLabel.Size = new System.Drawing.Size(102, 29);
@@ -782,7 +793,7 @@
             // 
             this.ctcSpeedLabel.AutoSize = true;
             this.ctcSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctcSpeedLabel.Location = new System.Drawing.Point(209, 49);
+            this.ctcSpeedLabel.Location = new System.Drawing.Point(20, 101);
             this.ctcSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ctcSpeedLabel.Name = "ctcSpeedLabel";
             this.ctcSpeedLabel.Size = new System.Drawing.Size(79, 29);
@@ -802,7 +813,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 94);
+            this.label4.Location = new System.Drawing.Point(161, 48);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 29);
@@ -967,7 +978,7 @@
             this.serviceButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.serviceButton.UseVisualStyleBackColor = true;
             this.serviceButton.CheckedChanged += new System.EventHandler(this.serviceButton_CheckedChanged);
-            this.serviceButton.Click += new System.EventHandler(this.serviceButton_Click);
+            this.serviceButton.Click += new System.EventHandler(this.serviceButtonClick);
             // 
             // emergencyButton
             // 
@@ -980,12 +991,12 @@
             this.emergencyButton.Text = "EMERGENCY";
             this.emergencyButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.emergencyButton.UseVisualStyleBackColor = true;
-            this.emergencyButton.Click += new System.EventHandler(this.emergencyButton_Click);
+            this.emergencyButton.Click += new System.EventHandler(this.emergencyButtonClick);
             // 
             // RightDoor_GroupBox
             // 
-            this.RightDoor_GroupBox.Controls.Add(this.Right_Closed);
-            this.RightDoor_GroupBox.Controls.Add(this.Right_Open);
+            this.RightDoor_GroupBox.Controls.Add(this.rightClosed);
+            this.RightDoor_GroupBox.Controls.Add(this.rightOpen);
             this.RightDoor_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RightDoor_GroupBox.Location = new System.Drawing.Point(15, 580);
             this.RightDoor_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -997,38 +1008,40 @@
             this.RightDoor_GroupBox.Text = "Right Door";
             this.RightDoor_GroupBox.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
-            // Right_Closed
+            // rightClosed
             // 
-            this.Right_Closed.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Right_Closed.Checked = true;
-            this.Right_Closed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Right_Closed.Location = new System.Drawing.Point(109, 35);
-            this.Right_Closed.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Right_Closed.Name = "Right_Closed";
-            this.Right_Closed.Size = new System.Drawing.Size(120, 60);
-            this.Right_Closed.TabIndex = 4;
-            this.Right_Closed.TabStop = true;
-            this.Right_Closed.Text = "CLOSED";
-            this.Right_Closed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Right_Closed.UseVisualStyleBackColor = true;
+            this.rightClosed.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rightClosed.Checked = true;
+            this.rightClosed.Enabled = false;
+            this.rightClosed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightClosed.Location = new System.Drawing.Point(109, 35);
+            this.rightClosed.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.rightClosed.Name = "rightClosed";
+            this.rightClosed.Size = new System.Drawing.Size(120, 60);
+            this.rightClosed.TabIndex = 4;
+            this.rightClosed.TabStop = true;
+            this.rightClosed.Text = "CLOSED";
+            this.rightClosed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rightClosed.UseVisualStyleBackColor = true;
             // 
-            // Right_Open
+            // rightOpen
             // 
-            this.Right_Open.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Right_Open.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Right_Open.Location = new System.Drawing.Point(9, 35);
-            this.Right_Open.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Right_Open.Name = "Right_Open";
-            this.Right_Open.Size = new System.Drawing.Size(90, 60);
-            this.Right_Open.TabIndex = 3;
-            this.Right_Open.Text = "OPEN";
-            this.Right_Open.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Right_Open.UseVisualStyleBackColor = true;
+            this.rightOpen.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rightOpen.Enabled = false;
+            this.rightOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightOpen.Location = new System.Drawing.Point(9, 35);
+            this.rightOpen.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.rightOpen.Name = "rightOpen";
+            this.rightOpen.Size = new System.Drawing.Size(90, 60);
+            this.rightOpen.TabIndex = 3;
+            this.rightOpen.Text = "OPEN";
+            this.rightOpen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rightOpen.UseVisualStyleBackColor = true;
             // 
             // LeftDoor_GroupBox
             // 
-            this.LeftDoor_GroupBox.Controls.Add(this.Left_Closed);
-            this.LeftDoor_GroupBox.Controls.Add(this.Left_Open);
+            this.LeftDoor_GroupBox.Controls.Add(this.leftClosed);
+            this.LeftDoor_GroupBox.Controls.Add(this.leftOpen);
             this.LeftDoor_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LeftDoor_GroupBox.Location = new System.Drawing.Point(15, 456);
             this.LeftDoor_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -1039,40 +1052,42 @@
             this.LeftDoor_GroupBox.TabStop = false;
             this.LeftDoor_GroupBox.Text = "Left Door";
             // 
-            // Left_Closed
+            // leftClosed
             // 
-            this.Left_Closed.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Left_Closed.Checked = true;
-            this.Left_Closed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Left_Closed.Location = new System.Drawing.Point(107, 39);
-            this.Left_Closed.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Left_Closed.Name = "Left_Closed";
-            this.Left_Closed.Size = new System.Drawing.Size(120, 60);
-            this.Left_Closed.TabIndex = 4;
-            this.Left_Closed.TabStop = true;
-            this.Left_Closed.Text = "CLOSED";
-            this.Left_Closed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Left_Closed.UseVisualStyleBackColor = true;
-            this.Left_Closed.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.leftClosed.Appearance = System.Windows.Forms.Appearance.Button;
+            this.leftClosed.Checked = true;
+            this.leftClosed.Enabled = false;
+            this.leftClosed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftClosed.Location = new System.Drawing.Point(107, 39);
+            this.leftClosed.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.leftClosed.Name = "leftClosed";
+            this.leftClosed.Size = new System.Drawing.Size(120, 60);
+            this.leftClosed.TabIndex = 4;
+            this.leftClosed.TabStop = true;
+            this.leftClosed.Text = "CLOSED";
+            this.leftClosed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.leftClosed.UseVisualStyleBackColor = true;
+            this.leftClosed.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // Left_Open
+            // leftOpen
             // 
-            this.Left_Open.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Left_Open.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Left_Open.Location = new System.Drawing.Point(9, 39);
-            this.Left_Open.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Left_Open.Name = "Left_Open";
-            this.Left_Open.Size = new System.Drawing.Size(90, 60);
-            this.Left_Open.TabIndex = 3;
-            this.Left_Open.Text = "OPEN";
-            this.Left_Open.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Left_Open.UseVisualStyleBackColor = true;
-            this.Left_Open.CheckedChanged += new System.EventHandler(this.Left_Open_CheckedChanged);
+            this.leftOpen.Appearance = System.Windows.Forms.Appearance.Button;
+            this.leftOpen.Enabled = false;
+            this.leftOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftOpen.Location = new System.Drawing.Point(9, 39);
+            this.leftOpen.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.leftOpen.Name = "leftOpen";
+            this.leftOpen.Size = new System.Drawing.Size(90, 60);
+            this.leftOpen.TabIndex = 3;
+            this.leftOpen.Text = "OPEN";
+            this.leftOpen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.leftOpen.UseVisualStyleBackColor = true;
+            this.leftOpen.CheckedChanged += new System.EventHandler(this.Left_Open_CheckedChanged);
             // 
             // Lights_GroupBox
             // 
             this.Lights_GroupBox.Controls.Add(this.Lights_Off);
-            this.Lights_GroupBox.Controls.Add(this.Lights_On);
+            this.Lights_GroupBox.Controls.Add(this.lightsON);
             this.Lights_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lights_GroupBox.Location = new System.Drawing.Point(11, 330);
             this.Lights_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -1087,6 +1102,7 @@
             // 
             this.Lights_Off.Appearance = System.Windows.Forms.Appearance.Button;
             this.Lights_Off.Checked = true;
+            this.Lights_Off.Enabled = false;
             this.Lights_Off.Location = new System.Drawing.Point(111, 44);
             this.Lights_Off.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Lights_Off.Name = "Lights_Off";
@@ -1097,22 +1113,23 @@
             this.Lights_Off.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Lights_Off.UseVisualStyleBackColor = true;
             // 
-            // Lights_On
+            // lightsON
             // 
-            this.Lights_On.Appearance = System.Windows.Forms.Appearance.Button;
-            this.Lights_On.Location = new System.Drawing.Point(11, 44);
-            this.Lights_On.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Lights_On.Name = "Lights_On";
-            this.Lights_On.Size = new System.Drawing.Size(90, 60);
-            this.Lights_On.TabIndex = 3;
-            this.Lights_On.Text = "ON";
-            this.Lights_On.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Lights_On.UseVisualStyleBackColor = true;
+            this.lightsON.Appearance = System.Windows.Forms.Appearance.Button;
+            this.lightsON.Enabled = false;
+            this.lightsON.Location = new System.Drawing.Point(11, 44);
+            this.lightsON.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.lightsON.Name = "lightsON";
+            this.lightsON.Size = new System.Drawing.Size(90, 60);
+            this.lightsON.TabIndex = 3;
+            this.lightsON.Text = "ON";
+            this.lightsON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lightsON.UseVisualStyleBackColor = true;
             // 
             // AC_GroupBox
             // 
-            this.AC_GroupBox.Controls.Add(this.AC_OFF);
-            this.AC_GroupBox.Controls.Add(this.AC_ON);
+            this.AC_GroupBox.Controls.Add(this.acOFF);
+            this.AC_GroupBox.Controls.Add(this.acON);
             this.AC_GroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AC_GroupBox.Location = new System.Drawing.Point(9, 90);
             this.AC_GroupBox.Margin = new System.Windows.Forms.Padding(4);
@@ -1123,31 +1140,33 @@
             this.AC_GroupBox.TabStop = false;
             this.AC_GroupBox.Text = "AC";
             // 
-            // AC_OFF
+            // acOFF
             // 
-            this.AC_OFF.Appearance = System.Windows.Forms.Appearance.Button;
-            this.AC_OFF.Checked = true;
-            this.AC_OFF.Location = new System.Drawing.Point(106, 35);
-            this.AC_OFF.Margin = new System.Windows.Forms.Padding(4);
-            this.AC_OFF.Name = "AC_OFF";
-            this.AC_OFF.Size = new System.Drawing.Size(109, 60);
-            this.AC_OFF.TabIndex = 1;
-            this.AC_OFF.TabStop = true;
-            this.AC_OFF.Text = "OFF";
-            this.AC_OFF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.AC_OFF.UseVisualStyleBackColor = true;
+            this.acOFF.Appearance = System.Windows.Forms.Appearance.Button;
+            this.acOFF.Checked = true;
+            this.acOFF.Enabled = false;
+            this.acOFF.Location = new System.Drawing.Point(106, 35);
+            this.acOFF.Margin = new System.Windows.Forms.Padding(4);
+            this.acOFF.Name = "acOFF";
+            this.acOFF.Size = new System.Drawing.Size(109, 60);
+            this.acOFF.TabIndex = 1;
+            this.acOFF.TabStop = true;
+            this.acOFF.Text = "OFF";
+            this.acOFF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.acOFF.UseVisualStyleBackColor = true;
             // 
-            // AC_ON
+            // acON
             // 
-            this.AC_ON.Appearance = System.Windows.Forms.Appearance.Button;
-            this.AC_ON.Location = new System.Drawing.Point(8, 35);
-            this.AC_ON.Margin = new System.Windows.Forms.Padding(4);
-            this.AC_ON.Name = "AC_ON";
-            this.AC_ON.Size = new System.Drawing.Size(90, 60);
-            this.AC_ON.TabIndex = 0;
-            this.AC_ON.Text = "ON";
-            this.AC_ON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.AC_ON.UseVisualStyleBackColor = true;
+            this.acON.Appearance = System.Windows.Forms.Appearance.Button;
+            this.acON.Enabled = false;
+            this.acON.Location = new System.Drawing.Point(8, 35);
+            this.acON.Margin = new System.Windows.Forms.Padding(4);
+            this.acON.Name = "acON";
+            this.acON.Size = new System.Drawing.Size(90, 60);
+            this.acON.TabIndex = 0;
+            this.acON.Text = "ON";
+            this.acON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.acON.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -1390,15 +1409,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // trainIDLabel
-            // 
-            this.trainIDLabel.AutoSize = true;
-            this.trainIDLabel.Location = new System.Drawing.Point(131, 11);
-            this.trainIDLabel.Name = "trainIDLabel";
-            this.trainIDLabel.Size = new System.Drawing.Size(123, 25);
-            this.trainIDLabel.TabIndex = 45;
-            this.trainIDLabel.Text = "prevToNext";
-            // 
             // TrainController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -1463,8 +1473,8 @@
         private System.Windows.Forms.Label trainIDLabel1;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.GroupBox Heater_GroupBox;
-        private System.Windows.Forms.RadioButton Heater_Off;
-        private System.Windows.Forms.RadioButton Heater_On;
+        private System.Windows.Forms.RadioButton heaterOFF;
+        private System.Windows.Forms.RadioButton heaterON;
         private System.Windows.Forms.Label setTempLabel;
         private System.Windows.Forms.Label setSpeedLabel;
         private System.Windows.Forms.TrackBar setSpeedTrackBar;
@@ -1492,17 +1502,17 @@
         private System.Windows.Forms.CheckBox serviceButton;
         private System.Windows.Forms.CheckBox emergencyButton;
         private System.Windows.Forms.GroupBox RightDoor_GroupBox;
-        private System.Windows.Forms.RadioButton Right_Closed;
-        private System.Windows.Forms.RadioButton Right_Open;
+        private System.Windows.Forms.RadioButton rightClosed;
+        private System.Windows.Forms.RadioButton rightOpen;
         private System.Windows.Forms.GroupBox LeftDoor_GroupBox;
-        private System.Windows.Forms.RadioButton Left_Closed;
-        private System.Windows.Forms.RadioButton Left_Open;
+        private System.Windows.Forms.RadioButton leftClosed;
+        private System.Windows.Forms.RadioButton leftOpen;
         private System.Windows.Forms.GroupBox Lights_GroupBox;
         private System.Windows.Forms.RadioButton Lights_Off;
-        private System.Windows.Forms.RadioButton Lights_On;
+        private System.Windows.Forms.RadioButton lightsON;
         private System.Windows.Forms.GroupBox AC_GroupBox;
-        private System.Windows.Forms.RadioButton AC_OFF;
-        private System.Windows.Forms.RadioButton AC_ON;
+        private System.Windows.Forms.RadioButton acOFF;
+        private System.Windows.Forms.RadioButton acON;
         private System.Windows.Forms.Label trainTempLabel;
         private System.Windows.Forms.Label trainPowerLabel;
         private System.Windows.Forms.Label trainSpeedLabel;

@@ -1,4 +1,10 @@
-﻿using System;
+﻿//Block Tracker helper class
+//Created by : Naran Babha
+//Date Created : 2/20/17
+//This class helps the train controller figure out its position on the track
+//it holds the direction of the train as well
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +26,7 @@ namespace TrainProject.HelperObjects
         List<Block> blockList = new List<Block>();
         List<Block> blocks = new List<Block>();
         List<Switch> switchList = new List<Switch>();
+        //constructor used for the main tracker
         public BlockTracker(String line, int l)
         {
             lineID = l;
@@ -28,6 +35,7 @@ namespace TrainProject.HelperObjects
             else currentBlock = getBlock(152);
 
         }
+        //constructor used to conduct future searches for speed and authority
         public BlockTracker(bool b, int i, int l)
         {
             lineID = l;
@@ -36,6 +44,7 @@ namespace TrainProject.HelperObjects
             currentBlock = getBlock(blockID);
             prevToNext = b;
         }
+        //loads the blocks for the line that the train is assigned to
         private void loadClassesFromDB()
         {
             string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
@@ -62,6 +71,7 @@ namespace TrainProject.HelperObjects
                 }
             }
         }
+        //gets a block from the blocks list based on the block ID
         public Block getBlock(int blockID)
         {
             foreach (Block block in blocks)
@@ -70,7 +80,9 @@ namespace TrainProject.HelperObjects
             }
             return null;
         }
-
+        //main fucntion for the class. gets next block based on current block and direction.
+        //if the next block is ambiguous because the train is on a swtich, it returns null
+        //and the train has to figure out its next block based on the switch beacons
         public Block getNextBlock(int i)
         {
             int blockID = getDataBaseID(i);
@@ -133,6 +145,7 @@ namespace TrainProject.HelperObjects
             }
             return 0;
         }
+        //cofigures direction for the train after passing a switch
         public void configureDirection()
         {
             if (currentBlock.prevBlockId == null) prevToNext = true;
@@ -142,13 +155,23 @@ namespace TrainProject.HelperObjects
         {
             return currentBlock;
         }
+        //gets the distance until the block exceeds its authority
+        //if the next block is ambiguous, then it simply returns a value telling the controller
+        // to slow down to a very slow speed so that it can stop when it needs to
         public double getDistance(int n)
         {
             int distance = currentBlock.length;
             for(int i = 0; i < n-1; i++)
             {
                 currentBlock = getNextBlock(currentBlock.blockNum);
-                distance += currentBlock.length;
+                if (currentBlock != null)
+                {
+                    distance += currentBlock.length;
+                }
+                else
+                {
+                    return distance + 50;
+                }
             }
             return distance;
         }
@@ -160,6 +183,7 @@ namespace TrainProject.HelperObjects
         {
             return onSwitch;
         }
+        //gets direction of the train
         public bool getDirection(int i)
         {
             Block temp = getBlock(i);
@@ -170,6 +194,7 @@ namespace TrainProject.HelperObjects
             }
             return prevToNext;
         }
+        //gets the minimum speed limit of the next two blocks
         public double getSpeedLimit()
         {
             int speed = currentBlock.speedLimit;

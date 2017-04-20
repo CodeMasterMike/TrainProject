@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Pavan K. Kottapalli
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +19,11 @@ namespace TrainModelProject
 {
     public partial class TrainModel : Form
     {
+        //private variables declarations
         private int trainId;
         private double train_mass = 37103.86; //kg
         private double person_mass = 73; //kg
-        private double mass = 0;
+        private double mass = 0; //kg
         private double train_length = 32.2; //m
         private double train_height = 3.42; //m
         private double train_width = 2.65; //m
@@ -65,39 +70,47 @@ namespace TrainModelProject
         int lineId;
         private bool lightStatus = false;
 
+        //Returning current speed function for train controller
         public double getCurrSpeed()
         {
             return currSpeedms;
         }
+
+        //Updating anouncements from train controller
         public void updateAnnouncement(string s)
         {
             announcementLabel.Text = s;
         }
 
+        //Position done for train controller
         public int getCurrBlock()
         {
             return current_block.blockId;
         }
 
+        //get id for train models
         public int getTrainId()
         {
             return trainId;
         }
 
+        //creating instance of train controller
         public TrainController getTC()
         {
             return TC;
         }
 
-
+        //forwarding speed and authority to train controller from train model
         public void updateSpeedAndAuthority(double speed, int authority)
         {
             TC.updateSpeedAndAuthority(speed, authority);
         }
 
+        //creating the class
         public TrainModel() { }
 
-        public TrainModel(int lId, int trainId) 
+        //Train model class specifics
+        public TrainModel(int lId, int trainId)
         {
             InitializeComponent();
             lineId = lId;
@@ -114,12 +127,12 @@ namespace TrainModelProject
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
- 
+        //update time function that is called every tick -- Main function
         public void updateTime(String time)
         {
             if (start == 0) return;
             setTimeLabel(time);
-            mass = person_mass*train_pass + train_mass;
+            mass = person_mass * train_pass + train_mass;
             TC.trackPosition(currSpeedms);
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
@@ -132,9 +145,11 @@ namespace TrainModelProject
             if (TC != null)
             {
                 //trainControllerWindow.updateTime(displayTime);
-               Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
+                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
+
+        //Method to update light status from train controller
         public void updateLightStatus(bool lights)
         {
             lightStatus = lights;
@@ -147,17 +162,20 @@ namespace TrainModelProject
                 train_lights = "On";
             }
         }
+
+        //Method to update door status from train controller
         public void updateDoorStatus(int n)
         {
             if (n == 0) Train_Door_L.Text = "Closed";
             else if (n == 1) Train_Door_L.Text = "Left";
             else if (n == 2) Train_Door_L.Text = "Right";
-            if(n != 0) announcementLabel.Text = "";
+            if (n != 0) announcementLabel.Text = "";
             Train_Door = n;
         }
+
+        //currentblock function for position and variables to calculate speed
         public void currentBlock()
         {
-            
             
             p = currSpeedms;
             if (block_distance >= p) block_distance -= p;
@@ -173,10 +191,10 @@ namespace TrainModelProject
                 }
                 prev_block = current_block;
                 current_block = next_block;
-                
+
 
                 int number = 0;
-                if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
+                if (current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
                 TC.sendSwitchBeaconInfo(number);
                 block_distance = current_block.length - p;
                 if (lineId == 2)
@@ -191,17 +209,19 @@ namespace TrainModelProject
                 }
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
-               // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
-               
+                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
 
             }
 
+            //If train door is open, move passengers between the track and train
             if (Train_Door != 0)
             {
                 // Enter Passenger Code
                 stationPassengers(current_block.station);
                 train_width = 6;
             }
+
+            //Check for train failures
             if (TC.failureStatus == 0)
             {
                 label26.ForeColor = Color.Green;
@@ -241,11 +261,13 @@ namespace TrainModelProject
 
         }
 
+        
         public void travel()
         {
 
         }
 
+        //Method to calculate and move passengers between Train model and track model at station
         public void stationPassengers(Station station)
         {
             pass_count = pass_count + 1;
@@ -256,7 +278,7 @@ namespace TrainModelProject
                 passenger_off = rnd.Next(1, Convert.ToInt32(train_pass));
                 train_pass = Math.Abs(passenger_off - train_pass);
 
-                pass_from_station = station.getWaiting();
+                if (station != null) pass_from_station = station.getWaiting();
                 if (pass_from_station + train_pass > 75)
                 {
                     passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
@@ -276,6 +298,7 @@ namespace TrainModelProject
             }
         }
 
+        //updategui function to update Train Model GUI for every tick
         public void updateGUI()
         {
             currSpeedmsF = currSpeedms / 0.44704;
@@ -295,25 +318,29 @@ namespace TrainModelProject
             //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
-           
         }
 
+        //Function to get updated power from train controller
         public void updatePower(double p)
         {
             power = p;
             train_power.Text = p.ToString("#.##");
         }
 
+        //Clock function in GUI
         private void setTimeLabel(String t)
         {
             Train_ID_L.Text = t;
         }
-        
+
+        //Service brake function from Train Contoller
         public void setService(bool b)
         {
             if (b) service = true;
             else service = false;
         }
+
+        //Service emergency function from Train Contoller
         public void setEmergency(bool b)
         {
             if (b) emergency = true;
@@ -323,6 +350,8 @@ namespace TrainModelProject
         {
             start = 1;
         }
+
+        //Main function to calculate spped from power command received fron 
         private void calculateSpeed()
         {
             if (currSpeedms > 0)
@@ -331,7 +360,7 @@ namespace TrainModelProject
                 double friction_coeff = 0.002;
                 double train_slope_M = Math.Abs(train_slope);
                 double cos_value = Math.Cos(train_slope_M * (Math.PI / 180.0));
-                
+
                 force = power / currSpeedms;
 
                 force = force - (mass * gravity * friction_coeff * cos_value);
@@ -344,7 +373,7 @@ namespace TrainModelProject
                 {
                     acceleration = force / (mass * Math.Sin(train_slope_M * (Math.PI / 180.0)));
                 }
-                
+
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
                 if (currSpeedms + acceleration < 0)
                 {
@@ -357,41 +386,49 @@ namespace TrainModelProject
                 }
                 //currSpeedms = acceleration + currSpeedms;
             }
-            else if(power > 0) currSpeedms = max_acceleration + currSpeedms;
+            else if (power > 0) currSpeedms = max_acceleration + currSpeedms;
         }
+
+        //service brake calculations
         private void calculateService()
         {
             if (currSpeedms < serviceBrake) currSpeedms = 0;
             else currSpeedms = currSpeedms - serviceBrake;
-           
+
         }
+
+        //emergency brake calculations
         private void calculateEmergency()
         {
             if (currSpeedms < emergencyBrake) currSpeedms = 0;
             else currSpeedms = currSpeedms - emergencyBrake;
-            
+
         }
+
+        //Updating thermostat on Train Model GUI
         public void updateThermostat(int status)
         {
-            if(status == 0)
+            if (status == 0)
             {
                 AC = 0;
                 heater = 0;
                 train_facilities = "Good";
             }
-            else if(status == 1)
+            else if (status == 1)
             {
                 AC = 1;
                 heater = 0;
                 train_facilities = "A/C On";
             }
-            else if(status == 2)
+            else if (status == 2)
             {
                 AC = 0;
                 heater = 1;
                 train_facilities = "Heater On";
             }
         }
+
+        //Updating temperature values when facilities is changed
         private void calculateTemperature()
         {
             if (AC == 1)
@@ -420,6 +457,7 @@ namespace TrainModelProject
 
         }
 
+        //Below methods are of failures and fixes of the failures.
         private void failTrainEngineButton_Click(object sender, EventArgs e)
         {
             train_failures = 1;

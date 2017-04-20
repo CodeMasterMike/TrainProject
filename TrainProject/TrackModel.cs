@@ -132,6 +132,7 @@ namespace Track_Layout_UI
             greenLineStationBeacons[137] = currBeacon;
 
         }
+        //called by TrainModel to get station beacon
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
             if (lineNum == 2)
@@ -144,22 +145,16 @@ namespace Track_Layout_UI
             }
             return null;
         }
-        //end temp stuff
+        //end hard coded items
+
+        //intialize the UI window
         public TrackModelUI()
         {
             InitializeComponent();
-            /*List<Line> testLineList;
-            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(str))
-            {
-                testLineList = DatabaseInterface.loadLinesFromDB(con);
-            }
-            if(testLineList.Count > 1)
-            {
-                loadClassesFromDB();
-            }*/
         }
 
+        //requires local DB to be already loaded
+        //populates all infrastructure and line/section/block related 
         private void loadClassesFromDB()
         {
             string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
@@ -178,11 +173,12 @@ namespace Track_Layout_UI
             parseSwitchEnds();
             TrackControllerModule.initializeSwitches(switchList);
             TrackControllerModule.initializeCrossings(getCrossings());
+            //send the infrastructure to the Track Controller and CTC
             TrainSimulation.mainOffice.initializeTrackLayout(lineList);
-            //Office.initializeTrackLayout(lineList);
             initializeLists();
         }
 
+        //used by Wayside, returns the bounds for each switch
         private void parseSwitchEnds()
         {
             Block sourceBlock, t1Block, t2Block;
@@ -191,6 +187,7 @@ namespace Track_Layout_UI
                 //find source block
                 sourceBlock = blockList.Find(x => s.sourceBlockId == x.blockId);
                 s.sourceBlockId_end = findEndBlock(sourceBlock);
+                //now find targets
                 t1Block = blockList.Find(x => s.targetBlockId1 == x.blockId);
                 s.targetBlockId1_end = findEndBlock(t1Block);
                 t2Block = blockList.Find(x => s.targetBlockId2 == x.blockId);
@@ -198,6 +195,7 @@ namespace Track_Layout_UI
             }
         }
 
+        //finds the final block after a switch until the next switch
         private int? findEndBlock(Block startBlock)
         {
             Boolean prevToNext;
@@ -237,17 +235,20 @@ namespace Track_Layout_UI
             return curBlock.blockId;
         }
 
+        //called originally by CTC, through Wayside
         public void dispatchTrain(int trainId, TrainModel train, double speed, int authority)
         {
-            trainList[trainId] = train;
+            trainList[trainId] = train; //keep array of active trains
             train.updateSpeedAndAuthority(speed,authority);
         }
 
+        //called originally by CTC through Wayside
         public void updateSpeedAndAuthority(int trainId, double speed, int authority)
         {
             trainList[trainId].updateSpeedAndAuthority(speed, authority);
         }
 
+        //used to simply find a block through a block id
         public Block findBlock(int blockId)
         {
             foreach(Block block in blockList)
@@ -260,7 +261,8 @@ namespace Track_Layout_UI
             return null;
         }
 
-        public Block findYardBlock(int lineId) //TODO actually use this
+        //used when train is initially dispatched to find yard block
+        public Block findYardBlock(int lineId)
         {
             foreach (Line line in lineList)
             {
@@ -279,7 +281,8 @@ namespace Track_Layout_UI
             return null;
         }
 
-        //only returns null if the yard
+        //only returns null if going to the yard
+        //called by TrainModel to get the next block that the train will be moving to, queries the Wayside for switch states if needed
         public Block getNextBlock(Block prevBlock, Block currBlock, int? lineId = null)
         {    
             Block nextBlock = null;
@@ -287,7 +290,7 @@ namespace Track_Layout_UI
             bool isTarget = false;
             if (prevBlock == null && currBlock == null) //coming from yard
             {
-                return findYardBlock((int)lineId); //TODO use findYardBlock
+                return findYardBlock((int)lineId);
             }
             if(currBlock.parentSwitch != null)
             {
@@ -353,11 +356,7 @@ namespace Track_Layout_UI
             return nextBlock;
         }
 
-        internal void getNextBlock(object g)
-        {
-            throw new NotImplementedException();
-        }
-
+        //called by TrainModel when moving to a new block
         public void updateBlockStatus(int blockId, bool occupied)
         {
             findBlock(blockId).isOccupied = occupied;
@@ -368,45 +367,18 @@ namespace Track_Layout_UI
                     blockOccupiedTextBox.Text = "Yes";
             }
             Block blk = findBlock(blockId);
-                
+            //notify Wayside of update
             TrackControllerModule.updateBlockOccupancy(blk, occupied);
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button12_Click(object sender, EventArgs e) //open file
-        {
-
-        }
-
+        //used to select the Excel file
         private void selectFile(object sender, EventArgs e)
         {
             openExcelFileDialog.ShowDialog();
         }
 
+        //loads the excel file into a data view grid
         private List<ExcelFileLayout> loadDvgIntoList(DataGridView excelFileData, List<ExcelFileLayout> excelFileList)
         {
             foreach (DataGridViewRow row in excelFileData.Rows)
@@ -431,6 +403,7 @@ namespace Track_Layout_UI
             return excelFileList;
         }
 
+        //find only unique line names
         private List<ExcelFileLayout> populateExcelListOfUniqueLines(List<ExcelFileLayout> allLines)
         {
             List<ExcelFileLayout> uniqueLines = new List<ExcelFileLayout>();
@@ -452,6 +425,7 @@ namespace Track_Layout_UI
             }
             return uniqueLines;
         }
+        //find only unique sections
         private List<ExcelFileLayout> populateExcelListOfUniqueSections(List<ExcelFileLayout> allSections)
         {
             List<ExcelFileLayout> uniqueSections = new List<ExcelFileLayout>();
@@ -474,18 +448,16 @@ namespace Track_Layout_UI
             }
             return uniqueSections;
         }
+        //insert the line item into the line DB table
         private void insertLineIntoDB(SqlConnection con, ExcelFileLayout line)
         {
-            //SqlTransaction transaction;
-            //transaction = con.BeginTransaction("LineTransaction");
             SqlCommand cmd = new SqlCommand("INSERT INTO Lines (Name) VALUES (@Name)");
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
-            //cmd.Transaction = transaction;
             cmd.Parameters.AddWithValue("@Name", line.Line);
             cmd.ExecuteNonQuery();
-            //transaction.Commit();
         }
+        //insert the section item into the section DB table
         private void insertSectionIntoDB(SqlConnection con, ExcelFileLayout section) //assumes associated line is already in DB
         {
             SqlCommand read = new SqlCommand("SELECT * FROM Lines WHERE Name = @Name");
@@ -511,6 +483,7 @@ namespace Track_Layout_UI
             else
                 Console.WriteLine("Associated line not found for section.");
         }
+        //insert block item into the block DB table
         private void insertBlockIntoDB(SqlConnection con, ExcelFileLayout block)
         {
             SqlCommand read = new SqlCommand("SELECT Sections.SectionId, Sections.Name AS SectionName, Lines.Name AS LineName FROM Sections JOIN Lines ON Sections.LineId = Lines.LineId WHERE Sections.Name = @SectionName AND Lines.Name = @LineName");
@@ -545,7 +518,8 @@ namespace Track_Layout_UI
             else
                 Console.WriteLine("Associated section not found for block.");
         }
-        // ***still need to get second sheet (need Green AND Red line)
+        
+        //only uses 2nd sheet from the excel document, ignores first sheet (assume picture is there)
         private void openExcelFileDialog_FileOk(object sender, CancelEventArgs e)
         {
             string filePath = openExcelFileDialog.FileName;
@@ -599,9 +573,19 @@ namespace Track_Layout_UI
             List<ExcelFileLayout> excelFileLines = populateExcelListOfUniqueLines(excelFileEntries);
             List<ExcelFileLayout> excelFileSections = populateExcelListOfUniqueSections(excelFileEntries);
             List<ExcelFileLayout> excelFileBlocks = excelFileEntries;
-
+            string str;
+            try
+            {
+                str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //MessageBox.Show(str);
+                //str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //str = ConfigurationManager.ConnectionStrings[0].ConnectionString;
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
             //now actually write/load the data into the database
-            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(str))
             {
                 //first delete all current db rows
@@ -634,7 +618,7 @@ namespace Track_Layout_UI
                 loadClassesFromDB();
             }
         }
-
+        //populates list of crossings
         private List<Crossing> getCrossings()
         {
             List<Crossing> crossingList = new List<Crossing>();
@@ -647,7 +631,7 @@ namespace Track_Layout_UI
             }
             return crossingList;
         }
-
+        //initialize UI list items (Line/Block lists)
         public void initializeLists()
         {
             lineSelectComboBox.DataSource = lineList;
@@ -682,7 +666,7 @@ namespace Track_Layout_UI
             blockSelectListBox.DisplayMember = "blockNum";
             blockSelectListBox.ValueMember = "blockId";
         }
-        
+        //deletes all rows in DB
         private void deleteAllDbRows(SqlConnection con)
         {
             con.Open();
@@ -715,6 +699,7 @@ namespace Track_Layout_UI
             con.Close();
         }
 
+        //drops contraints from the DB
         //assume connection already open
         private void dropConstraints(SqlConnection con)
         {
@@ -737,6 +722,7 @@ namespace Track_Layout_UI
             cmd = new SqlCommand(sqlDropFK, con);
             cmd.ExecuteNonQuery();
         }
+        //re-add contraints to DB
         private void addConstraints(SqlConnection con)
         {
             string sqlAddFK = "ALTER TABLE Sections ADD CONSTRAINT [FK_Sections_ToTable] FOREIGN KEY ([LineId]) REFERENCES [dbo].[Lines] ([LineId])";
@@ -758,17 +744,12 @@ namespace Track_Layout_UI
             cmd = new SqlCommand(sqlAddFK, con);
             cmd.ExecuteNonQuery();
         }
-
-        private void InsertToSql_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void uploadButtonClick(object sender, EventArgs e)
         {
             openExcelFileDialog.ShowDialog();
         }
-
+        //when selected line changes, update the block list
         private void lineSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedLine = (Line)((ComboBox)sender).SelectedItem;
@@ -833,6 +814,7 @@ namespace Track_Layout_UI
             blockSelectListBox.ValueMember = "blockId";
         }
 
+        //simply updates the section for the block/line combo selected
         private void updateSelectedSection(int blockId)
         {
             foreach(Line line in lineList)
@@ -850,6 +832,7 @@ namespace Track_Layout_UI
             }
         }
 
+        //update block info on UI to display all block information
         private void blockSelectedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(selectedLine != null)
@@ -868,16 +851,20 @@ namespace Track_Layout_UI
                     blockSpeedLimitTextBox.Text = selectedBlock.speedLimit.ToString();
                     blockStationTextBox.Text = "X";
                     if (selectedBlock.station != null)
+                    {
                         blockStationTextBox.Text = selectedBlock.station.name;
+                        blockPersonsWaitingTextBox.Text = selectedBlock.station.numWaiting.ToString();
+                    }
                     blockPersonsUnloadingTextBox.Text = "0"; //TODO
                     blockTemperatureTextBox.Text = temperature.ToString();
                     blockHeaterStatusTextBox.Text = "Off";
                     if(selectedBlock.heaterStatus)
                         blockHeaterStatusTextBox.Text = "On";
-                    blockIsUndergroundTextBox.Text = "NO";
+                    blockIsUndergroundTextBox.Text = "No";
                     if(selectedBlock.isUnderground)
-                        blockIsUndergroundTextBox.Text = "YES";
+                        blockIsUndergroundTextBox.Text = "Yes";
                     blockSwitchTextBox.Text = "None";
+                    switchNumTextBox.Text = "X";
                     if(selectedBlock.parentSwitch != null)
                     {
                         if (selectedBlock.parentSwitch.sourceBlockId == selectedBlock.blockId)
@@ -887,19 +874,32 @@ namespace Track_Layout_UI
                         switchNumTextBox.Text = selectedBlock.parentSwitch.switchId.ToString();
                     }
                     blockOccupiedTextBox.Text = "No";
-                    if(selectedBlock.isOccupied)
+                    if (selectedBlock.isOccupied)
                         blockOccupiedTextBox.Text = "Yes";
                     blockArrowDirectionTextBox.Text = "-->";
                     if(selectedBlock.bidirectional)
                         blockArrowDirectionTextBox.Text = "<-->";
-                    blockPersonsWaitingTextBox.Text = "X";
-                    blockBeaconTextBox.Text = "X";
+                    stationBeaconTextBox.Text = "X";
+                    if(selectedLine.lineId == 1)
+                    {
+                        if (greenLineStationBeacons[selectedBlock.blockNum] != null)
+                            stationBeaconTextBox.Text = greenLineStationBeacons[selectedBlock.blockNum].name;
+                    }
+                    else if (selectedLine.lineId == 2)
+                    {
+                        if(redLineStationBeacons[selectedBlock.blockNum] != null)
+                            stationBeaconTextBox.Text = redLineStationBeacons[selectedBlock.blockNum].name;
+                    }
+                    switchBeaconTextBox.Text = "X";
+                    if(selectedBlock.switchBeacon != null)
+                        switchBeaconTextBox.Text = selectedBlock.switchBeacon.blockId.ToString();
                     blockEmergencyLabel.Text = selectedLine.name + " Line, Block " +selectedSection.name+selectedBlock.blockNum;
                     updateFailureButtons();
                 }
             }
         }
 
+        //update selected block's failure buttons
         private void updateFailureButtons()
         {
             if(selectedBlock.isRailBroken)
@@ -934,6 +934,7 @@ namespace Track_Layout_UI
             }
         }
 
+        //fix a specifix block (from CTC originally)
         public void fixBlock(int blockId)
         {
             Block currBlock = findBlock(blockId);
@@ -951,6 +952,26 @@ namespace Track_Layout_UI
             }
         }
 
+        //close a block (from CTC originally)
+        public void closeBlock(int blockId)
+        {
+            Block currBlock = findBlock(blockId);
+            currBlock.isCircuitBroken = false;
+            currBlock.isPowerBroken = false;
+            currBlock.isRailBroken = true;
+            TrackControllerModule.causeFailure(currBlock.blockId);
+            if (selectedBlock.blockId == currBlock.blockId)
+            {
+                railStatus.Text = "Rail - BROKEN";
+                trackCircuitStatus.Text = "Track Circuit - OK";
+                powerStatus.Text = "Power - OK";
+                railStatus.BackColor = Color.Red;
+                trackCircuitStatus.BackColor = Color.Lime;
+                powerStatus.BackColor = Color.Lime;
+            }
+        }
+
+        //break rail on selected murphy block 
         private void brokenRailButton_Click(object sender, EventArgs e)
         {
             TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
@@ -961,6 +982,7 @@ namespace Track_Layout_UI
             }
         }
 
+        //break track circuit on selected murphy block 
         private void brokenTrackCircuitButton_Click(object sender, EventArgs e)
         {
             TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
@@ -971,6 +993,7 @@ namespace Track_Layout_UI
             }
         }
 
+        //break power on selected murphy block 
         private void powerFailureButton_Click(object sender, EventArgs e)
         {
             TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
@@ -981,16 +1004,7 @@ namespace Track_Layout_UI
             }
         }
 
-        private void trackCircuitStatus_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void powerStatus_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        //when selected temp changes
         private void temperatureScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             temperature = temperatureScrollBar.Value;
@@ -998,6 +1012,7 @@ namespace Track_Layout_UI
             updateBlockHeaterStatuses();
         }
 
+        //update block heater statuses accordingly (temp <= 32 turns ON the heater)
         private void updateBlockHeaterStatuses()
         {
             bool heaterRequired = false;
@@ -1014,7 +1029,7 @@ namespace Track_Layout_UI
                 }
             }
         }
-
+        //finds and updates the requested murphy block, only if valid inputs
         private void updateSelectedBlock_Murphy_Click(object sender, EventArgs e)
         {
             bool found = false;
@@ -1064,5 +1079,49 @@ namespace Track_Layout_UI
             }
         }
 
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e) //open file
+        {
+
+        }
+
+        private void trackCircuitStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void powerStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InsertToSql_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
