@@ -12,10 +12,14 @@ namespace TrainProject
         public int? sourceBlockId { get; set; }
         public int? targetBlockId1 { get; set; }
         public int? targetBlockId2 { get; set; }
+        public int? sourceBlockNum { get; set; }
+        public int? targetBlockNum1 { get; set; }
+        public int? targetBlockNum2 { get; set; }
         public int? sourceBlockId_end { get; set; }
         public int? targetBlockId1_end { get; set; }
         public int? targetBlockId2_end { get; set; }
         public int? currentState { get; set; }
+        public int? currentStateNum { get; set; }
         public bool sourceLight { get; set; }
         public bool t1Light { get; set; }
         public bool t2Light { get; set; }
@@ -31,6 +35,7 @@ namespace TrainProject
             targetBlockId1 = t1;
             targetBlockId2 = t2;
             currentState = targetBlockId1;
+            currentStateNum = targetBlockNum1;
             sourceLight = true;
             t1Light = true;
             t2Light = false;
@@ -47,6 +52,7 @@ namespace TrainProject
                 t1Light = false;
                 t2Light = true;
                 currentState = targetBlockId2;
+                currentStateNum = targetBlockNum2;
                 return targetBlockId2;
             }
             else
@@ -54,6 +60,7 @@ namespace TrainProject
                 t2Light = false;
                 t1Light = true;
                 currentState = targetBlockId1;
+                currentStateNum = targetBlockNum1;
                 return targetBlockId1;
             }
         }

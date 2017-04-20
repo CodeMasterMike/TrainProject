@@ -62,11 +62,11 @@ public class TrackControllerModule
                 }
                 if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
                 {
-                    s.t1Active = false;
+                        s.t1Active = false;
                 }
                 if (ctrl.checkWithinRange(blockId, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
                 {
-                    s.t2Active = false;
+                        s.t2Active = false;
                 }
                 foreach (Train t in trainTrackings)
                 {
@@ -138,7 +138,7 @@ public class TrackControllerModule
         //red line only
         if(blk.isFromYard && blk.isToYard)
         {
-            TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch, 0, 1, 0);
+            TrackControllerWindow.plc.determineSwitchState(blk.parentSwitch, 0, 0, 1);
             found = true;
             yardOccupancy = true;
         }
@@ -234,6 +234,7 @@ public class TrackControllerModule
 
     public static void causeFailure(int blockId)
     {
+            Console.WriteLine("Closing block " + blockId);
         closeBlock(blockId);
         //TrainSimulation.mainOffice.causeFailure(blockId);  
     }
@@ -294,11 +295,15 @@ public class TrackControllerModule
         //Console.WriteLine(switches.Count);
         foreach (Switch s in switches)
         {
-            //Console.WriteLine("SwitchId: " + s.switchId);
-            //Console.WriteLine(s.sourceBlockId + ", " + s.sourceBlockId_end);
-            //Console.WriteLine(s.targetBlockId1 + ", " + s.targetBlockId1_end);
-            //Console.WriteLine(s.targetBlockId2 + ", " + s.targetBlockId2_end);
-            //Console.WriteLine("\n");
+            Console.WriteLine("SwitchId: " + s.switchId);
+            Console.WriteLine(s.sourceBlockId + ", " + s.sourceBlockId_end);
+            Console.WriteLine(s.targetBlockId1 + ", " + s.targetBlockId1_end);
+            Console.WriteLine(s.targetBlockId2 + ", " + s.targetBlockId2_end);
+            Console.WriteLine("\n");
+            s.sourceBlockNum = TrainSimulation.trackModelWindow.findBlock((int)s.sourceBlockId).blockNum;
+            s.targetBlockNum1 = TrainSimulation.trackModelWindow.findBlock((int)s.targetBlockId1).blockNum;
+            s.targetBlockNum2 = TrainSimulation.trackModelWindow.findBlock((int)s.targetBlockId2).blockNum;
+                s.currentStateNum = s.targetBlockNum1;
 
             if (s.switchId >= 0 && s.switchId <= 2)
             {

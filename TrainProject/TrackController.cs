@@ -33,15 +33,15 @@ namespace TrainProject
             foreach (Train t in TrackControllerModule.trainTrackings)
             {
                 //can change this to active
-                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceLight == false)
+                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceActive == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
-                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Light == false)
+                else if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Active == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
-                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Light == false)
+                else if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Active == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
@@ -149,6 +149,13 @@ namespace TrainProject
         //checks if a number is within a given range, used for switch checking
         public Boolean checkWithinRange(int numToCheck, int bound1, int bound2)
         {
+            if(bound1 == -1 || bound2 == -1)
+            {
+                return false;
+            }
+            //Console.WriteLine(numToCheck);
+            //Console.WriteLine(bound1);
+            //Console.WriteLine(bound2);
             if (bound1 < bound2)
             {
                 if (numToCheck >= bound1 && numToCheck <= bound2)

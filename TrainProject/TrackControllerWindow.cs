@@ -103,8 +103,6 @@ namespace TrainProject
         {
             int crossingId = Int32.Parse(e.Item.SubItems[0].Text); //get switch id
             Console.WriteLine(crossingId);
-            //bool newState = TrackControllerModule.greenLineCtrl1.toggleCrossing(crossingId);
-            //e.Item.SubItems[1].Text = newState.ToString();
             
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -148,7 +146,7 @@ namespace TrainProject
                     temp.Items.Clear();
                     foreach (Switch s in ctrl.getSwitches())
                     {
-                        temp.Items.Add(new ListViewItem(new[] { s.switchId.ToString(), s.sourceBlockId.ToString(), s.currentState.ToString(), "Change" }));
+                        temp.Items.Add(new ListViewItem(new[] { s.switchId.ToString(), s.sourceBlockNum.ToString(), s.currentStateNum.ToString(), "Change" }));
                     }
                 }
                 catch(Exception e)
@@ -216,6 +214,7 @@ namespace TrainProject
                 if(ctrl.getSwitches().Find(x => x.switchId == switchId) != null)
                 {
                     int? newState = ctrl.changeSwitchState(switchId);
+                    newState = TrainSimulation.trackModelWindow.findBlock((int)newState).blockNum;
                     e.Item.SubItems[2].Text = newState.ToString();
                     MessageBox.Show(this, @"Switch " + switchId + " changed to block " + newState);
                     updateSwitchLights();
