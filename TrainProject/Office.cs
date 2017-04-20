@@ -588,7 +588,7 @@ namespace CTC
 
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.closeBlock(blockSelected);
+            TrackControllerModule.sendClosure(blockSelected);
 
             Block block = findBlock(blockSelected);
             if (block.lineId == 2)

@@ -235,9 +235,9 @@ public class TrackControllerModule
 
     public static void causeFailure(int blockId)
     {
-            Console.WriteLine("Closing block " + blockId);
+        Console.WriteLine("Closing block " + blockId);
         closeBlock(blockId);
-        //TrainSimulation.mainOffice.causeFailure(blockId);  
+        TrainSimulation.mainOffice.causeFailure(blockId);  
     }
 
     public static void sendClosure(int blockId)
