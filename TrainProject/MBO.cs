@@ -72,8 +72,9 @@ namespace MBO_UI
 
         public void viewTrainSchedule_Click(object Sender, EventArgs e)
         {
-            driverSchedule.viewDriverSchedule();   
-            //viewTrainSchedule();
+            //trainSchedule.viewTrainSchedule();   
+            viewTrainSchedule();
+            
         }
 
         public void viewDriverSchedule_Click(object Sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace MBO_UI
         }
         public void viewTrainSchedule()
         {
-            //System.Diagnostics.Process.Start(@"C:\\Users\\Public\\TrainSchedule.xls");
+            System.Diagnostics.Process.Start(@"C:\\Users\\Public\\TrainSchedule.xls");
             //Excel.Application schedulesApp = new Microsoft.Office.Interop.Excel.Application();
             //schedulesApp.Workbooks.Open("C:\\Users\\Public\\TrainSchedule", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
         }
@@ -121,12 +122,28 @@ namespace MBO_UI
 
         }
 
+        public void isMBO(Boolean mode)
+        {
+            if (mode)
+            {
+                autoMode = true;
+                label18.Text = "MBO";
+                label18.ForeColor = System.Drawing.Color.Lime;
+            }
+            else
+            {
+                autoMode = false;
+                label18.Text = "Inactive";
+                label18.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
         public void isAuto(Boolean mode)
         {
             if (mode)
             {
                 autoMode = true;
-                label18.Text = "Active";
+                label18.Text = "Automatic";
                 label18.ForeColor = System.Drawing.Color.Lime;
             }
             else
@@ -151,7 +168,7 @@ namespace MBO_UI
             MessageBox.Show("Position and speed received.");
         }
 
-        public void getSuggestedSpeed()
+        public void getVitalSpeed()
         {
 
         }
@@ -168,12 +185,12 @@ namespace MBO_UI
 
         public void getTrainSchedule()
         {
-
+            System.Diagnostics.Process.Start(@"C:\\Users\\Public\\TrainSchedule.xls");
         }
 
         public void getDriverSchedule()
         {
-
+            System.Diagnostics.Process.Start(@"C:\\Users\\Public\\DriverSchedule.xls");
         }
         
 
