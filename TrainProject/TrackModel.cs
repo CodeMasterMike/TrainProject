@@ -42,11 +42,50 @@ namespace Track_Layout_UI
         //stations are still attached to blocks, just had to hard code the beacons
         private static void initializeRedLineStationBeacons()
         {
+            //StationBeacon(string n, short dt, bool isPTN, bool iL)
             StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
+            currBeacon = new StationBeacon("SHADYSIDE", 100, true, true);
+            redLineStationBeacons[5] = currBeacon;
+            currBeacon = new StationBeacon("SHADYSIDE", 75, false, false);
             redLineStationBeacons[8] = currBeacon;
-            currBeacon = new StationBeacon("HERRON AVE", 50, false, true);
-            redLineStationBeacons[1] = currBeacon;
+            currBeacon = new StationBeacon("NORTH POLE", 60, true, false);
+            redLineStationBeacons[15] = currBeacon;
+            currBeacon = new StationBeacon("NORTH POLE", 200, false, true);
+            redLineStationBeacons[17] = currBeacon;
+            currBeacon = new StationBeacon("NORTH POLE", 100, false, false);
+            redLineStationBeacons[2] = currBeacon;
+            currBeacon = new StationBeacon("SWISSVALE", 200, true, false);
+            redLineStationBeacons[20] = currBeacon;
+            currBeacon = new StationBeacon("SWISSVALE", 200, false, true);
+            redLineStationBeacons[23] = currBeacon;
+            currBeacon = new StationBeacon("PENN STATION", 250, true, true);
+            redLineStationBeacons[22] = currBeacon;
+            currBeacon = new StationBeacon("PENN STATION", 200, false, false);
+            redLineStationBeacons[29] = currBeacon;
+            currBeacon = new StationBeacon("PENN STATION", 150, true, false);
+            redLineStationBeacons[74] = currBeacon;
+            currBeacon = new StationBeacon("STEEL PLAZA", 200, true, true);
+            redLineStationBeacons[31] = currBeacon;
+            currBeacon = new StationBeacon("STEEL PLAZA", 200, false, false);
+            redLineStationBeacons[39] = currBeacon;
+            currBeacon = new StationBeacon("STEEL PLAZA", 150, false, true);
+            redLineStationBeacons[72] = currBeacon;
+            currBeacon = new StationBeacon("STEEL PLAZA", 200, true, false);
+            redLineStationBeacons[71] = currBeacon;
+            currBeacon = new StationBeacon("FIRST AVE", 210, true, true);
+            redLineStationBeacons[41] = currBeacon;
+            currBeacon = new StationBeacon("FIRST AVE", 200, false, true);
+            redLineStationBeacons[69] = currBeacon;
+            currBeacon = new StationBeacon("FIRST AVE", 150, false, false);
+            redLineStationBeacons[47] = currBeacon;
+            currBeacon = new StationBeacon("STATION SQUARE", 150, true, true);
+            redLineStationBeacons[46] = currBeacon;
+            currBeacon = new StationBeacon("STATION SQUARE", 150, false, false);
+            redLineStationBeacons[51] = currBeacon;
+            currBeacon = new StationBeacon("SOUTH HILLS JUNCTION", 150, true, true);
+            redLineStationBeacons[58] = currBeacon;
+            currBeacon = new StationBeacon("SOUTH HILLS JUNCTION", 150, false, false);
+            redLineStationBeacons[62] = currBeacon;
         }
         private static void initializeGreenLineStationBeacons()
         {
@@ -62,8 +101,7 @@ namespace Track_Layout_UI
             currBeacon = new StationBeacon("POPLAR", 187, true, false);
             greenLineStationBeacons[86] = currBeacon;
             currBeacon = new StationBeacon("CASTLE SHANNON", 150, true, true);
-            greenLineStationBeacons[86] = currBeacon;
-            //need to set prevToNext properly
+            greenLineStationBeacons[94] = currBeacon;
             currBeacon = new StationBeacon("PIONEER", 100, true, true);
             greenLineStationBeacons[3] = currBeacon;
             currBeacon = new StationBeacon("EDGEBROOK", 100, true, true);
@@ -100,6 +138,10 @@ namespace Track_Layout_UI
             {
                 return redLineStationBeacons[blockNum];
             }
+            if (lineNum == 1)
+            {
+                return greenLineStationBeacons[blockNum];
+            }
             return null;
         }
         //end temp stuff
@@ -130,6 +172,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 DatabaseInterface.updateBlockDirection(lineList);
                 initializeRedLineStationBeacons();
+                initializeGreenLineStationBeacons();
 				DatabaseInterface.addYardBooleans(blockList, switchList);
             }
             parseSwitchEnds();
