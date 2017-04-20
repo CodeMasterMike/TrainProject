@@ -44,10 +44,11 @@ namespace TrainProject
             }
 
             String input = "Please enter train station opening time";
-            int timeStart = ShowInputDialog(ref input);
+            timeStart = ShowInputDialog(ref input);
            // MessageBox.Show("You chose " + timeStart + " o'clock");
             input = "Please enter train station closing time";
-            int timeEnd = ShowInputDialog(ref input);
+            timeEnd = ShowInputDialog(ref input);
+            int origTimeEnd = timeEnd;
             //MessageBox.Show("You chose " + timeEnd + " o'clock");
 
 
@@ -802,11 +803,22 @@ namespace TrainProject
 
             MessageBox.Show("Excel file created , you can find the file at C:\\Users\\Public\\TrainSchedule");
 
+            timeEnd = origTimeEnd;
         }
 
         public void viewTrainSchedule()
         {
             System.Diagnostics.Process.Start(@"C:\\Users\\Public\\TrainSchedule.xls");
+        }
+        
+        public int getStart()
+        {
+            return timeStart;
+        }
+
+        public int getEnd()
+        {
+            return timeEnd;
         }
 
         private static int ShowInputDialog(ref string input)

@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using TrainProject.Clock;
 using TrainModelProject;
 
 namespace MBO_UI
@@ -36,10 +37,15 @@ namespace MBO_UI
         public int blockAdjustment;
         public int SuggestedSpeed;
         public int lineId;
+        public int timeStart;
+        public int timeEnd;
 
         public TrainModel TM;
         public DriverSchedule driverSchedule;
         public TrainSchedule trainSchedule;
+
+        //public TrainSimulation trainSimulation = new TrainSimulation();
+        //CustomClock clk = new CustomClock(trainSimulation);
 
         public MBO()
         {
@@ -67,7 +73,9 @@ namespace MBO_UI
        
         private void createDriverSchedule()
         {
-            driverSchedule = new DriverSchedule();
+            timeStart = trainSchedule.getStart();
+            timeEnd = trainSchedule.getEnd();
+            driverSchedule = new DriverSchedule(timeStart,timeEnd);
         }
 
         public void viewTrainSchedule_Click(object Sender, EventArgs e)
@@ -161,10 +169,10 @@ namespace MBO_UI
 
         public void getPos()
         {
-            TM = new TrainModel();
+            //TM = new TrainModel();
             //int test = TM.getTrainTest();
            // MessageBox.Show("TrainID testing value set from TrainController is " + test); 
-
+            
             MessageBox.Show("Position and speed received.");
         }
 
