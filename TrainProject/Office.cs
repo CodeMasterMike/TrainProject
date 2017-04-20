@@ -345,7 +345,10 @@ namespace CTC
                         prevBlock = null;
                     }
                     Block nextBlock = getNextBlock(prevBlock, currBlock, bId);
-                    t.currBlock = nextBlock.blockId;
+                    if (nextBlock != null)
+                    {
+                        t.currBlock = nextBlock.blockId;
+                    }
                     if (b.lineId == 2) //red line
                     {
                         foreach (ListViewItem item in systemListView.Items)
@@ -380,21 +383,23 @@ namespace CTC
 
                     if (b.lineId == 1) //green line
                     {
-                        foreach (ListViewItem item in systemListView2.Items)
-                        {
-                            if (item.Index == (nextBlock.blockNum))
+                        if(nextBlock != null) { 
+                            foreach (ListViewItem item in systemListView2.Items)
                             {
-                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
-                                { Text = "Train " + t.trainId.ToString() };
-                            }
+                                if (item.Index == (nextBlock.blockNum))
+                                {
+                                    item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                    { Text = "Train " + t.trainId.ToString() };
+                                }
 
-                            if (item.Index == (b.blockNum))
-                            {
-                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
-                                { Text = "-" };
+                                if (item.Index == (b.blockNum))
+                                {
+                                    item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                    { Text = "-" };
+                                }
                             }
                         }
-                        if ((t.currBlock == 57) && (b.isToYard))
+                        if ((t.currBlock == 57) || (b.isToYard))
                         {
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
