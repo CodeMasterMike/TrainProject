@@ -55,6 +55,7 @@ namespace TrainModelProject
         double sugSpeed;
         int sugAuthority;
         int lineId;
+        private bool lightStatus = false;
 
         public double getCurrSpeed()
         {
@@ -126,6 +127,10 @@ namespace TrainModelProject
                Invoke(new MethodInvoker(delegate { TC.updateTime(time); }));
             }
         }
+        public void updateLightStatus(bool lights)
+        {
+            lightStatus = lights;
+        }
         public void updateDoorStatus(int n)
         {
             if (n == 0) Train_Door_L.Text = "Closed";
@@ -152,12 +157,12 @@ namespace TrainModelProject
                 block_distance = current_block.length - p;
                 if (lineId == 2)
                 {
-                    if (TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                    if (TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name, TrackModelUI.redLineStationBeacons[current_block.blockNum].isLeft);
                 }
 
                 if (lineId == 1)
                 {
-                    if (TrackModelUI.greenLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.greenLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                    if (TrackModelUI.greenLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.greenLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.greenLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.greenLineStationBeacons[current_block.blockNum].name, TrackModelUI.greenLineStationBeacons[current_block.blockNum].isLeft);
 
                 }
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);

@@ -43,6 +43,7 @@ namespace TrainControllerProject
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         int doorStatus;
         int trainID = 0;
+        int stationSide = 1;
         double distanceLeft = 0;
         double Kp = 0;//100000;
         double Ki = 0;//5000;
@@ -70,6 +71,7 @@ namespace TrainControllerProject
         bool approachingStation = false;
         bool authorityChanged = false;
         int failureStatus = 0;
+        bool lightStatus = false;
         PowerController powerController;
         TrainModel TM;
         Map map;
@@ -150,9 +152,11 @@ namespace TrainControllerProject
                 power = 0;
             }
             setThermostat();
+            setLights();
             TM.updatePower(power);
             TM.updateThermostat(thermostat);
             TM.updateDoorStatus(doorStatus);
+            TM.updateLightStatus(lightStatus);
             //update the GUI
             trainSpeedLabel.Text = (currSpeedms* 2.23694).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
@@ -167,6 +171,8 @@ namespace TrainControllerProject
             distanceToLabel.Text = (distanceToStation).ToString("#.##");
             stationLabel.Text = stationName.ToString();
             trainIDLabel.Text = prevToNext.ToString();
+            if (lightStatus) Lights_On.Checked = true;
+            else Lights_On.Checked = false;
             if(doorStatus == 0)
             {
                 Left_Closed.Checked = true;
@@ -185,6 +191,11 @@ namespace TrainControllerProject
             
         }
         //0 = no failure, 1 = Train Engine Failure, 2 = signal pickup failure, 3 = brake failure
+        private void setLights()
+        {
+            if (currentBlock.isUnderground) lightStatus = true;
+            else lightStatus = false;
+        }
         public void updateFailure(int a)
         {
             failureStatus = a;
@@ -234,7 +245,7 @@ namespace TrainControllerProject
                 forceStop = false;
                 stationName = "";
                 wait++;
-                doorStatus = 2;
+                doorStatus = stationSide;
             }
             if (wait == 5 && distanceToStation == 0)
             {
@@ -261,8 +272,10 @@ namespace TrainControllerProject
             }
             if(distanceToAuthority > 0) minStopDistanceAuthority = (currSpeedms * currSpeedms) / (2 * serviceBreak);
         }
-        public void getStationBeaconInfo(bool pn, double distance, String n)
+        public void getStationBeaconInfo(bool pn, double distance, String n, bool left)
         {
+            if (left) stationSide = 1;
+            else stationSide = 2;
             distanceToStation = distance + 5;
             stationName = n;
             stationPrevToNext = pn;
