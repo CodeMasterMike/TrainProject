@@ -119,7 +119,7 @@ namespace TrainModelProject
         {
             if (start == 0) return;
             setTimeLabel(time);
-            mass = person_mass + train_mass;
+            mass = person_mass*train_pass + train_mass;
             TC.trackPosition(currSpeedms);
             if (!service && !emergency) calculateSpeed();
             else if (service) calculateService();
