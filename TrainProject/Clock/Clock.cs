@@ -29,7 +29,7 @@ namespace TrainProject.Clock
             interval = 1000; //starting in real time, 1000ms
             String input = "Please enter train station opening time";
             startTime = ShowInputDialog(ref input);
-            numIntervals = (startTime-1)*3580; //8 AM because 0000 is 1AM :)
+            numIntervals = (startTime-1)*3578; //8 AM because 0000 is 1AM :)
             homepage = s;
             t = new System.Timers.Timer(interval);
             t.Elapsed += HandleIntervalElapsed;
