@@ -16,13 +16,11 @@ namespace TrainProject
 
         public static TrackControllerModule controllerModule;
         public static PLCProgram plc = new PLCProgram();
-        //need to make call to track controller module?
-        //set up tabs for individual controllers
+
         public TrackControllerWindow()
         {
             InitializeComponent();
-
-            //check if controllerModule has already been instantiated from office
+            
             controllerModule = new TrackControllerModule();
         }
 
@@ -66,12 +64,6 @@ namespace TrainProject
                     ListView temp = (ListView)this.Controls.Find(ctrl.controllerName + "CrossingListView", true)[0];
                     Console.WriteLine("Found list view");
                     Console.WriteLine(temp);
-                    //green1CrossingListView.FullRowSelect = true;
-                    //ListViewExtender extendo = new ListViewExtender(green1CrossingListView);
-                    //ListViewButtonColumn buttonAction = new ListViewButtonColumn(2);
-                    //buttonAction.Click += toggleCrossing;
-                    //buttonAction.FixedWidth = true;
-                    //extendo.AddColumn(buttonAction);
                     temp.FullRowSelect = true;
                     ListViewExtender extendo = new ListViewExtender(temp);
                     ListViewButtonColumn buttonAction = new ListViewButtonColumn(2);
@@ -111,8 +103,6 @@ namespace TrainProject
         {
             int crossingId = Int32.Parse(e.Item.SubItems[0].Text); //get switch id
             Console.WriteLine(crossingId);
-            //bool newState = TrackControllerModule.greenLineCtrl1.toggleCrossing(crossingId);
-            //e.Item.SubItems[1].Text = newState.ToString();
             
             foreach (TrackController ctrl in TrackControllerModule.activeControllers)
             {
@@ -156,7 +146,7 @@ namespace TrainProject
                     temp.Items.Clear();
                     foreach (Switch s in ctrl.getSwitches())
                     {
-                        temp.Items.Add(new ListViewItem(new[] { s.switchId.ToString(), s.sourceBlockId.ToString(), s.currentState.ToString(), "Change" }));
+                        temp.Items.Add(new ListViewItem(new[] { s.switchId.ToString(), s.sourceBlockNum.ToString(), s.currentStateNum.ToString(), "Change" }));
                     }
                 }
                 catch(Exception e)
@@ -224,6 +214,7 @@ namespace TrainProject
                 if(ctrl.getSwitches().Find(x => x.switchId == switchId) != null)
                 {
                     int? newState = ctrl.changeSwitchState(switchId);
+                    newState = TrainSimulation.trackModelWindow.findBlock((int)newState).blockNum;
                     e.Item.SubItems[2].Text = newState.ToString();
                     MessageBox.Show(this, @"Switch " + switchId + " changed to block " + newState);
                     updateSwitchLights();
@@ -322,7 +313,6 @@ namespace TrainProject
                 return;
             }
             String[] vectors = testBlocks.Split(' ');
-            TrackControllerModule.greenLineCtrl1.blocks.Clear();
             richTextBox1.Text = "Test Inputs:\n ";
             richTextBox1.Text += "Occupancy\tTowards/Away\n";
             List<Block> testBlockList = new List<Block>();
@@ -419,7 +409,6 @@ namespace TrainProject
                 return;
             }
             String[] vectors = testBlocks.Split(' ');
-            TrackControllerModule.greenLineCtrl2.blocks.Clear();
             richTextBox2.Text = "Test Inputs:\n ";
             richTextBox2.Text += "Occupancy\tTowards/Away\n";
             List<Block> testBlockList = new List<Block>();
@@ -454,7 +443,6 @@ namespace TrainProject
                 return;
             }
             String[] vectors = testBlocks.Split(' ');
-            TrackControllerModule.redLineCtrl1.blocks.Clear();
             richTextBox3.Text = "Test Inputs:\n ";
             richTextBox3.Text += "Occupancy\tTowards/Away\n";
             List<Block> testBlockList = new List<Block>();
@@ -488,7 +476,6 @@ namespace TrainProject
                 return;
             }
             String[] vectors = testBlocks.Split(' ');
-            TrackControllerModule.redLineCtrl2.blocks.Clear();
             richTextBox4.Text = "Test Inputs:\n ";
             richTextBox4.Text += "Occupancy\tTowards/Away\n";
             List<Block> testBlockList = new List<Block>();

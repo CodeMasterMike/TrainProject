@@ -12,58 +12,44 @@ namespace TrainProject
     public class TrackController
     {
         public int controllerId;
-        //public int startBlock;
-        //public int endBlock;
-        public List<Block> blocks; //this represents the occupied blocks
+        //public List<Block> blocks; //this represents the occupied blocks
         public List<Train> trains;
         public List<Switch> switches;
         public List<Crossing> crossings;
         public String controllerName; //used for finding things on screen
-        //need to declare an array of blocks that this controller will keep track of
-        //maybe an array of switches too
-        public void testMethod()
-        {
-            Console.Write("testmethod\n");
-        }
-
-        public Boolean updateBlockOccupancy(int blockId)
-        {
-            return false;
-        }
 
         public TrackController(int id, String name)
         {
             controllerId = id;
             controllerName = name;
-            //startBlock = sb
-            //sB = startBlock;
-            //eB = endBlock;
-            blocks = new List<Block>();
             trains = new List<Train>();
             switches = new List<Switch>();
             crossings = new List<Crossing>();
         }
 
+        //double checks the safety of the switches 
         public void checkSafety(Switch s)
         {
             foreach (Train t in TrackControllerModule.trainTrackings)
             {
                 //can change this to active
-                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceLight == false)
+                if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceActive == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
-                if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Light == false)
+                else if (trainHeadingTowardsSwitch(t, s, 1) > 0 && s.t1Active == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
-                if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Light == false)
+                else if (trainHeadingTowardsSwitch(t, s, 2) > 0 && s.t2Active == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
                 }
             }
         }
 
+        //given a train, switch, and a branch, determines if
+        //the train is heading towards the switch
         public int? trainHeadingTowardsSwitch(Train t, Switch s, int whichBranch)
         {
             if (s.switchId == 3)
@@ -159,8 +145,17 @@ namespace TrainProject
             return null;
         }
 
+
+        //checks if a number is within a given range, used for switch checking
         public Boolean checkWithinRange(int numToCheck, int bound1, int bound2)
         {
+            if(bound1 == -1 || bound2 == -1)
+            {
+                return false;
+            }
+            //Console.WriteLine(numToCheck);
+            //Console.WriteLine(bound1);
+            //Console.WriteLine(bound2);
             if (bound1 < bound2)
             {
                 if (numToCheck >= bound1 && numToCheck <= bound2)
@@ -222,42 +217,6 @@ namespace TrainProject
             }
         }
 
-
-        //public void monitorSwitches()
-        //{
-        //    foreach (Switch s in switches)
-        //    {
-        //        int a = 0, b = 0, c = 0;
-        //        Block src = blocks.Find(x => x.blockNum == s.sourceBlockId);
-        //        Block t1 = (blocks.Find(x => x.blockNum == s.targetBlockId1));
-        //        Block t2 = (blocks.Find(x => x.blockNum == s.targetBlockId2));
-        //        if (src != null)
-        //        {
-        //            a = src.direction;
-        //        }
-        //        if (t1 != null)
-        //        {
-        //            b = t1.direction;
-        //        }
-        //        if(t2 != null)
-        //        {
-        //            c = t2.direction;
-        //        }
-        //        if (a == -1 && b == -1 && c == -1)
-        //        {
-        //            return;
-        //        }
-        //        //if target block 1 is occupied
-        //        Console.WriteLine("Switch " + s.switchId);
-        //        Console.WriteLine(TrackControllerWindow.plc.determineSwitchState(s.switchId, a, b, c));
-        //    }
-        //}
-
-        //public void monitorCrossings()
-        //{
-            
-        //}
-
         public void addNewCrossing(Crossing c)
         {
             crossings.Add(c);
@@ -273,20 +232,20 @@ namespace TrainProject
             trains.Add(t);
         }
 
-        public void addNewBlock(Block b)
-        {
-            blocks.Add(b);
-        }
+        //public void addNewBlock(Block b)
+        //{
+        //    blocks.Add(b);
+        //}
 
         public List<Train> getTrains()
         {
             return trains;
         }
 
-        public List<Block> getBlocks()
-        {
-            return blocks;
-        }
+        //public List<Block> getBlocks()
+        //{
+        //    return blocks;
+        //}
 
         public List<Switch> getSwitches()
         {
