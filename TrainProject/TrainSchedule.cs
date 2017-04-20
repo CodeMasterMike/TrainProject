@@ -18,8 +18,8 @@ namespace TrainProject
         int timeStart;
         int timeEnd;
         enum days { fri, sat };
-        Excel.Workbook schedulesWorkbook;
-        Excel.Worksheet redWorksheet;
+        //Excel.Workbook schedulesWorkbook;
+        //Excel.Worksheet redWorksheet;
         TimeSpan timespan;
         DateTime time;
         int breakCount;
@@ -60,7 +60,7 @@ namespace TrainProject
 
             timespan = new TimeSpan(timeStart, 0, 0);
             time = DateTime.Today.Add(timespan);
-            MessageBox.Show("Time chosen is " + time.ToString("hh:mm tt") + "");
+           // MessageBox.Show("Time chosen is " + time.ToString("hh:mm tt") + "");
 
 
 
@@ -102,7 +102,7 @@ namespace TrainProject
             // * 2 for 30 min increments 
             timeEnd = timeEnd * 2;
 
-            MessageBox.Show("timeEnd is " + timeEnd + "");
+            //MessageBox.Show("timeEnd is " + timeEnd + "");
             int count = 1;
 
 
@@ -404,24 +404,24 @@ namespace TrainProject
 
                 if (operHours - hoursPassed < 4)
                 {
-                    MessageBox.Show("Time remaining is now " + (operHours - hoursPassed) + "");
+                    //MessageBox.Show("Time remaining is now " + (operHours - hoursPassed) + "");
 
                     if ((operHours - hoursPassed) < 3 || (operHours - hoursPassed) > 2)
                     {
                         breakCount = 1;
-                        MessageBox.Show("breakCount is now " + breakCount + "");
+                        //MessageBox.Show("breakCount is now " + breakCount + "");
                     }
 
                     if ((operHours - hoursPassed) < 2 || (operHours - hoursPassed) > 1)
                     {
                         breakCount = 2;
-                        MessageBox.Show("breakCount is now " + breakCount + "");
+                        //MessageBox.Show("breakCount is now " + breakCount + "");
                     }
 
                     if ((operHours - hoursPassed) < 1)
                     {
                         breakCount = 3;
-                        MessageBox.Show("breakCount is now " + breakCount + "");
+                       // MessageBox.Show("breakCount is now " + breakCount + "");
                     }
 
                     if ((operHours - hoursPassed) < .8)
@@ -603,24 +603,24 @@ namespace TrainProject
 
                 if (operHours - hoursPassed < 4)
                 {
-                    MessageBox.Show("Time remaining is now " + (operHours - hoursPassed) + "");
+                   // MessageBox.Show("Time remaining is now " + (operHours - hoursPassed) + "");
 
                     if ((operHours - hoursPassed) < 3 || (operHours - hoursPassed) > 2)
                     {
                         breakCount = 1;
-                        MessageBox.Show("breakCount is now " + breakCount + "");
+                        //MessageBox.Show("breakCount is now " + breakCount + "");
                     }
 
                     if ((operHours - hoursPassed) < 2 || (operHours - hoursPassed) > 1)
                     {
                         breakCount = 2;
-                        MessageBox.Show("breakCount is now " + breakCount + "");
+                        //MessageBox.Show("breakCount is now " + breakCount + "");
                     }
 
                     if ((operHours - hoursPassed) < 1)
                     {
                         breakCount = 3;
-                        MessageBox.Show("breakCount is now " + breakCount + "");
+                        //MessageBox.Show("breakCount is now " + breakCount + "");
                     }
 
                     if ((operHours - hoursPassed) < .8)
