@@ -24,7 +24,8 @@ namespace TrainModelProject
         private double train_width = 2.65; //m
         private double train_pass = 10;
         private double train_crew = 1; //m
-        private string train_facilities = "Good";
+        private string train_facilities = "x";
+        private string train_lights = "x";
         private double max_acceleration = 0.5; //m per s^2
         private double serviceBrake = 1.2;
         private double emergencyBrake = 2.73; //m per s^2
@@ -137,6 +138,14 @@ namespace TrainModelProject
         public void updateLightStatus(bool lights)
         {
             lightStatus = lights;
+            if (lightStatus == false)
+            {
+                train_lights = "Off";
+            }
+            else if (lightStatus == true)
+            {
+                train_lights = "On";
+            }
         }
         public void updateDoorStatus(int n)
         {
@@ -180,6 +189,8 @@ namespace TrainModelProject
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
+               
+
             }
 
             if (Train_Door != 0)
@@ -188,7 +199,42 @@ namespace TrainModelProject
                 stationPassengers(current_block.station);
                 train_width = 6;
             }
-
+            if (TC.failureStatus == 0)
+            {
+                label26.ForeColor = Color.Green;
+                label26.Text = "Train Engine - Good";
+                label27.ForeColor = Color.Green;
+                label27.Text = "Signal Pickup - Good";
+                label28.ForeColor = Color.Green;
+                label28.Text = "Brakes - Good";
+            }
+            else if (TC.failureStatus == 1)
+            {
+                label26.ForeColor = Color.Red;
+                label26.Text = "Train Engine Failure";
+                label27.ForeColor = Color.Green;
+                label27.Text = "Signal Pickup - Good";
+                label28.ForeColor = Color.Green;
+                label28.Text = "Brakes - Good";
+            }
+            else if (TC.failureStatus == 2)
+            {
+                label26.ForeColor = Color.Green;
+                label26.Text = "Train Engine - Good";
+                label27.ForeColor = Color.Red;
+                label27.Text = "Signal Pickup Failure";
+                label28.ForeColor = Color.Green;
+                label28.Text = "Brakes - Good";
+            }
+            else if (TC.failureStatus == 3)
+            {
+                label26.ForeColor = Color.Green;
+                label26.Text = "Train Engine - Good";
+                label27.ForeColor = Color.Green;
+                label27.Text = "Signal Pickup - Good";
+                label28.ForeColor = Color.Red;
+                label28.Text = "Brakes Failure";
+            }
 
         }
 
@@ -233,14 +279,16 @@ namespace TrainModelProject
             currSpeedmsF = Math.Round(currSpeedmsF, 2);
             Train_Speed.Text = currSpeedmsF.ToString() + " m/hr";
             Train_Passenger_L.Text = train_pass.ToString();
-            Train_Crew_L.Text = pass_count.ToString();
-            Train_Internal_Temperature_L.Text = passenger_on.ToString() + " *F";
-            //Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
+            Train_Crew_L.Text = train_crew.ToString();
+            Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
             Train_Width_L.Text = train_width.ToString() + " m";
             Train_Height_L.Text = train_height.ToString() + " m";
             Train_Length_L.Text = train_length.ToString() + " m";
             Train_Facilities_L.Text = train_facilities.ToString();
+            Passengers_on_L.Text = passenger_on.ToString();
+            Passengers_off_L.Text = passenger_off.ToString();
+            Light_Status_L.Text = train_lights.ToString();
             //Train_Door_L.Text = "Closed";
             power = Math.Round(power, 2);
             train_power.Text = power.ToString() + " W";
@@ -384,6 +432,24 @@ namespace TrainModelProject
         private void failBrakeButton_Click(object sender, EventArgs e)
         {
             train_failures = 3;
+            TC.updateFailure(train_failures);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            train_failures = 0;
+            TC.updateFailure(train_failures);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            train_failures = 0;
+            TC.updateFailure(train_failures);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            train_failures = 0;
             TC.updateFailure(train_failures);
         }
     }
