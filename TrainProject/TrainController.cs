@@ -79,7 +79,7 @@ namespace TrainControllerProject
         bool simulate = false;
         bool approachingStation = false;
         bool authorityChanged = false;
-        public int failureStatus = 0;
+        int failureStatus = 0;
         bool lightStatus = false;
         PowerController powerController;
         TrainModel TM;
@@ -734,6 +734,18 @@ namespace TrainControllerProject
         {
             TM.updateAnnouncement(announcementTextBox.Text);
             announcementTextBox.Text = "";
+        }
+        public double getPosition()
+        {
+            return distanceLeft;
+        }
+        public double getSpeed()
+        {
+            return currSpeedms;
+        }
+        public int getBlockID()
+        {
+            return currentBlock.blockId;
         }
     }
 }
