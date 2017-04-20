@@ -43,6 +43,7 @@ namespace TrainModelProject
         private int heater = 0;
         private int train_failures = 0;
         private double block_distance = 0;
+        private double train_slope = 0;
         Block current_block;
         Block currentT_block;
         Block first_block;
@@ -93,13 +94,14 @@ namespace TrainModelProject
             lineId = lId;
             TC = new TrainController(this, trainId, lineId);
             TC.Show();
-           
+
             double block_length = 0;
             double train_distance = 0;
 
             current_block = TrainSimulation.trackModelWindow.getNextBlock(null, null, lineId);
             prev_block = null;
             block_distance = current_block.length;
+            train_slope = current_block.grade;
             TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
         }
 
@@ -148,7 +150,16 @@ namespace TrainModelProject
                 if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
                 TC.sendSwitchBeaconInfo(number);
                 block_distance = current_block.length - p;
-                if(TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                if (lineId == 2)
+                {
+                    if (TrackModelUI.redLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.redLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+                }
+
+                if (lineId == 1)
+                {
+                    if (TrackModelUI.greenLineStationBeacons[current_block.blockNum] != null) TC.getStationBeaconInfo(TrackModelUI.greenLineStationBeacons[current_block.blockNum].isPreviousToNext, TrackModelUI.redLineStationBeacons[current_block.blockNum].distanceTo, TrackModelUI.redLineStationBeacons[current_block.blockNum].name);
+
+                }
                 TrainSimulation.trackModelWindow.updateBlockStatus(prev_block.blockId, false);
                 TrainSimulation.trackModelWindow.updateBlockStatus(current_block.blockId, true);
                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
@@ -210,13 +221,22 @@ namespace TrainModelProject
             {
                 double gravity = 9.8;
                 double friction_coeff = 0.002;
-                double cos_value = Math.Cos(1 * (Math.PI / 180.0));
+                double train_slope_M = Math.Abs(train_slope);
+                double cos_value = Math.Cos(train_slope_M * (Math.PI / 180.0));
                 
                 force = power / currSpeedms;
 
                 force = force - (mass * gravity * friction_coeff * cos_value);
+
+                if (train_slope_M == 0)
+                {
+                    acceleration = force / mass;
+                }
+                else
+                {
+                    acceleration = force / (mass * Math.Sin(train_slope_M * (Math.PI / 180.0)));
+                }
                 
-                acceleration = force / mass;
                 if (acceleration > max_acceleration) acceleration = max_acceleration;
                 if (currSpeedms + acceleration < 0)
                 {

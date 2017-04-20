@@ -18,7 +18,7 @@ namespace CTC
         TrainModel tm_window;
         int trainId;
         int selTrainId;
-        bool trainSelected;
+        bool trainSelectedBool;
         double sugSpeed;
         int sugAuth;
         int trainCounter = 0;
@@ -27,6 +27,7 @@ namespace CTC
         int currentLineSelection = 1;
         
         List<Block> myBlockList;
+        List<Line> myLineList;
         public List<Train> myTrainList;
         Boolean mode; // 0 = man, 1 = auto
 
@@ -78,11 +79,13 @@ namespace CTC
             trainClick.FixedWidth = true;
             extendo.AddColumn(trainClick);
             myBlockList = new List<Block>();
+            myLineList = new List<Line>();
             Block yard = new TrainProject.Block(0, 1);
             myBlockList.Add(yard);
             myTrainList = new List<Train>();
             foreach (Line line in trackLines)
             {
+                myLineList.Add(line);
                 foreach(Section section in line.sections)
                 if(line.lineId == 2) //red line
                 {
@@ -160,6 +163,7 @@ namespace CTC
             foreach (Line line in trackLines)
             {
                 foreach (Section section in line.sections)
+                {
                     if (line.lineId == 1) //green line
                     {
                         foreach (Block block in section.blocks)
@@ -175,6 +179,7 @@ namespace CTC
                             }
                         }
                     }
+                }
             }
 
             //add yard
@@ -220,7 +225,7 @@ namespace CTC
 
         }
 
-        private Block findBlock(int blockId)
+       /* private Block findBlock(int blockId)
         {
             foreach (Block block in myBlockList)
             {
@@ -230,7 +235,7 @@ namespace CTC
                 }
             }
             return null;
-        }
+        }*/
 
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
@@ -265,8 +270,14 @@ namespace CTC
                     if(t.trainId == trainSelectedInt)
                     {
                         updateSugSpeedLabel.Text = t.suggestedSpeed.ToString();
-                        updateSugSpeedLabel.Text = t.authority.ToString();
+                        updateSugAuthLabel.Text = t.authority.ToString();
                     }
+                trainSelectedBool = true;
+            }
+
+            else if (trainSelected.Equals("Yard"))
+            {
+                trainSelectedBool = false;
             }
         }
 
@@ -275,54 +286,64 @@ namespace CTC
             foreach (Block b in myBlockList)
             {
                 if ((b.blockId == bId) && (occupied == true))
-                {
-                    if (b.isFromYard) //for the case when a train is just getting newly dispatched
-                    {
-                        foreach(Train t in myTrainList)
-                        {
-                            if (t.currBlock == 0)
-                            {
-                                t.prevBlock = t.currBlock;
-                                t.currBlock = b.blockId; //curr block
-                            }
-                        }
-                    }
-                    
-                    else
+                {                
+                    if (b.lineId == 2) //red line
                     {
                         foreach (ListViewItem item in systemListView.Items)
                         {
                             if (item.Index == (b.blockNum))
                             {
-                                foreach (Train t in myTrainList)
+                                foreach (Train t in myTrainList) //might be an issue
                                 {
-                                    int pBlock = t.currBlock;
-                                    int nBlock = (getNextBlock(pBlock)).blockId;
+                                    Block prevBlock = t.previousBlock;
+                                    Block currBlock = t.currentBlock;
+                                    Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
+                                    int nBlock = nextBlock.blockId;
+
                                     if (nBlock == b.blockId) //if trains curr block is this one
                                     {
                                         item.SubItems[2] = new ListViewItem.ListViewSubItem()
                                         { Text = "Train " + t.trainId.ToString() };
                                     }
+
+                                    t.previousBlock = t.currentBlock;
+                                    t.currentBlock = nextBlock;
                                 }
 
                             }
                         }
-                        foreach (Train t in myTrainList)
-                        {
-                            int pBlock = t.currBlock;
-                            int nBlock = (getNextBlock(pBlock)).blockId;
-                            if (nBlock == b.blockId)
-                            {
-                                t.currBlock = b.blockId;
-                            }
-
-                        }
                     }
 
+                    else if (b.lineId == 1) //green line
+                    {
+                        foreach (ListViewItem item in systemListView2.Items)
+                        {
+                            if (item.Index == (b.blockNum))
+                            {
+                                foreach (Train t in myTrainList) //might be an issue
+                                {
+                                    Block prevBlock = t.previousBlock;
+                                    Block currBlock = t.currentBlock;
+                                    Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
+                                    int nBlock = nextBlock.blockId;
+
+                                    if (nBlock == b.blockId) //if trains curr block is this one
+                                    {
+                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                        { Text = "Train " + t.trainId.ToString() };
+                                    }
+
+                                    t.previousBlock = t.currentBlock;
+                                    t.currentBlock = nextBlock;
+                                }
+
+                            }
+                        }
+                    }
                     b.isOccupied = true;
                 }
 
-                else if ((b.blockId == bId) && (occupied == false))
+                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 2))
                 {
                     foreach (ListViewItem item in systemListView.Items)
                     {
@@ -333,107 +354,121 @@ namespace CTC
                     }
                     b.isOccupied = false;
                 }
+
+                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 1))
+                {
+                    foreach (ListViewItem item in systemListView2.Items)
+                    {
+                        if (item.Index == (b.blockNum))
+                        {
+                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
+                        }
+                    }
+                    b.isOccupied = false;
+                }
+
             }
         }
 
-        private Block getBlock(int blockID)
+        public Block findBlock(int blockId)
         {
             foreach (Block block in myBlockList)
             {
-                if (block.blockId == blockID) return block;
+                if (block.blockId == blockId)
+                {
+                    return block;
+                }
             }
             return null;
         }
 
-        bool onSwitch = false;
-        bool prevToNext = true;
-
-        public Block getNextBlock(int i)
+        public Block findYardBlock(int lineId) 
         {
-            currentBlock = getBlock(i);
-            int blockId = currentBlock.blockId;
-            if (onSwitch)
+            foreach (Line line in myLineList)
             {
-                configureDirection();
-                onSwitch = false;
+                if (line.lineId == lineId)
+                {
+                    foreach (Section section in line.sections)
+                    {
+                        foreach (Block block in section.blocks)
+                        {
+                            if (block.isFromYard)
+                                return block;
+                        }
+                    }
+                }
             }
+            return null;
+        }
 
-            if (prevToNext)
+        //only returns null if the yard
+        public Block getNextBlock(Block prevBlock, Block currBlock, int? lineId = null)
+        {
+            Block nextBlock = null;
+            bool isSource = false;
+            bool isTarget = false;
+            if (prevBlock == null && currBlock == null) //coming from yard
             {
-                if (currentBlock.nextBlockId != null)
+                return findYardBlock((int)lineId); //TODO use findYardBlock
+            }
+            if (currBlock.parentSwitch != null)
+            {
+                if (currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
                 {
-                    return getBlock((int)currentBlock.nextBlockId);
+                    isSource = true;
                 }
-                else if (currentBlock.parentSwitch.targetBlockId1 == blockId)
+                else if (currBlock.parentSwitch.targetBlockId1 == currBlock.blockId || currBlock.parentSwitch.targetBlockId2 == currBlock.blockId)
                 {
-                    onSwitch = true;
-                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
+                    isTarget = true;
                 }
-                else if (currentBlock.parentSwitch.targetBlockId2 == blockId)
+            }
+            if (prevBlock == null && currBlock.parentSwitch != null) //if already on 1st block from yard
+            {
+                if (isTarget)
                 {
-                    onSwitch = true;
-                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
+                }
+                else if (isSource)
+                {
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
+                }
+            }
+            else if (prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
+            {
+                if (currBlock.prevBlockId == null)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
                 }
                 else
                 {
-                    onSwitch = true;
-                    return null;
+                    return findBlock((int)currBlock.prevBlockId);
                 }
             }
-            else
+            else if (currBlock.parentSwitch != null && prevBlock.parentSwitch == null) //if entering a switch
             {
-                if (currentBlock.prevBlockId != null)
+                if (isTarget)
                 {
-                    return getBlock((int)currentBlock.prevBlockId);
+                    return findBlock((int)currBlock.parentSwitch.sourceBlockId);
                 }
-                else if (currentBlock.parentSwitch.targetBlockId1 == blockId)
+                else if (isSource)
                 {
-                    onSwitch = true;
-                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
-                }
-                else if (currentBlock.parentSwitch.targetBlockId2 == blockId)
-                {
-                    onSwitch = true;
-                    return getBlock((int)currentBlock.parentSwitch.sourceBlockId);
-                }
-                else
-                {
-                    onSwitch = true;
-                    return null;
+                    int targetId = (int)TrackControllerModule.getSwitchState(currBlock.parentSwitch.switchId);
+                    return findBlock(targetId);
                 }
             }
-        }
-
-        private void configureDirection()
-        {
-            if (currentBlock.prevBlockId == null) prevToNext = true;
-            else prevToNext = false;
-        }
-
-        public Block getCurrentBlock()
-        {
-            return currentBlock;
-        }
-
-        public double getDistance(int n)
-        {
-            int distance = currentBlock.length;
-            for (int i = 0; i < n - 1; i++)
+            else //if no switches involved
             {
-                currentBlock = getNextBlock(currentBlock.blockNum);
-                distance += currentBlock.length;
+                if (prevBlock.nextBlockId != null && prevBlock.nextBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.nextBlockId);
+                }
+                else if (prevBlock.prevBlockId != null && prevBlock.prevBlockId == currBlock.blockId)
+                {
+                    return findBlock((int)currBlock.prevBlockId);
+                }
             }
-            return distance;
-        }
-
-        public bool getPrevToNext()
-        {
-            return prevToNext;
-        }
-
-        public bool getOnSwtich()
-        {
-            return onSwitch;
+            return nextBlock;
         }
 
         private void setAuto()
@@ -476,7 +511,7 @@ namespace CTC
 
         private void dispTrain_Click(object sender, EventArgs e)
         {
-           if (trainSelected)
+           if (trainSelectedBool)
             {
                 dispatchOldTrain(selTrainId);
             }
@@ -567,12 +602,6 @@ namespace CTC
         {
 
         }
-
-        private void yardTrain_Click(object sender, EventArgs e)
-        {
-            trainSelected = false;
-        }
-
 
         private void speedScrollBar_Scroll(object sender, ScrollEventArgs e)
         {

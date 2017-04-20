@@ -48,6 +48,7 @@ namespace TrainProject
         {
             foreach (Train t in TrackControllerModule.trainTrackings)
             {
+                //can change this to active
                 if (trainHeadingTowardsSwitch(t, s, 0) > 0 && s.sourceLight == false)
                 {
                     TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, 0, 0);
@@ -79,7 +80,7 @@ namespace TrainProject
                     //if train is contained in source branch
                     if (checkWithinRange(t.currBlock, (int)s.sourceBlockId, (int)s.sourceBlockId_end))
                     {
-                        int srcDir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 0);
+                        int srcDir = (int)TrackControllerWindow.plc.getSwitchDirection(s, 0);
                         if (srcDir > 0 || srcDir < 0)
                         {
                             return srcDir;
@@ -105,7 +106,7 @@ namespace TrainProject
                     //if train is contained in source branch
                     if (checkWithinRange(t.currBlock, (int)s.targetBlockId1, (int)s.targetBlockId1_end))
                     {
-                        int t1Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
+                        int t1Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s, 1);
                         if (t1Dir > 0 || t1Dir < 0)
                         {
                             return t1Dir;
@@ -130,7 +131,7 @@ namespace TrainProject
                 case 2:
                     if (checkWithinRange(t.currBlock, (int)s.targetBlockId2, (int)s.targetBlockId2_end))
                     {
-                        int t2Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s.switchId, 1);
+                        int t2Dir = (int)TrackControllerWindow.plc.getSwitchDirection(s, 2);
                         if (t2Dir > 0 || t2Dir < 0)
                         {
                             return t2Dir;
@@ -204,7 +205,7 @@ namespace TrainProject
                 }
                 //if target block 1 is occupied
                 Console.WriteLine("Switch " + s.switchId);
-                Console.WriteLine(TrackControllerWindow.plc.determineSwitchState(s.switchId, a, b, c));
+                Console.WriteLine(TrackControllerWindow.plc.determineSwitchState(s, a, b, c));
             }
 
             foreach (Crossing c in crossings)
