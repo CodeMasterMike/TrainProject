@@ -632,7 +632,7 @@ namespace CTC
         //closes block on button click
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.closeBlock(blockSelected);
+            TrackControllerModule.sendClosure(blockSelected);
 
             Block block = findBlock(blockSelected);
 
