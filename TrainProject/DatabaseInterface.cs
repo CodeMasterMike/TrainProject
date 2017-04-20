@@ -161,6 +161,7 @@ namespace TrainProject
             return blocks;
         }
 
+        //returns the switches with their respective SourceBlockId and TargetBlockId1 and 2
         public static List<Switch> loadSwitchesFromDB(SqlConnection con, List<Block> blockList)
         {
             List<Switch> switches = new List<Switch>();
@@ -241,6 +242,7 @@ namespace TrainProject
             return switches;
         }
 
+        //updates isToYard/isFromYard on each block accordingly
         public static void addYardBooleans(List<Block> blockList, List<Switch> switchList)
         {
             foreach(Switch currSwitch in switchList)
@@ -293,6 +295,8 @@ namespace TrainProject
         }
 
         //uses blocks in Line/Section/Block format
+        //train can traverse track from next to previous or previous to next
+        //current train direction is updated after a switch by checking if the previous or nextBlockId is null
         public static void updateBlocksNextPrevious(List<Line> lineList) 
         {
             foreach (Line line in lineList)
@@ -316,6 +320,7 @@ namespace TrainProject
             }
         }
 
+        //checks if block direction is bidirectional, updates direction accordingly
         public static void updateBlockDirection(List<Line> lineList)
         {
             foreach (Line line in lineList)
@@ -403,6 +408,7 @@ namespace TrainProject
             }
         }
 
+        //used by local methods to find a block
         private static Block findBlock(int blockId, List<Block> blockList)
         {
             foreach (Block block in blockList)
@@ -414,77 +420,5 @@ namespace TrainProject
             }
             return null;
         }
-
-        /*
-        public static void addStationBeacons(List<Block> blockList)
-        {
-            foreach(Block block in blockList)
-            {
-                if(block.station != null)
-                {
-                    bool direction;
-                    int? nextBlockId = block.nextBlockId;
-                    if (block.parentSwitch.targetBlockId1 == block.blockId || block.parentSwitch.targetBlockId2 == block.blockId)
-                    {
-                        nextBlockId = block.parentSwitch.sourceBlockId;
-                        if(findBlock((int)nextBlockId,blockList).prevBlockId == null)
-                        {
-                            direction = true;
-                        }
-                    }
-                    if(nextBlockId != null)
-                    {
-                        traverseDownTrack(3, 0, findBlock((int)nextBlockId, blockList), direction);
-                    }
-                    else //at switch, must go both ways
-                    {
-
-                    }
-                    int? prevBlockId = block.prevBlockId;
-                    if (block.parentSwitch.targetBlockId1 == block.blockId || block.parentSwitch.targetBlockId2 == block.blockId)
-                    {
-                        prevBlockId = block.parentSwitch.sourceBlockId;
-                    }
-                    if (block.prevBlockId != null)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                }
-            }
-        }*/
-
-        /*private static void traverseDownTrack(List<Block> blockList, int remainingBlocks, int currDistance, Block currBlock, bool prevToNext)
-        {
-            //if coming from a switch, prevToNext should have already been calculated
-            Block nextBlock1 = null;
-            Block nextBlock2 = null;
-            int? nextBlockId;
-            if(prevToNext)
-            {
-                nextBlockId = currBlock.nextBlockId;
-            }
-            else
-            {
-                nextBlockId = currBlock.prevBlockId;
-            }
-            //if entering a switch, nextBlockId will be null
-            if(nextBlockId == null)
-            {
-                if(currBlock.parentSwitch.sourceBlockId == currBlock.blockId)
-                {
-                    nextBlock1 = findBlock((int)currBlock.parentSwitch.targetBlockId1, blockList);
-                }
-
-            }
-            //now need to find next block
-            else if()
-            {
-
-            }
-        }*/
     }
 }
