@@ -588,9 +588,22 @@ namespace Track_Layout_UI
             List<ExcelFileLayout> excelFileLines = populateExcelListOfUniqueLines(excelFileEntries);
             List<ExcelFileLayout> excelFileSections = populateExcelListOfUniqueSections(excelFileEntries);
             List<ExcelFileLayout> excelFileBlocks = excelFileEntries;
-
+            string str;
+            try
+            {
+                str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //MessageBox.Show(str);
+                //str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //str = ConfigurationManager.ConnectionStrings[0].ConnectionString;
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
             //now actually write/load the data into the database
-            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+
+
+            Console.WriteLine(str);
             using (SqlConnection con = new SqlConnection(str))
             {
                 //first delete all current db rows
@@ -951,6 +964,24 @@ namespace Track_Layout_UI
                 trackCircuitStatus.Text = "Track Circuit - OK";
                 powerStatus.Text = "Power - OK";
                 railStatus.BackColor = Color.Lime;
+                trackCircuitStatus.BackColor = Color.Lime;
+                powerStatus.BackColor = Color.Lime;
+            }
+        }
+
+        public void closeBlock(int blockId)
+        {
+            Block currBlock = findBlock(blockId);
+            currBlock.isCircuitBroken = false;
+            currBlock.isPowerBroken = false;
+            currBlock.isRailBroken = true;
+            TrackControllerModule.causeFailure(currBlock.blockId);
+            if (selectedBlock.blockId == currBlock.blockId)
+            {
+                railStatus.Text = "Rail - BROKEN";
+                trackCircuitStatus.Text = "Track Circuit - OK";
+                powerStatus.Text = "Power - OK";
+                railStatus.BackColor = Color.Red;
                 trackCircuitStatus.BackColor = Color.Lime;
                 powerStatus.BackColor = Color.Lime;
             }

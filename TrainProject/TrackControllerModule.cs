@@ -189,7 +189,7 @@ public class TrackControllerModule
         TrainSimulation.trackControllerWindow.updateSwitches();
         TrainSimulation.trackControllerWindow.updateCrossings();
         TrainSimulation.trackControllerWindow.updateTrains();
-        }
+    }
 
     public static void openBlock(int blockId)
     {
@@ -225,8 +225,9 @@ public class TrackControllerModule
                         TrainSimulation.trackModelWindow.updateSpeedAndAuthority(t.trainId, t.suggestedSpeed, t.authority);
                     }
                 }
-                }
+            }
         }
+        TrainSimulation.trackModelWindow.fixBlock(blockId);    
     }
 
     public static void causeFailure(int blockId)
@@ -234,6 +235,12 @@ public class TrackControllerModule
         closeBlock(blockId);
         //TrainSimulation.mainOffice.causeFailure(blockId);
             
+    }
+
+    public static void sendClosure(int blockId)
+    {
+        closeBlock(blockId);
+        TrainSimulation.trackModelWindow.closeBlock(blockId);
     }
 
     public void dispatchNewTrain(int trainId, TrainModel newTrain, double speed, int authority)
