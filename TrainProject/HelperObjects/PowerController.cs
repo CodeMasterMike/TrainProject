@@ -21,7 +21,7 @@ namespace TrainProject
         double power1 = 0;
         double power2 = 0;
         double power3 = 0;
-        Random rnd
+        Random rnd;
 
         public PowerController(double m, double mP)
         {
