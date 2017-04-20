@@ -42,11 +42,7 @@ namespace Track_Layout_UI
         //stations are still attached to blocks, just had to hard code the beacons
         private static void initializeRedLineStationBeacons()
         {
-            StationBeacon currBeacon;
-            currBeacon = new StationBeacon("SHADYSIDE", 75, false, true);
-            redLineStationBeacons[8] = currBeacon;
-            currBeacon = new StationBeacon("HERRON AVE", 50, false, true);
-            redLineStationBeacons[1] = currBeacon;
+            
         }
         private static void initializeGreenLineStationBeacons()
         {
@@ -63,7 +59,6 @@ namespace Track_Layout_UI
             greenLineStationBeacons[86] = currBeacon;
             currBeacon = new StationBeacon("CASTLE SHANNON", 150, true, true);
             greenLineStationBeacons[86] = currBeacon;
-            //need to set prevToNext properly
             currBeacon = new StationBeacon("PIONEER", 100, true, true);
             greenLineStationBeacons[3] = currBeacon;
             currBeacon = new StationBeacon("EDGEBROOK", 100, true, true);
@@ -100,6 +95,10 @@ namespace Track_Layout_UI
             {
                 return redLineStationBeacons[blockNum];
             }
+            if (lineNum == 1)
+            {
+                return greenLineStationBeacons[blockNum];
+            }
             return null;
         }
         //end temp stuff
@@ -130,6 +129,7 @@ namespace Track_Layout_UI
                 DatabaseInterface.updateBlocksNextPrevious(lineList);
                 DatabaseInterface.updateBlockDirection(lineList);
                 initializeRedLineStationBeacons();
+                initializeGreenLineStationBeacons();
 				DatabaseInterface.addYardBooleans(blockList, switchList);
             }
             parseSwitchEnds();
