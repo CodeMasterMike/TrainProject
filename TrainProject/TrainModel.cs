@@ -462,6 +462,7 @@ namespace TrainModelProject
         {
             train_failures = 1;
             TC.updateFailure(train_failures);
+            TrainSimulation.MBOWindow.setUpdateNeed();
         }
 
         private void failSignalPickupButton_Click(object sender, EventArgs e)

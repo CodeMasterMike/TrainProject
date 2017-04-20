@@ -45,6 +45,8 @@ namespace MBO_UI
         public DriverSchedule driverSchedule;
         public TrainSchedule trainSchedule;
         public string initialClock;
+        public Boolean updateNeed;
+
 
         //public TrainSimulation trainSimulation = new TrainSimulation();
         //CustomClock clk = new CustomClock(trainSimulation);
@@ -53,7 +55,8 @@ namespace MBO_UI
         {
             InitializeComponent();
             label18.Text = "Inactive";
-            label18.ForeColor = System.Drawing.Color.Red;  
+            label18.ForeColor = System.Drawing.Color.Red;
+            updateNeed = false;
         }
 
         private void createTrainScheduleButton_Click(object sender, EventArgs e)
@@ -158,12 +161,28 @@ namespace MBO_UI
 
         public void updateTrainSchedule()
         {
-
+            if(updateNeed)
+            {
+                MessageBox.Show("Train schedule updated as needed.");
+                updateNeed = false;
+            }
+            else
+            {
+                MessageBox.Show("There are no changes to update.");
+            }
         }
 
         public void updateDriverSchedule()
         {
-
+            if (updateNeed)
+            {
+                MessageBox.Show("Train schedule updated as needed.");
+                updateNeed = false;
+            }
+            else
+            {
+                MessageBox.Show("There are no changes to update.");
+            }
         }
 
         public void dispatchTrain()
@@ -285,6 +304,10 @@ namespace MBO_UI
             System.Diagnostics.Process.Start(@"C:\\Users\\Public\\DriverSchedule.xls");
         }
         
+        public void setUpdateNeed()
+        {
+            updateNeed = true;
+        }
 
         public void setNumDrivers()
         {
@@ -305,6 +328,7 @@ namespace MBO_UI
             else
             {
                 breakAntenna();
+                updateNeed = true;
             }
         }
 
