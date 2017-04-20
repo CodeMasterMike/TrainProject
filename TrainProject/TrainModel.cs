@@ -22,7 +22,7 @@ namespace TrainModelProject
         private double train_length = 32.2; //m
         private double train_height = 3.42; //m
         private double train_width = 2.65; //m
-        private double train_pass = 1;
+        private double train_pass = 10;
         private double train_crew = 1; //m
         private string train_facilities = "Good";
         private double max_acceleration = 0.5; //m per s^2
@@ -35,6 +35,10 @@ namespace TrainModelProject
         private double currSpeedmsF = 0;
         private double power = 0;
         private double currTemp = 69;
+        private double Train_Door = 0;
+        private double station_status = 0;
+        private double passenger_off = 0;
+        private double passenger_on = 0;
         private bool service = false;
         private bool emergency = false;
         private TrainController TC;
@@ -44,12 +48,14 @@ namespace TrainModelProject
         private int train_failures = 0;
         private double block_distance = 0;
         private double train_slope = 0;
+        private double pass_from_station = 0;
         Block current_block;
         Block currentT_block;
         Block first_block;
         Block second_block;
         Block next_block;
         Block prev_block;
+        Station curr_Station;
         private int TM_count = 0;
         double p;
         double sugSpeed;
@@ -132,9 +138,12 @@ namespace TrainModelProject
             else if (n == 1) Train_Door_L.Text = "Left";
             else if (n == 2) Train_Door_L.Text = "Right";
             if(n != 0) announcementLabel.Text = "";
+            Train_Door = n;
         }
         public void currentBlock()
         {
+            
+            
             p = currSpeedms;
             if (block_distance >= p) block_distance -= p;
             else
@@ -146,6 +155,8 @@ namespace TrainModelProject
                 
                 prev_block = current_block;
                 current_block = next_block;
+                
+
                 int number = 0;
                 if(current_block.switchBeacon != null) number = current_block.switchBeacon.blockId;
                 TC.sendSwitchBeaconInfo(number);
@@ -165,20 +176,47 @@ namespace TrainModelProject
                // Train_Height_L.Text = current_block.blockNum.ToString() + " ..";
             }
 
+            if (Train_Door != 0)
+            {
+                // Enter Passenger Code
+                stationPassengers(current_block.station);
+                train_width = 6;
+            }
+
+
         }
 
         public void travel()
         {
 
         }
+
+        public void stationPassengers(Station station)
+        {
+            Random rnd = new Random();
+            passenger_off = rnd.Next(1, Convert.ToInt32(train_pass));
+            train_pass = Math.Abs(passenger_off - train_pass);
+            pass_from_station = curr_Station.getWaiting();
+            if (pass_from_station + train_pass > 75 )
+            {
+                passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
+            }
+            else
+            {
+                passenger_on = pass_from_station;
+            }
+            train_pass = passenger_on + train_pass;
+        }
+
         public void updateGUI()
         {
             currSpeedmsF = currSpeedms / 0.44704;
             currSpeedmsF = Math.Round(currSpeedmsF, 2);
             Train_Speed.Text = currSpeedmsF.ToString() + " m/hr";
             Train_Passenger_L.Text = train_pass.ToString();
-            Train_Crew_L.Text = train_crew.ToString();
-            Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
+            Train_Crew_L.Text = passenger_off.ToString();
+            Train_Internal_Temperature_L.Text = passenger_on.ToString() + " *F";
+            //Train_Internal_Temperature_L.Text = currTemp.ToString() + " *F";
             Train_Mass_L.Text = mass.ToString() + " kg";
             Train_Width_L.Text = train_width.ToString() + " m";
             Train_Height_L.Text = train_height.ToString() + " m";
