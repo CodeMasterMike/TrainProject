@@ -32,7 +32,8 @@ namespace CTC
         List<Line> myLineList;
         TrainModel[] trainModelArray = new TrainModel[50];
         public List<Train> myTrainList;
-        Boolean mode; // 0 = man, 1 = auto
+        Boolean autoMode; // 0 = man, 1 = auto
+        Boolean MBOMode;
 
         public Office()
         {
@@ -533,15 +534,16 @@ namespace CTC
         //sets to auto mode
         private void setAuto()
         {
-            mode = true;
-            TrainSimulation.MBOWindow.isAuto(mode);
+            autoMode = true;
+            TrainSimulation.MBOWindow.isAuto(autoMode);
         }
 
         //sets to manual mode
         private void setManual()
         {
-            mode = false;
-            TrainSimulation.MBOWindow.isAuto(mode);
+            autoMode = false;
+            MBOMode = false;
+            TrainSimulation.MBOWindow.isAuto(autoMode);
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -639,10 +641,10 @@ namespace CTC
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
             foreach (Block b in myBlockList)
-            {
+			{
                 if ((currentLineSelection == 2) && (b.blockNum == blockSelected-1))
                 {
-                    TrackControllerModule.closeBlock(b.blockId);
+                    TrackControllerModule.sendClosure(b.blockId);
                     foreach (ListViewItem item in systemListView.Items)
                     {
                         if (item.Index == (b.blockNum))
@@ -694,7 +696,7 @@ namespace CTC
         private void manButton_Click(object sender, EventArgs e)
         {
             setManual();
-            mode = false;
+            autoMode = false;
             autoButton.ForeColor = Color.Black;
             autoButton.BackColor = Color.White;
             manButton.ForeColor = Color.White;
@@ -705,9 +707,9 @@ namespace CTC
         //update auto button
         private void autoButton_Click(object sender, EventArgs e)
         {
-            setAuto();
-            dispatchNewTrain();
-            mode = true;
+            //setAuto();
+            //dispatchNewTrain();
+            autoMode = true;
             autoButton.ForeColor = Color.White;
             autoButton.BackColor = Color.Black;
             manButton.ForeColor = Color.Black;
@@ -716,13 +718,17 @@ namespace CTC
         }
 
         private void fbRadio_CheckedChanged(object sender, EventArgs e)
-        {
-
+        {           
+        
+            autoMode = true;
+            TrainSimulation.MBOWindow.isAuto(autoMode);
+        
         }
 
         private void mboButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            MBOMode = true;
+            TrainSimulation.MBOWindow.isMBO(MBOMode);
         }
 
         private void notifLabel_Click(object sender, EventArgs e)
