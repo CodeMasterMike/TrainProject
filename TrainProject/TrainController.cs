@@ -79,7 +79,7 @@ namespace TrainControllerProject
         bool simulate = false;
         bool approachingStation = false;
         bool authorityChanged = false;
-        int failureStatus = 0;
+        public int failureStatus = 0;
         bool lightStatus = false;
         PowerController powerController;
         TrainModel TM;
