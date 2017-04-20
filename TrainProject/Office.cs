@@ -91,9 +91,34 @@ namespace CTC
             
         }
 
-        /*
-         * uses selected train to update speed and authority
-         */
+
+        public void dispatchMBOTrain(int line, double speed, int auth)
+        {
+            currentLineSelection = line;
+            sugSpeed = speed;
+            sugAuth = auth;
+            trainCounter++;
+            Train train = new Train(trainCounter, sugSpeed, sugAuth);
+            myTrainList.Add(train);
+            if (currentLineSelection == 1) //green
+            {
+                train.prevBlock = 152;
+                train.currBlock = 152;
+            }
+            else //red
+            {
+                train.prevBlock = 229;
+                train.currBlock = 229;
+            }
+            tm_window = new TrainModel(currentLineSelection, trainCounter);
+            trainModelArray[trainCounter] = tm_window; //starts at 1 and skips 0 element, noted for the for loop
+            tm_window.Show();
+            module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
+            train.authority = sugAuth;
+            train.suggestedSpeed = sugSpeed;
+
+        }
+
         public void dispatchOldTrain(int trainId)
         {
             module.updateSpeedAndAuthority(trainId, sugSpeed, sugAuth);

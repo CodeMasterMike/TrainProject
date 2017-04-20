@@ -209,11 +209,11 @@ namespace TrainProject
                 redWorksheet.Cells[2, (nextCell)] = "Yard";
                 nextCell++;
 
-                hoursPassed += 1.5;
+                hoursPassed += 0.1;
 
                 if (operHours - hoursPassed >= .4)
                 {
-                    addTime = new TimeSpan(1, 30, 0);
+                    addTime = new TimeSpan(0, 5, 0);
                     time = time.Add(addTime);
                     redWorksheet.Cells[1, (nextCell)] = time.ToString("hh:mm tt");
                     redWorksheet.Cells[2, (nextCell)] = "Redispatch";
@@ -339,11 +339,11 @@ namespace TrainProject
                 redWorksheet.Cells[4, (nextCell)] = "Yard";
                 nextCell++;
 
-                hoursPassed += 1.5;
+                hoursPassed += .1;
 
                 if (operHours - hoursPassed >= .4)
                 {
-                    addTime = new TimeSpan(1, 30, 0);
+                    addTime = new TimeSpan(0, 5, 0);
                     time = time.Add(addTime);
                     redWorksheet.Cells[3, (nextCell)] = time.ToString("hh:mm tt");
                     redWorksheet.Cells[4, (nextCell)] = "Redispatch";
@@ -449,7 +449,7 @@ namespace TrainProject
                     addTime = new TimeSpan(0, 3, 24);
                     time = time.Add(addTime);
                     greenWorksheet.Cells[1, (i)] = time.ToString("hh:mm tt");
-                    greenWorksheet.Cells[2, (i)] = "Station";
+                    greenWorksheet.Cells[2, (i)] = "North Pole";
                     i++;
 
                     addTime = new TimeSpan(0, 3, 42);
@@ -562,11 +562,11 @@ namespace TrainProject
                 greenWorksheet.Cells[2, (nextCell)] = "Yard";
                 nextCell++;
 
-                hoursPassed += 1.5;
+                hoursPassed += .1;
 
                 if (operHours - hoursPassed >= .9)
                 {
-                    addTime = new TimeSpan(1, 30, 0);
+                    addTime = new TimeSpan(0, 5, 0);
                     time = time.Add(addTime);
                     greenWorksheet.Cells[1, (nextCell)] = time.ToString("hh:mm tt");
                     greenWorksheet.Cells[2, (nextCell)] = "Redispatch";
@@ -648,7 +648,7 @@ namespace TrainProject
                     addTime = new TimeSpan(0, 3, 24);
                     time = time.Add(addTime);
                     greenWorksheet.Cells[3, (i)] = time.ToString("hh:mm tt");
-                    greenWorksheet.Cells[4, (i)] = "Station";
+                    greenWorksheet.Cells[4, (i)] = "North Pole";
                     i++;
 
                     addTime = new TimeSpan(0, 3, 42);
@@ -761,11 +761,11 @@ namespace TrainProject
                 greenWorksheet.Cells[4, (nextCell)] = "Yard";
                 nextCell++;
 
-                hoursPassed += 1.5;
+                hoursPassed += .1;
 
                 if (operHours - hoursPassed >= .9)
                 {
-                    addTime = new TimeSpan(1, 30, 0);
+                    addTime = new TimeSpan(0, 5, 0);
                     time = time.Add(addTime);
                     greenWorksheet.Cells[3, (nextCell)] = time.ToString("hh:mm tt");
                     greenWorksheet.Cells[4, (nextCell)] = "Redispatch";
@@ -796,7 +796,7 @@ namespace TrainProject
 
             schedulesWorkbook.Close(true, misValue, misValue);
             schedulesApp.Quit();
-
+            
             Marshal.ReleaseComObject(redWorksheet);
             Marshal.ReleaseComObject(schedulesWorkbook);
             Marshal.ReleaseComObject(schedulesApp);

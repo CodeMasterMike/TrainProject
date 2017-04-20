@@ -62,6 +62,10 @@ namespace TrainProject
             {
                 Invoke(new MethodInvoker(delegate { mainOffice.updateTime(displayTime); }));
             }
+            if (MBOWindow != null)
+            {
+                Invoke(new MethodInvoker(delegate { MBOWindow.updateTime(displayTime); }));
+            }
         }
 
         private void speedButton1_Click(object sender, EventArgs e)
