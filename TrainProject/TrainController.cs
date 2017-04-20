@@ -317,15 +317,13 @@ namespace TrainControllerProject
         //function called by the train model
         public void getStationBeaconInfo(bool pn, double distance, String n, bool left)
         {
-            if (left) stationSide = 1;
-            else stationSide = 2;
-            distanceToStation = distance + 5;
-            stationName = n;
             stationPrevToNext = pn;
-            if (prevToNext != stationPrevToNext)
+            if(prevToNext == stationPrevToNext)
             {
-                distanceToStation = 0;
-                stationName = "";
+                if (left) stationSide = 1;
+                else stationSide = 2;
+                distanceToStation = distance + 5;
+                stationName = n;
             }
             approachingStation = true;
             if(mode == 1 && distanceToStation != 0)
@@ -560,6 +558,7 @@ namespace TrainControllerProject
             authority = a;
             authorityChanged = true;
             minStopDistanceAuthority = 0;
+            distanceToAuthority = 0;
         }
 
         //*******************************************************************************//

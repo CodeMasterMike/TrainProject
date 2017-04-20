@@ -132,7 +132,7 @@ namespace Track_Layout_UI
             greenLineStationBeacons[137] = currBeacon;
 
         }
-        //called by TrainModel to get station beacons
+        //called by TrainModel to get station beacon
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
             if (lineNum == 2)
@@ -577,6 +577,9 @@ namespace Track_Layout_UI
             try
             {
                 str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //MessageBox.Show(str);
+                //str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //str = ConfigurationManager.ConnectionStrings[0].ConnectionString;
             }
             catch (Exception exception)
             {

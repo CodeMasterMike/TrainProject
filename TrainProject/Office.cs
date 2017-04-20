@@ -368,6 +368,8 @@ namespace CTC
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
                             tm_window.Close();
+                            tm_window = null;
+                            trainModelArray[t.trainId] = null;
                             throughCounter++;
                             updateThroughput(trainCounter, throughCounter); 
                             //t = null;
@@ -397,6 +399,8 @@ namespace CTC
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
                             tm_window.Close();
+                            tm_window = null;
+                            trainModelArray[t.trainId] = null;
                             throughCounter++;
                             updateThroughput(trainCounter, throughCounter);
                             //t = null;
@@ -598,67 +602,72 @@ namespace CTC
         //opens block from closure
         private void openBlockButton_Click(object sender, EventArgs e)
         {
-
-            TrackControllerModule.openBlock(blockSelected);
-
-            Block block = findBlock(blockSelected);
-            if (block.lineId == 2)
+            //Block block = findBlock(blockSelected);
+            //if (currentLineSelection == 2)
+            
+            foreach (Block b in myBlockList)
             {
-                foreach (ListViewItem item in systemListView.Items)
+                if ((currentLineSelection == 2) && (b.blockNum == blockSelected-1))
                 {
-                    if (item.Index == (block.blockNum))
+                    TrackControllerModule.openBlock(b.blockId);
+                    foreach (ListViewItem item in systemListView.Items)
                     {
-                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
-                        { Text = "Open "};
+                        if (item.Index == (b.blockNum))
+                        {
+                            item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                            { Text = "Open " };
+                        }
+
                     }
-
                 }
-            }
 
-            if (block.lineId == 1)
-            {
-                foreach (ListViewItem item in systemListView2.Items)
+                if ((currentLineSelection == 1) && (b.blockNum == blockSelected-1))
                 {
-                    if (item.Index == (block.blockNum))
+                    TrackControllerModule.openBlock(b.blockId);
+                    foreach (ListViewItem item in systemListView2.Items)
                     {
-                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
-                        { Text = "Open " };
-                    }
+                        if (item.Index == (b.blockNum))
+                        {
+                            item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                            { Text = "Open " };
+                        }
 
+                    }
                 }
-            }
+            }            
         }
 
         //closes block on button click
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
-            TrackControllerModule.sendClosure(blockSelected);
-
-            Block block = findBlock(blockSelected);
-
-            if (block.lineId == 2)
-            {
-                foreach (ListViewItem item in systemListView2.Items)
+            foreach (Block b in myBlockList)
+			{
+                if ((currentLineSelection == 2) && (b.blockNum == blockSelected-1))
                 {
-                    if (item.Index == (block.blockNum))
+                    TrackControllerModule.sendClosure(b.blockId);
+                    foreach (ListViewItem item in systemListView.Items)
                     {
-                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
-                        { Text = "Closed" };
-                    }
+                        if (item.Index == (b.blockNum))
+                        {
+                            item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                            { Text = "Close " };
+                        }
 
+                    }
                 }
-            }
 
-            if (block.lineId == 1)
-            {
-                foreach (ListViewItem item in systemListView.Items)
+                if ((currentLineSelection == 1) && (b.blockNum == blockSelected-1))
                 {
-                    if (item.Index == (block.blockNum))
+                    TrackControllerModule.closeBlock(b.blockId);
+                    foreach (ListViewItem item in systemListView2.Items)
                     {
-                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
-                        { Text = "Closed " };
-                    }
+                        if (item.Index == (b.blockNum))
+                        {
+                            item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                            { Text = "Close " };
+                        }
 
+                    }
                 }
             }
         }

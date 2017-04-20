@@ -256,7 +256,7 @@ namespace TrainModelProject
                 passenger_off = rnd.Next(1, Convert.ToInt32(train_pass));
                 train_pass = Math.Abs(passenger_off - train_pass);
 
-                pass_from_station = station.getWaiting();
+                if (station != null) pass_from_station = station.getWaiting();
                 if (pass_from_station + train_pass > 75)
                 {
                     passenger_on = rnd.Next(1, (75 - Convert.ToInt32(train_pass)));
