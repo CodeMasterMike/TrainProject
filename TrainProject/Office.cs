@@ -25,6 +25,8 @@ namespace CTC
         public static TrackControllerModule module;
         Block currentBlock;
         int currentLineSelection = 1;
+        int blockSelected;
+        int throughCounter;
 
         List<Block> myBlockList;
         List<Line> myLineList;
@@ -258,7 +260,7 @@ namespace CTC
         {
             if (!(e.Item.SubItems[0].Text == "Yard"))
             {
-                int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) + 1;
+                blockSelected = Int32.Parse(e.Item.SubItems[0].Text) + 1;
                 Block b = myBlockList[blockSelected - 1];//bc index starts at zero + header row
                 updateBlockLabel.Text = b.blockNum.ToString();
                 if (b.isOccupied == true)
@@ -340,6 +342,8 @@ namespace CTC
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
                             tm_window.Close();
+                            throughCounter++;
+                            updateAuthority(trainCounter, throughCounter);
                             //t = null;
                             //myTrainList.Remove(t);
                         }
@@ -367,6 +371,8 @@ namespace CTC
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
                             tm_window.Close();
+                            throughCounter++;
+                            updateAuthority(trainCounter, throughCounter);
                             //t = null;
                             //myTrainList.Remove(t);
                         }
@@ -549,16 +555,78 @@ namespace CTC
 
         private void openBlockButton_Click(object sender, EventArgs e)
         {
+            TrackControllerModule.openBlock(blockSelected);
 
+            Block block = findBlock(blockSelected);
+            if (block.lineId == 2)
+            {
+                foreach (ListViewItem item in systemListView.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Open "};
+                    }
+
+                }
+            }
+
+            if (block.lineId == 1)
+            {
+                foreach (ListViewItem item in systemListView2.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Open " };
+                    }
+
+                }
+            }
         }
 
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
+            TrackControllerModule.closeBlock(blockSelected);
+
+            Block block = findBlock(blockSelected);
+            if (block.lineId == 2)
+            {
+                foreach (ListViewItem item in systemListView2.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Closed" };
+                    }
+
+                }
+            }
+
+            if (block.lineId == 1)
+            {
+                foreach (ListViewItem item in systemListView.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Closed " };
+                    }
+
+                }
+            }
+        }
+
+        public void causeFailure(int blockId)
+        {
+            notifLabel.Text = ("FAILURE!");
 
         }
 
         private void fixTrackButton_Click(object sender, EventArgs e)
         {
+            TrackControllerModule.openBlock(blockSelected);
+            notifLabel.Text = ("Everything is better");
 
         }
 
@@ -674,6 +742,12 @@ namespace CTC
         private void updateThroughputLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateAuthority(int trainCount, int trainThrough)
+        {
+            int throughput = trainThrough / trainCount;
+            updateThroughputLabel.Text = throughput.ToString();
         }
     }
 }
