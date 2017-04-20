@@ -273,7 +273,7 @@ namespace TrainControllerProject
         //freely after it exits the station
         private void resetStation()
         {
-            if (forceStop && currSpeedms == 0)
+            if (forceStop && currSpeedms == 0 && authority != 0 )
             {
                 forceStop = false;
                 stationName = "";
