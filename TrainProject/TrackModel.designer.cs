@@ -59,7 +59,7 @@
             this.switchNumTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.blockBeaconTextBox = new System.Windows.Forms.TextBox();
+            this.stationBeaconTextBox = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.blockPersonsUnloadingTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -110,6 +110,8 @@
             this.dvgBlocks = new System.Windows.Forms.DataGridView();
             this.InsertToSql = new System.Windows.Forms.Button();
             this.openExcelFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
+            this.switchBeaconTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -370,13 +372,15 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.switchBeaconTextBox);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.blockOccupiedTextBox);
             this.groupBox2.Controls.Add(this.occupancyLabel);
             this.groupBox2.Controls.Add(this.blockCumElevationTextBox);
             this.groupBox2.Controls.Add(this.switchNumTextBox);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.blockBeaconTextBox);
+            this.groupBox2.Controls.Add(this.stationBeaconTextBox);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.blockPersonsUnloadingTextBox);
             this.groupBox2.Controls.Add(this.label18);
@@ -481,26 +485,26 @@
             this.label26.TabIndex = 59;
             this.label26.Text = "Cum. Elevation (m):";
             // 
-            // blockBeaconTextBox
+            // stationBeaconTextBox
             // 
-            this.blockBeaconTextBox.BackColor = System.Drawing.Color.White;
-            this.blockBeaconTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.blockBeaconTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blockBeaconTextBox.Location = new System.Drawing.Point(377, 322);
-            this.blockBeaconTextBox.Name = "blockBeaconTextBox";
-            this.blockBeaconTextBox.ReadOnly = true;
-            this.blockBeaconTextBox.Size = new System.Drawing.Size(47, 13);
-            this.blockBeaconTextBox.TabIndex = 58;
+            this.stationBeaconTextBox.BackColor = System.Drawing.Color.White;
+            this.stationBeaconTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stationBeaconTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stationBeaconTextBox.Location = new System.Drawing.Point(295, 322);
+            this.stationBeaconTextBox.Name = "stationBeaconTextBox";
+            this.stationBeaconTextBox.ReadOnly = true;
+            this.stationBeaconTextBox.Size = new System.Drawing.Size(125, 13);
+            this.stationBeaconTextBox.TabIndex = 58;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(301, 322);
+            this.label25.Location = new System.Drawing.Point(191, 322);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(54, 13);
+            this.label25.Size = new System.Drawing.Size(98, 13);
             this.label25.TabIndex = 57;
-            this.label25.Text = "Beacon:";
+            this.label25.Text = "Station Beacon:";
             // 
             // blockPersonsUnloadingTextBox
             // 
@@ -786,7 +790,7 @@
             // 
             // trackCircuitStatus
             // 
-            this.trackCircuitStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.trackCircuitStatus.BackColor = System.Drawing.Color.Lime;
             this.trackCircuitStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.trackCircuitStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trackCircuitStatus.Location = new System.Drawing.Point(268, 61);
@@ -799,7 +803,7 @@
             // 
             // powerStatus
             // 
-            this.powerStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.powerStatus.BackColor = System.Drawing.Color.Lime;
             this.powerStatus.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.powerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.powerStatus.Location = new System.Drawing.Point(522, 61);
@@ -1021,6 +1025,27 @@
             this.openExcelFileDialog.FileName = "openExcelFileDialog";
             this.openExcelFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openExcelFileDialog_FileOk);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(257, 345);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Switch Beacon:";
+            // 
+            // switchBeaconTextBox
+            // 
+            this.switchBeaconTextBox.BackColor = System.Drawing.Color.White;
+            this.switchBeaconTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.switchBeaconTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.switchBeaconTextBox.Location = new System.Drawing.Point(371, 345);
+            this.switchBeaconTextBox.Name = "switchBeaconTextBox";
+            this.switchBeaconTextBox.ReadOnly = true;
+            this.switchBeaconTextBox.Size = new System.Drawing.Size(47, 13);
+            this.switchBeaconTextBox.TabIndex = 67;
+            // 
             // TrackModelUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1118,7 +1143,7 @@
         private System.Windows.Forms.Button brokenRailButton;
         private System.Windows.Forms.Button brokenTrackCircuitButton;
         private System.Windows.Forms.Button powerFailureButton;
-        private System.Windows.Forms.TextBox blockBeaconTextBox;
+        private System.Windows.Forms.TextBox stationBeaconTextBox;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.OpenFileDialog openExcelFileDialog;
         private System.Windows.Forms.Label label26;
@@ -1142,6 +1167,8 @@
         private System.Windows.Forms.TextBox blockTextBox_Murphy;
         private System.Windows.Forms.TextBox lineTextBox_Murphy;
         private System.Windows.Forms.Button updateSelectedBlock_Murphy;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox switchBeaconTextBox;
     }
 }
 

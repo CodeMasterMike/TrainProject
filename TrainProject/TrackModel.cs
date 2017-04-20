@@ -132,6 +132,7 @@ namespace Track_Layout_UI
             greenLineStationBeacons[137] = currBeacon;
 
         }
+        //called by TrainModel to get station beacon
         public static StationBeacon getStationBeacon(int lineNum, int blockNum)
         {
             if (lineNum == 2)
@@ -144,20 +145,9 @@ namespace Track_Layout_UI
             }
             return null;
         }
-        //end temp stuff
         public TrackModelUI()
         {
             InitializeComponent();
-            /*List<Line> testLineList;
-            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(str))
-            {
-                testLineList = DatabaseInterface.loadLinesFromDB(con);
-            }
-            if(testLineList.Count > 1)
-            {
-                loadClassesFromDB();
-            }*/
         }
 
         private void loadClassesFromDB()
@@ -183,6 +173,7 @@ namespace Track_Layout_UI
             initializeLists();
         }
 
+        //used by Wayside, returns the bounds for each switch
         private void parseSwitchEnds()
         {
             Block sourceBlock, t1Block, t2Block;
@@ -191,6 +182,7 @@ namespace Track_Layout_UI
                 //find source block
                 sourceBlock = blockList.Find(x => s.sourceBlockId == x.blockId);
                 s.sourceBlockId_end = findEndBlock(sourceBlock);
+                //now find targets
                 t1Block = blockList.Find(x => s.targetBlockId1 == x.blockId);
                 s.targetBlockId1_end = findEndBlock(t1Block);
                 t2Block = blockList.Find(x => s.targetBlockId2 == x.blockId);
@@ -198,6 +190,7 @@ namespace Track_Layout_UI
             }
         }
 
+        //finds the final block after a switch until the next switch
         private int? findEndBlock(Block startBlock)
         {
             Boolean prevToNext;
@@ -599,9 +592,22 @@ namespace Track_Layout_UI
             List<ExcelFileLayout> excelFileLines = populateExcelListOfUniqueLines(excelFileEntries);
             List<ExcelFileLayout> excelFileSections = populateExcelListOfUniqueSections(excelFileEntries);
             List<ExcelFileLayout> excelFileBlocks = excelFileEntries;
-
+            string str;
+            try
+            {
+                str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //MessageBox.Show(str);
+                //str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+                //str = ConfigurationManager.ConnectionStrings[0].ConnectionString;
+            }
+            catch (Exception exception)
+            {
+                return;
+            }
             //now actually write/load the data into the database
-            string str = ConfigurationManager.ConnectionStrings["TrainProject.Properties.Settings.TrackDBConnectionString"].ConnectionString;
+
+
+            Console.WriteLine(str);
             using (SqlConnection con = new SqlConnection(str))
             {
                 //first delete all current db rows
@@ -868,16 +874,20 @@ namespace Track_Layout_UI
                     blockSpeedLimitTextBox.Text = selectedBlock.speedLimit.ToString();
                     blockStationTextBox.Text = "X";
                     if (selectedBlock.station != null)
+                    {
                         blockStationTextBox.Text = selectedBlock.station.name;
+                        blockPersonsWaitingTextBox.Text = selectedBlock.station.numWaiting.ToString();
+                    }
                     blockPersonsUnloadingTextBox.Text = "0"; //TODO
                     blockTemperatureTextBox.Text = temperature.ToString();
                     blockHeaterStatusTextBox.Text = "Off";
                     if(selectedBlock.heaterStatus)
                         blockHeaterStatusTextBox.Text = "On";
-                    blockIsUndergroundTextBox.Text = "NO";
+                    blockIsUndergroundTextBox.Text = "No";
                     if(selectedBlock.isUnderground)
-                        blockIsUndergroundTextBox.Text = "YES";
+                        blockIsUndergroundTextBox.Text = "Yes";
                     blockSwitchTextBox.Text = "None";
+                    switchNumTextBox.Text = "X";
                     if(selectedBlock.parentSwitch != null)
                     {
                         if (selectedBlock.parentSwitch.sourceBlockId == selectedBlock.blockId)
@@ -887,13 +897,25 @@ namespace Track_Layout_UI
                         switchNumTextBox.Text = selectedBlock.parentSwitch.switchId.ToString();
                     }
                     blockOccupiedTextBox.Text = "No";
-                    if(selectedBlock.isOccupied)
+                    if (selectedBlock.isOccupied)
                         blockOccupiedTextBox.Text = "Yes";
                     blockArrowDirectionTextBox.Text = "-->";
                     if(selectedBlock.bidirectional)
                         blockArrowDirectionTextBox.Text = "<-->";
-                    blockPersonsWaitingTextBox.Text = "X";
-                    blockBeaconTextBox.Text = "X";
+                    stationBeaconTextBox.Text = "X";
+                    if(selectedLine.lineId == 1)
+                    {
+                        if (greenLineStationBeacons[selectedBlock.blockNum] != null)
+                            stationBeaconTextBox.Text = greenLineStationBeacons[selectedBlock.blockNum].name;
+                    }
+                    else if (selectedLine.lineId == 2)
+                    {
+                        if(redLineStationBeacons[selectedBlock.blockNum] != null)
+                            stationBeaconTextBox.Text = redLineStationBeacons[selectedBlock.blockNum].name;
+                    }
+                    switchBeaconTextBox.Text = "X";
+                    if(selectedBlock.switchBeacon != null)
+                        switchBeaconTextBox.Text = selectedBlock.switchBeacon.blockId.ToString();
                     blockEmergencyLabel.Text = selectedLine.name + " Line, Block " +selectedSection.name+selectedBlock.blockNum;
                     updateFailureButtons();
                 }
@@ -946,6 +968,24 @@ namespace Track_Layout_UI
                 trackCircuitStatus.Text = "Track Circuit - OK";
                 powerStatus.Text = "Power - OK";
                 railStatus.BackColor = Color.Lime;
+                trackCircuitStatus.BackColor = Color.Lime;
+                powerStatus.BackColor = Color.Lime;
+            }
+        }
+
+        public void closeBlock(int blockId)
+        {
+            Block currBlock = findBlock(blockId);
+            currBlock.isCircuitBroken = false;
+            currBlock.isPowerBroken = false;
+            currBlock.isRailBroken = true;
+            TrackControllerModule.causeFailure(currBlock.blockId);
+            if (selectedBlock.blockId == currBlock.blockId)
+            {
+                railStatus.Text = "Rail - BROKEN";
+                trackCircuitStatus.Text = "Track Circuit - OK";
+                powerStatus.Text = "Power - OK";
+                railStatus.BackColor = Color.Red;
                 trackCircuitStatus.BackColor = Color.Lime;
                 powerStatus.BackColor = Color.Lime;
             }

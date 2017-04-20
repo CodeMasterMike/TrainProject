@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TrainProject;
 using TrainProject.HelperObjects;
+using TrainProject.Clock;
 using TrainModelProject;
 
 namespace MBO_UI
@@ -29,6 +30,7 @@ namespace MBO_UI
         public Line selectedLine;
 
         public Boolean autoMode = false;
+        public Boolean MBOMode = false;
         public Boolean liveGPS;
         public int trainId;
         public int trainsPerHour;
@@ -36,10 +38,15 @@ namespace MBO_UI
         public int blockAdjustment;
         public int SuggestedSpeed;
         public int lineId;
+        public int timeStart;
+        public int timeEnd;
 
         public TrainModel TM;
         public DriverSchedule driverSchedule;
         public TrainSchedule trainSchedule;
+
+        //public TrainSimulation trainSimulation = new TrainSimulation();
+        //CustomClock clk = new CustomClock(trainSimulation);
 
         public MBO()
         {
@@ -50,12 +57,26 @@ namespace MBO_UI
 
         private void createTrainScheduleButton_Click(object sender, EventArgs e)
         {
-            createTrainSchedule();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                createTrainSchedule();
+            }
         }
 
         private void createDriverScheduleButton_Click(object sender, EventArgs e)
         {
-            createDriverSchedule();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                createDriverSchedule();
+            }
         }
 
         private void createTrainSchedule()
@@ -67,20 +88,37 @@ namespace MBO_UI
        
         private void createDriverSchedule()
         {
-            driverSchedule = new DriverSchedule();
+            timeStart = trainSchedule.getStart();
+            timeEnd = trainSchedule.getEnd();
+            driverSchedule = new DriverSchedule(timeStart,timeEnd);
         }
 
         public void viewTrainSchedule_Click(object Sender, EventArgs e)
         {
-            //trainSchedule.viewTrainSchedule();   
-            viewTrainSchedule();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                //trainSchedule.viewTrainSchedule();   
+                viewTrainSchedule();
+            }
             
         }
 
         public void viewDriverSchedule_Click(object Sender, EventArgs e)
         {
-            viewDriverSchedule();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                viewDriverSchedule();
+            }
         }
+
         public void viewTrainSchedule()
         {
             System.Diagnostics.Process.Start(@"C:\\Users\\Public\\TrainSchedule.xls");
@@ -143,7 +181,7 @@ namespace MBO_UI
             if (mode)
             {
                 autoMode = true;
-                label18.Text = "Automatic";
+                label18.Text = "Fixed Block";
                 label18.ForeColor = System.Drawing.Color.Lime;
             }
             else
@@ -156,15 +194,22 @@ namespace MBO_UI
 
         public void getPos_Click(object Sender, EventArgs e)
         {
-            getPos();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                getPos();
+            }
         }
 
         public void getPos()
         {
-            TM = new TrainModel();
+            //TM = new TrainModel();
             //int test = TM.getTrainTest();
            // MessageBox.Show("TrainID testing value set from TrainController is " + test); 
-
+            
             MessageBox.Show("Position and speed received.");
         }
 
@@ -175,7 +220,14 @@ namespace MBO_UI
 
         public void setAuthority_Click(object Sender, EventArgs e)
         {
-            setAuthority();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                setAuthority();
+            }
         }
 
         public void setAuthority()
@@ -206,12 +258,26 @@ namespace MBO_UI
 
         private void breakAntenna_Click(object sender, EventArgs e)
         {
-            breakAntenna();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                breakAntenna();
+            }
         }
 
         private void fixAntenna_Click(object sender, EventArgs e)
         {
-            fixAntenna();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                fixAntenna();
+            }
         }
 
         public void breakAntenna()
@@ -228,7 +294,14 @@ namespace MBO_UI
 
         private void calculateVariance_Click(object sender, EventArgs e)
         {
-            calculateVariance();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                calculateVariance();
+            }
         }
 
         private void calculateVariance()
@@ -239,7 +312,14 @@ namespace MBO_UI
 
         private void passengerMovement_Click(object sender, EventArgs e)
         {
-            passengerMovement();
+            if (autoMode == false && MBOMode == false)
+            {
+                MessageBox.Show("System is not in automatic mode, please switch modes and try again");
+            }
+            else
+            {
+                passengerMovement();
+            }
         }
 
         private void passengerMovement()
@@ -477,3 +557,4 @@ namespace MBO_UI
         }
     }
 }
+

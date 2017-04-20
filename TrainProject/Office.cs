@@ -367,6 +367,8 @@ namespace CTC
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
                             tm_window.Close();
+                            tm_window = null;
+                            trainModelArray[t.trainId] = null;
                             throughCounter++;
                             updateThroughput(trainCounter, throughCounter); 
                             //t = null;
@@ -396,6 +398,8 @@ namespace CTC
                             tm_window = trainModelArray[t.trainId];
                             tm_window.closeTrainController();
                             tm_window.Close();
+                            tm_window = null;
+                            trainModelArray[t.trainId] = null;
                             throughCounter++;
                             updateThroughput(trainCounter, throughCounter);
                             //t = null;
