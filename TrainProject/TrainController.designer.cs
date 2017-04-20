@@ -54,8 +54,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.trainIDLabel = new System.Windows.Forms.Label();
+            this.trainIDLabel1 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.brakeStatusLabel = new System.Windows.Forms.Label();
+            this.signalStatusLabel = new System.Windows.Forms.Label();
+            this.engineStatusLabel = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.Heater_GroupBox = new System.Windows.Forms.GroupBox();
             this.Heater_Off = new System.Windows.Forms.RadioButton();
             this.Heater_On = new System.Windows.Forms.RadioButton();
@@ -124,12 +130,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.engineStatusLabel = new System.Windows.Forms.Label();
-            this.signalStatusLabel = new System.Windows.Forms.Label();
-            this.brakeStatusLabel = new System.Windows.Forms.Label();
+            this.trainIDLabel = new System.Windows.Forms.Label();
             this.Passenger_Tab.SuspendLayout();
             this.Users_Tab.SuspendLayout();
             this.Driver_Tab.SuspendLayout();
@@ -243,10 +244,11 @@
             // Driver_Tab
             // 
             this.Driver_Tab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Driver_Tab.Controls.Add(this.trainIDLabel);
             this.Driver_Tab.Controls.Add(this.timeLabel);
             this.Driver_Tab.Controls.Add(this.groupBox17);
             this.Driver_Tab.Controls.Add(this.label11);
-            this.Driver_Tab.Controls.Add(this.trainIDLabel);
+            this.Driver_Tab.Controls.Add(this.trainIDLabel1);
             this.Driver_Tab.Controls.Add(this.groupBox13);
             this.Driver_Tab.Controls.Add(this.Heater_GroupBox);
             this.Driver_Tab.Controls.Add(this.setTempLabel);
@@ -467,16 +469,16 @@
             this.label11.Text = "Time : ";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // trainIDLabel
+            // trainIDLabel1
             // 
-            this.trainIDLabel.AutoSize = true;
-            this.trainIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trainIDLabel.Location = new System.Drawing.Point(4, 5);
-            this.trainIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.trainIDLabel.Name = "trainIDLabel";
-            this.trainIDLabel.Size = new System.Drawing.Size(148, 31);
-            this.trainIDLabel.TabIndex = 40;
-            this.trainIDLabel.Text = "Train ID : 1";
+            this.trainIDLabel1.AutoSize = true;
+            this.trainIDLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trainIDLabel1.Location = new System.Drawing.Point(4, 5);
+            this.trainIDLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.trainIDLabel1.Name = "trainIDLabel1";
+            this.trainIDLabel1.Size = new System.Drawing.Size(126, 31);
+            this.trainIDLabel1.TabIndex = 40;
+            this.trainIDLabel1.Text = "Train ID :";
             // 
             // groupBox13
             // 
@@ -497,6 +499,66 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Status Center";
             this.groupBox13.Enter += new System.EventHandler(this.groupBox13_Enter);
+            // 
+            // brakeStatusLabel
+            // 
+            this.brakeStatusLabel.AutoSize = true;
+            this.brakeStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brakeStatusLabel.Location = new System.Drawing.Point(136, 161);
+            this.brakeStatusLabel.Name = "brakeStatusLabel";
+            this.brakeStatusLabel.Size = new System.Drawing.Size(92, 29);
+            this.brakeStatusLabel.TabIndex = 5;
+            this.brakeStatusLabel.Text = "Normal";
+            // 
+            // signalStatusLabel
+            // 
+            this.signalStatusLabel.AutoSize = true;
+            this.signalStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signalStatusLabel.Location = new System.Drawing.Point(135, 121);
+            this.signalStatusLabel.Name = "signalStatusLabel";
+            this.signalStatusLabel.Size = new System.Drawing.Size(92, 29);
+            this.signalStatusLabel.TabIndex = 4;
+            this.signalStatusLabel.Text = "Normal";
+            // 
+            // engineStatusLabel
+            // 
+            this.engineStatusLabel.AutoSize = true;
+            this.engineStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.engineStatusLabel.Location = new System.Drawing.Point(136, 79);
+            this.engineStatusLabel.Name = "engineStatusLabel";
+            this.engineStatusLabel.Size = new System.Drawing.Size(92, 29);
+            this.engineStatusLabel.TabIndex = 3;
+            this.engineStatusLabel.Text = "Normal";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(33, 161);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(88, 29);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Brake :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(28, 122);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(99, 29);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Signal : ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(20, 79);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(107, 29);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Engine : ";
             // 
             // Heater_GroupBox
             // 
@@ -1328,65 +1390,14 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // label21
+            // trainIDLabel
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(20, 79);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(107, 29);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Engine : ";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(28, 122);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(99, 29);
-            this.label22.TabIndex = 1;
-            this.label22.Text = "Signal : ";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(33, 161);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(88, 29);
-            this.label25.TabIndex = 2;
-            this.label25.Text = "Brake :";
-            // 
-            // engineStatusLabel
-            // 
-            this.engineStatusLabel.AutoSize = true;
-            this.engineStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.engineStatusLabel.Location = new System.Drawing.Point(136, 79);
-            this.engineStatusLabel.Name = "engineStatusLabel";
-            this.engineStatusLabel.Size = new System.Drawing.Size(92, 29);
-            this.engineStatusLabel.TabIndex = 3;
-            this.engineStatusLabel.Text = "Normal";
-            // 
-            // signalStatusLabel
-            // 
-            this.signalStatusLabel.AutoSize = true;
-            this.signalStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signalStatusLabel.Location = new System.Drawing.Point(135, 121);
-            this.signalStatusLabel.Name = "signalStatusLabel";
-            this.signalStatusLabel.Size = new System.Drawing.Size(92, 29);
-            this.signalStatusLabel.TabIndex = 4;
-            this.signalStatusLabel.Text = "Normal";
-            // 
-            // brakeStatusLabel
-            // 
-            this.brakeStatusLabel.AutoSize = true;
-            this.brakeStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brakeStatusLabel.Location = new System.Drawing.Point(136, 161);
-            this.brakeStatusLabel.Name = "brakeStatusLabel";
-            this.brakeStatusLabel.Size = new System.Drawing.Size(92, 29);
-            this.brakeStatusLabel.TabIndex = 5;
-            this.brakeStatusLabel.Text = "Normal";
+            this.trainIDLabel.AutoSize = true;
+            this.trainIDLabel.Location = new System.Drawing.Point(131, 11);
+            this.trainIDLabel.Name = "trainIDLabel";
+            this.trainIDLabel.Size = new System.Drawing.Size(123, 25);
+            this.trainIDLabel.TabIndex = 45;
+            this.trainIDLabel.Text = "prevToNext";
             // 
             // TrainController
             // 
@@ -1449,7 +1460,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label trainIDLabel;
+        private System.Windows.Forms.Label trainIDLabel1;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.GroupBox Heater_GroupBox;
         private System.Windows.Forms.RadioButton Heater_Off;
@@ -1537,6 +1548,7 @@
         private System.Windows.Forms.Label brakeStatusLabel;
         private System.Windows.Forms.Label signalStatusLabel;
         private System.Windows.Forms.Label engineStatusLabel;
+        private System.Windows.Forms.Label trainIDLabel;
     }
 }
 

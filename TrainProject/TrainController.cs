@@ -31,6 +31,8 @@ namespace TrainControllerProject
         private double minStopDistanceStation = 0;
         private double minStopDistanceAuthority = 0;
         private double minStopDistance = 0;
+        private double futureSpeedLimit = 0;
+        private double futureSpeedLimitms = 0;
         private SmallBlock[] blocks;
         private BlockTracker blockTracker;
         int testMode = 0; //test mode off = 0 test mode on = 1
@@ -38,11 +40,12 @@ namespace TrainControllerProject
         int currentBlockID;
         int speedLimit;
         int blockNum;
-        bool prevToNext = true;
+        private bool prevToNext = true;
         int wait = 0;
         int thermostat = 0; // 0 = both off, 1 = AC, 2 = Heater
         int doorStatus;
         int trainID = 0;
+        int stationSide = 1;
         double distanceLeft = 0;
         double Kp = 0;//100000;
         double Ki = 0;//5000;
@@ -70,6 +73,7 @@ namespace TrainControllerProject
         bool approachingStation = false;
         bool authorityChanged = false;
         int failureStatus = 0;
+        bool lightStatus = false;
         PowerController powerController;
         TrainModel TM;
         Map map;
@@ -118,7 +122,11 @@ namespace TrainControllerProject
             //Invoke(new MethodInvoker(delegate { map.updateBlock(currentBlock.blockNum); }));
             speedLimit = currentBlock.speedLimit;
             speedLimitms = speedLimit / 3.6;
-           
+            considerSpeedLimit();
+            if (futureSpeedLimitms < speedLimitms)
+            {
+                speedLimitms = futureSpeedLimitms;
+            }
             if (testMode == 0) {
                 //figure out setSpeed;
                 if (mode == 0) setSpeed = driverSetSpeed;
@@ -130,7 +138,7 @@ namespace TrainControllerProject
             considerStations();
             resetStation();
             if (distanceToStation < minStopDistanceStation || distanceToAuthority < minStopDistanceAuthority) forceStop = true;
-            if ((currSpeed <= setSpeed) && !forceStop &&!emergencyOverride && authority > 0)
+            if ((currSpeedms <= setSpeedms) && !forceStop &&!emergencyOverride && authority > 0)
             {
                 sBreakOFF();
                 emergencyOFF();
@@ -150,9 +158,11 @@ namespace TrainControllerProject
                 power = 0;
             }
             setThermostat();
+            setLights();
             TM.updatePower(power);
             TM.updateThermostat(thermostat);
             TM.updateDoorStatus(doorStatus);
+            TM.updateLightStatus(lightStatus);
             //update the GUI
             trainSpeedLabel.Text = (currSpeedms* 2.23694).ToString("#.###") + "MPH";
             trainPowerLabel.Text = (power / 1000).ToString("#.###") + "kW";
@@ -166,6 +176,9 @@ namespace TrainControllerProject
             distanceLeftLabel.Text = distanceLeft.ToString("#.##");
             distanceToLabel.Text = (distanceToStation).ToString("#.##");
             stationLabel.Text = stationName.ToString();
+            trainIDLabel.Text = prevToNext.ToString();
+            if (lightStatus) Lights_On.Checked = true;
+            else Lights_On.Checked = false;
             if(doorStatus == 0)
             {
                 Left_Closed.Checked = true;
@@ -184,6 +197,11 @@ namespace TrainControllerProject
             
         }
         //0 = no failure, 1 = Train Engine Failure, 2 = signal pickup failure, 3 = brake failure
+        private void setLights()
+        {
+            if (currentBlock.isUnderground) lightStatus = true;
+            else lightStatus = false;
+        }
         public void updateFailure(int a)
         {
             failureStatus = a;
@@ -233,7 +251,7 @@ namespace TrainControllerProject
                 forceStop = false;
                 stationName = "";
                 wait++;
-                doorStatus = 2;
+                doorStatus = stationSide;
             }
             if (wait == 5 && distanceToStation == 0)
             {
@@ -249,25 +267,37 @@ namespace TrainControllerProject
                 minStopDistanceStation = (currSpeedms *currSpeedms) / (2 * serviceBreak);
             }
         }
+        private void considerSpeedLimit()
+        {
+            BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
+            futureSpeedLimit = bs.getSpeedLimit();
+            futureSpeedLimitms = futureSpeedLimit / 3.6;
+        }
         private void considerAuthority()
         {
             if(authority <= 3 && authorityChanged)
             {
-                
                 BlockTracker bs = new BlockTracker(prevToNext, currentBlock.blockNum, lineID);
-                if (blockTracker.getOnSwtich()) bs.configureDirection();
+                //if (blockTracker.getOnSwtich()) bs.configureDirection();
                 distanceToAuthority = bs.getDistance(authority);
                 authorityChanged = false;
             }
             if(distanceToAuthority > 0) minStopDistanceAuthority = (currSpeedms * currSpeedms) / (2 * serviceBreak);
         }
-        public void getStationBeaconInfo(bool pn, double distance, String n)
+        public void getStationBeaconInfo(bool pn, double distance, String n, bool left)
         {
+            if (left) stationSide = 1;
+            else stationSide = 2;
             distanceToStation = distance + 5;
             stationName = n;
             stationPrevToNext = pn;
+            if (prevToNext != stationPrevToNext)
+            {
+                distanceToStation = 0;
+                stationName = "";
+            }
             approachingStation = true;
-            if(mode == 1)
+            if(mode == 1 && distanceToStation != 0)
             {
                 TM.updateAnnouncement("Now arriving at station " + stationName);
             }
@@ -339,7 +369,7 @@ namespace TrainControllerProject
             automaticRadioButton.Checked = false;
             manualRadioButton.Checked = true;
             serviceButton.Enabled = true;
-            sendAnnouncementButton.Enabled = false;
+            sendAnnouncementButton.Enabled = true;
             mode = 0;
         }
         private void updateTimeLabel(String time)
@@ -461,7 +491,6 @@ namespace TrainControllerProject
             else
             {
                 authority = authority - 1;
-                prevToNext = blockTracker.getPrevToNext();
                 p = p - distanceLeft;
                 nextBlock = blockTracker.getNextBlock(currentBlock.blockNum);
                 if (nextBlock == null)
@@ -474,6 +503,7 @@ namespace TrainControllerProject
                     currentBlock = nextBlock;
                     distanceLeft = currentBlock.length - p;
                 }
+                prevToNext = blockTracker.getDirection(currentBlock.blockId);
             }
         }
         /*private int getNextBlock()

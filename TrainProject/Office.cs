@@ -25,9 +25,10 @@ namespace CTC
         public static TrackControllerModule module;
         Block currentBlock;
         int currentLineSelection = 1;
-        
+
         List<Block> myBlockList;
         List<Line> myLineList;
+        TrainModel[] trainModelArray = new TrainModel[50];
         public List<Train> myTrainList;
         Boolean autoMode; // 0 = man, 1 = auto
         Boolean MBOMode;
@@ -42,9 +43,13 @@ namespace CTC
         public void updateTime(String time)
         {
             updateTimeLabel.Text = time;
-            if (tm_window != null)
+            for (int i = 1; i <= trainCounter; i++)
             {
-                Invoke(new MethodInvoker(delegate { tm_window.updateTime(time); }));
+                tm_window = trainModelArray[i];
+                if (tm_window != null)
+                {
+                    Invoke(new MethodInvoker(delegate { tm_window.updateTime(time); }));
+                }
             }
         }
 
@@ -53,12 +58,23 @@ namespace CTC
             trainCounter++;            
             Train train = new Train(trainCounter, sugSpeed, sugAuth);
             myTrainList.Add(train);
-            train.currBlock = 0;
+            if (currentLineSelection == 1) //green
+            {
+                train.prevBlock = 152;
+                train.currBlock = 152;
+            }
+            else //red
+            {
+                train.prevBlock = 229;
+                train.currBlock = 229;
+            }
             tm_window = new TrainModel(currentLineSelection, trainCounter);
+            trainModelArray[trainCounter] = tm_window; //starts at 1 and skips 0 element, noted for the for loop
             tm_window.Show();
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
             train.authority = sugAuth;
             train.suggestedSpeed = sugSpeed;
+            
         }
 
         public void dispatchOldTrain(int trainId)
@@ -240,19 +256,28 @@ namespace CTC
 
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
-            int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) +1;
-            Block b = myBlockList[blockSelected-1];//bc index starts at zero + header row
-            updateBlockLabel.Text = b.blockNum.ToString();
-            if (b.isOccupied == true)
+            if (!(e.Item.SubItems[0].Text == "Yard"))
             {
-                updateBlockStatLabel.Text = "Occupied";
+                int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) + 1;
+                Block b = myBlockList[blockSelected - 1];//bc index starts at zero + header row
+                updateBlockLabel.Text = b.blockNum.ToString();
+                if (b.isOccupied == true)
+                {
+                    updateBlockStatLabel.Text = "Occupied";
+                }
+
+                else
+                {
+                    updateBlockStatLabel.Text = "Empty";
+                }
+                updateSectionLabel.Text = b.section;
+                updateLineLabel.Text = b.line;
             }
+
             else
             {
-                updateBlockStatLabel.Text = "Empty";
+                trainSelectedBool = false;
             }
-            updateSectionLabel.Text = b.section;
-            updateLineLabel.Text = b.line;
         }
 
         private void selTrain(object sender, ListViewColumnMouseEventArgs e)
@@ -275,14 +300,64 @@ namespace CTC
                     }
                 trainSelectedBool = true;
             }
+        }
 
-            else if (trainSelected.Equals("Yard"))
+       public void updateBlockOccupancy(int bId, bool occupied)
+        {
+            foreach (Train t in myTrainList)
             {
-                trainSelectedBool = false;
+                if(!occupied && (bId == t.currBlock))
+                {
+                    Block b = findBlock(bId);
+                    Block prevBlock = findBlock(t.prevBlock);
+                    Block currBlock = findBlock(t.currBlock);
+                    t.prevBlock = t.currBlock;
+                    if (prevBlock == currBlock)
+                    {
+                        prevBlock = null;
+                    }
+                    Block nextBlock = getNextBlock(prevBlock, currBlock, bId);
+                    t.currBlock = nextBlock.blockId;
+                    if (b.lineId == 2) //red line
+                    {
+                        foreach (ListViewItem item in systemListView.Items)
+                        {
+                            if (item.Index == (nextBlock.blockNum))
+                            {
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "Train " + t.trainId.ToString() };
+                            }
+
+                            if (item.Index == (b.blockNum))
+                            {
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "-" };
+                            }
+                        }
+                    }
+
+                    if (b.lineId == 1) //green line
+                    {
+                        foreach (ListViewItem item in systemListView2.Items)
+                        {
+                            if (item.Index == (nextBlock.blockNum))
+                            {
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "Train " + t.trainId.ToString() };
+                            }
+
+                            if (item.Index == (b.blockNum))
+                            {
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "-" };
+                            }
+                        }
+                    }
+                }
             }
         }
 
-        public void updateBlockOccupancy(int bId, bool occupied)
+       /*public void updateBlockOccupancy(int bId, bool occupied)
         {
             foreach (Block b in myBlockList)
             {
@@ -300,7 +375,7 @@ namespace CTC
                                     Block currBlock = t.currentBlock;
                                     Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
                                     int nBlock = nextBlock.blockId;
-
+                                    Console.WriteLine(nBlock + " and " + b.blockId);
                                     if (nBlock == b.blockId) //if trains curr block is this one
                                     {
                                         item.SubItems[2] = new ListViewItem.ListViewSubItem()
@@ -309,6 +384,11 @@ namespace CTC
 
                                     t.previousBlock = t.currentBlock;
                                     t.currentBlock = nextBlock;
+
+                                    //if (nextBlock.isFromYard)
+                                  //  {
+                                  //      myTrainList.Remove(t);
+                                  //  }
                                 }
 
                             }
@@ -369,7 +449,9 @@ namespace CTC
                 }
 
             }
-        }
+
+
+        }*/
 
         public Block findBlock(int blockId)
         {

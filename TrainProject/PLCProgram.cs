@@ -22,9 +22,9 @@ namespace TrainProject
 
         //id is switch id
         //which branch determines whether source, t1, or t2 is to be gotten
-        public int? getSwitchDirection(int id, int whichBranch)
+        public int? getSwitchDirection(Switch sw, int whichBranch)
         {
-            Switch sw = switches.Find(x => x.switchId == id);
+            //Switch sw = switches.Find(x => x.switchId == id);
             SwitchTypes type = switchTypes[sw];
             if (whichBranch > 2 || whichBranch < 0)
             {
@@ -120,6 +120,10 @@ namespace TrainProject
 
         public Boolean handleLine(String plcLine)
         {
+            if(switches.Count == 0)
+            {
+                return false;
+            }
             String[] split = plcLine.Split(',');
             if (split.Length != 4)
             {
@@ -127,6 +131,11 @@ namespace TrainProject
             }
             int switchId = Convert.ToInt32(split[0]);
             Switch s = switches.Find(x => x.switchId == switchId);
+
+            if (switchTypes.ContainsKey(s))
+            {
+                switchTypes.Remove(s);
+            }
 
             if (split[1] == "bi")
             {
@@ -138,12 +147,12 @@ namespace TrainProject
                 //loop1
                 else if (split[2] == "in" && split[3] == "out")
                 {
-                    switchTypes.Add(s, SwitchTypes.Loop1);
+                    switchTypes.Add(s, SwitchTypes.Loop2);
                 }
                 //loop2
                 else if (split[2] == "out" && split[3] == "in")
                 {
-                    switchTypes.Add(s, SwitchTypes.Loop2);
+                    switchTypes.Add(s, SwitchTypes.Loop1);
                 }
                 else
                 {
@@ -185,7 +194,7 @@ namespace TrainProject
         public void runProgram()
         {
             foreach (Switch s in switches) {
-                determineSwitchState(s.switchId, 0, 0, 0);
+                determineSwitchState(s, 0, 0, 0);
             }
         }
 
@@ -193,10 +202,24 @@ namespace TrainProject
         //this boolean expression should be changeable by the PLC program!!!! later
         //changing to directions! positive number means train heading towards switch from that direction
         //this function assumes a unidirectional source, t1, and t2 but can easily be extrapolated to bidirectional given 
-        public int? determineSwitchState(int switchId, int? s, int? t1, int? t2)
+        public int? determineSwitchState(Switch sw, int? s, int? t1, int? t2)
         {
-            Switch sw = switches.Find(x => x.switchId == switchId);
+            Console.WriteLine("Determining switch : " + sw.switchId + " - " + switchTypes[sw].ToString());
+            Console.WriteLine(s + " : " + t1 + " : " + t2);
+            //Switch sw = switches.Find(x => x.switchId == switchId);
             SwitchTypes type = switchTypes[sw];
+            if(s == null)
+            {
+                s = 0;
+            }
+            if(t1 == null)
+            {
+                t1 = 0;
+            }
+            if(t2 == null)
+            {
+                t2 = 0;
+            }
             switch (type)
             {
                 case SwitchTypes.Loop1:
@@ -214,7 +237,7 @@ namespace TrainProject
             }
         }
 
-        //Loop1 has a bidirectional source, going into t1 and back in from t2
+        //Loop1 has a bidirectional source, going out to t1 and back in from t2
         private int? Loop1(Switch sw, int? s, int? t1, int? t2)
         {
             if (!sw.sourceActive || !sw.t1Active || !sw.t2Active)
@@ -225,7 +248,7 @@ namespace TrainProject
                 return sw.currentState;
             }
             //t1Light should always be red because it is a 1-way track going away from system
-            sw.t1Light = false;
+            sw.t1Light = true;
             //train approaches from source
             if (s > 0 && t2 == 0)
             {
@@ -263,7 +286,7 @@ namespace TrainProject
             return sw.currentState;
         }
 
-        //Loop2 has a bidirectional source, going into t2 and back in from t1
+        //Loop2 has a bidirectional source, going out to t2 and back in from t1
         private int? Loop2(Switch sw, int? s, int? t1, int? t2)
         {
             if (!sw.sourceActive || !sw.t1Active || !sw.t2Active)
@@ -273,7 +296,7 @@ namespace TrainProject
                 sw.sourceLight = false;
                 return sw.currentState;
             }
-            sw.t2Light = false;
+            sw.t2Light = true;
             //train approaches from source
             if (s > 0 && t1 == 0)
             {
@@ -297,12 +320,30 @@ namespace TrainProject
                     sw.changeSwitchState();
                 }
             }
+            else
+            {
+                sw.sourceLight = true;
+                sw.t1Light = false;
+                //sourceLightTrue
+                //t1LightFalse
+                if (sw.currentState != sw.targetBlockId2)
+                {
+                    sw.changeSwitchState();
+                }
+            }
             return sw.currentState;
         }
 
         private int BiLoop(Switch sw, int? s, int? t1, int? t2)
         {
             if (!sw.sourceActive)
+            {
+                sw.sourceLight = false;
+                sw.t1Light = false;
+                sw.t2Light = false;
+                return (int)sw.currentState;
+            }
+            else if (!sw.t1Active && !sw.t2Active)
             {
                 sw.sourceLight = false;
                 sw.t1Light = false;
@@ -331,6 +372,7 @@ namespace TrainProject
                 }
                 return (int)sw.currentState;
             }
+            
             //if train approaches switch
             if (s > 0)
             {
@@ -406,7 +448,7 @@ namespace TrainProject
 
         private int SplitIn(Switch sw, int? s, int? t1, int? t2)
         {
-            sw.sourceLight = false;
+            sw.sourceLight = true;
             if (!sw.sourceActive)
             {
                 sw.t1Light = false;
@@ -467,15 +509,36 @@ namespace TrainProject
                     sw.changeSwitchState();
                 }
             }
+            else
+            {
+                sw.t1Light = true;
+                sw.t2Light = true;
+            }
             return (int)sw.currentState;
         }
 
         private int SplitOut(Switch sw, int? s, int? t1, int? t2)
         {
-            if (sw.sourceActive)
+            sw.t1Light = true;
+            sw.t2Light = true;
+            if (!sw.sourceActive || (!sw.t1Active && !sw.t2Active))
             {
                 sw.sourceLight = false;
                 return (int)sw.currentState;
+            }
+            else if (!sw.t1Active)
+            {
+                if(sw.currentState != sw.targetBlockId2)
+                {
+                    sw.changeSwitchState();
+                }
+            }
+            else if (!sw.t2Active)
+            {
+                if (sw.currentState != sw.targetBlockId1)
+                {
+                    sw.changeSwitchState();
+                }
             }
             //in terms of safety, this switch is usually in state
             if (s > 0)
