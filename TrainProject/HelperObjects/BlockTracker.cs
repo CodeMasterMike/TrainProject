@@ -70,6 +70,7 @@ namespace TrainProject.HelperObjects
             }
             return null;
         }
+
         public Block getNextBlock(int i)
         {
             int blockID = getDataBaseID(i);
@@ -159,5 +160,33 @@ namespace TrainProject.HelperObjects
         {
             return onSwitch;
         }
+        public bool getDirection(int i)
+        {
+            Block temp = getBlock(i);
+            if (onSwitch)
+            {
+                if (temp.prevBlockId == null) return true;
+                else return false;
+            }
+            return prevToNext;
+        }
+        public double getSpeedLimit()
+        {
+            int speed = currentBlock.speedLimit;
+            for(int n = 0; n < 2; n++)
+            {
+                currentBlock = getNextBlock(currentBlock.blockNum);
+                if(currentBlock != null)
+                {
+                    if (currentBlock.speedLimit < speed)
+                    {
+                        speed = currentBlock.speedLimit;
+                    }
+                }
+                else return speed - 15;
+            }
+            return speed;
+        }
     }
+    
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Forms;
 using TrainProject;
 using TrainControllerProject;
 
@@ -12,7 +13,7 @@ namespace TrainProject.Clock
 {
     class CustomClock
     {
-        private Timer t { get; set; }
+        private System.Timers.Timer t { get; set; }
         private int interval { get; set; } //this represents the length of whatever is considered a single second, in milliseconds
         private int numIntervals { get; set; }
         private String displayString { get; set; }
@@ -20,14 +21,17 @@ namespace TrainProject.Clock
         private string minutes { get; set; }
         private string seconds { get; set; }
         private TrainSimulation homepage;
+        private int startTime;
 
         public CustomClock(TrainSimulation s)
         {
             Console.WriteLine("Starting System Clock");
             interval = 1000; //starting in real time, 1000ms
-            numIntervals = 7*3600; //8 AM because 0000 is 1AM :)
+            String input = "Please enter train station opening time";
+            startTime = ShowInputDialog(ref input);
+            numIntervals = (startTime-1)*3570; //8 AM because 0000 is 1AM :)
             homepage = s;
-            t = new Timer(interval);
+            t = new System.Timers.Timer(interval);
             t.Elapsed += HandleIntervalElapsed;
             t.Start();
         }
@@ -87,6 +91,46 @@ namespace TrainProject.Clock
         {
             t.Start();
             Console.WriteLine("Started...");
+        }
+
+        private static int ShowInputDialog(ref string input)
+        {
+            System.Drawing.Size size = new System.Drawing.Size(200, 70);
+            Form inputBox = new Form();
+
+            inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            inputBox.ClientSize = size;
+            inputBox.Text = "Name";
+
+            System.Windows.Forms.TextBox textBox = new TextBox();
+            textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
+            textBox.Location = new System.Drawing.Point(5, 5);
+            textBox.Text = input;
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button();
+            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(75, 23);
+            okButton.Text = "&OK";
+            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+            inputBox.Controls.Add(okButton);
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Text = "&Cancel";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+            inputBox.Controls.Add(cancelButton);
+
+            inputBox.AcceptButton = okButton;
+            inputBox.CancelButton = cancelButton;
+
+            DialogResult result = inputBox.ShowDialog();
+            int value = Convert.ToInt32(textBox.Text);
+            return value;
+
         }
 
     }

@@ -17,7 +17,7 @@ namespace CTC
     {
         TrainModel tm_window;
         int trainId;
-        int selTrainId;
+        int trainSelectedInt;
         bool trainSelectedBool;
         double sugSpeed;
         int sugAuth;
@@ -25,11 +25,15 @@ namespace CTC
         public static TrackControllerModule module;
         Block currentBlock;
         int currentLineSelection = 1;
-        
+        int blockSelected;
+        int throughCounter;
+
         List<Block> myBlockList;
         List<Line> myLineList;
+        TrainModel[] trainModelArray = new TrainModel[50];
         public List<Train> myTrainList;
-        Boolean mode; // 0 = man, 1 = auto
+        Boolean autoMode; // 0 = man, 1 = auto
+        Boolean MBOMode;
 
         public Office()
         {
@@ -41,9 +45,13 @@ namespace CTC
         public void updateTime(String time)
         {
             updateTimeLabel.Text = time;
-            if (tm_window != null)
+            for (int i = 1; i <= trainCounter; i++)
             {
-                Invoke(new MethodInvoker(delegate { tm_window.updateTime(time); }));
+                tm_window = trainModelArray[i];
+                if (tm_window != null)
+                {
+                    Invoke(new MethodInvoker(delegate { tm_window.updateTime(time); }));
+                }
             }
         }
 
@@ -52,12 +60,23 @@ namespace CTC
             trainCounter++;            
             Train train = new Train(trainCounter, sugSpeed, sugAuth);
             myTrainList.Add(train);
-            train.currBlock = 0;
+            if (currentLineSelection == 1) //green
+            {
+                train.prevBlock = 152;
+                train.currBlock = 152;
+            }
+            else //red
+            {
+                train.prevBlock = 229;
+                train.currBlock = 229;
+            }
             tm_window = new TrainModel(currentLineSelection, trainCounter);
+            trainModelArray[trainCounter] = tm_window; //starts at 1 and skips 0 element, noted for the for loop
             tm_window.Show();
             module.dispatchNewTrain(trainCounter, tm_window, sugSpeed, sugAuth);
             train.authority = sugAuth;
             train.suggestedSpeed = sugSpeed;
+            
         }
 
         public void dispatchOldTrain(int trainId)
@@ -239,19 +258,28 @@ namespace CTC
 
         private void selBlock(object sender, ListViewColumnMouseEventArgs e)
         {
-            int blockSelected = Int32.Parse(e.Item.SubItems[0].Text) +1;
-            Block b = myBlockList[blockSelected-1];//bc index starts at zero + header row
-            updateBlockLabel.Text = b.blockNum.ToString();
-            if (b.isOccupied == true)
+            if (!(e.Item.SubItems[0].Text == "Yard"))
             {
-                updateBlockStatLabel.Text = "Occupied";
+                blockSelected = Int32.Parse(e.Item.SubItems[0].Text) + 1;
+                Block b = myBlockList[blockSelected - 1];//bc index starts at zero + header row
+                updateBlockLabel.Text = b.blockNum.ToString();
+                if (b.isOccupied == true)
+                {
+                    updateBlockStatLabel.Text = "Occupied";
+                }
+
+                else
+                {
+                    updateBlockStatLabel.Text = "Empty";
+                }
+                updateSectionLabel.Text = b.section;
+                updateLineLabel.Text = b.line;
             }
+
             else
             {
-                updateBlockStatLabel.Text = "Empty";
+                trainSelectedBool = false;
             }
-            updateSectionLabel.Text = b.section;
-            updateLineLabel.Text = b.line;
         }
 
         private void selTrain(object sender, ListViewColumnMouseEventArgs e)
@@ -263,7 +291,7 @@ namespace CTC
                 String[] txtSubstrings = trainSelected.Split(delimiter);
                 Console.WriteLine(txtSubstrings[0]);
                 Console.WriteLine(txtSubstrings[1]);
-                int trainSelectedInt = Int32.Parse(txtSubstrings[1]);
+                trainSelectedInt = Int32.Parse(txtSubstrings[1]);
                 Console.WriteLine("train selected is: " + trainSelectedInt);
                 updateTrainLabel.Text = txtSubstrings[1];
                 foreach (Train t in myTrainList)
@@ -274,99 +302,82 @@ namespace CTC
                     }
                 trainSelectedBool = true;
             }
-
-            else if (trainSelected.Equals("Yard"))
-            {
-                trainSelectedBool = false;
-            }
         }
 
-        public void updateBlockOccupancy(int bId, bool occupied)
+       public void updateBlockOccupancy(int bId, bool occupied)
         {
-            foreach (Block b in myBlockList)
+            foreach (Train t in myTrainList)
             {
-                if ((b.blockId == bId) && (occupied == true))
-                {                
+                if(!occupied && (bId == t.currBlock))
+                {
+                    Block b = findBlock(bId);
+                    Block prevBlock = findBlock(t.prevBlock);
+                    Block currBlock = findBlock(t.currBlock);
+                    t.prevBlock = t.currBlock;
+                    if (prevBlock == currBlock)
+                    {
+                        prevBlock = null;
+                    }
+                    Block nextBlock = getNextBlock(prevBlock, currBlock, bId);
+                    t.currBlock = nextBlock.blockId;
                     if (b.lineId == 2) //red line
                     {
                         foreach (ListViewItem item in systemListView.Items)
                         {
+                            if (item.Index == (nextBlock.blockNum))
+                            {
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "Train " + t.trainId.ToString() };
+                            }
+
                             if (item.Index == (b.blockNum))
                             {
-                                foreach (Train t in myTrainList) //might be an issue
-                                {
-                                    Block prevBlock = t.previousBlock;
-                                    Block currBlock = t.currentBlock;
-                                    Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
-                                    int nBlock = nextBlock.blockId;
-
-                                    if (nBlock == b.blockId) //if trains curr block is this one
-                                    {
-                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
-                                        { Text = "Train " + t.trainId.ToString() };
-                                    }
-
-                                    t.previousBlock = t.currentBlock;
-                                    t.currentBlock = nextBlock;
-                                }
-
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "-" };
                             }
                         }
+
+                        if((t.currBlock == 229) && (t.prevBlock == 161))
+                        {
+                            tm_window = trainModelArray[t.trainId];
+                            tm_window.closeTrainController();
+                            tm_window.Close();
+                            throughCounter++;
+                            updateAuthority(trainCounter, throughCounter);
+                            //t = null;
+                            //myTrainList.Remove(t);
+                        }
+
                     }
 
-                    else if (b.lineId == 1) //green line
+                    if (b.lineId == 1) //green line
                     {
                         foreach (ListViewItem item in systemListView2.Items)
                         {
+                            if (item.Index == (nextBlock.blockNum))
+                            {
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "Train " + t.trainId.ToString() };
+                            }
+
                             if (item.Index == (b.blockNum))
                             {
-                                foreach (Train t in myTrainList) //might be an issue
-                                {
-                                    Block prevBlock = t.previousBlock;
-                                    Block currBlock = t.currentBlock;
-                                    Block nextBlock = getNextBlock(prevBlock, currBlock, b.lineId);
-                                    int nBlock = nextBlock.blockId;
-
-                                    if (nBlock == b.blockId) //if trains curr block is this one
-                                    {
-                                        item.SubItems[2] = new ListViewItem.ListViewSubItem()
-                                        { Text = "Train " + t.trainId.ToString() };
-                                    }
-
-                                    t.previousBlock = t.currentBlock;
-                                    t.currentBlock = nextBlock;
-                                }
-
+                                item.SubItems[2] = new ListViewItem.ListViewSubItem()
+                                { Text = "-" };
                             }
                         }
-                    }
-                    b.isOccupied = true;
-                }
-
-                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 2))
-                {
-                    foreach (ListViewItem item in systemListView.Items)
-                    {
-                        if (item.Index == (b.blockNum))
+                        if ((t.currBlock == 57) && (b.isToYard))
                         {
-                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
+                            tm_window = trainModelArray[t.trainId];
+                            tm_window.closeTrainController();
+                            tm_window.Close();
+                            throughCounter++;
+                            updateAuthority(trainCounter, throughCounter);
+                            //t = null;
+                            //myTrainList.Remove(t);
                         }
                     }
-                    b.isOccupied = false;
                 }
-
-                else if ((b.blockId == bId) && (occupied == false) && (b.lineId == 1))
-                {
-                    foreach (ListViewItem item in systemListView2.Items)
-                    {
-                        if (item.Index == (b.blockNum))
-                        {
-                            item.SubItems[2] = new ListViewItem.ListViewSubItem() { Text = "-" };
-                        }
-                    }
-                    b.isOccupied = false;
-                }
-
             }
         }
 
@@ -434,6 +445,12 @@ namespace CTC
                     return findBlock(targetId);
                 }
             }
+
+            if (prevBlock != null && currBlock.prevBlockId == null && currBlock.nextBlockId == null)
+            {
+                return null;
+            }
+
             else if (prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
             {
                 if (currBlock.prevBlockId == null)
@@ -473,14 +490,15 @@ namespace CTC
 
         private void setAuto()
         {
-            mode = true;
-            TrainSimulation.MBOWindow.isAuto(mode);
+            autoMode = true;
+            TrainSimulation.MBOWindow.isAuto(autoMode);
         }
 
         private void setManual()
         {
-            mode = false;
-            TrainSimulation.MBOWindow.isAuto(mode);
+            autoMode = false;
+            MBOMode = false;
+            TrainSimulation.MBOWindow.isAuto(autoMode);
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -513,20 +531,11 @@ namespace CTC
         {
            if (trainSelectedBool)
             {
-                dispatchOldTrain(selTrainId);
+                dispatchOldTrain(trainSelectedInt);
             }
            else
             {
                 dispatchNewTrain();
-               /* 
-                Button t = new Button();
-                t.Size = new Size(100, 100);
-                t.Location = new Point(100, 100);
-                t.Text = "1";
-                TrainSimulation.mainOffice.systemBox.Controls.Add(t);
-                Controls.Add(t);
-                Console.WriteLine("past button create");
-                */
             }
         }
 
@@ -547,16 +556,78 @@ namespace CTC
 
         private void openBlockButton_Click(object sender, EventArgs e)
         {
+            TrackControllerModule.openBlock(blockSelected);
 
+            Block block = findBlock(blockSelected);
+            if (block.lineId == 2)
+            {
+                foreach (ListViewItem item in systemListView.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Open "};
+                    }
+
+                }
+            }
+
+            if (block.lineId == 1)
+            {
+                foreach (ListViewItem item in systemListView2.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Open " };
+                    }
+
+                }
+            }
         }
 
         private void closeBlockButton_Click(object sender, EventArgs e)
         {
+            TrackControllerModule.closeBlock(blockSelected);
+
+            Block block = findBlock(blockSelected);
+            if (block.lineId == 2)
+            {
+                foreach (ListViewItem item in systemListView2.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Closed" };
+                    }
+
+                }
+            }
+
+            if (block.lineId == 1)
+            {
+                foreach (ListViewItem item in systemListView.Items)
+                {
+                    if (item.Index == (block.blockNum))
+                    {
+                        item.SubItems[1] = new ListViewItem.ListViewSubItem()
+                        { Text = "Closed " };
+                    }
+
+                }
+            }
+        }
+
+        public void causeFailure(int blockId)
+        {
+            notifLabel.Text = ("FAILURE!");
 
         }
 
         private void fixTrackButton_Click(object sender, EventArgs e)
         {
+            TrackControllerModule.openBlock(blockSelected);
+            notifLabel.Text = ("Everything is better");
 
         }
 
@@ -568,7 +639,7 @@ namespace CTC
         private void manButton_Click(object sender, EventArgs e)
         {
             setManual();
-            mode = false;
+            autoMode = false;
             autoButton.ForeColor = Color.Black;
             autoButton.BackColor = Color.White;
             manButton.ForeColor = Color.White;
@@ -578,9 +649,9 @@ namespace CTC
 
         private void autoButton_Click(object sender, EventArgs e)
         {
-            setAuto();
-            dispatchNewTrain();
-            mode = true;
+            //setAuto();
+            //dispatchNewTrain();
+            autoMode = true;
             autoButton.ForeColor = Color.White;
             autoButton.BackColor = Color.Black;
             manButton.ForeColor = Color.Black;
@@ -589,13 +660,17 @@ namespace CTC
         }
 
         private void fbRadio_CheckedChanged(object sender, EventArgs e)
-        {
-
+        {           
+        
+            autoMode = true;
+            TrainSimulation.MBOWindow.isAuto(autoMode);
+        
         }
 
         private void mboButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            MBOMode = true;
+            TrainSimulation.MBOWindow.isMBO(MBOMode);
         }
 
         private void notifLabel_Click(object sender, EventArgs e)
@@ -668,6 +743,12 @@ namespace CTC
         private void updateThroughputLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateAuthority(int trainCount, int trainThrough)
+        {
+            int throughput = trainThrough / trainCount;
+            updateThroughputLabel.Text = throughput.ToString();
         }
     }
 }

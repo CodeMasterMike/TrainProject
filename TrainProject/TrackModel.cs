@@ -305,6 +305,10 @@ namespace Track_Layout_UI
                     return findBlock(targetId);
                 }
             }
+            if(prevBlock != null && currBlock.prevBlockId == null && currBlock.nextBlockId == null)
+            {
+                return null;
+            }
             else if(prevBlock.parentSwitch != null && currBlock.parentSwitch != null) //if coming off a switch
             {
                 if(currBlock.prevBlockId == null)

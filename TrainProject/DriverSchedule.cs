@@ -16,8 +16,8 @@ namespace TrainProject
         int timeStart;
         int timeEnd;
         enum days { fri, sat};
-        Excel.Workbook schedulesWorkbook;
-        Excel.Worksheet schedulesWorksheet;
+        //Excel.Workbook schedulesWorkbook;
+        //Excel.Worksheet schedulesWorksheet;
         TimeSpan timespan;
         DateTime time;
         //enum Hours {(3:00),3:30,4:00,4:30,5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,1:00,1:30,2:00,2:30,3:00,3:30,4:00,4:30,5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30,10:00,10:30,11:00,11:30,12:00,12:30,1:00};
@@ -43,8 +43,11 @@ namespace TrainProject
 
 
 
-        public DriverSchedule()
+        public DriverSchedule(int Start, int End)         
         {
+
+            timeStart = Start;
+            timeEnd = End;
             Excel.Application schedulesApp = new Microsoft.Office.Interop.Excel.Application();
 
             if (schedulesApp == null)
@@ -53,20 +56,21 @@ namespace TrainProject
                 return;
             }
 
-            String input = "Please enter train station opening time";
-            int timeStart = ShowInputDialog(ref input);
-            MessageBox.Show("You chose " + timeStart + " o'clock");
-            input = "Please enter train station closing time";
-            int timeEnd = ShowInputDialog(ref input);
-            MessageBox.Show("You chose " + timeEnd + " o'clock");
 
-       
+            /* String input = "Please enter train station opening time";
+             timeStart = ShowInputDialog(ref input);
+             //MessageBox.Show("You chose " + timeStart + " o'clock");
+             input = "Please enter train station closing time";
+             timeEnd = ShowInputDialog(ref input);
+             MessageBox.Show("You chose " + timeEnd + " o'clock");*/
 
-             timespan = new TimeSpan(timeStart, 0, 0);
+
+           // MessageBox.Show("You chose " + timeEnd + " o'clock");
+            timespan = new TimeSpan(timeStart, 0, 0);
              time = DateTime.Today.Add(timespan);
-            MessageBox.Show("Time chosen is " + time.ToString("hh:mm tt") + "");
+            MessageBox.Show("Starting time chosen is " + time.ToString("hh:mm tt") + "");
+            MessageBox.Show("Closing time chosen is " + timeEnd + "");
 
-         
 
 
 
@@ -183,8 +187,8 @@ namespace TrainProject
 
 
             //Create Driver Schedule
-            int z = 8;
-                                    for (int i = 1; i < z; i++)
+            int z = 4;
+                                    for (int i = 1; i <= z; i++)
                                     {
 
                                         schedulesWorksheet.Cells[(i+1), 1] = "" + i + "";
@@ -257,27 +261,7 @@ namespace TrainProject
                                             }
                                         }
                                     }
-                                    //schedulesWorksheet.Cells[1, 2] = "Name";
-
-                                    //schedulesWorksheet.Cells[2, 1] = "1";
-                                    //schedulesWorksheet.Cells[2, 2] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 3] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 4] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 5] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 6] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 7] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 8] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 9] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 10] = "Break";
-                                    //schedulesWorksheet.Cells[2, 11] = "Lunch";
-                                    //schedulesWorksheet.Cells[2, 12] = "Lunch";
-                                    //schedulesWorksheet.Cells[2, 13] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 14] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 15] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 16] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 17] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 18] = "Drive";
-                                    //schedulesWorksheet.Cells[2, 19] = "Clock Out";
+                                    
 
 
 
@@ -313,10 +297,7 @@ namespace TrainProject
 
         }
 
-        public DriverSchedule(int passengers, int drivers)
-        {
-
-        }
+     
         
         public void viewDriverSchedule()
         {

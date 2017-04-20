@@ -343,6 +343,13 @@ namespace TrainProject
                 sw.t2Light = false;
                 return (int)sw.currentState;
             }
+            else if (!sw.t1Active && !sw.t2Active)
+            {
+                sw.sourceLight = false;
+                sw.t1Light = false;
+                sw.t2Light = false;
+                return (int)sw.currentState;
+            }
             else if (!sw.t1Active)
             {
                 sw.sourceLight = true;
@@ -365,6 +372,7 @@ namespace TrainProject
                 }
                 return (int)sw.currentState;
             }
+            
             //if train approaches switch
             if (s > 0)
             {
