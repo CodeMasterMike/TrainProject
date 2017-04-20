@@ -20,7 +20,7 @@ namespace TrainProject
     {
         int start = 0;
         CustomClock clk;
-        private TrainModel trainModelWindow;
+        public TrainModel trainModelWindow;
         public static Office mainOffice;
         public static TrackModelUI trackModelWindow;
         public static TrackControllerWindow trackControllerWindow;
@@ -43,6 +43,7 @@ namespace TrainProject
             MBOWindow.Show();
             mainOffice = new Office();
             mainOffice.Show();
+            trainModelWindow = new TrainModel();
         }
         public void updateTime(String displayTime)
         {
