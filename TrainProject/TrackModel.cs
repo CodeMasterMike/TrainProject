@@ -101,7 +101,7 @@ namespace Track_Layout_UI
             currBeacon = new StationBeacon("POPLAR", 187, true, false);
             greenLineStationBeacons[86] = currBeacon;
             currBeacon = new StationBeacon("CASTLE SHANNON", 150, true, true);
-            greenLineStationBeacons[86] = currBeacon;
+            greenLineStationBeacons[94] = currBeacon;
             currBeacon = new StationBeacon("PIONEER", 100, true, true);
             greenLineStationBeacons[3] = currBeacon;
             currBeacon = new StationBeacon("EDGEBROOK", 100, true, true);
