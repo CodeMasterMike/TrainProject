@@ -497,6 +497,7 @@ namespace CTC
         private void setManual()
         {
             autoMode = false;
+            MBOMode = false;
             TrainSimulation.MBOWindow.isAuto(autoMode);
         }
 
@@ -649,7 +650,7 @@ namespace CTC
         private void autoButton_Click(object sender, EventArgs e)
         {
             //setAuto();
-            dispatchNewTrain();
+            //dispatchNewTrain();
             autoMode = true;
             autoButton.ForeColor = Color.White;
             autoButton.BackColor = Color.Black;
