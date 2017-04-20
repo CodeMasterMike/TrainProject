@@ -974,6 +974,7 @@ namespace Track_Layout_UI
         //break rail on selected murphy block 
         private void brokenRailButton_Click(object sender, EventArgs e)
         {
+            TrainSimulation.MBOWindow.setUpdateNeed();
             TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
             selectedBlock_Murphy.isRailBroken = true;
             if(selectedBlock.blockId == selectedBlock_Murphy.blockId)
@@ -987,6 +988,7 @@ namespace Track_Layout_UI
         {
             TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
             selectedBlock_Murphy.isCircuitBroken = true;
+            TrainSimulation.MBOWindow.setUpdateNeed();
             if (selectedBlock.blockId == selectedBlock_Murphy.blockId)
             {
                 updateFailureButtons();
@@ -998,6 +1000,7 @@ namespace Track_Layout_UI
         {
             TrackControllerModule.causeFailure(selectedBlock_Murphy.blockId);
             selectedBlock_Murphy.isPowerBroken = true;
+            TrainSimulation.MBOWindow.setUpdateNeed();
             if (selectedBlock.blockId == selectedBlock_Murphy.blockId)
             {
                 updateFailureButtons();
